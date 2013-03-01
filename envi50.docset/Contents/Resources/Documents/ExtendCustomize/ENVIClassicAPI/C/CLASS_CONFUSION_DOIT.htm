@@ -1,0 +1,490 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming|Routines|Processing" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   CLASS_CONFUSION_DOIT
+  </title>
+  <link href="../../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../../ENVIHelp_CSH.htm#ExtendCustomize/ENVIClassicAPI/C/CLASS_CONFUSION_DOIT.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../Routines.htm">
+    Routines
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../A/ADAPT_FILT_DOIT.htm">
+    Processing
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    CLASS_CONFUSION_DOIT
+   </span>
+  </div>
+  <h1>
+   <a name="kanchor677">
+   </a>
+   CLASS_CONFUSION_DOIT
+  </h1>
+  <p>
+   Use this procedure to compute the confusion matrix, commission, omission, accuracy, and kappa coefficient, between a classification image and its ground truth. You can specify ground truth as a classification image using the GTFID keyword, or as an ROI using the ROI_IDS keyword.
+  </p>
+  <h2 class="API">
+   <a name="Syntax">
+   </a>
+   Syntax
+  </h2>
+  <p>
+   ENVI_DOIT, 'CLASS_CONFUSION_DOIT' [,
+   <a href="#ACCURACY">
+    ACCURACY
+   </a>
+   =
+   <i>
+    variable
+   </i>
+   ],
+   <a href="#CALC">
+    CALC_PERCENT
+   </a>
+   ={0 | 1 | 2} |
+   <a href="#CFID">
+    CFID
+   </a>
+   =
+   <i>
+    file ID
+   </i>
+   ,
+   <a href="#CLASS">
+    CLASS_PTR
+   </a>
+   =
+   <i>
+    value
+   </i>
+   [,
+   <a href="#COMMISSION">
+    COMMISSION
+   </a>
+   =
+   <i>
+    variable
+   </i>
+   ],
+   <a href="#CPOS">
+    CPOS
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ,
+   <a href="#DIMS">
+    DIMS
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ,
+   <a href="#GT_NAMES">
+    GT_NAMES
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ,
+   <a href="#GT_PTR">
+    GT_PTR
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ,
+   <a href="#GTDIMS">
+    GTDIMS
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ,
+   <a href="#GTFID">
+    GTFID
+   </a>
+   =file ID,
+   <a href="#GTPOS">
+    GTPOS
+   </a>
+   =
+   <i>
+    integer
+   </i>
+   [,
+   <a href="#KAPPA">
+    KAPPA_COEFF
+   </a>
+   =
+   <i>
+    variable
+   </i>
+   ] [,
+   <a href="#MATRIX">
+    MATRIX
+   </a>
+   =
+   <i>
+    variable
+   </i>
+   ] [,
+   <a href="#OMISSION">
+    OMISSION
+   </a>
+   =
+   <i>
+    variable
+   </i>
+   ],
+   <a href="#ROI_IDS">
+    ROI_IDS
+   </a>
+   =
+   <i>
+    variable
+   </i>
+   [, /
+   <a href="#RPT">
+    RPT_COMMISSION
+   </a>
+   ] [,
+   <a href="#RULE_OUT_BNAME">
+    RULE_OUT_BNAME
+   </a>
+   =
+   <i>
+    string array
+   </i>
+   ] [,
+   <a href="#RULE_OUT_NAME">
+    RULE_OUT_NAME
+   </a>
+   =
+   <i>
+    string
+   </i>
+   ] [, /
+   <a href="#RULE_IN_MEMORY">
+    RULE_IN_MEMOR
+   </a>
+   Y] [, /
+   <a href="#TO_SCREEN">
+    TO_SCREEN
+   </a>
+   ]
+  </p>
+  <h2 class="API">
+   <a name="Keywords">
+   </a>
+   Keywords
+  </h2>
+  <h3>
+   <a name="ACCURACY">
+   </a>
+   ACCURACY (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a named variable that contains the accuracy between the classification image and the ground truth.
+  </p>
+  <h3>
+   <a name="CALC">
+   </a>
+   CALC_PERCENT
+  </h3>
+  <p>
+   Set this keyword to one of the following values to specify units for the confusion matrix:
+  </p>
+  <ul>
+   <li value="1">
+    0: Output the confusion matrix in pixel counts
+   </li>
+   <li value="2">
+    1: Output the confusion matrix in percent
+   </li>
+   <li value="3">
+    2: Output both types of confusion matrix
+   </li>
+  </ul>
+  <h3>
+   <a name="CFID">
+   </a>
+   CFID
+  </h3>
+  <p>
+   Use this keyword to specify the file ID of the classification file. This value is returned from the keyword R_FID in the
+   <a href="../ENVI_O/ENVI_OPEN_FILE.htm">
+    ENVI_OPEN_FILE
+   </a>
+   procedure. CFID is a long integer with a value greater than 0. An invalid file ID has a value of -1.
+  </p>
+  <h3>
+   <a name="CLASS">
+   </a>
+   CLASS_PTR
+  </h3>
+  <p>
+   Use this keyword to specify which classes in the classification image match the ground truth ROIs or the ground truth classes specified by GT_PTR. The number of elements of CLASS_PTR must equal the number of ROIs when using ROIs, or the number of elements of CLASS_PTR must equal the number of elements of GT_PTR when using a ground truth classification image.
+  </p>
+  <h3>
+   <a name="COMMISSION">
+   </a>
+   COMMISSION (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a named variable that contains the commission array between the classification image and the ground truth.
+  </p>
+  <h3>
+   <a name="CPOS">
+   </a>
+   CPOS
+  </h3>
+  <p>
+   Use this keyword to specify an array of band positions for the classification image, indicating the band numbers on which to perform the operation. CPOS is an array of long integers, ranging from 0 to the number of bands minus 1.
+  </p>
+  <h3>
+   <a name="DIMS">
+   </a>
+   DIMS
+  </h3>
+  <p>
+   The “dimensions” keyword is a five-element array of long integers that defines the spatial subset (of a file or array) to use for processing. Nearly every time you specify the keyword FID, you must also specify the spatial subset of the corresponding file (even if the entire file, with no spatial subsetting, is to be processed).
+  </p>
+  <ul>
+   <li value="1">
+    DIMS[0]: A pointer to an open ROI; use only in cases where ROIs define the spatial subset. Otherwise, set to -1L.
+   </li>
+   <li value="2">
+    DIMS[1]: The starting sample number. The first x pixel is 0.
+   </li>
+   <li value="3">
+    DIMS[2]: The ending sample number
+   </li>
+   <li value="4">
+    DIMS[3]: The starting line number. The first y pixel is 0.
+   </li>
+   <li value="5">
+    DIMS[4]: The ending line number
+   </li>
+  </ul>
+  <p>
+   To process an entire file (with no spatial subsetting), define DIMS as shown in the following code example. This example assumes you have already opened a file using
+   <a href="../ENVI_S/ENVI_SELECT.htm">
+    ENVI_SELECT
+   </a>
+   or
+   <a href="../ENVI_P/ENVI_PICKFILE.htm">
+    ENVI_PICKFILE
+   </a>
+   :
+  </p>
+  <p class="Code_Indented">
+   envi_file_query, fid, dims=dims
+  </p>
+  <p>
+   You
+   <i>
+    cannot
+   </i>
+   define DIMS as a pointer to a region of interest (ROI) in any of
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   ’s _DOIT library routines. Using the following example code with a _DOIT library routine will result in an error message when you run the program:
+  </p>
+  <p class="Code_Indented">
+   roi_ids = ENVI_GET_ROI_IDS()
+  </p>
+  <p class="Code_Indented">
+   <br />
+   roi_dims = ENVI_GET_ROI_DIMS_PTR(roi_ids[0])
+  </p>
+  <p class="Code_Indented">
+   <br />
+   dims= [roi_dims,0,0,0,0]
+  </p>
+  <h3>
+   <a name="GT_NAMES">
+   </a>
+   GT_NAMES
+  </h3>
+  <p>
+   Use this keyword to specify names for each ground truth class. GT_NAMES is an array of strings with the same number of elements as GT_PTR or ROI_IDS, depending on which type of ground truth you use.
+  </p>
+  <h3>
+   <a name="GT_PTR">
+   </a>
+   GT_PTR
+  </h3>
+  <p>
+   Use this keyword to specify which classes in the ground truth image match the classification classes. You do not need this keyword if you use ROIs for ground truth. The number of elements of GT_PTR must equal the number of elements of CLASS_PTR.
+  </p>
+  <h3>
+   <a name="GTDIMS">
+   </a>
+   GTDIMS
+  </h3>
+  <p>
+   Use this keyword to specify the spatial dimensions of the ground truth image on which to perform the operation. This keyword is not needed if you use ROIs for ground truth. GTDIMS is a five-element array of long integers with the following definitions:
+  </p>
+  <ul>
+   <li value="1">
+    DIMS[0]: Unused for this function, set to -1
+   </li>
+   <li value="2">
+    DIMS[1]: The starting x pixel (0)
+   </li>
+   <li value="3">
+    DIMS[2]: The ending x pixel
+   </li>
+   <li value="4">
+    DIMS[3]: The starting y pixel (0)
+   </li>
+   <li value="5">
+    DIMS[4]: The ending y pixel
+   </li>
+  </ul>
+  <p>
+   Note that the dimensions you specify must be within the classification image, including the first pixel offsets.
+  </p>
+  <h3>
+   <a name="GTFID">
+   </a>
+   GTFID
+  </h3>
+  <p>
+   Use this keyword to specify the file ID of the ground truth file. This value is returned from the keyword R_FID in the
+   <a href="../ENVI_O/ENVI_OPEN_FILE.htm">
+    ENVI_OPEN_FILE
+   </a>
+   procedure. GTFID is a long integer with a value greater than 0. An invalid file ID has a value of -1.
+  </p>
+  <h3>
+   <a name="GTPOS">
+   </a>
+   GTPOS
+  </h3>
+  <p>
+   Use this keyword to specify the band position for the ground truth image band, indicating the band numbers on which to perform the operation. You do not need this keyword if you use ROIs for ground truth. GTPOS is an array of long integers, ranging from 0 to the number of bands minus 1.
+  </p>
+  <h3>
+   <a name="KAPPA">
+   </a>
+   KAPPA_COEFF (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a named variable that contains the kappa coefficient between the classification image and the ground truth.
+  </p>
+  <h3>
+   <a name="MATRIX">
+   </a>
+   MATRIX (Optional)
+  </h3>
+  <p>
+   Use this keyword to specify a named variable that contains the confusion matrix (in pixel counts) between the classification image and the ground truth.
+  </p>
+  <h3>
+   <a name="OMISSION">
+   </a>
+   OMISSION (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a named variable that contains the omission array between the classification image and the ground truth.
+  </p>
+  <h3>
+   <a name="ROI_IDS">
+   </a>
+   ROI_IDS
+  </h3>
+  <p>
+   Use this keyword to specify the ROI IDs for the ground truth. This keyword is not needed if you use a ground truth image. Use the keyword GTFID in this case. The number of ROI_IDS must be equal to the number of elements in the CLASS_PTR array.
+  </p>
+  <h3>
+   <a name="RPT">
+   </a>
+   RPT_COMMISSION (optional)
+  </h3>
+  <p>
+   Set this keyword to report the commission to the screen.
+  </p>
+  <h3>
+   <a name="RULE_OUT_BNAME">
+   </a>
+   RULE_OUT_BNAME (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a string array that contains the output band names for the rule image.
+  </p>
+  <h3>
+   <a name="RULE_OUT_NAME">
+   </a>
+   RULE_OUT_NAME (optional)
+  </h3>
+  <p>
+   Use this keyword to specify an output filename for the rule image. If this item is present, the rule image is automatically saved.
+  </p>
+  <h3>
+   <a name="RULE_IN_MEMORY">
+   </a>
+   RULE_IN_MEMORY (optional)
+  </h3>
+  <p>
+   Set this keyword to store output rule images in memory.
+  </p>
+  <h3>
+   <a name="TO_SCREEN">
+   </a>
+   TO_SCREEN (optional)
+  </h3>
+  <p>
+   Set this keyword to report the confusion matrix to the screen.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

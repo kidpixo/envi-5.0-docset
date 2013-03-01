@@ -1,0 +1,1072 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Preprocess|Transforms" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Minimum Noise Fraction Transform
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/TableStyles/Description.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#PreprocessImagery/Transforms/MinimumNoiseFractionTransform.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../PreprocessImagery.htm">
+    Preprocess
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="Transforms.htm">
+    Transforms
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Minimum Noise Fraction Transform
+   </span>
+  </div>
+  <h1>
+   Minimum Noise Fraction Transform
+   <a name="kanchor185">
+   </a>
+  </h1>
+  <p>
+   Use
+   <b>
+    MNF Rotation
+   </b>
+   transforms to determine the inherent dimensionality of image data, to segregate noise in the data, and to reduce the computational requirements for subsequent processing (Boardman and Kruse, 1994).
+  </p>
+  <p>
+   See the following sections:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#Backgrou">
+     Background
+    </a>
+   </li>
+   <li value="2">
+    <a href="#Statisti">
+     Statistics Files
+    </a>
+   </li>
+   <li value="3">
+    <a href="#Forward">
+     Forward MNF Transforms
+    </a>
+   </li>
+   <li value="4">
+    <a href="#Inverse">
+     Inverse MNF Transforms
+    </a>
+   </li>
+   <li value="5">
+    <a href="#Apply">
+     Apply Forward MNFs to Spectra
+    </a>
+   </li>
+   <li value="6">
+    <a href="#Apply2">
+     Apply Inverse MNFs to Spectra
+    </a>
+   </li>
+  </ul>
+  <h2>
+   <a name="Backgrou">
+   </a>
+   Background
+  </h2>
+  <p>
+   The MNF transform as modified from Green et al. (1988) and implemented in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   , is a linear transformation that consists of the following separate principal components analysis rotations:
+  </p>
+  <ul>
+   <li value="1">
+    The first rotation uses the principal components of the noise covariance matrix to decorrelate and rescale the noise in the data (a process known as
+    <i>
+     noise whitening
+    </i>
+    ), resulting in transformed data in which the noise has unit variance and no band-to-band correlations.
+   </li>
+   <li value="2">
+    The second rotation uses the principal components derived from the original image data after they have been noise-whitened by the first rotation and rescaled by the noise standard deviation. Since further spectral processing will occur, the inherent dimensionality of the data is determined by examining the final eigenvalues and the associated images. You can divide the data space into two parts: one part associated with large eigenvalues and coherent eigenimages, and a complementary part with near-unity eigenvalues and noise-dominated images. Using only the coherent portions separates the noise from the data, thus improving spectral processing results.
+   </li>
+  </ul>
+  <p>
+   You can also use the MNF transform to remove noise from data by performing a forward transform, determining which bands contain the coherent images (by examining the images and eigenvalues), and running an inverse transform using a spectral subset to include only the good bands, or smoothing the noisy bands before the inverse.
+  </p>
+  <p>
+   You have the option to subset the output of the MNF rotation based on eigenvalues, which means (with hyperspectral data) that you do not have to generate an output cube of hundreds of bands (floating-point) when you only need tens of bands.
+  </p>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   also has the option of applying an MNF transform to individual spectra. This transforms endmember spectra into MNF space for input into
+   <a href="../../SpectralTools/MTMF.htm">
+    mixture tuned matched filtering (MTMF)
+   </a>
+   .
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   You can use the
+   <a href="../../SpectralTools/SpectralHourglassWizard.htm">
+    Spectral Hourglass Wizard
+   </a>
+   to guide you step-by-step through the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   hourglass processing flow, including MNF transforms, to find and map image spectral endmembers from hyperspectral or multispectral data.
+  </p>
+  <p>
+   <b>
+    References
+   </b>
+   <![CDATA[ ]]>
+  </p>
+  <p>
+   Green, A. A., Berman, M., Switzer, P., and Craig, M. D., 1988, A transformation for ordering multispectral data in terms of image quality with implications for noise removal:
+   <i>
+    IEEE Transactions on Geoscience and Remote Sensing
+   </i>
+   , v. 26, no. 1, p. 65-74.
+  </p>
+  <p>
+   Boardman, J. W., and Kruse, F. A., 1994, Automated spectral analysis: a geological example using AVIRIS data, north Grapevine Mountains, Nevada: in
+   <i>
+    Proceedings, ERIM Tenth Thematic Conference on Geologic Remote Sensing
+   </i>
+   , Environmental Research Institute of Michigan, Ann Arbor, MI, pp. I-407 - I-418.
+  </p>
+  <h2>
+   <a name="Statisti">
+   </a>
+   Statistics Files
+  </h2>
+  <p>
+   Unlike principal components analysis, the forward MNF transform produces two separate statistics files:
+   <i>
+    MNF noise statistics
+   </i>
+   and
+   <i>
+    MNF statistics
+   </i>
+   . While these files appear to be ordinary
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   statistics files, they contain information unique to MNF and omit data typically found in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   statistics files.
+  </p>
+  <p>
+   During a forward MNF rotation,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   computes the following statistics:
+  </p>
+  <ul>
+   <li value="1">
+    The mean for each band of the input image (to normalize the data)
+   </li>
+   <li value="2">
+    The covariance statistics of the noise (for the noise rotation and normalization)
+   </li>
+   <li value="3">
+    The covariance statistics of the noise-whitened and rescaled input image data
+   </li>
+  </ul>
+  <p>
+   The first rotation stores its complete set of covariance statistics in the MNF noise statistics file. However, this file contains only the noise covariance statistics, not the data normally found in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   statistics files.
+  </p>
+  <p>
+   The second rotation stores its eigenvector matrix and eigenvalues in the MNF statistics file. However, the rest of the covariance statistics for the second rotation are not saved because the covariance placeholder in the MNF statistics file is used to store a special “composite” MNF transformation matrix. This matrix describes the net result of both principal components rotations as well as the band-independent scaling introduced by the noise normalization. This non-orthogonal, non-unit length, matrix allows an inverse MNF rotation to be applied in a single step.
+  </p>
+  <p>
+   The following table summarizes the contents of the statistics files generated by the MNF transform:
+  </p>
+  <table style="caption-side: bottom;margin-left: 0;margin-right: auto;mc-table-style: url('../../Resources/TableStyles/Description.css');" cellspacing="0" class="TableStyle_Description">
+   <col />
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <td class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       Statistic
+      </p>
+     </td>
+     <td class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       MNF Noise Statistics File
+      </p>
+     </td>
+     <td class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p class="TableHead">
+       MNF Statistics File
+      </p>
+     </td>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       Mean
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       &lt;null&gt;
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Of the original input bands
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       Maximum
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       &lt;null&gt;
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       &lt;null&gt;
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       Minimum
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       &lt;null&gt;
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       &lt;null&gt;
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       Standard Deviation
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       &lt;null&gt;
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       &lt;null&gt;
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       Eigenvalues
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       Of the noise covariance matrix
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Of the second principal components rotation
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       Covariance matrix
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       Of the noise
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Composite transformation matrix
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       Correlation matrix
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       Of the noise
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Incorrect values. Do not use.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <p>
+       Eigenvectors
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <p>
+       Of the noise covariance matrix
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColEnd">
+      <p>
+       Of the second principal components rotation
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h2>
+   <a name="Forward">
+   </a>
+   Forward MNF Transforms
+  </h2>
+  <p>
+   Use forward MNF transforms to estimate the noise statistics used in the first rotation (including estimating the noise from the input data), using noise statistics that were calculated previously, or calculating the noise statistics from a dark image associated with the dataset.
+  </p>
+  <h3 class="Argument">
+   Estimate Noise Statistics from the Data
+   <a name="kanchor186">
+   </a>
+  </h3>
+  <p>
+   Use
+   <b>
+    Forward MNF Estimate Noise Statistics
+   </b>
+   to estimate noise when you do not have a dark current image for your data, which is usually the case.
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   assumes that each pixel contains both signal and noise, and that adjacent pixels contain the same signal but different noise. A shift difference is performed on the data by differencing adjacent pixels to the right and above each pixel and averaging the results to obtain the “noise” value to assign to the pixel being processed. The best noise estimate is gathered using the shift-difference statistics from a homogeneous area rather than from the whole image.
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   allows you to select the subset for statistics extraction.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Transform &gt; MNF Rotation &gt; Forward MNF Estimate Noise Statistics
+    </b>
+    .
+   </li>
+   <p>
+    The MNF Input File dialog appears.
+   </p>
+   <li value="2">
+    Select an input file and perform optional spatial and spectral
+    <a href="../../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , and/or masking, then click
+    <b>
+     OK
+    </b>
+    . The Forward MNF Transform Parameters dialog appears.
+   </li>
+   <li value="3">
+    Click
+    <b>
+     Shift Diff Subset
+    </b>
+    to select a spatial subset or an area under an ROI/EVF/and so forth on which to calculate the statistics. You can then apply the calculated results to the entire file (or to the file subset if you selected one when you selected the input file).
+   </li>
+   <p>
+    When estimating noise from image data using the shift differencing approach, you should strongly consider choosing a spatial subset that is spectrally uniform. However, if any band in your dataset has zero variance, you may encounter a “singularity” problem where the covariance matrix cannot be inverted, and you may receive a “Too May Iterations in TQLI” error message.
+   </p>
+   <p>
+    For example, if you use a deep, placid lake for your noise subset, most bands will have very little variation in the subset, which is what you want. However, if one band has the same pixel value throughout the entire subset, the band has zero variance and will cause a singularity in the covariance matrix.
+   </p>
+   <p>
+    You can find bands that contain zero variance, large outliers, or statistics that are identical to adjacent bands, by generating and reviewing a statistics report on the same shift-difference subset of your input image that you plan to choose for an MNF transform. If you determine that any band has zero variance, you should choose a slightly different or larger subset for your noise estimate. The shift-difference spatial subset must contain more pixels than you have bands in the image you are transforming.
+   </p>
+   <li value="4">
+    In the
+    <b>
+     Enter Output Noise Stats Filename [.sta]
+    </b>
+    field, enter a filename for the noise statistics.
+   </li>
+   <p>
+    To select a homogeneous area for calculating the noise statistics, click
+    <b>
+     Spatial Subset
+    </b>
+    to either manually enter a
+    <a href="../../NoTOCTopics/Subsetting.htm">
+     spatial subset
+    </a>
+    or to graphically indicate the area for statistics extraction.
+   </p>
+   <li value="5">
+    In the
+    <b>
+     Output MNF Stats Filename [.sta]
+    </b>
+    field, enter an output file for the MNF statistics. Be sure that the MNF and noise statistics files have different names.
+   </li>
+   <li value="6">
+    Select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="7">
+    If you selected a mask in Step 2, the
+    <b>
+     Zero Out Masked Values
+    </b>
+    toggle button appears. Masked pixels are excluded when calculating noise statistics. The statistics results are then applied to all pixels in the image when applying the forward MNF transform. The default value for this toggle button is
+    <b>
+     Yes
+    </b>
+    , which means that masked pixels will be assigned values of 0 in the MNF output. Setting this option to
+    <b>
+     No
+    </b>
+    means that the masked pixels will run through the same forward MNF transform as non-masked pixels.
+   </li>
+   <li value="8">
+    Select the number of output MNF bands by using one of the following options:
+    <ul>
+     <li value="1">
+      To select the number of output bands without examining the eigenvalues, select
+      <b>
+       No
+      </b>
+      from the
+      <b>
+       Select Subset from Eigenvalues
+      </b>
+      toggle button, then set the
+      <b>
+       Number of Output MNF Bands
+      </b>
+      .
+     </li>
+     <li value="2">
+      To select the number of output MNF bands by examining the eigenvalues, use the following steps:
+      <ol style="list-style-type: upper-alpha;">
+       <li value="1">
+        Select
+        <b>
+         Yes
+        </b>
+        from the
+        <b>
+         Select Subset from Eigenvalues
+        </b>
+        toggle button.
+       </li>
+       <li value="2">
+        Click
+        <b>
+         OK
+        </b>
+        .
+        <span class="DocumentTitleProductName">
+         ENVI
+        </span>
+        calculates the statistics and the Select Output MNF Bands dialog appears, with each band listed with its corresponding eigenvalue. Also listed is the cumulative percentage of data variance contained in each MNF band for all bands.
+       </li>
+       <li value="3">
+        Set the
+        <b>
+         Number of Output MNF Bands
+        </b>
+        . For the best results, and to save disk space, output only those bands with high eigenvalues. Images with eigenvalues close to 1 are mostly noise.
+       </li>
+      </ol>
+     </li>
+    </ul>
+   </li>
+   <li value="9">
+    Click
+    <b>
+     OK
+    </b>
+    . When
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    finishes processing, the MNF Eigenvalues plot window appears and the MNF bands are added to the Layer Manager. See
+    <a href="#interpreting_MNF_eigenvalues_plot">
+     Interpret the MNF Eigenvalues Plot
+    </a>
+    .
+   </li>
+  </ol>
+  <h4>
+   Interpret the MNF Eigenvalues Plot
+  </h4>
+  <p>
+   When
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   finishes processing, it adds the MNF bands to the Layer Manager and displays the MNF Eigenvalues plot window. The output only contains the number of bands you selected for output. For example, if your input data contains 224 bands, but you selected only 50 bands for output, your output only contains the first 50 calculated MNF bands from you input file.
+  </p>
+  <p>
+   Bands with large eigenvalues (greater than 1) contain data, and bands with eigenvalues near 1 contain noise. Display the MNF bands from the Layer Manager and compare with the MNF Eigenvalue plot to determine which bands contain data and which bands contain predominantly noise. In subsequent processing of this data, spectrally subset the MNF bands to only include those bands where the images appear spatially coherent and the eigenvalues are above the break in slope of the MNF Eigenvalue plot.
+  </p>
+  <h3>
+   Estimate from Previous Noise Statistics
+  </h3>
+  <p>
+   Use
+   <b>
+    Forward MNF Previous Noise Statistics
+   </b>
+   to use noise statistics calculated during a previous MNF transformation. This allows you to use noise statistics from one image with a second image.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Transform &gt; MNF Rotation &gt; Forward MNF Previous Noise Statistics
+    </b>
+    .
+   </li>
+   <p>
+    The Input File dialog appears.
+   </p>
+   <li value="2">
+    Select an input file and perform optional spatial
+    <a href="../../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , and/or masking, then click
+    <b>
+     OK
+    </b>
+    . The Enter Noise Statistics Filename dialog appears with all of the existing statistics files in the current input data directory listed. The statistics files appear with the default file extension
+    <code>
+     .sta
+    </code>
+    .
+   </li>
+   <li value="3">
+    Select a noise statistics file from a previous MNF transform processing session and click
+    <b>
+     Open
+    </b>
+    . The Forward MNF Transform Parameters dialog appears.
+   </li>
+   <li value="4">
+    In the
+    <b>
+     Enter Output MNF Stats Filename [.sta]
+    </b>
+    field, enter an output filename for the MNF statistics files.
+   </li>
+   <li value="5">
+    Select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="6">
+    Select the number of output MNF bands by using one of the following options:
+    <ul>
+     <li value="1">
+      To select the number of output bands without examining the eigenvalues, select
+      <b>
+       No
+      </b>
+      from the
+      <b>
+       Select Subset from Eigenvalues
+      </b>
+      toggle button, then set the
+      <b>
+       Number of Output MNF Bands
+      </b>
+      .
+     </li>
+     <li value="2">
+      To select the number of output MNF bands by examining the eigenvalues, use the following steps:
+      <ol style="list-style-type: upper-alpha;">
+       <li value="1">
+        Select
+        <b>
+         Yes
+        </b>
+        from the
+        <b>
+         Select Subset from Eigenvalues
+        </b>
+        toggle button.
+       </li>
+       <li value="2">
+        Click
+        <b>
+         OK
+        </b>
+        .
+        <span class="DocumentTitleProductName">
+         ENVI
+        </span>
+        calculates the noise statistics and the first rotation. The Select Output MNF Bands dialog appears, with each band listed with its corresponding eigenvalue. Also listed is the cumulative percentage of data variance contained in each MNF band for all bands.
+       </li>
+       <li value="3">
+        Set the
+        <b>
+         Number of Output MNF Bands
+        </b>
+        . For the best results, and to save disk space, output only those bands with high eigenvalues. Images with eigenvalues close to 1 are mostly noise.
+       </li>
+      </ol>
+     </li>
+    </ul>
+   </li>
+   <li value="7">
+    Click
+    <b>
+     OK
+    </b>
+    . When
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    finishes processing, the MNF Eigenvalues plot window appears and the MNF bands are added to the Layer Manager. See
+    <a href="#interpreting_MNF_eigenvalues_plot">
+     Interpret the MNF&#160;Eigenvalues Plot
+    </a>
+    .
+   </li>
+  </ol>
+  <h3>
+   Estimate Noise Statistics from Dark Data
+   <a name="kanchor187">
+   </a>
+  </h3>
+  <p>
+   Use
+   <b>
+    Forward MNF Noise Statistics from Dark Data
+   </b>
+   to estimate noise statistics from a dark image. Some instruments collect a dark image as part of data calibration or collection. The dark image is the equivalent of a photograph with the lens cap on. In electronic instruments, there is still a signal that is actually the noise of the instrument. You can use the dark image to characterize the instrument noise.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Transform &gt; MNF Rotation &gt; Forward MNF Noise Statistics
+    </b>
+    from Dark Data.
+   </li>
+   <p>
+    The Input File dialog appears.
+   </p>
+   <li value="2">
+    Select an input file and optional spatial and spectral
+    <a href="../../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , and/or masking, then click
+    <b>
+     OK
+    </b>
+    . The Dark Current Input File dialog appears.
+   </li>
+   <li value="3">
+    Select the dark current file and perform spatial subsetting as required, then click
+    <b>
+     OK
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    calculates the noise statistics using the dark current input file. The Forward MNF Transform Parameters dialog appears.
+   </li>
+   <li value="4">
+    In the
+    <b>
+     Enter Output Noise Stats Filename [.sta]
+    </b>
+    field, enter an output file for the noise statistics.
+   </li>
+   <li value="5">
+    In the
+    <b>
+     Enter Output MNF Stats Filename [.sta]
+    </b>
+    field, enter an output file for the MNF statistics. Be sure that the MNF and noise statistics files have different names.
+   </li>
+   <li value="6">
+    Select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="7">
+    Select the number of output MNF bands by using one of the following options:
+    <ul>
+     <li value="1">
+      To select the number of output bands without examining the eigenvalues, select
+      <b>
+       No
+      </b>
+      from the
+      <b>
+       Select Subset from Eigenvalues
+      </b>
+      toggle button, then set the
+      <b>
+       Number of Output MNF Bands
+      </b>
+      .
+     </li>
+     <li value="2">
+      To select the number of output MNF bands by examining the eigenvalues, use the following steps:
+      <ol style="list-style-type: upper-alpha;">
+       <li value="1">
+        Select
+        <b>
+         Yes
+        </b>
+        from the
+        <b>
+         Select Subset from Eigenvalues
+        </b>
+        toggle button.
+       </li>
+       <li value="2">
+        Click
+        <b>
+         OK
+        </b>
+        .
+        <span class="DocumentTitleProductName">
+         ENVI
+        </span>
+        calculates the noise statistics and the first rotation. The Select Output MNF Bands dialog appears, with each band listed with its corresponding eigenvalue. Also listed is the cumulative percentage of data variance contained in each MNF band for all bands.
+       </li>
+       <li value="3">
+        Set the
+        <b>
+         Number of Output MNF Bands
+        </b>
+        . For the best results, and to save disk space, output only those bands with high eigenvalues. Images with eigenvalues close to 1 are mostly noise.
+       </li>
+      </ol>
+     </li>
+    </ul>
+   </li>
+   <li value="8">
+    Click
+    <b>
+     OK
+    </b>
+    . When
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    finishes processing, the MNF Eigenvalues plot window appears and the MNF bands are added to the Layer Manager. See
+    <a href="#interpreting_MNF_eigenvalues_plot">
+     Interpret the MNF Eigenvalues Plot
+    </a>
+    .
+   </li>
+  </ol>
+  <h2>
+   <a name="Inverse">
+   </a>
+   Inverse MNF Transforms
+  </h2>
+  <p>
+   Use
+   <b>
+    Inverse MNF Transform
+   </b>
+   to transform the MNF bands back to their original data space.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   Smooth noise-dominated images (higher band numbers) before performing the inverse transform or eliminate the noisy bands during the inverse transform using spectral subsetting. Smoothing or eliminating noisy bands reduces the noise in the original data space.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Transform &gt; MNF Rotation &gt; Inverse MNF Transform
+    </b>
+    . The Inverse MNF Transform Input File dialog appears.
+   </li>
+   <li value="2">
+    Select an input file and perform optional spatial and spectral
+    <a href="../../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The Enter Forward MNF Stats Filename dialog appears.
+   </li>
+   <li value="3">
+    Enter the name of the forward MNF statistics file.
+   </li>
+   <li value="4">
+    Click
+    <b>
+     OK
+    </b>
+    . The Inverse MNF Transform Parameters dialog appears.
+   </li>
+   <li value="5">
+    Select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="6">
+    From the
+    <b>
+     Output Data Type
+    </b>
+    drop-down list, select the data type.
+   </li>
+   <li value="7">
+    Click
+    <b>
+     OK
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds the resulting output to the Layer Manager.
+   </li>
+  </ol>
+  <h2>
+   <a name="Apply">
+   </a>
+   Apply Forward MNFs to Spectra
+  </h2>
+  <p>
+   Use
+   <b>
+    Apply Forward MNF to Spectra
+   </b>
+   to transform endmember spectra into MNF space for use in
+   <a href="../../SpectralTools/MTMF.htm">
+    mixture tuned matched filtering
+   </a>
+   . Use the MNF statistics from the mixture tuned matched filtering input data file for the transform. You can collect the spectra to transform from plot windows, spectral libraries, ASCII files, ROIs, and statistics files using a dialog similar to the endmember collection dialog.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Transform &gt; MNF Rotation &gt; Apply Forward MNF to Spectra
+    </b>
+    . The Forward MNF Statistics Filename dialog appears.
+   </li>
+   <li value="2">
+    Select the MNF statistics filename that was calculated for the mixture tuned matched filtering input data file, then click
+    <b>
+     Open
+    </b>
+    . The Forward MNF Convert Spectra dialog appears.
+   </li>
+   <li value="3">
+    <a href="../../FindFeatures/Classification/ClassificationTools/ImportingSpectra.htm">
+     Import spectra
+    </a>
+    into the dialog by selecting
+    <b>
+     Import &gt;
+    </b>
+    <i style="font-weight: normal;">
+     file_type
+    </i>
+    from the dialog's menu bar, or by dragging and dropping the spectra from the Spectral Library Plots window to the Forward MNF Convert Spectra dialog (see
+    <a href="../../FindFeatures/Classification/ClassificationTools/CollectingEndmemberSpectra.htm#Endmembe2">
+     Endmember Options
+    </a>
+    for further details).
+   </li>
+   <p>
+    If you are transforming library spectra into forward MNF space to use as endmembers in mixture tuned matched filtering, the input library spectra must be scaled identically to the image associated with the MNF statistics being used to do the forward transformation.
+   </p>
+   <li value="4">
+    To delete a spectrum from the dialog, select the spectrum and click
+    <b>
+     Delete Spectrum
+    </b>
+    .
+   </li>
+   <li value="5">
+    Click
+    <b>
+     Apply
+    </b>
+    . The transformed spectra appear in the Forward MNF Spectra plot window and you can input the spectra into the Mixture Tuned Matched Filtering Endmember Collection dialog.
+   </li>
+  </ol>
+  <h2>
+   <a name="Apply2">
+   </a>
+   Apply Inverse MNFs to Spectra
+  </h2>
+  <p>
+   Use the
+   <b>
+    Apply Inverse MNF to Spectra
+   </b>
+   to transform MNF spectra back to the original data space.
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   uses forward MNF statistics from a data file for the transform. You can collect the spectra to transform from plot windows, spectral libraries, ASCII files, ROIs, and statistics files using a dialog similar to the endmember collection dialog.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Transform &gt; MNF Rotation &gt; Apply Inverse MNF to Spectra
+    </b>
+    . The Forward MNF Statistics Filename dialog appears.
+   </li>
+   <li value="2">
+    Select the forward MNF statistics filename, then click
+    <b>
+     Open
+    </b>
+    . The Inverse MNF Convert Spectra dialog appears.
+   </li>
+   <li value="3">
+    <a href="../../FindFeatures/Classification/ClassificationTools/ImportingSpectra.htm">
+     Import spectra
+    </a>
+    into the dialog by selecting
+    <b>
+     Import &gt;
+    </b>
+    <i style="font-weight: normal;">
+     file_type
+    </i>
+    from the  dialog's menu bar, or by dragging and dropping the spectra from the Spectral Library Plots window to the Forward MNF Convert Spectra dialog (see
+    <a href="../../FindFeatures/Classification/ClassificationTools/CollectingEndmemberSpectra.htm#Endmembe2">
+     Endmember Options
+    </a>
+    for further details).
+   </li>
+   <li value="4">
+    Click
+    <b>
+     Apply
+    </b>
+    . The transformed spectra appear in the Inverse MNF Spectra plot window.
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

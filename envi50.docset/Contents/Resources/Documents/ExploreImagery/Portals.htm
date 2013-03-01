@@ -1,0 +1,451 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Explore Imagery|Open and Browse Data" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Portals
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#ExploreImagery/Portals.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="ExploreImagery.htm">
+    Explore Imagery
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="OpenBrowseData.htm">
+    Open and Browse Data
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Portals
+   </span>
+  </div>
+  <h1>
+   Portals
+   <a name="kanchor18">
+   </a>
+  </h1>
+  <p>
+   When multiple layers are available, you can explore and compare them using a portal. Two portal types are available in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   :
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#ViewPort" style="font-weight: bold;">
+     View Portal:
+    </a>
+    Uses the full Image window view. You can open one View Portal per view.
+   </li>
+   <li value="2">
+    <a href="#StandardPort" style="font-weight: bold;">
+     Standard Portal:
+    </a>
+    A subset of the Image window view that you can move and resize within the view. You can create multiple Standard Portals per view.
+   </li>
+  </ul>
+  <p>
+   When you create a new portal, it is added to the top of the Layer Manager and becomes the selected layer. The portal icon
+   <img src="../Resources/Images/IconsButtons/LayerManagerPortalLayer.gif" class="VertCenter" />
+   appears next to the layer name, as follows:
+  </p>
+  <p>
+   <img src="../Resources/Images/portal_lm.gif" />
+  </p>
+  <p>
+   Three animation methods enable alternating between the display layer and the portal layer.
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     Blend
+    </b>
+    transitions between layers by increasing the transparency of display layer.
+   </li>
+   <li value="2">
+    <b>
+     Flicker
+    </b>
+    toggles between the layers.
+   </li>
+   <li value="3">
+    <b>
+     Swipe
+    </b>
+    passes a vertical divider back and forth to alternate between layers.
+   </li>
+  </ul>
+  <p>
+   When animation begins, the portal layer displays first, then transitions to the display layer.
+  </p>
+  <h3>
+   <a name="ViewPort">
+   </a>
+   Add a View Portal
+  </h3>
+  <p>
+   Click the
+   <b>
+    View Blend
+   </b>
+   <img src="../Resources/Images/IconsButtons/PortalBlend.gif" class="VertCenter" />
+   ,
+   <b>
+    View Flicker
+   </b>
+   <img src="../Resources/Images/IconsButtons/PortalFlicker.gif" class="VertCenter" />
+   , or
+   <b>
+    View Swipe
+   </b>
+   <img src="../Resources/Images/IconsButtons/PortalSwipe.gif" class="VertCenter" />
+   button on the toolbar to create a View Portal that performs the selected animation. (You can also select these options from the
+   <b>
+    Display
+   </b>
+   menu.)
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   uses the first non-portal layer in the Layer Manager for the display layer, and the second layer as the source in the  View Portal. The new layer name is
+   <b>
+    View Blend
+   </b>
+   ,
+   <b>
+    View Flicker
+   </b>
+   , or
+   <b>
+    View Swipe
+   </b>
+   , depending on the animation method you selected.
+  </p>
+  <p>
+   The following shows a View Portal with
+   <b>
+    View Swipe
+   </b>
+   animation enabled:
+  </p>
+  <p>
+   <img src="../Resources/Images/viewportal.gif" />
+  </p>
+  <ul>
+   <li value="1">
+    Make the View Portal toolbar visible by hovering the cursor over the top of the view. This toolbar provides the following options to control the animation:
+   </li>
+   <li class="Indent" value="2">
+    Click the
+    <b>
+     Pause
+    </b>
+    <img src="../Resources/Images/IconsButtons/PortalPause.gif" class="VertCenter" />
+    button to pause the selected animation.
+   </li>
+   <li class="Indent" value="3">
+    Click the
+    <b>
+     Play
+    </b>
+    <img src="../Resources/Images/IconsButtons/PortalPlay.gif" class="VertCenter" />
+    button to restart paused animation.
+   </li>
+   <li class="Indent" value="4">
+    Click the
+    <b>
+     Faster
+    </b>
+    <img src="../Resources/Images/IconsButtons/PortalFaster.gif" class="VertCenter" />
+    or
+    <b>
+     Slower
+    </b>
+    <img src="../Resources/Images/IconsButtons/PortalSlower.gif" class="VertCenter" />
+    buttons repeatedly to control the speed of the animation.
+   </li>
+   <li value="5">
+    To change the type of animation, click a different animation button on the main toolbar, or right-click the Image window view and choose from the menu that appears.
+   </li>
+   <li value="6">
+    To load a different layer in the portal when more than two layers are available, right-click the Image window view and select
+    <b>
+     Load New Layer &gt;
+     <i>
+      layer name
+     </i>
+    </b>
+    .
+   </li>
+   <li value="7">
+    To visually compare layers to each other and to the display layer, see
+    <a href="#ExampleComp">
+     Comparing Multiple Layers Using Portals
+    </a>
+    .
+   </li>
+   <li value="8">
+    To stop the animation and close the View Portal, click the button of the current animation on the main toolbar, or right-click the Image window view  and choose from the menu that appears. Closing the portal removes it from the Layer Manager.
+   </li>
+  </ul>
+  <h3>
+   <a name="StandardPort">
+   </a>
+   Add a Standard Portal
+  </h3>
+  <p>
+   Click the
+   <b>
+    Portal
+   </b>
+   <img src="../Resources/Images/IconsButtons/Portal.gif" />
+   button on the toolbar to use the first non-portal layer in the Layer Manager as the display layer, and the second layer as the source in the Standard Portal.  Or, to open a Standard Portal with a different layer as the source, right-click the desired layer in the Layer Manager, then select
+   <b>
+    Display in Portal
+   </b>
+   . The new layer name includes the name of the source layer, preceded by a
+   <code>
+    [p]
+   </code>
+   .
+  </p>
+  <p>
+   The following shows a Standard Portal:
+  </p>
+  <p>
+   <img src="../Resources/Images/portal.gif" />
+  </p>
+  <ul>
+   <li value="1">
+    To start animation in the Standard Portal, right-click on the portal and select
+    <b>
+     Blend
+    </b>
+    ,
+    <b>
+     Flicker
+    </b>
+    , or
+    <b>
+     Swipe
+    </b>
+    . To stop the animation, right-click the portal again and select the current animation to toggle the option off.
+   </li>
+  </ul>
+  <ul>
+   <li value="1">
+    Make the Standard Portal toolbar visible by hovering the cursor over the top of the portal. This toolbar provides the following options to control the animation and the position of the portal:
+   </li>
+   <li class="Indent" value="2">
+    Click the
+    <b>
+     Pause
+    </b>
+    <img src="../Resources/Images/IconsButtons/PortalPause.gif" class="VertCenter" />
+    button to pause the selected animation.
+   </li>
+   <li class="Indent" value="3">
+    Click the
+    <b>
+     Play
+    </b>
+    <img src="../Resources/Images/IconsButtons/PortalPlay.gif" class="VertCenter" />
+    button to restart paused animation.
+   </li>
+   <li class="Indent" value="4">
+    Click the
+    <b>
+     Faster
+    </b>
+    <img src="../Resources/Images/IconsButtons/PortalFaster.gif" class="VertCenter" />
+    or
+    <b>
+     Slower
+    </b>
+    <img src="../Resources/Images/IconsButtons/PortalSlower.gif" class="VertCenter" />
+    buttons repeatedly to control the speed of blend, flicker, or swipe.
+   </li>
+   <li class="Indent" value="5">
+    You can
+    <b>
+     Pin
+    </b>
+    <img src="../Resources/Images/IconsButtons/PortalPin.gif" title="Pin button" alt="Pin button" class="VertCenter" />
+    the Standard Portal to the display layer so that when you pan or fly, the portal moves with the layer. If you
+    <b>
+     Unpin
+    </b>
+    <img src="../Resources/Images/IconsButtons/PortalUnpin.gif" class="VertCenter" />
+    the Standard Portal, it remains in the same position in the Image window view as you pan and fly.
+   </li>
+   <li value="6">
+    To resize the Standard Portal, click and drag its border, or right-click in the Standard Portal and select
+    <b>
+     Resize Portal
+    </b>
+    to choose from pre-set options.
+   </li>
+   <li value="7">
+    To move the Standard Portal to a different location, click and drag.
+   </li>
+   <li value="8">
+    To load a different layer in the portal when more than two layers are available, right-click the portal and select
+    <b>
+     Load New Layer &gt;
+     <i>
+      layer name
+     </i>
+    </b>
+    .
+   </li>
+   <li value="9">
+    To visually compare layers to each other and to the display layer, see
+    <a href="#ExampleComp">
+     Comparing Multiple Layers Using Portals
+    </a>
+    .
+   </li>
+   <li value="10">
+    If you have multiple Standard Portals open in an Image window view, you can reorder them by using drag-and-drop in the Layer Manager tree, or by right-clicking in the Layer Manager and selecting
+    <b>
+     Order
+    </b>
+    .
+   </li>
+   <li value="11">
+    To hide or show the color border on the Standard Portal, right-click the Standard Portal and select
+    <b>
+     Show Border
+    </b>
+    to toggle it off or on.
+   </li>
+   <li value="12">
+    To close the Standard Portal, right-click it and select
+    <b>
+     Close Portal
+    </b>
+    . Or, click the
+    <b>
+     Close
+    </b>
+    button on the Standard Portal toolbar. Closing the portal removes it from the Layer Manager.
+   </li>
+  </ul>
+  <h3>
+   <a name="ExampleComp">
+   </a>
+   Comparing Multiple Layers Using Portals
+  </h3>
+  <p>
+   By default, when you select one of the Portal buttons from the toolbar,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   uses the first non-portal layer in the Layer Manager as the display layer, and the second layer as the source in the View Portal or Standard Portal. If you have more than two layers available and wish to compare the images to each other as well as the display image, see the scenarios below that use the View Portal as an example .
+  </p>
+  <p>
+   For example, your layers in the Layer Manager ordered as follows:
+  </p>
+  <p class="Code">
+   data1.dat
+  </p>
+  <p class="Code">
+   data2.dat
+  </p>
+  <p class="Code">
+   data3.dat
+  </p>
+  <ul>
+   <li value="1">
+    To automate between
+    <code>
+     data1.dat
+    </code>
+    and
+    <code>
+     data2.dat
+    </code>
+    : show all layers and start a View Portal.
+   </li>
+   <li value="2">
+    To automate between between
+    <code>
+     data2.dat
+    </code>
+    and
+    <code>
+     data3.dat
+    </code>
+    : hide
+    <code>
+     data1.dat
+    </code>
+    and
+    <code>
+     data2.dat
+    </code>
+    layers and start a View Portal. Or, start a View Portal and hide
+    <code>
+     data1.dat
+    </code>
+    and
+    <code>
+     data2.dat
+    </code>
+    layers.
+   </li>
+   <li value="3">
+    To automate between between
+    <code>
+     data1.dat
+    </code>
+    and
+    <code>
+     data3.dat
+    </code>
+    : start a View Portal with all layers, then use
+    <b>
+     Load New Layer
+    </b>
+    to change the source for the portal layer to
+    <code>
+     data3.dat
+    </code>
+    .
+   </li>
+  </ul>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

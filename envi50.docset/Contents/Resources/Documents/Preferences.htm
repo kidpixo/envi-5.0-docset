@@ -1,0 +1,2942 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Preferences
+  </title>
+  <link href="SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="Resources/TableStyles/Description.css" rel="stylesheet" />
+  <link href="Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../ENVIHelp_CSH.htm#Preferences.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <span class="MCBreadcrumbs">
+    Preferences
+   </span>
+  </div>
+  <h1>
+   Preferences
+   <a name="kanchor790">
+   </a>
+  </h1>
+  <p>
+   You can set preferences to change the behavior of different properties in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   .
+  </p>
+  <ol>
+   <li value="1">
+    To edit your preferences, select
+    <b>
+     File &gt; Preferences
+    </b>
+    from the menu bar. The Preferences dialog appears.
+   </li>
+   <li value="2">
+    Select the preference you want to edit from the
+    <b>
+     Settings
+    </b>
+    tree. The right side of the dialog shows the settings available for the preference you select. Each preference category displays a
+    <b>
+     Name
+    </b>
+    and
+    <b>
+     Description
+    </b>
+    field, which are not editable.
+   </li>
+   <li value="3">
+    Edit the preferences as desired, then click
+    <b>
+     OK
+    </b>
+    to save the changes to your preferences file  in the following directory:
+   </li>
+  </ol>
+  <p class="indent">
+   <b>
+    Windows XP:
+   </b>
+   <code>
+    Documents and Settings\
+    <i>
+     username
+    </i>
+    \.idl\envi\preferences
+    <i>
+     x_x
+    </i>
+    -36-
+    <i>
+     osname
+    </i>
+    -m
+    <i>
+     bits
+    </i>
+    \
+   </code>
+   &#160;
+  </p>
+  <p class="indent">
+   <b>
+    Windows 7 and Vista:
+   </b>
+   <code>
+    Users\
+    <i>
+     username
+    </i>
+    \.idl\envi\preferences
+    <i>
+     x_x
+    </i>
+    -36-
+    <i>
+     osname
+    </i>
+    -m
+    <i>
+     bits
+    </i>
+    \
+   </code>
+   &#160;
+  </p>
+  <p class="indent">
+   <b>
+    Linux:
+   </b>
+   <code>
+    /home/username/.idl/envi/
+    <i>
+     x_x
+    </i>
+    -36-
+    <i>
+     osname
+    </i>
+    -m
+    <i>
+     bits
+    </i>
+    /
+   </code>
+  </p>
+  <p class="indent">
+   Where
+   <code style="font-style: italic;">
+    x_x
+   </code>
+   is the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   version number,
+   <code style="font-style: italic;">
+    osname
+   </code>
+   is the operating system you are running, and
+   <code style="font-style: italic;">
+    bits
+   </code>
+   is 32 or 64.
+  </p>
+  <p>
+   To edit
+   <b>
+    True/False
+   </b>
+   fields or other fields with drop-down lists, double-click in the field and select your preference. To revert to your previously saved changes, click
+   <b>
+    Restore Defaults
+   </b>
+   .
+  </p>
+  <p>
+   See the following sections for more information:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#Applicat">
+     Application Preferences
+    </a>
+   </li>
+   <li value="2">
+    <a href="#Data">
+     Data Manager Preferences
+    </a>
+   </li>
+   <li value="3">
+    <a href="#Director">
+     Directories Preferences
+    </a>
+   </li>
+   <li value="4">
+    <a href="#Display">
+     Display General Preferences
+    </a>
+   </li>
+   <li value="5">
+    <a href="#Overview">
+     Overview Preferences
+    </a>
+   </li>
+   <li value="6">
+    <a href="#Pyramid">
+     Pyramid Preferences
+    </a>
+   </li>
+   <li value="7">
+    <a href="#Print">
+     Printing Preferences
+    </a>
+   </li>
+   <li value="8">
+    <a href="#Annotati">
+     Annotation Preferences
+    </a>
+   </li>
+   <li value="9">
+    <a href="#NITF%C2%A0Pre">
+     NITF&#160;Preferences
+    </a>
+   </li>
+   <li value="10">
+    <a href="#Remote">
+     Remote Connectivity Preferences
+    </a>
+   </li>
+  </ul>
+  <h2>
+   <a name="Applicat">
+   </a>
+   Application Preferences
+  </h2>
+  <p>
+   You must restart
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   for these preferences to take effect.
+  </p>
+  <table cellspacing="0" style="caption-side: top;mc-table-style: url('Resources/TableStyles/Description.css');margin-left: 0;margin-right: auto;" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       Option
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p class="TableHead">
+       Description
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       <b>
+        <a name="ConfirmOnExit">
+        </a>
+        Confirm on Exit
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Enable or disable displaying the message “Exit Application?” when you close the application. The default is
+       <b>
+        True
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       <b>
+        <a name="EnableSystemLogging">
+        </a>
+        Enable System Logging
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Enable or disable system logging. The default is
+       <b>
+        False
+       </b>
+       . If this field is set to
+       <b>
+        True
+       </b>
+       ,
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       saves an ASCII log of error messages named
+       <code>
+        envisystemlog.txt
+       </code>
+       in your home directory:
+      </p>
+      <p class="indent">
+       <b>
+        Windows XP:
+       </b>
+       <code>
+        Documents and Settings\
+        <i>
+         username
+        </i>
+        \.idl\envi\preferences
+        <i>
+         x_x
+        </i>
+        -36-
+        <i>
+         osname
+        </i>
+        -m
+        <i>
+         bits
+        </i>
+        \
+       </code>
+       &#160;
+      </p>
+      <p class="indent">
+       <b>
+        Windows 7 and Vista:
+       </b>
+       <code>
+        Users\
+        <i>
+         username
+        </i>
+        \.idl\envi\preferences
+        <i>
+         x_x
+        </i>
+        -36-
+        <i>
+         osname
+        </i>
+        -m
+        <i>
+         bits
+        </i>
+        \
+       </code>
+       &#160;
+      </p>
+      <p class="indent">
+       <b>
+        Linux:
+       </b>
+       <code>
+        /home/username/.idl/envi/
+        <i>
+         x_x
+        </i>
+        -36-
+        <i>
+         osname
+        </i>
+        -m
+        <i>
+         bits
+        </i>
+        /
+       </code>
+      </p>
+      <p class="indent">
+       Where
+       <code style="font-style: italic;">
+        x_x
+       </code>
+       is the
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       version number,
+       <code style="font-style: italic;">
+        osname
+       </code>
+       is the operating system you are running, and
+       <code style="font-style: italic;">
+        bits
+       </code>
+       is 32 or 64.
+      </p>
+      <p>
+       The log file is overwritten with each new
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       session.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       <b>
+        <a name="DisplayErrorsOnScreen">
+        </a>
+        Display Errors On Screen
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Enable or disable display of error messages. The default is
+       <b>
+        True
+       </b>
+       , causing error messages to be displayed. Setting this preference to
+       <b>
+        False
+       </b>
+       suppresses the display of error messages received during  operation.
+      </p>
+      <p>
+       If the
+       <b>
+        Enable System Logging
+       </b>
+       preference is set to
+       <b>
+        True
+       </b>
+       , the errors will be written to the application system log. If both the
+       <b>
+        Display Errors on Screen
+       </b>
+       and
+       <b>
+        Enable System Logging
+       </b>
+       preferences are set to
+       <b>
+        False
+       </b>
+       , then the errors will appear at the IDL console.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <p>
+       <b>
+        <a name="POSPoolSize">
+        </a>
+        OPS Pool Size
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColEnd">
+      <p>
+       The number of out-of-process servers (OPS) to start in the pooled resource service (PRS). This specifies the number of OPS instances to create for the tile server and asynchronous action resources. When clients request access, the requests are queued and run by priority.
+      </p>
+      <p>
+       The tile server manages accessing the data tiles for display. The asynchronous actions server manages certain data actions, such as long-running and high-latency operations, as a separate process.
+      </p>
+      <p>
+       When
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       runs for the first time, it queries the hardware for the number of CPUs and sets this value accordingly. Setting this value to a large number on a machine with only one or two CPUs and loading multiple large datasets causes severe performance degradation.
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h2>
+   <a name="Data">
+   </a>
+   Data Manager Preferences
+  </h2>
+  <p>
+   These preferences immediately take effect on all subsequent actions without requiring you to restart
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   .
+  </p>
+  <table cellspacing="0" style="caption-side: top;mc-table-style: url('Resources/TableStyles/Description.css');margin-left: 0;margin-right: auto;" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       Option
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p class="TableHead">
+       Description
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep" style="font-weight: bold;">
+      <p>
+       <a name="AutoDisplayFilesOnOpen">
+       </a>
+       <b>
+        Auto Display Files On Open
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Enable or disable automatically loading the selected file in the current Image window view upon file open. The default is
+       <b>
+        True
+       </b>
+       .
+      </p>
+      <p>
+       <b>
+        False
+       </b>
+       disables automatically loading the selected file. If you set the
+       <b>
+        Launch Data Manager After File/Open
+       </b>
+       preference to
+       <b>
+        Always
+       </b>
+       or
+       <b>
+        If file not Auto-Displayed
+       </b>
+       , the Data Manager appears and you can display the image from there.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep" style="font-weight: bold;">
+      <p>
+       <a name="AutoDisplayMethodForMultispectralFiles">
+       </a>
+       <b>
+        Auto Display Method for Multispectral Files
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       The method for automatically displaying multispectral files. The choices are
+       <b>
+        True Color
+       </b>
+       (default) and
+       <b>
+        CIR
+       </b>
+       (color infrared). These settings only apply if the image file contains wavelength information.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep" style="font-weight: bold;">
+      <p>
+       <a name="ClearDisplayWhenLoadingNewData">
+       </a>
+       <b>
+        Clear View When Loading New Image
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Enable or disable clearing all layers from the active view and the tree for that view in the Layer Manager when you  display a new image. The default is
+       <b>
+        False
+       </b>
+       , meaning
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       continues to display all current  layers when you display a new image. If this field is set to
+       <b>
+        True
+       </b>
+       , all layers are removed when a new layer is loaded, but the existing files remain open in the Data Manager.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep" style="font-weight: normal;">
+      <a name="DisplayDMAtEZStart">
+      </a>
+      <b>
+       Launch Data Manager at Startup
+      </b>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Enable or disable opening the Data Manager when you start
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       .
+      </p>
+      <p>
+       If this field is set to
+       <b>
+        False
+       </b>
+       ,  open the Data Manager as needed by selecting
+       <b>
+        File &gt; Data Manager
+       </b>
+       from the menu bar or by clicking the
+       <b>
+        Data Manager
+       </b>
+       button.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep" style="font-weight: normal;">
+      <p>
+       <a name="LaunchDataManagerAfterFileOpen">
+       </a>
+       <b>
+        Launch Data Manager After File/Open
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       The method for showing the Data Manager. The choices are as follows:
+      </p>
+      <ul>
+       <li value="1">
+        <b>
+         Never:
+        </b>
+        Do not automatically open the Data Manager for any file-open instance.
+       </li>
+       <li value="2">
+        <b>
+         If file not Auto-Displayed
+        </b>
+        (default): Open the Data Manager when the
+        <b>
+         Auto Display Files on Open
+        </b>
+        value is
+        <b>
+         False
+        </b>
+        .
+       </li>
+       <li value="3">
+        <b>
+         Always:
+        </b>
+        Open the Data Manager every time a file is opened.
+       </li>
+      </ul>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep" style="font-weight: bold;">
+      <p>
+       <a name="CloseDataManagerAfterLoadingNewData">
+       </a>
+       <b>
+        Close Data Manager After Loading New Data
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Enable or disable automatically closing the Data Manager after you load new data. The default is
+       <b>
+        False
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep" style="font-weight: bold;">
+      <p>
+       <a name="LoadFileAfterChipOrSave">
+       </a>
+       <b>
+        Load File After Chip or Save
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColEnd">
+      <p>
+       Enable or disable whether chipped or saved output is automatically added to the Data Manager upon file save. The default is
+       <b>
+        True
+       </b>
+       .
+      </p>
+      <p>
+       If you set this preference to
+       <b>
+        False
+       </b>
+       , output is saved to disk but not added to the Data Manager.
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h2>
+   <a name="Director">
+   </a>
+   Directories Preferences
+  </h2>
+  <p>
+   These preferences immediately take effect on all subsequent actions without requiring you to restart
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   .
+  </p>
+  <table cellspacing="0" style="caption-side: top;mc-table-style: url('Resources/TableStyles/Description.css');margin-left: 0;margin-right: auto;" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       Option
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p class="TableHead">
+       Description
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep" style="font-weight: bold;">
+      <p>
+       <a name="ChangeDirectoryOnOpen">
+       </a>
+       <b>
+        Change Directory On Open
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Enable or disable automatically changing the
+       <b>
+        Default Input Directory
+       </b>
+       value when you navigate to and open a file in a directory other than the current default. The default is
+       <b>
+        True
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep" style="font-weight: bold;">
+      <p>
+       <a name="DefaultInputDirectory">
+       </a>
+       <b>
+        Default Input Directory
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       The directory for input images.
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       uses this directory unless you specify another path when opening a file.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep" style="font-weight: bold;">
+      <p>
+       <a name="TemporaryDirectory">
+       </a>
+       <b>
+        Temporary Directory
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       The directory used to store
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       temporary files.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep" style="font-weight: bold;">
+      <p>
+       <a name="OutputDirectory">
+       </a>
+       <b>
+        Output Directory
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       The directory for output files.
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       writes output files to this directory unless you specify another path when entering an output filename.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep" style="font-weight: bold;">
+      <p>
+       <a name="AuxiliaryFileDirectory">
+       </a>
+       <b>
+        Auxiliary File Directory
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       The directory for auxiliary files such as
+       <a href="ExploreImagery/ENVIHeaderFiles.htm">
+        header files
+       </a>
+       (
+       <code>
+        .hdr
+       </code>
+       ),
+       <a href="ExploreImagery/BackgroundPyramids.htm">
+        pyramid files
+       </a>
+       (
+       <code>
+        .enp
+       </code>
+       ), and vector quad tree files (
+       <code>
+        .vqt
+       </code>
+       ).
+      </p>
+      <p>
+       This directory contains auxiliary files associated with data from read-only devices such as a CDs or folders with no write permissions.
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       typically stores auxiliary files in the same directory as the input image or shapefile; however, when that directory is read-only,
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       writes to the auxiliary file directory. When opening a file, if
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       is unable to locate a corresponding auxiliary file, it looks in the auxiliary file directory.
+      </p>
+      <p>
+       If the
+       <b>
+        Store Pyramids Locally
+       </b>
+       preference is set to
+       <b>
+        True
+       </b>
+       , those pyramids will be stored in the auxiliary file directory.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep" style="font-weight: bold;">
+      Extensions File Directory
+      <a name="extensions">
+      </a>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColEnd">
+      <p>
+       This directory is searched on
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       application launch to find extensions that should be added to the Toolbox. This folder should not contain any
+       <code>
+        .pro
+       </code>
+       or
+       <code>
+        .sav
+       </code>
+       files that are not Toolbox extensions.
+      </p>
+      <p>
+       See
+       <a href="ExtendCustomize/write_deploy_toolbox_extensions.htm#Deployin">
+        Write and Depoly Toolbox Extensions
+       </a>
+       for a discussion of all the directories that are searched for
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       Toolbox extensions.
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h2>
+   <a name="Display">
+   </a>
+   Display General Preferences
+  </h2>
+  <p>
+   These preferences immediately take effect on all subsequent actions without requiring you to restart
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   .
+  </p>
+  <table cellspacing="0" style="caption-side: top;mc-table-style: url('Resources/TableStyles/Description.css');margin-left: 0;margin-right: auto;" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       Option
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p class="TableHead">
+       Description
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       <a name="ZoomFactor">
+       </a>
+       <b>
+        Zoom Factor
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       The zoom factor to use when you zoom in or out of the image. The default is
+       <b>
+        1.25
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       <a name="ZoomInterpolationMethod">
+       </a>
+       <b>
+        Zoom Interpolation Method
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       The interpolation method to use when zooming on raster layers. This preference takes effect for any new layers that you create. Interpolation behavior may vary, depending on the method you choose, and whether the
+       <b>
+        Use Graphics Card to Accelerate Enhancement Tools
+       </b>
+       preference is enabled. Variations are noted in the following descriptions.   The choices are as follows:
+      </p>
+      <ul>
+       <li value="1">
+        <b>
+         Nearest Neighbor
+        </b>
+        : (default) Each pixel in the displayed image receives its value from the nearest pixel in the input (reference) image. If the
+        <b>
+         Use Graphics Card to Accelerate Enhancement Tools
+        </b>
+        preference is enabled, brightness, contrast, and sharpen filters are performed by the GPU,
+       </li>
+       <li value="2">
+        <b>
+         Bilinear
+        </b>
+        : Each estimated pixel value in the displayed image is based on a weighted average of the four nearest neighboring pixels in the input image.
+
+ Not all GPUs support bilinear interpolation of floating point textures; therefore, if
+        <b>
+         Use Graphics Card to Accelerate Enhancement Tools
+        </b>
+        is enabled, the setting is ignored and brightness, contrast, and sharpen filters are performed by the CPU.
+       </li>
+       <li value="3">
+        <b>
+         Bicubic:
+        </b>
+        Each estimated pixel value in the displayed image is based on a weighted average of the sixteen nearest pixels in the input image. If
+        <b>
+         Use Graphics Card to Accelerate Enhancement Tools
+        </b>
+        is enabled, the setting is ignored and brightness, contrast, and sharpen filters are performed by the CPU. If your graphics processing unit (GPU) does not support OpenGL Shader Language (GLSL), the
+        <b>
+         Nearest Neighbor
+        </b>
+        interpolation method is used instead.
+       </li>
+       <li value="4">
+        <b>
+         Optimized Bicubic:
+        </b>
+        Each estimated pixel value in the displayed image is based on a weighted average of the sixteen nearest pixels in the input image. The weighting coefficients are improved over standard Bicubic. If
+        <b>
+         Use Graphics Card to Accelerate Enhancement Tools
+        </b>
+        is enabled, the setting is ignored and brightness, contrast, and sharpen filters are performed by the CPU. If your graphics processing unit (GPU) does not support OpenGL Shader Langauge (GLSL), the
+        <b>
+         Nearest Neighbor
+        </b>
+        interpolation method is used instead.
+       </li>
+      </ul>
+      <p>
+       To use
+       <b>
+        Bicubic
+       </b>
+       and
+       <b>
+        Optimized Bicubic
+       </b>
+       :
+      </p>
+      <ul>
+       <li value="1">
+        Your graphics card must support OpenGL 2.0 or higher, and you must have the most recent drivers installed.
+       </li>
+       <li value="2">
+        The displayed image must not be palettized.
+       </li>
+      </ul>
+      <p>
+       Portals behave differently; they try to match the interpolation value of the target layer, regardless of the current preference setting.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       <a name="DefaultSelColor">
+       </a>
+       <b>
+        Default Selection Color
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       The default color to use to highlight the current selection. This color appears as a border when you select layers, as a border to an open Portal, and when you select vectors or annotations to edit. The default is
+       <b>
+        (0,192,192)
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       <a name="UseLowResolutionTileCache">
+       </a>
+       <b>
+        Use Low Resolution Tile Cache
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       For images with very high spatial resolution,
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       displays low-resolution tiles in the Image window view while it retrieves the full-resolution data (if this preference is set to
+       <b>
+        Yes
+       </b>
+       , the default). If you have a slow processor, you may set this preference to
+       <b>
+        No
+       </b>
+       , which should improve display performance. If you set this preference to
+       <b>
+        No
+       </b>
+       , nothing is visible in the Image window view until
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       loads each tile.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       <a name="DefaultMiddleMouseAction">
+       </a>
+       <b>
+        Default Middle Mouse Action
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       The tool to use when you click and drag the middle mouse button in the Image window view. The choices are the Pan tool or the Fly tool. The default is
+       <b>
+        Pan
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       <a name="UseGraphicsCardToAccelerateEnhancementTools">
+       </a>
+       <b>
+        Use Graphics Card to Accelerate Enhancement Tools
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       The default setting of
+       <b>
+        Yes
+       </b>
+       accelerates raster operations, such as image stretching, sharpening, brightness, contrast, and so forth, using your computer’s graphics processing card (GPU) instead of your computer’s central processing unit (CPU). All of the following criteria must be met for this preference to be effective:
+      </p>
+      <ul>
+       <li value="1">
+        Your graphics card must support OpenGL 2.0 and must have the most recent drivers installed.
+       </li>
+       <li value="2">
+        You must set the
+        <b>
+         Zoom Interpolation Method
+        </b>
+        preference to
+        <b>
+         Nearest Neighbor
+        </b>
+        .
+       </li>
+       <li value="3">
+        The image data type must be byte, integer, unsigned integer, or floating-point.
+       </li>
+       <li value="4">
+        Your platform must be Windows or Linux.
+       </li>
+      </ul>
+      <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+       <span class="autonumber">
+        <span>
+         <b>
+          Note:
+         </b>
+        </span>
+       </span>
+       Some
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       features take advantage of graphics hardware that supports the OpenGL 2.0 interface to improve rendering performance, if such hardware is present. Your video card should support OpenGL 2.0 or higher to take advantage of the graphics features
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       . Be sure to update your video card drivers with the most recent version, and set the preference
+       <b>
+        Use Graphics Card to Accelerate Enhancement Tools
+       </b>
+       to
+       <b>
+        Yes
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <a name="DefaultMensurationUnits">
+      </a>
+      <b>
+       Mensuration Units
+      </b>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       The default distance measurement units for the Mensuration tool. The default is
+       <b>
+        meters
+       </b>
+       . If the
+       <b>
+        Mensuration
+       </b>
+       tool is being used on a non-georeferenced image, the Cursor Value window will always report the mensuration units in pixels.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <a name="DefaultGeographicLocationFormat">
+      </a>
+      <b>
+       Geographic Coordinate Format
+      </b>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       The default format for geographic coordinate information in the Cursor Value window. The default is
+       <b>
+        Degrees, Minutes, Seconds
+       </b>
+       . Alternatively, you can choose to display the geographic location in
+       <b>
+        Decimal Degrees
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       <a name="UseDegreeSymbolWhenDisplayingDMS">
+       </a>
+       <b>
+        Use Degree Symbol When Displaying DMS
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Set this preference to
+       <b>
+        Yes
+       </b>
+       (the default) to use the degree symbol when displaying Degrees, Minutes, Seconds in any Asian language operating system.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <p>
+       <a name="kanchor791">
+       </a>
+       <a name="StatusBarSegment123">
+       </a>
+       <b>
+        Status Bar Segment 1, 2, 3
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColEnd">
+      <p>
+       The information to display in the first three segments of the Status bar. The file must have either map information and/or NITF metadata associated with it for the information to display in the Status bar. When you customize the Status bar contents using this method, the Status bar retains the information for subsequent
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       sessions. You can temporarily set the information for each segment by right-clicking on the Status Bar segments. See
+       <a href="ExploreImagery/DisplayTools.htm#StatusBar">
+        Status Bar
+       </a>
+       for details. The Status Bar displays information for the base layer in the Layer Manager.
+      </p>
+      <p>
+       The choices for all three Status bar segments are as follows:
+      </p>
+      <ul>
+       <li value="1">
+        <b>
+         Lat/lon degrees minutes seconds:
+        </b>
+        Latitude and longitude coordinates relative to the cursor location, in degrees/minutes/seconds format. For example, Lat: 40°5'15.92"N, Lon: 105°21'32.83"W.
+       </li>
+       <li value="2">
+        <b>
+         Lat/lon decimal degrees:
+        </b>
+        Latitude and longitude coordinates relative to the cursor location, in decimal degrees format. For example, Lat: 40.0866N, Lon: 105.3524W.
+       </li>
+       <li value="3">
+        <b>
+         Current projection:
+        </b>
+        The current map projection type, zone, and datum. For example, UTM, Zone 13 North, NAD 27.
+       </li>
+       <li value="4">
+        <b>
+         Map coordinates:
+        </b>
+        The map coordinates relative to the cursor location. For example, Map X: 471424.0000, Map Y: 4437999.0000.
+       </li>
+       <li value="5">
+        <b>
+         NITF classification level:
+        </b>
+        The NITF classification level of the image. The classification levels are Unclassified, Top Secret, Secret, Confidential, and Restricted.
+       </li>
+       <li value="6">
+        <b>
+         NITF acquisition time:
+        </b>
+        The image date and time of acquisition, shown as MMM DD, YYYY hh:mm:ss format. For example, JAN 17, 2006 14:23:12.
+       </li>
+       <li value="7">
+        <b>
+         Blank:
+        </b>
+        No display.
+       </li>
+      </ul>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h2>
+   <a name="Overview">
+   </a>
+   Overview Preferences
+   <a name="kanchor792">
+   </a>
+  </h2>
+  <p>
+   These preferences immediately take effect on all subsequent actions without requiring you to restart
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   .
+  </p>
+  <table cellspacing="0" style="caption-side: top;mc-table-style: url('Resources/TableStyles/Description.css');margin-left: 0;margin-right: auto;" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       Option
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p class="TableHead">
+       Description
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep" style="font-weight: bold;">
+      <p>
+       <a name="overcolor">
+       </a>
+       <b>
+        Default Border Color
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       The default color of the Overview border. The default is magenta
+       <b>
+        (255,0,255)
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep" style="font-weight: bold;">
+      <p>
+       <a name="snailtrail" style="font-weight: normal;">
+       </a>
+       <b>
+        Show Snail Trail
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColEnd">
+      <p>
+       If this preference is set to
+       <b>
+        True
+       </b>
+       (default), the snail trail is shown in the Overview. The snail trail highlights, in yellow, areas you have viewed in the Image window.
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h2>
+   <a name="Pyramid">
+   </a>
+   Pyramid Preferences
+   <a name="kanchor793">
+   </a>
+  </h2>
+  <p>
+   These preferences immediately take effect on all subsequent actions without requiring you to restart
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   .
+  </p>
+  <table cellspacing="0" style="caption-side: top;mc-table-style: url('Resources/TableStyles/Description.css');margin-left: 0;margin-right: auto;" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       Option
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p class="TableHead">
+       Description
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep" style="font-weight: bold;">
+      <p>
+       <a name="optimize">
+       </a>
+       <b>
+        Optimize Display Performance (uses more disk space)
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Create and use
+       <i>
+        pyramid files
+       </i>
+       to speed up the display of large images. Pyramid files are copies of the image at various reduced resolutions; they are displayed instead of the full-resolution image at different zoom levels. See
+       <a href="ExploreImagery/BackgroundPyramids.htm">
+        Pyramids Background
+       </a>
+       for more information.
+      </p>
+      <p>
+       This setting only pertains to ENVI, TIFF, and NITF data formats.
+      </p>
+      <p>
+       The default value is
+       <b>
+        False
+       </b>
+       , which means that you will save disk space when displaying ENVI, TIFF, and NITF images because you are not creating a full-resolution pyramid file; however, the display will be slower.
+      </p>
+      <p>
+       If you set this preference to
+       <b>
+        True
+       </b>
+       , a pyramid file will be created for the full-resolution zoom level that will improve display performance.
+      </p>
+      <p>
+       Full-resolution pyramids are always built for the following data formats, regardless of this preference setting:
+      </p>
+      <ul>
+       <li value="1">
+        Raster datasets in an ArcGIS® geodatabase
+       </li>
+       <li value="2">
+        Esri GRID
+       </li>
+       <li value="3">
+        ERDAS IMAGINE
+       </li>
+       <li value="4">
+        JPEG
+       </li>
+       <li value="5">
+        JPEG2000 files with YCC color space or unsigned integer data type
+       </li>
+       <li value="6">
+        Formats listed under the
+        <b>
+         File &gt;&#160;Open As
+        </b>
+        menu
+       </li>
+      </ul>
+      <p>
+       Pyramids are never built for the following formats:
+      </p>
+      <ul>
+       <li value="1">
+        MrSID
+       </li>
+       <li value="2">
+        NITF&#160;2.1 C8 compressed files
+       </li>
+      </ul>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep" style="font-weight: bold;">
+      <p>
+       <a name="store_pyramids_locally" style="font-weight: normal;">
+       </a>
+       <span style="font-weight: bold;">
+        Copy Pyramids Locally
+       </span>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColEnd">
+      <p>
+       If this preference is set to
+       <b>
+        True
+       </b>
+       (default), pyramid files will be copied to your local hard drive if they already exist on a network server for a given image.
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h2>
+   <a name="Print">
+   </a>
+   Printing Preferences
+  </h2>
+  <p>
+   These preferences immediately take effect on all subsequent actions without requiring you to restart
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   .
+  </p>
+  <table style="width: 100%;mc-table-style: url('Resources/TableStyles/Description.css');" cellspacing="0" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       Option
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p class="TableHead">
+       Description
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       <a name="DefMapTempl">
+       </a>
+       <b>
+        Default Map Template
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Change the default template. By default, the Print Layout will be displayed in the ArcMap™ Normal template (
+       <code>
+        Normal.mxt
+       </code>
+       ). If the Preferences point to an invalid template, a warning message will be displayed the next time the Print Layout view is initialized.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       <a name="MapTempDir">
+       </a>
+       <b>
+        Map Template Directory
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Change the default map template directory. The default template directory specifies the initial browse location of the dialog used to pick a map template (see above). If the Preferences point to an invalid directory, a warning message will be displayed the next time the Print Layout view is initialized. See also
+       <a href="ExploreImagery/ESRI_Print_Layout.htm#maptemplatebutton">
+        Map Template.
+       </a>
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+      <p>
+       <a name="RefScale">
+       </a>
+       <b>
+        Reference Scale
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColEnd">
+      <p>
+       The scale at which symbols will appear in the data frame, specified in map units. The Reference Scale sizes text and symbols along with  the display. Without a Reference Scale, symbols and text will remain the same at  all map scales, even if the extent is changed. The default  is
+       <b>
+        0
+       </b>
+       (no Reference Scale).
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h2>
+   <a name="Annotati">
+   </a>
+   Annotation Preferences
+  </h2>
+  <p>
+   You can set preferences for the different annotation types. You can override these settings as needed for each annotation through the individual annotation properties.
+  </p>
+  <p>
+   These preferences immediately take effect on all subsequent actions without requiring you to restart
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   .
+  </p>
+  <h3>
+   <a name="TextAnnoPref">
+   </a>
+   Text Annotation Preferences
+   <a name="kanchor794">
+   </a>
+   &#160;
+  </h3>
+  <p>
+   The following are the text annotation preferences.  You can temporarily override these settings  when the Text Annotation tool is selected by right-clicking in the Image window view (with no annotation items selected) and selecting
+   <b>
+    Preferences
+   </b>
+   .
+  </p>
+  <table cellspacing="0" style="margin-left: 0;margin-right: auto;caption-side: top;mc-table-style: url('Resources/TableStyles/Description.css');" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       Option
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p class="TableHead">
+       Description
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       <b>
+        <a name="AnnoTextColor">
+        </a>
+        Color
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       The annotation text color. The default is red
+       <b>
+        (255,0,0)
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       <b>
+        <a name="AnnotTextFontName">
+        </a>
+        Font Name
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       The font type to use for text annotations. The fonts that are installed on your system are available from the drop-down list. The default is
+       <b>
+        Helvetica
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       <b>
+        <a name="AnnoTextFontStyle">
+        </a>
+        Font Style
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       The font style to apply to text annotations.  The default is
+       <b>
+        Normal
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       <b>
+        <a name="AnnotTextFontSize">
+        </a>
+        Font Size
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       The font size for text annotations. The default is
+       <b>
+        16
+       </b>
+       points.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep" style="font-weight: bold;">
+      <p>
+       <b>
+        <a name="AnnoTextHorizAlign">
+        </a>
+        Horizontal Alignment
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       The horizontal alignment for text annotations. The default is
+       <b>
+        Left
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       <b>
+        <a name="AnnoTextBackFill">
+        </a>
+        Background Fill
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Enable or disable using a background fill color for text annotations. The default is
+       <b>
+        False
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+      <p>
+       <b>
+        <a name="AnnoTextBackColor">
+        </a>
+        Background Color
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColEnd">
+      <p>
+       If the
+       <b>
+        Background Fill
+       </b>
+       setting is
+       <b>
+        True
+       </b>
+       , specify the color to use for the text annotation background. The default is black
+       <b>
+        (0,0,0)
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3>
+   <a name="SymbAnnoPref">
+   </a>
+   Symbol Annotation Preferences
+   <a name="kanchor795">
+   </a>
+   &#160;
+  </h3>
+  <p>
+   The following are the symbol annotation preferences.   You can temporarily override these settings  when the Symbol Annotation tool is selected by right-clicking in the Image window view (with no annotation items selected) and selecting
+   <b>
+    Preferences
+   </b>
+   .
+  </p>
+  <table cellspacing="0" style="margin-left: 0;margin-right: auto;caption-side: top;mc-table-style: url('Resources/TableStyles/Description.css');" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       Option
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p class="TableHead">
+       Description
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       <b>
+        <a name="AnnoSymbolColor">
+        </a>
+        Color
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       The annotation symbol color. The default is red
+       <b>
+        (255,0,0)
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       <b>
+        <a name="AnnoSymbolFontName">
+        </a>
+        Font Name
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       The font type to use for symbols. The fonts that are installed on your system are available from the drop-down list. The default is
+       <b>
+        Symbol
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       <b>
+        <a name="AnnoSymbolFontSize">
+        </a>
+        Font Size
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       The font size for the symbols. The default is
+       <b>
+        24
+       </b>
+       points.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       <b>
+        <a name="AnnoSymbolCharacter">
+        </a>
+        Character
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       The symbol character to use. Click in this field and select
+       <b>
+        Edit
+       </b>
+       to open a dialog containing symbol choices. The default is ASCII
+       <b>
+        197
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       <b>
+        <a name="AnnoSymbolBackFill">
+        </a>
+        Background Fill
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Enable or disable using a background fill color for the symbol. The default is
+       <b>
+        False
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <p>
+       <b>
+        <a name="AnnoSymbolBackColor">
+        </a>
+        Background Color
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColEnd">
+      <p>
+       If the
+       <b>
+        Symbol Background Fill
+       </b>
+       setting is
+       <b>
+        True
+       </b>
+       , specify the color to use for the symbol background. The default is black
+       <b>
+        (0,0,0)
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3>
+   <a name="ArrowAnnoPref">
+   </a>
+   Arrow Annotation Preferences
+   <a name="kanchor796">
+   </a>
+   &#160;
+  </h3>
+  <p>
+   The following are the arrow annotation preferences.   You can temporarily override these settings  when the Arrow Annotation tool is selected by right-clicking in the Image window view (with no annotation items selected) and selecting
+   <b>
+    Preferences
+   </b>
+   .
+  </p>
+  <table cellspacing="0" style="margin-left: 0;margin-right: auto;caption-side: top;mc-table-style: url('Resources/TableStyles/Description.css');" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       Option
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p class="TableHead">
+       Description
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       <b>
+        <a name="AnnoArrowLineColor">
+        </a>
+        Line Color
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       The line color for annotation arrows. The default is red
+       <b>
+        (255,0,0)
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       <b>
+        <a name="AnnoArrowLineStyle">
+        </a>
+        Line Style
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       The line style for annotation arrows. Style choices range from no line to solid, dashed, or dotted lines. The default is a solid line.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       <b>
+        <a name="AnnoArrowLineThick">
+        </a>
+        Line Thickness
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       The line thickness for annotation arrows. The default is
+       <b>
+        1
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       <b>
+        <a name="AnnoArrowHeadSize">
+        </a>
+        Arrow Head Size
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       The size of the annotation arrow heads, in points. The default is
+       <b>
+        25
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       <b>
+        <a name="AnnoArroeHeadAngle">
+        </a>
+        Arrow Head Angle
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       The angle, in degrees, of the annotation arrow heads. The default is
+       <b>
+        30
+       </b>
+       degrees.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <p>
+       <b>
+        <a name="AnnoArrowHeadFillInterior">
+        </a>
+        Arrow Head Fill Interior
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColEnd">
+      <p>
+       The arrow head fill interior, either
+       <b>
+        None
+       </b>
+       or
+       <b>
+        Solid
+       </b>
+       . The default is
+       <b>
+        Solid
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 class="Argument">
+   <a name="PolygonAnnoPref">
+   </a>
+   Polygon Annotation Preferences
+   <a name="kanchor797">
+   </a>
+   &#160;
+  </h3>
+  <p>
+   The following are the polygon, rectangle, and ellipse annotation preferences.   You can temporarily override these settings  when the Polygon Annotation, Rectangle Annotation, or Ellipse Annotation tool is selected by right-clicking in the Image window view (with no annotation items selected) and selecting
+   <b>
+    Preferences
+   </b>
+   .
+  </p>
+  <table cellspacing="0" style="margin-left: 0;margin-right: auto;caption-side: top;mc-table-style: url('Resources/TableStyles/Description.css');" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       Option
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p class="TableHead">
+       Description
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       <b>
+        <a name="AnnoPolygonShoutOutline">
+        </a>
+        Show Outline
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Enable or disable showing the outline of the polygon. The default is
+       <b>
+        True
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       <b>
+        <a name="AnnoPolygonLineColor">
+        </a>
+        Line Color
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       The line color for polygon annotations. The default is red
+       <b>
+        (255,0,0)
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       <b>
+        <a name="AnnoPolygonLineStyle">
+        </a>
+        Line Style
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       The line style for polygon annotations. Style choices range from no line to solid, dashed, or dotted lines. The default is a solid line.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       <b>
+        <a name="AnnoPolygonLineThick">
+        </a>
+        Line Thickness
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       The line thickness for polygon annotations. The default is
+       <b>
+        1
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       <b>
+        <a name="AnnoPolygonFillInterior">
+        </a>
+        Fill Interior
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       The polygon fill interior, either
+       <b>
+        None
+       </b>
+       or
+       <b>
+        Solid
+       </b>
+       . The default is
+       <b>
+        None
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <p>
+       <b>
+        <a name="AnnoPolygonFillColor">
+        </a>
+        Fill Color
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColEnd">
+      <p>
+       If the
+       <b>
+        Polygon Fill Interior
+       </b>
+       setting is
+       <b>
+        True
+       </b>
+       , specify the color to use for the polygon background. The default is red
+       <b>
+        (255,0,0)
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 class="Argument">
+   <a name="PolylineAnnoPref">
+   </a>
+   Polyline Annotation Preferences
+   <a name="kanchor798">
+   </a>
+   &#160;
+  </h3>
+  <p>
+   The following are the polyline annotation preferences.   You can temporarily override these settings  when the Polyline Annotation tool is selected by right-clicking in the Image window view (with no annotation items selected) and selecting
+   <b>
+    Preferences
+   </b>
+   .
+  </p>
+  <table cellspacing="0" style="margin-left: 0;margin-right: auto;caption-side: top;mc-table-style: url('Resources/TableStyles/Description.css');" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       Option
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p class="TableHead">
+       Description
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       <b>
+        <a name="AnnoPolyLineColor">
+        </a>
+        Line Color
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       The line color for polyline annotations. The default is red
+       <b>
+        (255,0,0)
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       <b>
+        <a name="AnnoPolyLineStyle">
+        </a>
+        Line Style
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       The line style for polyline annotations. Style choices range from no line to solid, dashed, or dotted lines. The default is a solid line.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+      <p>
+       <b>
+        <a name="AnnoPolyLineThick">
+        </a>
+        Line Thickness
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColEnd">
+      <p>
+       The line thickness for polyline annotations. The default is
+       <b>
+        1
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3>
+   <a name="PicAnnoPref">
+   </a>
+   Picture Annotation Preferences
+   <a name="kanchor799">
+   </a>
+   &#160;
+  </h3>
+  <p>
+   The following is the Picture Annotation tool preference.
+  </p>
+  <table cellspacing="0" style="margin-left: 0;margin-right: auto;caption-side: top;mc-table-style: url('Resources/TableStyles/Description.css');" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+      </p>
+      <p>
+       Option
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p class="TableHead">
+      </p>
+      <p>
+       Description
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+      <p>
+       <b>
+        <a name="AnnoMaxPictureDimension">
+        </a>
+        Maximum Picture Dimension
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColEnd">
+      <p>
+       The maximum dimension to allow for a picture annotation. The default is
+       <b>
+        512
+       </b>
+       pixels.
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h2>
+   <a name="NITF Pre">
+   </a>
+   NITF&#160;Preferences
+  </h2>
+  <p>
+   These preferences immediately take effect on all subsequent actions without requiring you to restart
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   .
+  </p>
+  <table cellspacing="0" style="margin-left: 0;margin-right: auto;caption-side: top;mc-table-style: url('Resources/TableStyles/Description.css');" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep" style="font-weight: normal;">
+      <p class="TableHead">
+       Option
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd" style="font-weight: normal;">
+      <p class="TableHead">
+       Description
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep" style="font-weight: bold;">
+      <p>
+       <a name="NITFFileCacheSize">
+       </a>
+       <b>
+        NITF File Cache Size
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       The cache size for the NITF image. The default is
+       <b>
+        256
+       </b>
+       MB.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep" style="font-weight: bold;">
+      <p>
+       <a name="AutomaticallyViewMetadata">
+       </a>
+       <b>
+        Automatically View Metadata
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Enable or disable automatically displaying the NITF Metadata Viewer dialog when you open a NITF file. The default is
+       <b>
+        False
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep" style="font-weight: bold;">
+      <p>
+       <a name="SuppressInputWarningMessages">
+       </a>
+       <b>
+        Suppress Input Warning Messages
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Enable or disable showing NITF input warning messages when opening a NITF file. The default is
+       <b>
+        True
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep" style="font-weight: bold;">
+      <p>
+       <a name="OriginatingStationID">
+       </a>
+       <b>
+        Originating Station ID
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       The station ID of the organization in which the image originated. If you enter your own value, that value will be used in the output file. If this preference field is initially empty, the software populates it with
+       <code>
+        ENVI
+       </code>
+       . Set this preference field to
+       <code>
+        NO CHANGE
+       </code>
+       (all uppercase) if you want the software to pass through the input value with no change.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep" style="font-weight: bold;">
+      <p>
+       <a name="OriginatorName">
+       </a>
+       <b>
+        Originator’s Name
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       The name of the image’s originator. If this preference field is initially empty, it remains empty in the output file. If you enter your own value, that value will be used in the output file. Set this preference field to
+       <code>
+        NO CHANGE
+       </code>
+       (all uppercase) if you want the software to pass through the input value with no change.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep" style="font-weight: bold;">
+      <p>
+       <a name="OriginatorPhoneNumber">
+       </a>
+       <b>
+        Originator’s Phone Number
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       The telephone number of the image’s originator. If this preference field is initially empty, it remains empty in the output file. If you enter your own value, that value will be used in the output file. Set this preference field to
+       <code>
+        NO CHANGE
+       </code>
+       (all uppercase) if you want the software to pass through the input value with no change.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep" style="font-weight: bold;">
+      <p>
+       <a name="FileTitleChipPrefix">
+       </a>
+       <b>
+        File Title Chip Prefix
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       The prefix to add to the File Title metadata if you save a spatial subset. The default is
+       <code>
+        Chip_hhmmss_of_
+       </code>
+       , where the hour (hh), minute (mm), and second (ss) reflect the time that you create the subset. If you remove this default value and enter your own text, the software appends your text to the filename.
+      </p>
+     </td>
+    </tr>
+    <tr madcap:conditions="">
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       <b>
+        IID2 Chip Suffix
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       The suffix to add to the IID2 field that indicates the output file contains chipped images (NITF 2.1 only). The default value is
+       <code>
+        _CHIP
+       </code>
+       . If the original IID2 field plus the
+       <b>
+        IID2 Chip Suffix
+       </b>
+       field is larger than 80 characters, the
+       <b>
+        IID2 Chip Suffix
+       </b>
+       field will be truncated.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep" style="font-weight: bold;">
+      <p>
+       <a name="HISTOAProcessingSite">
+       </a>
+       <b>
+        HISTOA Processing Site
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColEnd">
+      <p>
+       The name of the company who performed the processing event. Enter up to 10 characters of text. This preference fills in the PSITE field of the HISTOA Processing Site.
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3>
+   New NITF File Metadata Preferences
+  </h3>
+  <p>
+   This section of NITF preferences contains NITF file metadata defaults. Descriptions of the NITF file metadata fields are in
+   <a href="http://www.gwg.nga.mil/ntb/baseline/docs/2500b/index.html" target="_blank" title="http://www.gwg.nga.mil/ntb/baseline/docs/2500b/index.html" alt="http://www.gwg.nga.mil/ntb/baseline/docs/2500b/index.html">
+    MIL-STD-2500B
+   </a>
+   or
+   <a href="http://www.gwg.nga.mil/ntb/baseline/docs/2500a/index.html" target="_blank" title="http://www.gwg.nga.mil/ntb/baseline/docs/2500a/index.html" alt="http://www.gwg.nga.mil/ntb/baseline/docs/2500a/index.html">
+    MIL-STD-2500A
+   </a>
+   . These preferences pertain to when you save a non-NITF file to NITF format using
+   <b>
+    Save As
+   </b>
+   .
+  </p>
+  <h3>
+   New PIA TRE Metadata Preferences
+  </h3>
+  <p>
+   This section of NITF preferences contains PIA TRE file metadata defaults. Descriptions of the PIA TRE metadata fields are in
+   <a href="http://www.gwg.nga.mil/ntb/baseline/docs/stdi0006/index.html" target="_blank" title="www.ismc.nga.mil/ntb/baseline/docs/stdi0002/index.html" alt="www.ismc.nga.mil/ntb/baseline/docs/stdi0002/index.html">
+    STDI-0002
+   </a>
+   . These preferences only pertain to creating new PIA TREs.
+  </p>
+  <h2>
+   <a name="Remote">
+   </a>
+   Remote Connectivity Preferences
+  </h2>
+  <p>
+   These preferences immediately take effect on all subsequent actions without requiring you to restart
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   .
+  </p>
+  <table cellspacing="0" style="caption-side: top;mc-table-style: url('Resources/TableStyles/Description.css');margin-left: 0;margin-right: auto;" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       Option
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p class="TableHead">
+       Description
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep" style="font-weight: bold;">
+      <p>
+       <b>
+        <a name="OGCProxyServer">
+        </a>
+        OGC Proxy Server
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       A proxy server sits between your computer and remote servers to which you connect. If you consistently have trouble connecting to remote servers, you may have a proxy server installed. Contact your system administrator for details, then enter the server name in the
+       <b>
+        OGC Proxy Server
+       </b>
+       field. This field is blank by default.
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       does not attempt to connect through a proxy server, unless you specify one. JPIP/IAS servers do not support proxy servers.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep" style="font-weight: bold;">
+      <p>
+       <b>
+        <a name="OGCProxyPort" style="font-weight: bold;">
+        </a>
+        OGC Proxy Port
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       The port number through which the proxy server connects to the Internet. The default is
+       <b>
+        80
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep" style="font-weight: bold;">
+      <p>
+       <b>
+        <a name="RecentDatasetsToRemember">
+        </a>
+        Recent Datasets to Remember
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       The number of datasets to maintain in the Recent Dataset List in the
+       <b>
+        File &gt; Open Remote Dataset
+       </b>
+       menu option. The default is
+       <b>
+        16
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep" style="font-weight: bold;">
+      <p>
+       <b>
+        <a name="CloseRemoteConnecMgrAfterOpening">
+        </a>
+        Close Remote Connection Manager After Opening New Data
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Enable or disable automatically closing the Remote Connection Manager dialog after you load new data. The default is
+       <b>
+        False
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep" style="font-weight: bold;">
+      <p>
+       <b>
+        <a name="WMSPixelsPerSide">
+        </a>
+        WMS Pixels Per Side
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       The number of pixels to use as the default setting for the greater of the width or height within a WMS layer. The default is
+       <b>
+        10000
+       </b>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep" style="font-weight: bold;">
+      <p>
+       <b>
+        <a name="ESRILicenseType">
+        </a>
+        Esri License Type
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColEnd">
+      <p>
+       Set this preference to the type of Esri® license you currently have. The choices are
+       <b>
+        Unknown
+       </b>
+       (default),
+       <b>
+        ArcInfo
+       </b>
+       ,
+       <b>
+        ArcView
+       </b>
+       , or
+       <b>
+        ArcEditor
+       </b>
+       . Setting this preference to a specific Esri license type speeds up performance because
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       will skip the license check when you read or export to a geodatabase, or when you interact with ArcMap™ software. You can find the license type installed on your computer by selecting
+       <b>
+        Help &gt; About ArcMap
+       </b>
+       from the ArcMap software menu bar.
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

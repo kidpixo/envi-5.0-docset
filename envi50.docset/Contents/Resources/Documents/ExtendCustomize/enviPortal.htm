@@ -1,0 +1,219 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming|Routines|Display Control" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   ENVIPortal
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/TableStyles/VersionTable.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#ExtendCustomize/enviPortal.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="Routines.htm">
+    Routines
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="#">
+    Display Control
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    ENVIPortal
+   </span>
+  </div>
+  <h1 class="ClassObject">
+   ENVIPortal
+  </h1>
+  <p>
+   This
+   <a name="kanchor585">
+   </a>
+   is a reference to a portal object. For more information about creating portals, refer to
+   <a href="enviView__CreatePortal.htm">
+    ENVIView::CreatePortal
+   </a>
+   .
+  </p>
+  <h2 class="API">
+   Example
+  </h2>
+  <p class="Code">
+   ; Launch the application
+  </p>
+  <p class="Code">
+   e = ENVI()
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Create an ENVIRaster
+  </p>
+  <p class="Code">
+   file = FILEPATH('qb_boulder_msi', ROOT_DIR=e.ROOT_DIR, $
+  </p>
+  <p class="Code_Indented">
+   SUBDIRECTORY = ['data'])
+  </p>
+  <p class="Code">
+   raster = e.OpenRaster(file)
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Create two layers
+  </p>
+  <p class="Code">
+   view = e.GetView()
+  </p>
+  <p class="Code">
+   layer1 = view.CreateLayer(raster)
+  </p>
+  <p class="Code">
+   layer2 = view.CreateLayer(raster, /CIR)
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Create a portal
+  </p>
+  <p class="Code">
+   portal = view.CreatePortal()
+  </p>
+  <h2 class="API">
+   Methods
+  </h2>
+  <p>
+   <a href="enviPortal__Animate.htm">
+    Animate
+   </a>
+  </p>
+  <p>
+   <a href="enviPortal__Close.htm">
+    Close
+   </a>
+  </p>
+  <h2 class="API">
+   Properties
+  </h2>
+  <p>
+   Properties marked as (Get) can be retrieved, but not set.
+  </p>
+  <h3 class="Property">
+   <a name="hide">
+   </a>
+   HIDE
+  </h3>
+  <p>
+   Set this property to 1 to hide the portal, and to 0 to display the portal. The default value is 0.
+  </p>
+  <h3 class="Property">
+   <a name="location">
+   </a>
+   LOCATION
+  </h3>
+  <p>
+   Set this property to an array ([
+   <i>
+    x
+   </i>
+   ,
+   <i>
+    y
+   </i>
+   ]) containing the display coordinates where the top-left corner of the portal will reside within the view. Coordinate [0,0] is the top-left corner of the display. By default, the top-left corner of the portal will be located in the center of the display.
+  </p>
+  <h3 class="Property">
+   <a name="name">
+   </a>
+   <a name="pin">
+   </a>
+   PIN
+  </h3>
+  <p>
+   Set this property to 1 to "pin"&#160;the portal to the display, so that it stays in the same location when you pan the image. Set this property to 0 to "unpin" the portal from the display. The default value is 0.
+  </p>
+  <h3 class="Property">
+   <a name="size">
+   </a>
+   SIZE
+  </h3>
+  <p>
+   Set this property to an array ([
+   <i>
+    width, height
+   </i>
+   ]) with the size of the portal in pixels. The minimum portal size is 50 x 50 pixels.
+  </p>
+  <h2 class="API">
+   <a name="zoom">
+   </a>
+   Version History
+  </h2>
+  <table style="mc-table-style: url('../Resources/TableStyles/VersionTable.css');" class="TableStyle_VersionTable" cellspacing="0">
+   <col />
+   <col />
+   <tbody>
+    <tr>
+     <td class="TableStyle_VersionTable_Body_0_0_RowEnd_ColSep">
+      <p>
+       5.0
+      </p>
+     </td>
+     <td class="TableStyle_VersionTable_Body_0_0_RowEnd_ColEnd">
+      <p>
+       Introduced
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h2 class="API">
+   See Also
+  </h2>
+  <p>
+   <a href="enviView__CreatePortal.htm">
+    ENVIView::CreatePortal
+   </a>
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

@@ -1,0 +1,1564 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Georectify" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Image Registration
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#GeorectifyImagery/Image_Registration/ImageRegistration.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../GeorectifyImagery.htm">
+    Georectify
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Image Registration
+   </span>
+  </div>
+  <h1>
+   Image Registration
+   <a name="kanchor199">
+   </a>
+  </h1>
+  <p>
+   <img src="../../Resources/Images/IconsButtons/Tutorial.gif" alt="Tutorial" class="VertCenter" />
+   <a href="../../Tutorials/Workflows/ImageRegTutorial.htm">
+    Image Registration Tutorial
+   </a>
+  </p>
+  <p>
+   The Image Registration workflow geometrically aligns two images with different viewing geometry and/or different terrain distortions into the same coordinate system so that corresponding pixels represent the same objects. The process includes locating and matching a number of feature points (called
+   <i>
+    tie points
+   </i>
+   ) in two images (a warp image and a base image) selected for registration. The corresponding tie points are used to compute the parameters of a geometric transformation between the two images.
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   uses a hybrid Registration Engine that allows you to automatically and accurately generate tie points, then uses those tie points to align and resample the warp image to match the base image. It combines available spatial reference  information with various auto-registration techniques to improve the accuracy, performance, and automation of auto-registration, and minimizes or eliminates the need for user interaction and editing.
+  </p>
+  <p>
+   The hybrid spatial reference  component combines all the available spatial reference  information to achieve the best geo-location accuracy during registration. The spatial reference  information of the Registration Engine may come from the following:
+  </p>
+  <ul>
+   <li value="1">
+    Standard map or RPC information of input images. Standard map information or RPC information establishes the approximate geometric relationship between a warp image and a base image. It reduces the search space and improves the reliability of automatic tie point generation.
+   </li>
+   <li value="2">
+    Tie point information you define manually or that is automatically generated from image matching techniques. For most applications, the Registration Engine can automatically generate tie points with no or minimized number of outliers. You can also manually define a few seed tie points and use them in automatic tie point generation to improve the overall accuracy.
+   </li>
+   <li value="3">
+    Geo-location geometric constraints to search for and filter tie points. The images should align well in the common ground coordinate space in the orthorectified images or nadir view images; therefore, all the tie points are constrained by a global transform between the coordinates in the base image and the warp image.
+   </li>
+   <li value="4">
+    RPC sensor models and elevation used for orthorectification on-the-fly during image registration. This geometrically corrects the data to a common ground coordinate space, and achieves better accuracy in radiometric matching and geometric filtering.
+   </li>
+   <li value="5">
+    For images taken at different viewing positions and/or angles, the images of the same scene are related by the epipolar geometry constraint. Two epipolar geometry models are used: one is suitable for the imagery with the frame central projection, and the other model is suitable for the imagery taken with a pushbroom sensor that has RPC information.
+   </li>
+  </ul>
+  <p>
+   See the following for help on a particular step of the workflow:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#IRSelect">
+     Select Files for Image Registration
+    </a>
+   </li>
+   <li value="2">
+    <a href="#IRGenerate">
+     Generate Tie Points
+    </a>
+   </li>
+   <li value="3">
+    <a href="#IRReview">
+     Review Tie Points and Warp Image
+    </a>
+   </li>
+   <li value="4">
+    <a href="#IRExport">
+     Export Image Registration Results
+    </a>
+   </li>
+  </ul>
+  <h2>
+   <a name="IRSelect">
+   </a>
+   Select Files for Image Registration
+  </h2>
+  <p>
+   You will need two images for image registration; one image is base, one image is warp.
+  </p>
+  <p>
+   The supported input types are:
+  </p>
+  <ul>
+   <li value="1">
+    ENVI, TIFF, NITF, JPEG 2000, JPEG, Esri® raster layer.
+   </li>
+   <li value="2">
+    Geodatabase raster.
+   </li>
+  </ul>
+  <p>
+   The base image can have standard map projections or RPC information; it cannot be pixel based, arbitrary, or a pseudo projection. The warp image does not have restrictions.
+  </p>
+  <p>
+   If you have an input image that has higher georeferencing accuracy or is an orthorectified image, it is recommended that you use that image as the base image.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Geometric Correction &gt; Registration &gt; Image Registration Workflow
+    </b>
+    .
+   </li>
+   <li value="2">
+    <p>
+     Select a
+     <b>
+      Base Image File
+     </b>
+     and a
+     <b>
+      Warp Image File
+     </b>
+     .
+    </p>
+    <p>
+     To open a geodatabase or a remote dataset, click
+     <b>
+      Browse
+     </b>
+     in the File Selection panel, then click
+     <b>
+      Open Remote Dataset
+     </b>
+     in the Select Base Image File dialog.
+    </p>
+    <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+     <span class="autonumber">
+      <span>
+       <b>
+        Note:
+       </b>
+      </span>
+     </span>
+     Datasets from WCS servers are allowed as input. Datasets from JPIP&#160;or WMS servers are not allowed as input.
+    </p>
+    <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+     <span class="autonumber">
+      <span>
+       <b>
+        Note:
+       </b>
+      </span>
+     </span>
+     When using Esri® layer files as a data source for workflows, expand the Esri layer and select the data source.
+    </p>
+   </li>
+   <li value="3">
+    Click
+    <b>
+     Next
+    </b>
+    . The Tie Points Generation panel appears. Both images appear in the Layer Manager and only the base image opens in a new workflow view. To also open the warp image in the workflow view, enable the check box for the warp image in the Layer Manager. If one or both of the files are displayed in an active view before you start the workflow, the display bands and any brightness, contrast, stretch, and sharpen settings are retained when
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    creates the workflow view.  The image location is not retained for pixel-based images or those with pseudo or arbitrary projections.  If the selected
+    <b>
+     Base Image File
+    </b>
+    was displayed in an active view before you start the workflow, the image center location is retained.
+   </li>
+  </ol>
+  <h2>
+   <a name="IRGenerate">
+   </a>
+   Generate Tie Points
+   <a name="kanchor200">
+   </a>
+  </h2>
+  <p>
+   In the Tie Points Generation panel, you select the parameters to use for generating tie points.
+  </p>
+  <h3>
+   Auto Tie Point Generation Settings
+  </h3>
+  <p>
+   Auto tie point generation compares the gray scale values of patches of two images and tries to find joined image locations based on similarity in those gray scale value patterns. The accuracy of the results largely depend upon the quality of the approximate spatial reference information between the base image and the warp image. This is determined through standard  map projection or RPC information, or by using three or more tie points. If both map information and three or more tie points exist, the three or more tie points condition is used. If the base image or warp image includes RPC projection information, you can specify a DEM file to perform orthorectification on-the-fly to geometrically correct the data before image matching. If you input a DEM file, the higher the resolution and accuracy of the DEM data, the more tie points that are generated, and the better the distribution of those points.
+  </p>
+  <p style="font-weight: normal;">
+   In the Main tab:
+  </p>
+  <ol>
+   <li value="1">
+    <p>
+     If the input images have RPC information, the
+     <b>
+      DEM File
+     </b>
+     field appears. Enter the path and filename for the DEM file.
+    </p>
+    <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+     <span class="autonumber">
+      <span>
+       <b>
+        Note:
+       </b>
+      </span>
+     </span>
+     Using a DEM increases processing time.
+    </p>
+    <p>
+     To open a geodatabase or a remote dataset, click
+     <b>
+      Browse
+     </b>
+     in the File Selection panel, then click
+     <b>
+      Open Remote Dataset
+     </b>
+     in the Select Base Image File dialog.
+    </p>
+    <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+     <span class="autonumber">
+      <span>
+       <b>
+        Note:
+       </b>
+      </span>
+     </span>
+     Datasets from WCS servers are allowed as input. Datasets from JPIP&#160;or WMS servers are not allowed as input.
+    </p>
+   </li>
+   <li value="2">
+    <p>
+     Select the
+     <b>
+      Matching Method
+     </b>
+     from the drop-down list to use when automatically generating tie points:
+    </p>
+    <ul>
+     <li value="1">
+      <b>
+       [General] Cross Correlation
+      </b>
+      : This method works well for general purpose, especially registering images with similar modality (e.g., registering optical image with optical image). The normalized cross-correlation between the patch in the base image and the patch in the warp image is computed as the matching score. To register images with different modalities (e.g., registering SAR with optical images), set the
+      <b>
+       Minimum Matching Score
+      </b>
+      to a lower value.
+     </li>
+     <li value="2">
+      <b>
+       [Cross Modality] Mutual Information
+      </b>
+      : This method is optimized for registering images with different modalities (e.g., registering SAR with optical images, or thermal with visible images). The normalized mutual information between the patch in the base image and the patch in the warp image is computed as the matching score. Mutual information is based on information theory and measures the mutual dependence of the two random variables. Mutual information produces more accurate results than the traditional correlation based measures for cross-modality image registration. This method takes longer to run since it is more computationally intensive.
+     </li>
+    </ul>
+   </li>
+   <li value="3">
+    <p>
+     Set the
+     <b>
+      Minimum Matching Score
+     </b>
+     to use when automatically filtering tie points based on radiometric criterion. For auto tie point generation, a window around the tie point location is used as a matching window, and the normalized cross-correlation or normalized mutual information between the window in the base image and the window in the warp image is computed as the matching score. Tie points with a matching score less than this value are considered as outliers and are removed. If the image pairs have a large parallax, it is likely that the matching score is low and you should decrease this value. The maximum value is
+     <b>
+      1.0
+     </b>
+     . The minimum value is
+     <b>
+      0.0
+     </b>
+     .
+    </p>
+   </li>
+   <li value="4">
+    <p>
+     Select the
+     <b>
+      Geometric Model
+     </b>
+     to use when automatically filtering tie points from the drop-down list.
+    </p>
+    <p>
+     For orthorectified images, nadir, or near-nadir images, the transformation model between the base image and the warp image fits an RST transform. When the scene is rather flat and the sensor is very far from the scene, the transformation model between the base image and the warp image fits a first-order polynomial transform.
+    </p>
+    <p>
+     For images of a 3D scene obtained with a conventional frame camera, or images taken with a pushbroom sensor(s) that have RPC information, the images of the same scene are related by epipolar geometry constraint. For a feature point in the first image, the corresponding point in the second image must lie on the epipolar line or curve. Two epipolar geometry models are used: one is suitable for the imagery with the frame central projection, and the other model is suitable for the imagery taken with a pushbroom sensor that has RPC information. Select those options when applicable.
+    </p>
+   </li>
+   <ul>
+    <li value="1">
+     <b>
+      Fitting Global Transform
+     </b>
+     : Uses the first-order polynomial transform or RST transform to constrain the location of the tie points. This is the default for most images.
+    </li>
+    <li value="2">
+     <p>
+      <b>
+       Frame Central Projection
+      </b>
+      : Frame camera and digital (frame central) aerial photography use the frame central projection. This projection has one perspective center (S) defined as the optical center of a camera lens through which all light rays pass and create imaging signatures in the image focal plane. Any object point (A), its image point (a), and its perspective center (S) are collinear in space. The principal point (o) is defined as the foot of the perpendicular from the perspective center to the plane of an aerial photograph.
+     </p>
+     <p>
+      <img src="../../Resources/Images/Image_Reg/frame_central_projection.gif" alt="Frame central projection" />
+     </p>
+    </li>
+    <li value="3">
+     <p>
+      <b>
+       Pushbroom Sensor
+      </b>
+      : This option is available when both images have RPCs. Imagery from pushbroom sensors use the line central projection. Each scan line has its own projection center, as the following figure shows.
+     </p>
+     <p>
+      <img src="../../Resources/Images/Image_Reg/line_central_projection.gif" alt="Line central projection" />
+     </p>
+    </li>
+   </ul>
+   <li value="5">
+    If using the
+    <b>
+     Fitting Global Transform
+    </b>
+    method, select the
+    <b>
+     Transform
+    </b>
+    to use when automatically filtering tie points from the drop-down list:
+   </li>
+   <ul>
+    <li value="1">
+     <p>
+      <b>
+       First-Order Polynomial
+      </b>
+      : A first-order polynomial warp includes an XY interaction term to account for image shear:
+     </p>
+     <p>
+      <i>
+       x
+      </i>
+      =
+      <i>
+       a
+      </i>
+      <sub style="font-style: italic;">
+       1
+      </sub>
+      <i>
+       + a
+      </i>
+      <sub style="font-style: italic;">
+       2
+      </sub>
+      <i>
+       X + a
+      </i>
+      <sub style="font-style: italic;">
+       3
+      </sub>
+      <i>
+       Y + a
+      </i>
+      <sub style="font-style: italic;">
+       4
+      </sub>
+      <i>
+       XY
+      </i>
+     </p>
+     <p>
+      <i>
+       y
+      </i>
+      =
+      <i>
+       b
+      </i>
+      <sub style="font-style: italic;">
+       1
+      </sub>
+      <i>
+       + b
+      </i>
+      <sub style="font-style: italic;">
+       2
+      </sub>
+      <i>
+       X + b
+      </i>
+      <sub style="font-style: italic;">
+       3
+      </sub>
+      <i>
+       Y + b
+      </i>
+      <sub style="font-style: italic;">
+       4
+      </sub>
+      <i>
+       XY
+      </i>
+     </p>
+    </li>
+    <li value="2">
+     <p>
+      <b>
+       RST
+      </b>
+      : Rotation, scaling, and translation; this is the simplest method. The RST warping algorithm uses an affine transformation:
+     </p>
+     <p>
+      <i>
+       x = a
+       <sub>
+        1
+       </sub>
+       + a
+       <sub>
+        2
+       </sub>
+       X + a
+       <sub>
+        3
+       </sub>
+       Y
+      </i>
+     </p>
+     <p>
+      <i>
+       y = b
+       <sub>
+        1
+       </sub>
+       + b
+       <sub>
+        2
+       </sub>
+       X + b
+       <sub>
+        3
+       </sub>
+       Y
+      </i>
+     </p>
+     <p>
+      This algorithm does not allow for shearing in the image warp. To allow for shearing, use a first-order polynomial warp.
+     </p>
+    </li>
+   </ul>
+   <li value="6">
+    If using the
+    <b>
+     Fitting Global Transform
+    </b>
+    method, enter the maximum error to allow for each tie point in the
+    <b>
+     Maximum Allowable Error Per Tie Point
+    </b>
+    . The tie point with the largest error distance from the predicted location is iteratively removed until no tie points have an error greater than the this value.  Multiview images of a 3D scene contain local geometric differences due to variation in local terrain relief and difference in imaging view angle. If image misalignment is mainly due to local geometric differences, increase this value. The default value is
+    <b>
+     5.00
+    </b>
+    pixels. A higher value keeps more tie points with larger fitting errors. If you prefer to keep most tie points and review them in the Review Tie Points step, enter a high value, such as
+    <b>
+     100
+    </b>
+    .
+   </li>
+  </ol>
+  <h3>
+   Import, Add, or Delete Seed Tie Points
+  </h3>
+  <p>
+   You can add or import a set of initial seed tie points that can help generate tie points more accurately, particularly when the input images have poor or no georeferencing information. Import, add, or delete seed tie points in the Seed Tie Points tab.
+  </p>
+  <p>
+   If the warp image is pixel based, arbitrary, or a pseudo projection, you need to
+   <a href="#AddSeed">
+    add three seed tie points
+   </a>
+   before you continue. The seed tie points you add do not need to be highly accurate, but provide information needed for automated tie point generation. For best results, select points on distinctive image features such as building corners, road intersections, salient point features, water boundaries, and so forth. If there is big misalignment between the base image and warp image, especially if the warp image is pixel based, arbitrary, or a pseudo projection, it may be difficult to select seed tie points on the full-resolution images. In this case, it is recommended that you
+   <b>
+    Zoom Out
+   </b>
+   the image or
+   <b>
+    Zoom To Full Extent
+   </b>
+   , and select the seed tie points on the down sampled images.
+  </p>
+  <h4>
+   Import Seed Tie Points
+  </h4>
+  <p>
+   You can import seed tie points from a
+   <code>
+    .pts
+   </code>
+   file that contains a set of initial tie points; a minimum of three points are needed. Importing seed tie points can improve the accuracy of tie point generation, in particular when the input images have poor or no georeferencing information.
+  </p>
+  <ol>
+   <li value="1">
+    Click the
+    <b>
+     Import Seed Tie Points
+    </b>
+    button
+    <img src="../../Resources/Images/IconsButtons/Open.gif" class="VertCenter" alt="Import Seed Tie Points" />
+    to select the tie points file. The number of
+    <b>
+     Seed Tie Points
+    </b>
+    in the file displays,  and tie points are overlaid on the base and warp images. If needed, clear the tie points by clicking the
+    <b>
+     Clear Seed Tie Points
+    </b>
+    button
+    <img src="../../Resources/Images/IconsButtons/Delete.gif" class="VertCenter" alt="Clear Seed Tie Points" />
+    .
+   </li>
+   <li value="2">
+    <p>
+     The seed tie points are numbered and appear in magenta in the base input image and green in the warp image. The numbers correspond to the POINT_ID in the Tie Points Attribute Table  (click
+     <b>
+      Show Table
+     </b>
+     to open the table). Each row in the attribute table contains the tie point x,y location. Sort the data in a table column as needed by clicking on the column heading, then right-click and select the desired sort order. You can verify the placement of the tie points in the Tie Points Attribute Table, or in the Image window view.
+    </p>
+    <p>
+     To verify points in the attribute table:
+    </p>
+    <ul>
+     <li value="1">
+      On Windows platforms, you can use the keyboard keys to navigate the table rows. When you select a record in the table, the Image window centers over and highlights the tie point.
+     </li>
+     <li class="Indent" value="2">
+      The Up and Down arrow keys select the previous or next record in the table.
+     </li>
+     <li class="Indent" value="3">
+      The
+      <b>
+       Home
+      </b>
+      and
+      <b>
+       End
+      </b>
+      keys select the first&#160;or last record in the table.
+     </li>
+     <li class="Indent" value="4">
+      The Left arrow key switches to the base image view; the Right arrow key switches to the warp image view.
+     </li>
+     <li class="Indent" value="5">
+      The
+      <b>
+       Delete
+      </b>
+      key deletes the selected record.
+     </li>
+     <p>
+      Use the keyboard keys to check each tie point and switch between base and warp views. If the features at the tie point location do not match on the two images, press the
+      <b>
+       Delete
+      </b>
+      key to delete the selected tie point.
+     </p>
+     <li value="6">
+      On all platforms, you can navigate the table rows by clicking the desired row in the table and by using the navigation buttons on the dialog. When you select a record in the table, the Image window  centers over and highlights the tie point.
+     </li>
+     <li class="Indent" value="7">
+      Use the buttons or the go to field at the bottom of the table to navigate the table rows.
+     </li>
+     <li class="Indent" value="8">
+      Use the
+      <b>
+       Switch To Warp/Switch To Base
+      </b>
+      button in the workflow panel to switch between the base and warp images to see the tie point placement in both images.
+     </li>
+    </ul>
+    <p>
+     To verify tie points in the Image window:
+    </p>
+    <ul>
+     <li value="1">
+      Toggle between the base and warp images by clicking the
+      <b>
+       Switch To Warp/Switch To Base
+      </b>
+      button  to  see the placement of a tie point in both images.
+     </li>
+     <li value="2">
+      Click on a tie point to select it and the tie point is highlighted in the Image window and is selected in the attribute table.
+     </li>
+    </ul>
+   </li>
+  </ol>
+  <h4>
+   <a name="AddSeed">
+   </a>
+   Add Seed Tie Points
+  </h4>
+  <ol>
+   <li value="1">
+    Click
+    <b>
+     Start Editing
+    </b>
+    , then select
+    <b>
+     Add
+    </b>
+    .
+   </li>
+   <li value="2">
+    <p>
+     In the Image window, locate an area where you want to mark a tie point and click on it. The mark will appear in either the base image (in magenta) or in the warp image (in green), depending on which image is the initial view of the Image window.
+    </p>
+    <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+     <span class="autonumber">
+      <span>
+       <b>
+        Note:
+       </b>
+      </span>
+     </span>
+     Right-click and select
+     <b>
+      Clear
+     </b>
+     if you want to clear and re-position the tie point.
+    </p>
+   </li>
+   <li value="3">
+    Right-click and select
+    <b>
+     Accept as Individual Points
+    </b>
+    . The Image window switches to the second image (base or warp, depending on the view in step 2).
+   </li>
+   <li value="4">
+    Click to mark the corresponding tie point in the second image.
+   </li>
+   <li value="5">
+    Right-click and select
+    <b>
+     Accept as Individual Points
+    </b>
+    . The number of Seed Tie Points is updated and the Image window view returns to the first image.
+   </li>
+   <li value="6">
+    <p>
+     Add more tie points as needed.
+    </p>
+    <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+     <span class="autonumber">
+      <span>
+       <b>
+        Note:
+       </b>
+      </span>
+     </span>
+     If you used a different toolbar tool in between adding tie points (such as panning to a new location in the image), click the
+     <b>
+      Vector Create
+     </b>
+     tool
+     <img src="../../Resources/Images/IconsButtons/VectorCreate.gif" class="VertCenter" alt="Vector Create" />
+     to re-enable adding tie points. Or, use the middle mouse button to pan and zoom the image so you do not have to reselect the tool.
+    </p>
+   </li>
+   <li value="7">
+    When you are finished, click
+    <b>
+     Stop Editing
+    </b>
+    .
+    <br />
+   </li>
+  </ol>
+  <h4>
+   Delete Seed Tie Points
+  </h4>
+  <p>
+   To delete tie points from the attribute table:
+  </p>
+  <ol>
+   <li value="1">
+    Click
+    <b>
+     Show Table
+    </b>
+    .
+   </li>
+   <li value="2">
+    Click the row to delete in the attribute table.
+   </li>
+   <li value="3">
+    <p>
+     Click
+     <b>
+      Delete Selected
+     </b>
+     at the bottom of the table.
+    </p>
+    <p>
+     To select multiple tie points, press and hold the
+     <b>
+      Shift
+     </b>
+     or
+     <b>
+      Ctrl
+     </b>
+     key as you click.
+    </p>
+   </li>
+  </ol>
+  <p>
+   To delete tie points from the Image window:
+  </p>
+  <ol>
+   <li value="1">
+    Click
+    <b>
+     Start Editing
+    </b>
+    , then select
+    <b>
+     Delete
+    </b>
+    .
+   </li>
+   <li value="2">
+    Draw a box around the tie points to delete in the Image window.
+   </li>
+   <li value="3">
+    Right-click and select
+    <b>
+     Delete
+    </b>
+    .
+   </li>
+   <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+    <span class="autonumber">
+     <span>
+      <b>
+       Note:
+      </b>
+     </span>
+    </span>
+    If you used a different toolbar tool in between adding tie points (such as panning to a new location in the image), click the
+    <b>
+     Vector Edit
+    </b>
+    tool
+    <img src="../../Resources/Images/IconsButtons/VectorEdit.gif" class="VertCenter" alt="Vector Create" />
+    to re-enable adding tie points. Or, use the middle mouse button to pan and zoom the image so you do not have to reselect the tool.
+   </p>
+   <li value="4">
+    When finished, click
+    <b>
+     Stop Editing
+    </b>
+    .
+   </li>
+  </ol>
+  <h3>
+   Set Advanced Auto Tie Point Generation Parameters
+  </h3>
+  <p>
+   To use advanced settings for generating tie points, select the Advanced tab.
+  </p>
+  <ol>
+   <li value="1">
+    Select the band to match from the base image from the
+    <b>
+     Matching Band in Base Image
+    </b>
+    drop-down list. If the image has wavelength information, and if the warp image also has wavelength information or is panchromatic image, the red band is used by default.
+   </li>
+   <li value="2">
+    Select the band to match from the warp image from the
+    <b>
+     Matching Band in Warp Image
+    </b>
+    drop-down list. If the image has wavelength information, and if the base image also has wavelength information or is panchromatic image, the red band is used by default.
+   </li>
+   <li value="3">
+    Enter the
+    <b>
+     Requested Number of Tie Points
+    </b>
+    to use for image registration. The minimum is 9; however, the recommended value is the default number that is set based on the input file. Though smaller values provide quicker processing time, they do not result in an alignment as precise as one that used more tie points. Request more tie points if you need localized control to align images at the tie point locations.
+   </li>
+   <li value="4">
+    <p>
+     Enter the tolerance for the search range in the
+     <b>
+      Search Window Size
+     </b>
+     field. This moving window is a subset of the warp image that is searched to find topographic feature matches for tie point placement. Increasing the
+     <b>
+      Search Window Size
+     </b>
+     may be necessary, but increases processing time.
+    </p>
+    <p>
+     If the pixel offset between the two images to register is greater than the
+     <b>
+      Search Window Size
+     </b>
+     , the search will not be able to detect corresponding features. To determine a different
+     <b>
+      Search Window Size
+     </b>
+     do the following:
+    </p>
+    <ol style="list-style-type: upper-alpha;">
+     <li value="1">
+      Enable the check boxes in the Layer Manager so both the base image and warp image display. Select the warp image (the top layer), and set the transparency to
+      <b>
+       50%
+      </b>
+      .
+     </li>
+     <li value="2">
+      Open the
+      <a href="../../ExploreImagery/DisplayTools.htm#CursorValue" alt="Cursor Value" title="Cursor Value">
+       Cursor Value
+      </a>
+      window.
+     </li>
+     <li value="3">
+      In the Image window, find a feature and click on it. Note the file coordinate on the base image in the Cursor Value window.
+     </li>
+     <li value="4">
+      Click on the same feature in the warp image and note the file coordinate on the base image in the Cursor Value window.
+     </li>
+     <li value="5">
+      <p>
+       Determine the distance in pixels between the two readings. Find the maximum distance across the image and use 2*(distance+5) as your new
+       <b>
+        Search Window Size
+       </b>
+       value.
+      </p>
+      <p>
+       For example, the pixel location of a feature in the base image is [200, 200], but the pixel location for the same feature in the warp image is [300, 300], creating an offset of 141 pixels (where offset = sqrt(100^2 + 100^2)). Use 2*(141+5)=292 as the
+       <b>
+        Search Window Size
+       </b>
+       value.
+      </p>
+     </li>
+    </ol>
+   </li>
+   <li value="5">
+    Specify the
+    <b>
+     Matching Window Size
+    </b>
+    to use around the tie point location. The window is used for computing the matching score between the base image and the warp image. The default is 61, but may be automatically adjusted based on the input file.
+   </li>
+   <li value="6">
+    <p>
+     Select the
+     <b>
+      Interest Operator
+     </b>
+     to use to identify feature points from the drop-down list:
+    </p>
+    <ul>
+     <li value="1">
+      <b>
+       Forstner
+      </b>
+      : Obtains and analyzes the gray scale gradient matrix between one pixel and its adjacent pixels. The Forstner operator is typically better for image matching than the Moravec operator.
+     </li>
+     <li value="2">
+      <b>
+       Moravec
+      </b>
+      : Searches for gray scale value differences between one pixel and its adjacent pixels. The Moravec operator is typically faster than the Forstner operator.
+     </li>
+     <li value="3">
+      <b>
+       Harris
+      </b>
+      :Improves upon Moravec by using the auto-correlation matrix and avoids using discrete directions and shifts.
+     </li>
+    </ul>
+   </li>
+   <li value="7">
+    Click
+    <b>
+     Next
+    </b>
+    to go to the Review and Warp panel.
+   </li>
+  </ol>
+  <h2>
+   <a name="IRReview">
+   </a>
+   Review Tie Points and Warp Image
+  </h2>
+  <p>
+   The
+   <b>
+    Number of Resulting Tie Points
+   </b>
+   appears in the Review and Warp panel and tie points appear on the image (because you are in the base image view, you will only see points in magenta on the base image).
+  </p>
+  <p>
+   If the number of resulting tie points is small, then return to the auto tie point generation step and select different parameter values. For example, you can add seed tie points, increase the
+   <b>
+    Search Window Size
+   </b>
+   , select a different geometric model, select
+   <b>
+    Mutual Information
+   </b>
+   for registering images with different modalities, or adjust other parameters.
+  </p>
+  <p>
+   In the Review and Warp panel you can review and edit the resulting tie points and select warping and resampling methods. If you specified a DEM file for images that have RPC information, you will typically see more tie points generated, as tie points were generated and filtered in a common ground coordinate space.  If you input a DEM file, the higher the resolution and accuracy of the DEM data, the more tie points that are generated, and the better the distribution of those points
+  </p>
+  <p>
+   The tie points show in magenta on the base input image and green on the warp image, with numbers that correspond to the Tie Points Attribute Table (click
+   <b>
+    Show Table
+   </b>
+   to open the table). The attribute table includes SCORE and ERROR columns to indicate the quality measurement of the tie points.  The higher the SCORE and the lower the ERROR, the better the tie point is.
+  </p>
+  <ul>
+   <li value="1">
+    The SCORE is from area-based auto tie point generation. A patch around the tie point location is used as a matching window. Depending on the matching method you choose, the normalized cross-correlation or normalized Mutual Information between the window in the base image and the window in the warp image is computed as the matching score. Manually added tie points have a SCORE of 1.0.
+   </li>
+   <li value="2">
+    The ERROR&#160;measurement comes from the calculated error distance of the tie point from the predicted location. The predicted location is computed based on fitting a first-order polynomial transform from points on the base image to points on the warp image. If the base image or warp image have RPC map information and you specified a DEM file, the error is measured in a common ground coordinate space.   The ERROR measurement reflects the quality of fitting to the first-order polynomial math model. Higher errors may indicate bad tie points or an inappropriate geometric model used. It does not necessarily reflect the positional errors in the tie points. The best way to check the accuracy of the tie points is to visually examine their placement in the Image window. The ERROR measurements are updated if you add or delete tie points.
+   </li>
+   <li value="3">
+    The total root mean square (RMS) error displays at the bottom of the Tie Points Attribute Table. An RMS error could indicate the overall tie point quality, but it could also be a fitting error of the geometric mode that is used. You should always perform visual examination along with the RMS error analysis.
+   </li>
+  </ul>
+  <h3>
+   Review, Add, or Delete Tie Points
+  </h3>
+  <p>
+   The most reliable way to review tie points is through visual examination; good tie points should locate at the same features on both images. For most images, the tie points should be well distributed across the overlapping areas. If there is a significantly uneven distribution of tie points, and the images contain local geometric differences due to variation in local terrain relief and difference in imaging view angle, you may need to manually add tie points in those areas to compensate. Review, add, or delete tie points in the Tie Points tab.
+  </p>
+  <h4>
+   Reviewing Tie Points
+  </h4>
+  <p>
+   You can verify the placement of the tie points in the Tie Points Attribute Table, or in the Image window.
+  </p>
+  <p>
+   To verify points in the attribute table:
+  </p>
+  <ul>
+   <li value="1">
+    On Windows platforms, you can use the keyboard keys to navigate the table rows. When you select a record in the table, the Image window  centers over and highlights the tie point.
+   </li>
+   <li class="Indent" value="2">
+    The up and down arrow keys select the previous or next record in the table.
+   </li>
+   <li class="Indent" value="3">
+    The
+    <b>
+     Home
+    </b>
+    and
+    <b>
+     End
+    </b>
+    keys select the first&#160;or last record in the table.
+   </li>
+   <li class="Indent" value="4">
+    The left arrow key switches to the base image view; the right arrow key switches to the warp image view.
+   </li>
+   <li class="Indent" value="5">
+    The
+    <b>
+     Delete
+    </b>
+    key deletes the selected record.
+   </li>
+   <p>
+    Use the keyboard keys to check each tie point and switch between base and warp views. If the features at the tie point location do not match on the two images, press the
+    <b>
+     Delete
+    </b>
+    key to delete the selected tie point.
+   </p>
+   <li value="6">
+    On all platforms,  you can navigate the table rows by clicking the desired row in the table and by using the navigation buttons on the dialog. When you select a record in the table, the Image window  centers over and highlights the tie point.
+   </li>
+   <li class="Indent" value="7">
+    Use the buttons or the go to field at the bottom of the table to navigate the table rows.
+   </li>
+   <li class="Indent" value="8">
+    Use the
+    <b>
+     Switch To Warp/Switch To Base
+    </b>
+    button in the workflow panel to switch between the base and warp images to see the tie point placement in both images.
+   </li>
+   <li value="9">
+    Sort the data in a table column as needed by clicking on the column heading, then right-click and select the desired sort order.
+   </li>
+   <li class="Indent" value="10">
+    You can sort the ERROR column in reverse order to place the tie points with a higher error at the top of the table. To sort, click the ERROR column, then right-click and select
+    <b>
+     Sort by selected column reverse
+    </b>
+    .
+   </li>
+   <li class="Indent" value="11">
+    You can sort the SCORE column in forward order to place the tie points with a lower score at the top of the table. To sort,  click the SCORE column, then right-click and select
+    <b>
+     Sort by selected column forward
+    </b>
+    .
+   </li>
+  </ul>
+  <p>
+   To verify tie points in the Image window:
+  </p>
+  <ul>
+   <li value="1">
+    Toggle between the base and warp images by clicking the
+    <b>
+     Switch To Warp/Switch To Base
+    </b>
+    button  to  see the placement of a tie point in both images.
+   </li>
+   <li value="2">
+    Click on a tie point to select it and the tie point is highlighted in the Image window and is selected in the attribute table.
+   </li>
+  </ul>
+  <h4>
+   Adding Tie Points
+  </h4>
+  <ol>
+   <li value="1">
+    To add new tie points, click
+    <b>
+     Start Editing
+    </b>
+    , then select
+    <b>
+     Add
+    </b>
+    .
+   </li>
+   <li value="2">
+    <p>
+     In the Image window, locate an area where you want to mark a tie point and click on it. The mark will appear in either the base image (in magenta) or in the warp image (in green), depending on which image is the initial view of the Image window.
+    </p>
+    <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+     <span class="autonumber">
+      <span>
+       <b>
+        Note:
+       </b>
+      </span>
+     </span>
+     Right-click and select
+     <b>
+      Clear
+     </b>
+     if you want to clear and re-position the tie point.
+    </p>
+   </li>
+   <li value="3">
+    Right-click and select
+    <b>
+     Accept as Individual Points
+    </b>
+    . The Image window switches to the second image (base or warp, depending on the initial view in step 2).
+   </li>
+   <li value="4">
+    Click to mark the corresponding point in the second image.
+   </li>
+   <li value="5">
+    Right-click and select
+    <b>
+     Accept as Individual Points
+    </b>
+    . The number of
+    <b>
+     Tie Points
+    </b>
+    is updated and the Image window view returns to the first image.
+   </li>
+   <li value="6">
+    <p>
+     Add more tie points as needed.
+    </p>
+    <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+     <span class="autonumber">
+      <span>
+       <b>
+        Note:
+       </b>
+      </span>
+     </span>
+     If you used a different toolbar tool in between adding tie points (such as panning to a new location in the image), click the
+     <b>
+      Vector Create
+     </b>
+     tool
+     <img src="../../Resources/Images/IconsButtons/VectorCreate.gif" class="VertCenter" alt="Vector Create" />
+     to re-enable adding tie points. Or, use the middle mouse button to pan and zoom the image so you do not have to reselect the tool.
+    </p>
+   </li>
+   <li value="7">
+    When you are finished, click
+    <b>
+     Stop Editing
+    </b>
+    .
+    <br />
+   </li>
+  </ol>
+  <h4>
+   Deleting Tie Points
+  </h4>
+  <p class="Tip" madcap:autonum="&lt;b&gt;Tip: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Tip:
+     </b>
+    </span>
+   </span>
+   To remove bad tie points, you can sort the tie points based on the quality measurement. Either sort the ERROR column in reverse order, or sort the SCORE column in forward order, then delete the bad tie points that are at the top of the table. You can also use the Error Overlay to view the relative error magnitudes of your tie points.
+  </p>
+  <p>
+   To delete tie points from the attribute table:
+  </p>
+  <ol>
+   <li value="1">
+    Click
+    <b>
+     Show Table
+    </b>
+    .
+   </li>
+   <li value="2">
+    Click the row to delete in the attribute table.
+   </li>
+   <li value="3">
+    <p>
+     Click
+     <b>
+      Delete Selected
+     </b>
+     at the bottom of the table.  The total RMS error is re-computed and updated in the attribute table.
+    </p>
+    <p>
+     To select multiple tie points, press and hold the
+     <b>
+      Shift
+     </b>
+     or
+     <b>
+      Ctrl
+     </b>
+     key as you click.
+    </p>
+   </li>
+  </ol>
+  <p>
+   To delete tie points from the Image window:
+  </p>
+  <ol>
+   <li value="1">
+    Click
+    <b>
+     Start Editing
+    </b>
+    , then select
+    <b>
+     Delete
+    </b>
+    .
+   </li>
+   <li value="2">
+    Draw a box around the tie points to delete in the Image window.
+   </li>
+   <li value="3">
+    Right-click and select
+    <b>
+     Delete
+    </b>
+    .
+   </li>
+   <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+    <span class="autonumber">
+     <span>
+      <b>
+       Note:
+      </b>
+     </span>
+    </span>
+    If you used a different toolbar tool in between adding tie points (such as panning to a new location in the image), click the
+    <b>
+     Vector Edit
+    </b>
+    tool
+    <img src="../../Resources/Images/IconsButtons/VectorEdit.gif" class="VertCenter" alt="Vector Create" />
+    to re-enable adding tie points. Or, use the middle mouse button to pan and zoom the image so you do not have to reselect the tool.
+   </p>
+   <li value="4">
+    When finished, click
+    <b>
+     Stop Editing
+    </b>
+    .
+   </li>
+  </ol>
+  <h4>
+   Error Overlay
+  </h4>
+  <p>
+   If you have five or more tie points, click the
+   <b>
+    Show Error Overlay
+   </b>
+   button in the Review and Warp panel to overlay a transparent color gradient that shows the relative error magnitudes of your tie points. The Error Overlay is based on ERROR values in the Tie Points Attribute Table. The ERROR measurement reflects the quality of fitting to the first-order polynomial math model. Higher errors may indicate bad tie points or an inappropriate geometric model used. It does not necessarily reflect the positional errors in the tie points. The best way to check the accuracy of the tie points is to visually examine their placement in the Image window.
+  </p>
+  <p class="Tip" madcap:autonum="&lt;b&gt;Tip: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Tip:
+     </b>
+    </span>
+   </span>
+   Select
+   <b>
+    Full Extent
+   </b>
+   from the
+   <b>
+    Zoom To
+   </b>
+   drop-down list in the menu bar, to see the entire scene. The error overlay is restricted to the area bounded by your tie point locations.
+  </p>
+  <p>
+   Dark grey areas represent tie points with negligible error magnitudes, while orange-to-white areas represent tie points with higher error magnitudes. It is recommended that you examine the tie points in orange-to-white areas and delete those tie points or add new ones as needed. Dark-red to bright-red areas represent tie points with error magnitudes within a reasonable range (2.5 to 10.). Examine the tie points in those areas depending on the level of accuracy you desire. You should always perform visual examination along with the error analysis.
+  </p>
+  <p>
+   The Error Overlay updates whenever you delete or add tie points in an attempt to minimize errors.
+  </p>
+  <p>
+   To remove the Error Overlay, click the
+   <b>
+    Hide Error Overlay
+   </b>
+   button in the Review and Warp panel.
+  </p>
+  <h4>
+   Setting Warping Parameters
+  </h4>
+  <p>
+   To set the warping parameters, select the Warping tab.
+  </p>
+  <ol>
+   <li value="1">
+    Select a
+    <b>
+     Warping Method
+    </b>
+    from the drop-down list. The choices are as follows:
+   </li>
+   <ul>
+    <li value="1">
+     <p>
+      <b>
+       RST
+      </b>
+      : Rotation, scaling, and translation; this is the simplest method. The RST warping algorithm uses an affine transformation:
+     </p>
+     <p>
+      <i>
+       x = a
+       <sub>
+        1
+       </sub>
+       + a
+       <sub>
+        2
+       </sub>
+       X + a
+       <sub>
+        3
+       </sub>
+       Y
+      </i>
+     </p>
+     <p>
+      <i>
+       y = b
+       <sub>
+        1
+       </sub>
+       + b
+       <sub>
+        2
+       </sub>
+       X + b
+       <sub>
+        3
+       </sub>
+       Y
+      </i>
+     </p>
+     <p>
+      This algorithm does not allow for shearing in the image warp. To allow for shearing, use a first-order polynomial warp.
+     </p>
+    </li>
+    <li value="2">
+     <p>
+      <b>
+       Polynomial
+      </b>
+      : (default) A first-order polynomial warp includes an XY interaction term to account for image shear:
+     </p>
+     <p>
+      <i>
+       x
+      </i>
+      =
+      <i>
+       a
+      </i>
+      <sub style="font-style: italic;">
+       1
+      </sub>
+      <i>
+       + a
+      </i>
+      <sub style="font-style: italic;">
+       2
+      </sub>
+      <i>
+       X + a
+      </i>
+      <sub style="font-style: italic;">
+       3
+      </sub>
+      <i>
+       Y + a
+      </i>
+      <sub style="font-style: italic;">
+       4
+      </sub>
+      <i>
+       XY
+      </i>
+     </p>
+     <p>
+      <i>
+       y
+      </i>
+      =
+      <i>
+       b
+      </i>
+      <sub style="font-style: italic;">
+       1
+      </sub>
+      <i>
+       + b
+      </i>
+      <sub style="font-style: italic;">
+       2
+      </sub>
+      <i>
+       X + b
+      </i>
+      <sub style="font-style: italic;">
+       3
+      </sub>
+      <i>
+       Y + b
+      </i>
+      <sub style="font-style: italic;">
+       4
+      </sub>
+      <i>
+       XY
+      </i>
+     </p>
+    </li>
+    <li value="3">
+     <p>
+      <b>
+       Triangulation
+      </b>
+      : Delaunary triangulation warping fits triangles to the irregularly gridded data points and interpolates values to the output grid. It aligns the two images exactly at the tie point locations. If there is local distortion between the base image and warp image, Triangulation is recommended.
+     </p>
+     <p>
+      When you choose the Triangulation warping method, Image Registration warps the entire image in the region (either the overlapping area or the full extent, depending on your output choice).
+     </p>
+     <p>
+      <img src="../../Resources/Images/Image_Reg/ENVI_vs_3W.gif" alt="Image comparison" />
+     </p>
+    </li>
+   </ul>
+   <li value="2">
+    Select one of the following resampling options from the
+    <b>
+     Resampling
+    </b>
+    drop-down list:
+   </li>
+   <ul>
+    <li value="1">
+     <b>
+      Nearest Neighbor
+     </b>
+     : Uses the nearest pixel without any interpolation to create the warped image.
+    </li>
+    <li value="2">
+     <b>
+      Bilinear
+     </b>
+     : (default) Performs a linear interpolation using four pixels to resample the warped image.
+    </li>
+    <li value="3">
+     <b>
+      Cubic Convolution
+     </b>
+     : Uses 16 pixels to approximate the sinc function using cubic polynomials to resample the image. Cubic convolution resampling is significantly slower than the other methods.
+    </li>
+   </ul>
+   <li value="3">
+    Set the
+    <b>
+     Background Value
+    </b>
+    . Enter a pixel value to use to fill areas where no image  data appears in the warped image.
+   </li>
+   <li value="4">
+    Select the
+    <b>
+     Output Extent
+    </b>
+    :
+   </li>
+   <ul>
+    <li value="1">
+     <b>
+      Full Extent of Warp Image
+     </b>
+     : (default) Output the full extent of the warp image.
+    </li>
+    <li value="2">
+     <b>
+      Overlapping Area Only
+     </b>
+     : Output only areas of overlap between the base and warp image.
+    </li>
+   </ul>
+   <li value="5">
+    Click
+    <b>
+     Next
+    </b>
+    to go to the Export panel.
+   </li>
+  </ol>
+  <h3>
+   Preview Warping Results
+  </h3>
+  <p>
+   To preview how the warping results look before processing, enable the
+   <b>
+    Preview
+   </b>
+   check box. A Preview Portal appears. If you are in the warp image view, the view automatically switches to the base image so that you can compare the preview warped image result to the base image. The Preview Portal works with full or higher resolution views, and is only available on the full display area of the base image. The Preview Portal is not available if the Zoom of the view is less than 50%. If preview is enabled while you are adding or deleting tie points or changing the warping parameters, the preview is updated with the changes. You can observe if the changes will improve your warping results. If you need to move the Preview Portal after adding or deleting tie points, click the
+   <b>
+    Select
+   </b>
+   button
+   <img src="../../Resources/Images/IconsButtons/Select.gif" class="VertCenter" alt="Select" />
+   , then click on preview portal to enable dragging the Preview Portal.
+  </p>
+  <h2>
+   <a name="IRExport">
+   </a>
+   Export Image Registration Results
+  </h2>
+  <ol>
+   <li value="1">
+    In the Export panel, enable the output options you want. The following are available:
+   </li>
+   <ul>
+    <li value="1">
+     <b>
+      Export Warped Image
+     </b>
+     saves the warped image. ENVI and TIFF are the supported formats.
+    </li>
+    <li value="2">
+     <b>
+      Export Tie Points
+     </b>
+     saves the generated tie points to an ASCII file.
+    </li>
+   </ul>
+   <li value="2">
+    Click
+    <b>
+     Finish
+    </b>
+    to create the output, add the new layers to the Layer Manager, and save the files to the directories you specified. When the export is complete, the workflow view closes. The original data and the export data display in the Image window view.
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

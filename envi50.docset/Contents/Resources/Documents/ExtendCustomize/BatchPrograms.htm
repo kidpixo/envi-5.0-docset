@@ -1,0 +1,371 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Batch Programs
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#ExtendCustomize/BatchPrograms.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Batch Programs
+   </span>
+  </div>
+  <h1>
+   Batch Programs
+   <a name="kanchor469">
+   </a>
+  </h1>
+  <p>
+   Performing a linear sequence of processing tasks in a purely automated manner is called
+   <i>
+    batch mode
+   </i>
+   . The following examples demonstrate two common uses for batch programs.
+  </p>
+  <h3>
+   Example 1: End-to-End Workflow
+  </h3>
+  <p>
+   You can write a batch program that opens
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   , processes data, and closes
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   , without any interaction. (For example, you can write a batch program to process several large images and run the program overnight.) Use the HEADLESS keyword with the ENVI function so that the user interface does not display.
+  </p>
+  <p>
+   This simple example launches
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   , retrieves a single band from a multispectral file, saves the data to disk, and closes ENVI.
+  </p>
+  <ol>
+   <li value="1">
+    Start IDL and click the
+    <b>
+     New File
+    </b>
+    icon.
+   </li>
+   <li value="2">
+    Copy and paste the following code into the IDL&#160;Editor:
+   </li>
+   <p class="Code">
+    PRO MYENVIBATCH
+   </p>
+   <p class="Code_Indented">
+    ; Launch the application in headless mode
+   </p>
+   <p class="Code_Indented">
+    e = ENVI(/HEADLESS)
+   </p>
+   <p class="Code_Indented">
+    &#160;
+   </p>
+   <p class="Code_Indented">
+    ; Create an ENVIRaster
+   </p>
+   <p class="Code_Indented">
+    file = FILEPATH('qb_boulder_msi', ROOT_DIR=e.ROOT_DIR, $
+   </p>
+   <p class="Code_Indented">
+    &#160;&#160;SUBDIRECTORY = ['data'])
+   </p>
+   <p class="Code_Indented">
+    raster = e.OpenRaster(file)
+   </p>
+   <p class="Code_Indented">
+    <br />
+   </p>
+   <p class="Code_Indented">
+    ; Create an output raster
+   </p>
+   <p class="Code_Indented">
+    newFile = e.GetTemporaryFilename()
+   </p>
+   <p class="Code_Indented">
+    &#160;
+   </p>
+   <p class="Code_Indented">
+    ; Retrieve data from original raster that
+   </p>
+   <p class="Code_Indented">
+    ; contains only a single band
+   </p>
+   <p class="Code_Indented">
+    origData = raster.GetData(BANDS = 0)
+   </p>
+   <p class="Code_Indented">
+    &#160;
+   </p>
+   <p class="Code_Indented">
+    ; Create raster and save it in newFile
+   </p>
+   <p class="Code_Indented">
+    newRaster = e.CreateRaster(newFile, origData)
+   </p>
+   <p class="Code_Indented">
+    newRaster.Save
+   </p>
+   <p class="Code_Indented">
+    &#160;
+   </p>
+   <p class="Code_Indented">
+    ; Print new file location
+   </p>
+   <p class="Code_Indented">
+    print,'New file written to: '
+   </p>
+   <p class="Code_Indented">
+    print, newRaster.uri
+   </p>
+   <p class="Code_Indented">
+    &#160;
+   </p>
+   <p class="Code_Indented">
+    ; Close the application
+   </p>
+   <p class="Code_Indented">
+    e.Close
+   </p>
+   <p class="Code">
+    END
+   </p>
+   <li value="3">
+    Save the program as
+    <code>
+     myenvibatch.pro
+    </code>
+    in your current IDL workspace.
+   </li>
+   <li value="4">
+    Compile and run the program.
+   </li>
+   <li value="5">
+    In the IDL&#160;Console, the line "New file written to..." indicates the process was successful. Go to your default temporary directory and verify that the file
+    <code>
+     qb_boulder_msi_single_band.dat
+    </code>
+    exists. On Windows XP systems, the temporary directory is typically
+    <code>
+     C:\Documents and Settings\&lt;username&gt;\Local Settings\Temp
+    </code>
+    . On Windows 7 and Vista systems, it is typically
+    <code>
+     C:\Users\&lt;username&gt;\App Data\Local\Temp
+    </code>
+    .
+   </li>
+  </ol>
+  <h3>
+   Example 2:
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   Startup Preferences
+  </h3>
+  <p>
+   Suppose that you want to always launch
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   with two views containing two images that you frequently work with. You can write a short batch program once to do all of these tasks, then specify the path to your batch program from an IDL Workbench shortcut. This type of batch program cannot have PRO and END statements as in Example 1. These instructions are for Windows users.
+  </p>
+  <ol>
+   <li value="1">
+    Start IDL and click the
+    <b>
+     New File
+    </b>
+    icon.
+   </li>
+   <li value="2">
+    Copy and paste the following code into the IDL Editor:
+   </li>
+   <p class="Code">
+    ; Display two ENVIRasters
+   </p>
+   <p class="Code">
+    e = ENVI()
+   </p>
+   <p class="Code">
+    &#160;
+   </p>
+   <p class="Code">
+    ; Open ENVIRaster
+   </p>
+   <p class="Code">
+    file = FILEPATH('qb_boulder_msi', ROOT_DIR=e.ROOT_DIR, $
+   </p>
+   <p class="Code">
+    &#160;&#160;SUBDIRECTORY=['data'])
+   </p>
+   <p class="Code">
+    raster = e.OpenRaster(file)
+   </p>
+   <p class="Code">
+    &#160;
+   </p>
+   <p class="Code">
+    ; Display the data in two views
+   </p>
+   <p class="Code">
+    view1 = e.GetView()
+   </p>
+   <p class="Code">
+    layer1 = view1.CreateLayer(raster)
+   </p>
+   <p class="Code">
+    view2 = e.CreateView()
+   </p>
+   <p class="Code">
+    layer2 = view2.CreateLayer(raster, /CIR)
+   </p>
+   <p class="Code">
+    &#160;
+   </p>
+   <p class="Code">
+    ; Geographically link the two views
+   </p>
+   <p class="Code">
+    view1.GeoLink, view2
+   </p>
+   <li value="3">
+    Save the program as
+    <code>
+     myenvisetup.pro
+    </code>
+    in your current IDL workspace.
+   </li>
+   <li value="4">
+    Navigate to the IDL Workbench executable. The default location is
+    <code>
+     C:\Program Files\Exelis\IDL
+     <i>
+      xx
+     </i>
+     \bin\bin.x86\idlde.exe
+    </code>
+    , where
+    <code style="font-style: italic;">
+     xx
+    </code>
+    is the IDL&#160;version number.
+   </li>
+   <li value="5">
+    Right-click on
+    <code style="font-weight: bold;">
+     idlde.exe
+    </code>
+    and select
+    <b>
+     Create Shortcut
+    </b>
+    .
+   </li>
+   <li value="6">
+    Right-click on the shortcut icon and select
+    <b>
+     Properties
+    </b>
+    .
+   </li>
+   <li value="7">
+    Select the
+    <b>
+     Shortcut
+    </b>
+    tab.
+   </li>
+   <li value="8">
+    Put your cursor at the end of the
+    <b>
+     Target
+    </b>
+    field (after the second quote), enter a space, and type the following:
+   </li>
+   <p class="Code">
+    -batch "
+    <i>
+     full path to myenvisetup.pro
+    </i>
+    "
+   </p>
+   <p>
+    The following is an example of a full text string in the Target field, where
+    <code>
+     xx
+    </code>
+    is the IDL&#160;version number:
+   </p>
+   <p class="Code">
+    "C:\Program Files\Exelis\IDL
+    <i>
+     xx
+    </i>
+    \bin\bin.x86\idlde.exe" -batch "C:\Documents and Settings\
+    <i>
+     username
+    </i>
+    \IDLWorkspace
+    <i>
+     xx
+    </i>
+    \Default\myenvisetup.pro"
+   </p>
+   <li value="9">
+    Click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+   <li value="10">
+    Double-click the IDL&#160;Workbench shortcut. IDL will launch the
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    application with two default views.
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

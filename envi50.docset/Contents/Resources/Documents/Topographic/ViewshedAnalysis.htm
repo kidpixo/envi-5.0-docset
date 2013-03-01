@@ -1,0 +1,620 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Terrain" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Viewshed Analysis
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#Topographic/ViewshedAnalysis.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="TopographicTools.htm">
+    Terrain
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Viewshed Analysis
+   </span>
+  </div>
+  <h1>
+   Viewshed Analysis
+   <a name="kanchor417">
+   </a>
+  </h1>
+  <p>
+   <img src="../Resources/Images/IconsButtons/Tutorial.gif" alt="Tutorial" class="VertCenter" />
+   <a href="../Tutorials/Workflows/ViewshedTutorial.htm">
+    Viewshed Analysis Tutorial
+   </a>
+  </p>
+  <p>
+   The Viewshed Analysis workflow uses a gridded Digital Elevation Model (DEM) to determine the locations that are visible from specified view sources. A source can be a single point, a polyline, or a polygon. If a single view source is selected, then the viewshed represents all locations with an unobstructed line of sight to the view source. It is assumed that an observer could move anywhere along or within the source. If multiple view sources are selected, then the viewshed can be defined as either (1) all locations visible from at least one of the view sources, or (2) locations visible from all view sources.  You can also use a line or polygon to define a collection of individual view points. In this case, the line or polygon is not a source; rather, each point along the road or within the polygon is considered a source.
+  </p>
+  <p>
+   See the following topics for help on a particular step of the workflow:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#VSSelect">
+     Select a File for Viewshed Analysis
+    </a>
+   </li>
+   <li value="2">
+    <a href="#VSSettings">
+     Viewshed Analysis Settings
+    </a>
+   </li>
+   <li value="3">
+    <a href="#VSExport">
+     Export Viewshed Analysis Results
+    </a>
+   </li>
+  </ul>
+  <h2>
+   <a name="VSSelect">
+   </a>
+   Select a File for Viewshed Analysis
+  </h2>
+  <p>
+   In the File Selection panel, you choose one DEM file for Viewshed Analysis, and you can optionally choose an image file to overlay the DEM file, to assist with selecting the view sources.
+  </p>
+  <p>
+   The input DEM must be in standard map projections; it cannot be pixel based or be a pseudo projection. The optional input image cannot be pixel based.
+  </p>
+  <ol>
+   <li value="1">
+    <p>
+     From the Toolbox, select
+     <![CDATA[ ]]>
+     <b>
+      Terrain &gt; Viewshed&#160;Analysis Workflow
+     </b>
+     and select a
+     <b>
+      DEM File
+     </b>
+     .
+    </p>
+    <p>
+     If you select a multi-band DEM file, click to select the band you want to use.
+    </p>
+   </li>
+   <li value="2">
+    <p>
+     Enter the path and filename for the optional
+     <b>
+      Image File
+     </b>
+     .
+    </p>
+    <p>
+     To navigate to a file, click
+     <b>
+      Browse
+     </b>
+     . The Select Image File dialog appears. Do one of the following:
+    </p>
+   </li>
+   <ul>
+    <li value="1">
+     If the file you want to use is listed in the dialog, select it.
+    </li>
+    <li value="2">
+     Click
+     <b>
+      Open File
+     </b>
+     to open a new file. The Open dialog appears.
+    </li>
+   </ul>
+   <li value="3">
+    To apply a
+    <a href="../NoTOCTopics/WorkingWithMasks.htm">
+     mask
+    </a>
+    , select the Input Mask tab in the File Selection panel.
+   </li>
+   <li value="4">
+    Click
+    <b>
+     Next
+    </b>
+    . The Viewshed Analysis panel appears, and the files open in a new workflow view. If one or both of the selected files are displayed in an active view before you start the workflow, the display bands and any brightness, contrast, stretch, and sharpen settings are retained when
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    creates the workflow view.  The image location is not retained for pixel-based images or those with pseudo or arbitrary projections.. If the selected
+    <b>
+     DEM File
+    </b>
+    was displayed in an active view before you start the workflow, the image center location is retained.
+   </li>
+  </ol>
+  <h2>
+   <a name="VSSettings">
+   </a>
+   Viewshed Analysis Settings
+  </h2>
+  <p>
+   In the Viewshed Analysis panel you set the default range to use for viewshed analysis, then add point, polyline, or polygon view sources in the workflow view. You can also use previously defined view sources.
+  </p>
+  <h3>
+   Create View Sources
+  </h3>
+  <ol>
+   <li value="1">
+    Enter the
+    <b>
+     Default Range
+    </b>
+    , in meters, to specify the range of analysis for each view source; any locations outside this radius will be defined as unclassified. You can set a different default range at any time; the new default only affects view sources you add after the change. You can additionally set analysis ranges for each individual view sources by editing its properties.
+   </li>
+   <li value="2">
+    Enter the
+    <b>
+     Default Viewing Height
+    </b>
+    , in meters, to specify the viewing height for each view source to use when calculating visible areas. You can set a different default height at any time; the new default only affects view sources you add after the change. You can additionally set analysis heights for each individual view source by editing its properties.
+   </li>
+   <li value="3">
+    If you will be using polylines or polygons for view sources, set the
+    <b>
+     Default Point Spacing
+    </b>
+    , in pixels. Individual view points are automatically generated along polylines or inside polygons using this value, and the number of generated points appears in the
+    <b>
+     Total Points
+    </b>
+    field.  You can set a different default point spacing at any time; the new default only affects polylines or polygons you add after the change. You can additionally set point spacing for each individual polyline or polygon by editing its properties. A closer point spacing generates more view points along lines and within polygons. This provides a more accurate result, but also a longer processing time.
+   </li>
+   <li value="4">
+    <p>
+     Add view sources. You can use points, polylines, polygons, or a combination of all three for the viewshed analysis. The total number of individual view points for which viewsheds will be calculated are added to the
+     <b>
+      Total Points
+     </b>
+     field.
+    </p>
+    <ul>
+     <li value="1">
+      To add point sources, select the
+      <b>
+       Symbol Annotation
+      </b>
+      tool
+      <img src="../Resources/Images/IconsButtons/AnnotationSymbol.gif" class="VertCenter" alt="Symbol Annotation" />
+      and click on the desired spot in the image.
+     </li>
+     <li value="2">
+      To add polyline sources, select the
+      <b>
+       Polyline Annotation
+      </b>
+      tool
+      <img src="../Resources/Images/IconsButtons/AnnotationPolyline.gif" class="VertCenter" alt="Polyline Annotation" />
+      and click in the image to create the line. When you are done, right-click and select
+      <b>
+       Accept
+      </b>
+      . To view the generated points, click
+      <b>
+       Show Point Spacing
+      </b>
+      <img src="../Resources/Images/IconsButtons/ViewshedShowPointSpacing.gif" class="VertCenter" alt="Show Point Spacing" />
+      .
+     </li>
+     <li value="3">
+      To add polygon sources, select the
+      <b>
+       Polygon Annotation
+      </b>
+      tool
+      <img src="../Resources/Images/IconsButtons/AnnotationPolygon.gif" class="VertCenter" alt="Polygon Annotation" />
+      and click, or click and drag, in the image to create the polygon. To complete the line, right-click and select
+      <b>
+       Accept
+      </b>
+      .  To view the generated points, click
+      <b>
+       Show Point Spacing
+      </b>
+      <img src="../Resources/Images/IconsButtons/ViewshedShowPointSpacing.gif" class="VertCenter" alt="Show Point Spacing" />
+      . You can also use the
+      <b>
+       Rectangle Annotation
+      </b>
+      tool
+      <img src="../Resources/Images/IconsButtons/AnnotationRectangle.gif" class="VertCenter" />
+      and the
+      <b>
+       Ellipse Annotation
+      </b>
+      tool
+      <img src="../Resources/Images/IconsButtons/AnnotationEllipse.gif" class="VertCenter" alt="Ellipse Annotation" />
+      to create polygon sources.
+     </li>
+     <li value="4">
+      To move a point, polyline, or polygon source, click the
+      <b>
+       Select
+      </b>
+      tool
+      <img src="../Resources/Images/IconsButtons/Select.gif" class="VertCenter" alt="Select" />
+      from the toolbar and click and drag the view source to a new location. If the view source is a polyline or polygon, click
+      <b>
+       Show Point Spacing
+      </b>
+      <img src="../Resources/Images/IconsButtons/ViewshedShowPointSpacing.gif" class="VertCenter" alt="Show Point Spacing" />
+      to update the location of the generated points.
+     </li>
+     <li value="5">
+      To delete a view source, select it in the Image window and click the
+      <b>
+       Delete Selected View Source
+      </b>
+      button
+      <img src="../Resources/Images/IconsButtons/Delete.gif" class="VertCenter" alt="Delete Selected View Source" />
+      , or right-click on it in the
+      <b>
+       View Sources
+      </b>
+      list and select
+      <b>
+       Delete
+      </b>
+      .  You cannot undo deleting a view source.
+     </li>
+     <li value="6">
+      To delete all view sources in the list, click the
+      <b>
+       Delete All View Sources
+      </b>
+      button
+      <img src="../Resources/Images/IconsButtons/DataManagerCloseAllFiles.gif" class="VertCenter" alt="Delete All View Sources" />
+      .
+     </li>
+     <li value="7">
+      To view or change the name, color, analysis range, view height, or point spacing for a view source, you can double click the view source in the
+      <b>
+       View Sources
+      </b>
+      list,  you can select the point in the
+      <b>
+       View Sources
+      </b>
+      list and then click the
+      <b>
+       Edit View Source Parameters
+      </b>
+      button
+      <img src="../Resources/Images/IconsButtons/Edit.gif" class="VertCenter" alt="Edit View Source Parameters" />
+      , or you can right-click the point in the
+      <b>
+       View Sources
+      </b>
+      list and select
+      <b>
+       Edit View Source Parameters
+      </b>
+      . If you change the point spacing for a polyline or polygon source, click
+      <b>
+       Show Point Spacing
+      </b>
+      <img src="../Resources/Images/IconsButtons/ViewshedShowPointSpacing.gif" class="VertCenter" alt="Show Point Spacing" />
+      to update the generated points.
+     </li>
+    </ul>
+   </li>
+   <li value="5">
+    <p>
+     Specify what you want to be visible in the viewshed output. If you specified only one view source, by default the viewshed output will show only what is visible from that source (
+     <b>
+      Any Source
+     </b>
+     ).
+    </p>
+    <p>
+     If you specified two or more view sources, you can choose to calculate the viewshed based on what is visible from
+     <b>
+      Any Source
+     </b>
+     ,
+     <b>
+      All Sources
+     </b>
+     , or what is visible from all points along or within the source using
+     <b>
+      All Points Within Sources
+     </b>
+     .
+    </p>
+    <p>
+     See below for scenarios on using
+     <b>
+      Any Source
+     </b>
+     ,
+     <b>
+      All Sources
+     </b>
+     , or
+     <b>
+      All Points Within Sources
+     </b>
+     .
+    </p>
+   </li>
+   <li value="6">
+    To preview how the viewshed result will look before processing, enable the
+    <b>
+     Preview
+    </b>
+    check box. A Preview Portal appears. The Preview Portal works with full or higher resolution views. You can change the view sources and preview the results again, as needed.
+   </li>
+   <li value="7">
+    To save the view sources to a shapefile, click the
+    <b>
+     Save View Sources
+    </b>
+    button
+    <img src="../Resources/Images/IconsButtons/Save.gif" class="VertCenter" alt="Save View Sources" />
+    . Separate shapefiles are created for point sources, polyline sources, and polygon sources, with names ending in
+    <code>
+     name_Point.shp
+    </code>
+    ,
+    <code>
+     name_Line.shp
+    </code>
+    ,
+    <code>
+     name_Poly.shp
+    </code>
+    .
+   </li>
+   <li value="8">
+    Click
+    <b>
+     Next
+    </b>
+    to go to the Viewshed Export panel.
+   </li>
+  </ol>
+  <h3>
+   Restoring View Sources
+  </h3>
+  <p>
+   You can restore view sources from a file that was created in the Viewshed Analysis workflow,or from a point, polygon, or polyline shapefile that was created in another application. If you create view sources and also want to restore view sources from a shapefile, the restored view sources will be added to the ones you created. When restoring a native viewshed shapefile, it will be restored with previously saved attributes for range, height, and point spacing. If restoring a shapefile from another application, it will be restored with the currently set default attributes; therefore, you may need to change the defaults before restoring the file.
+  </p>
+  <ol>
+   <li value="1">
+    If you are restoring an ArcMap™ shapefile and want to apply different viewshed parameters to the restored view sources, change the
+    <b>
+     Default Range
+    </b>
+    ,
+    <b>
+     Default Viewing Height
+    </b>
+    , and
+    <b>
+     Default Point Spacing
+    </b>
+    values as needed.
+   </li>
+   <li value="2">
+    Click the
+    <b>
+     Restore View Sources
+    </b>
+    button
+    <img src="../Resources/Images/IconsButtons/Open.gif" class="VertCenter" alt="Restore View Sources" />
+    . The Select View Source File dialog appears.
+   </li>
+   <li value="3">
+    Click
+    <b>
+     Open File
+    </b>
+    , select one or more shapefiles, and click
+    <b>
+     Open
+    </b>
+    .
+   </li>
+   <li value="4">
+    Select which view source file(s) to display and click
+    <b>
+     OK
+    </b>
+    . View source files can be loaded one at a time, or all at the same time by pressing
+    <b>
+     Ctrl
+    </b>
+    or
+    <b>
+     Shift
+    </b>
+    when you select files.
+   </li>
+  </ol>
+  <h3>
+   Scenarios for Different View Sources and Using the Visible From Options
+  </h3>
+  <p>
+   A source can be a single point, a polyline, or a polygon. An observer could move anywhere along or within the source. Source visibility analysis using the
+   <b>
+    All Sources
+   </b>
+   option determines what is visible from any point along or within the source. By definition all points inside the boundaries of a polygon source are classified as visible.
+  </p>
+  <p>
+   You can also use a line or polygon to define a collection of individual view points. In this case, the line or polygon is not a source; rather, each point along the road or within the polygon is considered a source. For example, this could be used to ensure that every point along a line or inside a polygon is visible using the
+   <b>
+    All Points Within Sources
+   </b>
+   option.
+  </p>
+  <h4>
+   Points
+  </h4>
+  <p>
+   Scenario 1: Four observers will be positioned to maximize surveillance coverage of an area.  Place four points and select
+   <b>
+    Any Source
+   </b>
+   to see the area that will be visible to at least one of the observers.
+  </p>
+  <p>
+   Scenario 2: A Communications facility must be positioned to have a direct line of sight to three locations. Place three points and select
+   <b>
+    All Sources
+   </b>
+   to see candidate locations that will be directly visible to all view sources.
+  </p>
+  <h4>
+   Polylines
+  </h4>
+  <p>
+   Scenario 3: A sightseer would like to select which road to drive along to maximize the amount of an area they will see. Trace a road with a polyline and select a point spacing and view radius. Select
+   <b>
+    Any Source
+   </b>
+   to show all of the areas that will be visible at some point along the drive.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   While selecting closer point spacing may increase the accuracy of the viewshed; closer point spacing and larger analysis radius may significantly increase the processing time.
+  </p>
+  <p>
+   Scenario 4: A phone company would like to place a communications tower such that it has and unobstructed view to all locations on a section of road. Trace a road with polyline and select
+   <b>
+    All Points Within Sources
+   </b>
+   to show candidate tower locations that are visible to all points along the stretch of road.
+  </p>
+  <p>
+   Scenario 5: A group of hikers are walking along a trail and will be staying in a hut that is off the trail. They know from field reports that the hut is partially obscured by terrain. They would like to know locations on the road from which they have the best chance of seeing the hut. Draw a line along the trail and select a suitable point spacing. Place a point or polygon at the location of the hut and select a view radius that lies across the road. Select
+   <b>
+    All Sources
+   </b>
+   and find points that are visible from the road and the hut.
+  </p>
+  <h4>
+   Polygons
+  </h4>
+  <p>
+   Scenario 6: An observer would like to know the area that will be visible from an area of higher ground. Create a polygon to select the area of higher ground and select a point spacing and analysis radius. Select
+   <b>
+    Any Source
+   </b>
+   to see all locations that can be seen by an observer that is free to move anywhere within the polygon.
+  </p>
+  <p>
+   Scenario 7: A hiker would like to find an overlook point that will give them a full unobstructed view of a lake. Create a polygon tool to select the lake. Select
+   <b>
+    All Points Within Sources
+   </b>
+   to show any terrain that has a direct line of sight to all points on the lake.
+  </p>
+  <h2>
+   <a name="VSExport">
+   </a>
+   Export Viewshed Analysis Results
+  </h2>
+  <ol>
+   <li value="1">
+    In the Export Files tab in the Export panel, enable the output options you want. The following are available:
+   </li>
+   <ul>
+    <li value="1">
+     <b>
+      Export Viewshed Image
+     </b>
+     saves the viewshed analysis to an
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     raster image.
+    </li>
+    <li value="2">
+     <b>
+      Export Viewshed Vectors
+     </b>
+     saves the vectors created during viewshed to a shapefile. The output area units are in square meters.
+    </li>
+   </ul>
+   <li value="2">
+    In the Additional Export tab, enable any other output options you want. The following are available:
+   </li>
+   <ul>
+    <li value="1">
+     <b>
+      Export View Range Vectors
+     </b>
+     saves the vectors created for the viewshed analysis area (view range) to a shapefile. In the shapefile, each view source has a separate polygon record representing the analysis area for that source. This output can be used to show areas that were and were not included in the analysis, and can be used to predict the impact of point spacing along, or within, the source.
+    </li>
+    <li value="2">
+     <b>
+      Export Individual Viewshed Vectors
+     </b>
+     saves the individual source viewsheds to shapefiles. Provide a directory name with an optional file prefix. Each shapefile will have a unique name based on the source name.  For example, if the source had a name
+     <code>
+      View 1
+     </code>
+     and you entered
+     <code>
+      C:\VS_
+     </code>
+     into the output directory field, then the shapefile name will be
+     <code>
+      C:\VS_View_1.shp
+     </code>
+     .
+    </li>
+   </ul>
+   <li value="3">
+    Click
+    <b>
+     Finish
+    </b>
+    to create the output, add the new layers to the Layer Manager, and save the files to the directories you specified. When the export is complete, the workflow view closes. The original data and the export data display in the Image window view.
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

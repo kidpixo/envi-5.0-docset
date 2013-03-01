@@ -1,0 +1,913 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming|Routines|Application Control|ENVI function" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   ENVI::OpenRaster
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/TableStyles/VersionTable.css" rel="stylesheet" />
+  <link href="../Resources/TableStyles/Description.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#ExtendCustomize/ENVI__OpenRaster.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="Routines.htm">
+    Routines
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="ENVI.htm">
+    Application Control
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    ENVI::OpenRaster
+   </span>
+  </div>
+  <h1 class="ObjMethod">
+   ENVI::OpenRaster
+  </h1>
+  <p>
+   The
+   <a name="kanchor489">
+   </a>
+   OpenRaster function method creates a new
+   <a href="enviRaster.htm">
+    ENVIRaster
+   </a>
+   from a file or URI.
+  </p>
+  <p>
+   The following formats and sensor products are supported by default (you do not need to use the
+   <a href="#EXTERNAL">
+    EXTERNAL_TYPE
+   </a>
+   keyword for these formats).
+  </p>
+  <table style="caption-side: top;margin-left: 0;margin-right: auto;mc-table-style: url('../Resources/TableStyles/Description.css');" class="TableStyle_Description" cellspacing="0">
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      File Formats and Sensor Products
+      <br />
+      Supported by Default
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      CARTOSAT-1
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      DPPDB
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      DTED
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      ENVI
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      ERDAS Imagine
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      Esri GRID
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      GeoEye-1
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      IKONOS
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      JPEG
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      JPEG2000
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      KOMPSAT-2
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      Landsat GeoTIFF with Metadata
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      MrSID
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      NITF
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      OrbView-3
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      QuickBird
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      RapidEye
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      Spot DIMAP
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      SRTM_DEM
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      TIFF
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      WorldView-1
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColEnd">
+      WorldView-2
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h2 class="API">
+   Example
+  </h2>
+  <p class="Code">
+   ; Launch the application
+  </p>
+  <p class="Code">
+   e = ENVI()
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Open an ENVI file and display it
+  </p>
+  <p class="Code">
+   file1 = FILEPATH('qb_boulder_msi', ROOT_DIR=e.ROOT_DIR, $
+  </p>
+  <p class="Code_Indented">
+   SUBDIRECTORY = ['data'])
+  </p>
+  <p class="Code">
+   raster1 = e.OpenRaster(file1)
+  </p>
+  <p class="Code">
+   view1 = e.GetView()
+  </p>
+  <p class="Code">
+   layer1 = view1.CreateLayer(raster1)
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Open a .png file and display it
+  </p>
+  <p class="Code">
+   file2 = FILEPATH('avhrr.png', $
+  </p>
+  <p class="Code">
+   &#160;&#160;SUBDIRECTORY = ['examples','data'])
+  </p>
+  <p class="Code">
+   raster2 = e.OpenRaster(file2, EXTERNAL_TYPE='png')
+  </p>
+  <p class="Code">
+   view2 = e.CreateView()
+  </p>
+  <p class="Code">
+   layer2 = view2.CreateLayer(raster2)
+  </p>
+  <h2 class="API">
+   Syntax
+  </h2>
+  <p class="Syntax">
+   <i>
+    Result
+   </i>
+   =
+   <i>
+    ENVI.
+   </i>
+   OpenRaster(
+   <i>
+    URI
+   </i>
+   [, DATA_IGNORE_VALUE=
+   <i>
+    value
+   </i>
+   ] [, ERROR=
+   <i>
+    variable
+   </i>
+   ] [, EXTERNAL_TYPE=
+   <i>
+    string
+   </i>
+   ] [, METADATA_OVERRIDE=
+   <i>
+    ENVIRasterMetadata
+   </i>
+   ]  [, SPATIALREF_OVERRIDE=
+   <i>
+    ENVISpatialRef
+   </i>
+   ])
+  </p>
+  <h2 class="API">
+   Return Value
+  </h2>
+  <p>
+   This method returns a reference to an
+   <a href="enviRaster.htm">
+    ENVIRaster
+   </a>
+   . If the associated file is a NITF multiple image segment file, this method returns an array of ENVIRaster objects.
+  </p>
+  <h2 class="API">
+   Arguments
+  </h2>
+  <h3 class="Argument">
+   URI
+  </h3>
+  <p>
+   A scalar string that is a fully-qualified raster filepath.
+  </p>
+  <h2 class="API">
+   Keywords
+  </h2>
+  <h3 class="Keyword">
+   DATA_IGNORE_VALUE
+  </h3>
+  <p>
+   Set this keyword to a pixel value that will be ignored when the raster is displayed. This overrides any data ignore values set in the metadata.
+  </p>
+  <h3 class="Keyword">
+   ERROR
+  </h3>
+  <p>
+   Set this keyword to a named variable that will contain any error message issued during execution of this routine. If no error occurs, the ERROR variable will be set to a null string (
+   <code>
+    ''
+   </code>
+   ). If an error occurs and the routine is a function, then the function result will be undefined.
+  </p>
+  <p>
+   When this keyword is not set and an error occurs,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   returns to the caller and execution halts. In this case, the error message is contained within !ERROR_STATE and can be caught using IDL's CATCH routine. See IDL Help for more information on !ERROR_STATE and CATCH.
+  </p>
+  <p>
+   See
+   <a href="ErrorHandling.htm">
+    Manage Errors
+   </a>
+   for more information on error handling in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   programming.
+  </p>
+  <h3 class="Keyword">
+   <a name="EXTERNAL">
+   </a>
+   EXTERNAL_TYPE
+  </h3>
+  <p>
+   Use this keyword to open raster datasets in external file formats not natively supported by the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   software. You can also use this keyword to access legacy custom file readers built using
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   routines. Only use this keyword to open data files in the specific external file formats listed below—for all other raster datasets, this keyword should not be specified.
+  </p>
+  <p>
+   For example, to open a WorldView-2 dataset in TIFF format this keyword is not required; simply execute the OpenRaster method with the
+   <i>
+    File
+   </i>
+   argument. Consequently, the list of external file formats given below is not a comprehensive list of raster formats supported by the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   software.
+  </p>
+  <p>
+   Set this keyword to a string describing the type of the external file to open:
+  </p>
+  <table style="mc-table-style: url('../Resources/TableStyles/Description.css');" cellspacing="0" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      File Type String
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      Description
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      'acres'
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      Australian Centre for Remote Sensing (ACRES) Canadian Centre for Remote Sensing (CCRS) Landsat and SPOT data
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      'ads40'
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      Airborne Digital Sensor developed by Leica Geosystems.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      'alos'
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      Advanced Land Observing Satellite.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      'arcview'
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      ArcView® raster  format files that have the
+      <code>
+       .bil
+      </code>
+      file extension and an associated header file with the
+      <code>
+       .hdr
+      </code>
+      extension. ENVI extracts the header information, including the UTM  and State Plane projection georeferencing information.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      'atsr'
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      Gridded Brightness Temperature (GBT), Gridded Browse (GBROWSE), and Gridded SST (GSST) data from ATSR-1 and ATSR-2.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      'avhrr'
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      Advanced Very High Resolution Radiometer (AVHRR)
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      'avhrr_sharp'
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      European Space Agency SHARP data.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      'bmp'
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      Bitmap
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      'cadrg'
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      Defense Mapping Agency Compressed ARC Digitized Raster Graphics (CADRG) format.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      'cib'
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      Defense Mapping Agency Controlled Image Base (CIB) format.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      'cosmo-skymed'
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Set this keyword to read COSMO-SkyMed data in HDF5 format.
+      </p>
+      <p>
+       ENVI supports the following COSMO-SkyMed products:
+      </p>
+      <p>
+       Level-1A Single look, complex, slant range (SCS)
+      </p>
+      <p>
+       Level-1B Detected Ground Multilook (DGM)
+      </p>
+      <p>
+       Level-1C Geocoded Ellipsoid Corrected (GEC)
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      'dmc'
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      ENVI reads and displays data from the UK-DMCSat-1, ALSAT-1, and NigeriaSat-1 satellites that are part of the DMC (Disaster Monitoring Constellation).
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      'dmsp_noaa'
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      NOAA Defense Meteorological Satellite Program (DMSP) Operational Linescan System (OLS) format.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      'ecw'
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      Enhanced Compressed Wavelet
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      'envisat'
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      Environmental Satellite (Envisat)
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      'eos_aster'
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      Earth Observing System (EOS) Advanced Spaceborne Thermal Emission and Reflection Radiometer (ASTER) data.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      'eos_modis'
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      EOS Moderate Resolution Imaging Spectroradiometer (MODIS) data
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      'er_mapper'
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      ER mapper format.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      'erdas_lan'
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      erdas file (*.lan)
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      'eros_l1a'
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      Earth Resources Observation System 1A data.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      'eros_l1b'
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      Reads ImageSat International EROS A Level 1B files.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      'ers'
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      European Remote Sensing Satellite-1 or -2
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      'formosat-2'
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      FORMOSAT-2 DIMAP (.dim) data.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      'irs_fast'
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      Indian Remote Sensing (IRS) data in Earth Observation Satellite Company (EOSAT) Fast format.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      'irs_super_structured'
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      IRS Super Structured data.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      'jers'
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      Japanese Earth Resources Satellite.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      'landsat_ceos'
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      European Space Agency CEOS Landsat TM data.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      'landsat_fast'
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      Landsat TM data in EOSAT Fast format.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      'landsat_hdf'
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      Landsat data in Hierarchical Data Format (HDF).
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      'landsat_mrlc'
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      Multi-Resolution Land Characteristic format for Landsat TM and DEM data.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      'landsat_nlaps'
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      National Landsat Archive Production System (NLAPS) format for Landsat TM and MSS data.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      'master'
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      MODIS/ASTER Simulator (MASTER) MAS-50 HDF data.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      'pci'
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      PCI Geomatics format (.pix).
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      'pds'
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      Planetary Data System format.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      'pict'
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      QuickDraw Picture
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      'png'
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      Portable Network Graphics
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      'radarsat'
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      Canadian Radar Satellite data.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      'seawifs'
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      SeaWiFSdata
+     </td>
+    </tr>
+    <tr madcap:conditions="">
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      'spot_cap_sisa'
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      Reads SPOT 1A, 2A, and 1B data.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      'spot_geospot'
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      Reads the primary format for SPOT data. ArcView® raster image files have a similar format specification. The GeoSPOT format is described in detail in documentation available from SPOT Image.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      'spot_vegetation'
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      Reads SPOT vegetation data.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      'srf'
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      Spectral Response Function. Engineering data that quantify the spectral response and sensitivity of detectors on an airborne or satellite sensor. The term SRF also refers to a data format that contains SRF data for particular sensors.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      'tims'
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      Thermal Infrared Multispectral Scanner data.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      'topsar'
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      Raw AIRSAR Integrated Processor Data format (Cvv, incidence angle, correlation image, or DEM)
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      'usgs_doq'
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      USGS Digital Orthophoto Quadrangle data.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      'usgs_drg'
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      USGS Digital Raster Graphic data.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      'usgs_native_dem'
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      Reads USGS Digital Elevation Model data. The data opened default to no mosaic and in memory.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      'usgs_sdts_dem'
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      Reads USGS Spatial Data Transfer Standard. The data opened default to no mosaic and in memory.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+      'xwd'
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColEnd">
+      X Window Dump
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3 class="Keyword">
+   <a name="METADATA">
+   </a>
+   METADATA_OVERRIDE
+  </h3>
+  <p>
+   Set this keyword to an ENVIRasterMetadata object (or an array of these objects, for files with multiple data groups). The metadata information for the newly-created ENVIRaster will be taken from both the specified object and the ENVIRaster on disk (specified with
+   <i>
+    URI
+   </i>
+   ). If the ENVIRasterMetadata object specified by this keyword and the ENVIRaster specified by
+   <i>
+    URI
+   </i>
+   both have the same tag, the tag information from the ENVIRasterMetadata object will take precedence. Although this process only happens in memory, the information will be persisted to a header file if the ENVIRaster::WriteMetadata method is called.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   The NO_DATA keyword takes precedence over the METADATA_OVERRIDE keyword.
+  </p>
+  <h3 class="Keyword">
+   <a name="SPATIALR">
+   </a>
+   SPATIALREF_OVERRIDE
+  </h3>
+  <p>
+   Set this keyword to an ENVIRasterSpatialRefPseudo, ENVIRasterSpatialRefRPC, or ENVIRasterSpatialRefStandard object (or an array of these objects, for files with multiple data groups). The spatial reference information for the newly-created ENVIRaster will be taken from the specified object (or array of objects), and not from the associated raster data file(s). Although this process only happens in memory, the information will be persisted to a header file if the ENVIRaster::WriteMetadata method is called.
+  </p>
+  <p>
+   See
+   <a href="ENVI__CreateRasterSpatialRef.htm">
+    ENVI::CreateRasterSpatialRef
+   </a>
+   for an example of using a custom ENVIRasterSpatialRefPseudo, ENVIRasterSpatialRefRPC, or ENVIRasterSpatialRefStandard object as a template when creating a new ENVIRaster.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   You cannot set this keyword to an ENVIRasterSpatialRefPseudo, ENVIRasterSpatialRefRPC, or ENVIRasterSpatialRefStandard object of type 'arbitrary'.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   This keyword is not supported when opening a file using the EXTERNAL_TYPE keyword.
+  </p>
+  <h2 class="API">
+   Version History
+  </h2>
+  <table style="mc-table-style: url('../Resources/TableStyles/VersionTable.css');" class="TableStyle_VersionTable" cellspacing="0">
+   <col />
+   <col />
+   <tbody>
+    <tr>
+     <td class="TableStyle_VersionTable_Body_0_0_RowEnd_ColSep">
+      <p>
+       5.0
+      </p>
+     </td>
+     <td class="TableStyle_VersionTable_Body_0_0_RowEnd_ColEnd">
+      <p>
+       Introduced
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h2 class="API">
+   See Also
+  </h2>
+  <p>
+   <a href="ENVI.htm">
+    ENVI function
+   </a>
+   ,
+   <a href="ENVI__GetView.htm">
+    ENVI::GetView
+   </a>
+   ,
+   <a href="enviView__CreateLayer.htm">
+    ENVIView::CreateLayer
+   </a>
+   ,
+   <a href="enviRaster.htm">
+    ENVIRaster
+   </a>
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

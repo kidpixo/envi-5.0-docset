@@ -1,0 +1,541 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming|Routines|Application Control" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   ENVI
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/TableStyles/VersionTable.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#ExtendCustomize/ENVI.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="Routines.htm">
+    Routines
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="#">
+    Application Control
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    ENVI
+   </span>
+  </div>
+  <h1 class="RoutineClassObject">
+   ENVI
+  </h1>
+  <p>
+   The
+   <a name="kanchor475">
+   </a>
+   ENVI function launches the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   application and returns an object reference to the application.
+  </p>
+  <h2 class="API">
+   Example 1
+  </h2>
+  <p class="Code">
+   ; Launch the application
+  </p>
+  <p class="Code">
+   e = ENVI()
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Open a file
+  </p>
+  <p class="Code">
+   file = FILEPATH('qb_boulder_msi', ROOT_DIR=e.ROOT_DIR, $
+  </p>
+  <p class="Code_Indented">
+   SUBDIRECTORY = ['data'])
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   raster = e.OpenRaster(file)
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Display the data
+  </p>
+  <p class="Code">
+   view = e.GetView()
+  </p>
+  <p class="Code">
+   layer = view.CreateLayer(raster)
+  </p>
+  <h2 class="API">
+   Example 2
+  </h2>
+  <p class="Code">
+   ; Launch the application with two vertical views
+  </p>
+  <p class="Code">
+   e = ENVI(LAYOUT=[2,1])
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Open a file
+  </p>
+  <p class="Code">
+   file = FILEPATH('qb_boulder_msi', ROOT_DIR=e.ROOT_DIR, $
+  </p>
+  <p class="Code_Indented">
+   SUBDIRECTORY = ['data'])
+  </p>
+  <p class="Code">
+   raster = e.OpenRaster(file)
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Display the data in two views
+  </p>
+  <p class="Code">
+   views = e.GetView(/ALL)
+  </p>
+  <p class="Code">
+   layer1 = views[0].CreateLayer(raster)
+  </p>
+  <p class="Code">
+   layer2 = views[1].CreateLayer(raster, /CIR)
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Create a third view
+  </p>
+  <p class="Code">
+   view3 = e.CreateView()
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Switch back to one view
+  </p>
+  <p class="Code">
+   e.LAYOUT=[1,1]
+  </p>
+  <h2 class="API">
+   Syntax
+  </h2>
+  <p class="Syntax">
+   <i>
+    Result
+   </i>
+   = ENVI([/CURRENT] [, ERROR=
+   <i>
+    variable
+   </i>
+   ] [, /HEADLESS] [, LAYOUT=
+   <i>
+    array
+   </i>
+   ] [, LOG_FILE=
+   <i>
+    string
+   </i>
+   ] [, UVALUE=
+   <i>
+    variable
+   </i>
+   ])
+  </p>
+  <h2 class="API">
+   <a name="Methods">
+   </a>
+   Methods
+  </h2>
+  <p>
+   <a href="ENVI__AddExtension.htm">
+    AddExtension
+   </a>
+  </p>
+  <p>
+   <a href="ENVI__Close.htm">
+    Close
+   </a>
+  </p>
+  <p>
+   <a href="ENVI__CreateRaster.htm#ENVI::Cr">
+    CreateRaster
+   </a>
+  </p>
+  <p>
+   <a href="ENVI__CreateRasterMetaData.htm">
+    CreateRasterMetadata
+   </a>
+  </p>
+  <p>
+   <a href="ENVI__CreateRasterSpatialRef.htm">
+    CreateRasterSpatialRef
+   </a>
+  </p>
+  <p>
+   <a href="ENVI__CreateView.htm#ENVI::Cr3">
+    CreateView
+   </a>
+  </p>
+  <p>
+   <a href="ENVI__ExportRaster.htm">
+    ExportRaster
+   </a>
+  </p>
+  <p>
+   <a href="ENVI__GetOpenData.htm">
+    GetOpenData
+   </a>
+  </p>
+  <p>
+   <a href="ENVI__GetPreference.htm">
+    GetPreference
+   </a>
+  </p>
+  <p>
+   <a href="ENVI__GetTemporaryFilename.htm">
+    GetTemporaryFilename
+   </a>
+  </p>
+  <p>
+   <a href="ENVI__GetView.htm#ENVI::Ge">
+    GetView
+   </a>
+  </p>
+  <p>
+   <a href="ENVI__HideExtensionFiles.htm">
+    HideExtensionFiles
+   </a>
+  </p>
+  <p>
+   <a href="ENVI__LogMessage.htm">
+    LogMessage
+   </a>
+  </p>
+  <p>
+   <a href="ENVI__OpenRaster.htm#ENVI::Op">
+    OpenRaster
+   </a>
+  </p>
+  <p>
+   <a href="ENVI__OpenVector.htm">
+    OpenVector
+   </a>
+  </p>
+  <p>
+   <a href="ENVI__Refresh.htm#ENVI::Re">
+    Refresh
+   </a>
+  </p>
+  <p>
+   <a href="ENVI__ReportError.htm">
+    ReportError
+   </a>
+  </p>
+  <p>
+   <a href="ENVI__Show.htm#ENVI::Sh">
+    Show
+   </a>
+  </p>
+  <h2 class="API">
+   Return Value
+  </h2>
+  <p>
+   The ENVI function returns a reference to the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   application. Use the returned reference to manipulate the application after creation by changing properties or calling methods.
+  </p>
+  <h2 class="API">
+   <a name="Properti">
+   </a>
+   Properties
+  </h2>
+  <p>
+   Properties marked as (Init) are applied
+   <i>
+    only
+   </i>
+   during the initial launch of the application. Properties marked as (Get) can be retrieved, but not set. All other properties can be set during launch, or retrieved or changed after launch.
+  </p>
+  <h3 class="Keyword">
+   CURRENT
+  </h3>
+  <p>
+   Set this keyword to test if the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   software is currently running and to retrieve a reference to the application. If this keyword is set and
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   is not already running, the application will not be launched. !NULL is returned.
+  </p>
+  <h3 class="Keyword">
+   <a name="ERROR">
+   </a>
+   ERROR
+  </h3>
+  <p>
+   Set this keyword to a named variable that will contain any error message issued during execution of this routine. If no error occurs, the ERROR variable will be set to a null string (
+   <code>
+    ''
+   </code>
+   ). If an error occurs and the routine is a function, then the function result will be undefined.
+  </p>
+  <p>
+   When this keyword is not set and an error occurs,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   returns to the caller and execution halts. In this case, the error message is contained within !ERROR_STATE and can be caught using IDL's CATCH routine. See IDL Help for more information on !ERROR_STATE and CATCH.
+  </p>
+  <p>
+   See
+   <a href="ErrorHandling.htm">
+    Manage Errors
+   </a>
+   for more information on error handling in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   programming.
+  </p>
+  <h3 class="Keyword">
+   <a name="HEADLESS">
+   </a>
+   HEADLESS (Init)
+  </h3>
+  <p>
+   Set this property to 1 to start the application without creating the user interface.
+  </p>
+  <h3 class="Property">
+   LAYOUT
+  </h3>
+  <p>
+   Set this property to a two-element array specifying the layout of
+   <a href="enviView.htm">
+    ENVIViews
+   </a>
+   . The number of views is limited to 16. The options are as follows:
+  </p>
+  <ul>
+   <li value="1">
+    [1, 1]: One view (default)
+   </li>
+   <li value="2">
+    [2, 1]: Two vertical views
+   </li>
+   <li value="3">
+    [1, 2]: Two horizontal views
+   </li>
+   <li value="4">
+    [2, 2]: Four views, 2 x 2 layout
+   </li>
+   <li value="5">
+    [3, 3]: Nine views, 3 x 3 layout
+   </li>
+   <li value="6">
+    [4, 4]: Sixteen views, 4 x 4 layout
+   </li>
+  </ul>
+  <p>
+   For a custom layout (for example, three views), retrieving this property returns the scalar 0. If LAYOUT is set to an invalid value, it defaults to one view.
+  </p>
+  <h3 class="Property">
+   <a name="LOG_FILE">
+   </a>
+   LOG_FILE
+  </h3>
+  <p>
+   Set this property to a string specifying a full path and filename for a log file that will contain any warnings or errors issued during execution of
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   routines. Set this property to a null string (
+   <code>
+    ''
+   </code>
+   ) to turn off error logging. To add custom messages to the default content, use the
+   <a href="ENVI__LogMessage.htm">
+    ENVI::LogMessage
+   </a>
+   method.
+  </p>
+  <p>
+   Errors that occur through user interaction of
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   (non-programmatically) are not written to this log file but are handled by the
+   <b>
+    <a href="../Preferences.htm#EnableSystemLogging">
+     Enable System Logging
+    </a>
+   </b>
+   preference.
+  </p>
+  <p>
+   See
+   <a href="ErrorHandling.htm">
+    Manage Errors
+   </a>
+   for more information on error handling in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   programming.
+  </p>
+  <h3 class="Property">
+   <a name="ROOT_DIR">
+   </a>
+   ROOT_DIR (Get)
+  </h3>
+  <p>
+   A string specifying the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   installation path.
+  </p>
+  <h3 class="Property">
+   <a name="UI">
+   </a>
+   UI (Get)
+  </h3>
+  <p>
+   This property retrieves a reference to the
+   <a href="ENVIUI.htm">
+    ENVIUI
+   </a>
+   object.
+  </p>
+  <h3 class="Property">
+   UVALUE
+  </h3>
+  <p>
+   Set this property to an IDL variable of any data type.
+  </p>
+  <h3 class="Property">
+   VERSION (Get)
+  </h3>
+  <p>
+   This property retrieves a string that represents the current
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   version number.
+  </p>
+  <h3 class="Property">
+   <a name="WIDGET_I">
+   </a>
+   WIDGET_ID (Get)
+  </h3>
+  <p>
+   The widget ID for the top-level base of the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   application. This widget ID may be used as both the group leader to IDL routines like WIDGET_BASE and the dialog parent to the&#160;IDL DIALOG_* routines. (See the DIALOG_PARENT keyword description in the DIALOG_MESSAGE function in IDL&#160;Help, for an example.) If ENVI is started without a user interface (using the HEADLESS property), the WIDGET_ID will be 0.
+  </p>
+  <h2 class="API">
+   <a name="ENVI::Ge2">
+   </a>
+   <a name="ENVI::Ge">
+   </a>
+   <a name="ENVI::Op">
+   </a>
+   <a name="ENVI::Re">
+   </a>
+   <a name="ENVI::Sh">
+   </a>
+   Version History
+  </h2>
+  <table style="mc-table-style: url('../Resources/TableStyles/VersionTable.css');" class="TableStyle_VersionTable" cellspacing="0">
+   <col />
+   <col />
+   <tbody>
+    <tr>
+     <td class="TableStyle_VersionTable_Body_0_0_RowEnd_ColSep">
+      <p>
+       5.0
+      </p>
+     </td>
+     <td class="TableStyle_VersionTable_Body_0_0_RowEnd_ColEnd">
+      <p>
+       Introduced
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h2 class="API">
+   See Also
+  </h2>
+  <p>
+   <a href="enviRaster.htm">
+    ENVIRaster
+   </a>
+   ,
+   <a href="enviView.htm">
+    ENVIView
+   </a>
+   ,
+   <a href="ENVIUI.htm">
+    ENVIUI
+   </a>
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

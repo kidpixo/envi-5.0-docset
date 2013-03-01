@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming|Routines|Data Control|ENVI Classic" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   ENVI_EVF_DEFINE_CLOSE
+  </title>
+  <link href="../../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../../ENVIHelp_CSH.htm#ExtendCustomize/ENVIClassicAPI/ENVI_E/ENVI_EVF_DEFINE_CLOSE.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../Routines.htm">
+    Routines
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../ENVICoordSys.htm">
+    Data Control
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    ENVI_EVF_DEFINE_CLOSE
+   </span>
+  </div>
+  <h1>
+   <a name="kanchor534">
+   </a>
+   ENVI_EVF_DEFINE_CLOSE
+  </h1>
+  <p>
+   Use this function to finish defining a new EVF. You must call this function before you can use the new EVF. For convenience, it optionally returns the ID of the new EVF. You must initialize the EVF using ENVI_EVF_DEFINE_INIT.
+  </p>
+  <h2 class="API">
+   Syntax
+  </h2>
+  <p>
+   <i>
+    Result
+   </i>
+   = ENVI_EVF_DEFINE_CLOSE(
+   <i>
+    EVF_PTR
+   </i>
+   [, /RETURN_ID])
+  </p>
+  <h2 class="API">
+   Arguments
+  </h2>
+  <h3>
+   EVF_PTR
+  </h3>
+  <p>
+   This is a pointer to the new EVF, and it is returned from ENVI_EVF_DEFINE_INIT.
+  </p>
+  <h2 class="API">
+   Keywords
+  </h2>
+  <h3>
+   RETURN_ID (optional)
+  </h3>
+  <p>
+   Set this keyword to return the ID of the new EVF. This keyword saves you the step of opening the new EVF using ENVI_EVF_OPEN.
+  </p>
+  <h2 class="API">
+   Example
+  </h2>
+  <p>
+   See the code example under
+   <a href="ENVI_EVF_CLOSE.htm">
+    ENVI_EVF_CLOSE
+   </a>
+   .
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

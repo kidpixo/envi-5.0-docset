@@ -1,0 +1,290 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Classification|Classification Tools|Supervised Methods" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Support Vector Machine
+  </title>
+  <link href="../../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../../ENVIHelp_CSH.htm#FindFeatures/Classification/ClassificationTools/SupportVectorMachine.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../ClassificationMain.htm">
+    Classification
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="ClassificationTools.htm">
+    Classification Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="AdaptiveCoherenceEstimator.htm">
+    Supervised Methods
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Support Vector Machine
+   </span>
+  </div>
+  <h1>
+   Support Vector Machine
+  </h1>
+  <p>
+   Support Vector Machine (SVM) is a supervised classification method derived from statistical learning theory that often yields good classification results from complex and noisy data. See
+   <a href="../../FeatureExtraction/BackgroundSVM.htm">
+    Support Vector Machine Background
+   </a>
+   for details.
+  </p>
+  <ol>
+   <li value="1">
+    Use the ROI&#160;Tool in
+    <span class="DocumentTitleProductNameENVIClassic">
+     ENVI Classic
+    </span>
+    to define training regions for each class. The more pixels and classes, the better the results will be.
+   </li>
+   <li value="2">
+    Use the ROI Tool to save the ROIs to an
+    <code>
+     .roi
+    </code>
+    file.
+   </li>
+   <li value="3">
+    Display the input image in
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    .
+   </li>
+   <li value="4">
+    From the menu bar, select
+    <b>
+     File &gt; Open
+    </b>
+    and open the ROI file. It displays on top of the input image.
+   </li>
+   <li value="5">
+    From the Toolbox, select
+    <b>
+     Classification &gt; Supervised Classification &gt; Support Vector Machine Classification
+    </b>
+    . The Classification Input File dialog appears.
+   </li>
+   <li value="6">
+    Select an input file and perform optional spatial and spectral
+    <a href="../../../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The Support Vector Machine Classification Parameters dialog appears.
+   </li>
+   <li value="7">
+    In the
+    <b>
+     Select Classes from Regions
+    </b>
+    list, select at least one ROI and/or vector as training classes. The ROIs listed are derived from the available ROIs in the ROI Tool dialog. The vectors listed are derived from the open vectors in the Available Vectors List.
+   </li>
+   <li value="8">
+    Select the
+    <b>
+     Kernel Type
+    </b>
+    to use in the SVM classifier from the drop-down list. Options are
+    <b>
+     Linear
+    </b>
+    ,
+    <b>
+     Polynomial
+    </b>
+    ,
+    <b>
+     Radial Basis Function
+    </b>
+    , and
+    <b>
+     Sigmoid
+    </b>
+    . Depending on the option you select, additional fields may appear.
+   </li>
+   <li value="9">
+    If the
+    <b>
+     Kernel Type
+    </b>
+    is
+    <b>
+     Polynomial
+    </b>
+    , set the
+    <b>
+     Degree of Kernel Polynomial
+    </b>
+    to specify the degree use for the SVM classification. The minimum value is 1, the default is 2, and the maximum value is 6.
+   </li>
+   <li value="10">
+    If the
+    <b>
+     Kernel Type
+    </b>
+    is
+    <b>
+     Polynomial
+    </b>
+    or
+    <b>
+     Sigmoid
+    </b>
+    , specify the
+    <b>
+     Bias in Kernel Function
+    </b>
+    for the kernel to use in the SVM algorithm. The default is 1.
+   </li>
+   <li value="11">
+    If the kernel type is
+    <b>
+     Polynomial
+    </b>
+    ,
+    <b>
+     Radial Basis Function
+    </b>
+    , or
+    <b>
+     Sigmoid
+    </b>
+    , use the
+    <b>
+     Gamma in Kernel Function
+    </b>
+    field to set the gamma parameter used in the kernel function. This value is a floating point value greater than 0. The default is the inverse of the number of bands in the input image.
+   </li>
+   <li value="12">
+    Specify the
+    <b>
+     Penalty Parameter
+    </b>
+    for the SVM algorithm to use. This value is a floating point value greater than 0. The penalty parameter controls the trade-off between allowing training errors and forcing rigid margins. Increasing the value of the penalty parameter increases the cost of misclassifying points and causes
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    to create a more accurate model that may not generalize well. The default is 100.
+   </li>
+   <li value="13">
+    Use the
+    <b>
+     Pyramid Levels
+    </b>
+    field to set the number of hierarchical processing levels to apply during the SVM training and classification process. If this value is set to 0,
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    processes the image at full resolution only. The default is 0. The maximum value is dynamic; it varies with the size of the image you select. The maximum value is determined by the criteria that the highest pyramid-level image is larger than 64&#160;x&#160;64. For example, for an image that is 24000&#160;x&#160;24000, the maximum level is 8.
+   </li>
+   <li value="14">
+    If the
+    <b>
+     Pyramid Levels
+    </b>
+    field is a value greater than zero, set the
+    <b>
+     Pyramid Reclassification Threshold
+    </b>
+    to specify the probability threshold that a pixel classified at a lower resolution level must meet to avoid being reclassified at a finer resolution. The range is from 0 to 1. The default is 0.9.
+   </li>
+   <li value="15">
+    Use the
+    <b>
+     Classification Probability Threshold
+    </b>
+    field to set the probability that is required for the SVM classifier to classify a pixel. Pixels where all rule probabilities are less than this threshold are unclassified. The range is from 0 to 1. The default is 0.0.
+   </li>
+   <li value="16">
+    Select classification output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="17">
+    Use the
+    <b>
+     Output Rule Images?
+    </b>
+    toggle button to select whether or not to create rule images output. Use rule images to create intermediate classification image results before final assignment of classes. You can later use rule images in the Rule Classifier to create a new classification image without having to recalculate the entire classification (see See "Classifying from Rule Images").
+   </li>
+   <li value="18">
+    If you selected
+    <b>
+     Yes
+    </b>
+    to output rule images, select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="19">
+    Click
+    <b>
+     OK
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds the resulting output to the Layer Manager. If you selected to output rule images,
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    creates rule images for each class with the pixel values equal to the percentage (0-100%) of bands that matched that class. Areas that satisfied the minimum threshold are carried over as classified areas into the classified image.
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

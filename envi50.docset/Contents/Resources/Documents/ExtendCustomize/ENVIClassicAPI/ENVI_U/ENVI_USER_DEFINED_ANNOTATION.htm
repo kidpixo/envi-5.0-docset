@@ -1,0 +1,1081 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming|Routines|Data Control|ENVI Classic" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   ENVI_USER_DEFINED_ANNOTATION
+  </title>
+  <link href="../../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../../ENVIHelp_CSH.htm#ExtendCustomize/ENVIClassicAPI/ENVI_U/ENVI_USER_DEFINED_ANNOTATION.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../Routines.htm">
+    Routines
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../ENVICoordSys.htm">
+    Data Control
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    ENVI_USER_DEFINED_ANNOTATION
+   </span>
+  </div>
+  <h1>
+   <a name="kanchor577">
+   </a>
+   ENVI_USER_DEFINED_ANNOTATION
+  </h1>
+  <p>
+   <a href="#Syntax">
+    Syntax
+   </a>
+   |
+   <a href="#Arguments">
+    Arguments
+   </a>
+   |
+   <a href="#Keywords">
+    Keywords
+   </a>
+   |
+   <a href="#Example">
+    Example
+   </a>
+  </p>
+  <p>
+   Use this procedure to create an
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   annotation file or to append items to an existing annotation file. If the annotation file does not exist,
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   creates a new annotation file and adds the specified item. If the annotation file exists, each subsequent call to ENVI_USER_DEFINED_ANNOTATION adds another annotation item to the file. The desired item is specified by the appropriate keywords and associated parameters.
+  </p>
+  <h2 class="API">
+   <a name="Syntax">
+   </a>
+   Syntax
+  </h2>
+  <p>
+   ENVI_USER_DEFINED_ANNOTATION,
+   <i>
+    Name
+   </i>
+   ,
+   <i>
+    X
+   </i>
+   ,
+   <i>
+    Y
+   </i>
+   [,
+   <a href="#ALIGN">
+    ALIGN
+   </a>
+   ={0 | 0.5 | 1}] [, /
+   <a href="#ARROW">
+    ARROW
+   </a>
+   ] [,
+   <a href="#BGCOLOR">
+    BGCOLOR
+   </a>
+   =
+   <i>
+    integer
+   </i>
+   ] [,
+   <a href="#CHARSIZE">
+    CHARSIZE
+   </a>
+   =
+   <i>
+    floating point
+   </i>
+   ] [,
+   <a href="#COLOR">
+    COLOR
+   </a>
+   =
+   <i>
+    integer
+   </i>
+   ] [, /
+   <a href="#COL_RAMP">
+    COL_RAMP
+   </a>
+   ] [,
+   <a href="#FILL_MODE">
+    FILL_MODE
+   </a>
+   ={0 | 1 | 2 | 3 | 4 | 5 | 6 | 7}] [,
+   <a href="#FILL_ORIEN">
+    FILL_ORIEN
+   </a>
+   =
+   <i>
+    integer
+   </i>
+   ] [,
+   <a href="#FILL_SPACING">
+    FILL_SPACING
+   </a>
+   =
+   <i>
+    floating poin
+   </i>
+   t] [,
+   <a href="#FONT">
+    FONT
+   </a>
+   =
+   <i>
+    string
+   </i>
+   ] [,
+   <a href="#IMAGE">
+    IMAGE
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ] [,
+   <a href="#LSTYLE">
+    LSTYLE
+   </a>
+   =
+   <i>
+    integer
+   </i>
+   ] [, /
+   <a href="#MAP_KEY">
+    MAP_KEY
+   </a>
+   ] [,
+   <a href="#ORIEN">
+    ORIEN
+   </a>
+   =
+   <i>
+    integer
+   </i>
+   ], [, /
+   <a href="#POLYGON">
+    POLYGON
+   </a>
+   ] [, /
+   <a href="#POLYLINE">
+    POLYLINE
+   </a>
+   ] [, /
+   <a href="#SCALE_BARS">
+    SCALE_BARS
+   </a>
+   ] [,
+   <a href="#STR_TEXT">
+    STR_TEXT
+   </a>
+   =
+   <i>
+    string
+   </i>
+   ] [, /
+   <a href="#TEXT">
+    TEXT
+   </a>
+   ] [,
+   <a href="#THICK">
+    THICK
+   </a>
+   =
+   <i>
+    integer
+   </i>
+   ] [,
+   <a href="#USE_MAP_COORDS">
+    USE_MAP_COORDS
+   </a>
+   =
+   <i>
+    file ID
+   </i>
+   ]
+  </p>
+  <p>
+   <b>
+    Optional keywords for ARROW:
+   </b>
+  </p>
+  <p>
+   [,
+   <a href="#HEAD_ANGLE">
+    HEAD_ANGLE
+   </a>
+   =
+   <i>
+    floating point
+   </i>
+   ] [,
+   <a href="#HEAD_PCT">
+    HEAD_PCT
+   </a>
+   =
+   <i>
+    floating point
+   </i>
+   ]
+  </p>
+  <p>
+   <b>
+    Optional keywords for COL_RAMP:
+   </b>
+  </p>
+  <p>
+   [,
+   <a href="#RAMP_INC">
+    RAMP_INC
+   </a>
+   =
+   <i>
+    integer
+   </i>
+   ] [,
+   <a href="#RAMP_LENGTH">
+    RAMP_LENGTH
+   </a>
+   =
+   <i>
+    integer
+   </i>
+   ] [,
+   <a href="#RAMP_MAX_VAL">
+    RAMP_MAX_VAL
+   </a>
+   =
+   <i>
+    floating point
+   </i>
+   ] [,
+   <a href="#RAMP_MIN_VAL">
+    RAMP_MIN_VAL
+   </a>
+   =
+   <i>
+    floating point
+   </i>
+   ] [,
+   <a href="#RAMP_ORIEN">
+    RAMP_ORIEN
+   </a>
+   ={0 | 1 | 2 | 3}] [,
+   <a href="#RAMP_PRECISION">
+    RAMP_PRECISION
+   </a>
+   =
+   <i>
+    integer
+   </i>
+   ] [,
+   <a href="#RAMP_WIDTH">
+    RAMP_WIDTH
+   </a>
+   =
+   <i>
+    integer
+   </i>
+   ]
+  </p>
+  <p>
+   <b>
+    Optional keywords for MAP_KEY:
+   </b>
+  </p>
+  <p>
+   [,
+   <a href="#KEY_FILL_MODE">
+    KEY_FILL_MODE
+   </a>
+   =
+   <i>
+    integer
+   </i>
+   ] [,
+   <a href="#KEY_FILL_ORIEN">
+    KEY_FILL_ORIEN
+   </a>
+   =
+   <i>
+    integer
+   </i>
+   ] [,
+   <a href="#KEY_FILL_SPACING">
+    KEY_FILL_SPACING
+   </a>
+   =
+   <i>
+    floating point
+   </i>
+   ]
+  </p>
+  <p>
+   <b>
+    Keywords for SCALE_BARS
+   </b>
+  </p>
+  <p>
+   <a href="#PIXEL_SIZE">
+    PIXEL_SIZE
+   </a>
+   =
+   <i>
+    floating point
+   </i>
+   [,
+   <a href="#SCALE_FLAG">
+    SCALE_FLAG
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ] [,
+   <a href="#SCALE_HEIGHT">
+    SCALE_HEIGHT
+   </a>
+   =
+   <i>
+    integer
+   </i>
+   ] [,
+   <a href="#SCALE_INC">
+    SCALE_INC
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ] [,
+   <a href="#SCALE_LENGTH">
+    SCALE_LENGTH
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ] [,
+   <a href="#SCALE_SUB_INC">
+    SCALE_SUB_INC
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ] [,
+   <a href="#SCALE_TITLES">
+    SCALE_TITLES
+   </a>
+   =
+   <i>
+    string array
+   </i>
+   ]
+  </p>
+  <h2 class="API">
+   <a name="Arguments">
+   </a>
+   Arguments
+  </h2>
+  <h3>
+   Name
+  </h3>
+  <p>
+   This is a string variable specifying the annotation filename. If
+   <i>
+    Name
+   </i>
+   does not exist,
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   creates a new annotation file. If
+   <i>
+    Name
+   </i>
+   exists,
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   appends the desired item to the annotation file.
+  </p>
+  <h3>
+   X
+  </h3>
+  <p>
+   This is the x pixel location for the annotation item.
+  </p>
+  <h3>
+   Y
+  </h3>
+  <p>
+   This is the y pixel location for the annotation item.
+  </p>
+  <h2 class="API">
+   <a name="Keywords">
+   </a>
+   Keywords
+  </h2>
+  <h3>
+   <a name="ALIGN">
+   </a>
+   ALIGN (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the text alignment for annotation objects supporting this keyword. ALIGN is one of the following floating-point values:
+  </p>
+  <ul>
+   <li value="1">
+    0.0: Left justified
+   </li>
+   <li value="2">
+    0.5: Centered
+   </li>
+   <li value="3">
+    1.0: Right justified
+   </li>
+  </ul>
+  <h3>
+   <a name="ARROW">
+   </a>
+   ARROW (optional)
+  </h3>
+  <p>
+   Set this keyword to specify that the annotation item is an arrow. If you set ARROW, the x and y location parameters are not used, but you must specify the keywords XPTS and YPTS to define the two end points of the arrow (in image coordinates). Optional keywords that you can use with ARROW include COLOR, FILL_MODE, FILL_ORIEN, FILL_SPACING, HEAD_ANGLE, HEAD_PCT, LSTYLE, and THICK.
+  </p>
+  <h3>
+   <a name="BGCOLOR">
+   </a>
+   BGCOLOR (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the background color index for annotation objects supporting this keyword. BGCOLOR is an integer color index where 0 is black, 1 is white, 2 is red, etc. Set BGCOLOR equal to -1 for no background.
+  </p>
+  <h3>
+   <a name="CHARSIZE">
+   </a>
+   CHARSIZE (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the character size for annotation objects supporting this keyword. CHARSIZE is a floating-point value specifying the character size.
+  </p>
+  <h3>
+   <a name="COLOR">
+   </a>
+   COLOR (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the color index for annotation objects supporting this keyword. COLOR is an integer color index into the graphic colors where the default colors are 0 (black), 1 (white), 2 (red), etc.
+  </p>
+  <h3>
+   <a name="COL_RAMP">
+   </a>
+   COL_RAMP (optional)
+  </h3>
+  <p>
+   Set this keyword to specify that the annotation item is a color ramp. If you set COL_RAMP, you must set the x and y location parameters (in image coordinates). Optional keywords that you can use with COL_RAMP include BGCOLOR, COLOR, CHARSIZE, FONT, RAMP_LENGTH, RAMP_INC, RAMP_MAX_VAL, RAMP_MIN_VAL, RAMP_ORIEN, RAMP_PRECISION, RAMP_WIDTH, and THICK.
+  </p>
+  <h3>
+   <a name="FILL_MODE">
+   </a>
+   FILL_MODE (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the IDL fill style for annotation objects supporting this keyword. FILL_MODE is one of the following integer values.
+  </p>
+  <ul>
+   <li value="1">
+    0: No fill
+   </li>
+   <li value="2">
+    1: Solid fill
+   </li>
+   <li value="3">
+    2: Solid line fill
+   </li>
+   <li value="4">
+    3: Dotted line fill
+   </li>
+   <li value="5">
+    4: Dashed line fill
+   </li>
+   <li value="6">
+    5: Dash dot line fill
+   </li>
+   <li value="7">
+    6: Dash dot dot line fill
+   </li>
+   <li value="8">
+    7: Long dash line fill
+   </li>
+  </ul>
+  <h3>
+   <a name="FILL_ORIEN">
+   </a>
+   FILL_ORIEN (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the rotation of fill for annotation objects supporting this keyword. FILL_ORIEN is an integer value greater than 1.
+  </p>
+  <h3>
+   <a name="FILL_SPACING">
+   </a>
+   FILL_SPACING (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the spacing of fill for annotation objects supporting this keyword. FILL_SPACING is floating-point number. This keyword is only used for FILL_MODE values greater than 1.
+  </p>
+  <h3>
+   <a name="FONT">
+   </a>
+   FONT (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the font for annotation objects supporting this keyword. FONT is a string value specifying either a hershey font (
+   <code>
+    '!3'
+   </code>
+   to
+   <code>
+    '!20'
+   </code>
+   ) or a valid name for a true-type font (
+   <code>
+    'Courier'
+   </code>
+   ).
+  </p>
+  <h3>
+   <a name="IMAGE">
+   </a>
+   IMAGE (optional)
+  </h3>
+  <p>
+   Use this keyword to specify an annotation image. IMAGE is a byte array with dimensions [
+   <i>
+    num_samples
+   </i>
+   ,
+   <i>
+    num_lines
+   </i>
+   ] for gray scale or [
+   <i>
+    num_samples
+   </i>
+   ,
+   <i>
+    num_lines
+   </i>
+   , 3] for RGB images. If you set IMAGE, you must set the x and y location parameters (in image coordinates), which reference the lower-left corner of IMAGE.
+  </p>
+  <h3>
+   <a name="LSTYLE">
+   </a>
+   LSTYLE (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the IDL line style for annotation objects supporting this keyword. LSTYLE is an integer value.
+  </p>
+  <h3>
+   <a name="MAP_KEY">
+   </a>
+   MAP_KEY (optional)
+  </h3>
+  <p>
+   Set this keyword to specify that the annotation item is a map key. If you set MAP_KEY, you must set the x and y location parameters (in image coordinates) and specify the keywords KEY_COLORS and KEY_NAMES. Optional keywords for MAP_KEY include BGCOLOR, CHARSIZE, COLOR, FONT, KEY_FILL_MODE, KEY_FILL_ORIEN, KEY_FILL_SPACING, and THICK.
+  </p>
+  <h3>
+   <a name="ORIEN">
+   </a>
+   ORIEN (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the orientation for annotation objects supporting this keyword. ORIEN is an integer value specifying the clockwise rotation angle.
+  </p>
+  <h3>
+   <a name="POLYGON">
+   </a>
+   POLYGON (optional)
+  </h3>
+  <p>
+   Set this keyword to specify that the annotation item is a polygon. If you set POLYGON, the x and y location parameters are not used, but you must use the keywords XPTS and YPTS to define the vertices of the polygon (in image coordinates). Optional keywords that you can use with POLYGON include COLOR, FILL_MODE, FILL_ORIEN, FILL_SPACING, LSTYLE, and THICK.
+  </p>
+  <h3>
+   <a name="POLYLINE">
+   </a>
+   POLYLINE (optional)
+  </h3>
+  <p>
+   Set this keyword to specify that the annotation item is a polyline. If you set POLYLINE, the x and y location parameters are not used, but you must use the keywords XPTS and YPTS to define the polyline vertices (in image coordinates). Optional keywords that you can use with POLYLINE include COLOR, LSTYLE, and THICK.
+  </p>
+  <h3>
+   <a name="SCALE_BARS">
+   </a>
+   SCALE_BARS (optional)
+  </h3>
+  <p>
+   Set this keyword to specify that the annotation item is a scale bar. If you set SCALE_BARS, you must specify the x and y location parameters (in image coordinates) and the keyword PIXEL_SIZE. Optional keywords that you can use with SCALE_BARS include BGCOLOR, COLOR, FONT, SCALE_FLAG, SCALE_HEIGHT, SCALE_INC, SCALE_LENGTH, SCALE_SUB_INC, SCALE_TITLES, and THICK.
+  </p>
+  <h3>
+   <a name="STR_TEXT">
+   </a>
+   STR_TEXT (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the text string for the annotation item TEXT. You must delineate multiple lines of text with
+   <code>
+    !C!C
+   </code>
+   . For example,
+   <code>
+    'Hello!C!CWorld'
+   </code>
+   prints Hello and World on separate lines.
+  </p>
+  <h3>
+   <a name="TEXT">
+   </a>
+   TEXT (optional)
+  </h3>
+  <p>
+   Set this keyword to specify that the annotation item is a text string. If you set TEXT, you must specify the x and y location parameters and the STR_TEXT keyword. Optional keywords that you can use with TEXT include ALIGN, BGCOLOR, CHARSIZE, COLOR, FONT, ORIEN, and THICK.
+  </p>
+  <h3>
+   <a name="THICK">
+   </a>
+   THICK (optional)
+  </h3>
+  <p>
+   Use this optional integer keyword to specify the line thickness of hershey-font characters for annotation objects supporting this keyword.
+  </p>
+  <h3>
+   <a name="USE_MAP_COORDS">
+   </a>
+   USE_MAP_COORDS (optional)
+  </h3>
+  <p>
+   Set this keyword to the FID of a georeferenced image to put the (x,y) and (xpts,ypts) coordinates sent to this procedure in map coordinates instead of file coordinates.
+  </p>
+  <h2 class="API">
+   Keywords for ARROW
+  </h2>
+  <h3>
+   <a name="HEAD_ANGLE">
+   </a>
+   HEAD_ANGLE (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the head angle of an ARROW annotation object. HEAD_ANGLE is a floating-point value greater than 0, specifying the angle in degrees of the arrow head. The default value is 35.0.
+  </p>
+  <h3>
+   <a name="HEAD_PCT">
+   </a>
+   HEAD_PCT (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the size of the head for an ARROW annotation object. HEAD_PCT is a floating-point value between 0.0 and 1.0, specifying the percentage of the head size versus the overall length. The default value is 0.15.
+  </p>
+  <h2 class="API">
+   Keywords for COL_RAMP
+  </h2>
+  <h3>
+   <a name="RAMP_INC">
+   </a>
+   RAMP_INC (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the number of color ramp increments. RAMP_INC is an integer value specifying number of increments. The default value is 3.
+  </p>
+  <h3>
+   <a name="RAMP_LENGTH">
+   </a>
+   RAMP_LENGTH (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the color ramp length in pixels. RAMP_LENGTH is an integer value specifying the color ramp length in pixels. The default value is 200.
+  </p>
+  <h3>
+   <a name="RAMP_MAX_VAL">
+   </a>
+   RAMP_MAX_VAL (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the value associated with the high end of the color ramp. RAMP_MAX_VAL is a floating-point value.
+  </p>
+  <h3>
+   <a name="RAMP_MIN_VAL">
+   </a>
+   RAMP_MIN_VAL (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the value associated with the low end of the color ramp. RAMP_MIN_VAL is a floating-point value.
+  </p>
+  <h3>
+   <a name="RAMP_ORIEN">
+   </a>
+   RAMP_ORIEN (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the color ramp orientation. RAMP_ORIEN is one of the following integer values:
+  </p>
+  <ul>
+   <li value="1">
+    0: Horizontal (low to high)
+   </li>
+   <li value="2">
+    1: Vertical (high to low)
+   </li>
+   <li value="3">
+    2: Horizontal (high to low)
+   </li>
+   <li value="4">
+    3: Vertical (low to high)
+   </li>
+  </ul>
+  <h3>
+   <a name="RAMP_PRECISION">
+   </a>
+   RAMP_PRECISION (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the number of precision digits for color ramp values. RAMP_PRECISION is an integer. The default value is 1.
+  </p>
+  <h3>
+   <a name="RAMP_WIDTH">
+   </a>
+   RAMP_WIDTH (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the color ramp width in pixels. RAMP_WIDTH is an integer. The default value is 25.
+  </p>
+  <h2 class="API">
+   Keywords for MAP_KEY
+  </h2>
+  <h3>
+   <a name="KEY_FILL_MODE">
+   </a>
+   KEY_FILL_MODE (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the IDL fill mode for map key polygons. KEY_FILL_MODE is an integer value indicating the IDL fill mode. The default value is 0 (no fill).
+  </p>
+  <h3>
+   <a name="KEY_FILL_ORIEN">
+   </a>
+   KEY_FILL_ORIEN (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the orientation for fill. KEY_FILL_ORIEN is an integer value greater than l. The default value is 0 (no rotation).
+  </p>
+  <h3>
+   <a name="KEY_FILL_SPACING">
+   </a>
+   KEY_FILL_SPACING (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the spacing for fill. KEY_FILL_SPACING is floating-point value indicating the fill spacing. KEY_FILL_SPACING is only valid when KEY_FILL_MODE is greater than 1. The default value is 0.1.
+  </p>
+  <h2 class="API">
+   Keywords for SCALE_BARS
+  </h2>
+  <h3>
+   <a name="PIXEL_SIZE">
+   </a>
+   PIXEL_SIZE
+  </h3>
+  <p>
+   Use this keyword to specify a floating-point number that represents both the x and y pixel size in meters. If the pixel size is not in meters, you need to convert it to meters. If the x and y pixel sizes are different, use the x pixel size (since scale bars are always horizontal).
+  </p>
+  <h3>
+   <a name="SCALE_FLAG">
+   </a>
+   SCALE_FLAG (optional)
+  </h3>
+  <p>
+   Use this keyword to specify which units are active for a scale bar. SCALE_FLAG is a four-element byte array of zeros and ones, where a value of 1 makes the corresponding units active. The elements of SCALE_FLAG correspond to the units [
+   <i>
+    km
+   </i>
+   ,
+   <i>
+    miles
+   </i>
+   ,
+   <i>
+    meters
+   </i>
+   ,
+   <i>
+    feet
+   </i>
+   ]. The default is [1, 0, 0, 0], displaying only kilometer units.
+  </p>
+  <h3>
+   <a name="SCALE_HEIGHT">
+   </a>
+   SCALE_HEIGHT (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the height in pixels for the scale bars. SCALE_HEIGHT is an integer value specifying the scale bar height in pixels. The default value is 25.
+  </p>
+  <h3>
+   <a name="SCALE_INC">
+   </a>
+   SCALE_INC (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the number of increments for each type of scale bar. SCALE_INC is a four-element array of integers specifying the number of increments for each of the units [
+   <i>
+    km
+   </i>
+   ,
+   <i>
+    miles
+   </i>
+   ,
+   <i>
+    meters
+   </i>
+   ,
+   <i>
+    feet
+   </i>
+   ]. The default is [1, 1, 1, 1].
+  </p>
+  <h3>
+   <a name="SCALE_LENGTH">
+   </a>
+   SCALE_LENGTH (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the length in map scale for each type of scale bar. SCALE_LENGTH is a four-element array of floating-point values specifying the length in map scale for each of the units [
+   <i>
+    km
+   </i>
+   ,
+   <i>
+    miles
+   </i>
+   ,
+   <i>
+    meters
+   </i>
+   ,
+   <i>
+    feet
+   </i>
+   ].
+  </p>
+  <h3>
+   <a name="SCALE_SUB_INC">
+   </a>
+   SCALE_SUB_INC (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the number of sub-increments for the first unit of a given scale bar. SCALE_SUB_INC is a four-element array of integers specifying the number of increments for each of the units [
+   <i>
+    km
+   </i>
+   ,
+   <i>
+    miles
+   </i>
+   ,
+   <i>
+    meters
+   </i>
+   ,
+   <i>
+    feet
+   </i>
+   ]. The default is [4, 4, 4, 4].
+  </p>
+  <h3>
+   <a name="SCALE_TITLES">
+   </a>
+   SCALE_TITLES (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the titles for each scale bar. SCALE_TITLE is a four-element string array specifying the titles for each of the units [
+   <i>
+    km
+   </i>
+   ,
+   <i>
+    miles
+   </i>
+   ,
+   <i>
+    meters
+   </i>
+   ,
+   <i>
+    feet
+   </i>
+   ]. Use a null string ('') for units that you do not use. The default is
+   <code>
+    ['Kilometers', 'Miles', 'Meters', 'Feet']
+   </code>
+   .
+  </p>
+  <h2 class="API">
+   <a name="Example">
+   </a>
+   Example
+  </h2>
+  <p class="Code">
+   PRO ANNOTATION_DEMO
+  </p>
+  <p class="Code_Indented">
+   compile_opt IDL2
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ;  Use the file bhtmref.img for this example.
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   in_file = DIALOG_PICKFILE()
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ;  Open the file
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ENVI_OPEN_FILE, in_file, R_FID = in_fid
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ;  Add a text object to the annotation file
+  </p>
+  <p class="Code_Indented">
+   ;  example_annotation_file.ann.
+  </p>
+  <p class="Code_Indented">
+   ;  The lower left corner of the text object
+  </p>
+  <p class="Code_Indented">
+   ; will be at the  ENVI image coordinates of 50,50.
+  </p>
+  <p class="Code_Indented">
+   ; The text object has 2 lines that both say,
+  </p>
+  <p class="Code_Indented">
+   ; "Text Test Object" and will be in red lettering.
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ENVI_USER_DEFINED_ANNOTATION, 'example_annotation_file.ann', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;125, 50, STR_TEXT = 'Text!C!CTest Object', COLOR = 2, /TEXT, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;ALIGN = 0.5
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ;  Add a small test image.
+
+The lower left corner will be at
+  </p>
+  <p class="Code_Indented">
+   ;  image coordinate (50,140) which will place it just below
+  </p>
+  <p class="Code_Indented">
+   ; our text.
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   image = BYTSCL(DIST(40))
+  </p>
+  <p class="Code_Indented">
+   ENVI_USER_DEFINED_ANNOTATION, 'example_annotation_file.ann', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;50, 140, image=image
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ;  If you restore the annotation file on the image, you should
+  </p>
+  <p class="Code_Indented">
+   ; see the objects placed as described above.
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code">
+   END
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

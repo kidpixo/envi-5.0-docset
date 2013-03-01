@@ -1,0 +1,2420 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Preprocess|Atmospheric Correction Module" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Fast Line-of-sight Atmospheric Analysis of Hypercubes (FLAASH™)
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/TableStyles/Property_Table.css" rel="stylesheet" />
+  <link href="../../Resources/TableStyles/Description.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#PreprocessImagery/QUAC_FLAASH/FLAASH.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../PreprocessImagery.htm">
+    Preprocess
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="AboutAtmosphericCorrectionModule.htm">
+    Atmospheric Correction Module
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Fast Line-of-sight Atmospheric Analysis of Hypercubes (FLAASH™)
+   </span>
+  </div>
+  <h1>
+   <a name="kanchor136">
+   </a>
+   Fast Line-of-sight Atmospheric Analysis of Hypercubes (FLAASH™)
+  </h1>
+  <p>
+   FLAASH™ is a first-principles atmospheric correction tool that corrects wavelengths in the visible through near-infrared and shortwave infrared regions, up to 3 µm. (For thermal regions, use the Toolbox option
+   <b>
+    Radiometric Correction &gt; Thermal Atmospheric Correction
+   </b>
+   .) FLAASH works with most hyperspectral and multispectral sensors. Water vapor and aerosol retrieval are only possible when the image contains bands in appropriate wavelength positions. FLAASH can correct images collected in either vertical (nadir) or slant-viewing geometries. See
+   <a href="BackgroundFLAASH.htm">
+    Background on FLAASH
+   </a>
+   for a scientific discussion of the methods used by FLAASH.
+  </p>
+  <p>
+   See the following sections:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#Before">
+     Before You Begin
+    </a>
+   </li>
+   <li value="2">
+    <a href="#Set">
+     Start FLAASH and Select Files
+    </a>
+   </li>
+   <li value="3">
+    <a href="#Select">
+     Select Scene and Sensor Options
+    </a>
+   </li>
+   <li value="4">
+    <a href="#Select2">
+     Select Atmospheric Model Options
+    </a>
+   </li>
+   <li value="5">
+    <a href="#Select3">
+     Select Water Retrieval Options
+    </a>
+   </li>
+   <li value="6">
+    <a href="#Select4">
+     Select Aerosol Options
+    </a>
+   </li>
+   <li value="7">
+    <a href="#Select5">
+     Select an Initial Visibility Value
+    </a>
+   </li>
+   <li value="8">
+    <a href="#Apply">
+     Apply Spectral Polishing
+    </a>
+   </li>
+   <li value="9">
+    <a href="#Recalibr">
+     Recalibrate Input Wavelengths
+    </a>
+   </li>
+   <li value="10">
+    <a href="#Select6">
+     Select Hyperspectral Options
+    </a>
+   </li>
+   <li value="11">
+    <a href="#Select7">
+     Select Multispectral Options
+    </a>
+   </li>
+   <li value="12">
+    <a href="#Create">
+     Create a Template File
+    </a>
+   </li>
+  </ul>
+  <p>
+   Also see
+   <a href="FLAASHAdvancedOptions.htm">
+    FLAASH Advanced Options
+   </a>
+   .
+  </p>
+  <p>
+   When you are finished setting all of the options in the FLAASH Atmospheric Correction Module Input Parameters dialog, click
+   <b>
+    Apply
+   </b>
+   to run FLAASH.
+  </p>
+  <h2>
+   <a name="Before">
+   </a>
+   Before You Begin
+  </h2>
+  <ul>
+   <li value="1">
+    The input image for FLAASH must be a radiometrically calibrated radiance image in band-interleaved-by-line (BIL) or band-interleaved-by-pixel (BIP) format. To convert between interleaves, select the following option from the Toolbox:&#160;
+    <b>
+     Raster Management &gt; Convert Interleave
+    </b>
+    .
+   </li>
+   <li value="2">
+    The data type can be floating-point, long integer (4-byte signed), or integer (2-byte signed or unsigned).
+   </li>
+   <li value="3">
+    To perform water retrieval, the image bands must span at least one of the following ranges at 15 nm spectral resolution or better: 1050-1210 nm, 770-870 nm, and 870-1020 nm. Additional wavelength coverage is required for aerosol retrieval.
+   </li>
+   <li value="4">
+    For hyperspectral sensors, wavelengths and full width half maximum (FWHM) values must be available in the
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    header file.
+   </li>
+   <li value="5">
+    Known multispectral sensors require only wavelength values, while unknown (custom) multispectral sensors also require spectral response filter functions.
+   </li>
+   <li value="6">
+    If the image header file does not contain wavelengths,
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    prompts you to read wavelength values from an ASCII file if one is available. The ASCII&#160;file should contain data in columns, with wavelengths in one column. Be sure to correctly specify the wavelength column and units when reading the ASCII&#160;file.
+   </li>
+   <li value="7">
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    automatically calibrates and applies scale factors to ASTER Level 1A and 1B files when you read them. You do not need to perform these steps separately. Because Level 1A bands are not coregistered, you cannot directly input Level 1A VNIR or SWIR datasets into FLAASH. A recommended approach is to coregister VNIR and SWIR bands, then use
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    's Layer Stacking tool to combine them into a single dataset to input into FLAASH. See the "Using FLAASH with ASTER&#160;Data" tutorial, which is available from the
+    <span class="DocumentTitleCompanyName">
+     Exelis
+    </span>
+    website.
+   </li>
+  </ul>
+  <h2>
+   <a name="Set">
+   </a>
+   Start FLAASH and Select Files
+  </h2>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Radiometric Correction &gt; Atmospheric Correction Module &gt; FLAASH Atmospheric Correction
+    </b>
+    . The FLAASH Atmospheric Correction Module Input Parameters dialog appears.
+   </li>
+   <li value="2">
+    Click
+    <b>
+     Input Radiance Image
+    </b>
+    . The FLAASH Input FIle dialog appears.
+   </li>
+   <li value="3">
+    Select an input image and perform optional spatial subsetting, then click
+    <b>
+     OK
+    </b>
+    . If you select a spatial subset, you can modify the image extents further in the FLAASH
+    <a href="FLAASHAdvancedOptions.htm#Set2">
+     Advanced Settings
+    </a>
+    dialog if needed. The Radiance Scale Factors dialog appears. See
+    <a href="#Scale">
+     Scale Factors
+    </a>
+    for details.
+   </li>
+   <li value="4">
+    The FLAASH&#160;Parameters dialog is populated with default filenames and directories for output files generated by FLAASH. You can change these by clicking the appropriate buttons. The
+    <b>
+     Output Directory for FLAASH&#160;Files
+    </b>
+    is where all files except the reflectance file are written.
+   </li>
+   <p>
+    The following is a summary of output files that FLAASH will create upon clicking Apply in the FLAASH Parameters dialog:
+   </p>
+   <ul>
+    <li value="1">
+     <b>
+      Surface reflectance:
+     </b>
+     This is the atmospherically corrected reflectance image. Any bad bands are set according to the bad bands defined for the input radiance image, as well as those for which the atmospheric transmission is too low for an accurate reflectance calculation.
+    </li>
+    <li value="2">
+     <b>
+      Water vapor:
+     </b>
+     FLAASH creates an image of column water vapor in units of (atm • cm). The name
+     <code>
+      water.dat
+     </code>
+     is appended to your specified root name.
+    </li>
+    <li value="3">
+     <b>
+      Cloud map:
+     </b>
+     FLAASH creates a cloud map classification image with the name
+     <code>
+      cloudmask.dat
+     </code>
+     appended to your specified root name. The cloud determinations are used during FLAASH processing to refine the estimate of
+     <span style="font-family: Symbol;">
+      r
+     </span>
+     <i style="vertical-align: sub; font-style: normal;">
+      e
+     </i>
+     in equation (1) in
+     <a href="BackgroundFLAASH.htm">
+      Background on FLAASH
+     </a>
+     . This quantity defines the magnitude of the adjacency effect.
+    </li>
+    <li value="4">
+     <b>
+      Log file:
+     </b>
+     This is an ASCII file containing a detailed description of the FLAASH processing. The name
+     <code>
+      journal.txt
+     </code>
+     is appended to your specified root name.
+    </li>
+    <li value="5">
+     <b>
+      FLAASH template file
+     </b>
+     (optional): If you set the
+     <b>
+      Automatically Save Template File
+     </b>
+     toggle button to
+     <b>
+      Yes
+     </b>
+     in the FLAASH Advanced Settings dialog, a template file is automatically saved into the FLAASH output directory when you run FLAASH. The name
+     <code>
+      template.txt
+     </code>
+     is appended to your specified root name.
+    </li>
+   </ul>
+  </ol>
+  <h3>
+   <a name="Scale">
+   </a>
+   Scale Factors
+  </h3>
+  <p>
+   FLAASH requires input data to be floating-point values in units of µW/(cm
+   <span style="vertical-align: super;">
+    2
+   </span>
+   * nm* sr). If the input radiance image is not already in floating-point format, you must know the scale factor(s) used to convert radiance data into these units.
+  </p>
+  <p>
+   If the scale factor is constant for all bands, select
+   <b>
+    Use single scale factor for all bands
+   </b>
+   . The
+   <b>
+    Single scale factor
+   </b>
+   text field appears. If the input image already has the correct units, then set the scale factors to 1 for all bands.
+  </p>
+  <p>
+   Suppose that the radiance values in your input dataset are in units of W/(m
+   <span style="vertical-align: super;">
+    2
+   </span>
+   * sr * µm). What scale factor do you need to convert the pixel values to units of µW/(cm
+   <span style="vertical-align: super;">
+    2
+   </span>
+   * nm* sr)? A simple proof follows:
+  </p>
+  <p class="indent">
+   W  --&gt;              µW: factor of 10
+   <span style="vertical-align: super;">
+    6
+   </span>
+  </p>
+  <p class="indent">
+   m
+   <span style="vertical-align: super;">
+    2
+   </span>
+   --&gt; cm
+   <span style="vertical-align: super;">
+    2
+   </span>
+   : factor of 10
+   <span style="vertical-align: super;">
+    -4
+   </span>
+   (because these units are in the denominator)
+  </p>
+  <p class="indent">
+   µm --&gt; nm: factor of 10
+   <span style="vertical-align: super;">
+    -3
+   </span>
+   (because these units are in the denominator)
+  </p>
+  <p class="indent">
+   scale factor = 10
+   <span style="vertical-align: super;">
+    6
+   </span>
+   * 10
+   <span style="vertical-align: super;">
+    -4
+   </span>
+   * 10
+   <span style="vertical-align: super;">
+    -3
+   </span>
+   , or 10
+   <span style="vertical-align: super;">
+    -1
+   </span>
+   .
+  </p>
+  <p>
+   You would enter the denominator
+   <b>
+    10
+   </b>
+   in the
+   <b>
+    Single scale factor
+   </b>
+   field.
+  </p>
+  <p>
+   If the scale factor is not a constant for all bands, you must supply an ASCII&#160;file that specifies the scale factor for each band. In the Radiance Scale Factors dialog, select
+   <b>
+    Read array of scale factors (1 per band) from ASCII&#160;file
+   </b>
+   , and select an ASCII&#160;file.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   An example of a scale factors file that is appropriate for 1995-2002 AVIRIS data is
+   <code>
+    AVIRIS_1998_scale.txt
+   </code>
+   , which is included with the "Correcting Hyperspectral Data Using FLAASH" tutorial data files. You can download these files from the
+   <span class="DocumentTitleCompanyName">
+    Exelis
+   </span>
+   website.
+  </p>
+  <p>
+   Be sure to specify the correct column for the scale factor. For convenience, you can apply a multiplication factor and/or inverse. If you specify both, the multiplication factor is applied before the inverse. You can also re-define the scale factors later using the FLAASH
+   <a href="FLAASHAdvancedOptions.htm#Set2">
+    Advanced Settings
+   </a>
+   dialog.
+  </p>
+  <h2>
+   <a name="Select">
+   </a>
+   Select Scene and Sensor Options
+  </h2>
+  <p>
+   Scene and sensor details give FLAASH an approximation of the sun's position relative to the surface.
+  </p>
+  <ol>
+   <li value="1">
+    In the
+    <b>
+     Lat
+    </b>
+    and
+    <b>
+     Lon
+    </b>
+    fields, enter the latitude and longitude of the scene center, respectively, using negative values for Southern and Western Hemispheres. To toggle between decimal degrees and degrees/minutes/seconds, click
+    <b>
+     DD &lt;-&gt; DMS
+    </b>
+    .
+   </li>
+   <li value="2">
+    Click
+    <b>
+     Sensor Type
+    </b>
+    and select the name of the sensor that collected the input radiance image. The input parameters dialog changes slightly when switching between
+    <b>
+     Multispectral
+    </b>
+    and
+    <b>
+     Hyperspectral
+    </b>
+    sensor types. For spaceborne sensors, a default
+    <b>
+     Sensor Altitude (km)
+    </b>
+    is automatically set according to the sensor type.
+   </li>
+   <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+    <span class="autonumber">
+     <span>
+      <b>
+       Note:
+      </b>
+     </span>
+    </span>
+    For multispectral sensors, the sensor type is used to automatically assign the correct spectral response functions for the image bands. FLAASH uses
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    ’s filter functions for the named multispectral sensors.
+   </p>
+   <li value="3">
+    In the
+    <b>
+     Sensor Altitude (km)
+    </b>
+    field, enter the altitude of the sensor when the image was collected, in kilometers above sea level. For spaceborne sensors, the sensor altitude is automatically set when you select the sensor type.
+   </li>
+   <li value="4">
+    In the
+    <b>
+     Ground Elevation (km)
+    </b>
+    field, enter the average scene elevation, in kilometers above sea level.
+   </li>
+   <li value="5">
+    In the
+    <b>
+     Pixel Size (m)
+    </b>
+    field, enter the image pixel size in meters. The pixel size value is used for the adjacency correction. An approximate value is adequate. For non-nadir looking sensors (or any sensor with non-square pixels) enter the largest pixel dimension.
+   </li>
+   <li value="6">
+    Click the
+    <b>
+     Flight Date
+    </b>
+    drop-down lists, select the month and date the scene was collected. Use the arrow increment buttons to select a year, or enter the four-digit year in the text box.
+   </li>
+   <li value="7">
+    In the
+    <b>
+     Flight Time GMT (HH:MM:SS)
+    </b>
+    fields, enter the Greenwich Mean Time when the scene was collected.
+   </li>
+  </ol>
+  <h2>
+   <a name="Select2">
+   </a>
+   Select Atmospheric Model Options
+  </h2>
+  <p>
+   Use the
+   <b>
+    Atmospheric Model
+   </b>
+   drop-down list to choose one of the standard MODTRAN® model atmospheres.
+  </p>
+  <p>
+   For the best results, select a model whose standard column water vapor amount is similar to, or somewhat greater than, that expected for the scene. The standard column water vapor amounts (from sea level to space) for each model atmosphere are given in the following table.
+  </p>
+  <table style="caption-side: top;margin-left: 0;margin-right: auto;mc-table-style: url('../../Resources/TableStyles/Description.css');" cellspacing="0" class="TableStyle_Description">
+   <col />
+   <col />
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p>
+       Model Atmosphere
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p>
+       Water Vapor
+       <br />
+       (std atm-cm)
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p>
+       Water Vapor
+      </p>
+      <p>
+       (g/cm
+       <span style="vertical-align: super;">
+        2
+       </span>
+       )
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p>
+       Surface Air Temperature
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       Sub-Arctic Winter (SAW)
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       518
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       0.42
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       -16° C (3° F)
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       Mid-Latitude Winter (MLW)
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       1060
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       0.85
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       -1° C (30° F)
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       U.S. Standard (US)
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       1762
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       1.42
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       15° C (59° F)
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       Sub-Arctic Summer (SAS)
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       2589
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       2.08
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       14° C (57° F)
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       Mid-Latitude Summer (MLS)
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       3636
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       2.92
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       21° C (70° F)
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <p>
+       Tropical (T)
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <p>
+       5119
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <p>
+       4.11
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColEnd">
+      <p>
+       27° C (80° F)
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <p>
+   If no water vapor information is available, select an atmosphere according to the known or expected surface air temperature, which tends to correlate with water vapor. If the temperature is unknown, select an atmosphere from the following table, which is based on a seasonal-latitude surface temperature model.
+  </p>
+  <table style="mc-table-style: url('../../Resources/TableStyles/Description.css');margin-left: 0;margin-right: auto;caption-side: top;" cellspacing="0" class="TableStyle_Description">
+   <col />
+   <col />
+   <col />
+   <col />
+   <col />
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p>
+       Latitude (°N)
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p>
+       Jan
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p>
+       March
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p>
+       May
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p>
+       July
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p>
+       Sept
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p>
+       Nov
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       80
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       SAW
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       SAW
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       SAW
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       MLW
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       MLW
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       SAW
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       70
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       SAW
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       SAW
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       MLW
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       MLW
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       MLW
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       SAW
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       60
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       MLW
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       MLW
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       MLW
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       SAS
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       SAS
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       MLW
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       50
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       MLW
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       MLW
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       SAS
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       SAS
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       SAS
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       SAS
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       40
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       SAS
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       SAS
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       SAS
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       MLS
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       MLS
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       SAS
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       30
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       MLS
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       MLS
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       MLS
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       T
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       T
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       MLS
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       20
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       T
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       T
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       T
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       T
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       T
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       T
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       10
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       T
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       T
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       T
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       T
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       T
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       T
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       0
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       T
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       T
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       T
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       T
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       T
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       T
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       -10
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       T
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       T
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       T
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       T
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       T
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       T
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       -20
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       T
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       T
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       T
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       MLS
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       MLS
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       T
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       -30
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       MLS
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       MLS
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       MLS
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       MLS
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       MLS
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       MLS
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       -40
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       SAS
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       SAS
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       SAS
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       SAS
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       SAS
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       SAS
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       -50
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       SAS
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       SAS
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       SAS
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       MLW
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       MLW
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       SAS
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       -60
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       MLW
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       MLW
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       MLW
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       MLW
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       MLW
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       MLW
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       -70
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       MLW
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       MLW
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       MLW
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       MLW
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       MLW
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       MLW
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+      <p>
+       -80
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+      <p>
+       MLW
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+      <p>
+       MLW
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+      <p>
+       MLW
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+      <p>
+       MLW
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+      <p>
+       MLW
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColEnd">
+      <p>
+       MLW
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3>
+   Water Vapor Units
+  </h3>
+  <p>
+   The “atm-cm” unit is specific to the atmospheric science community, which typically uses one of two units to measure the total amount of a gas in the atmospheric column from the ground to the top of the atmosphere (where 200 to 300 km is generally a good number for the location of the top).
+  </p>
+  <p>
+   When you use units of “atm-cm,” think of it as bringing all the water molecules down to a thin layer of pure water vapor at the Earth's surface, at 1 atm of pressure and 0°  C. That layer has a thickness measured in centimeters, so the water column is described in atmosphere-centimeters. If the pressure were doubled, then the thickness would be halved. Thus, the units of atm-cm (not just cm) are used to describe the amount of gas in the atmospheric column to emphasize that the height and pressure are interdependent.
+  </p>
+  <p>
+   Obviously it is not physically possible to bring these molecules into such a condensed layer. All of the molecules in the layer would condense into a liquid under these conditions, even if they could be gathered in such a way. The layer is imaginary.
+  </p>
+  <p>
+   The second set of units, gm/cm
+   <span style="vertical-align: super;">
+    2
+   </span>
+   , is more easily understood as the mass of water molecules in the atmospheric column over each cm
+   <span style="vertical-align: super;">
+    2
+   </span>
+   of ground surface. Since liquid water has a 1 gm/cm
+   <span style="vertical-align: super;">
+    2
+   </span>
+   density, this value is numerically equal to the number of centimeters of water on the ground if all the atmospheric water rained out at once.
+  </p>
+  <h2>
+   <a name="Select3">
+   </a>
+   Select Water Retrieval Options
+  </h2>
+  <p>
+   To solve the radiative transfer equations that allow apparent surface reflectance to be computed, the column water vapor amount for each pixel in the image must be determined. FLAASH includes a method for retrieving the water amount for each pixel. This technique produces a more accurate correction than using a constant water amount for the entire scene. To use this water retrieval method, the image must have bands that span at least one of the following ranges at a spectral resolution of 15 nm or better:
+  </p>
+  <ul>
+   <li value="1">
+    1050-1210 nm (for the 1135 nm water feature)
+   </li>
+   <li value="2">
+    870-1020 nm (for the 940 nm water feature)
+   </li>
+   <li value="3">
+    770-870 nm (for the 820 nm water feature)
+   </li>
+  </ul>
+  <p>
+   For most of the multispectral sensor types, the
+   <b>
+    Water Retrieval
+   </b>
+   setting is
+   <b>
+    No
+   </b>
+   because these sensors do not have the appropriate bands to perform the retrieval.
+  </p>
+  <p>
+   The
+   <b>
+    Water Retrieval
+   </b>
+   options are as follows:
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     Yes:
+    </b>
+    Perform water retrieval. From the
+    <b>
+     Water Absorption Feature
+    </b>
+    drop-down list, select the water feature you wish to use. The 1135 nm feature is recommended if the appropriate bands are available. If you select 1135 nm or 940 nm, and the feature is saturated due to an extremely wet atmosphere, then the 820 nm feature is automatically used in its place if bands spanning this region are available.
+   </li>
+  </ul>
+  <p class="TipIndent" madcap:autonum="&lt;b&gt;Tip: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Tip:
+     </b>
+    </span>
+   </span>
+   When performing a water retrieval on multispectral image data, use the
+   <a href="#Multispe">
+    Multispectral Settings dialog
+   </a>
+   to manually set the water bands.
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     No:
+    </b>
+    Use a constant column water vapor amount for all pixels in the image. In this case, the column water vapor amount is determined according to the standard column water vapor amount for the selected Atmospheric Model, multiplied by an optional
+    <b>
+     Water Column Multiplier
+    </b>
+    . Set the
+    <b>
+     Water Column Multiplier
+    </b>
+    value accordingly.
+   </li>
+  </ul>
+  <h2>
+   <a name="Select4">
+   </a>
+   Select Aerosol Options
+  </h2>
+  <p>
+   Click the
+   <b>
+    Aerosol Model
+   </b>
+   drop-down list and select one of the standard MODTRAN aerosol/haze types.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   The choice of model is not critical if the visibility is high (for example, greater than 40 km).
+  </p>
+  <p>
+   The model choices are as follows:
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     Rural:
+    </b>
+    Represents aerosols in areas not strongly affected by urban or industrial sources. The particle sizes are a blend of two distributions, one large and one small.
+   </li>
+   <li value="2">
+    <b>
+     Urban:
+    </b>
+    A mixture of 80% rural aerosol with 20% soot-like aerosols, appropriate for high-density urban/industrial areas.
+   </li>
+   <li value="3">
+    <b>
+     Maritime:
+    </b>
+    Represents the boundary layer over oceans, or continents under a prevailing wind from the ocean. It is composed of two components, one from sea spray and another from rural continental aerosol (that omits the largest particles).
+   </li>
+   <li value="4">
+    <b>
+     Tropospheric:
+    </b>
+    Applies to calm, clear (visibility greater than 40 km) conditions over land and consists of the small-particle component of the rural model.
+   </li>
+  </ul>
+  <p>
+   For more details on MODTRAN aerosol models, see the following reference:
+  </p>
+  <p>
+   Abreu, L. W., and G. P. Anderson, Eds. 1996.
+   <i>
+    The MODTRAN 2/3 report and LOWTRAN 7 model
+   </i>
+   . Phillips Laboratory, Geophysics Directorate, PL/GPOS, Hanscom AFB, MA. Contract F19628-91-C-0132.
+  </p>
+  <h3>
+   Aerosol Retrieval
+  </h3>
+  <p>
+   FLAASH includes a method for retrieving the aerosol amount and estimating a scene average visibility using a dark pixel reflectance ratio method based on work by Kaufman et al. (1997). The dark-land pixel-retrieval method requires the presence of sensor channels around 660 nm and 2100 nm. A dark-land pixel is defined to be one with a 2100 nm reflectance of 0.1 or less and a 660:2100 reflectance ratio of approximately 0.45. If the input image contains bands near 800 nm and 420 nm, an additional check is performed, requiring the 800:420 radiance ratio to be 1 or less, which eliminates pixels likely to be shadows and water bodies.
+  </p>
+  <p>
+   Click the
+   <b>
+    Aerosol Retrieval
+   </b>
+   drop-down list: and select an option:
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     None:
+    </b>
+    When you select this option, the value in the
+    <b>
+     Initial Visibility (tm)
+    </b>
+    field is used for the aerosol model (described in the following section).
+   </li>
+   <li value="2">
+    <b>
+     2-Band (K-T):
+    </b>
+    Use the aerosol retrieval method. If no suitable dark pixels are found, then the value in the
+    <b>
+     Initial Visibility
+    </b>
+    field is used.
+   </li>
+   <li value="3">
+    <b>
+     2-Band Over Water
+    </b>
+    : Use this setting for maritime scenes.
+   </li>
+  </ul>
+  <p class="Tip" madcap:autonum="&lt;b&gt;Tip: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Tip:
+     </b>
+    </span>
+   </span>
+   When performing an aerosol retrieval on multispectral image data, use the
+   <a href="#Multispe">
+    Multispectral Settings dialog
+   </a>
+   to manually set the aerosol bands.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   You should not retrieve aerosols with ASTER data. While ASTER bands cover the region required for the dark-land pixel-retrieval method, the bandwidth for Band 2 is fairly wide (660 nm) and will likely include the vegetation red edge, which could significantly bias the visibility estimate.
+  </p>
+  <h2>
+   <a name="Select5">
+   </a>
+   Select an Initial Visibility Value
+  </h2>
+  <p>
+   In the
+   <b>
+    Initial Visibility
+   </b>
+   field, enter an estimate of the scene visibility in kilometers. The initial visibility value is assumed for atmospheric correction if the aerosol is not being retrieved.
+  </p>
+  <p>
+   The following table gives the approximate scene visibility values based on weather conditions:
+  </p>
+  <table style="mc-table-style: url('../../Resources/TableStyles/Description.css');caption-side: top;margin-left: 0;margin-right: auto;" cellspacing="0" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p>
+       Weather Condition
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p>
+       Scene Visibility
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       Clear
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       40 to 100 km
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       Moderate Haze
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       20 to 30 km
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+      <p>
+       Thick Haze
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColEnd">
+      <p>
+       15 km or less
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <p>
+   The visibility, V is defined as the 550 nm meteorological range and is related to extinction coefficient β (base
+   <i>
+    e
+   </i>
+   ) by the equation V = 3.912/β. The extinction coefficient β is defined as the horizontal optical depth per km. A related value, the aerosol optical depth (AOD) is measured vertically (from the ground to space). To convert the AOD to β, divide AOD by the effective aerosol thickness layer, which typically has a value of around 2 km, but varies with the visibility, elevation, and other factors.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   Enter an
+   <b>
+    Initial Visibility (tm)
+   </b>
+   value even if you have set the
+   <b>
+    Aerosol Retrieval
+   </b>
+   parameter to
+   <b>
+    2-Band (K-T)
+   </b>
+   , as FLAASH uses the
+   <b>
+    Initial Visibility (tm)
+   </b>
+   value if the aerosol cannot be retrieved.
+  </p>
+  <h2>
+   <a name="Apply">
+   </a>
+   Apply Spectral Polishing
+  </h2>
+  <p>
+   Spectral polishing is a technique that reduces spectral artifacts in hyperspectral data. See
+   <a href="BackgroundFLAASH.htm#Spectral">
+    Background on FLAASH
+   </a>
+   for details on how spectral polishing is applied.
+  </p>
+  <ol>
+   <li value="1">
+    Click the
+    <b>
+     Spectral Polishing
+    </b>
+    toggle button to select one of the following options:
+    <ul>
+     <li value="1">
+      <b>
+       Yes:
+      </b>
+      Spectrally polish the reflectance image.
+     </li>
+     <li value="2">
+      <b>
+       No:
+      </b>
+      Output the unaltered modeled reflectance.
+     </li>
+    </ul>
+   </li>
+   <li value="2">
+    In the
+    <b>
+     Width (number of bands)
+    </b>
+    field, enter the width of the smoothing window to be used in the FLAASH spectral polishing algorithm. A larger number generates more smoothing. A value of 9 is recommended for typical 10 nm-resolution hyperspectral sensors (such as AVIRIS). A value of 2 provides minimal smoothing but removes odd-even spectral band imbalances. Odd polishing widths are slightly more computationally efficient.
+   </li>
+  </ol>
+  <h2>
+   <a name="Recalibr">
+   </a>
+   Recalibrate Input Wavelengths
+  </h2>
+  <p>
+   FLAASH includes a method for identifying and correcting wavelength miscalibrations. See
+   <a href="BackgroundFLAASH.htm#Waveleng">
+    Background on FLAASH
+   </a>
+   for details.
+  </p>
+  <p>
+   Click the
+   <b>
+    Wavelength Recalibration
+   </b>
+   toggle button to select one of the following options:
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     Yes:
+    </b>
+    Automatically adjust the wavelength calibration prior to computing the water retrieval.
+   </li>
+   <li value="2">
+    <b>
+     No:
+    </b>
+    Use the input file’s wavelengths.
+   </li>
+  </ul>
+  <p>
+   AVIRIS, HYDICE, HyMap, HYPERION, CASI, and AISA sensors are automatically supported for wavelength recalibration. All other hyperspectral sensors require a spectrograph definition file.
+  </p>
+  <h2>
+   <a name="Select6">
+   </a>
+   Select Hyperspectral Options
+  </h2>
+  <p>
+   The
+   <b>
+    Hyperspectral Settings
+   </b>
+   button appears at the bottom of the FLAASH Atmospheric Correction Model Input Parameters dialog when you select a hyperspectral sensor from the
+   <b>
+    Sensor Type
+   </b>
+   button menu. This option allows you to choose how bands are selected for water vapor and/or aerosol retrieval.
+  </p>
+  <p>
+   If the input data is from a named hyperspectral sensor (listed under the
+   <b>
+    Sensor Type
+   </b>
+   button menu), and you are not retrieving water or aerosol, you do not need to verify the hyperspectral settings before applying FLAASH.
+  </p>
+  <p>
+   Click
+   <b>
+    Hyperspectral Settings
+   </b>
+   . The Hyperspectral Settings dialog appears. Select one of the following options:
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     File:
+    </b>
+    Specify a
+    <a href="#Hyperspe">
+     channel definitions file
+    </a>
+    . Click
+    <b>
+     Channel Definition File
+    </b>
+    , navigate to the desired channel definitions file, and select the file.
+   </li>
+   <li value="2">
+    <b>
+     Automatic Selection:
+    </b>
+    FLAASH automatically selects the channel definitions. Channel definitions are automatically assigned by FLAASH based on the spectral characteristics of the data. This is the default setting and is recommended.
+   </li>
+  </ul>
+  <h3>
+   <a name="Hyperspe">
+   </a>
+   Hyperspectral Channel Definitions File
+  </h3>
+  <p>
+   The channel definition file follows a simple format where each line contains one channel definition in the form:
+  </p>
+  <pre class="indent">
+   channel_type = band_number
+  </pre>
+  <p>
+   The valid
+   <code>
+    channel_types
+   </code>
+   are listed below, and must be included in the file verbatim:
+  </p>
+  <pre class="indent">
+   water channels reference
+   <br />
+   water channels absorption
+   <br />
+   cirrus channel
+   <br />
+   KT upper channels
+   <br />
+   KT lower channels
+   <br />
+   alternate water channels absorption
+   <br />
+   alternate water channels reference
+  </pre>
+  <p>
+   The alternate water channels are used in case the selected water channels are saturated.
+  </p>
+  <p>
+   The first band in the file is referred to as band number 1. If more than one band is appropriate for a
+   <code>
+    channel_type
+   </code>
+   , the bands should be enclosed in curly brackets
+   <code>
+    {}
+   </code>
+   and separated with white space. Comments can be included as long as they are preceded with a semicolon. You only need to include channel definitions for those processing steps that are being requested.
+  </p>
+  <p>
+   The following text is an example channel definition file for the AVIRIS sensor:
+  </p>
+  <pre class="indent">
+   ; Standard AVIRIS channels
+   <br />
+   ; Channels are counted starting at 1.
+  </pre>
+  <pre class="indent">
+   water channels reference = {73 74 75 87 88 89} ; wings must be
+   <br />
+   &#160;&#160;&#160;&#160;&#160;&#160;; symmetric on absorption center channel
+   <br />
+   water channels absorption = {80 81 82} ; absorption band
+   <br />
+   cirrus channel = 109 ; no {} needed for single number
+  </pre>
+  <pre class="indent">
+   ; optional channels. Can leave these out, but will lose some
+   <br />
+   ; functionality. KT is needed for automatic visibility
+   <br />
+   ; determination.
+   <br />
+   ; Kaufman-Tanre method channels
+   <br />
+   KT upper channels  = { 184 185 186 187 188 }
+   <br />
+   KT lower channels  = { 29 30 31 32 33 34 }
+  </pre>
+  <pre xml:space="preserve" class="indent">
+   alternate water channels absorption = { 49 50 } ; 0.82 micron band
+   <br />
+   alternate water channels reference =  { 44 45 54 55 }
+  </pre>
+  <p>
+   FLAASH produces a channel definition file for each processing run (both multispectral and hyperspectral). The file, named
+   <code>
+    <i>
+     rootname
+    </i>
+    _channel_definition.txt
+   </code>
+   , is saved when the
+   <b>
+    Output Diagnostic Files
+   </b>
+   option is set to
+   <b>
+    Yes
+   </b>
+   in the FLAASH
+   <a href="FLAASHAdvancedOptions.htm#Set2">
+    Advanced Settings
+   </a>
+   dialog.
+  </p>
+  <h2>
+   <a name="Select7">
+   </a>
+   Select Multispectral Options
+  </h2>
+  <p>
+   The
+   <b>
+    Multispectral Settings
+   </b>
+   button appears at the bottom of the FLAASH Atmospheric Correction Model Input Parameters dialog when you select a multispectral sensor from the
+   <b>
+    Sensor Type
+   </b>
+   button menu. It is critical to properly choose the bands that are used for water vapor and/or aerosol retrieval. In addition, if the input data is from an unknown multispectral sensor, you should define the sensor’s spectral response functions.
+  </p>
+  <p>
+   If the input data is from a named multispectral sensor and you are not retrieving water vapor or aerosols, you do not need to verify the multispectral settings before applying FLAASH.
+  </p>
+  <p>
+   If you do want to use aerosol retrieval, you must use the Multispectral Settings dialog, or no aerosol retrieval will be used.
+  </p>
+  <p>
+   Click the
+   <b>
+    Multispectral Settings
+   </b>
+   button. The Multispectral Settings dialog appears. Select from the following options:
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     File:
+    </b>
+    Specify a channel definition file. Click
+    <b>
+     Channel Definition File
+    </b>
+    , navigate to the desired
+    <a href="#Multispe">
+     channel definition file
+    </a>
+    , and select the file. Channel definitions are used to assign bands from the input file for use in the water and aerosol retrieval process. If a FLAASH template file was restored before opening the Multispectral Settings dialog, then the channel definitions are set according to the information saved in the template file. Otherwise, FLAASH selects default bands according to pre-defined wavelength ranges (defined below). If bands within the pre-defined ranges are not available, then the channel is left undefined.
+   </li>
+   <li value="2">
+    <b>
+     GUI:
+    </b>
+    Interactively select the channels using the Multispectral Settings dialog:
+   </li>
+   <li value="3">
+    Select either the
+    <b>
+     Water Retrieval
+    </b>
+    or the Kaufman-Tanre Aerosol Retrieval tabs to choose the retrieval category (water or aerosol).
+   </li>
+  </ul>
+  <p>
+   Within each active retrieval category, use the drop-down lists to select the desired band.
+  </p>
+  <p>
+   In the Kaufman-Tanre Aerosol Retrieval tab, set the
+   <b>
+    Maximum Upper Channel Reflectance
+   </b>
+   and the
+   <b>
+    Reflectance Ratio
+   </b>
+   values. These settings identify dark pixels used for the visibility estimate. Recommended values are assigned automatically by choosing one of the options under the
+   <b>
+    Defaults
+   </b>
+   drop-down list. For more information about the aerosol retrieval method used in FLAASH, see
+   <a href="BackgroundFLAASH.htm">
+    Background on FLAASH
+   </a>
+   .
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   If you are using the Over-Water Retrieval default settings, the KT Upper and Lower bands are reversed. This is done by design. Applying a maximum reflectance threshold to the 880 nm band tends to better discriminate clear water from turbid or wet areas, leading to more accurate visibility retrievals.
+  </p>
+  <p>
+   You only need to define channels for the processing that is being requested. For example, if you are requesting an aerosol retrieval, but not a water retrieval, then you may leave the water channels undefined, but both the KT Upper and KT Lower channels have to be defined.
+  </p>
+  <p>
+   The recommended wavelength ranges for each channel are as follows:
+  </p>
+  <table style="caption-side: top;margin-left: 0;margin-right: auto;mc-table-style: url('../../Resources/TableStyles/Property_Table.css');" cellspacing="0" class="TableStyle_Property_Table">
+   <col />
+   <col />
+   <col />
+   <col />
+   <tbody>
+    <tr>
+     <td class="TableStyle_Property_Table_Body_0_0_ColSep" rowspan="9">
+      <p>
+       Water Retrieval
+      </p>
+     </td>
+     <td class="TableStyle_Property_Table_Body_0_0_ColSep" rowspan="3">
+      <p>
+       1135 nm
+      </p>
+     </td>
+     <td class="TableStyle_Property_Table_Body_0_0_ColSep">
+      <p>
+       absorption
+      </p>
+     </td>
+     <td class="TableStyle_Property_Table_Body_0_0_ColEnd">
+      <p>
+       1117 - 1143 nm
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Property_Table_Body_0_0_RowSep_ColSep">
+      <p>
+       reference upper wing
+      </p>
+     </td>
+     <td class="TableStyle_Property_Table_Body_0_0_RowSep_ColEnd">
+      <p>
+       1184 - 1210 nm
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Property_Table_Body_1_0_ColSep">
+      <p>
+       reference lower wing
+      </p>
+     </td>
+     <td class="TableStyle_Property_Table_Body_1_0_ColEnd">
+      <p>
+       1050 - 1067 nm
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Property_Table_Body_1_0_RowSep_ColSep" rowspan="3">
+      <p>
+       940 nm
+      </p>
+     </td>
+     <td class="TableStyle_Property_Table_Body_1_0_RowSep_ColSep">
+      <p>
+       absorption
+      </p>
+     </td>
+     <td class="TableStyle_Property_Table_Body_1_0_RowSep_ColEnd">
+      <p>
+       935 - 955 nm
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Property_Table_Body_0_0_ColSep">
+      <p>
+       reference upper wing
+      </p>
+     </td>
+     <td class="TableStyle_Property_Table_Body_0_0_ColEnd">
+      <p>
+       870 - 890 nm
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Property_Table_Body_0_0_RowSep_ColSep">
+      <p>
+       reference lower wing
+      </p>
+     </td>
+     <td class="TableStyle_Property_Table_Body_0_0_RowSep_ColEnd">
+      <p>
+       995 - 1020 nm
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Property_Table_Body_1_0_ColSep" rowspan="3">
+      <p>
+       820 nm
+      </p>
+     </td>
+     <td class="TableStyle_Property_Table_Body_1_0_ColSep">
+      <p>
+       absorption
+      </p>
+     </td>
+     <td class="TableStyle_Property_Table_Body_1_0_ColEnd">
+      <p>
+       810 - 830 nm
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Property_Table_Body_1_0_RowSep_ColSep">
+      <p>
+       reference upper wing
+      </p>
+     </td>
+     <td class="TableStyle_Property_Table_Body_1_0_RowSep_ColEnd">
+      <p>
+       850 - 870 nm
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Property_Table_Body_0_0_ColSep">
+      <p>
+       reference lower wing
+      </p>
+     </td>
+     <td class="TableStyle_Property_Table_Body_0_0_ColEnd">
+      <p>
+       770 - 790 nm
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Property_Table_Body_0_0_RowSep_ColSep" rowspan="4">
+      <p>
+       Aerosol Retrieval
+      </p>
+     </td>
+     <td class="TableStyle_Property_Table_Body_0_0_RowSep_ColSep" rowspan="2">
+      2-Band (K-T)
+     </td>
+     <td class="TableStyle_Property_Table_Body_0_0_RowSep_ColSep">
+      <p>
+       KT upper
+      </p>
+     </td>
+     <td class="TableStyle_Property_Table_Body_0_0_RowSep_ColEnd">
+      <p>
+       2100 - 2250 nm
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Property_Table_Body_1_0_ColSep">
+      <p>
+       KT lower
+      </p>
+     </td>
+     <td class="TableStyle_Property_Table_Body_1_0_ColEnd">
+      <p>
+       640 - 680 nm
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Property_Table_Body_1_0_RowSep_ColSep" rowspan="2">
+      2-Band Over Water
+     </td>
+     <td class="TableStyle_Property_Table_Body_1_0_RowSep_ColSep">
+      <p>
+       KT upper
+      </p>
+     </td>
+     <td class="TableStyle_Property_Table_Body_1_0_RowSep_ColEnd">
+      800 - 950 nm
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Property_Table_Body_0_0_ColSep">
+      <p>
+       KT lower
+      </p>
+     </td>
+     <td class="TableStyle_Property_Table_Body_0_0_ColEnd">
+      2100 - 2250 nm
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Property_Table_Body_0_0_RowEnd_ColSep">
+      <p>
+       Cloud Masking
+      </p>
+     </td>
+     <td class="TableStyle_Property_Table_Body_0_0_RowEnd_ColSep">
+      &#160;
+     </td>
+     <td class="TableStyle_Property_Table_Body_0_0_RowEnd_ColSep">
+      <p>
+       cirrus clouds
+      </p>
+     </td>
+     <td class="TableStyle_Property_Table_Body_0_0_RowEnd_ColEnd">
+      <p>
+       1367 - 1383 nm
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <p>
+   If the input image is from an unknown multispectral sensor type, the sensor’s spectral response functions must be defined using a filter function file. Click
+   <b>
+    Filter Function File
+   </b>
+   and select the multispectral sensor’s filter function file. The filter function file must be an
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   spectral library format file, and contain the sensor’s filter functions consecutively, one for each band in the sensor. However, the filter function for the sensor’s first band need not be the first function in the file.
+  </p>
+  <p>
+   In the
+   <b>
+    Index to first band
+   </b>
+   field, enter the index into the filter function file (beginning at zero) where the sensor’s filter functions begin.
+  </p>
+  <p>
+   When using a known multispectral sensor (i.e., one whose name is listed under the
+   <b>
+    Sensor Type
+   </b>
+   button menu), the filter function file and index are automatically set to use the filter function files included in the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   distribution.
+  </p>
+  <h3>
+   <a name="Multispe">
+   </a>
+   Multispectral Channel Definitions File
+  </h3>
+  <p>
+   The channel definitions file follows a simple format where each line contains one channel definition in the form:
+  </p>
+  <pre class="indent">
+   channel_type = band_number
+  </pre>
+  <p>
+   The valid
+   <code>
+    channel_type
+   </code>
+   values are listed below, and must be included in the file verbatim:
+  </p>
+  <pre class="indent">
+   water channels reference
+   <br />
+   water channels absorption
+   <br />
+   cirrus channel
+   <br />
+   KT upper channels
+   <br />
+   KT lower channels
+   <br />
+   KT band cutoff
+   <br />
+   KT band ratio
+  </pre>
+  <p>
+   The first band in the file is referred to as band number 1. If more than one band is appropriate for a
+   <code>
+    channel_type
+   </code>
+   , the bands should be enclosed in curly brackets {} and separated with white space. Comments can be included as long as they are preceded with a semicolon. You only need to include channel definitions for those processing steps that are being requested. For example, a channel definition file for applying FLAASH to Landsat TM with aerosol retrieval but a fixed water vapor amount could include the following text:
+  </p>
+  <pre class="indent">
+   ; FLAASH channel definition for Landsat TM
+   <br />
+   KT upper channels = 6
+   <br />
+   KT lower channels = 3
+  </pre>
+  <p>
+   FLAASH produces a channel definitions file for each processing run (both multispectral and hyperspectral). The file, named
+   <code>
+    <i>
+     rootname
+    </i>
+    _channel_definition.txt
+   </code>
+   , is saved when the
+   <b>
+    Output Diagnostic Files
+   </b>
+   option is set to
+   <b>
+    Yes
+   </b>
+   in the FLAASH
+   <a href="FLAASHAdvancedOptions.htm#Set2">
+    Advanced Settings
+   </a>
+   dialog.
+  </p>
+  <h2>
+   <a name="Create">
+   </a>
+   Create a Template File
+  </h2>
+  <p>
+   To save the FLAASH settings to a template file at any time, click
+   <b>
+    Save
+   </b>
+   in the lower-right corner of the FLAASH Parameters dialog.
+  </p>
+  <p>
+   If you set the
+   <b>
+    Automatically Save Template File
+   </b>
+   toggle button to
+   <b>
+    Yes
+   </b>
+   in the FLAASH Advanced Settings dialog, a template file is automatically saved into the FLAASH output directory when you click
+   <b>
+    Apply
+   </b>
+   .
+  </p>
+  <p>
+   To restore a FLAASH template file, click
+   <b>
+    Restore
+   </b>
+   . The template file stores the full path names of the input and output files. If the input file is not already opened in the current
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   session, it is automatically opened. If any of the files or directories cannot be located on the computer where FLAASH is running, the corresponding fields in the FLAASH dialogs will not be filled in, but
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   reads the rest of the parameters. This process allows template files to be shared between users working in different locations.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

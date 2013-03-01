@@ -1,0 +1,264 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Georectify|RPC Orthorectification|Reference" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   GCP File Formats
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#GeorectifyImagery/RPC_Orthorectification/GCPFileFormats.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../GeorectifyImagery.htm">
+    Georectify
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="RPCOrthorectification.htm">
+    RPC Orthorectification
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="RPCBackground.htm">
+    Reference
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    GCP File Formats
+   </span>
+  </div>
+  <h2>
+   GCP File Formats
+  </h2>
+  <p>
+   The RPC&#160;Orthorectification workflow reads GCP shapefiles, as well as ASCII&#160;GCP files with
+   <code>
+    .pts
+   </code>
+   extensions. Examples of
+   <code>
+    .pts
+   </code>
+   files are outlined below.
+  </p>
+  <p>
+   Regardless of the header format, all headers
+   <i>
+    must
+   </i>
+   include a
+   <code>
+    projection info
+   </code>
+   string for the RPC&#160;Orthorectification workflow to read them. GCP&#160;files can be in any map projection, but the RPC&#160;Refinement panel will always display map coordinates in a Geographic WGS-84 projection.
+  </p>
+  <p>
+   In contrast to shapefiles,
+   <code>
+    .pts
+   </code>
+   files refer to the upper-left corner of the first image pixel as (1,1). If your image is a spatial subset that contains XSTART and YSTART offset values from the original image, the
+   <code>
+    .pts
+   </code>
+   file image coordinates include this offset. The RPC Orthorectification workflow always refers to the upper-left pixel as (0,0). Thus, it will subtract (1,1) from GCP&#160;image coordinates from a full image, and it will subtract the XSTART and YSTART values from the image coordinates of a subsetted image.
+  </p>
+  <p>
+   Following are some examples of different
+   <code>
+    .pts
+   </code>
+   files that the RPC&#160;Orthorectification workflow will read. The bold headings refer to the specific tools that generate the
+   <code>
+    .pts
+   </code>
+   files.
+  </p>
+  <h3>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   &#160;Orthorectification Module
+  </h3>
+  <pre xml:space="preserve">
+   ; ENVI Rigorous Orthorectification GCP File
+  </pre>
+  <pre xml:space="preserve">
+   ; FileName0=C:\03JUL17174528-M1BS-052157861010_01_P005.TIF
+  </pre>
+  <pre xml:space="preserve">
+   ; FileName1=C:\03JUL17174525-M1BS-052157861010_01_P004.TIF
+  </pre>
+  <pre xml:space="preserve">
+   ; FileName2=C:\05JUL04180115-M1BS-052157861010_01_P008.TIF
+  </pre>
+  <pre xml:space="preserve">
+   ; FileName3=C:\05JUL04180112-M1BS-052157861010_01_P007.TIF
+  </pre>
+  <pre xml:space="preserve">
+   ; projection info = {Geographic Lat/Lon, WGS-84, units=Degrees}
+  </pre>
+  <pre xml:space="preserve">
+   ; ImageFile#, Map (x,y,elev), Image (x,y)
+  </pre>
+  <pre xml:space="preserve">
+   ;
+  </pre>
+  <pre xml:space="preserve">
+   0       -105.358423         39.953100       2226.000000       4690.000000       3918.000000
+  </pre>
+  <pre xml:space="preserve">
+   2       -105.152796         39.910608       1757.000000       5565.000000       5813.000000
+  </pre>
+  <h3>
+   RPC&#160;Orthorectification Tool
+  </h3>
+  <pre xml:space="preserve">
+   ; ENVI Orthorectification Ground Control Points File
+  </pre>
+  <pre xml:space="preserve">
+   ; projection info = {Geographic Lat/Lon, WGS-84, units=Degrees}
+  </pre>
+  <pre xml:space="preserve">
+   ; Map (x,y,elev), Image (x,y)
+  </pre>
+  <pre xml:space="preserve">
+   ;
+  </pre>
+  <pre xml:space="preserve">
+   -105.42543081    40.08088580    2000.000000    2372.000000    4134.000000
+  </pre>
+  <pre xml:space="preserve">
+   -105.37496362    40.12966926    1000.000000    4128.000000    1910.000000
+  </pre>
+  <h3>
+   Build RPCs Tool
+  </h3>
+  <pre xml:space="preserve">
+   ; ENVI Ground Control Points File
+  </pre>
+  <pre xml:space="preserve">
+   ; projection info = {Geographic Lat/Lon, WGS-84, units=Degrees}
+  </pre>
+  <pre xml:space="preserve">
+   ; Map (x,y,elev), Image (x,y)
+  </pre>
+  <pre xml:space="preserve">
+   ;
+  </pre>
+  <pre xml:space="preserve">
+   -105.48775571    40.16771721    2000.000000     201.000000     200.000000
+  </pre>
+  <h3>
+   Exterior Orientation Points File
+  </h3>
+  <pre xml:space="preserve">
+   ; ENVI Exterior Orientation Points File
+  </pre>
+  <pre xml:space="preserve">
+   ; projection info = {Geographic Lat/Lon, WGS-84, units=Degrees}
+  </pre>
+  <pre xml:space="preserve">
+   ; Map (x,y,elev), Image (x,y)
+  </pre>
+  <pre xml:space="preserve">
+   ;
+  </pre>
+  <pre xml:space="preserve">
+   6.96035926    45.86210997    4001.000000    4269.000000    5237.000000
+  </pre>
+  <pre xml:space="preserve">
+   6.88871043    45.87880951    3842.000000    3686.000000    5165.000000
+  </pre>
+  <h3>
+   Stereo GCP File Created from the DEM Extraction Module
+  </h3>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   The RPC&#160;Orthorectification workflow reads the first two values, ignores the next two values, and reads the last three values.
+  </p>
+  <pre xml:space="preserve">
+   ; ENVI DEM Extraction Stereo GCPs File
+  </pre>
+  <pre xml:space="preserve">
+   ; projection info = {Geographic Lat/Lon, WGS-84, units=Degrees}
+  </pre>
+  <pre xml:space="preserve">
+   ; Left (x,y), Right (x,y), Map (x,y,z)
+  </pre>
+  <pre xml:space="preserve">
+   ;
+  </pre>
+  <pre xml:space="preserve">
+   5649.0000     7311.0000     6308.0000     8071.0000    -1.17410984e+002     
+4.77035482e+001     628.363000
+  </pre>
+  <h3>
+   Image-to-Map Registration
+  </h3>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   This type of file does not contain any height information, so the default elevation is set to 0 meters.
+  </p>
+  <pre xml:space="preserve">
+   ; ENVI Image to Map GCP File
+  </pre>
+  <pre xml:space="preserve">
+   ; projection info = {State Plane (NAD 83), 404, units=Feet}
+  </pre>
+  <pre xml:space="preserve">
+   ; warp file: E:\monterey_sub2.img
+  </pre>
+  <pre xml:space="preserve">
+   ; Map (x,y), Image (x,y)
+  </pre>
+  <pre xml:space="preserve">
+   ;
+  </pre>
+  <pre xml:space="preserve">
+   5711285.2999      2114581.3280          1.000000          1.000000000000
+  </pre>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

@@ -1,0 +1,1532 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Explore Imagery" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Display Tools
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/TableStyles/Description.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#ExploreImagery/DisplayTools.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="ExploreImagery.htm">
+    Explore Imagery
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Display Tools
+   </span>
+  </div>
+  <h1>
+   Display Tools
+  </h1>
+  <p>
+   The following tools are described in this section:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#CursorValue">
+     Cursor Value
+    </a>
+   </li>
+   <li value="2">
+    <a href="#CrosshairsTool">
+     Crosshairs
+    </a>
+   </li>
+   <li value="3">
+    <a href="#Rotate">
+     Rotate
+    </a>
+   </li>
+   <li value="4">
+    <a href="#GoToTool">
+     Go To
+    </a>
+   </li>
+   <li value="5">
+    <a href="#Mensuration">
+     Mensuration
+    </a>
+   </li>
+   <li value="6">
+    <a href="#EnhancementTools">
+     Enhancement Tools
+    </a>
+   </li>
+   <li value="7">
+    <a href="#StretchTypes">
+     Stretch
+    </a>
+   </li>
+   <li value="8">
+    <a href="#StatusBar">
+     Status Bar
+    </a>
+   </li>
+   <li value="9">
+    <a href="#Toolbox">
+     Toolbox Favorites
+    </a>
+   </li>
+  </ul>
+  <h2>
+   <a name="CursorValue">
+   </a>
+   Cursor Value
+   <a name="kanchor28">
+   </a>
+  </h2>
+  <p>
+   The Cursor Value window contains information about the displayed data at the current cursor location and data from the
+   <a href="#Mensuration">
+    Mensuration tool
+   </a>
+   when applicable.
+  </p>
+  <p>
+   You can access the Cursor Value window during any
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   session by selecting
+   <b>
+    Display &gt; Cursor Value
+   </b>
+   from the menu bar, or by clicking the
+   <b>
+    Cursor Value
+   </b>
+   <![CDATA[ ]]>
+   <img src="../Resources/Images/IconsButtons/CursorValue.gif" class="VertCenter" />
+   button in the toolbar. The Cursor Value window opens automatically when you click the
+   <b>
+    Crosshairs
+   </b>
+   <![CDATA[ ]]>
+   <img src="../Resources/Images/IconsButtons/Crosshairs.gif" class="VertCenter" />
+   button.
+  </p>
+  <p>
+   <img src="../Resources/Images/CursorValue.gif" />
+  </p>
+  <p>
+   When Blend, Flicker, or Swipe operations are active, the Cursor Value window does not update when you move your mouse.
+  </p>
+  <p>
+   If you move the cursor outside of the current Image window view or the Overview, the Cursor Value window displays the coordinates of the last place the cursor was before leaving the Image window view or Overview. When you return the cursor to either window, the Cursor Value window resumes displaying the current cursor location.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   reports X/Y pixel coordinates with values of one
+   <i>
+    less
+   </i>
+   than those in
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   . For example, a pixel location of [X:165, Y:73] in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   is the same as location [X:166, Y:74] in
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   .
+  </p>
+  <h3>
+   Cursor Location Data from the Image Window View
+  </h3>
+  <p>
+   For all images, the Cursor Value window displays the layer name for each layer.
+  </p>
+  <p>
+   For non-georeferenced images, the following information displays along with the layer name:
+  </p>
+  <ul>
+   <li value="1">
+    File x,y locations (in pixels) for the current location of the cursor.
+   </li>
+   <li value="2">
+    Data value(s) for the bands displayed at the current cursor location.
+   </li>
+   <li value="3">
+    Class names for classification images.
+   </li>
+  </ul>
+  <p>
+   Example:
+  </p>
+  <p class="Code">
+   bldr_tm.img
+  </p>
+  <p class="Code">
+   File: 8,611
+  </p>
+  <p class="Code">
+   Data: [85, 33, 36]
+  </p>
+  <p>
+   For georeferenced images, the Cursor Value window displays the following along with the layer name:
+  </p>
+  <ul>
+   <li value="1">
+    Map projection and datum, and whether the file contains rational polynomial coefficient (RPC) information.
+   </li>
+   <li value="2">
+    Map x,y coordinates for the current location of the cursor.
+   </li>
+   <li value="3">
+    Latitude and longitude values for the current location of the cursor.
+   </li>
+   <li value="4">
+    Data value(s) for the bands displayed at the current cursor location.
+   </li>
+   <li value="5">
+    Military Grid Reference System (MGRS) coordinates, when available
+   </li>
+  </ul>
+  <p>
+   Example:
+  </p>
+  <p xml:space="preserve" class="Code">
+   Geo: 40°4'11.53"N, 105°22'26.11"W
+  </p>
+  <p xml:space="preserve" class="Code">
+   Map: 468114.0000, 4435369.0000
+  </p>
+  <p xml:space="preserve" class="Code">
+   Proj: UTM, Zone 13&#160;N, NAD 27
+  </p>
+  <p xml:space="preserve" class="Code">
+   bldr_sp.img
+  </p>
+  <p xml:space="preserve" class="Code">
+   File: 8,611
+  </p>
+  <p xml:space="preserve" class="Code">
+   Pixel: [0]
+  </p>
+  <p>
+   For all vector and Esri® feature class layers, the Cursor Value window displays the following for the selected vector record:
+  </p>
+  <ul>
+   <li value="1">
+    Vector layer name
+   </li>
+   <li value="2">
+    Selected vector record number
+   </li>
+  </ul>
+  <p>
+   If the vector or Esri feature class layer has an associated
+   <a href="../ROIVectorAnnotation/ViewingAttributes.htm">
+    attribute table
+   </a>
+   , the attribute table data displays for the selected vector record.
+  </p>
+  <p>
+   Example:
+  </p>
+  <p xml:space="preserve" class="Code">
+   Geo:34°47'44.98"N,90°53'34.49"W
+  </p>
+  <p xml:space="preserve" class="Code">
+   Proj: Geographic Lat/Lon, NAD 83
+  </p>
+  <p xml:space="preserve" class="Code">
+   lakes.shp
+  </p>
+  <p xml:space="preserve" class="Code">
+   Selected Record: 11
+  </p>
+  <p xml:space="preserve" class="Code">
+   AREA: 22228.402
+  </p>
+  <p xml:space="preserve" class="Code">
+   NAME: Lake Michigan
+  </p>
+  <p>
+   If Crosshairs are enabled for an image, the Cursor Value window shows the following additional information:
+  </p>
+  <ul>
+   <li value="1">
+    The location of the crosshairs, in file units relative to the visualization that established the base map.
+   </li>
+   <li value="2">
+    If a base map projection was established, the location of the crosshairs, in map units.
+   </li>
+  </ul>
+  <p>
+   Example:
+  </p>
+  <p xml:space="preserve" class="Code">
+   Crosshair
+  </p>
+  <p xml:space="preserve" class="Code">
+   Loc: 398.000,426.000
+  </p>
+  <p xml:space="preserve" class="Code">
+   Geo: 40°0'0.18"N, 105°13'5.22"W
+  </p>
+  <p xml:space="preserve" class="Code">
+   Map: 481381.600, 4427785.600
+  </p>
+  <p>
+   Click and hold the mouse button to view only the crosshair information in the Cursor Value window.
+  </p>
+  <p>
+   If Crosshairs are enabled and are centered over a vector vertex, or if the cursor is in
+   <b>
+    Vector Edit
+   </b>
+   mode, the Cursor Value window shows the following. Be sure that any layer modifications are saved, to provide the most accurate data.
+  </p>
+  <ul>
+   <li value="1">
+    The layer name.
+   </li>
+   <li value="2">
+    The index of the current vector record (0 based) and the total number of records.
+   </li>
+   <li value="3">
+    If the file is multipart: the index of the current vector part (0 based) and the total number of parts in the vector record.
+   </li>
+   <li value="4">
+    The index of the vertex (0 based) within the vector part and the total number of vertices in the part.
+   </li>
+   <li value="5">
+    The location of the crosshairs in the native coordinates of the vector file.
+   </li>
+   <li value="6">
+    If the vector layer has an attribute table, the Cursor Value contains the attribute table data.
+   </li>
+  </ul>
+  <h3>
+   Cursor Location Data from the Overview
+  </h3>
+  <p>
+   If the cursor is in the Overview, the Cursor Value window shows the following information:
+  </p>
+  <ul>
+   <li value="1">
+    For non-georeferenced images and vector layers: file x,y location (in pixels) for the current location of the cursor.
+   </li>
+   <li value="2">
+    For georeferenced images:
+   </li>
+   <li class="Indent" value="3">
+    Map projection and datum, and whether the file contains rational polynomial coefficient (RPC) information.
+   </li>
+   <li class="Indent" value="4">
+    Map x,y coordinates for the current location of the cursor.
+   </li>
+   <li class="Indent" value="5">
+    Latitude and longitude values for the current location of the cursor.
+   </li>
+  </ul>
+  <h2>
+   <a name="CrosshairsTool">
+   </a>
+   Crosshairs
+   <a name="kanchor29">
+   </a>
+  </h2>
+  <p>
+   Use the
+   <b>
+    Crosshairs
+   </b>
+   tool
+   <img src="../Resources/Images/IconsButtons/Crosshairs.gif" title="Crosshairs button" alt="Crosshairs button" class="VertCenter" />
+   to overlay crosshairs on the Image window view. The
+   <a href="#CursorValue">
+    Cursor Value
+   </a>
+   window automatically opens when you enable Crosshairs. As you move the cursor around the Image window view, the Cursor Value window displays information about the data under the crosshairs. If using crosshairs on a vector layer, be sure that any layer modifications are saved, to provide the most accurate data. You can do the following with crosshairs:
+  </p>
+  <ul>
+   <li value="1">
+    Click anywhere in the Image window view to move the crosshairs over the clicked pixel (for images), or over the nearest vertex (for vectors).
+   </li>
+   <li value="2">
+    Double-click anywhere in the Image window view to center the crosshairs in the Image window view over the clicked pixel (for images), or over the nearest vertex (for vectors).
+   </li>
+   <li value="3">
+    For images: Click and drag the crosshairs to a pixel. Release the mouse button to center the crosshairs on the pixel under the cursor.
+   </li>
+   <li value="4">
+    For images: Click any arrow key to move 1 screen pixel in the direction of the arrow. Use
+    <b>
+     Ctrl
+    </b>
+    + arrow keys to move 10 screen pixels and
+    <b>
+     Shift
+    </b>
+    + arrow keys to move 20 screen pixels.
+   </li>
+   <li value="5">
+    For vectors: Click and drag the crosshairs to snap to the nearest vertex in the
+    <a href="../ROIVectorAnnotation/ActiveLayers.htm">
+     active layer
+    </a>
+    (if the nearest vertex is close to the cursor). Release the mouse button to center the crosshairs over the vertex. If no vertices are near the cursor, the crosshairs center on the canvas area under the cursor.
+   </li>
+   <li value="6">
+    For images: If using the Go To tool and Crosshairs together, the crosshairs intersection is positioned over the location you specify.
+   </li>
+  </ul>
+  <h2>
+   Rotate
+   <a name="kanchor30">
+   </a>
+  </h2>
+  <p>
+   Use the following tools to rotate your display:
+  </p>
+  <table cellspacing="0" style="caption-side: top;mc-table-style: url('../Resources/TableStyles/Description.css');margin-left: 0;margin-right: auto;" class="TableStyle_Description">
+   <col />
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       Button
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       Button Name
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p class="TableHead">
+       Description
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       <img src="../Resources/Images/IconsButtons/RotateView.gif" title="Rotate button" alt="Rotate button" />
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       <a name="Rotate">
+       </a>
+       Rotate View
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Rotate the display in the current Image window view.
+      </p>
+      <p>
+       If the display includes annotation layers, most annotation items rotate with the associated image (you can change the default for an item in the
+       <a href="../NoTOCTopics/EditingAnnotationItemProperties.htm#RotateWithView" style="font-weight: bold;">
+        Rotate with View
+       </a>
+       property). By default, text, symbol, and picture annotations do not rotate; they retain their original orientation.
+      </p>
+      <p>
+       Place the cursor in the Image window view and do one of the following:
+      </p>
+      <ul>
+       <li value="1">
+        Click and drag the cursor to rotate clockwise or counter clockwise.
+       </li>
+       <li value="2">
+        Press an arrow key to rotate 5 degrees clockwise (down/right arrows) or counter clockwise (up/left arrows).
+       </li>
+       <li value="3">
+        Press and hold the
+        <b>
+         Ctrl
+        </b>
+        key, then press an arrow key to rotate 1 degree clockwise (down/right arrows) or counter clockwise (up/left arrows).
+       </li>
+       <li value="4">
+        Press and hold the
+        <b>
+         Shift
+        </b>
+        key, then press an arrow key to rotate 45 degrees clockwise (down/right arrows) or counter clockwise (up/left arrows).
+       </li>
+      </ul>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       <img src="../Resources/Images/IconsButtons/RotateUp.gif" title="Top Up button" alt="Top Up button" />
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       <a name="TopUp">
+       </a>
+       Rotate Up
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Rotate the display in the current Image window view so that objects (especially buildings) are oriented vertically with your monitor. If the image contains rational polynomial coefficient (RPC) information,
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       uses that to compute the rotation angle. If the image does not contain RPC information, or if it uses a standard projection,
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       rotates the display to 0 degrees.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+      <p>
+       <img src="../Resources/Images/IconsButtons/NorthUp.gif" title="North Up button" alt="North Up button" />
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+      <p>
+       <a name="NorthUp">
+       </a>
+       North Up
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColEnd">
+      <p>
+       Rotate the display in the current Image window view so that North is at the top of the Image window view. This option is only available for georeferenced images.
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <p>
+   Use the
+   <b>
+    Rotate To
+   </b>
+   drop-down list to select a fixed rotation angle (expressed in degrees) for the display in the current Image window view. Or, type your own degree of rotation and press
+   <b>
+    Enter
+   </b>
+   on your keyboard. This drop-down list interactively reports the current degree of rotation of the display when you use any rotation tool.
+  </p>
+  <p>
+   The following options are available from the
+   <b>
+    Rotate To
+   </b>
+   drop-down list (in degrees):
+   <b>
+    0
+   </b>
+   ,
+   <b>
+    90
+   </b>
+   ,
+   <b>
+    180
+   </b>
+   , and
+   <b>
+    -90
+   </b>
+   .
+  </p>
+  <h2>
+   <a name="GoToTool">
+   </a>
+   Go To
+   <a name="kanchor31">
+   </a>
+  </h2>
+  <p>
+   Use the
+   <b>
+    Go To
+   </b>
+   tool to jump to a specific location in an image and to center the current Image window view over that location. If
+   <b>
+    Crosshairs
+   </b>
+   are enabled, the crosshairs intersection is positioned over the location you specify.
+  </p>
+  <p>
+   <img src="../Resources/Images/dropdown_goto.gif" title="Go To tool" alt="Go To tool" />
+  </p>
+  <ol>
+   <li value="1">
+    Enter the coordinates in the
+    <b>
+     Go To
+    </b>
+    field, using one of the entry formats in the table below. You can also copy a location from the
+    <a href="#CursorValue">
+     Cursor Value
+    </a>
+    window and paste it in the
+    <b>
+     Go To
+    </b>
+    field.
+   </li>
+   <li value="2">
+    Press
+    <b>
+     Enter
+    </b>
+    .
+   </li>
+  </ol>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   stores the locations you enter during your session in the
+   <b>
+    Go To
+   </b>
+   drop-down list. To jump to a stored location, select the desired location from the drop-down list.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   If you use the
+   <b>
+    Go To
+   </b>
+   tool and the layer is not selected (that is, you clicked outside of any valid data region, but are still in the canvas), then
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   uses the bottom layer for the geographic jump.
+  </p>
+  <p>
+   Separate coordinate values with a comma, a space, or a comma and a space:
+  </p>
+  <table cellspacing="0" style="margin-left: 0;margin-right: auto;caption-side: top;mc-table-style: url('../Resources/TableStyles/Description.css');" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       Entry Type
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p class="TableHead">
+       Valid Entry Formats
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       <b>
+        Lat,Lon
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Enter the values in decimal degrees format or in degrees, minutes, seconds format. If the values fall within -180 to 180 for the
+       <i>
+        x
+       </i>
+       direction and -90 to 90 for the
+       <i>
+        y
+       </i>
+       direction,
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       assumes the coordinates are lat/lon (for example, 179.9, 89.9). One exception to the range provided above is  1.0, 1.0, which assumes data coordinates.
+      </p>
+      <p>
+       Decimal degrees format examples:
+      </p>
+      <p>
+       40.004036,105.219047
+       <br />
+       40.004036N,105.219047W
+       <br />
+       40.0481N, 105.3420W
+       <br />
+      </p>
+      <p>
+       Degrees, minutes, seconds examples:
+      </p>
+      <p>
+       40 0 14.53,105 13 8.57
+       <br />
+       40 0 14.53N,105 13 8.57W
+       <br />
+       40 0'34.34"N, 105 13'46.20"W
+       <br />
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       <b>
+        DataX, DataY
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Enter the value as x,y points and append an asterisk (*) to one of the values to indicate it is a data coordinate.
+      </p>
+      <p>
+       Data x,y format examples:
+      </p>
+      <p>
+       181.1*, 91.1
+       <br />
+       169*, 79
+       <br />
+       29*, 45
+       <br />
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       <b>
+        MapX,MapY
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Enter the value as x,y points. If the x and y values are greater than 30,000,
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       assumes it is a map coordinate.
+      </p>
+      <p>
+       Map x,y format examples:
+      </p>
+      <p>
+       481168,4426792
+       <br />
+       481872.8250, 4427702.4750
+       <br />
+       482970.42, 4427702.47
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       <b>
+        PixelX,PixelY
+       </b>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Enter the value as x,y points. If both values are integers, or are outside the range used for Lat/Lon,
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       assumes they are pixel coordinates. If x and y values are greater than 30,000, append a "p" to one of the values to indicate it is a pixel coordinate, not a map coordinate.
+      </p>
+      <p>
+       If the currently selected raster layer has
+       <a href="ENVIHeaderFiles.htm#xstart_ystart">
+        xstart or ystart
+       </a>
+       values defined in the associated header file, these offsets are taken into account when you enter pixel coordinates.
+      </p>
+      <p>
+       Pixel x,y format examples:
+      </p>
+      <p>
+       38p,45
+       <br />
+       433.5, 469.5
+       <br />
+       -0.1039p, 0.749
+      </p>
+      <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+       <span class="autonumber">
+        <span>
+         <b>
+          Note:
+         </b>
+        </span>
+       </span>
+       X/Y pixel coordinates in
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       have values of one
+       <i>
+        less
+       </i>
+       than those in
+       <span class="DocumentTitleProductNameENVIClassic">
+        ENVI Classic
+       </span>
+       . For example, a pixel location of [X:165, Y:73] in
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       is the same as location [X:166, Y:74] in
+       <span class="DocumentTitleProductNameENVIClassic">
+        ENVI Classic
+       </span>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+      <b>
+       MGRS
+      </b>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColEnd">
+      Enter MGRS&#160;coordinates as an alphanumeric&#160;string. For example:&#160;13TDE8089728753. Northing and Easting numerical values can have up to five digits of precision, which represents a 1 square meter grid.
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h2>
+   <a name="Mensuration">
+   </a>
+   Mensuration
+   <a name="kanchor32">
+   </a>
+  </h2>
+  <p>
+   Use the
+   <b>
+    Mensuration
+   </b>
+   tool
+   <img src="../Resources/Images/IconsButtons/Mensuration.gif" />
+   to measure distance and azimuth direction on an image.
+  </p>
+  <ul style="list-style-type: square;">
+   <li value="1">
+    Click the
+    <b>
+     Mensuration
+    </b>
+    button on the toolbar to toggle on the
+    <b>
+     Mensuration
+    </b>
+    and
+    <b>
+     Polyline
+    </b>
+    annotation tools, then draw a polyline on the image to calculate distance and direction (degrees relative to North). The distance and direction  display in the Cursor Value window.
+   </li>
+   <li value="2">
+    The
+    <b>
+     Polyline
+    </b>
+    annotation tool is enabled by default when you select
+    <b>
+     Mensuration
+    </b>
+    . To use arrows instead of polylines for mensuration, click the
+    <b>
+     Arrow
+    </b>
+    annotation tool on the toolbar.
+   </li>
+   <li value="3">
+    Multi-segment polylines calculate and display distance for each segment as well as the total distance of the entire polyline.
+   </li>
+   <li value="4">
+    For Geographic Lat/Lon images, distance is calculated using the average latitude between the two endpoints of the line being measured.
+   </li>
+   <li value="5">
+    By default, georeferenced images display distance in meters. Non-georeferenced images display distance in pixels. Set the default measurement units using the
+    <b>
+     <a href="../Preferences.htm#DefaultMensurationUnits">
+      Mensuration Units
+     </a>
+    </b>
+    preference.
+   </li>
+   <li value="6">
+    To toggle off mensuration, click the
+    <b>
+     Mensuration
+    </b>
+    button on the toolbar.
+   </li>
+  </ul>
+  <h2>
+   <a name="EnhancementTools">
+   </a>
+   Enhancement Tools
+  </h2>
+  <p>
+   Enhancement tools interactively control the amount of brightness, contrast, stretch, and transparency for the selected image layer. For each tool, click and drag the slider, or enter a value in the adjacent field. You can also use the following to change slider values:
+  </p>
+  <ul>
+   <li value="1">
+    Click on the slider bar to the right or left of the indicator or click the slider then use the
+    <b>
+     Page Up
+    </b>
+    or
+    <b>
+     Page Down
+    </b>
+    keys to move the slider value up or down incrementally by 10.
+   </li>
+   <li value="2">
+    Click on the icons to the right or left of the slider bar or click the slider then use the arrow keys on the keyboard to move the slider value up or down incrementally by one. The up/right arrow keys increase the enhancement; the left/down arrow keys decrease it.
+   </li>
+   <li value="3">
+    Click the slider then use the
+    <b>
+     Home
+    </b>
+    key to move the slider to 100 and the
+    <b>
+     End
+    </b>
+    key to move the slider to 0.
+   </li>
+   <li value="4">
+    Click the
+    <b>
+     Reset
+    </b>
+    <img src="../Resources/Images/IconsButtons/Reset.gif" title="Reset button" alt="Reset button" />
+    button for the tool to return to the default value.
+   </li>
+   <li value="5">
+    Click the
+    <b>
+     Undo
+    </b>
+    or
+    <b>
+     Redo
+    </b>
+    buttons, or select
+    <b>
+     Edit &gt; Undo
+     <i>
+      action
+     </i>
+    </b>
+    or
+    <b>
+     Edit &gt; Redo
+     <i>
+      action
+     </i>
+    </b>
+    from the menu bar to undo and redo actions.
+   </li>
+  </ul>
+  <p>
+   The value in the adjacent field interactively updates as you move the slider using any of the options listed, and the Image window view immediately shows the results.
+  </p>
+  <p class="Tip" madcap:autonum="&lt;b&gt;Tip: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Tip:
+     </b>
+    </span>
+   </span>
+   If the enhancement tools are not fully visible, increase the size of the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   window.
+  </p>
+  <h3>
+   Brightness
+   <a name="kanchor33">
+   </a>
+   <a name="Brightness">
+   </a>
+  </h3>
+  <p>
+   <img src="../Resources/Images/slider_brightness.gif" title="Brightness slider" alt="Brightness slider" />
+  </p>
+  <p>
+   Use the
+   <b>
+    Brightness
+   </b>
+   controls to darken or brighten the display of the selected image. The valid range is 0 (dark) to 100 (bright). To return to the default value of 50, click the
+   <b>
+    Reset Brightness
+   </b>
+   button. The
+   <b>
+    Brightness
+   </b>
+   slider is disabled when viewing paletted images (for example, classification images) and vector layers.
+  </p>
+  <h3>
+   Contrast
+   <a name="kanchor34">
+   </a>
+   <a name="Contrast">
+   </a>
+  </h3>
+  <p>
+   <img src="../Resources/Images/slider_contrast.gif" title="Contrast slider" alt="Contrast slider" />
+  </p>
+  <p>
+   Use the
+   <b>
+    Contrast
+   </b>
+   controls  to adjust the contrast of the selected image. The valid range for this slider is 0 (low contrast) to 100 (high contrast). When you adjust the contrast, the selection in the
+   <b style="font-weight: bold;">
+    Stretch Types
+   </b>
+   drop-down list automatically changes to
+   <b>
+    Custom
+   </b>
+   . To return to the default contrast value of 20, click the
+   <b>
+    Reset Contrast
+   </b>
+   button.
+   <b>
+    Contrast
+   </b>
+   is disabled when viewing paletted images (for example, classification images) and vector layers.
+  </p>
+  <h3>
+   Sharpen
+   <a name="kanchor35">
+   </a>
+   <a name="Sharpen">
+   </a>
+  </h3>
+  <p>
+   <img src="../Resources/Images/slider_sharpen.gif" title="Sharpen slider" alt="Sharpen slider" />
+  </p>
+  <p>
+   Use the
+   <b>
+    Sharpen
+   </b>
+   controls to blur or sharpen the display of the selected image. The valid range for this slider is 0 (blurry) to 100 (sharp). To return to the default value of 10, click the
+   <b>
+    Reset Sharpen
+   </b>
+   button.
+   <b>
+    Sharpen
+   </b>
+   is disabled when viewing paletted images (for example, classification images) and vector layers.
+  </p>
+  <h3>
+   Transparency
+   <a name="kanchor36">
+   </a>
+   <a name="Transparency">
+   </a>
+  </h3>
+  <p>
+   <img src="../Resources/Images/slider_transparency.gif" title="Transparency slider" alt="Transparency slider" />
+  </p>
+  <p>
+   Use the
+   <b>
+    Transparency
+   </b>
+   controls to make your image or vector layer more opaque or transparent. The valid range for this slider is 0 (opaque) to 100 (transparent). To return to the default value of 0, click the
+   <b>
+    Reset Transparency
+   </b>
+   button.
+  </p>
+  <h2>
+   Stretch
+   <a name="kanchor37">
+   </a>
+   <a name="StretchTypes">
+   </a>
+  </h2>
+  <p>
+   You can apply different contrast stretch types to enhance the appearance of an image. If the associated header file for an image specifies a
+   <a href="EnterOptionalHeaderInformation.htm#Set2">
+    default stretch
+   </a>
+   , it is applied when you open the image. If the header file does not specify a stretch, then a stretch type is applied as follows:
+  </p>
+  <ul>
+   <li value="1">
+    No stretch is applied to 8-bit byte data.
+   </li>
+   <li value="2">
+    An
+    <a href="BackgroundOptimizedLinearStretch.htm">
+     optimized linear stretch
+    </a>
+    is applied to 16-bit unsigned integer data.
+   </li>
+   <li value="3">
+    A linear 2% stretch is applied to all other data types.
+   </li>
+  </ul>
+  <p>
+   To apply a different contrast stretch, select an option from the
+   <b style="font-weight: bold;">
+    Stretch Types
+   </b>
+   drop-down list. If you manually adjust the
+   <b>
+    Contrast
+   </b>
+   , the drop-down selection automatically changes to
+   <b>
+    Custom
+   </b>
+   .
+  </p>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   determines the statistics for the stretch by using the full image extent, or only the extent that is visible in the Image window view. By default,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   uses the full image. To apply the stretch to only the current Image window view, click the
+   <b>
+    Stretch on View Extent
+   </b>
+   <![CDATA[ ]]>
+   <img src="../Resources/Images/IconsButtons/StretchToViewExtent.gif" class="VertCenter" />
+   button in the toolbar.  If statistics are based on the view extent and you pan the image to a different area, click the
+   <b>
+    Update Stretch
+   </b>
+   <![CDATA[ ]]>
+   <img src="../Resources/Images/IconsButtons/CustomStretchUpdate.gif" class="VertCenter" />
+   button to recalculate statistics on the new view in the Image window. To return to determining statistics for the full image extent, click
+   <b>
+    Stretch to Full Extent
+   </b>
+   <![CDATA[ ]]>
+   <img src="../Resources/Images/IconsButtons/StretchToFullExtent.gif" class="VertCenter" />
+   button.
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     No stretch
+    </b>
+    does not apply a contrast stretch.
+   </li>
+   <li value="2">
+    <b>
+     Linear, Linear 1%, Linear 2%,
+    </b>
+    and
+    <b>
+     Linear 5%
+    </b>
+    apply a pre-set percent linear stretch. To apply a different percent linear stretch, click the
+    <b>
+     Custom Stretch
+    </b>
+    <![CDATA[ ]]>
+    <img src="../Resources/Images/IconsButtons/CustomStretch.gif" title="Interactive Stretch button" alt="Interactive Stretch button" class="VertCenter" />
+    button.
+   </li>
+   <li value="3">
+    <b>
+     Equalization
+    </b>
+    applies a histogram equalization stretch.
+   </li>
+   <li value="4">
+    <b>
+     Gaussian
+    </b>
+    applies a Gaussian stretch. The default standard deviation value is 0.3. To apply a different standard deviation, click the
+    <b>
+     Custom Stretch
+    </b>
+    <![CDATA[ ]]>
+    <img src="../Resources/Images/IconsButtons/CustomStretch.gif" title="Interactive Stretch button" alt="Interactive Stretch button" class="VertCenter" />
+    button.
+   </li>
+   <li value="5">
+    <b>
+     Square Root
+    </b>
+    performs a square root gray scale transformation, then applied a linear stretch. When you select Square Root, the contrast is changed to 0 by default.
+   </li>
+   <li value="6">
+    <b>
+     Logarithmic
+    </b>
+    logarithmically stretches the gray scale of the input image. It is a non-linear technique where the low-range brightness is enhanced. The logarithmic stretch is useful for enhancing features lying in the darker parts of the original image. When you select Logarithmic, the contrast is changed to 0 by default.
+   </li>
+   <li value="7">
+    <b>
+     Optimized Linear
+    </b>
+    applies an optimized linear stretch, also known as a dynamic range adjustment. By default, 16-bit, unsigned integer data  use the optimized linear stretch for display as it has a dynamic range set that is optimal for integer data. This stretch provides the maximum amount of information from the midtones and from the shadow and highlight regions of this data type. See
+    <a href="BackgroundOptimizedLinearStretch.htm">
+     Optimized Linear Stretch Background
+    </a>
+    for more details.
+   </li>
+   <li value="8">
+    <b>
+     Custom
+    </b>
+    opens the Custom Stretch dialog for you to adjust dark and light ranges using a histogram, described in the next section.
+   </li>
+  </ul>
+  <p>
+   Click the
+   <b>
+    Reset Stretch Type
+   </b>
+   <img src="../Resources/Images/IconsButtons/Reset.gif" title="Reset button" alt="Reset button" />
+   button to return to the stretch type default for the image.
+  </p>
+  <h3>
+   Custom Stretch
+   <a name="kanchor38">
+   </a>
+   <a name="InteractiveStretching">
+   </a>
+  </h3>
+  <p>
+   Use the
+   <b>
+    Custom Stretch
+   </b>
+   controls to adjust individual dark and light ranges for R, G, B in the current layer using a histogram. As with
+   <b>
+    Stretch Types
+   </b>
+   , you can calculate statistics on the full extent of the image, or only the extent that is visible in the current Image window view.
+  </p>
+  <p>
+   Click the
+   <b>
+    Custom Stretch
+   </b>
+   <![CDATA[ ]]>
+   <img src="../Resources/Images/IconsButtons/CustomStretch.gif" title="Interactive Stretch button" alt="Interactive Stretch button" class="VertCenter" />
+   button on the toolbar or select
+   <b>
+    Display &gt; Custom Stretch
+   </b>
+   to open the Custom Stretch dialog. The dialog also opens when you select
+   <b>
+    Custom
+   </b>
+   from the
+   <b>
+    Stretch Types
+   </b>
+   drop-down list on the toolbar. When the dialog is open, the
+   <b>
+    Brightness
+   </b>
+   and
+   <b>
+    Contrast
+   </b>
+   controls on the toolbar are disabled.
+  </p>
+  <ul>
+   <li value="1">
+    If the image is color, the Custom Stretch dialog contains a histogram of all three bands and shows the smallest minimum value and the largest maximum value of the three bands. To adjust ranges for a color image, click the
+    <b>
+     Red
+    </b>
+    ,
+    <b>
+     Green
+    </b>
+    , or
+    <b>
+     Blue
+    </b>
+    button to display the individual histogram for the band.
+   </li>
+   <li value="2">
+    If the image is panchromatic, the Custom Stretch dialog contains a histogram of the band and shows the minimum value and maximum values of the band.
+   </li>
+   <li value="3">
+    Drag and release the black point (left) and white point (right) sliders below the histogram to change the dark and light values. Or, type minimum and maximum values in the fields provided and press the
+    <b>
+     Enter
+    </b>
+    key.
+   </li>
+   <li value="4">
+    To set custom parameter values for
+    <b>
+     Linear
+    </b>
+    and
+    <b>
+     Gaussian
+    </b>
+    stretch types (available in the all-bands view):
+   </li>
+   <li class="Indent" value="5">
+    For
+    <b>
+     Linear
+    </b>
+    stretch, type a new value (0 to 49.9) in the
+    <b>
+     Linear (Percent Value)
+    </b>
+    field and press the
+    <b>
+     Enter
+    </b>
+    key.
+   </li>
+   <li class="Indent" value="6">
+    <b>
+     Gaussian
+    </b>
+    applies a default standard deviation value of 0.3. With the stretch type
+    <b>
+     Gaussian
+    </b>
+    selected from the drop-down list, enter a new value (greater than 0) in the
+    <b>
+     Gaussian (Standard Deviation)
+    </b>
+    field and press the
+    <b>
+     Enter
+    </b>
+    key.
+   </li>
+   <li value="7">
+    To reset the stretch to what it was before opening the Custom Stretch dialog, click the
+    <b>
+     Reset Dialog
+    </b>
+    <img src="../Resources/Images/IconsButtons/Reset.gif" title="Reset button" alt="Reset button" />
+    button.
+   </li>
+  </ul>
+  <p>
+   You can optionally copy the histogram from the Custom Stretch dialog and paste it into other applications, such as Microsoft Word or PowerPoint. To do this, press
+   <b>
+    Ctrl+C
+   </b>
+   , then paste into another application by pressing
+   <b>
+    Ctrl+V
+   </b>
+   .
+  </p>
+  <h2>
+   <a name="StatusBar">
+   </a>
+   Status Bar
+   <a name="kanchor39">
+   </a>
+  </h2>
+  <p>
+   The Status bar is the horizontal bar at the bottom of the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   interface. By default, for non-georeferenced files, the Status bar is initially blank. For georeferenced files, the Status bar displays the following information about the base layer in the Layer Manager:
+  </p>
+  <ul>
+   <li value="1">
+    Latitude and longitude of the current location of the cursor in Degrees/Minutes/Seconds (dynamically updating as the cursor moves)
+   </li>
+   <li value="2">
+    Projection and datum
+   </li>
+   <li value="3">
+    Military Grid Reference System (MGRS) coordinates
+   </li>
+  </ul>
+  <p>
+   The Status bar displays information as you hover the cursor over either the Overview or the current Image window view.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   The Status bar always displays information about the base layer in the Layer Manager, not about all layers loaded into the Layer Manager. For information on all layers, see
+   <a>
+    Cursor Value
+   </a>
+   . For more information on working with base layers, see
+   <a href="RasterLayers.htm#View">
+    View Map Information
+   </a>
+   .
+  </p>
+  <p>
+   You can customize the information displayed in each segment of the Status bar. To change the type of information displayed in a segment, right-click in a segment and choose an option from the menu.
+  </p>
+  <p>
+   <img src="../Resources/Images/status_bar_whole_703x187.bmp" style="width: 703;height: 187;" />
+  </p>
+  <p>
+   When you customize the Status bar contents using this method, the Status bar only retains the information for the current
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   session. You can permanently set defaults for each segment by setting the
+   <a style="font-weight: bold;" href="../Preferences.htm#StatusBarSegment123">
+    Status Bar Segment 1, 2, 3
+   </a>
+   preference.
+  </p>
+  <h2>
+   <a name="process_manager">
+   </a>
+   Process Manager
+   <a name="kanchor40">
+   </a>
+  </h2>
+  <p>
+   If you are running one or more processes (for example,
+   <b>
+    File &gt; Save As
+   </b>
+   , building pyramids, or any of the Toolbox options, the right-most segment of the Status bar displays the process name and status for the oldest running process, along with an option to cancel the process (click the
+   <b>
+    Cancel Process
+   </b>
+   <img src="../Resources/Images/IconsButtons/Delete.gif" class="VertCenter" />
+   button). When all processes finish, this segment becomes blank.
+  </p>
+  <p>
+   As one or more processes are running, click the
+   <b>
+    Process Description
+   </b>
+   <img src="../Resources/Images/IconsButtons/ProcessManager.gif" title="Process description" alt="Process description" class="VertCenter" />
+   button to display a window that shows the name and status of each process, and the name of the input raster images. (See image above).
+  </p>
+  <h2>
+   <a name="Toolbox">
+   </a>
+   Toolbox Favorites
+   <a name="kanchor41">
+   </a>
+  </h2>
+  <p>
+   You can add your favorite tools to the Favorites folder at the top of the Toolbox.
+  </p>
+  <p>
+   Select a tool or folder, and click the
+   <b>
+    Add to Favorites
+   </b>
+   <![CDATA[ ]]>
+   <img src="../Resources/Images/IconsButtons/AddToFavorites.gif" />
+   button  to place it in the Favorites folder.
+  </p>
+  <p>
+   To remove an item from the Favorites folder, select the tool or folder and click the
+   <b>
+    Remove from Favorites
+   </b>
+   <![CDATA[ ]]>
+   <img src="../Resources/Images/IconsButtons/RemoveFromFavorites.gif" />
+   button.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   When you add or remove a Favorites tool or folder, the original link to the tool inside the Toolbox remains intact.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

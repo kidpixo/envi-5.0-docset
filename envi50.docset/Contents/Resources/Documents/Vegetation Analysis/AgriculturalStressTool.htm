@@ -1,0 +1,241 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Vegetation" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Agricultural Stress Tool
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#Vegetation Analysis/AgriculturalStressTool.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="VegetationAnalysis.htm">
+    Vegetation
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Agricultural Stress Tool
+   </span>
+  </div>
+  <h1>
+   Agricultural Stress Tool
+  </h1>
+  <p>
+   <a name="kanchor453">
+   </a>
+   Use the
+   <b>
+    Agricultural Stress Tool
+   </b>
+   to create a spatial map showing the distribution of crop stress. This tool is intended specifically for use on agricultural land to support precision agriculture analysis. The conditions that cause agricultural stress are the same as those that cause forest stress; however, agricultural stress analysis concentrates more on growth efficiency. Dry or dying crops do not efficiently use nitrogen and light, indicating agricultural stress, whereas a crop showing healthy, productive vegetation indicates low stress. The Agricultural Stress Tool uses the following VI categories:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="BroadbandGreenness.htm">
+     Broadband
+    </a>
+    and
+    <a href="NarrowbandGreenness.htm">
+     Narrowband
+    </a>
+    Greenness, to indicate areas of idle cropland, weak vegetation, and healthy crops.
+   </li>
+   <li value="2">
+    <a href="LightUseEfficiency.htm">
+     Light use efficiency
+    </a>
+    , to show vegetation growth rate.
+   </li>
+   <li value="3">
+    <a href="CanopyNitrogen.htm">
+     Canopy nitrogen
+    </a>
+    , to estimate relative nitrogen levels.
+   </li>
+   <li value="4">
+    <a href="LeafPigments.htm">
+     Leaf pigments
+    </a>
+    , to highlight vegetation stress.
+   </li>
+   <li value="5">
+    <a href="CanopyWaterContent.htm">
+     Canopy water content
+    </a>
+    , to show levels of water stress.
+   </li>
+  </ul>
+  <p>
+   When using the Agricultural Stress Tool, it is best to create a mask to separate crop varieties, and process each crop type individually. Because different crop types have different phenological cycles, canopy closure characteristics, and vegetative properties, the signals within and between crop types may be confused. If masking the different crop types is not feasible, carefully analyze the results. Compare only the results from one crop type to other results from the same crop type. Results from different crop types are not comparable.
+  </p>
+  <p>
+   To calculate agricultural stress:
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Spectral &gt; Vegetation &gt; Agricultural Stress Vegetation Analysis
+    </b>
+    . The Vegetation Products Calculation Input File dialog appears.
+   </li>
+   <li value="2">
+    Select the input file. The file may be a VI output file you created previously using the Vegetation Index Calculator, or you may select a hyperspectral data file that is atmospherically corrected and calibrated to reflectance.
+   </li>
+   <li value="3">
+    Select a spatial
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subset
+    </a>
+    by clicking
+    <b>
+     Spatial Subset
+    </b>
+    . Using spatial subsetting with the Agricultural Stress Tool may further refine the results.
+   </li>
+   <li value="4">
+    Apply optional masking to the data by clicking
+    <b>
+     Select
+    </b>
+    <![CDATA[ ]]>
+    <b>
+     Mask Band
+    </b>
+    and selecting the desired mask image.
+   </li>
+   <li value="5">
+    <p>
+     Click
+     <b>
+      OK
+     </b>
+     . The Agricultural Stress Parameters dialog appears.
+    </p>
+    <p>
+     If the
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     header for the input file contains a bad bands list, the bad bands are excluded from the VI calculation.
+    </p>
+   </li>
+   <li value="6">
+    Select a
+    <a href="BroadbandGreenness.htm">
+     broadband
+    </a>
+    or
+    <a href="NarrowbandGreenness.htm">
+     narrowband
+    </a>
+    greenness index from the
+    <b>
+     Greenness Index
+    </b>
+    drop-down list.
+   </li>
+   <li value="7">
+    Enter a
+    <b>
+     Minimum valid greenness value
+    </b>
+    to use in the agricultural stress calculation. Any values in the image less than the value you specify are masked out in the classification result. This setting, along with a proper mask selection, is useful for areas that contain different terrain types. The default value is 0.
+   </li>
+   <li value="8">
+    Select a VI from the
+    <b>
+     <a href="CanopyWaterContent.htm">
+      Canopy Water
+     </a>
+     or
+     <a href="CanopyNitrogen.htm">
+      Nitrogen
+     </a>
+     Index
+    </b>
+    drop-down list.
+   </li>
+   <li value="9">
+    Select a VI from the
+    <b>
+     <a href="LightUseEfficiency.htm">
+      Light Use Efficiency
+     </a>
+     or
+     <a href="LeafPigments.htm">
+      Leaf Pigment
+     </a>
+     Index
+    </b>
+    drop-down list.
+   </li>
+   <li value="10">
+    Output the result to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="11">
+    Click
+    <b>
+     OK
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds the resulting output to the Layer Manager.
+   </li>
+  </ol>
+  <p>
+   The Agricultural Stress Tool divides the input scene into nine classes, from lowest stress to highest stress. Following is the classification map for the Agricultural Stress Tool output:
+  </p>
+  <p>
+   <img src="../Resources/Images/Vegetation/6_7_584x29.jpg" style="width: 584;height: 29;" />
+  </p>
+  <p>
+   <img src="../Resources/Images/Vegetation/6_10_576x35.jpg" style="width: 576;height: 35;" />
+  </p>
+  <p>
+   The classifications are
+   <i>
+    relative
+   </i>
+   to the particular input scene only and cannot be generalized to other areas or other scenes. Field examination is essential to link the classes provided by the tool with the real-world conditions they represent. The classes cannot be compared between scenes, as the vegetative variability between scenes could be significant, and the actual classification values may not match. For example, a classification color of green in one scene could represent the same field conditions with a classification color of orange in another.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

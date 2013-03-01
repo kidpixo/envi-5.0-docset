@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Spectral Tools|THOR Tools" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   THOR Stressed Vegetation
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#SpectralTools/THORTools/THORStressedVegetation.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../SpectralTools.htm">
+    Spectral Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="THORWorkflows.htm">
+    THOR Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    THOR Stressed Vegetation
+   </span>
+  </div>
+  <h1>
+   THOR Stressed Vegetation
+  </h1>
+  <p>
+   The Stressed Vegetation tool streamlines the use of
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   's
+   <a href="../../Vegetation Analysis/VegetationAnalysis.htm">
+    Vegetation Analysis tools
+   </a>
+   . This workflow will guide you through the process of creating a mask to define vegetated pixels, choosing vegetation indices to use for examining vegetation health, and reviewing the results.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     THOR &gt; THOR Stressed Vegetation
+    </b>
+    . The Stressed Vegetation dialog appears.
+   </li>
+   <li value="2">
+    <a href="THORFileSelection.htm">
+     Select an input file
+    </a>
+    .
+   </li>
+   <li value="3">
+    <a href="THORAtmosphericCorrection.htm">
+     Perform atmospheric correction
+    </a>
+    .
+   </li>
+   <li value="4">
+    <a href="THORImageTransform.htm#masking">
+     Define a mask
+    </a>
+    that delineates vegetated from non-vegetated pixels; the process is identical except that vegetation is the target and the NDVI is the only rule image.
+   </li>
+   <li value="5">
+    <a href="THORSpatialFiltering.htm">
+     Perform spatial filtering
+    </a>
+    .
+   </li>
+   <li value="6">
+    Use the Vegetation Indices panel to select which indices to use. The indices quantify different properties of vegetation such as greenness, water and nitrogen content, light use, and much more. While the vegetation indices are useful to examine on an individual basis, they may also be combined to generate colorized products for specific applications, including
+    <a href="../../Vegetation Analysis/AgriculturalStressTool.htm">
+     Agricultural Stress
+    </a>
+    ,
+    <a href="../../Vegetation Analysis/ForestHealthTool.htm">
+     Forest Health
+    </a>
+    , and
+    <a href="../../Vegetation Analysis/FireFuelTool.htm">
+     Fire Fuel
+    </a>
+    .
+   </li>
+   <p>
+    The number of vegetation indices that are available depends upon the spectral bands present in the input file. By default, THOR selects a core subset of vegetation indices to generate the colorized products. To select more vegetation indices, click
+    <b>
+     Select Veg Indices
+    </b>
+    . The Select Veg Indices dialog appears.
+   </p>
+   <li value="7">
+    Select the desired indices and click
+    <b>
+     OK
+    </b>
+    . Refer to
+    <a href="../../Vegetation Analysis/UnderstandingVegetation.htm">
+     Understanding Vegetation and Its Reflectance Properties
+    </a>
+    for more information on each index.
+   </li>
+   <li value="8">
+    To enforce biophysical cross-checking, select the
+    <b>
+     Perform biophysical cross-checking
+    </b>
+    option. Biophysical cross-checking validates the results of each index by cross-checking the results with other indices. If the results do not agree, then those pixels are blanked out.
+   </li>
+   <li value="9">
+    In the Vegetation Indices panel, click
+    <b>
+     Agricultural Stress
+    </b>
+    ,
+    <b>
+     Forest Health
+    </b>
+    , or
+    <b>
+     Fire Fuel
+    </b>
+    to view or edit which vegetation indices are used to create that colorized product. From the drop-down lists provided, select other vegetation indices that will be used to create the colorized product. Even if you have not already selected indices (described in Step 6), they will still be calculated as needed.
+   </li>
+   <li value="10">
+    Click
+    <b>
+     Next
+    </b>
+    .
+   </li>
+   <li value="11">
+    Use the Review Veg Stress Results panel to review the vegetation indices and colorized products that you just created. The results are displayed in the
+    <a href="UsingTHORViewer.htm">
+     THOR Viewer
+    </a>
+    . The available images for display are listed in a tree view; images include the input file, the atmospherically corrected image (if any), the individual vegetation indices, and the colorized, application-specific products.
+   </li>
+   <p>
+    Click on the desired image to load it in the THOR Viewer. For colorized products, a legend is displayed to help identify what the colors mean. Following is an example of a colorized image:
+   </p>
+   <p>
+    <img src="../../Resources/Images/Spectral/THOR_vegetation_stress.gif" />
+   </p>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

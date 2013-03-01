@@ -1,0 +1,203 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Background on NITF Map Information
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#GeorectifyImagery/BackgroundNITFMapInformation.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <h2>
+   Background on NITF Map Information
+   <a name="kanchor838">
+   </a>
+  </h2>
+  <p>
+   Map information in a NITF file can come from multiple sources. See the following sections:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#RPC00A">
+     RPC00A and RPC00B
+    </a>
+   </li>
+   <li value="2">
+    <a href="#DIGEST">
+     DIGEST GeoSDE TREs
+    </a>
+   </li>
+   <li value="3">
+    <a href="#ICORDS">
+     ICORDS and IGEOLO
+    </a>
+   </li>
+   <li value="4">
+    <a href="#Order">
+     Order and Precedence for Reading Map Information
+    </a>
+   </li>
+  </ul>
+  <h3>
+   <a name="RPC00A">
+   </a>
+   RPC00A and RPC00B
+   <a name="kanchor839">
+   </a>
+  </h3>
+  <p>
+   If the RPC00A or RPC00B TRE exists, the RPC model is used to emulate a projection by default. If RPC information is available in a NITF file, the projection description in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   includes the string
+   <code>
+    *RPC*
+   </code>
+   prior to the name of the coordinate system in which the image resides.
+  </p>
+  <p>
+   If the Image Chip Support Data Extension Version B TRE (ICHIPB) is also present, information from this TRE is used to specify the offsets for the resulting map information. These offsets are needed to ensure the map information is consistent with the original positioning data.
+  </p>
+  <h3>
+   <a name="DIGEST">
+   </a>
+   DIGEST GeoSDE TREs
+   <a name="kanchor840">
+   </a>
+  </h3>
+  <p>
+   The software uses Digital Geographic Information Exchange Standard (DIGEST) GeoSDE
+
+TREs  to improve georeferencing accuracy in NITF images. The software can use the Geo
+
+Positioning Information Extension (GEOPSB) and Projection Parameters Extension
+
+(PRJPSB) TREs stored in the file header, and the Local Geographic (lat/long) Coordinate
+
+System Extension (GEOLOB) and Local Cartographic Coordinate System (MAPLOB) TREs
+
+stored in the image segment subheader. Only these GeoSDEs are supported.
+  </p>
+  <p>
+   A complete, valid GeoSDE TRE set requires a GEOPSB TRE in the file header. This TRE
+
+defines the basic coordinate system information including ellipsoid, datum, units, and
+
+whether the coordinate system is geographic or cartographic (projected). If the GEOPSB TRE
+
+specifies a cartographic coordinate system, it must also be accompanied in the file header by
+
+the PRJSPB TRE, which specifies the associated projection and defines the projection
+
+parameters, if required.
+  </p>
+  <p>
+   In addition, only one of the following TREs must be present in the image segment to which
+
+the map information applies: GEOLOB, MAPLOB, GRDPSB, or REGPTB. Because
+
+GRDPSB and REGPTB TREs are not supported, image segments containing
+
+these TREs must obtain map information from another source. The GEOLOB TRE is
+
+provided if the GEOPSB TRE specifies a geographic projection, and the MAPLOB TRE
+
+specifies a cartographic projection. Both TREs store the coordinate location of the upper-left
+
+corner of the image and the (x, y) pixel size.
+  </p>
+  <p>
+   NITF images containing projection codes are not supported. The software cannot use the
+
+MAPLOB TRE to find map information. Unrecognized datum codes default to WGS-84.
+  </p>
+  <p>
+   When packing NITF files, you cannot create, edit, or delete the DIGEST GeoSDE TREs. If the NITF file contains valid GEOLOB or GEOPSB
+
+TREs, they are preserved if you save the file to a NITF-formatted file.  If you are chipping the
+
+scene, the ICHIPB TRE is added.
+  </p>
+  <h3>
+   <a name="ICORDS">
+   </a>
+   ICORDS and IGEOLO
+   <a name="kanchor841">
+   </a>
+  </h3>
+  <p>
+   The software uses the image coordinate representation (ICORDS) and image geolocation (IGEOLO) header field in the image subheader to calculate map information for an image.
+  </p>
+  <p>
+   These image subheader fields contain values relative to how map information is displayed:
+  </p>
+  <ul>
+   <li value="1">
+    ICORDS: A character representing the coordinate system of the image. The character can specify either UTM or Geographic coordinates, or may specify that no corner coordinates are present.
+   </li>
+   <li value="2">
+    IGEOLO: The coordinates for each of the four corner points. If the corner points are rectified, the upper-left corner position and the pixel size are calculated and standard map information is generated for the image. Otherwise, the four corner points are used to calculate a polynomial warp used to individually calculate the coordinate location for each pixel. The polynomial warp process results in what is referred to in
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    as a pseudo projection, which can be identified in the projection description by the inclusion of the string
+    <code>
+     *pseudo*
+    </code>
+    prior to the name of the coordinate system in which the image resides.
+   </li>
+  </ul>
+  <p>
+   If a NITF file contains multiple sources of map information, the order and precedence for reading the coordinate system is as follows.
+  </p>
+  <h3>
+   <a name="Order">
+   </a>
+   Order and Precedence for Reading Map Information
+  </h3>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   reads one sensor-based coordinate system (RPC) and up to one rectangular or warp coordinate system (tie point and pixel size, or affine map transformation).
+  </p>
+  <ol>
+   <li value="1">
+    RPC information: the software attempts to  use RPC map information for the file.
+   </li>
+   <li value="2">
+    MAPLOB, PRJPSB, and GEOPSB TREs: Map information (if available) will be imported from these TREs, and tie point and pixel sizes will be created in the specified projection. If the projection is not supported, this information is considered invalid and the next georeferencing method is attempted.
+   </li>
+   <li value="3">
+    GEOLOB and GEOPSB TREs: If available, tie point and pixel size will be imported from these TREs in a geographic coordinate system.
+   </li>
+   <li value="4">
+    IGEOLO field in the NITF image subheader: the software parses this subheader field; if it finds valid coordinates, it determines if they are rectified. If so, tie point and pixel size are computed for the image. Otherwise, an affine map transformation is used to determine georeferencing for the image.
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

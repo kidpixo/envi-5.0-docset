@@ -1,0 +1,834 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Tutorials|Using Workflows" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Classification Tutorial
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/TableStyles/Description.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#Tutorials/Workflows/ClassificationTutorial.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../Tutorials.htm">
+    Tutorials
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../Tutorials.htm">
+    Using Workflows
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Classification
+   </span>
+  </div>
+  <h1>
+   Classification Tutorial
+  </h1>
+  <p>
+   In this tutorial, you will use the Classification workflow to categorize pixels in an image into many classes. In the first part of the tutorial, you will perform an unsupervised classification with no training data. Unsupervised classification clusters pixels in a dataset based on statistics only, without any user-defined training classes.
+  </p>
+  <p>
+   In the second part of the tutorial, you will create training data interactively in the dataset and use it to perform a supervised classification. Supervised classification clusters pixels in a dataset into classes based on training data that you define. Then you can select the classes that you want mapped in the output.
+  </p>
+  <p>
+   <a name="ClassRefs">
+   </a>
+   <b>
+    References
+   </b>
+  </p>
+  <p>
+   Mahalanobis, Maximum Likelihood, Minimum Distance:
+  </p>
+  <p class="indent">
+   J .A. Richards, 1999,
+   <i>
+    Remote Sensing Digital Image Analysis
+   </i>
+   , Springer-Verlag, Berlin, p. 240.
+  </p>
+  <p>
+   Spectral Angle Mapper:
+  </p>
+  <p class="indent">
+   Kruse, F. A., A. B. Lefkoff, J. B. Boardman, K. B. Heidebrecht, A. T. Shapiro, P. J. Barloon, and A. F. H. Goetz, 1993, "The Spectral Image Processing System (SIPS) - Interactive Visualization and Analysis of Imaging spectrometer Data."
+   <i>
+    Remote Sensing of the Environment
+   </i>
+   , v. 44, p. 145 - 163.
+  </p>
+  <p>
+   ISODATA:
+  </p>
+  <p class="indent">
+   Tou, J. T. and R. C. Gonzalez, 1974.
+   <i>
+    Pattern Recognition Principles
+   </i>
+   , Addison-Wesley Publishing Company, Reading, Massachusetts.
+  </p>
+  <h2>
+   Files Used in this Tutorial
+  </h2>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   Resource DVD:
+   <code>
+    classification
+   </code>
+  </p>
+  <table style="margin-left: 0;margin-right: auto;caption-side: top;mc-table-style: url('../../Resources/TableStyles/Description.css');" cellspacing="0" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       File
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p class="TableHead">
+       Description
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+      <pre xml:space="preserve">
+       Phoenix_AZ.tif
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColEnd">
+      <p>
+       QuickBird image over Phoenix, Arizona
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h2>
+   Performing Unsupervised Classification
+  </h2>
+  <p>
+   The ISODATA method for unsupervised classification starts by calculating class means evenly distributed in the data space, then iteratively clusters the remaining pixels using minimum distance techniques. Each iteration recalculates means and reclassifies pixels with respect to the new means. This process continues until the percentage of pixels that change classes during an iteration is less than the change threshold or the maximum number of iterations is reached.
+  </p>
+  <ol>
+   <li value="1">
+    Start
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    .
+   </li>
+   <li value="2">
+    From the Toolbox, select
+    <b>
+     Classification &gt; Classification Workflow
+    </b>
+    . The File Selection panel appears.
+   </li>
+   <li value="3">
+    Click
+    <b>
+     Browse
+    </b>
+    . The Select Input File dialog appears.
+   </li>
+   <li value="4">
+    Click
+    <b>
+     Open File
+    </b>
+    . The Open dialog appears.
+   </li>
+   <li value="5">
+    Navigate to
+    <code>
+     classification
+    </code>
+    , select
+    <code>
+     Phoenix_AZ.tif
+    </code>
+    , and click
+    <b>
+     Open
+    </b>
+    . This is a QuickBird true-color image.
+   </li>
+   <li value="6">
+    Click
+    <b>
+     Next
+    </b>
+    in the File Selection dialog. The Classification Type panel appears.
+   </li>
+   <li value="7">
+    Select
+    <b>
+     No Training Data
+    </b>
+    , which will guide you through the unsupervised classification workflow steps.
+   </li>
+   <li value="8">
+    Click
+    <b>
+     Next
+    </b>
+    . The Unsupervised Classification panel appears.
+   </li>
+   <li value="9">
+    <p>
+     Enter
+     <b>
+      7
+     </b>
+     as the
+     <b>
+      Requested Number of Classes
+     </b>
+     to define. You do not need to change any settings on the
+     <b>
+      Advanced
+     </b>
+     tab, so click
+     <b>
+      Next
+     </b>
+     to begin classification.
+    </p>
+    <p>
+     When classification is complete, the classified image loads in the view and the Cleanup panel appears.
+    </p>
+    <p>
+     The following is a sample of the unsupervised classification results from part of the image. Your results may be slightly different.  Notice the amount of speckling that occurs within the residential areas:
+    </p>
+    <p>
+     <img src="../../Resources/Images/Classification/unsupervised1.gif" />
+    </p>
+   </li>
+   <li value="10">
+    Cleanup is an optional step, but you will use it in this exercise to determine if the classification output improves. The cleanup options are
+    <i>
+     smoothing
+    </i>
+    , which removes speckling, and
+    <i>
+     aggregation
+    </i>
+    , which removes small regions. In the Cleanup panel, keep the default settings.
+   </li>
+   <li value="11">
+    <p>
+     Enable the
+     <b>
+      Preview
+     </b>
+     option.  A Preview Portal opens, showing you what the classification cleanup will look like with the current settings. Click on the Portal Portal using the
+     <b>
+      Selection
+     </b>
+     tool (the arrow icon located in the main toolbar), and drag it around the image to see how areas will be affected by cleanup step.
+    </p>
+    <p>
+     The image below shows that the classification will benefit from using the Cleanup step. You can see that much of the speckling noise has been replaced with smoother regions.
+    </p>
+    <p>
+     <img src="../../Resources/Images/Classification/unsupervised2.gif" />
+    </p>
+   </li>
+   <li value="12">
+    Click
+    <b>
+     Next
+    </b>
+    . The Export panel appears.
+   </li>
+   <li value="13">
+    Enable only the
+    <b>
+     Export Classification Image
+    </b>
+    check box. Use the default output image type of
+    <b>
+     ENVI
+    </b>
+    , and enter a path and filename for the classification image.
+   </li>
+   <li value="14">
+    Click
+    <b>
+     Finish
+    </b>
+    .
+   </li>
+  </ol>
+  <p>
+   Next, you will perform supervised classification on the same image. To prepare, do the following:
+  </p>
+  <ol>
+   <li value="1">
+    Select
+    <b>
+     File &gt; Data Manager
+    </b>
+    . The Data Manager opens.
+   </li>
+   <li value="2">
+    Select the classification file that you just created, and click the
+    <b>
+     Close
+    </b>
+    button. Leave the Data Manager and the file
+    <code>
+     Phoenix_AZ.TIF
+    </code>
+    open.
+   </li>
+  </ol>
+  <h2>
+   Performing Supervised Classification
+  </h2>
+  <p>
+   Supervised classification methods include Maximum likelihood, Minimum distance, Mahalanobis distance, and Spectral Angle Mapper (SAM). In this tutorial, you will use SAM.
+  </p>
+  <ol>
+   <li value="1">
+    In the Data Manger, click the
+    <code>
+     Phoenix_AZ.TIF
+    </code>
+    file and drag it to
+    <b>
+     Classification
+    </b>
+    in the Toolbox. The File Selection panel appears, with
+    <code>
+     Phoenix_AZ.TIF
+    </code>
+    as the raster input file.
+   </li>
+   <li value="2">
+    Click
+    <b>
+     Next
+    </b>
+    in the File Selection panel to proceed. The Classification Type panel appears.
+   </li>
+   <li value="3">
+    Select
+    <b>
+     Use Training Data
+    </b>
+    , which will guide you through the supervised classification workflow steps.
+   </li>
+   <li value="4">
+    Click
+    <b>
+     Next
+    </b>
+    . The Supervised Classification panel appears.
+   </li>
+   <li value="5">
+    Under the Algorithm tab, select
+    <b>
+     Spectral Angle Mapper
+    </b>
+    <![CDATA[ ]]>
+    from the drop-down list provided. The SAM method is a spectral classification technique that uses an
+    <em>
+     n
+    </em>
+    -D angle to match pixels to training data. This method determines the spectral similarity between two spectra by calculating the angle between the spectra and treating them as vectors in a space with dimensionality equal to the number of bands. Smaller angles represent closer matches to the reference spectrum. The pixels are assigned to the class with the smallest angle. When used with calibrated reflectance data, the SAM&#160;method is relatively insensitive to illumination and albedo effects.
+   </li>
+   <li value="6">
+    You can define training data from an existing vector file, but for this exercise, you will use
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    's
+    <b>
+     Polygon Annotation
+    </b>
+    tool to interactively create your own polygons of training data.
+   </li>
+  </ol>
+  <h3>
+   Interactively Defining Training Data
+  </h3>
+  <p>
+   When you selected
+   <b>
+    Use Training Data
+   </b>
+   , the
+   <b>
+    Polygon Annotation
+   </b>
+   button&#160;
+   <img src="../../Resources/Images/IconsButtons/AnnotationPolygon.gif" class="VertCenter" />
+   was enabled and a new layer named
+   <code>
+    Training Data
+   </code>
+   was added to the Layer Manager. You will define  two classes with at least one region per class. This is the minimum number of classes required to perform supervised classification.
+  </p>
+  <ol>
+   <li value="1">
+    In the Supervised Classification panel, click the Properties tab and change the
+    <b>
+     Class Name
+    </b>
+    from
+    <code>
+     Class 1
+    </code>
+    to
+    <code style="font-weight: bold;">
+     Undeveloped
+    </code>
+    . Leave the
+    <b>
+     Class Color
+    </b>
+    as red.
+   </li>
+   <li value="2">
+    <p>
+     Locate different areas in the image that are undeveloped. They should not contain buildings or grass, and they should not be roads. Draw polygons inside three of these areas. To draw a polygon, click in an undeveloped area and hold down the mouse button while drawing. As you approach your starting point, double-click to accept the polygon. The polygon annotation is added to the Layer Manager under the training data layer tree.
+    </p>
+   </li>
+   <p>
+    The following is an example of one polygon.
+   </p>
+   <p>
+    <img src="../../Resources/Images/Classification/trainingdata1.gif" />
+   </p>
+   <li value="3">
+    Click the
+    <b>
+     Add Class
+    </b>
+    button
+    <img src="../../Resources/Images/IconsButtons/WorkflowAddFeature.gif" class="VertCenter" />
+    to create a second class.
+   </li>
+   <li value="4">
+    Change the
+    <b>
+     Class Name
+    </b>
+    from
+    <code>
+     Class 2
+    </code>
+    to
+    <code style="font-weight: bold;">
+     Vegetation
+    </code>
+    . Leave the
+    <b>
+     Class Color
+    </b>
+    as green.
+   </li>
+   <li value="5">
+    <p>
+     Locate different areas in the image that display healthy vegetation such as golf courses, trees, lawns, etc. Draw polygons inside three of these areas. The following zoomed-in image shows an example.
+    </p>
+    <p>
+     <img src="../../Resources/Images/Classification/trainingdata2.gif" />
+    </p>
+   </li>
+   <li value="6">
+    Click the
+    <b>
+     Add Class
+    </b>
+    button to create a third class.
+   </li>
+   <li value="7">
+    Change the
+    <b>
+     Class Name
+    </b>
+    from
+    <code>
+     Class 3
+    </code>
+    to
+    <code style="font-weight: bold;">
+     Buildings
+    </code>
+    . Leave the
+    <b>
+     Class Color
+    </b>
+    as blue.
+   </li>
+   <li value="8">
+    <p>
+     Locate different areas in the image that have rooftops. Draw polygons inside three of these areas, preferably rooftops with different brightness levels. The following zoomed-in image shows an example.
+    </p>
+    <p>
+     <img src="../../Resources/Images/Classification/trainingdata3.gif" />
+    </p>
+   </li>
+   <li value="9">
+    Next you will preview the classification results, based on the training data you provided.
+   </li>
+  </ol>
+  <h3>
+   Previewing the Classification
+  </h3>
+  <ol>
+   <li value="1">
+    <p>
+     Enable the
+     <b>
+      Preview
+     </b>
+     <![CDATA[ ]]>
+     option to open a Preview Portal that shows the classification result using the training data that you created. The following figure shows an example.
+    </p>
+    <p>
+     <img src="../../Resources/Images/Classification/trainingdata4.gif" />
+    </p>
+    <p>
+     The Preview Portal shows that roads are being classified as buildings. You will need to add a fourth class for roads.
+    </p>
+   </li>
+   <li value="2">
+    Disable the
+    <b>
+     Preview
+    </b>
+    <![CDATA[ ]]>
+    option.
+   </li>
+   <li value="3">
+    Click the
+    <b>
+     Add Class
+    </b>
+    button.
+   </li>
+   <li value="4">
+    Change the
+    <b>
+     Class Name
+    </b>
+    from
+    <code>
+     Class 4
+    </code>
+    to
+    <code style="font-weight: bold;">
+     Roads
+    </code>
+    . Leave the
+    <b>
+     Class Color
+    </b>
+    as yellow.
+   </li>
+   <li value="5">
+    Use the
+    <b>
+     Polygon Annotation
+    </b>
+    tool to draw polygons within three different road types, including a freeway. You may need to use the
+    <b>
+     Zoom
+    </b>
+    tool in the main toolbar to zoom in enough to draw a polygon inside a road.
+   </li>
+   <li value="6">
+    Enable
+    <b>
+     Preview
+    </b>
+    again.
+   </li>
+   <li value="7">
+    <p>
+     The
+     <code>
+      Roads
+     </code>
+     training region seemed to do a good job of classifying the roads, but it also reclassified some rooftops that were a shade of gray similar to the highway. the following image shows an example.
+    </p>
+    <p>
+     <img src="../../Resources/Images/Classification/trainingdata5.gif" />
+    </p>
+    <p>
+     Next, you will delete the
+     <code>
+      Roads
+     </code>
+     region, rename the
+     <code>
+      Buildings
+     </code>
+     region to
+     <code>
+      Developed
+     </code>
+     , and add three road training regions to
+     <![CDATA[ ]]>
+     <code>
+      Developed
+     </code>
+     .
+    </p>
+   </li>
+   <li value="8">
+    Select the
+    <code>
+     Roads
+    </code>
+    class, and click the
+    <b>
+     Delete
+    </b>
+    button. The Preview Portal updates the view.
+   </li>
+   <li value="9">
+    Select the
+    <code>
+     Buildings
+    </code>
+    class, and change its
+    <b>
+     Class Name
+    </b>
+    to
+    <code>
+     Developed
+    </code>
+    .
+   </li>
+   <li value="10">
+    Use the
+    <b>
+     Polygon Annotation
+    </b>
+    tool to draw polygons within three road sections, being sure to mark at least one section of a highway.
+   </li>
+   <li value="11">
+    When you enable the
+    <b>
+     Preview
+    </b>
+    option, you should see that roads and buildings are part of the new
+    <code>
+     Developed
+    </code>
+    class.
+   </li>
+  </ol>
+  <h3>
+   Comparing Methods
+  </h3>
+  <p>
+   With the
+   <b>
+    Preview
+   </b>
+   option enabled, try each of the classification methods under the Algorithm tab. For more detailed information on each method, see
+   <a href="#ClassRefs">
+    References
+   </a>
+   . Here is a brief summary:
+  </p>
+  <p style="font-weight: normal;">
+   <b>
+    Maximum Likelihood
+   </b>
+   assumes that the statistics for each class in each band are normally distributed and calculates the probability that a given pixel belongs to a specific class. Each pixel is assigned to the class that has the highest probability (that is, the maximum likelihood).
+   <br />
+   <img src="../../Resources/Images/Classification/maxlike.gif" />
+  </p>
+  <p style="font-weight: normal;">
+   <b>
+    Minimum Distance
+   </b>
+   <![CDATA[ ]]>
+   uses the mean vectors for each class and calculates the Euclidean distance from each unknown pixel to the mean vector for each class. The pixels are classified to the nearest class.
+   <br />
+   <img src="../../Resources/Images/Classification/mindist.gif" />
+  </p>
+  <p>
+   <b>
+    Mahalanobis
+   </b>
+   <![CDATA[ ]]>
+   is a direction-sensitive distance classifier that uses statistics for each class. It is similar to the maximum likelihood classification, but assumes all class covariances are equal, and therefore is a faster method. All pixels are classified to the closest training data.
+   <br />
+   <img src="../../Resources/Images/Classification/mahala.gif" />
+  </p>
+  <p>
+   <b>
+    Spectral Angle Mapper (SAM)
+   </b>
+   <br />
+   <img src="../../Resources/Images/Classification/sam.gif" />
+  </p>
+  <p>
+   It appears that either Maximum Likelihood or Spectral Angle Mapper will provide the best classification results for this image. For this exercise, keep
+   <b>
+    Spectral Angle Mapper
+   </b>
+   as the algorithm and click
+   <b>
+    Next
+   </b>
+   .
+  </p>
+  <h3>
+   Cleaning Up Supervised Classification Results
+  </h3>
+  <p>
+   When supervised classification is complete, the classified image loads in the Image window, and the Cleanup panel appears. Cleanup is an optional step, but you will use it in this exercise to determine if the classification output improves. The cleanup options are
+   <i>
+    smoothing
+   </i>
+   , which removes speckling, and
+   <i>
+    aggregation
+   </i>
+   , which removes small regions.
+  </p>
+  <ol>
+   <li value="1">
+    In the Cleanup panel, disable the
+    <b>
+     Enable Smoothing
+    </b>
+    <![CDATA[ ]]>
+    option. Select and keep the default setting for
+    <b>
+     Enable Aggregation
+    </b>
+    .
+   </li>
+   <li value="2">
+    <p>
+     The Preview Portal should still be open, showing you a view of what the classification cleanup will look like with the current settings. Click on the Preview Portal, and drag it around the image to see how areas will be affected by cleanup step.
+    </p>
+   </li>
+   <li value="3">
+    Click
+    <b>
+     Next
+    </b>
+    . When the classification process is finished, the Export panel appears.
+   </li>
+  </ol>
+  <h2>
+   Exporting Classification Results
+  </h2>
+  <p>
+   In the Export panel, you can save the classification results to an image, the class polygons to a shapefile, and statistics to a text file.
+  </p>
+  <p>
+   To export results:
+  </p>
+  <ol>
+   <li value="1">
+    Under the Export Files tab, enable the
+    <b>
+     Export Classification Image
+    </b>
+    <![CDATA[ ]]>
+    option and keep
+    <b>
+     ENVI
+    </b>
+    as the output image type. Enter a valid path and filename for the classification image.
+   </li>
+   <li value="2">
+    Enable the
+    <b>
+     Export Classification Vectors
+    </b>
+    <![CDATA[ ]]>
+    option and keep
+    <b>
+     Shapefile
+    </b>
+    as the output vector file type. Enter a valid path and filename for the shapefile.
+   </li>
+   <li value="3">
+    Under the Export Statistics tab, enable the
+    <b>
+     Export Classification Statistics
+    </b>
+    <![CDATA[ ]]>
+    option.
+    <![CDATA[ ]]>
+    Enter a valid path and filename for the statistics text file.
+   </li>
+   <li value="4">
+    <p>
+     Click
+     <b>
+      Finish
+     </b>
+     .
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     creates the output, opens the classification and vector layers in the Image window, and saves the files to the directory you specified. You can view the statistics by opening the file in a text editor.
+    </p>
+   </li>
+   <li value="5">
+    Select
+    <b>
+     File &gt; Exit
+    </b>
+    to close
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    .
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

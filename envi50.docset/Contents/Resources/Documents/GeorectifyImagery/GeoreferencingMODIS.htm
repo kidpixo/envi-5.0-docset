@@ -1,0 +1,253 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Georectify|Georeferencing Tools" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Georeference MODIS
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#GeorectifyImagery/GeoreferencingMODIS.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="GeorectifyImagery.htm">
+    Georectify
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="GeoreferencingTools.htm">
+    Georeferencing Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Georeference MODIS
+   </span>
+  </div>
+  <h1>
+   Georeference MODIS
+   <a name="kanchor238">
+   </a>
+  </h1>
+  <p>
+   Use
+   <b>
+    Georeference MODIS
+   </b>
+   to georeference both MODIS Level&#160;1B and MODIS Level&#160;2 datasets to the output projection coordinates.
+  </p>
+  <p>
+   If latitude and longitude data are available as images named Latitude and Longitude within the HDF dataset, the utility recognizes the images as containing geographic coordinates. If latitude and longitude data are available as images named other than Latitude and Longitude,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   prompts you to select the coordinate-containing images. If no images from the dataset contain geocoordinates, the data cannot be georeferenced.
+  </p>
+  <p>
+   To apply
+   <a href="ApplyingCorrectionForMODISBowTieEffect.htm">
+    MODIS bow tie effect correction
+   </a>
+   to the data, the dataset must have latitude and longitude information.
+  </p>
+  <ol>
+   <li value="1">
+    Open a MODIS Level 1B or MODIS Level 2 file by selecting
+    <b>
+     File &gt; Open As &gt; EOS &gt; MODIS
+    </b>
+    from the menu bar.
+   </li>
+   <li value="2">
+    Select
+    <b>
+     Geometric Correction &gt; Georeference by Sensor &gt; Georeference MODIS
+    </b>
+    from the Toolbox. The Input MODIS File dialog appears.
+   </li>
+   <li value="3">
+    <p>
+     Select an input file and perform optional spatial and spectral
+     <a href="../NoTOCTopics/Subsetting.htm">
+      subsetting
+     </a>
+     , then click
+     <b>
+      OK
+     </b>
+     .
+    </p>
+    <p>
+     If the dataset contains bands named Latitude and Longitude, the Georeference MODIS Parameters dialog appears.
+    </p>
+    <p>
+     If the dataset does not contain bands named Latitude and Longitude, the Lat/Lon Band Selection dialog appears. In this case:
+    </p>
+   </li>
+   <ul>
+    <li value="1">
+     If the dataset contains geographic coordinate bands using names other than the expected default, select the image names and click
+     <b>
+      OK
+     </b>
+     . The Georeference MODIS Parameters dialog appears.
+    </li>
+    <li value="2">
+     If the dataset does not contain geographic coordinate bands, click
+     <b>
+      Cancel
+     </b>
+     to close the utility. You will not be able to georeference the dataset.
+    </li>
+   </ul>
+   <li value="4">
+    In the Georeference MODIS Parameters dialog:
+   </li>
+   <ul>
+    <li value="1">
+     Select the desired output map projection from the list and enter any necessary parameters.
+    </li>
+    <li value="2">
+     <p>
+      Enter the number of x and y warp points to use in the corresponding
+      <b>
+       Number Warp Points: X
+      </b>
+      and
+      <b>
+       Y
+      </b>
+      fields.
+     </p>
+     <p>
+      When georeferencing MODIS data, the maximum number of warp points allowed depends on the image size and product type. If fewer warp points are entered, they are evenly spaced throughout the image.
+     </p>
+     <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+      <span class="autonumber">
+       <span>
+        <b>
+         Note:
+        </b>
+       </span>
+      </span>
+      Using many warp points may increase the warping time, but can significantly increase the accuracy of the georeferencing.
+     </p>
+    </li>
+    <li value="3">
+     Save the ground control points (GCPs) to an ASCII file, if desired, by entering an output filename in the
+     <b>
+      Enter Output GCP Filename [.pts]
+     </b>
+     box.
+    </li>
+    <li value="4">
+     If
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     is unable to determine the offset and increment for the latitude/longitude images, the
+     <b>
+      Start Pixel for Lat/Lon Values
+     </b>
+     and
+     <b>
+      Pixels Between Lat/Lon Values
+     </b>
+     fields display. Change the default values in these fields as needed. These values indicate the correct mapping relationship between the lat/lon grid and the input image. They are needed for georeferencing.
+    </li>
+    <li value="5">
+     <a href="ApplyingCorrectionForMODISBowTieEffect.htm">
+      Apply bow tie effect correction
+     </a>
+     to the dataset, if desired.
+    </li>
+    <li value="6">
+     Click
+     <b>
+      OK
+     </b>
+     . The Registration Parameters dialog appears. The options available in the dialog depend on the Yes/No value in the
+     <b>
+      Perform Bow Tie Correction
+     </b>
+     toggle.
+    </li>
+   </ul>
+   <li value="5">
+    In the Registration Parameters dialog
+    <b>
+     Output Projection and Map Extent
+    </b>
+    area, set the output projection for the image:
+   </li>
+   <ul>
+    <li value="1">
+     To change the projection of the upper-left coordinate only, click
+     <b>
+      Change Proj
+     </b>
+     .
+    </li>
+    <li value="2">
+     Change the map coordinate or latitude/longitude information for the upper-left coordinate, pixel size, and output image size.
+    </li>
+    <li value="3">
+     Click
+     <b>
+      Options
+     </b>
+     and select from the menu to manage the output projection and map extent settings.
+    </li>
+   </ul>
+   <li value="6">
+    In the Registration Parameters dialog
+    <b>
+     Warp Parameters
+    </b>
+    area, select the
+    <a href="WarpingResampling.htm#parameters">
+     warping and resampling methods
+    </a>
+    .
+   </li>
+   <li value="7">
+    Click
+    <b>
+     OK
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds the resulting output to the Layer Manager.
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

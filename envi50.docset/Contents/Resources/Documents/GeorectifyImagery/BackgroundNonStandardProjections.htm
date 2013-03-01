@@ -1,0 +1,253 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Georectify|Reference" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Non-Standard Projections Background
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#GeorectifyImagery/BackgroundNonStandardProjections.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="GeorectifyImagery.htm">
+    Georectify
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="BackgroundCoordinateSystems.htm">
+    Reference
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Non-Standard Projections Background
+   </span>
+  </div>
+  <h2>
+   Non-Standard Projections Background
+  </h2>
+  <p>
+   In addition to supporting
+   <a href="SelectCoordinateSystem.htm">
+    standard map projections
+   </a>
+   with known tie points and fixed pixel sizes,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   also supports non-standard projections such as affine map transformations, RPCs, and RSMs. These are
+   <i>
+    not true map projections
+   </i>
+   , but they give a reliable estimate of geographic locations for each pixel.
+  </p>
+  <h3>
+   <a name="Affine">
+   </a>
+   Affine Map Transformations
+   <a name="kanchor246">
+   </a>
+  </h3>
+  <p>
+   Projections define the physical relationship between image coordinates (i,j) and ground/map coordinates (x,y). The following figure illustrates the transformation from an image to a standard map projection where the pixel size is fixed:
+  </p>
+  <p>
+   <img src="../Resources/Images/GeorectifyImagery/map_transformation_standard.gif" />
+  </p>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   performs transformations from images to standard map projections using information that you enter in the
+   <a href="ReprojectImages.htm">
+    Project Raster Tool
+   </a>
+   .
+  </p>
+  <p>
+   In some cases, however, a standard map projection may not be available. The simplest type of non-standard projection that
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   supports involves an
+   <i>
+    affine map transformation
+   </i>
+   .
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   applies a mathematical transformation to warp the image and calculate geographic coordinates for each pixel. The pixel size varies in the rectified image. This type of projection contains a high degree of variability and is not geographically accurate; the (x,y) locations in the rectified image are only “best guesses.”
+  </p>
+  <p>
+   <img src="../Resources/Images/GeorectifyImagery/map_transformation_nonstandard_504x278.gif" style="width: 504;height: 278;" />
+  </p>
+  <p>
+   When you only know the geographic coordinates and map projection of the four corner points of an image, you can enter coordinates in the
+   <a href="../ExploreImagery/EnterOptionalHeaderInformation.htm#Enter3">
+    Geographic Corners field
+   </a>
+   of the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   header file. These points are used to calculate an affine map transformation for the image.
+  </p>
+  <p>
+   Images that are rectified using an affine map transformation are designated by the word “pseudo” under the File Information section of the Data Manager.
+  </p>
+  <h3>
+   <a name="Sensor">
+   </a>
+   Sensor Models
+   <a name="kanchor247">
+   </a>
+  </h3>
+  <p>
+   Sensor models are another type of map information used to define the physical relationship between image coordinates and ground coordinates. A sensor model is a mathematical model that replaces the rigorous (physical) sensor model associated with a specific image by representing the model’s ground-to-image relationship. It is used to map a 3D ground point to a 2D image point. Various commercial spaceborne image providers utilize sensor models, particularly RPCs, which are the most common type in current use (McGlone, 1984).
+  </p>
+  <h4>
+   RPCs
+   <a name="kanchor248">
+   </a>
+  </h4>
+  <p>
+   Rational polynomial coefficients (RPCs) model the ground-to-image relationship as a third-order, rational, ground-to-image polynomial. See McGlone (1984) for the theory behind the RPC model.
+  </p>
+  <p>
+   You can
+   <a href="BuildingRPCs.htm">
+    compute RPCs
+   </a>
+   prior to single-image orthorectification by building interior and exterior orientation models.
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   uses an iterative, converging solution to compute RPCs and adds the RPC information to the input file header so that you can use the file with
+   <a href="../Topographic/DEMExtraction/IntroductionToDEMExtraction.htm">
+    DEM Extraction
+   </a>
+   .
+  </p>
+  <p>
+   Some sensors such as Quickbird, IKONOS, OrbView-3, and CARTOSAT-1 provide pre-computed RPCs along with the respective imagery. If your file has associated RPC information, you can
+   <a href="../ExploreImagery/EnterOptionalHeaderInformation.htm#Emulate">
+    automatically derive RPC-based geolocation information
+   </a>
+   for individual pixels in an image. This method is not as geographically accurate as performing a full orthorectification, but it is less computationally and disk-space intensive than orthorectification.
+  </p>
+  <p class="Tip" madcap:autonum="&lt;b&gt;Tip: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Tip:
+     </b>
+    </span>
+   </span>
+   <b>
+    Note:
+   </b>
+   If your image file has pre-computed RPC information,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   uses the mean elevation value used in the RPC transformation for the entire image. However, you can significantly increase the geolocation accuracy of the image if you
+   <a href="../ExploreImagery/EnterOptionalHeaderInformation.htm#Associat">
+    associate the image with a DEM
+   </a>
+   . Once initialized, this technique will result in accuracy equivalent to performing a full orthorectification.
+  </p>
+  <p>
+   For
+   <a href="BackgroundNITFMapInformation.htm">
+    NITF files
+   </a>
+   , RPC information is contained in the RPC00A and RPC00B Tagged Record Extensions (TREs). If either of these TREs exists in a NITF file,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   uses the RPC model to emulate a projection by default.
+  </p>
+  <h4>
+   RSM
+   <a name="kanchor249">
+   </a>
+  </h4>
+  <p>
+   RSM is a more recent sensor model (Dowman and Dolloff, 2000) that corrects the deficiencies of RPC-based sensor models. An RSM contains a variety of enhancements over the RPC model, including:
+  </p>
+  <ul>
+   <li value="1">
+    Increased accuracy over images with large number of rows or columns (such as image strips) by breaking the image into tiles with separate models.
+   </li>
+   <li value="2">
+    The ability to store varying degrees of complexity in the polynomial representation used.
+   </li>
+   <li value="3">
+    The ability to store error estimation information so that the precision of individual solutions can be computed.
+   </li>
+  </ul>
+  <p>
+   If your file has associated RSM information,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   can
+   <a href="../ExploreImagery/EnterOptionalHeaderInformation.htm#Emulate">
+    automatically derive RSM-based geolocation information
+   </a>
+   for individual pixels in an image. Use of this model has the same behavior and limitations as using an RPC model in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   . In particular, associating a DEM with an image will result in significantly higher accuracy.
+  </p>
+  <p>
+   <b>
+    References
+   </b>
+  </p>
+  <p>
+   Dowman, I., and J. T. Dolloff. (2000). An evaluation of rational functions for photogrammetric restitution.
+   <i>
+    International Archives of Photogrammetry and Remote Sensing
+   </i>
+   33(B3): pp. 254-266.
+  </p>
+  <p>
+   McGlone, J. C., editor. (2004).
+   <i>
+    Manual of Photogrammetry, Fifth Edition
+   </i>
+   , American Society for Photogrammetry and Remote Sensing.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

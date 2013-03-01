@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Spectral Tools|THOR Tools|Shared Tools" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Signature Matching
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#SpectralTools/THORTools/THORSignatureMatching.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../SpectralTools.htm">
+    Spectral Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="THORWorkflows.htm">
+    THOR Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="THORSharedTools.htm">
+    Shared Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Signature Matching
+   </span>
+  </div>
+  <h1>
+   Signature Matching
+  </h1>
+  <p>
+   Use the Signature Matching panel to select the spectral matching methods used to detect occurrences of the selected target signatures. If you selected one or more target signatures from spectral libraries, this panel is also used to set the proper scale factor needed to scale the library signatures into the same space as the input image.
+  </p>
+  <p>
+   The Spectral Matching Algorithms section lists the available spectral matching methods. Select which method(s) you want to run:
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     <a href="../../FindFeatures/Classification/ClassificationTools/SpectralAngleMapper.htm">
+      Spectral Angle Mapper (SAM)
+     </a>
+    </b>
+   </li>
+   <li value="2">
+    <b>
+     <a href="../MatchedFiltering.htm">
+      Matched Filter (MF)
+     </a>
+    </b>
+   </li>
+   <li value="3">
+    <b>
+     <a href="../../FindFeatures/Classification/ClassificationTools/AdaptiveCoherenceEstimator.htm">
+      Adaptive Coherence Estimator (ACE)
+     </a>
+    </b>
+   </li>
+   <li value="4">
+    <b>
+     Normalized Euclidean Distance (NED):
+    </b>
+    This method calculates the distance between two vectors in the same manner as a Euclidean Distance method, but it normalizes the vectors first by dividing each vector by its mean.
+   </li>
+   <li value="5">
+    <b>
+     Spectral Similarity Mapper (SSM):
+    </b>
+    This method is derived from the Spectral Similarity Scale described by Granahan and Sweet (2001). SSM calculates two numbers for each pixel. The first is the Euclidean distance between the pixel’s spectrum and the reference spectrum. The second is a correlation value, which measures the similarity in shape between the pixel’s spectrum and reference spectrum, much like SAM does. SSM is a hybrid approach combining elements of both the SAM and Minimum Distance classifier methods into a single measure.
+   </li>
+   <li value="6">
+    <b>
+     <a href="../../FindFeatures/Classification/ClassificationTools/SpectralInformationDivergence.htm">
+      Spectral Information Divergence (SID)
+     </a>
+    </b>
+   </li>
+   <li value="7">
+    <b>
+     <a href="../../FindFeatures/Classification/ClassificationTools/ConstrainedEnergyMinimization.htm">
+      Constrained Energy Minimization (CEM)
+     </a>
+    </b>
+   </li>
+   <li value="8">
+    <a name="OSP">
+    </a>
+    <b>
+     <a href="../../FindFeatures/Classification/ClassificationTools/OrthogonalSubspaceProjection.htm">
+      Orthogonal Subspace Projection (OSP)
+     </a>
+    </b>
+   </li>
+   <li value="9">
+    <a name="TCIMF">
+    </a>
+    <b>
+     Target-Constrained Interference-Minimized Filter (TCIMF):
+    </b>
+    This method detects the desired targets, eliminates non-targets, and minimizes interfering effects in one operation. TCIMF is constrained to eliminate the response of non-targets rather than minimizing their energy, just like other interferences in CEM. Previous studies show that if the spectral angle between the target and the non-target is significant, TCIMF can potentially reduce the number of false positives over CEM results.
+   </li>
+   <li value="10">
+    <b>
+     Unsupervised Water Detection (UWD):
+    </b>
+    This method is identical in form to a normalized difference vegetation index (NDVI), except it uses bands centered at 450 nm and 2250 nm.
+   </li>
+  </ul>
+  <p>
+   You will be given the opportunity to review and disregard results from each method in the next step. The OSP and TCIMF are not available for use if you did not select any background signatures and have only one target signature, since they need more than one signature as input.
+  </p>
+  <p>
+   If you set the
+   <b>
+    Use subspace stats
+   </b>
+   toggle button to
+   <b>
+    Yes
+   </b>
+   (located at the bottom of the Spectral Matching Algorithms list), the covariance-based methods will use background statistics based on non-anomalous pixels as determined by running the RX anomaly detection algorithm, which may improve detection performance.
+  </p>
+  <h2>
+   Reference
+  </h2>
+  <p>
+   Granahan, J. C., and J. N. Sweet, 2001. An evaluation of atmospheric correction techniques using the spectral similarity scale. Geoscience and Remote Sensing Symposium, IGARSS ‘01, Vol. 5, pp. 2022-2024.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

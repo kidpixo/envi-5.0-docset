@@ -1,0 +1,562 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Tutorials|Using Workflows" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Image Registration Tutorial
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/TableStyles/Description.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#Tutorials/Workflows/ImageRegTutorial.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../Tutorials.htm">
+    Tutorials
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../Tutorials.htm">
+    Using Workflows
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Image Registration
+   </span>
+  </div>
+  <h1>
+   Image Registration Tutorial
+  </h1>
+  <p>
+   In this tutorial, you will use the Image Registration workflow in different scenarios to geometrically align two overlapping images with different viewing geometry and different terrain distortions into the same coordinate system so that corresponding pixels represent the same objects.
+  </p>
+  <h2>
+   Files Used in this Tutorial
+  </h2>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   Resource DVD:
+   <code>
+    image_reg
+   </code>
+  </p>
+  <table style="caption-side: top;mc-table-style: url('../../Resources/TableStyles/Description.css');margin-left: 0;margin-right: auto;" cellspacing="0" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       File
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p class="TableHead">
+       Description
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <pre xml:space="preserve">
+       ikonos_4.0m.dat
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       IKONOS true-color image of Boulder, CO, at 4 meter spatial resolution
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <pre xml:space="preserve">
+       ikonos_4.0m.hdr
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Header file for above
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <pre xml:space="preserve">
+       quickbird_2.4m.dat
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       QuickBird true-color image of Boulder, CO, at 2.4 meter spatial resolution
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <pre xml:space="preserve">
+       quickbird_2.4m.hdr
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColEnd">
+      <p>
+       Header file for above
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h2>
+   Performing Automatic Registration
+  </h2>
+  <p>
+   In the following steps, you will perform image registration by selecting base and warp images, setting parameters to generate tie points, reviewing and editing those tie points, and generating an aligned output image.
+  </p>
+  <h3>
+   Select Base and Warp Images and Set Parameters
+  </h3>
+  <ol>
+   <li value="1">
+    Start
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    .
+   </li>
+   <li value="2">
+    From the Toolbox, select
+    <b>
+     Geometric Correction &gt; Registration &gt; Image Registration Workflow
+    </b>
+    . The File Selection panel appears.
+   </li>
+   <li value="3">
+    In the File Selection panel, click
+    <b>
+     Browse
+    </b>
+    next to the
+    <b>
+     Base Image File
+    </b>
+    field, navigate to the
+    <code>
+     \image_reg
+    </code>
+    directory and select the
+    <code>
+     quickbird_2.4m.dat
+    </code>
+    file, then click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+   <li value="4">
+    In the File Selection panel, click
+    <b>
+     Browse
+    </b>
+    next to the
+    <b>
+     Warp Image File
+    </b>
+    field, navigate to the
+    <code>
+     \image_reg
+    </code>
+    directory and select the
+    <code>
+     ikonos_4.0m.dat
+    </code>
+    file, then click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+   <li value="5">
+    Click
+    <b>
+     Next
+    </b>
+    to proceed to the Tie Points Generation panel. The two images open in the Layer Manager and the base image (
+    <code>
+     quickbird_2.4m.dat
+    </code>
+    ) displays.
+   </li>
+   <li value="6">
+    In the Layer Manager, click the check box next to
+    <code>
+     ikonos_4.0m.dat
+    </code>
+    so that it displays in the Image window view, then select the layer in the Layer Manger.
+   </li>
+   <li value="7">
+    <p>
+     Move the
+     <b>
+      Transparency
+     </b>
+     slider back and forth to see how the images are offset. In the image below, setting the transparency to 50% reveals blurriness in the middle, lower, and left areas because the two images are not aligned with one another.
+    </p>
+    <p>
+     <img src="../../Resources/Images/Image_Reg/distortion.gif" alt="Image distortion shown at 50% transparency" />
+    </p>
+   </li>
+   <li value="8">
+    The Tie Points Generation panel is where you specify the parameters for automatic tie point generation. You could create seed tie points in this panel, though they are not needed for this tutorial. Seed tie points are recommended only if the images have poor or no georeferencing. If only one image has poor georeferencing and the other image does not, use the image with accurate georeferencing as the base image. If the warp image is pixel based, arbitrary, or a pseudo projection, you need to add or import at least three seed tie points before you continue. For this step, keep the default parameter settings on the Main tab and Advanced tab. You will not need to use the Seed Tie Points tab because this data has good georeferencing.
+   </li>
+   <li value="9">
+    Click
+    <b>
+     Next
+    </b>
+    to automatically generate tie points and go to the Review and Warp panel.
+   </li>
+  </ol>
+  <h3>
+   Review Generated Tie Points
+  </h3>
+  <p>
+   When automatic tie point generation is complete, the Review and Warp panel appears and the view is populated with tie points in the overlapping area of the base and warp images. Tie points in the base image are magenta.
+  </p>
+  <p>
+   <img src="../../Resources/Images/Image_Reg/tiepoints1.gif" alt="Base image tie points" />
+  </p>
+  <p>
+   &#160;
+  </p>
+  <p>
+   Click the
+   <b>
+    Switch to Warp
+   </b>
+   button in the Review and Warp panel to see the corresponding tie points in green.
+  </p>
+  <p>
+   <img src="../../Resources/Images/Image_Reg/tiepoints2.gif" alt="Warp image tie points" />
+  </p>
+  <p>
+   In the Review and Warp panel, click
+   <b>
+    Show Table
+   </b>
+   to open the Tie Points Attribute Table. This table lists details for all of the generated tie points, such as the location of the tie points on the base and warp images, and the SCORE&#160;and ERROR. The total root mean square (RMS) error displays at the bottom of the table.
+  </p>
+  <p>
+   The SCORE is from area-based auto tie point generation. A patch around the tie point location is used as a matching window. Depending on the matching method you choose, the normalized cross-correlation or normalized Mutual Information between the window in the base image and the window in the warp image is computed as the matching score.
+  </p>
+  <p>
+   The ERROR&#160;measurement comes from the calculated error distance of the tie point from the predicted location. The predicted location is computed based on fitting a first-order polynomial transform from points on the base image to points on the warp image. If the base image or warp image have RPC map information and you specified a DEM file, the error is measured in a common ground coordinate space.  The ERROR measurement reflects the quality of fitting to the first-order polynomial math model. Higher errors may indicate bad tie points, but do not necessarily reflect the positional errors in the tie points. The best way to check the accuracy of the tie points is to visually examine their placement in the view. The ERROR measurements are updated if you add or delete tie points.
+  </p>
+  <p>
+   On Windows platforms, you can use keyboard keys to navigate the table rows. When you select a record in the table, the Image window centers over and highlights the tie point.
+  </p>
+  <ul>
+   <li value="1">
+    The
+    <b>
+     Up
+    </b>
+    and
+    <b>
+     Down
+    </b>
+    arrow keys select the previous or next record in the table.
+   </li>
+   <li value="2">
+    The
+    <b>
+     Home
+    </b>
+    and
+    <b>
+     End
+    </b>
+    keys select the first or last record in the table.
+   </li>
+   <li value="3">
+    The left arrow key switches to the base image view; the right arrow key switches to the warp image view.
+   </li>
+   <li value="4">
+    The
+    <b>
+     Delete
+    </b>
+    key deletes the selected record.
+   </li>
+  </ul>
+  <p>
+   Use the keyboard keys to check each tie point and switch between base and warp views. If the features at the tie point location do not match on the two images, press the
+   <b>
+    Delete
+   </b>
+   key to delete the selected tie point.
+  </p>
+  <ol>
+   <li value="1">
+    <p>
+     In the Tie Points Attribute Table, click on the ERROR column to select it, then right-click and select
+     <b>
+      Sort by selected column reverse
+     </b>
+     . The tie points with the highest error appear at the top of the table. You will visually examine the tie points with the highest error.
+    </p>
+    <p>
+     <img src="../../Resources/Images/Image_Reg/show_table.gif" alt="Sort Tie Points Attribute table by ERROR column" />
+    </p>
+   </li>
+   <li value="2">
+    <p>
+     Select the row of the first tie point listed in the table. The view moves to that point and highlights it. If needed, zoom in to the view to see the image detail. For example, zoom in to 400%.
+    </p>
+    <p>
+     <img src="../../Resources/Images/Image_Reg/review1.gif" alt="" />
+    </p>
+   </li>
+   <li value="3">
+    <p>
+     Toggle between the base and warp images by clicking
+     <b>
+      Switch To Warp
+     </b>
+     /
+     <b>
+      Switch To Base
+     </b>
+     in the Review and Warp panel; as you do this, check to see if the placement accuracy of the tie point is good.
+    </p>
+    <p>
+     <img src="../../Resources/Images/Image_Reg/review2.gif" alt="Review base image tie point" />
+     <img src="../../Resources/Images/Image_Reg/review3.gif" alt="Review warp image tie point" />
+    </p>
+    <p>
+     The tie points above appear to have good accuracy.
+Though it is not necessary for this tutorial, you can also sort the tie points by matching score. In the Tie Points Attribute Table, click on the SCORE column to select it, then right-click and select
+     <b>
+      Sort by selected column forward
+     </b>
+     . The tie points with the lowest score appear at the top of the table.
+    </p>
+   </li>
+   <li value="4">
+    <p>
+     Check the accuracy of other tie points by selecting them by row in the Tie Points Attribute Table and toggling between the base and warp images. If you find tie points that do not have good accuracy, you can delete them so they will not be included in the warping process and affect the accuracy of the image registration.
+    </p>
+    <p>
+     The following is an example of what tie points with poor accuracy might look like:
+    </p>
+    <p>
+     <img src="../../Resources/Images/Image_Reg/badpoint1.gif" alt="Bad tie point in base image" />
+     <img src="../../Resources/Images/Image_Reg/badpoint2.gif" alt="Bad tie point in warp image" />
+    </p>
+    <p>
+     To delete a bad tie point, make sure it is selected in the attribute table, then click
+     <b>
+      Delete Selected
+     </b>
+     <![CDATA[ ]]>
+     at the bottom of the attribute table.
+    </p>
+   </li>
+   <li value="5">
+    When you have finished checking the tie points with the highest error numbers or the lowest scores and deleting them as necessary, select the Warping tab in the Review and Warp panel.
+   </li>
+   <li value="6">
+    Keep the default settings, including the
+    <b>
+     Warping Method
+    </b>
+    of
+    <b>
+     Polynomial
+    </b>
+    .
+   </li>
+   <li value="7">
+    <p>
+     Enable the
+     <b>
+      Preview
+     </b>
+     check box to open a Preview Portal showing what the output will look like using these settings.
+    </p>
+    <p>
+     <img src="../../Resources/Images/Image_Reg/preview_poly.gif" alt="Preview Polynomial warp method" />
+    </p>
+    <p>
+     Most areas of the warped image produce a good result. If you pan the image to the mountainous areas in the left side of the image, some areas of the preview produce a good result, while other areas still appear to be offset. This image distortion is due to terrain relief; therefore, fewer tie points were automatically generated in this area. Disable the
+     <b>
+      Preview
+     </b>
+     check box.
+    </p>
+   </li>
+   <li value="8">
+    <p>
+     Manually add tie points on the road that is offset, to see if the registration improves in the preview. To add the points, return to the Tie Points tab in the Review and Warp panel and click
+     <b>
+      Start Editing
+     </b>
+     .
+    </p>
+    <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+     <span class="autonumber">
+      <span>
+       <b>
+        Note:
+       </b>
+      </span>
+     </span>
+     If you used a different toolbar tool in between adding tie points (such as panning to a new location in the image), click the
+     <b>
+      Vector Create
+     </b>
+     tool
+     <img src="../../Resources/Images/IconsButtons/VectorCreate.gif" class="VertCenter" alt="Vector Create" />
+     to re-enable adding tie points. Or, use the middle mouse button to pan and zoom the image so you do not have to reselect the tool.
+    </p>
+   </li>
+   <li value="9">
+    Click in the Image window to mark a tie point, then right-click and select
+    <b>
+     Accept as Individual Points
+    </b>
+    . The Image window view switches to the second image;  mark the corresponding tie point in the second image, then right-click and select
+    <b>
+     Accept as Individual Points
+    </b>
+    . The number of tie points is updated and the Image window view returns to the first image.
+   </li>
+   <li value="10">
+    <p>
+     Add additional tie points as necessary. When finished, click
+     <b>
+      Stop Editing
+     </b>
+     in the Review and Warp panel.
+    </p>
+    <p>
+     <img src="../../Resources/Images/Image_Reg/extrapts.gif" alt="Add extra tie points" />
+    </p>
+   </li>
+   <li value="11">
+    <p>
+     Enable the
+     <b>
+      Preview
+     </b>
+     check box again and see if the registration preview has improved.
+    </p>
+    <p>
+     <img src="../../Resources/Images/Image_Reg/preview_poly_extrapts.gif" alt="Preview Polynomial warp method with extra tie points" />
+    </p>
+    <p>
+     You can see that adding tie points to the road did not correct the misalignment. Because
+     <b>
+      Polynomial
+     </b>
+     is the selected
+     <b>
+      Warping Method
+     </b>
+     , warping fits a global polynomial transform and the two images do not align exactly at the tie point locations.
+    </p>
+   </li>
+   <li value="12">
+    <p>
+     In the Warping tab of the Review and Warp panel, change the
+     <b>
+      Warping Method
+     </b>
+     to
+     <b>
+      Triangulation
+     </b>
+     and examine the result in the Preview Portal. Triangulation warping fits triangles to the irregularly gridded data points and interpolates values to the output grid. Applying the
+     <b>
+      Triangulation
+     </b>
+     method aligns the two images exactly at the tie point locations.
+    </p>
+    <p>
+     <img src="../../Resources/Images/Image_Reg/preview_triang.gif" alt="Preview Triangulation warp method" />
+    </p>
+   </li>
+   <li value="13">
+    If needed, add more tie points to the base and warp images in places where image misalignment occurs, particularly in the mountainous areas.
+   </li>
+   <li value="14">
+    Click
+    <b>
+     Next
+    </b>
+    to generate the geometrically aligned output image and go to the Export panel.
+   </li>
+   <li value="15">
+    Provide an output directory and filenames for the
+    <b>
+     Export Warped Image
+    </b>
+    and
+    <b>
+     Export Tie Points to ASCII
+    </b>
+    outputs.
+   </li>
+   <li value="16">
+    Click
+    <b>
+     Finish
+    </b>
+    to generate the output image and complete the workflow.
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    loads the warped image into the Layer Manager.
+   </li>
+   <li value="17">
+    Exit
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    .
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

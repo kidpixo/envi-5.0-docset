@@ -1,0 +1,758 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Write and Deploy Toolbox Extensions
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/TableStyles/Description.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#ExtendCustomize/write_deploy_toolbox_extensions.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Toolbox Extensions
+   </span>
+  </div>
+  <h1>
+   Write and Deploy Toolbox Extensions
+  </h1>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   allows you to create
+   <a name="kanchor468">
+   </a>
+   custom IDL&#160;routines that interact with the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   application and perform specialized tasks, such as processing an input dataset with your own algorithms and generating an output dataset. You can make these routines (called extensions) available from the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   application's (UI) Toolbox.
+  </p>
+  <p>
+   This topic explains how to write Toolbox extensions from scratch. You can also create extensions with the ENVI Extension Wizard, which is accessed from the IDL Workbench. See the IDL Help topic
+   <i>
+    ENVI Extension Wizard
+   </i>
+   for more information.
+  </p>
+  <p>
+   If you are going to provide extensions to other users that have only an ENVI runtime license or execute the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   application in IDL runtime mode, you must deploy them as IDL SAVE files.  See the SAVE routine in the IDL Help for more details on IDL SAVE files.
+  </p>
+  <h2>
+   Best Practices when Writing Extensions
+  </h2>
+  <p>
+   When writing a Toolbox extension, keep the following Best Practices in mind:
+  </p>
+  <ul>
+   <li value="1">
+    The extension routine must be a procedure and should be the last routine in a PRO file of the same name.
+   </li>
+   <li value="2">
+    Insert COMPILE_OPT IDL2 in your routines.
+   </li>
+   <li value="3">
+    Implement a CATCH block in your main procedure.
+   </li>
+   <li value="4">
+    To get the current ENVI instance, use the following command:
+   </li>
+  </ul>
+  <p class="Code_Indented">
+   e = ENVI(/CURRENT)
+  </p>
+  <ul>
+   <li value="1">
+    If you want to do initialization tasks during ENVI launch or customize the layout of your extension in the Toolbox, create a procedure named
+    <code>
+     <i>
+      filename
+     </i>
+     _extensions_init
+    </code>
+    inside the
+    <code>
+     <i>
+      filename
+     </i>
+     .pro
+    </code>
+    file.
+   </li>
+  </ul>
+  <h2>
+   Building Save Files for Toolbox Deployment
+  </h2>
+  <p>
+   SAVE files are handy because they allow you to:
+  </p>
+  <ul>
+   <li value="1">
+    Distribute a Toolbox extension to an end user who does not have an
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    +IDL license
+   </li>
+   <li value="2">
+    Hide the source code from the end user
+   </li>
+  </ul>
+  <p>
+   When building SAVE files, keep the following Best Practices in mind:
+  </p>
+  <ul>
+   <li value="1">
+    Issue .RESET_SESSION in your IDL session to ensure you only build the SAVE file with the routines that are part of the Toolbox extension
+   </li>
+   <li value="2">
+    After issuing .RESET_SESSION, compile the routines that are used in the Toolbox extension
+   </li>
+   <li value="3">
+    Issue RESOLVE_ALL after compilation to resolve all dependencies, but exclude
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    itself
+   </li>
+  </ul>
+  <p>
+   Here is an example of building a SAVE file using Best Practices:
+  </p>
+  <p class="Code">
+   .RESET_SESSION
+  </p>
+  <p class="Code">
+   .COMPILE emboss_band1.pro
+  </p>
+  <p class="Code">
+   RESOLVE_ALL, /CONTINUE_ON_ERROR, SKIP_ROUTINES='ENVI'
+  </p>
+  <p class="Code">
+   SAVE, FILENAME='emboss_band1.sav', /ROUTINES
+  </p>
+  <h2>
+   <a name="Deployin">
+   </a>
+   Deploying Extensions
+  </h2>
+  <p>
+   Three locations (and their subfolders) are searched on
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   application launch to find
+   <code>
+    .pro
+   </code>
+   and
+   <code>
+    .sav
+   </code>
+   extensions that should be added to the Toolbox:
+  </p>
+  <table class="TableStyle_Description" style="margin-left: 0;margin-right: auto;mc-table-style: url('../Resources/TableStyles/Description.css');" cellspacing="0">
+   <col />
+   <col />
+   <col />
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      Name
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      Location
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      Search Order
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      Access
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p>
+       Description
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      ENVI_EXTENSIONS
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      User-defined
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      1
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      User
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       An optional user-accessible location defined by an environment variable. It is useful for installing shared extensions in environments where the installation directory is not accessible.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      Install directory
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <code>
+       <i>
+        Install_Dir
+       </i>
+       /ENVI
+       <i>
+        xx
+       </i>
+       /extensions
+      </code>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      2
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      Admin
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      This is the preferred location for deploying extensions  accessible by all users. However, administrator (admin) privileges are required to deploy here.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+      Preferences directory
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+      <code>
+       <i>
+        user_home
+       </i>
+       /.idl/envi/extensions
+       <i>
+        x_x
+       </i>
+      </code>
+      <![CDATA[
+]]>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+      3
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+      User
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColEnd">
+      <p>
+       A personal user application directory. However, extensions deployed here are only accessible by the user account under which they were installed.
+      </p>
+      <p>
+       This directory may be changed through the
+       <b>
+        Extensions File Directory
+       </b>
+       box on the ENVI
+       <b>
+        Preferences
+       </b>
+       dialog.
+      </p>
+      <p>
+       This folder should not contain any
+       <code>
+        .pro
+       </code>
+       or
+       <code>
+        .sav
+       </code>
+       files that are not Toolbox extensions.
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <p>
+   If multiple definitions of the same extension are discovered in different locations, the first one discovered following the search order previously described will be used.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   Issue the .RESET_SESSION command if you add an extension to one of the previous directories and want the Toolbox to display the new extension in the current session.
+  </p>
+  <h2>
+   Configuring the Toolbox Structure
+  </h2>
+  <p>
+   You can define the tree structure in which the extension will reside inside of the Toolbox. This tree structure is defined in the custom routine
+   <i>
+    FILENAME
+   </i>
+   _EXTENSIONS_INIT (where
+   <i>
+    FILENAME
+   </i>
+   is the name of the extension file) and must be placed above the extension routine in your extension file. If the
+   <i>
+    FILENAME
+   </i>
+   and
+   <i>
+    FILENAME
+   </i>
+   _EXTENSIONS_INIT routines are both discovered, the
+   <i>
+    FILENAME
+   </i>
+   _EXTENSIONS_INIT routine will be called on
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   application launch instead of adding the extension automatically to the Toolbox
+   <code>
+    Extensions
+   </code>
+   folder. If this routine does not add the extension to the Toolbox, the extension will not be automatically added.
+  </p>
+  <p>
+   The
+   <i>
+    FILENAME
+   </i>
+   _EXTENSIONS_INIT routine consists of two lines of code:
+  </p>
+  <p class="Code">
+   PRO myroutine_extensions_init
+  </p>
+  <p class="Code_Indented">
+   e = ENVI(/CURRENT)
+  </p>
+  <p class="Code_Indented">
+   e.AddExtension, 'My Routine', 'myroutine', PATH='My Routines'
+  </p>
+  <p class="Code">
+   END
+  </p>
+  <p>
+   See
+   <a href="ENVI__AddExtension.htm">
+    ENVI::AddExtension
+   </a>
+   for more information.
+  </p>
+  <h2>
+   <a name="Example">
+   </a>
+   Example
+  </h2>
+  <p>
+   In the following example, we create and deploy the
+   <code>
+    emboss_band1
+   </code>
+   extension as a SAVE file. We also show how to rename the extension inside the Toolbox
+   <code>
+    Extensions
+   </code>
+   folder by adding a
+   <code>
+    <i>
+     filename
+    </i>
+    _extension_init
+   </code>
+   routine to the extension file.
+  </p>
+  <ol>
+   <li value="1">
+    Create a file named
+    <code>
+     emboss_band1.pro
+    </code>
+    with the following contents:
+   </li>
+  </ol>
+  <p class="Code_Indented">
+   PRO emboss_band1
+  </p>
+  <p class="Code_Indented">
+   &#160;
+  </p>
+  <p class="Code_Indented">
+   ; Set compile options
+  </p>
+  <p class="Code_Indented">
+   COMPILE_OPT IDL2
+  </p>
+  <p class="Code_Indented">
+   &#160;
+  </p>
+  <p class="Code_Indented">
+   ; General error handler
+  </p>
+  <p class="Code_Indented">
+   CATCH,err
+  </p>
+  <p class="Code_Indented">
+   IF err NE 0 THEN BEGIN
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;CATCH, /CANCEL
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;IF OBJ_VALID(e) THEN $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;&#160;e.ReportError,'ERROR: ' + !error_state.msg
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;MESSAGE,/RESET
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;RETURN
+  </p>
+  <p class="Code_Indented">
+   ENDIF
+  </p>
+  <p class="Code_Indented">
+   &#160;
+  </p>
+  <p class="Code_Indented">
+   ;Get ENVI session
+  </p>
+  <p class="Code_Indented">
+   e = ENVI(/CURRENT)
+  </p>
+  <p class="Code_Indented">
+   &#160;
+  </p>
+  <p class="Code_Indented">
+   ;Prompt for the input file
+  </p>
+  <p class="Code_Indented">
+   inFile=DIALOG_PICKFILE(DIALOG_PARENT=e.WIDGET_ID, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;TITLE='Please select input file',$
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;/MUST_EXIST)
+  </p>
+  <p class="Code_Indented">
+   ;Prompt for the output file
+  </p>
+  <p class="Code_Indented">
+   outFile=DIALOG_PICKFILE(DIALOG_PARENT=e.WIDGET_ID, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;TITLE='Please select output file')
+  </p>
+  <p class="Code_Indented">
+   &#160;
+  </p>
+  <p class="Code_Indented">
+   ;Open the input file and display
+  </p>
+  <p class="Code_Indented">
+   raster = e.OpenRaster(inFile)
+  </p>
+  <p class="Code_Indented">
+   view=e.GetView()
+  </p>
+  <p class="Code_Indented">
+   layer1=view.CreateLayer(raster, BANDS=[0])
+  </p>
+  <p class="Code_Indented">
+   &#160;
+  </p>
+  <p class="Code_Indented">
+   ; Create the output
+  </p>
+  <p class="Code_Indented">
+   rasterNew = e.CreateRaster(outFile, INHERITS_FROM=raster)
+  </p>
+  <p class="Code_Indented">
+   &#160;
+  </p>
+  <p class="Code_Indented">
+   ; Iterate through the tiles of the original data set
+  </p>
+  <p class="Code_Indented">
+   ; for the first band
+  </p>
+  <p class="Code_Indented">
+   tiles = raster.CreateTileIterator(BANDS=[0])
+  </p>
+  <p class="Code_Indented">
+   FOREACH tile, Tiles DO BEGIN
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;data = EMBOSS(tile, /EDGE_WRAP)
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;rasterNew.SetTile, Data, Tiles
+  </p>
+  <p class="Code_Indented">
+   ENDFOREACH
+  </p>
+  <p class="Code_Indented">
+   &#160;
+  </p>
+  <p class="Code_Indented">
+   ; Save the data and display
+  </p>
+  <p class="Code_Indented">
+   rasterNew.Save
+  </p>
+  <p class="Code_Indented">
+   layer2 = view.CreateLayer(rasterNew)
+  </p>
+  <p class="Code_Indented">
+   &#160;
+  </p>
+  <p class="Code_Indented">
+   ; Create a portal and flicker
+  </p>
+  <p class="Code_Indented">
+   portal = view.CreatePortal()
+  </p>
+  <p class="Code_Indented">
+   portal.Animate
+  </p>
+  <p class="Code_Indented">
+   &#160;
+  </p>
+  <p class="Code_Indented">
+   END
+  </p>
+  <ol start="2" madcap:continue="true">
+   <li value="2">
+    Issue the following commands to generate a SAVE file (if
+    <code>
+     emboss_band1.pro
+    </code>
+    is not in the current directory of the IDL path, provide the full path in the .COMPILE command). The SAVE file will be saved to the current directory unless you specify a full path in which to save.
+   </li>
+  </ol>
+  <p class="Code_Indented">
+   .RESET_SESSION
+  </p>
+  <p class="Code_Indented">
+   .COMPILE emboss_band1.pro
+  </p>
+  <p class="Code_Indented">
+   RESOLVE_ALL, /CONTINUE_ON_ERROR, SKIP_ROUTINES='ENVI'
+  </p>
+  <p class="Code_Indented">
+   SAVE, FILENAME='emboss_band1.sav', /routines
+  </p>
+  <ol start="3" madcap:continue="true">
+   <li value="3">
+    Copy the generated
+    <code>
+     emboss_band1.sav
+    </code>
+    file into
+    <code>
+     <i>
+      install_dir
+     </i>
+     \ENVI
+     <i>
+      xx
+     </i>
+     \extensions\
+    </code>
+    .  If you don't have permission to write to that directory, you can define an
+    <i>
+     ENVI_EXTENSIONS
+    </i>
+    environment variable  that points to the directory that contains the SAVE file.
+   </li>
+   <li value="4">
+    Launch ENVI from the
+    <b>
+     Start
+    </b>
+    menu.
+   </li>
+   <li value="5">
+    In the Toolbox
+    <code>
+     Extensions
+    </code>
+    folder, notice that the extension
+    <code>
+     emboss_band1
+    </code>
+    is now listed.
+   </li>
+   <li value="6">
+    Double-click
+    <code>
+     emboss_band1
+    </code>
+    .
+   </li>
+   <li value="7">
+    When prompted for the input file, select
+    <code>
+     <i>
+      install_dir
+     </i>
+     \ENVI
+     <i>
+      xx
+     </i>
+     \data\qb_boulder_msi
+    </code>
+    .
+   </li>
+   <li value="8">
+    When prompted for the output file, enter a valid complete filepath.
+   </li>
+   <li value="9">
+    When the script finishes executing, the original file and the new file will appear in the layer manager and a portal will flicker between the layers.
+   </li>
+   <li value="10">
+    Add the following initialization routine to the top of
+    <code>
+     emboss_band1.pro
+    </code>
+    .
+   </li>
+  </ol>
+  <p class="Code_Indented">
+   PRO emboss_band1_extensions_init
+  </p>
+  <p class="Code_Indented">
+   &#160;
+  </p>
+  <p class="Code_Indented">
+   ;Set compile options
+  </p>
+  <p class="Code_Indented">
+   COMPILE_OPT IDL2
+  </p>
+  <p class="Code_Indented">
+   &#160;
+  </p>
+  <p class="Code_Indented">
+   ;Get ENVI session
+  </p>
+  <p class="Code_Indented">
+   e=ENVI(/CURRENT)
+  </p>
+  <p class="Code_Indented">
+   &#160;
+  </p>
+  <p class="Code_Indented">
+   ;Add the extension to a subfolder
+  </p>
+  <p class="Code_Indented">
+   e.AddExtension, 'Emboss Band 1', 'emboss_band1'
+  </p>
+  <p class="Code_Indented">
+   &#160;
+  </p>
+  <p class="Code_Indented">
+   END
+  </p>
+  <ol madcap:continue="true">
+   <li value="11">
+    Enter the following commands to regenerate the SAVE file:
+   </li>
+  </ol>
+  <p class="Code_Indented">
+   .RESET_SESSION
+  </p>
+  <p class="Code_Indented">
+   .COMPILE emboss_band1.pro
+  </p>
+  <p class="Code_Indented">
+   RESOLVE_ALL, /CONTINUE_ON_ERROR, SKIP_ROUTINES='ENVI'
+  </p>
+  <p class="Code_Indented">
+   SAVE, FILENAME='emboss_band1.sav', /ROUTINES
+  </p>
+  <ol madcap:continue="true">
+   <li value="12">
+    Copy the SAVE file into the location you used previously.
+   </li>
+   <li value="13">
+    Launch ENVI from the
+    <b>
+     Start
+    </b>
+    menu.
+   </li>
+   <li value="14">
+    In the Toolbox
+    <code>
+     Extensions
+    </code>
+    folder, the extension is now named
+    <code>
+     Emboss Band 1
+    </code>
+    instead of
+    <code>
+     emboss_band1
+    </code>
+    .
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

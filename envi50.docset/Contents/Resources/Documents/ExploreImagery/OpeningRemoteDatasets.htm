@@ -1,0 +1,632 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Explore Imagery|Open and Browse Data" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Open Remote Datasets
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/TableStyles/NoLines.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#ExploreImagery/OpeningRemoteDatasets.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="ExploreImagery.htm">
+    Explore Imagery
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="OpenBrowseData.htm">
+    Open and Browse Data
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Open Remote Datasets
+   </span>
+  </div>
+  <h1>
+   Open Remote Datasets
+  </h1>
+  <p>
+   Use
+   <b>
+    File &gt; Open Remote Dataset
+   </b>
+   or
+   <b>
+    File &gt; Remote Connection Manager
+   </b>
+   to access data from the following types of Web servers:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="BackgroundRemoteDataSources.htm#OGC">
+     OGC
+    </a>
+    : for Web Map Service (WMS) and Web Coverage Service (WCS)
+   </li>
+   <li value="2">
+    <a href="BackgroundRemoteDataSources.htm#JPEG2000">
+     JPIP and IAS
+    </a>
+    : for JPEG 2000 Internet Protocol (JPIP) and Image Access Solutions (IAS)
+   </li>
+   <li value="3">
+    <a href="BackgroundRemoteDataSources.htm#geodatabases">
+     Geodatabases
+    </a>
+    : (only accessible from
+    <b>
+     File &gt; Remote Connection Manager
+    </b>
+    )
+   </li>
+  </ul>
+  <p>
+   See the following sections:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#Using2">
+     Remote Connection Manager
+    </a>
+   </li>
+   <li value="2">
+    <a href="#Using">
+     Open Remote Dataset Dialog
+    </a>
+   </li>
+  </ul>
+  <h2>
+   <a name="Using2">
+   </a>
+   Remote Connection Manager
+   <a name="kanchor6">
+   </a>
+  </h2>
+  <p>
+   Use the Remote Connection Manager dialog to connect to geodatabases and servers, to add a connection to a list of frequently visited servers, and to manage connection properties. If you are retrieving data from a WMS server, you can also use this dialog to combine two or more datasets into one displayable map layer.
+  </p>
+  <p>
+   To open a remote dataset from the Remote Connection Manager dialog:
+  </p>
+  <ol>
+   <li value="1">
+    <p>
+     Select
+     <b>
+      File &gt; Remote Connection Manager
+     </b>
+     from the
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     menu bar. The Remote Connection Manager dialog appears.
+    </p>
+    <p>
+     You may also have accessed this dialog by clicking
+     <b>
+      Open Remote Dataset
+     </b>
+     in another dialog.
+    </p>
+   </li>
+   <li value="2">
+    There are two ways to connect to a server or geodatabase from this dialog.
+    <ul>
+     <li value="1">
+      The dialog is initially empty. Click
+      <b>
+       Connection
+      </b>
+      , then select
+      <b>
+       New
+      </b>
+      and see the steps in
+      <a href="ManagingConnectionProperties.htm">
+       Manage Connection Properties
+      </a>
+      to create a new connection.
+     </li>
+     <li value="2">
+      If you have a commonly used connection that you have saved as a favorite, click
+      <b>
+       Favorites
+      </b>
+      , then select the server name from the menu. To add favorites to the Favorites list, see
+      <a href="ManagingFavorites.htm">
+       Manage Favorites
+      </a>
+      . Connection may be slow.
+     </li>
+    </ul>
+   </li>
+   <p>
+    The icons that appear in the Remote Connection Manager dialog differ, depending on the connection type:
+   </p>
+   <table class="TableStyle_NoLines" style="margin-left: 0;margin-right: auto;mc-table-style: url('../Resources/TableStyles/NoLines.css');" cellspacing="0">
+    <col style="width: 49px;" />
+    <col />
+    <tbody>
+     <tr>
+      <td class="TableStyle_NoLines_Body_0_0_RowSep_ColSep">
+       <img src="../Resources/Images/IconsButtons/WMSTree.gif" />
+      </td>
+      <td class="TableStyle_NoLines_Body_0_0_RowSep_ColEnd">
+       <p>
+        WMS server
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <td class="TableStyle_NoLines_Body_0_0_RowSep_ColSep">
+       <img src="../Resources/Images/IconsButtons/WCSTree.gif" />
+      </td>
+      <td class="TableStyle_NoLines_Body_0_0_RowSep_ColEnd">
+       <p>
+        WCS server
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <td class="TableStyle_NoLines_Body_0_0_RowSep_ColSep">
+       <img src="../Resources/Images/IconsButtons/JPIPTree.gif" />
+      </td>
+      <td class="TableStyle_NoLines_Body_0_0_RowSep_ColEnd">
+       <p>
+        JPIP server
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <td class="TableStyle_NoLines_Body_0_0_RowEnd_ColSep">
+       <img src="../Resources/Images/IconsButtons/GDBTree.gif" />
+      </td>
+      <td class="TableStyle_NoLines_Body_0_0_RowEnd_ColEnd">
+       <p>
+        Geodatabase
+       </p>
+      </td>
+     </tr>
+    </tbody>
+   </table>
+   <li value="3">
+    Select the server or geodatabase from the Connection List. The list of available datasets appears along with icons that indicate the dataset type:
+   </li>
+   <table class="TableStyle_NoLines" style="margin-left: 0;margin-right: auto;mc-table-style: url('../Resources/TableStyles/NoLines.css');" cellspacing="0">
+    <col style="width: 49px;" />
+    <col />
+    <tbody>
+     <tr>
+      <td class="TableStyle_NoLines_Body_0_0_RowSep_ColSep">
+       <img src="../Resources/Images/IconsButtons/JPIPData.gif" />
+      </td>
+      <td class="TableStyle_NoLines_Body_0_0_RowSep_ColEnd">
+       <p>
+        JPIP
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <td class="TableStyle_NoLines_Body_0_0_RowSep_ColSep">
+       <img src="../Resources/Images/IconsButtons/WMSData.gif" />
+      </td>
+      <td class="TableStyle_NoLines_Body_0_0_RowSep_ColEnd">
+       <p>
+        WMS
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <td class="TableStyle_NoLines_Body_0_0_RowSep_ColSep">
+       <img src="../Resources/Images/IconsButtons/WCSData.gif" />
+      </td>
+      <td class="TableStyle_NoLines_Body_0_0_RowSep_ColEnd">
+       <p>
+        WCS
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <td class="TableStyle_NoLines_Body_0_0_RowSep_ColSep">
+       <img src="../Resources/Images/IconsButtons/GDBRaster.gif" />
+      </td>
+      <td class="TableStyle_NoLines_Body_0_0_RowSep_ColEnd">
+       <p>
+        Geodatabase: raster
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <td class="TableStyle_NoLines_Body_0_0_RowSep_ColSep">
+       <img src="../Resources/Images/IconsButtons/GDBPointFeatureClass.gif" />
+      </td>
+      <td class="TableStyle_NoLines_Body_0_0_RowSep_ColEnd">
+       <p>
+        Geodatabase: point or multi-point feature class
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <td class="TableStyle_NoLines_Body_0_0_RowSep_ColSep">
+       <img src="../Resources/Images/IconsButtons/GDBPolygonFeatureClass.gif" />
+      </td>
+      <td class="TableStyle_NoLines_Body_0_0_RowSep_ColEnd">
+       <p>
+        Geodatabase: polygon feature class
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <td class="TableStyle_NoLines_Body_0_0_RowSep_ColSep">
+       <img src="../Resources/Images/IconsButtons/GDBPolylineFeatureClass.gif" />
+      </td>
+      <td class="TableStyle_NoLines_Body_0_0_RowSep_ColEnd">
+       <p>
+        Geodatabase: polyline feature class
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <td class="TableStyle_NoLines_Body_0_0_RowEnd_ColSep">
+       <img src="../Resources/Images/IconsButtons/GDBUnknown.gif" />
+      </td>
+      <td class="TableStyle_NoLines_Body_0_0_RowEnd_ColEnd">
+       <p>
+        Geodatabase: unsupported data type
+       </p>
+      </td>
+     </tr>
+    </tbody>
+   </table>
+   <p>
+    Select the dataset to open from the Dataset List. The properties for the selected dataset appear in the Properties List. You can edit properties as needed before opening the dataset, as described in the
+    <a href="BackgroundRemoteDataSources.htm#WCS">
+     OGC WCS
+    </a>
+    ,
+    <a href="BackgroundRemoteDataSources.htm#WMS">
+     OGC WMS
+    </a>
+    , and
+    <a href="BackgroundRemoteDataSources.htm#IAS">
+     IAS
+    </a>
+    help topics.
+   </p>
+   <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+    <span class="autonumber">
+     <span>
+      <b>
+       Note:
+      </b>
+     </span>
+    </span>
+    For OGC datasets only: if
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    does not support one of the formats under the
+    <b>
+     Supported Formats
+    </b>
+    drop-down list (in the Properties List), you cannot open the dataset. You can view all of the dataset properties, but the
+    <b>
+     Open
+    </b>
+    button is disabled.
+   </p>
+   <p>
+    Additionally, some IAS datasets cannot be opened. When you select an IAS dataset from the Dataset List that cannot be opened, the properties do not display in the Properties List, and the
+    <b>
+     Open
+    </b>
+    button is disabled.
+   </p>
+   <li value="4">
+    To combine multiple datasets on a WMS server and open them as one map layer, select additional datasets from the Dataset List. You can select multiple datasets by pressing the
+    <b>
+     Ctrl
+    </b>
+    or
+    <b>
+     Shift
+    </b>
+    key as you select files.
+   </li>
+   <li value="5">
+    <p>
+     Click
+     <b>
+      Open
+     </b>
+     .
+    </p>
+    <ul>
+     <li value="1">
+      The dataset may automatically display and be listed in the Layer Manager, depending on your
+      <a href="../Preferences.htm#Display">
+       display preferences
+      </a>
+      .
+     </li>
+     <li value="2">
+      If you opened multiple WMS datasets as one displayable map layer, the layer name is a combination of all selected dataset names.
+     </li>
+     <li value="3">
+      If you opened an IAS dataset that contains NITF metadata, you can
+      <a href="ViewingNITFMetadata.htm">
+       view the metadata
+      </a>
+      . To stream and view NITF imagery and metadata from IAS servers, you must have a NITF/NSIF Module license.
+     </li>
+     <li value="4">
+      You cannot use
+      <span class="DocumentTitleProductName">
+       ENVI
+      </span>
+      ’s vector tools to edit a vector layer originating from a geodatabase.
+     </li>
+    </ul>
+   </li>
+   <li value="6">
+    If you connect to a geodatabase and datasets are added to or removed from the geodatabase while you are working in
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    , you can refresh the Remote Connection Manager to see the updates. In the Remote Connection Manager, click
+    <b>
+     Connection
+    </b>
+    and select
+    <b>
+     Refresh
+    </b>
+    , or right-click on a geodatabase name in the Connection List and select
+    <b>
+     Refresh
+    </b>
+    . The Dataset List updates to show the changes.
+   </li>
+   <p>
+    <a name="kanchor7">
+    </a>
+    When you open an Esri® simple/standalone feature class in a geodatabase, an icon appears next to the filename to indicate the type:
+   </p>
+   <table class="TableStyle_NoLines" style="margin-left: 0;margin-right: auto;mc-table-style: url('../Resources/TableStyles/NoLines.css');" cellspacing="0">
+    <col style="width: 49px;" />
+    <col />
+    <tbody>
+     <tr>
+      <td class="TableStyle_NoLines_Body_0_0_RowSep_ColSep">
+       <img src="../Resources/Images/IconsButtons/DataManagerMultispectralData.gif" />
+      </td>
+      <td class="TableStyle_NoLines_Body_0_0_RowSep_ColEnd">
+       <p>
+        Multispectral raster
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <td class="TableStyle_NoLines_Body_0_0_RowSep_ColSep">
+       <img src="../Resources/Images/IconsButtons/LayerManagerGrayscaleLayer.gif" />
+      </td>
+      <td class="TableStyle_NoLines_Body_0_0_RowSep_ColEnd">
+       <p>
+        Grayscale raster
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <td class="TableStyle_NoLines_Body_0_0_RowSep_ColSep">
+       <img src="../Resources/Images/IconsButtons/DataManagerPointShapefile.gif" />
+      </td>
+      <td class="TableStyle_NoLines_Body_0_0_RowSep_ColEnd">
+       <p>
+        Point
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <td class="TableStyle_NoLines_Body_0_0_RowSep_ColSep">
+       <img src="../Resources/Images/IconsButtons/DataManagerPolygonShapefile.gif" />
+      </td>
+      <td class="TableStyle_NoLines_Body_0_0_RowSep_ColEnd">
+       <p>
+        Polygon
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <td class="TableStyle_NoLines_Body_0_0_RowEnd_ColSep">
+       <img src="../Resources/Images/IconsButtons/DataManagerPolylineShapefile.gif" />
+      </td>
+      <td class="TableStyle_NoLines_Body_0_0_RowEnd_ColEnd">
+       <p>
+        Polyline
+       </p>
+      </td>
+     </tr>
+    </tbody>
+   </table>
+   <li value="7">
+    Select the feature class name(s) and click
+    <b>
+     Load Data
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    loads the feature class and displays it in the current view of the Image window.
+   </li>
+  </ol>
+  <h2>
+   <a name="Using">
+   </a>
+   Open Remote Dataset Dialog
+  </h2>
+  <p>
+   The
+   <b>
+    File &gt; Open Remote Dataset
+   </b>
+   menu option is useful when you are already familiar with the connection details of the dataset you want to open. You cannot use the Open Remote Dataset dialog to access a server, only a specific dataset. The Open Remote Dataset dialog only connects to datasets on JPIP, IAS, and OGC servers.
+  </p>
+  <p>
+   For JPIP and IAS servers, the connection string consists of the IP address or server (host) name, port number, the path (relative to the server root), and filename. Preface the URL with
+   <code>
+    http://
+   </code>
+   or
+   <code>
+    jpip://.
+   </code>
+   For example:
+  </p>
+  <p>
+   <img src="../Resources/Images/jpip_example1.gif" />
+  </p>
+  <p>
+   For OGC servers, the connection string consists of the server name, port number, CGI get request (followed by a question mark), and optional
+   <a href="BackgroundRemoteDataSources.htm#connection_keywords">
+    OGC keywords
+   </a>
+   . Preface the URL with
+   <code>
+    http://
+   </code>
+   . For example:
+  </p>
+  <p>
+   <img src="../Resources/Images/ogc_example.gif" />
+  </p>
+  <p>
+   Because no port number was specified in the example above,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   uses port 80 as the default.
+  </p>
+  <p>
+   You can also define a proxy server by setting the
+   <b>
+    <a href="../Preferences.htm#OGCProxyServer">
+     OGC Proxy Server
+    </a>
+   </b>
+   preference.
+  </p>
+  <p>
+   Follow these steps to open a remote dataset:
+  </p>
+  <ol>
+   <li value="1">
+    Select
+    <b>
+     File &gt; Open Remote Dataset
+    </b>
+    from the
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    menu bar. The Open Remote Dataset dialog appears.
+   </li>
+   <li value="2">
+    There are two ways to open a dataset from this dialog:
+   </li>
+   <ul>
+    <li value="1">
+     To open a new dataset, type (or paste) the connection string for the dataset in the
+     <b>
+      URL
+     </b>
+     field. Refer to the beginning of this section for examples and details about the format of the connection string.
+    </li>
+    <li value="2">
+     If you have previously opened any datasets, an arrow appears next to the
+     <b>
+      URL
+     </b>
+     field. Click the arrow and select the dataset from the drop-down list.
+    </li>
+   </ul>
+   <li value="3">
+    Click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+   <li value="4">
+    If a username and password are required to log in to a server, the
+    <a href="ConnectionAuthentication.htm">
+     Connection Authentication dialog
+    </a>
+    appears.
+   </li>
+   <p>
+    After you click
+    <b>
+     OK
+    </b>
+    and after authentication is complete (if required), the dataset is displayed and added to the
+    <a href="OpeningLocalFiles.htm#OpenDataManager">
+     Data Manager
+    </a>
+    .
+   </p>
+   <p>
+    If you opened an IAS dataset that contains metadata, you can view that metadata by right-clicking on the image in the Data Manager and  selecting
+    <b>
+     View NITF Metadata
+    </b>
+    . The NITF Metadata Viewer dialog appears. If the NITF preference
+    <b>
+     <a href="../Preferences.htm#AutomaticallyViewMetadata">
+     </a>
+    </b>
+    <b>
+     Automatically View Metadata in
+    </b>
+    <span style="font-weight: bold;" class="DocumentTitleProductName">
+     ENVI
+    </span>
+    is set to
+    <b>
+     True
+    </b>
+    , the metadata are automatically displayed. To stream and view NITF imagery and metadata from IAS servers, you must have a NITF/NSIF Module license.
+   </p>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

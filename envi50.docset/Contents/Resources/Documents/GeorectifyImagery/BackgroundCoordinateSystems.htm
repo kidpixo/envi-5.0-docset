@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Georectify|Reference" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Coordinate Systems Background
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#GeorectifyImagery/BackgroundCoordinateSystems.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="GeorectifyImagery.htm">
+    Georectify
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="#">
+    Reference
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Coordinate Systems Background
+   </span>
+  </div>
+  <h2>
+   Coordinate Systems Background
+   <a name="kanchor243">
+   </a>
+  </h2>
+  <p>
+   Coordinate systems provide a framework for defining real-world locations and are split into two categories:
+  </p>
+  <h3>
+   <a name="Geograph">
+   </a>
+   Geographic Coordinate Systems
+  </h3>
+  <p>
+   A geographic coordinate system enables every point on the Earth to be located by a set of numbers. The coordinates are most often represented as latitude and longitude and may also include elevation.
+  </p>
+  <p>
+   Because the earth is not a sphere, but an irregular shape approximating an ellipsoid, cartographers represent its shape with a variety of ellipsoid models.  Different models are used in different geographic regions to provide a best fit for that area.  Examples include Clarke 1866, GRS 1980, and Krasovsky 1940.  The fit of a coordinate system in a localized area can be further refined by applying a datum.
+  </p>
+  <p>
+   A datum is a mathematical model which is used to describe the location of unknown points on the earth.  Datums are defined to increase the accuracy of locations in a local area, therefore a particular point can have significantly different coordinates depending on the datum used.  The further away from the center point of the datum, the larger the error will be.  The most common datums used in North America are NAD27, NAD83, and WGS84.
+  </p>
+  <h3>
+   <a name="Projecte">
+   </a>
+   Projected Coordinate Systems
+  </h3>
+  <p>
+   A projected coordinate system describes a geographic location using Cartesian (
+   <i>
+    x, y
+   </i>
+   ) rectangular coordinates. It is sometimes referred to as a
+   <i>
+    map projection
+   </i>
+   because it attempts to map a 3D surface onto a 2D plane. It inherits the components of a geographic coordinate system but also has a projection type, detailed projection parameters, and projection units.
+  </p>
+  <p>
+   The
+   <i>
+    x
+   </i>
+   -axis coordinates typically increase to the east and the
+   <i>
+    y
+   </i>
+   -axis coordinates increase to the north. The x and y coordinates are often called eastings and northings, and the origin may be defined with a false easting and false northing. These coordinate grids are often divided into zones to reduce distortion. The Universal Transverse Mercator (UTM) and State Plane projections are examples of these type of coordinate systems.
+  </p>
+  <h3>
+   <a name="Coordina">
+   </a>
+   Coordinate System Strings
+  </h3>
+  <p>
+   Coordinate system text strings describe the details of a coordinate system for use in
+   <a href="../ExtendCustomize/ProgrammingWithENVI.htm">
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    programming
+   </a>
+   and
+   <a href="../ExploreImagery/ENVIHeaderFiles.htm">
+    ENVI header files
+   </a>
+   .
+  </p>
+  <p>
+   A geographic coordinate system string (also called a GEOGCS) contains the details of the geographic coordinate system, including the name, datum, spheroid, prime meridian, and units. The following example shows a GEOGCS based on the WGS 1984 datum:
+  </p>
+  <p class="Code">
+   GEOGCS["GCS_WGS_1984",DATUM["D_WGS_1984",SPHEROID["WGS_1984",6378137, 298.257223563]],PRIMEM["Greenwich",0],UNIT["Degree",0.0174532925199433]]
+  </p>
+  <p>
+   A projected coordinate string (also called a PROJCS) contains geographic coordinate system details, plus the details of a projected coordinate system. The following is an example:
+  </p>
+  <p class="Code">
+   PROJCS["NAD_1983_California_I",GEOGCS["GCS_North_American_1983", DATUM["D_North_American_1983",SPHEROID["GRS_1980",6378137,298.257222101]], PRIMEM["Greenwich",0],UNIT["Degree",0.0174532925199433]], PROJECTION["Lambert_Conformal_Conic"],PARAMETER["False_Easting",2000000], PARAMETER["False_Northing",500000],PARAMETER["Central_Meridian",122], PARAMETER["Standard_Parallel_1",40],PARAMETER["Standard_Parallel_2", 41.66666666666666],PARAMETER["Latitude_Of_Origin",39.33333333333334], UNIT["Meter",1]]
+  </p>
+  <p>
+   Each string is preceded by a unique code number, typically four to six digits. This is a short-hand way of representing a coordinate system instead of using the long text string.
+  </p>
+  <p>
+   For a full list of coordinate system strings and codes, refer to the following text files in the
+   <code>
+    \IDL
+    <i>
+     xx
+    </i>
+    \resource\pedata\predefined
+   </code>
+   directory of the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   distribution:
+  </p>
+  <ul>
+   <li value="1">
+    <code>
+     EnviPEProjcsStrings.txt
+    </code>
+    : PROJCS codes and strings
+   </li>
+   <li value="2">
+    <code>
+     EnviPeGeogcs.txt
+    </code>
+    : GEOGCS codes and strings
+   </li>
+  </ul>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

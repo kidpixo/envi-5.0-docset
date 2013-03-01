@@ -1,0 +1,662 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Detection" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Change Detection Analysis
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#Detection/ChangeDetectionToolsClassic/ChangeDetectionAnalysis.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../DetectionTools.htm">
+    Detection
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Change Detection Analysis
+   </span>
+  </div>
+  <h1>
+   <a name="kanchor264">
+   </a>
+   Change Detection Analysis
+  </h1>
+  <p>
+   Change Detection Analysis encompasses a broad range of methods used to identify, describe, and quantify differences between images of the same scene at different times or under different conditions. You can use many of
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   's tools (such as Band Math or Principal Components Analysis) independently, or in combination, as part of a change detection analysis. In addition, the routines found under the Toolbox menu
+   <b>
+    Change Detection
+   </b>
+   offer a straightforward approach to measuring changes between a pair of images that represent an initial state and final state. Use
+   <b>
+    Change Detection Statistics
+   </b>
+   for classification images; use
+   <b>
+    Change Detection Difference Map
+   </b>
+   for gray scale (single-band) images.
+  </p>
+  <p>
+   See the following topics:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#Computin">
+     Change Detection Difference Map
+    </a>
+   </li>
+   <li value="2">
+    <a href="#Computin2">
+     Change Detection Statistics
+    </a>
+   </li>
+  </ul>
+  <h2>
+   <a name="Computin">
+   </a>
+   Change Detection Difference Map
+  </h2>
+  <p>
+   Use
+   <b>
+    Change Detection Difference Map
+   </b>
+   to produce an
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   classification image characterizing the differences between any pair of initial state and final state images. The input images may be single-band images of any data type. The difference is computed by subtracting the initial state image from the final state image (that is,
+   <i>
+    final
+   </i>
+   &#160;-&#160;
+   <i>
+    initial
+   </i>
+   ), and the classes are defined by change thresholds. A positive change identifies pixels that became brighter (final state brightness was greater than the initial state brightness), while a negative change identifies pixels that became dimmer (final state brightness was less than initial state brightness).
+  </p>
+  <p>
+   As an optional pre-processing step, you can normalize the input images to a data range between zero and one, or standardize them to a zero mean and unit variance. The input images must be coregistered or georeferenced. For the most accurate results, carefully coregister the images before processing. If the input images are not coregistered, the
+   <b>
+    Change Detection Difference Map
+   </b>
+   tool uses the available map information to automatically coregister the images, using the initial state image as the base if re-projection or resampling is required.
+  </p>
+  <h3>
+   Tips for Successful Analyses
+  </h3>
+  <p>
+   When performing a change detection analysis on non-thematic images (gray scale data), it is important to consider all of the factors that can cause scenes of the same area to look different. The following are a few notable factors:
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     Differences in the instrument or sensor
+    </b>
+    : Consider the similarity of the sensors that collected the images. Even bands collected in the same part of the spectrum (for example, two red bands) may have different band center wavelengths, or different spectral response functions, which can lead to different pixel values for the same material.
+   </li>
+   <li value="2">
+    <b>
+     Differences in the collection date and time
+    </b>
+    : Seasonal changes can impart big differences in scenes containing vegetation (due to plant senescence and canopy architecture development). Differences in the season and time of day will also affect the solar azimuth and elevation.
+   </li>
+   <li value="3">
+    <b>
+     Differences in Atmospheric Conditions
+    </b>
+    : The dominant weather conditions can affect atmospheric transmission and scattering. Consistent differences in gross atmospheric conditions are often associated with seasonal changes. For example, differences in the predominant wind direction can be important (winds blowing in over the ocean contain different aerosols with different scattering properties from those blowing in over an urban area). Another common, yet consistent, atmospheric difference is the water content of the atmosphere. Summer atmospheres tend to be wetter than winter atmospheres. Atmospherically corrected images can reduce such influences.
+   </li>
+   <li value="4">
+    <b>
+     Differences in Image Calibrations
+    </b>
+    : For the most accurate change detection results, it is important to work with images that are calibrated into the same units. If a calibration into physical units (such as radiance) is not possible, a relative calibration may be better than none at all (especially if the instruments that collected the images have different dynamic ranges).
+   </li>
+   <li value="5">
+    <b>
+     Differences in Image Resolution
+    </b>
+    : Differing pixel sizes can lead to false change detections. It is important that the original images (prior to resampling or re-projection) have the same pixel resolution. For scenes with large swaths (such as AVHRR, SeaWiFS, or MODIS) the actual pixel sizes differ across the scene. In such cases, differences in the sensor viewing geometry can also be important.
+   </li>
+   <li value="6">
+    <p>
+     <b>
+      Coregistration Accuracy
+     </b>
+     : Accurately coregistered images are critical for change detection analyses. While the
+     <b>
+      Compute Difference Map
+     </b>
+     routine will automatically coregister the input images using the available map information, if the differences in the image geometry are substantial, it is well worth the effort to ensure that the coregistration is as accurate as possible before performing a change detection.
+    </p>
+   </li>
+  </ul>
+  <p>
+   The
+   <b>
+    Change Detection Difference Map
+   </b>
+   tool does not compensate for any of these (or other) conditions. Its results are strictly dependent on pixel-for-pixel comparisons.
+  </p>
+  <ol>
+   <li value="1">
+    <p>
+     From the Toolbox, select
+     <b>
+      Change Detection &gt; Change Detection Difference Map
+     </b>
+     . The Select the ‘Initial State’ Image dialog appears.
+    </p>
+    <p>
+     The input images must be georeferenced or coregistered. If the images are not coregistered, then the available map information will be used to automatically coregister the area common to both.
+    </p>
+   </li>
+   <li value="2">
+    Select a single band image representing the initial state and perform optional spatial
+    <a href="../../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The Select the ‘Final State’ Image dialog appears.
+   </li>
+   <li value="3">
+    Select a single band image representing the final state and perform optional spatial
+    <a href="../../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The Compute Difference Map Input Parameters dialog appears.
+   </li>
+   <li value="4">
+    Enter the number of classes to use. Each class is defined by a difference threshold that represents a varying amount of change between the two images. The minimum number of classes is two. The default classification thresholds are evenly spaced between (-1) and (+1) for simple differences, and (-100%) and (+100%) for percent differences. The default class definitions attempt to produce symmetric classes, with an equal number of positive and negative change classes surrounding a No Change category. The order in which the classes are defined is as follows:
+   </li>
+   <ul>
+    <li value="1">
+     For
+     <i>
+      n
+     </i>
+     classes, where
+     <i>
+      n
+     </i>
+     is odd, the first (
+     <i>
+      n
+     </i>
+     /2) classes represent positive changes, starting with the largest positive changes and ending with the smallest.
+    </li>
+    <li value="2">
+     The middle class, (
+     <i>
+      n
+     </i>
+     /2) + 1, represents no change.
+    </li>
+    <li value="3">
+     The last (
+     <i>
+      n
+     </i>
+     /2) classes represent negative changes, starting with the smallest negative changes end ending with the largest.
+    </li>
+    <li value="4">
+     For an even number of classes the definitions remain the same except that the number of negative classes is reduced by one. In short, the default class definitions range from positive to negative, with the magnitude of the change increasing with distance from the middle No Change class.
+    </li>
+   </ul>
+   <li value="5">
+    <p>
+     To modify or view the classification thresholds, define names for the classes, or import classification thresholds from a previous result, click
+     <b>
+      Define Class Thresholds
+     </b>
+     . (If using default thresholds, this step is unnecessary.) The Define Class Simple Difference Thresholds dialog appears. Each class is defined by one line in the dialog.
+    </p>
+    <p>
+     While you are encouraged to customize the criteria to use to define the change thresholds, It is recommended that the classes retain their default symmetrical property, with an equal number of positive and negative classes surrounding a No Change class. Retaining the default position (order) and type (negative or positive) of classes will make the results easier to interpret using the classification color assignments.
+    </p>
+   </li>
+   <ol style="list-style-type: upper-alpha;">
+    <li value="1">
+     Define class names by placing the cursor in the field next to the class you wish to rename, and enter the new class name.
+    </li>
+    <li value="2">
+     <p>
+      Modify class thresholds by selecting logical operators from the drop-down lists and enter numeric values in the fields to define the thresholds for any selected class. When you click
+      <b>
+       OK
+      </b>
+      ,
+      <span class="DocumentTitleProductName">
+       ENVI
+      </span>
+      saves the changes. To further modify class thresholds, click
+      <b>
+       Define Class Thresholds
+      </b>
+      again. The first and last class have only one logical operator and are intended to be open-ended.
+     </p>
+     <p>
+      To revert to the default classification thresholds, click
+      <b>
+       Apply Defaults
+      </b>
+      at the bottom of the dialog. The defaults that are applied are dependent on the Change Type selected in the Compute Difference Map Input Parameters dialog (the Change Type is also indicated by the title bar of the Define Class Thresholds dialog).
+     </p>
+     <p>
+      To undo changes made since the Define Class Thresholds dialog was last opened, click
+      <b>
+       Reset
+      </b>
+      . All changes made since the dialog was brought up will be removed.
+     </p>
+    </li>
+    <li value="3">
+     <p>
+      To automatically set the classification change thresholds to match those used in a previous analysis, click
+      <b>
+       Match Previous Result
+      </b>
+      . The Select a Previous Difference Map Classification Result dialog appears.
+     </p>
+     <p>
+      Choose a Difference Map classification image produced previously using the
+      <b>
+       Compute Difference Map
+      </b>
+      routine that contains the thresholds you wish to reuse, and click
+      <b>
+       OK
+      </b>
+      .
+     </p>
+     <p>
+      If necessary, the number of classes for the current analysis will be reset to match the number of classes used in the previous analysis.
+     </p>
+    </li>
+   </ol>
+   <li value="6">
+    Set the
+    <b>
+     Change Type
+    </b>
+    :
+   </li>
+   <ul>
+    <li value="1">
+     <b>
+      Simple Difference
+     </b>
+     : Subtracts the initial state image from the final state image.
+    </li>
+    <li value="2">
+     <b>
+      Percent Difference
+     </b>
+     : The simple difference divided by the initial state value.
+    </li>
+   </ul>
+   <li value="7">
+    Select one of the following optional
+    <b>
+     Data Pre-Processing
+    </b>
+    options:
+   </li>
+   <ul>
+    <li value="1">
+     <b>
+      Normalization
+     </b>
+     : Subtracts the image minimum and dividing by the image data range: Normalization = (DN - min) / (max - min).
+    </li>
+    <li value="2">
+     <b>
+      Standardization
+     </b>
+     : Subtracts the image mean and dividing by the standard deviation: Standardization = (DN - mean) / stdev.
+    </li>
+   </ul>
+   <li value="8">
+    Select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="9">
+    If the input images require warping or resampling in order to produce a coregistered pair, then an extra section appears which allows saving the auto-coregistered images to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="10">
+    <p>
+     Click
+     <b>
+      OK
+     </b>
+     . The resulting Difference Map classification image is color coded to indicate the magnitude of the change between the two images. Positive changes display in shades of red, grading from gray for no change to bright red for largest positive change. Negative changes display in shades of blue, grading from gray for no change to bright blue for the largest negative change.
+    </p>
+    <p>
+     If the number of positive and negative change classes or the order in which the classes are defined has changed from the default settings, the interpretation of the color scheme may not match that described here.
+    </p>
+   </li>
+  </ol>
+  <h2>
+   <a name="Computin2">
+   </a>
+   Change Detection Statistics
+  </h2>
+  <p>
+   Use
+   <b>
+    Change Detection Statistics
+   </b>
+   to compile a detailed tabulation of changes between two classification images. The changes detected using this routine differ significantly from a simple differencing of the two images. While the statistics report does include a class-for-class image difference, the analysis focuses primarily on the initial state classification changes; that is, for each initial state class, the analysis identifies the classes into which those pixels changed in the final state image.
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   can report changes as pixel counts, percentages, and areas. In addition, you can produce a special type of mask image (classification masks) that provide a spatial context for the tabular report. The class masks are
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   classification images with class colors matching the final state image, making it easy to identify not only where changes occurred but also the class into which the pixels changed.
+  </p>
+  <p>
+   The input images must be coregistered or georeferenced. For the most accurate results, carefully coregister the images before processing. If the input images are not coregistered,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   uses the available map information to automatically coregister the images, using the initial state image as the base if re-projection or resampling is required.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Change Detection &gt; Change Detection Statistics
+    </b>
+    .
+   </li>
+   <p>
+    The Select the ‘Initial State’ Image dialog appears.
+   </p>
+   <li value="2">
+    Select a classification image representing the initial state and perform optional spatial
+    <a href="../../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The Select the ‘Final State’ Image dialog appears.
+   </li>
+   <li value="3">
+    Select a classification image representing the final state and perform optional spatial
+    <a href="../../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The Define Equivalent Classes dialog appears.
+   </li>
+   <li value="4">
+    <p>
+     Match the classes from the Initial and final state images by selecting the matching names in the two lists and clicking
+     <b>
+      Add Pair
+     </b>
+     .
+    </p>
+   </li>
+   <p>
+    Add only the classes you wish to include in the change detection analysis (you do not have to pair all classes). The class combinations are shown in a list at the bottom of the dialog. If the classes in each image have the same names, they are automatically paired.
+   </p>
+   <li value="5">
+    Click
+    <b>
+     OK
+    </b>
+    . The Change Detection Statistics Output dialog appears.
+   </li>
+   <li value="6">
+    Select the
+    <b>
+     Report Type
+    </b>
+    . You may choose any combination of
+    <b>
+     Pixels
+    </b>
+    ,
+    <b>
+     Percent
+    </b>
+    , and
+    <b>
+     Area
+    </b>
+    .
+   </li>
+   <li value="7">
+    Click the
+    <b>
+     Output Classification Mask Images?
+    </b>
+    toggle button to specify whether or not to create class masks.
+   </li>
+   <li value="8">
+    If the
+    <b>
+     Output Classification Mask Images?
+    </b>
+    toggle button is
+    <b>
+     Yes
+    </b>
+    , select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="9">
+    Click
+    <b>
+     OK
+    </b>
+    . If an Area Report was requested but the initial state image does not have pixel sizes defined, the Define Pixel Sizes for Area Statistics dialog displays.
+   </li>
+   <li value="10">
+    Enter the pixel sizes.
+   </li>
+   <li value="11">
+    Click
+    <b>
+     OK
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds the resulting output to the Layer Manager and opens the statistics in the Change Detection Statistics window.
+   </li>
+  </ol>
+  <h3>
+   The Change Detection Statistics Report
+   <a name="kanchor265">
+   </a>
+  </h3>
+  <p>
+   The Change Detection Statistics window contains all of the statistics tables that you selected from the
+   <b>
+    Report Type
+   </b>
+   field in the Change Detection Statistics Output dialog box, separated by tabs. It also contains a Reference tab, which includes additional information about the analysis, such as the names of the input images and the equivalent class pairings. Below is a sample Change Detection Statistics Report.
+  </p>
+  <p style="text-align: left;">
+   <img src="../../Resources/Images/change_det.gif" />
+  </p>
+  <p>
+   The statistics tables list the initial state classes in the columns and the final state classes in the rows. However, the columns include only the selected (paired) initial state classes, while the rows contain all of the final state classes. This is required for a complete accounting of the distribution of pixels that changed classes. For each initial state class (that is, each column), the table indicates how these pixels were classified in the final state image. For example, the table in the figure above shows that 2,094 pixels initially classified as Water changed into the Sediment class in the final state image.
+  </p>
+  <ul>
+   <li value="1">
+    The Class Total row indicates the total number of pixels in each initial state class, and the Class Total column indicates the total number of pixels in each final state class. The table in the figure above shows that 35,989 pixels were classified as Agriculture in the initial state image.
+   </li>
+   <li value="2">
+    <p>
+     The Row Total column is a class-by-class summation of all final state pixels that fell into the selected initial state classes.
+    </p>
+    <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+     <span class="autonumber">
+      <span>
+       <b>
+        Note:
+       </b>
+      </span>
+     </span>
+     This may not be the same as the Final State Class Totals because it is not required that all initial state classes be included in the analysis.
+    </p>
+   </li>
+   <li value="3">
+    The Class Changes row indicates the total number of initial state pixels that changed classes. In the table in the figure above, the total Class Changes for Agriculture is 30,923 pixels. In other words, 30,923 pixels that were initially classified as Agriculture changed into final state classes other than agriculture.
+   </li>
+   <li value="4">
+    The Image Difference row is the difference in the total number of equivalently classed pixels in the two images, computed by subtracting the Initial State Class Totals from the Final State Class Totals. An Image Difference that is positive indicates that the class size increased. For example, in the sample analysis, the Water class grew by 67,618 pixels.
+   </li>
+  </ul>
+  <p>
+   Select the tabs along the top of the Change Detection Statistics dialog to show equivalent information for the class changes in terms of
+   <b>
+    Percentage
+   </b>
+   and
+   <b>
+    Area
+   </b>
+   . In the Percent report (not shown here) the increase in the size of the Water class corresponds to a growth of 21%:
+  </p>
+  <p class="indent">
+   (
+   <i>
+    final state
+   </i>
+   -
+   <i>
+    initial state
+   </i>
+   ) /
+   <i>
+    initial state
+   </i>
+   = (390381 - 322763) / 322763 = 0.209
+  </p>
+  <h4>
+   Additional Features of the Change Detection Statistics Report
+  </h4>
+  <p>
+   Options from the Change Detection Statistics Report dialog menu bar are:
+  </p>
+  <ul>
+   <li value="1">
+    To change the floating-point precision displayed in the report, select
+    <b>
+     Options &gt; Set Report Precision
+    </b>
+    .
+   </li>
+   <li value="2">
+    To convert the units for the Area report, select
+    <b>
+     Options &gt; Convert Area Units
+    </b>
+    .
+   </li>
+   <li value="3">
+    To save the statistics reports to an ASCII text file, select
+    <b>
+     File &gt; Save to Text File
+    </b>
+    . The Save Change Detection Stats to Text dialog appears; you can optionally add a descriptive line of header text to the file being written. The data is saved in a tab delimited format to facilitate importing into other software programs.
+   </li>
+  </ul>
+  <h3>
+   The Classification Mask Images
+   <a name="kanchor266">
+   </a>
+  </h3>
+  <p>
+   The classification masks complement the statistics tables by spatially identifying which initial state pixels changed classes, and into which class they changed. By examining the masks, you can often see patterns of changes. The masks can also help highlight coregistration errors.
+  </p>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   saves the class mask images as a multi-band image with one mask for each paired class. To help identify the class into which a pixel changed, the masks are stored as
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   classification images with the class assignments (names, colors, and values) matching the final state. A value of zero in the mask indicates that no change occurred from the initial to the final state; non-zero values indicate a change.
+  </p>
+  <p>
+   To differentiate pixels that did not change classes from those that changed into the Unclassified class (which typically has a classification value of zero), pixels that changed into the Unclassified class are assigned a value equal to the number of final state classes plus one, and color coded white. For example, in the sample analysis shown in the figure above, the final state image contains 6 classes; therefore, any pixel in the mask that changed into the Unclassified class would be assigned a value of 7.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

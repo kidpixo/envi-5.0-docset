@@ -1,0 +1,387 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Spectral Tools|SPEAR Tools" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   SPEAR Google Earth Bridge
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#SpectralTools/SPEARTools/GoogleEarthBridge.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../SpectralTools.htm">
+    Spectral Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="SpearTools.htm">
+    SPEAR Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    SPEAR Google Earth Bridge
+   </span>
+  </div>
+  <h1>
+   SPEAR Google Earth Bridge
+   <a name="kanchor374">
+   </a>
+  </h1>
+  <p>
+   The SPEAR Google Earth Bridge provides a simple way to export images and/or vectors from
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   to Google Earth®. The bridge creates a Keyhole Markup Language (
+   <code>
+    .kml
+   </code>
+   ) file containing vector data (including image footprints). If image thumbnails are selected, ancillary data files associated with the .kml file will also be exported.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   Google Earth is not supported on Solaris.
+  </p>
+  <p>
+   Google Earth does not directly support georeferenced images. Images are placed on the Earth according to four corner points and a rotation defined in the
+   <code>
+    .kml
+   </code>
+   file. To ensure images overlay accurately, the Google Earth Bridge georectifies input images to a North up orientation. If available, Rapid Positioning Coordinates (RPCs) will be applied (via orthorectification) using the mean elevation for the image as determined by a global elevation dataset. If RPCs are not available, the four corner points of the image will be used as ground control points to warp the image to a North up orientation.
+  </p>
+  <p>
+   You can export vectors and/or images as thumbnails and/or footprints to Google Earth using the SPEAR Google Earth Bridge.
+  </p>
+  <h2>
+   Export Vectors and/or Images to Google Earth
+  </h2>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     SPEAR &gt; SPEAR Google Earth Bridge
+    </b>
+    . The SPEAR Google Earth Wizard displays the File Selection panel.
+   </li>
+   <li value="2">
+    Enable the
+    <b>
+     Do not export any images
+    </b>
+    option if you only want to export vectors, and click
+    <b>
+     Next
+    </b>
+    . The Select Vectors dialog appears.
+   </li>
+   <li value="3">
+    Vector layers opened in
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    will be available in the
+    <b>
+     Select Layers to Export
+    </b>
+    list. Use
+    <b>
+     Refresh List
+    </b>
+    to refresh the list of vectors opened in ENVI.
+   </li>
+   <li value="4">
+    Select the vector layers to export and click
+    <b>
+     Next
+    </b>
+    . The Vector Properties dialog appears.
+   </li>
+   <li value="5">
+    Each vector layer selected for output is represented by one column in the Vector Parameters table. Click on the table rows to set properties for each vector layer, then click
+    <b>
+     Next
+    </b>
+    . The Select Output dialog appears.
+   </li>
+   <li value="6">
+    <p>
+     Click
+     <b>
+      Add Files
+     </b>
+     to select images to be exported. You can select any georeferenced image, and you can select more than one file at a time using the
+     <b>
+      Shift
+     </b>
+     or
+     <b>
+      Ctrl
+     </b>
+     keys. To remove files from the Image List, select the files to be removed and click
+     <b>
+      Remove Files
+     </b>
+     .
+    </p>
+    <p>
+     If the input image is in NITF format, and the metadata includes the collection date and time as well as sensor and solar geometry information, that information will be extracted. The collection date and time will be recorded in the
+     <code>
+      .kml
+     </code>
+     file. This enables the display of images collected between user-defined start and stop dates using the Google Earth time slider. The sensor and solar geometry information will be used to create small line segments extending from the center of the image towards the sensor and the sun, respectively. The sensor line will be the same color as the footprint color, and the sun line will be colored yellow. These “geometry stubs” may be turned on or off in Google Earth independently from the footprints and thumbnails.
+    </p>
+    <p>
+     Once you have selected the images for export, click
+     <b>
+      Next
+     </b>
+     . The Image Properties dialog appears.
+    </p>
+   </li>
+   <li value="7">
+    Select thumbnails, footprints, or both from the
+    <b>
+     Output Type
+    </b>
+    drop-down list. Exporting footprints is nearly instantaneous, while exporting thumbnails may take several minutes depending on the image size.
+   </li>
+   <li value="8">
+    Image footprints are vector polygons depicting the spatial extent of the selected image. Select the desired color for the footprints using the
+    <b>
+     Color
+    </b>
+    drop-down list. If more than one image is being exported, the
+    <b>
+     Sequential
+    </b>
+    option will cycle through the colors in the list (other than black and white) for each footprint.
+   </li>
+   <li value="9">
+    Select a fill type using the
+    <b>
+     Fill
+    </b>
+    drop-down list. Type a number in the
+    <b>
+     Transparency
+    </b>
+    field or use the arrow key adjacent to the field to set the transparency for semi-transparent fills. For a solid fill, set the transparency to 0%.
+   </li>
+   <li value="10">
+    The
+    <b>
+     Line Width
+    </b>
+    field controls the width for the line around the edge of the footprint.
+   </li>
+   <li value="11">
+    Select an available format from the
+    <b>
+     Output Format
+    </b>
+    drop-down list. For PNG, black fill pixels are set to transparent. This option is only available for thumbnails.
+   </li>
+   <li value="12">
+    The
+    <b>
+     Image Size
+    </b>
+    drop-down list indicates the approximate size of the resulting thumbnail.
+   </li>
+   <li value="13">
+    Google Earth can import 8-bit grayscale or 24-bit color images. Set the stretch parameters using the Thumbnail Parameters section of the dialog.
+   </li>
+   <li value="14">
+    Enable the
+    <b>
+     Do not export any vectors
+    </b>
+    option if you do not want to export vectors and click
+    <b>
+     Next
+    </b>
+    . To export vectors, select the vector layers to export and click
+    <b>
+     Next
+    </b>
+    .
+   </li>
+   <ul>
+    <li value="1">
+     Vector layers opened in
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     will be available in the
+     <b>
+      Select Layers to Export
+     </b>
+     list. Use
+     <b>
+      Refresh List
+     </b>
+     to refresh the list of vectors open in ENVI.
+    </li>
+    <li value="2">
+     Select the vector layers to export and click
+     <b>
+      Next
+     </b>
+     . The Vector Properties dialog appears.
+    </li>
+    <li value="3">
+     Each vector layer selected for output is represented by one column in the Vector Parameters table. Click on the table rows to set properties for each vector layer, then click
+     <b>
+      Next
+     </b>
+     . The Select Output dialog appears.
+    </li>
+   </ul>
+   <li value="15">
+    <p>
+     Click
+     <b>
+      Select Output File
+     </b>
+     to set output options. If you export thumbnails, one graphic per thumbnail will be written to the directory specified. Thumbnails will need to be in the same directory as the
+     <code>
+      .kml
+     </code>
+     file that refers to them. Enable the
+     <b>
+      Open in Google Earth when done
+     </b>
+     option to automatically load the file(s) to Google Earth.
+    </p>
+    <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+     <span class="autonumber">
+      <span>
+       <b>
+        Note:
+       </b>
+      </span>
+     </span>
+     Google Earth also supports
+     <code>
+      .kmz
+     </code>
+     format, which is a zipped file containing the
+     <code>
+      .kml
+     </code>
+     file and the associated images. Using a zip file tool, zip the files, then replace the
+     <code>
+      .zip
+     </code>
+     extension with
+     <code>
+      .kmz
+     </code>
+     . Google Earth can open this file format directly, and it is a convenient way to keep multiple related files together.
+    </p>
+   </li>
+   <li value="16">
+    Processing is complete; click
+    <b>
+     Finish
+    </b>
+    to exit the Wizard. If exported images had collection day and time metadata, you may need to adjust the time slider in Google Earth to display all of the images.
+   </li>
+  </ol>
+  <h2>
+   Google Earth Image Tools
+  </h2>
+  <p>
+   Use Google Earth tools directly from the  Image window. From the Image window menu bar, select
+   <b>
+    Tools &gt; SPEAR &gt; Google Earth
+   </b>
+   . The following tools are available:
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     Jump to Location
+    </b>
+    : Google Earth will launch, if not already open, and fly to the location of the cursor in the
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    Image window.
+   </li>
+   <li value="2">
+    <b>
+     Export Footprint
+    </b>
+    : Google Earth will launch, if not already open, and display the spatial extent of the image (as a vector polygon) in the
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    Image window.
+   </li>
+   <li value="3">
+    <b>
+     Export Image
+    </b>
+    : The image displayed in the
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    Image window will be exported to Google Earth. You will be given the option to choose a subset and to define the output name of the exported
+    <code>
+     .kml
+    </code>
+    file. If present, RPCs will be applied using the mean elevation for the image. RPCs allow Google Earth to display the image in a North up orientation with equal pixels across the image. Google Earth will launch, if not already open, and tile the image into a Google Earth super overlay. The image will be displayed with the current stretch applied. If the image is not visible in Google Earth, zoom in on the image.
+   </li>
+  </ul>
+  <p class="NoteIndent" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   Because Google Earth super overlays tile images at multiple resolution levels, they often generate a large number of files. It is recommended that upon selecting the
+   <code>
+    .kml
+   </code>
+   output name, you create a new directory to contain these overlay files.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

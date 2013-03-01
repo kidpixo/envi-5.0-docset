@@ -1,0 +1,574 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Coregistration
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#SpectralTools/SPEARTools/SPEARCoregistration.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <h1>
+   Coregistration
+   <a name="kanchor866">
+   </a>
+  </h1>
+  <p>
+   Coregistration occurs within the
+   <a href="SPEARChangeDetection.htm">
+    SPEAR Change Detection
+   </a>
+   and
+   <a href="SPEARPanSharpening.htm">
+    SPEAR Pan Sharpening
+   </a>
+   tools. For change detection or pan sharpening to be effective, the images of interest must be closely aligned. The native georeferencing information that comes with the imagery is typically not accurate enough for this purpose. Instead, you must select tie points marking the same features on both images.
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   warps one image based on these tie points to match the base image.
+  </p>
+  <p>
+   Using the Ground Control Points dialog to select tie points is the simplest method; however, it can be challenging in areas with few obvious features, and it is time consuming. To assist tie point selection,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   automatically scans both images to locate common features. For best results, manually provide three to five
+   <i>
+    seed points
+   </i>
+   to assist
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   in finding tie points.
+  </p>
+  <p>
+   Though
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   can select tie points much faster than a human operator, you should check automatically chosen tie points before proceeding. Automatically generated tie points may fall on clouds or cloud shadows, on rooftops, or on other elevated objects and are not suitable. Slight time differences between image collections may generate sub-optimal tie points.
+  </p>
+  <p>
+   See the following sections:
+  </p>
+  <p>
+   <a href="#Creating">
+    Creating Tie Points
+   </a>
+  </p>
+  <p>
+   <a href="#reviewing_tie_points">
+    Reviewing Tie Points
+   </a>
+  </p>
+  <p>
+   <a href="#fixing_tie_points">
+    Fixing Tie Points
+   </a>
+  </p>
+  <p>
+   <a href="#checking_coregistration_accuracy">
+    Checking Coregistration Accuracy
+   </a>
+  </p>
+  <h2>
+   <a name="Creating">
+   </a>
+   Creating Tie Points
+  </h2>
+  <ol>
+   <li value="1">
+    Select one of the following coregistration options:
+   </li>
+   <ul>
+    <li value="1">
+     <b>
+      Manual:
+     </b>
+     <![CDATA[ ]]>
+     Manually select tie points. Click
+     <b>
+      Next
+     </b>
+     . The
+     <a href="#reviewing_tie_points">
+      Review Tie Points dialog
+     </a>
+     appears.
+    </li>
+    <li value="2">
+     <b>
+      Automatic:
+     </b>
+     Use the steps that follow to select tie points.
+    </li>
+    <li value="3">
+     <b>
+      Images already coregistered:
+     </b>
+     Coregister images using their native georeferencing information. The accuracy of native georeferencing often is not sufficient enough to achieve precise coregistration.
+    </li>
+   </ul>
+   <li value="2">
+    To use seeds points, ensure the
+    <b>
+     Use Seed Points
+    </b>
+    check box is enabled.
+   </li>
+   <li value="3">
+    Select seed points either manually or automatically. Choose one of the following:
+   </li>
+   <li value="4">
+    To automatically generate four seed points, click
+    <b>
+     Auto-Generate Seed Points
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    selects four seed points. The auto-generated seed points may not fall precisely on the same feature. This is acceptable, as long as they are relatively close. These seed points are discarded when tie point selection is complete. Click
+    <b>
+     Select Seed Points
+    </b>
+    , then
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    opens the Time #1 and #2 images in display groups, and the Ground Control Points Selection dialog appears listing the automatically selected points.
+   </li>
+   <li value="5">
+    <p>
+     To manually select seed points, click
+     <b>
+      Select Seed Points
+     </b>
+     .
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     opens the Time #1 and #2 images in display groups and the Ground Control Points Selection dialog appears. Select three to five seed points.
+    </p>
+    <p>
+     When manually selecting seed points, you can switch the
+     <b>
+      Geographic Link
+     </b>
+     toggle to
+     <b>
+      On
+     </b>
+     to move the cursor to the same area in both images, then switch the
+     <b>
+      Geographic Link
+     </b>
+     toggle to
+     <b>
+      Off
+     </b>
+     to fine tune the location.
+    </p>
+   </li>
+   <li value="6">
+    If you manually selected seed points, click
+    <b>
+     Retrieve Points
+    </b>
+    . If you need to clear the seed points and start again, click
+    <b>
+     Clear Points
+    </b>
+    .
+   </li>
+   <li value="7">
+    Click
+    <b>
+     Show Advanced Options
+    </b>
+    if you want to set additional parameters for area-based image matching methods. Typically, the default settings provide the best results, but you can edit the parameters as needed.
+   </li>
+   <ul>
+    <li value="1">
+     <b>
+      Number of Tie Points
+     </b>
+    </li>
+    <li value="2">
+     <b>
+      Search Window Size
+     </b>
+    </li>
+    <li value="3">
+     <b>
+      Moving Window Size
+     </b>
+    </li>
+    <li value="4">
+     <b>
+      Area Chip Size
+     </b>
+    </li>
+    <li value="5">
+     <b>
+      Minimum Correlation
+     </b>
+    </li>
+    <li value="6">
+     <b>
+      Point Oversampling
+     </b>
+    </li>
+    <li value="7">
+     <b>
+      Interest Operator
+     </b>
+    </li>
+   </ul>
+   <li value="8">
+    Click
+    <b>
+     Next
+    </b>
+    to continue. The following appears:
+   </li>
+   <li value="9">
+    One display group contains the base image.
+   </li>
+   <li value="10">
+    One display group contains the image to warp.
+   </li>
+   <li value="11">
+    The Ground Points Selection dialog.
+   </li>
+   <li value="12">
+    If you selected automatic tie points, the points show in the display groups, the GCP Selection dialog shows how many points exist and the Root Mean Square (RMS) error, and the Image to Image GCP List shows the individual points.
+   </li>
+   <li value="13">
+    The Review Tie Points panel appears.
+    <a href="#reviewing_tie_points">
+     Review the tie points
+    </a>
+    .
+   </li>
+   <li value="14">
+    When you are finished reviewing tie points, choose one of the following for the warp
+    <b>
+     Method
+    </b>
+    in the Review Tie Points panel. See
+    <a href="../../GeorectifyImagery/WarpingResampling.htm">
+     Warping and Resampling
+    </a>
+    for descriptions of each method.
+   </li>
+   <ul>
+    <li value="1">
+     <b>
+      Polynomial
+     </b>
+    </li>
+    <li value="2">
+     <b>
+      Triangulation
+     </b>
+    </li>
+    <li value="3">
+     <b>
+      RST
+     </b>
+    </li>
+   </ul>
+   <li value="15">
+    Choose one of the following for the warp
+    <b>
+     Interpolation
+    </b>
+    . The interpolation is the manner in which the image is resampled to the warped grid.
+   </li>
+   <ul>
+    <li value="1">
+     <b>
+      Nearest Neighbor
+     </b>
+     : Uses the nearest pixel without any interpolation to create the warped image.
+    </li>
+    <li value="2">
+     <b>
+      Cubic Convolution
+     </b>
+     : Performs a linear interpolation using four pixels to resample the warped image.
+    </li>
+    <li value="3">
+     <p>
+      <b>
+       Bilinear
+      </b>
+      : Uses 16 pixels to approximate the sinc function using cubic polynomials to resample the image. Cubic convolution resampling is significantly slower than the other methods.
+     </p>
+     <p>
+      For pan-sharpening, a nice looking image is paramount, so
+      <b>
+       Cubic Convolution
+      </b>
+      is the best choice.
+     </p>
+    </li>
+   </ul>
+   <li value="16">
+    Click
+    <b>
+     Next
+    </b>
+    . The following appears:
+   </li>
+   <ul>
+    <li value="1">
+     One display group contains the base image
+    </li>
+    <li value="2">
+     One display group contains the warped image.
+    </li>
+    <li value="3">
+     The two display groups are dynamically linked.
+    </li>
+    <li value="4">
+     The Check Co-Registration panel.
+    </li>
+   </ul>
+   <li value="17">
+    <a href="#checking_coregistration_accuracy">
+     Check the co-registration accuracy
+    </a>
+    .
+   </li>
+  </ol>
+  <h2>
+   <a name="reviewing_tie_points">
+   </a>
+   Reviewing Tie Points
+  </h2>
+  <p>
+   When reviewing tie points, use the Image to Image GCP List to turn individual points on or off, to delete points, and to view RMS errors for individual points.
+  </p>
+  <p>
+   Tips for selecting good tie points:
+  </p>
+  <ul>
+   <li value="1">
+    When selecting seed or tie points, switch the
+    <b>
+     Geographic Link
+    </b>
+    toggle to
+    <b>
+     On
+    </b>
+    to get the crosshairs in the two images to approximately the same location. Once a good feature is identified, switch the
+    <b>
+     Geographic Link
+    </b>
+    toggle to
+    <b>
+     Off
+    </b>
+    , fine tune the crosshair positions, and add the point.
+   </li>
+   <li value="2">
+    When using any object with height above the ground, use the base of the structure rather than the top. Parallax caused by different viewing geometries (even for “simultaneous” panchromatic/multispectral imagery) makes these tie points sub-optimal.
+   </li>
+   <li value="3">
+    Distribute tie points as evenly as possible across the entire scene. Try not to leave large areas without any tie points.
+   </li>
+   <li value="4">
+    The more tie points the better. There is eventually a point of diminishing returns. A good number is 50 tie points, although you can obtain excellent results from as few as 10, depending on the scene.
+   </li>
+   <li value="5">
+    If you used manual tie point selection:
+   </li>
+   <li class="Indent" value="6">
+    Use the Ground Control Points Selection dialog to pick tie points.
+   </li>
+   <li class="Indent" value="7">
+    See Image-to-Image Ground Control Points for assistance.
+   </li>
+   <li class="Indent" value="8">
+    If you used automatic tie point selection:
+   </li>
+   <li class="Indent" value="9">
+    The tie points automatically display. Tie points are colored indicating good, satisfactory, and poor RMS error values. Look at the
+    <b>
+     RMS Error
+    </b>
+    in the Ground Control Points Selection dialog. This number should be as small as possible. Less than one is excellent, but anything less than three should produce acceptable results.
+   </li>
+   <li class="Indent" value="10">
+    Enlarge the Image to Image GCP List dialog so you can see the
+    <b>
+     RMS
+    </b>
+    column.
+   </li>
+   <li class="Indent" value="11">
+    From the Image to Image GCP List dialog menu bar, select
+    <b>
+     Options &gt; Order Points by Error
+    </b>
+    to sort the tie points by the highest RMS. See
+    <a href="#fixing_tie_points">
+     Fixing Tie Points
+    </a>
+    for further assistance.
+   </li>
+  </ul>
+  <h2>
+   <a name="fixing_tie_points">
+   </a>
+   Fixing Tie Points
+  </h2>
+  <ul>
+   <li value="1">
+    <b>
+     Fix the tie point:
+    </b>
+    Select the tie point in the Image to Image GCP List dialog to jump to that point. Adjust the location of the crosshairs to the desired location. Click
+    <b>
+     Update
+    </b>
+    in the Image to Image GCP List to update the location of that point.
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    immediately calculates and displays a new RMS error.
+   </li>
+   <li value="2">
+    <b>
+     Turn the tie point off:
+    </b>
+    Select the tie point in the Image to Image GCP List dialog. Click
+    <b>
+     On/Off
+    </b>
+    . The point turns green to indicate that it is off and no longer being used, and the RMS error is updated. Turn the point back on by clicking
+    <b>
+     On/Off
+    </b>
+    again.
+   </li>
+   <li value="3">
+    <b>
+     Delete the tie point:
+    </b>
+    Select the tie point in the Image to Image GCP List dialog. Click
+    <b>
+     Delete
+    </b>
+    . The point is removed from the dialog list, and the RMS error is updated.
+   </li>
+   <li value="4">
+    <b>
+     Use SPEAR to automatically turn off bad tie points:
+    </b>
+    In the Review Tie Points panel, set the
+    <b>
+     Maximum allowable RMS per GCP
+    </b>
+    parameter to the desired RMS threshold, then click
+    <b>
+     Apply
+    </b>
+    . The tie points with the greatest RMS errors are turned off until no tie point has an RMS greater than the set value. This is a quick way to remove the greatest errors. To turn the points back on, select them in the Image to Image GCP List dialog, then click
+    <b>
+     On/Off
+    </b>
+    .
+   </li>
+  </ul>
+  <h2>
+   <a name="checking_coregistration_accuracy">
+   </a>
+   Checking Coregistration Accuracy
+  </h2>
+  <p>
+   When warping is complete, check the accuracy of the coregistration.
+  </p>
+  <ol>
+   <li value="1">
+    Roam around the dynamically linked images and check the accuracy of the coregistration. When flickering between the images, there should be little shift between features. If there is a shift, it could be due to several reasons:
+   </li>
+   <ul>
+    <li value="1">
+     <b>
+      Inaccurate Tie Points:
+     </b>
+     Inaccurate tie points cause poor coregistration. In this case, re-review tie points for accuracy. Add more if needed.
+    </li>
+    <li value="2">
+     <b>
+      Elevated Features:
+     </b>
+     Because of parallax caused by collection with different view geometries (even for panchromatic and multispectral images collected “simultaneously”), objects with height above the ground “lean” in different directions on the two images. In this case, coregistration is impossible to achieve. The taller the object, the greater the degree of error.
+    </li>
+    <li value="3">
+     <p>
+      <b>
+       Topography:
+      </b>
+      Topography and elevated features are related. Topography viewed from different directions “leans” different ways in the images, and is therefore difficult to impossible to coregister. You can use triangulation as the warping method to partially mitigate parallax in images with topography to create a better coregistration. However, to properly coregister an image with topography, you must orthorectify the images first using detailed digital elevation models, which is beyond the scope of SPEAR. When flickering between the images, if the image appears to shift in different directions in different areas, the cause is most likely topography. The only solution in SPEAR is to coregister small areas that do not include much variable topography.
+     </p>
+     <p>
+      If you are performing coregistration for the Change Detection - Subtractive tool, additional parameters for
+      <b>
+       Radiometric Processing
+      </b>
+      appear. The two images collected at different times will have different radiometric (brightness) properties because of different atmospheric conditions, solar elevation and azimuth differences, and so forth. Removing these radiometric differences allows the subsequent processing to focus on relevant changes instead of irrelevant atmospheric and solar changes. Select one or both of the following:
+     </p>
+    </li>
+    <li value="4">
+     <b>
+      Perform dark object subtraction:
+     </b>
+     Performs a basic haze correction for atmospheric effects.
+    </li>
+    <li value="5">
+     <b>
+      Perform radiometric normalization:
+     </b>
+     Balances the overall brightness (band-by-band) between the two collections.
+    </li>
+   </ul>
+   <li value="2">
+    When coregistration accuracy is confirmed, click
+    <b>
+     Next
+    </b>
+    . The tool continues with the selected Wizard.
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

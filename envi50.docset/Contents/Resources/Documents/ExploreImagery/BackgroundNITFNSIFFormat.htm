@@ -1,0 +1,620 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Explore Imagery|Reference" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   NITF/NSIF Background
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/TableStyles/Description.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#ExploreImagery/BackgroundNITFNSIFFormat.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="ExploreImagery.htm">
+    Explore Imagery
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="BackgroundSupportedFileFormats.htm">
+    Reference
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    NITF/NSIF Background
+   </span>
+  </div>
+  <h2>
+   NITF/NSIF Background
+  </h2>
+  <p>
+   <a name="kanchor126">
+   </a>
+   The National Imagery Transmission Format (NITF) standard is a raster format defined by the
+
+NITF Standards Technical Board. The Joint Interoperability Test Command (JITC) certifies
+
+systems implementing the NITF format for compliance with the standard. The 
+
+NITF/NSIF Module  provides JITC-compliant support for the NITF file format and it&#160;is required for compliant NITF support in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   . The
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   4.5 NITF/NSIF Module was tested by the JITC and has been recommended for full compliance registration to complexity level 7 for NITF 2.1 and complexity level 6 for NITF 2.0 (the highest for each format).
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleVersion">
+    5.0
+   </span>
+   is in compliance with these standards.
+  </p>
+  <p>
+   Contact the JITC (
+   <a href="http://jitc.fhu.disa.mil/" target="_blank">
+    http://jitc.fhu.disa.mil/
+   </a>
+   ) for detailed information about the NITF
+
+certification program, including functional read/write breakdown and testing anomalies.
+  </p>
+  <p>
+   The NITF/NSIF Module is available at additional cost from
+   <span class="DocumentTitleCompanyName">
+    Exelis
+   </span>
+   or your
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   distributor.
+  </p>
+  <p>
+   A valid NITF dataset provides a main header identifying the file as a NITF dataset and
+
+describing the contents of the file. The header is usually followed by one or more data segments. Each
+   <a name="kanchor127">
+   </a>
+   data segment consists of a segment subheader identifying the type and
+
+properties of the data, followed by the data itself.
+  </p>
+  <p>
+   See the following sections:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#Main">
+     Main Header
+    </a>
+   </li>
+   <li value="2">
+    <a href="#Security">
+     Security Segments
+    </a>
+   </li>
+   <li value="3">
+    <a href="#Image">
+     Image Segments
+    </a>
+   </li>
+   <li value="4">
+    <a href="#Graphic/">
+     Graphic/Symbol Segments
+    </a>
+   </li>
+   <li value="5">
+    <a href="#Label">
+     Label Segments
+    </a>
+   </li>
+   <li value="6">
+    <a href="#Annotati">
+     Annotation Segments
+    </a>
+   </li>
+   <li value="7">
+    <a href="#Text">
+     Text Segments
+    </a>
+   </li>
+   <li value="8">
+    <a href="#Data">
+     Data Extension Segments
+    </a>
+   </li>
+   <li value="9">
+    <a href="#Display">
+     Display Levels
+    </a>
+   </li>
+   <li value="10">
+    <a href="#Referenc">
+     References
+    </a>
+   </li>
+  </ul>
+  <p>
+   Also see
+   <a href="BackgroundNITFTaggedRecordExtensions.htm">
+    Background on NITF Tagged Record Extensions
+   </a>
+   and
+   <a href="BackgroundPIATREs.htm">
+    Background on PIA TREs
+   </a>
+   .
+  </p>
+  <h3>
+   <a name="Main">
+   </a>
+   Main Header
+  </h3>
+  <p>
+   A NITF dataset may contain any or all types of segments available for that version, but every NITF dataset must contain a main header. The main NITF header describes the entire file, including origination information, security information, file version and size, and the number and type of all data segments contained in the NITF dataset.
+  </p>
+  <h3>
+   <a name="Security">
+   </a>
+   Security Segments
+  </h3>
+  <p>
+   <a name="kanchor128">
+   </a>
+   The NITF format was designed to contain information deemed sensitive, so it includes header data describing the status of any information that is not available to the general public. The main file header contains security information describing the security level of the entire NITF dataset, and each segment also contains security information in its subheader, as the confidentiality of data within a file may vary. The security level of the entire file (T = Top Secret, S = Secret, C = Confidential, R = Restricted, U = Unclassified) is the same as or higher than that of the most restricted segment in the file. NITF 2.0 uses the same fields as NITF 1.1 to contain security information, while NITF 2.1 deprecated some security information fields and added new fields.
+  </p>
+  <p>
+   These changes are described in the following table. For a detailed description of these security fields, consult the NITF specifications to determine which metadata are relevant to the version of your NITF file.
+  </p>
+  <table style="caption-side: top;mc-table-style: url('../Resources/TableStyles/Description.css');margin-left: 0;margin-right: auto;" cellspacing="0" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th style="background-color: #dcdcdc;font-weight: normal;" class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       NITF 1.1/2.0 Security Fields
+      </p>
+     </th>
+     <th style="background-color: #dcdcdc;font-weight: normal;" class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p class="TableHead">
+       NITF 2.1 Security Fields
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       Classification
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Classification
+       <br />
+       Classification System
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       Codewords
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Codewords
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       Control and Handling
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Control and Handling
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       Releasing Instructions
+      </p>
+      <p>
+       &#160;
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Releasing Instructions
+       <br />
+       Declassification Type
+       <br />
+       Declassification Date
+       <br />
+       Declassification Exemption
+       <br />
+       Downgrade
+       <br />
+       Downgrade Date
+       <br />
+       Classification Text
+       <br />
+       Classification Authority Type
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       Classification Authority
+      </p>
+      <p>
+       &#160;
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Classification Authority
+       <br />
+       Classification Reason
+       <br />
+       Security Source Date
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       Control Number
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Security Control Number
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       Downgrade
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       &#160;
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <p>
+       Downgrading Event
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColEnd">
+      <p>
+       &#160;
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <p>
+   When converting between NITF formats, the security fields will be mapped in accordance to Appendix G of the
+   <i>
+    Implementation Practices Of The National Imagery Transmission Format Standard (IPON)
+   </i>
+   , Coordination Draft Version 0.3A, 14 Jan 2005.
+  </p>
+  <h3>
+   <a name="Image">
+   </a>
+   Image Segments
+   <a name="kanchor129">
+   </a>
+  </h3>
+  <p>
+   Image segments contain raster data, typically image data, intended for display or analysis. Each image segment contains a single image consisting of one or more bands of data (NITF 2.0 allows one, three, or four bands of data in an image, and NITF 2.1 allows up to 999 bands).
+  </p>
+  <p>
+   All bands within an image segment must have the same data type, dimensions, storage order, and map information, although these characteristics can vary across different image segments. Each image segment may contain specific display instructions, including color lookup tables for single-band images and default display bands for multi-band images.
+  </p>
+  <p>
+   Images can be stored in integer data types in NITF 2.0 and in integer and real data types in NITF 2.1. Images can also be compressed using a variety of algorithms including JPEG DCT, Vector Quantization, Bi-level, JPEG 2000 NPJE (NITF 2.1 only), and JPEG 2000 EPJE (NITF 2.1 only). Images can be broken into blocks, providing an orderly set of subimages (or subarrays). Additional information describing the collection, intended use, wavelengths, and comments can also be stored with the image.
+  </p>
+  <h4>
+   Masks
+  </h4>
+  <p>
+   Mask information stored in image segments identifies pixels that are invalid or not intended to be displayed, and should therefore not be displayed.
+  </p>
+  <p>
+   Images that are rotated or have gaps can also contain a mask indicating which portions of the image should not be used for display or analysis. Two types of image masks are used in NITF files:
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     Blocked image masks
+    </b>
+    are used to mask entire blocks of image data.
+   </li>
+   <li value="2">
+    <b>
+     Transparent pixel masks
+    </b>
+    are used for masking individual pixels or groups of pixels within an image block.
+   </li>
+  </ul>
+  <p>
+   When an image segment containing masked blocks or pixels is displayed, pixels from images or graphics underneath the image segment show through and are displayed even though they would ordinarily be obscured. If a transparent pixel occurs with nothing displayed under it, or if for any other reason there is no display information for a pixel, the background color specified in the main file header is displayed.
+  </p>
+  <h3>
+   <a name="Graphic/">
+   </a>
+   Graphic/Symbol Segments
+  </h3>
+  <p>
+   Symbol segments can contain Computer Graphics Metafile (CGM), bitmap, or object elements, while label segments contain graphical text elements. The CGM format allows direct control of all display elements contained in the graphic including color, size, and orientation of objects. CGM graphics can contain complex lines and polygons, as well as displayable text. Multiple annotations can be combined in a single CGM, so symbol segments with CGM graphics may actually contain multiple sets of graphical primitives.
+  </p>
+  <p>
+   NITF 2.1 files can contain graphic segments with CGM graphic and graphical text elements, while NITF 2.0 files contain two segment types for the same purpose: symbol segments and label segments. Both the NITF 2.0 symbol segment and the NITF 2.1 graphic segment can contain CGM graphics.
+  </p>
+  <p>
+   The NITF 2.1 graphic segment can only contain CGM graphics, but NITF 2.0 symbol segments can contain other graphical display elements as well. Symbol segments can contain bitmaps (color-mapped bitmaps to be displayed on the composite) or objects (graphics from a limited set of graphical primitives, including lines, arrows, circles, and rectangles).
+  </p>
+  <p>
+   For NITF 2.1, the bitmap and object symbol types as well as the label segment have been deprecated. Bitmaps are stored in image segments instead of symbols, and object symbols and labels have been removed in favor of the more general and powerful CGM.
+  </p>
+  <h3>
+   <a name="Label">
+   </a>
+   Label Segments
+  </h3>
+  <p>
+   Label segments, available only in NITF 2.0, contain displayable text intended to be drawn with the NITF display. In addition to this text, a label segment includes display instructions such as font, color, size, and a background color to display behind the text.
+  </p>
+  <p>
+   There are many required CGM elements to draw the data contained in a NITF 2.0 label segment. Element details are described in
+   <a href="http://www.gwg.nga.mil/ntb/superseded/2301/index.html" target="_blank">
+    MIL-STD-2301A
+   </a>
+   .
+  </p>
+  <h3>
+   <a name="Annotati">
+   </a>
+   Annotation Segments
+  </h3>
+  <p>
+   NITF 2.0 symbol and label segments, as well as NITF 2.1/NSIF 1.0 graphics segments, are collectively referred to as
+   <i>
+    annotation segments
+   </i>
+   , as illustrated in the following diagram.
+  </p>
+  <p>
+   Image, text, and extension segments are available in every version of NITF, while label and symbol segments can occur only in NITF 2.0 datasets. Graphic segments occur only in NITF 2.1 datasets.
+  </p>
+  <p>
+   &#160;
+  </p>
+  <p>
+   Because of the similarity between the symbol segments and label segments in NITF 2.0 files, and the graphic segments in NITF 2.1 files, the software combines these segments into a single conceptual type (annotation segments). Annotation segments can contain symbol, label, or graphic segments, and they might include text, ellipses, polylines, bitmaps, and other objects. Annotation segments do not exist in any NITF file, and they are not mentioned in the NITF specification documents. They are a simplification used to reduce the overall number of segment types.
+  </p>
+  <p>
+   Annotation segments and image segments both carry information intended to be displayed graphically, and both are referred to as
+   <i>
+    displayable segments
+   </i>
+   .
+  </p>
+  <h4>
+   Annotation Objects
+  </h4>
+  <p>
+   Because CGM graphics can display multiple graphical elements, each annotation segment must store multiple displayable features, referred to as
+   <i>
+    annotation objects
+   </i>
+   . NITF 2.0 and 2.1 annotation segments can contain multiple CGM annotation objects. Each NITF 2.0 annotation segment can only contain one non-CGM label, bitmap, or object symbol annotation object. The type of object determines which fields will be filled in the annotation object.
+  </p>
+  <h3>
+   <a name="Text">
+   </a>
+   Text Segments
+  </h3>
+  <p>
+   Text segments consist of textual information that is not intended for graphical display. Examples are notes explaining target information, or US Message Text Format (USMTF) notes for other users.
+  </p>
+  <h3>
+   <a name="Data">
+   </a>
+   Data Extension Segments
+  </h3>
+  <p>
+  </p>
+  <p>
+   Data Extension Segments (DESes) contain data that cannot be stored in the other NITF segments. An example is the NCDRD Attitude Data DES, CSATTA. A list of unclassified, registered DESes is available at
+   <a href="http://jitc.fhu.disa.mil/nitf/tag_reg/des.htm" target="_blank">
+    http://jitc.fhu.disa.mil/nitf/tag_reg/des.htm
+   </a>
+   .
+  </p>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   only supports NITF Commercial Dataset Requirements Document (NCDRD) DESes. You cannot edit, create, or delete NCDRD DESes through the Metadata Editor.
+  </p>
+  <table cellspacing="0" style="margin-left: 0;margin-right: auto;caption-side: top;mc-table-style: url('../Resources/TableStyles/Description.css');" class="TableStyle_Description">
+   <col />
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep" style="font-size: 10pt;background-color: #dcdcdc;text-align: center;font-weight: normal;">
+      <p class="TableHead">
+       Name
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep" style="font-size: 10pt;background-color: #dcdcdc;text-align: center;font-weight: normal;">
+      <p class="TableHead">
+       Filename
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd" style="font-size: 10pt;background-color: #dcdcdc;text-align: center;font-weight: normal;">
+      <p class="TableHead">
+       Long Name
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep" style="font-size: 10pt;text-align: center;">
+      <p>
+       CSATTA
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep" style="font-size: 10pt;text-align: center;font-family: monospace;">
+      <pre xml:space="preserve">
+       CSATTA_DES.xml
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd" style="font-size: 10pt;text-align: center;">
+      <p>
+       Attitude Data
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep" style="font-size: 10pt;text-align: center;">
+      <p>
+       CSSHPA
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep" style="font-size: 10pt;text-align: center;font-family: monospace;">
+      <pre xml:space="preserve">
+       CSSHPA_DES.xml
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColEnd" style="font-size: 10pt;text-align: center;">
+      <p>
+       Shapefile
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <p>
+   If a NITF file contains valid supported DESes, they are automatically saved in the output file. When opening a NITF image,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   will not read the DES user-defined subheader if the input data format does not mirror the format in
+
+the accompanying XML definition file. When writing a NITF file that contains a DES with no
+
+corresponding XML file,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   passes through this unknown DES in NITF 2.1 and NSIF 1.0
+
+files only.
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   does not support unknown DESes in NITF 2.0 files. Also see
+   <![CDATA[ ]]>
+   <a href="SavingNITFFiles.htm#Preservi3">
+    Data Extension Segments
+   </a>
+   .
+  </p>
+  <h3>
+   <a name="Display">
+   </a>
+   Display Levels
+  </h3>
+  <p>
+   The NITF format supports  multiple image, graphical, and displayable text elements. A NITF dataset can contain all displayable segments (image, graphic/symbol, and label), allowing for raw imagery plus ancillary information. Each displayable segment contains information controlling the location of the display element in the composite. Each segment also contains a
+   <i>
+    display level
+   </i>
+   that determines which elements should be displayed on top of others, obscuring the lower-level displayable elements from view without corrupting the hidden portion of those lower-level displayable elements.
+  </p>
+  <h4>
+   <a name="kanchor130">
+   </a>
+   Wavelength Information
+  </h4>
+  <p>
+   Wavelength information can be stored in several different ways in a NITF image segment.
+
+The BANDSB TRE contains the most information, followed by the BANDSA TRE, and the
+
+band subcategory settings contain the least information. The software will attempt to read
+
+wavelength information from a NITF file from each of those locations, in order, until
+
+wavelength information is found. If no information is present in any of these locations, the file is opened without wavelength information.
+  </p>
+  <h3>
+   <a name="Referenc">
+   </a>
+   References
+   <a name="kanchor131">
+   </a>
+  </h3>
+  <p>
+   For more detailed information about the NITF/NSIF format and its components, see the technical specifications on the
+   <a href="http://www.gwg.nga.mil/ntb/baseline/documents.html">
+    Reference Library for NITFS Users
+   </a>
+   web site.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

@@ -1,0 +1,616 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Georectify" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   RPC Orthorectification
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#GeorectifyImagery/RPC_Orthorectification/RPCOrthorectification.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../GeorectifyImagery.htm">
+    Georectify
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    RPC Orthorectification
+   </span>
+  </div>
+  <h1>
+   RPC Orthorectification
+  </h1>
+  <p>
+   <img src="../../Resources/Images/IconsButtons/Tutorial.gif" class="VertCenter" />
+   <![CDATA[ ]]>
+   <a href="../../Tutorials/Workflows/RPCOrthoTutorial.htm">
+    RPC Orthorectification Tutorial
+   </a>
+  </p>
+  <p>
+   The RPC Orthorectification workflow performs orthorectification of a single-scene image using the RPC model. Orthorectification geometrically corrects the data to remove distortions that occur during image capture. For more information on RPCs, see
+   <a href="RPCBackground.htm">
+    Background on RPC Orthorectification
+   </a>
+   .
+  </p>
+  <p>
+   See the following sections:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#top">
+     Select Files for RPC Orthorectification
+    </a>
+   </li>
+   <li value="2">
+    <a href="#Refine">
+     Refine RPCs with Ground Control Points
+    </a>
+   </li>
+   <li value="3">
+    <a href="#Setting2">
+     Export PRC Orthorectification Results
+    </a>
+   </li>
+  </ul>
+  <h2>
+   <a name="top">
+   </a>
+   Select Files for RPC Orthorectification
+   <a name="kanchor193">
+   </a>
+  </h2>
+  <p>
+   You will need one image with RPC information, a DEM file, and an optional GCP file (
+   <code>
+    .pts
+   </code>
+   ).
+  </p>
+  <p>
+   The input image must have associated RPC information. These coefficients are required for the rational function expansion to convert ground coordinates into sensor coordinates. When you select a file for input,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   searches for the RPC coefficients in one of the following ways:
+  </p>
+  <ul>
+   <li value="1">
+    For
+    <a href="../../ExploreImagery/BackgroundSupportedFileFormats.htm#GeoEye-1">
+     GeoEye-1
+    </a>
+    : An RPC filename consisting of the root name of the source data file appended with the extension
+    <code>
+     .pvl
+    </code>
+    .
+   </li>
+   <li value="2">
+    For
+    <a href="../../ExploreImagery/BackgroundSupportedFileFormats.htm#IKONOS">
+     IKONOS
+    </a>
+    : An RPC filename consisting of the root name of the source image plus
+    <code>
+     _rpc.txt
+    </code>
+    .
+   </li>
+   <li value="3">
+    For OrbView-3: An RPC filename consisting of the root name of the source data file, but without the
+    <code>
+     _image
+    </code>
+    prefix, and appended by
+    <code>
+     _metadata.pvl
+    </code>
+    .
+   </li>
+   <li value="4">
+    For QuickBird: An RPC filename consisting of the root name of the source data file appended with the extension
+    <code>
+     .rpb
+    </code>
+    .
+   </li>
+   <li value="5">
+    For WorldView-1 and -2: An RPC filename consisting of the root name of the source data file appended with the extension
+    <code>
+     .rpb
+    </code>
+    .
+   </li>
+   <li value="6">
+    For
+    <a href="../../ExploreImagery/BackgroundSupportedFileFormats.htm#RapidEye">
+     RapidEye
+    </a>
+    Level 1B files: The RPC00B or RPC00A tag in the NITF&#160;metadata.
+   </li>
+   <li value="7">
+    For ENVI raster files:&#160;A header file (
+    <code>
+     .hdr
+    </code>
+    ) that contains the string
+    <code>
+     RPC INFO
+    </code>
+    . If you have both standard map information and
+    <code>
+     RPC INFO
+    </code>
+    in the header, you need to remove the standard map information from the header to continue.
+   </li>
+   <li value="8">
+    For NITF: RPC00B or RPC00A tag in the metadata.
+   </li>
+  </ul>
+  <p>
+   Without elevation information from a DEM, RPCs only give an approximate geographic location. If you do not have a DEM file readily available, you can use the global DEM named
+   <code>
+    GTOPO30.jp2
+   </code>
+   that is provided with your ENVI installation. GTOPO30 has a horizontal grid spacing of 30 arc seconds (approximately 1 kilometer). To use this global DEM, copy the
+   <code>
+    rpc_ortho\DEM\
+    <b>
+     GTOPO30.jp2
+    </b>
+   </code>
+   file from the ENVI Resource DVD to
+   <code>
+    C:\Program Files\Exelis\ENVI
+    <i>
+     xx
+    </i>
+    \data
+   </code>
+   . When the file is copied to your machine, the RPC Orthorectification workflow uses it by default.
+  </p>
+  <p>
+   The following websites provide DEM data with a higher resolution:&#160;
+  </p>
+  <ul>
+   <li value="1">
+    The National Map Seamless Server:
+    <a href="http://seamless.usgs.gov/index.php">
+     http://seamless.usgs.gov/index.php
+    </a>
+   </li>
+   <li value="2">
+    ASTER Global Digital Elevation Map (GDEM):
+    <a href="http://www.gdem.aster.ersdac.or.jp/">
+     http://www.gdem.aster.ersdac.or.jp/
+    </a>
+   </li>
+   <li value="3">
+    Shuttle Radar Topography Mission (SRTM):
+    <br />
+    <a href="http://srtm.csi.cgiar.org/">
+     http://srtm.csi.cgiar.org
+    </a>
+   </li>
+  </ul>
+  <p>
+   Follow these steps to begin the workflow:
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <![CDATA[ ]]>
+    <b>
+     Geometric Correction &gt; Orthorectification &gt; RPC Orthorectification Workflow
+    </b>
+    .
+   </li>
+   <li value="2">
+    Select an image and a DEM file. To perform optional spatial
+    <a href="../../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , click
+    <b>
+     Browse
+    </b>
+    in the File Selection panel, then
+    <b>
+     Spatial Subset
+    </b>
+    in the Select Input File or Select DEM File dialog.
+   </li>
+   <li value="3">
+    Click
+    <b>
+     Next
+    </b>
+    . The RPC Refinement panel appears, and the file opens in a new workflow view. If the selected file is displayed in an active view before you start the workflow, the display bands and image location are retained, as well as  any brightness, contrast, stretch, and sharpen settings. The image location is not retained for pixel-based images or those with pseudo or arbitrary projections.
+   </li>
+  </ol>
+  <h2>
+   <a name="Refine">
+   </a>
+   <a name="kanchor194">
+   </a>
+   Refine RPCs with Ground Control Points
+  </h2>
+  <p>
+   In this step, you will use GCPs to improve the accuracy of the orthorectification.
+  </p>
+  <p>
+   Click the
+   <b>
+    Load GCPs
+   </b>
+   button and select a
+   <code>
+    .pts
+   </code>
+   file for input. The
+   <code>
+    .pts
+   </code>
+   extension refers to an ASCII GCP&#160;file that was created in
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   . See
+   <a href="GCPFileFormats.htm">
+    GCP&#160;File Formats
+   </a>
+   for a detailed description of accepted formats.
+  </p>
+  <p>
+   The GCPs are listed in the RPC Refinement panel and displayed in their corresponding image location.
+  </p>
+  <ul>
+   <li value="1">
+    A
+    <img src="../../Resources/Images/IconsButtons/RPCOrthoAdjustmentGCP.gif" class="VertCenter" alt="Adjustment GCP icon" />
+    icon means the GCP will be used to adjust the RPC model. These points are called adjustment GCPs and are marked with green crosshairs in the image display.
+   </li>
+   <li value="2">
+    A
+    <img src="../../Resources/Images/IconsButtons/RPCOrthoIndependentGCP.gif" class="VertCenter" alt="Independent GCP icon" />
+    icon means the GCP will not be used to adjust the RPC model. These points are called independent GCPs and are marked with grey diamond symbols in the image display.
+   </li>
+   <li value="3">
+    A
+    <img src="../../Resources/Images/IconsButtons/RPCOrthoAdjustmentGCPOutlierWarning.gif" class="VertCenter" alt="Warning icon" />
+    or
+    <img src="../../Resources/Images/IconsButtons/RPCOrthoIndependentGCPOutlierWarning.gif" class="VertCenter" />
+    icon means that the difference between the image-estimated ground coordinate and the GCP is greater than three times the
+    <i>
+     RMSE
+    </i>
+    <span style="vertical-align: sub;font-style: italic;">
+     x
+    </span>
+    or
+    <i>
+     RMSE
+    </i>
+    <span style="vertical-align: sub;font-style: italic;">
+     y
+    </span>
+    value. See
+    <a href="AccuracyAssessmentBackground.htm">
+     Accuracy Assessment Background
+    </a>
+    for details. This icon displays only if the
+    <b>
+     Horizontal Accuracy
+    </b>
+    is calculated from more than 10 GCPs.
+   </li>
+  </ul>
+  <p>
+   The following are some tips for working with GCPs in the RPC Refinement panel:
+  </p>
+  <ul>
+   <li value="1">
+    Select a GCP from the list to center the image over that location. With large images, you may need to use the various zoom tools available from the main toolbar to see the GCP&#160;marker.
+   </li>
+   <li value="2">
+    To change the status of an individual GCP from adjustment to independent (or vice-versa), right-click on the GCP name and select
+    <b>
+     Change GCP Status
+    </b>
+    . Or, change the status using the drop-down list provided in the
+    <b>
+     Status
+    </b>
+    field of the property table for that GCP.
+   </li>
+   <li value="3">
+    To change the status of
+    <i>
+     all
+    </i>
+    GCPs to adjustment GCPs, click the
+    <img src="../../Resources/Images/IconsButtons/DataManagerExpandAll.gif" class="VertCenter" alt="All adjustment GCPs" />
+    button. To change the status of
+    <i>
+     all
+    </i>
+    GCPs to independent GCPs, click the
+    <img src="../../Resources/Images/IconsButtons/DataManagerCollapseAll.gif" class="VertCenter" alt="All independent GCPs" />
+    button.
+   </li>
+   <li value="4">
+    To delete a GCP, select the GCP&#160;name and click the
+    <b>
+     Delete GCP
+    </b>
+    button. To delete all GCPs in the list, click the
+    <b>
+     Delete All GCPs
+    </b>
+    button.
+   </li>
+   <li value="5">
+    To save the current list of GCPs to a shapefile, click the
+    <b>
+     Save GCPs
+    </b>
+    button and select an output location and filename. The shapefile will contain the following attributes for each GCP: identification number, name, map x/y coordinates, height above the ellipsoid, image x/y coordinates, and the associated image name. The image x/y coordinates are based on the upper-left corner of the first pixel (0,0).
+   </li>
+   <li value="6">
+    To edit GCP values, select a GCP from the table and edit the
+    <b>
+     Name
+    </b>
+    ,
+    <b>
+     Map X
+    </b>
+    (longitude),
+    <b>
+     Map Y
+    </b>
+    (latitude),
+    <b>
+     Height
+    </b>
+    (height above ellipsoid), or
+    <b>
+     Image X/Y
+    </b>
+    values as needed, particularly when more accurate values are known. Your input image can be in any projection that ENVI supports, but map coordinates will display as Geographic WGS-84 in the Properties dialog.
+   </li>
+   <li value="7">
+    To add a new GCP, select the
+    <b>
+     Symbol Annotation
+    </b>
+    icon
+    <img src="../../Resources/Images/IconsButtons/AnnotationSymbol.gif" class="VertCenter" alt="Symbol Annotation" />
+    from the main toolbar and click in the image where you want the GCP&#160;to appear. A new GCP is added to the list. You can then edit the map and/or image coordinates as needed. These values are only estimates based on the image, so you should replace them with more accurate values.
+   </li>
+   <li value="8">
+    To interactively reposition a GCP (versus editing GCP values), choose the
+    <b>
+     Select
+    </b>
+    icon
+    <img src="../../Resources/Images/IconsButtons/Select.gif" alt="Select" />
+    from the main toolbar. Within the image, select the GCP&#160;you want to move. A cyan-colored box appears around the GCP. Move the GCP to a new location.
+   </li>
+   <li value="9">
+    GCPs will be removed if you click
+    <b>
+     Previous
+    </b>
+    to go back to File Selection.
+   </li>
+  </ul>
+  <h3>
+   <a name="Viewing">
+   </a>
+   View Error Statistics
+  </h3>
+  <p>
+   See
+   <a href="AccuracyAssessmentBackground.htm">
+    Accuracy Assessment Background
+   </a>
+   for details on how error statistics are calculated and a description of the options under the Statistics tab.
+  </p>
+  <h4>
+   Error Overlay
+  </h4>
+  <p>
+   If you have three or more GCPs, click the
+   <b>
+    Show error overlay
+   </b>
+   button to overlay a transparent color gradient that shows the relative error magnitudes of your GCPs.
+  </p>
+  <p class="Tip" madcap:autonum="&lt;b&gt;Tip: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Tip:
+     </b>
+    </span>
+   </span>
+   Select
+   <b>
+    Full Extent
+   </b>
+   from the
+   <b>
+    Zoom To
+   </b>
+   drop-down list in the menu bar to see the entire scene. The error overlay is restricted to the area bounded by your GCP locations.
+  </p>
+  <ul>
+   <li value="1">
+    Dark grey areas represent GCPs with negligible error magnitudes.
+   </li>
+   <li value="2">
+    Bright red areas represent GCPs with higher error magnitudes.
+   </li>
+   <li value="3">
+    White areas represent outlier GCPs, where the error magnitude is larger than a given threshold. See
+    <a href="AccuracyAssessmentBackground.htm#Outlier">
+     Outlier Thresholds
+    </a>
+    for further details on setting this threshold.
+   </li>
+  </ul>
+  <p>
+   The error overlay updates whenever you reposition GCPs in an attempt to minimize errors.
+  </p>
+  <h4>
+   Error Vectors
+  </h4>
+  <p>
+   Click the
+   <b>
+    Show error vector
+   </b>
+   button to view error vectors at each GCP location. This option lets you visualize the error magnitudes for each individual GCP, whereas the
+   <b>
+    Show error overlay
+   </b>
+   option provides a quick visual glance of how GCP errors are distributed across the scene.
+  </p>
+  <p>
+   Use the various zoom tools in the menu bar to zoom in to each GCP&#160;location. The cyan-colored vectors show the magnitude and direction of individual GCP&#160;errors. The red circles surrounding each GCP&#160;location represent the
+   <a href="AccuracyAssessmentBackground.htm#CE95">
+    CE95
+   </a>
+   horizontal error value, described in
+   <a href="AccuracyAssessmentBackground.htm">
+    Accuracy Assessment Background
+   </a>
+   .
+  </p>
+  <h3>
+   <a name="Setting">
+   </a>
+   Set Advanced Options
+  </h3>
+  <ol>
+   <li value="1">
+    Enabling the
+    <b>
+     Geoid Correction
+    </b>
+    option is highly recommended to improve the vertical and horizontal accuracy of the RPC model. The RPC Orthorectification workflow performs geoid correction by using the Earth Gravitational Model (EGM) 1996  to automatically determine the geoid offset, which is displayed in meters next to the
+    <b>
+     Geoid Correction
+    </b>
+    option.
+   </li>
+   <li value="2">
+    Enter an
+    <b>
+     Output Pixel Size
+    </b>
+    in meters. The default value is 1 meter.
+   </li>
+   <li value="3">
+    Select an
+    <b>
+     Image Resampling
+    </b>
+    technique from the drop-down list.
+    <ul>
+     <li value="1">
+      <b>
+       Nearest Neighbor:
+      </b>
+      Uses the nearest pixel without any interpolation.
+     </li>
+     <li value="2">
+      <b>
+       Bilinear:
+      </b>
+      (default) Performs a linear interpolation using four pixels to resample.
+     </li>
+     <li value="3">
+      <b>
+       Cubic Convolution:
+      </b>
+      Uses 16 pixels to approximate the sinc function using cubic polynomials to resample the image.
+     </li>
+    </ul>
+   </li>
+   <li value="4">
+    To preview how the orthorectification will look before processing, enable the
+    <b>
+     Preview
+    </b>
+    check box. A Preview Portal appears. The Preview Portal works with full or higher-resolution views. You can change the
+    <b>
+     Geoid Correction
+    </b>
+    option and preview the orthorectification results and the effect of adjustment GCPs again, as needed.
+   </li>
+  </ol>
+  <h2>
+   <a name="Setting2">
+   </a>
+   Export RPC Orthorectification Results
+  </h2>
+  <ol>
+   <li value="1">
+    In the Export tab, select the type of
+    <b>
+     Output File
+    </b>
+    to create. ENVI and TIFF are the supported output formats.
+   </li>
+   <li value="2">
+    Enter an output name and path for the orthorectified image.
+   </li>
+   <li value="3">
+    Enable the
+    <b>
+     Export Orthorectification Report
+    </b>
+    option to create a text report that summarizes the details of the orthorectification process. The report lists the source files used, adjustment and independent GCPs, geoid offset in meters, error statistics when using GCPs, and output settings.
+   </li>
+   <li value="4">
+    Click
+    <b>
+     Finish
+    </b>
+    to process the input and add the orthorectified image to the Layer Manager. When the export is complete, the workflow view closes. The original data and the export data display in the Image window view.
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

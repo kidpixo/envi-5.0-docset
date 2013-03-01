@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Spectral Tools|Spectral Unmixing|Spectral Hourglass Wizard" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Minimum Noise Transform
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#SpectralTools/SHMinimumNoiseTransform.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="SpectralTools.htm">
+    Spectral Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="SpectralUnmixing.htm">
+    Spectral Unmixing
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="SpectralHourglassWizard.htm">
+    Spectral Hourglass Wizard
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Minimum Noise Transform
+   </span>
+  </div>
+  <h1>
+   Minimum Noise Transform
+  </h1>
+  <p>
+   The
+   <a href="../PreprocessImagery/Transforms/MinimumNoiseFractionTransform.htm">
+    MNF transform
+   </a>
+   is used to determine the inherent dimensionality of image data, to segregate and equalize the noise in the data, and to reduce the computational requirements for subsequent processing.
+  </p>
+  <ol>
+   <li value="1">
+    <a name="kanchor411">
+    </a>
+    You can optionally enter a
+    <b>
+     Number of output MNF bands
+    </b>
+    value. However, in most cases, you should use the default (based on the number of input bands) to preserve the full data dimensionality. The Spectral Hourglass Wizard helps determine if all of the MNF bands are required later, depending on the inherent data dimensionality revealed in the MNF process.
+   </li>
+   <li value="2">
+    To use only a subset of a file to calculate noise statistics for the whole file, click
+    <b>
+     Shift Difference Spatial Subset
+    </b>
+    <b style="font-weight: normal;">
+     and enter subsetting parameters
+    </b>
+    . Noise statistics are calculated from the data based on a
+    <i>
+     shift difference
+    </i>
+    method that uses local pixel variance to estimate noise. A virtual noise image is created by subtracting line-shifted and sample-shifted images from the original data and averaging and scaling these two results. You can select a subset of the data to speed the noise statistic calculations or select a uniform area to improve noise estimates.
+   </li>
+   <li value="3">
+    Click
+    <b>
+     Next
+    </b>
+    . The View MNF Results panel appears, and progress windows display the processing status. After the processing is complete, the View MNF Results panel and an MNF Eigenvalues plot window appear.
+   </li>
+   <p>
+    The MNF Eigenvalues plot shows the eigenvalue (y-axis) for each MNF-transformed band (an eigenvalue number, shown in the x-axis). Larger eigenvalues indicate higher data variance in the transformed band and may help indicate
+    <a href="SHDataDimensionalitySpatialCoherence.htm">
+     data dimensionality
+    </a>
+    . When the eigenvalues approach 1, only noise is left in the transformed band, as the noise floor has been scaled to unity in each output MNF band.
+   </p>
+   <li value="4">
+    Click
+    <b>
+     Load MNF Result to
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     Display
+    </b>
+    to display an RGB image of the first three MNF bands. Use this image to quickly locate dominant spectral materials, which are displayed in bright, pure colors. Or, select
+    <b>
+     Load Animation of MNF Bands
+    </b>
+    to load the MNF result as a gray scale animation.
+   </li>
+   <li value="5">
+    After displaying and analyzing the MNF result, click
+    <b>
+     Next
+    </b>
+    in the Wizard. The Determine Data Dimensionality panel appears.
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

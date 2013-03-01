@@ -1,0 +1,1503 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Detection" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Image Change
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#Detection/Image_Change_Detection/ImageChange.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../DetectionTools.htm">
+    Detection
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Image Change
+   </span>
+  </div>
+  <h1>
+   Image Change
+   <a name="kanchor256">
+   </a>
+  </h1>
+  <p>
+   <img src="../../Resources/Images/IconsButtons/Tutorial.gif" alt="Tutorial" />
+   <a href="../../Tutorials/Workflows/ImageChangeTutorial.htm">
+    Image Change Tutorial
+   </a>
+  </p>
+  <p>
+   The Image Change workflow compares two images – typically from Landsat or QuickBird – of the same geographic extent, taken at different times, and it identifies differences between them. The difference can be computed on a specified input band or on a feature index, and you can optionally apply thresholding. You can also perform image transform to extract features correlating to change.
+  </p>
+  <p>
+   See the following for help on a particular step of the workflow:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#ICSelect">
+     Select a File for Image Change
+    </a>
+   </li>
+   <li value="2">
+    <a href="#ICAutomatic">
+     Automatic Image Registration
+    </a>
+   </li>
+   <li value="3">
+    <a href="#ICDiff">
+     Select a Difference Method
+    </a>
+   </li>
+   <li value="4">
+    <a href="#ICSettings">
+     Image Difference Settings
+    </a>
+   </li>
+   <li value="5">
+    <a href="#ICThreshold">
+     Select Thresholding or Export
+    </a>
+   </li>
+   <li value="6">
+    <a href="#ICChange">
+     Change Thresholding
+    </a>
+   </li>
+   <li value="7">
+    <a href="#ICClean">
+     Clean Up Image Change Results
+    </a>
+   </li>
+   <li value="8">
+    <a href="#ICTransform">
+     Select a Transform Method
+    </a>
+   </li>
+   <li value="9">
+    <a href="#ICBand">
+     Select a Band
+    </a>
+   </li>
+   <li value="10">
+    <a href="#ICExport">
+     Export Image Change Results
+    </a>
+   </li>
+  </ul>
+  <h2>
+   <a name="ICSelect">
+   </a>
+   Select a File for Image Change
+   <a name="kanchor257">
+   </a>
+  </h2>
+  <p>
+   In the File Selection panel, you choose two images to include in image change detection. You can apply a spatial  subset, and/or a mask to the first image you select.  The supported input types are ENVI, TIFF, NITF, JPEG 2000, JPEG, Esri®&#160;raster layer, and geodatabase raster.
+  </p>
+  <p>
+   File inputs can have standard map projections, be pixel-based, or have RPC information. A
+   <a href="../../GeorectifyImagery/BackgroundNonStandardProjections.htm#Affine">
+    pseudo projection
+   </a>
+   does not provide  spatial locations  with the accuracy needed for use in image change detection. Inputs with different map information are allowed. When inputs have different map information, reprojection and resampling are handled as follows:
+  </p>
+  <ul>
+   <li value="1">
+    If the files use different projections, the first input file establishes the projection that is used throughout the workflow. The overlap  of the two inputs is  the area that is included in the analysis.
+   </li>
+   <li value="2">
+    If the files use different pixel sizes, the input file with the lower resolution is resampled to use the higher resolution of the other input file.
+   </li>
+  </ul>
+  <ol>
+   <li value="1">
+    <p>
+     From the Toolbox, select
+     <b>
+      Change Detection &gt; Image Change Workflow
+     </b>
+     .
+    </p>
+    <p>
+     If you want to open a geodatabase or a remote dataset, click
+     <b>
+      Browse
+     </b>
+     in the File Selection panel, then click
+     <b>
+      Open Remote Dataset
+     </b>
+     in the Select Time 1  File dialog. The Remote Connection Manager dialog appears.
+    </p>
+    <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+     <span class="autonumber">
+      <span>
+       <b>
+        Note:
+       </b>
+      </span>
+     </span>
+     Datasets from WCS servers are allowed as input. Datasets from JPIP&#160;or WMS servers are not allowed as input.
+    </p>
+    <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+     <span class="autonumber">
+      <span>
+       <b>
+        Note:
+       </b>
+      </span>
+     </span>
+     When using Esri® layer files as a data source for workflows, expand the Esri layer and select the data source.
+    </p>
+   </li>
+   <li value="2">
+    To perform optional spatial
+    <a href="../../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , click
+    <b>
+     Browse
+    </b>
+    in the File Selection panel.
+   </li>
+   <li value="3">
+    <p>
+     To apply a
+     <a href="../../NoTOCTopics/WorkingWithMasks.htm">
+      mask
+     </a>
+     , select the Input Mask tab in the File Selection panel.           Masked pixels constitute a separate class in image difference output.
+    </p>
+    <p class="Tip" madcap:autonum="&lt;b&gt;Tip: &lt;/b&gt;">
+     <span class="autonumber">
+      <span>
+       <b>
+        Tip:
+       </b>
+      </span>
+     </span>
+     <![CDATA[ ]]>
+     Reprojected vectors are not supported when the original input data has RPCs. To apply a mask in this case, either draw the mask on the image in the current Image window view, or use the RPC Orthorectification workflow to reproject the image to standard map projections, then use the orthorectified image and the shapefile as inputs.
+    </p>
+   </li>
+   <li value="4">
+    Select the Input Files tab again.
+   </li>
+   <li value="5">
+    <p>
+     Enter the path and filename for the
+     <b>
+      Time 2 File
+     </b>
+     .
+    </p>
+    <p>
+     To navigate to a file, click
+     <b>
+      Browse
+     </b>
+     . The Select Time 2  File dialog appears. Do one of the following:
+    </p>
+   </li>
+   <ul>
+    <li value="1">
+     If the file you want to use is listed in the dialog, select it.
+    </li>
+    <li value="2">
+     Click
+     <b>
+      Open File
+     </b>
+     to open a new file. The Open dialog appears.
+    </li>
+    <li value="3">
+     <p>
+      Click
+      <b>
+       Open Remote Dataset
+      </b>
+      to open a geodatabase or remote dataset. The Remote Connection Manager dialog appears.
+     </p>
+     <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+      <span class="autonumber">
+       <span>
+        <b>
+         Note:
+        </b>
+       </span>
+      </span>
+      Datasets from WCS servers are allowed as input. Datasets from JPIP&#160;or WMS servers are not allowed as input.
+     </p>
+    </li>
+   </ul>
+   <li value="6">
+    Click
+    <b>
+     Next
+    </b>
+    . The Image Registration panel appears, and the files open in a new workflow view. If one or both of the selected files are displayed in an active view before you start the workflow, the display bands and any brightness, contrast, stretch, and sharpen settings are retained when
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    creates the workflow view.  The image location is not retained for pixel-based images or those with pseudo or arbitrary projections. If the selected
+    <b>
+     Time 1 File
+    </b>
+    was displayed in an active view before you start the workflow, the image center location is retained.
+   </li>
+  </ol>
+  <h2>
+   <a name="ICAutomatic">
+   </a>
+   Automatic Image Registration
+   <a name="kanchor258">
+   </a>
+  </h2>
+  <p>
+   Image registration geometrically aligns two images with different viewing geometry and/or different terrain distortions into the same coordinate system. Registration is achieved by identifying corresponding features in the two images and establishing common tie points, then warping one image based on these tie points to match the base image. Because manually identifying tie points can be a time-consuming process, automatic image registration can quickly generates tie points, making image registration a quick step in the Image Change workflow.
+  </p>
+  <p>
+   In this panel you can choose
+   <b>
+    Skip Image Registration
+   </b>
+   , or you can choose
+   <b>
+    Register Images Automatically
+   </b>
+   .
+  </p>
+  <h3>
+   Skip Image Registration
+  </h3>
+  <p>
+   If you skip image registration and the input files have different map information, the following fields appear:
+  </p>
+  <ol>
+   <li value="1">
+    Select a
+    <b>
+     Reprojection Method
+    </b>
+    from the drop-down list. The choices are as follows:
+   </li>
+   <ul>
+    <li value="1">
+     <p>
+      <b>
+       Polynomial
+      </b>
+      : A first-order polynomial warp includes an XY interaction term to account for image shear:
+     </p>
+     <p>
+      <i>
+       x
+      </i>
+      =
+      <i>
+       a
+      </i>
+      <sub style="font-style: italic;">
+       1
+      </sub>
+      <i>
+       + a
+      </i>
+      <sub style="font-style: italic;">
+       2
+      </sub>
+      <i>
+       X + a
+      </i>
+      <sub style="font-style: italic;">
+       3
+      </sub>
+      <i>
+       Y + a
+      </i>
+      <sub style="font-style: italic;">
+       4
+      </sub>
+      <i>
+       XY
+      </i>
+     </p>
+     <p>
+      <i>
+       y
+      </i>
+      =
+      <i>
+       b
+      </i>
+      <sub style="font-style: italic;">
+       1
+      </sub>
+      <i>
+       + b
+      </i>
+      <sub style="font-style: italic;">
+       2
+      </sub>
+      <i>
+       X + b
+      </i>
+      <sub style="font-style: italic;">
+       3
+      </sub>
+      <i>
+       Y + b
+      </i>
+      <sub style="font-style: italic;">
+       4
+      </sub>
+      <i>
+       XY
+      </i>
+     </p>
+    </li>
+    <li value="2">
+     <b>
+      Triangulation
+     </b>
+     : Delaunay triangulation warping fits triangles to the irregularly gridded data points and interpolates values to the output grid. This is the default option.
+    </li>
+    <li value="3">
+     <b>
+      Rigorous
+     </b>
+     : Performs a full projection transformation (including datum shift, if needed) for every pixel in the output image.
+    </li>
+   </ul>
+   <li value="2">
+    Select one of the following resampling options from the
+    <b>
+     Resampling
+    </b>
+    drop-down list:
+   </li>
+   <ul>
+    <li value="1">
+     <b>
+      Nearest Neighbor
+     </b>
+     : Uses the nearest pixel without any interpolation to create the warped image.
+    </li>
+    <li value="2">
+     <b>
+      Bilinear
+     </b>
+     : Performs a linear interpolation using four pixels to resample the warped image.
+    </li>
+    <li value="3">
+     <b>
+      Cubic Convolution
+     </b>
+     : Uses 16 pixels to approximate the sinc function using cubic polynomials to resample the image. Cubic convolution resampling is significantly slower than the other methods.
+    </li>
+   </ul>
+   <li value="3">
+    Click
+    <b>
+     Next
+    </b>
+    to go to the Difference Method Choice panel.
+   </li>
+  </ol>
+  <h3>
+   <a name="co-register">
+   </a>
+   Register Images Automatically
+  </h3>
+  <p>
+   If the input files are not pixel-based, you can select to register images automatically.
+  </p>
+  <ol>
+   <li value="1">
+    Enter the
+    <b>
+     Matching Band
+    </b>
+    to use for the registration. The default is
+    <b>
+     Band 1
+    </b>
+    .
+   </li>
+   <li value="2">
+    Enter the
+    <b>
+     Requested Number of Tie Points
+    </b>
+    to use for image registration. The minimum is 9; however, the recommended value is the default number that is set based on the input file. Though smaller values provide quicker processing time, they do not result in an alignment as precise as one that used more tie points.
+   </li>
+   <li value="3">
+    Enter the tolerance for the search range in the
+    <b>
+     Search Window Size
+    </b>
+    field. This moving window is a subset of the warp image that is searched to find topographic feature matches for tie point placement. The recommended value is the default number that is set based on the input file.
+   </li>
+   <li value="4">
+    Enter the maximum error to allow for each tie point in the
+    <b>
+     Maximum Allowable Error Per Tie Point
+    </b>
+    . The tie point with the largest error distance from the predicted location is iteratively removed until no tie points have an error greater than the this value.  The default value is
+    <b>
+     5.00
+    </b>
+    pixels. Setting this field to a higher value means less accuracy.
+   </li>
+   <li value="5">
+    Set the
+    <b>
+     Warping Method
+    </b>
+    to use for the transformation. Polynomial is the default. If you know the original transform for the image, select that as the method.
+   </li>
+   <ul>
+    <li value="1">
+     <p>
+      <b>
+       RST:
+      </b>
+      Rotation, scaling, and translation; this is the simplest method. The RST warping algorithm uses an affine transformation:
+     </p>
+     <p>
+      <i>
+       x = a
+       <sub>
+        1
+       </sub>
+       + a
+       <sub>
+        2
+       </sub>
+       X + a
+       <sub>
+        3
+       </sub>
+       Y
+      </i>
+     </p>
+     <p>
+      <i>
+       y = b
+       <sub>
+        1
+       </sub>
+       + b
+       <sub>
+        2
+       </sub>
+       X + b
+       <sub>
+        3
+       </sub>
+       Y
+      </i>
+     </p>
+     <p>
+      This algorithm does not allow for shearing in the image warp. To allow for shearing, use a first-order polynomial warp. While the RST method is very fast, in most cases, you can achieve more accurate results with a first-order polynomial warp.
+     </p>
+    </li>
+    <li value="2">
+     <p>
+      <b>
+       Polynomial:
+      </b>
+      A first-order polynomial warp includes an XY interaction term to account for image shear:
+     </p>
+     <p>
+      <i>
+       x = a
+       <sub>
+        1
+       </sub>
+       + a
+       <sub>
+        2
+       </sub>
+       X + a
+       <sub>
+        3
+       </sub>
+       Y + a
+       <sub>
+        4
+       </sub>
+       XY
+      </i>
+     </p>
+     <p>
+      <i>
+       y = b
+       <sub>
+        1
+       </sub>
+       + b
+       <sub>
+        2
+       </sub>
+       X + b
+       <sub>
+        3
+       </sub>
+       Y + b
+       <sub>
+        4
+       </sub>
+       XY
+      </i>
+     </p>
+    </li>
+    <li value="3">
+     <b>
+      Triangulation:
+     </b>
+     Delaunay triangulation warping fits triangles to the irregularly spaced GCPs and interpolates values to the output grid.
+    </li>
+   </ul>
+   <li value="6">
+    Click
+    <b>
+     Next
+    </b>
+    . The Difference Method Choice panel appears, and an
+    <code>
+     Image Registration
+    </code>
+    layer appears in the Layer Manager.
+   </li>
+   <li value="7">
+    <p>
+     Right-click on the base image in the Layer Manager, then select
+     <b>
+      Display in Portal
+     </b>
+     . In the following image, the Portal shows the base image on the registered image, and you can see that registration was accurate:
+    </p>
+    <p>
+     <img src="../../Resources/Images/Workflows/coregister_after.gif" alt="Coregistration results" />
+    </p>
+    <p>
+     By comparison, the following image shows  a view at 50%
+     <a href="../../ExploreImagery/DisplayTools.htm#Transparency">
+      transparency
+     </a>
+     . You can see the offset between the a base image and the warp image that needed registration:
+    </p>
+    <p>
+     <img src="../../Resources/Images/Workflows/coregister_before.gif" alt="Before coregistration" />
+    </p>
+    <p>
+     If registration was not successful, you can go back to the previous step to change auto registration parameters.
+    </p>
+   </li>
+   <li value="8">
+    When you are satisfied with registration, continue with the image difference process.
+   </li>
+  </ol>
+  <h4>
+   Changing the Search Window Size
+  </h4>
+  <p>
+   If registration failed to align two images, a common reason is because the
+   <b>
+    Search Window Size
+   </b>
+   value was not large enough. If the pixel offset between the two images to register is greater than the
+   <b>
+    Search Window Size
+   </b>
+   , the search will not be able to detect corresponding features. You can redo the registration by clicking
+   <b>
+    Back
+   </b>
+   in the Image Difference panel and changing the value.
+  </p>
+  <p>
+   To determine a new
+   <b>
+    Search Window Size
+   </b>
+   value:
+  </p>
+  <ol>
+   <li value="1">
+    Set the transparency to
+    <b>
+     50
+    </b>
+    %.
+   </li>
+   <li value="2">
+    Open the
+    <a href="../../ExploreImagery/DisplayTools.htm#CursorValue">
+     Cursor Value
+    </a>
+    window.
+   </li>
+   <li value="3">
+    In the view, find a feature and click on it. Note the pixel location in the Cursor Value window.
+   </li>
+   <li value="4">
+    Click on the same location in the second image and note the pixel location in the Cursor Value window.
+   </li>
+   <li value="5">
+    <p>
+     Determine the distance in pixels between the two readings. Find the maximum distance across the image and use 2*(distance+5) as your new
+     <b>
+      Search Window Size
+     </b>
+     value.
+    </p>
+    <p>
+     For example, the pixel location of a feature in the base image is [200, 200], but the pixel location for the same feature in the warp image is [300, 300], creating an offset of 141 pixels. Use 2*(141+5)=292 as the
+     <b>
+      Search Window Size
+     </b>
+     value.
+    </p>
+   </li>
+  </ol>
+  <h2>
+   <a name="ICDiff">
+   </a>
+   Select a Difference Method
+  </h2>
+  <p>
+   In the Difference Method Choice panel, select the difference method to use:
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     Image Difference:
+    </b>
+    Performs image difference, with or without change thresholding options, and without performing image transformation.
+   </li>
+   <li value="2">
+    <b>
+     Image Transform:
+    </b>
+    Performs a selected transform and creates a difference image, without change thresholding options. Transforms change data to another data space  and are done to easily extract features correlating to change.
+   </li>
+  </ul>
+  <p>
+   Click
+   <b>
+    Next
+   </b>
+   to go to the Image Difference panel after you select
+   <b>
+    Image Difference
+   </b>
+   , or to go to the Transform Method Choice panel when you select
+   <b>
+    Image Transform
+   </b>
+   .
+  </p>
+  <h2>
+   <a name="ICSettings">
+   </a>
+   Image Difference Settings
+   <a name="kanchor259">
+   </a>
+  </h2>
+  <p>
+   If you selected
+   <b>
+    Image Difference
+   </b>
+   in the Difference Method Choice panel, the Image Difference panel appears. Set the parameters to use for the difference analysis.
+  </p>
+  <p>
+   In the Difference Method tab:
+  </p>
+  <ol>
+   <li value="1">
+    <p>
+     Select one of the following:
+    </p>
+    <ul>
+     <li value="1">
+      <b>
+       Difference of Input Band:
+      </b>
+      Performs difference analysis on a specific band in the image.
+     </li>
+     <li value="2">
+      <p>
+       <b>
+        <a href="#difference_feature_index">
+         Difference of Feature Index
+        </a>
+        :
+       </b>
+       Performs difference analysis on a specific feature.
+      </p>
+     </li>
+     <li value="2">
+      <b>
+       Spectral Angle Difference:
+      </b>
+      Performs difference analysis by the spectral angle. This option determines the spectral similarity between the Time 1 spectra and the Time 2 spectra by calculating the angle between the spectra and treating them as vectors in a space with dimensionality equal to the number of bands.
+      <b>
+       Spectral Angle Difference
+      </b>
+      is recommended for hyperspectral data. It is a good choice if there is not enough information in a single input band or there are too many bands to choose from for the
+      <b>
+       Difference of Input Band
+      </b>
+      option, or if there are no features of interest for the
+      <b>
+       Difference of Feature Index
+      </b>
+      option.
+     </li>
+    </ul>
+   </li>
+   <li value="2">
+    If you are using
+    <b>
+     Difference of Input Band
+    </b>
+    , select a band from the drop-down list.
+   </li>
+   <li value="3">
+    To use advanced settings for band input, select the Advanced tab. If you see that the two images have obviously different dynamic ranges caused by different illumination conditions, enable the
+    <b>
+     Radiometric Normalization
+    </b>
+    check box. Otherwise, leave the check box disabled. Radiometric normalization minimizes radiometric differences between two images caused by inconsistencies of acquisition conditions, such as changes caused by different atmospheric and illumination conditions. The radiometric normalization process applies a gain and an offset to the Time 2 image so that it has the same mean and standard deviation as the Time 1 image.
+   </li>
+   <li value="4">
+    <p>
+     <a name="difference_feature_index">
+     </a>
+     If you are using
+     <b>
+      Difference of Feature Index
+     </b>
+     , select one of the following indices from the drop-down list:
+    </p>
+    <ul>
+     <li value="1">
+      <b>
+       Vegetation Index (NDVI):
+      </b>
+      The Normalized Difference Vegetation Index transforms multispectral data into a single image band where vegetation distribution is bright. The following equation shows how NDVI is computed, using Landsat TM bands as an example:
+     </li>
+    </ul>
+    <p class="indent2">
+     <code>
+      NDVI = (Band 4 - Band 3) / (Band 4+&#160;Band 3)
+     </code>
+    </p>
+    <ul>
+     <li value="1">
+      <b>
+       Water Index (NDWI):
+      </b>
+      The Normalized Difference Water Index produces a single grayscale image, where water is bright. The following equation shows how NDWI is computed, using Landsat TM bands as an example:
+     </li>
+    </ul>
+    <p class="indent2">
+     <code>
+      NDWI = (Band 4 - Band 5) / (Band 4 + Band 5)
+     </code>
+    </p>
+    <ul>
+     <li value="1">
+      <b>
+       Built-up Index (NDBI):
+      </b>
+      The Normalized Difference Built-up Index produces a single grayscale image, where built-up areas are bright. The following equation shows how NDBI is computed, using Landsat TM bands as an example:
+     </li>
+    </ul>
+    <p class="indent2">
+     <code>
+      NDBI = (Band 5 - Band 4) / (Band 5 + Band 4)
+     </code>
+    </p>
+    <ul>
+     <li value="1">
+      <b>
+       Burn Index:
+      </b>
+      The Burn Index (-NBR) is the opposite of the Normalized Burn Ratio. It produces a single grayscale image where burn areas are bright. The result is the same as the Differenced Normalized Burn Ratio.
+     </li>
+    </ul>
+    <p class="indent2">
+     <code>
+      -NBR = -[(Band 4 - Band 7) / (Band 4 + Band 7)]
+     </code>
+    </p>
+    <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+     <span class="autonumber">
+      <span>
+       <b>
+        Note:
+       </b>
+      </span>
+     </span>
+     The
+     <b>
+      Difference of Feature Index
+     </b>
+     option is available only when the input files are multispectral or hyperspectral. An option is only available for selection if the bands in your image meet the wavelength requirements of that index.
+    </p>
+    <p>
+     See
+     <a href="IDReferences.htm">
+      References
+     </a>
+     for additional information about the feature indices.
+    </p>
+   </li>
+   <li value="5">
+    <p>
+     To use advanced settings for the feature index, select the Advanced tab. Specify the bands for
+     <b>
+      Band 1
+     </b>
+     and
+     <b>
+      Band 2
+     </b>
+     . The workflow provides default bands for each index type. The equation the workflow uses for computing the feature index is:
+    </p>
+    <pre xml:space="preserve">
+     (Band2 - Band1) / (Band2 + Band1)
+    </pre>
+   </li>
+   <li value="6">
+    If you are using
+    <b>
+     Spectral Angle Difference
+    </b>
+    , there are no advanced parameters to set.
+   </li>
+   <li value="7">
+    To preview how the parameter settings look before processing, enable the
+    <b>
+     Preview
+    </b>
+    check box. A Preview Portal appears. The Preview Portal works with full or higher resolution views. You can change settings and preview the results again, as needed.
+   </li>
+   <li value="8">
+    <p>
+     Click
+     <b>
+      Next
+     </b>
+     . The difference analysis begins.
+    </p>
+    <p>
+     When image difference processing is complete, the Thresholding or Export panel appears.
+    </p>
+   </li>
+  </ol>
+  <h2>
+   <a name="ICThreshold">
+   </a>
+   Select Thresholding or Export
+  </h2>
+  <p>
+   In the Thresholding or Export panel, select one of the following:
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     Apply Thresholding:
+    </b>
+    takes you to the Change Thresholding panel, where you can set parameters that help the workflow process determine the areas that have big change. Change Thresholding describes the settings. When you select this option, you can export multiple outputs at the end of the workflow.
+   </li>
+   <li value="2">
+    <b>
+     Export Image Difference Only:
+    </b>
+    provides a shorter workflow that does not include thresholding, and takes you directly to the Export panel. When you select this option, you export only a difference image.
+   </li>
+  </ul>
+  <h2>
+   <a name="ICChange">
+   </a>
+   Change Thresholding
+   <a name="kanchor260">
+   </a>
+  </h2>
+  <p>
+   In the Change Thresholding step for image change detection, specify the type of change you want to show between the two images. You can use pre-set auto-thresholding techniques, and you can manually adjust thresholding.
+  </p>
+  <ol>
+   <li value="1">
+    <p>
+     If you are using the
+     <b>
+      Difference of Input Band
+     </b>
+     or
+     <b>
+      Difference of Feature Index
+     </b>
+     method, select the change of interest from the
+     <b>
+      Select Change of Interest
+     </b>
+     drop-down list. The choices are:
+    </p>
+    <ul>
+     <li value="1">
+      <b>
+       Increase and Decrease:
+      </b>
+      Shows areas of increase (in blue) and decrease (in red).
+     </li>
+     <li value="2">
+      <b>
+       Increase Only:
+      </b>
+      Shows areas of increase (in blue) only.
+     </li>
+     <li value="3">
+      <b>
+       Decrease Only:
+      </b>
+      Shows areas of  decrease (in red) only.
+     </li>
+    </ul>
+    <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+     <span class="autonumber">
+      <span>
+       <b>
+        Note:
+       </b>
+      </span>
+     </span>
+     This setting is not used for the
+     <b>
+      Spectral Angle Difference
+     </b>
+     method. Areas of change show in green.
+    </p>
+   </li>
+   <li value="2">
+    <p>
+     In the
+     <b>
+      Select Auto-Thresholding Method
+     </b>
+     drop-down list, select one of the following:
+    </p>
+    <ul>
+     <li value="1">
+      <b>
+       Otsu's:
+      </b>
+      A histogram shape-based method. It is based on discriminate analysis and uses the zero- and the first-order cumulative moments of the histogram for calculating the value of the thresholding level.
+     </li>
+     <li value="2">
+      <b>
+       Tsai's:
+      </b>
+      A moment-based method. It determines the threshold so that the first three moments of the input image are preserved in the output image.
+     </li>
+     <li value="3">
+      <b>
+       Kapur's:
+      </b>
+      An entropy-based method. It considers the thresholding image as two classes of events, with each class characterized by Probability Density Function (PDF). The method then maximizes the sum of the entropy of the two PDFs to converge on a single threshold value.
+     </li>
+     <li value="4">
+      <b>
+       Kittler's:
+      </b>
+      A histogram shape-based method. It approximates the histogram as a bimodal Gaussian distribution and finds a cutoff point. The cost function is based on the Bayes classification rule.
+     </li>
+    </ul>
+    <p>
+     See
+     <a href="IDReferences.htm">
+      References
+     </a>
+     for additional information about the auto-thresholding methods.
+    </p>
+   </li>
+   <li value="3">
+    <p>
+     If you are using the
+     <b>
+      Difference of Input Band
+     </b>
+     or
+     <b>
+      Difference of Feature Index
+     </b>
+     method, you can set thresholding manually by selecting the Manual tab. The
+     <b>
+      Increase Threshold
+     </b>
+     value controls the thresholding on areas of increase. The
+     <b>
+      Decrease Threshold
+     </b>
+     value controls the thresholding on areas of decrease. Use the following to set the thresholds:
+    </p>
+    <ul>
+     <li value="1">
+      Use the
+      <b>
+       Increase Threshold
+      </b>
+      and the
+      <b>
+       Decrease Threshold
+      </b>
+      slider bars to increase and/or decrease the threshold values.
+     </li>
+     <li value="2">
+      Enter the threshold values into the fields provided.
+     </li>
+     <li value="3">
+      Use the up arrow and right arrow keyboard keys to increase the value  by 0.0001.
+     </li>
+     <li value="4">
+      Use the down arrow and left arrow keyboard keys to decrease the value  by 0.0001.
+     </li>
+     <li value="5">
+      Use the
+      <b>
+       Page Up
+      </b>
+      and
+      <b>
+       Page Down
+      </b>
+      keyboard keys to increase/decrease the values by 10 percent.
+     </li>
+     <li value="6">
+      Click the
+      <b>
+       Reset
+      </b>
+      button
+      <img src="../../Resources/Images/IconsButtons/Reset.gif" class="VertCenter" alt="Reset" />
+      to return to the default value.
+     </li>
+    </ul>
+   </li>
+   <li value="4">
+    To preview how the thresholding settings look before processing, enable the
+    <b>
+     Preview
+    </b>
+    check box. A Preview Portal appears. The Preview Portal works with full or higher resolution views. You can change settings and preview the results again, as needed.
+   </li>
+   <li value="5">
+    Click
+    <b>
+     Next
+    </b>
+    . When you click
+    <b>
+     Next
+    </b>
+    , the difference image is classified based on the threshold values. If you selected
+    <b>
+     Difference of Input Band
+    </b>
+    or
+    <b>
+     Difference of Feature Index
+    </b>
+    as the difference method, the image is classified into
+    <b>
+     Big Increase
+    </b>
+    ,
+    <b>
+     Big Decrease
+    </b>
+    , and
+    <b>
+     Other
+    </b>
+    . If you selected
+    <b>
+     Spectral Angle Difference
+    </b>
+    as the difference method, the image is classified into
+    <b>
+     Big Change
+    </b>
+    and
+    <b>
+     Other
+    </b>
+    . The Cleanup panel appears.
+   </li>
+  </ol>
+  <h2>
+   <a name="ICClean">
+   </a>
+   Clean Up Image Change Results
+   <a name="kanchor261">
+   </a>
+  </h2>
+  <p>
+   In the Cleanup panel, you can refine the change detection result and preview what the refinement will look like before you apply the settings. Performing cleanup is an optional step; to skip it click
+   <b>
+    Skip
+   </b>
+   and continue to the export step.
+  </p>
+  <p class="Tip" madcap:autonum="&lt;b&gt;Tip: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Tip:
+     </b>
+    </span>
+   </span>
+   If you plan to save the vectors created during processing to a file in the final step of the workflow, the Cleanup step is recommended. Performing cleanup significantly reduces the time needed to export vectors.
+  </p>
+  <ol>
+   <li value="1">
+    Enable the check boxes for the cleanup methods you want to use. The following are available:
+    <ul>
+     <li value="1">
+      <b>
+       Enable Smoothing
+      </b>
+      removes salt and pepper noise during cleanup.
+     </li>
+     <li value="2">
+      <b>
+       Enable Aggregation
+      </b>
+      removes small regions.
+     </li>
+    </ul>
+   </li>
+   <li value="2">
+    Enter values for the cleanup methods you enabled:
+    <ul>
+     <li value="1">
+      Specify the
+      <b>
+       Smooth Kernel Size
+      </b>
+      using an odd number (e.g., 3 = 3x3 pixels). The square kernel's center pixel will be replaced with the majority class value of the kernel. The default is
+      <b>
+       3
+      </b>
+      .
+     </li>
+     <li value="2">
+      Specify the
+      <b>
+       Aggregate Minimum Size
+      </b>
+      in pixels. Regions with a size of this value or smaller are aggregated to an adjacent, larger region. The default for thematic change detection is
+      <b>
+       9
+      </b>
+      . The default for image change detection is
+      <b>
+       100
+      </b>
+      .
+     </li>
+    </ul>
+   </li>
+   <li value="3">
+    To preview the cleanup result before processing, enable the
+    <b>
+     Preview
+    </b>
+    check box. A Preview Portal appears. You can change the cleanup settings and preview the results again, as needed.
+   </li>
+   <li value="4">
+    Click
+    <b>
+     Next
+    </b>
+    . The Export panel appears.
+   </li>
+  </ol>
+  <h2>
+   <a name="ICTransform">
+   </a>
+   Select a Transform Method
+   <a name="kanchor262">
+   </a>
+  </h2>
+  <p>
+   If you selected
+   <b>
+    Image Transform
+   </b>
+   in the Difference Method Choice panel, the Transform Method Choice panel appears.
+  </p>
+  <ol>
+   <li value="1">
+    Select the image transform to use. The choice are:
+   </li>
+   <ul>
+    <li value="1">
+     <b>
+      PCA:
+     </b>
+     Principal Components Analysis (PCA) produces uncorrelated output bands to segregate noise components, and to reduce the dimensionality of data sets. Because multispectral data bands are often highly correlated, the PCA transformation is used to produce uncorrelated output bands. This is done by finding a new set of orthogonal axes that have their origin at the data mean and that are rotated so the data variance is maximized.
+    </li>
+    <li value="2">
+     <b>
+      MNF:
+     </b>
+     Minimum Noise Fraction (MNF) determines the inherent dimensionality of image data to segregate noise in the data, and to reduce the computational requirements for subsequent processing.
+    </li>
+    <li value="3">
+     <b>
+      ICA:
+     </b>
+     Independent Component Analysis (ICA) works well with hyperspectral data because it is more likely to treat sparse targets as important features, compared with the PCA or MNF methods. ICA can a longer time to process.
+    </li>
+   </ul>
+   <li value="2">
+    If you selected
+    <b>
+     PCA
+    </b>
+    or
+    <b>
+     MNF
+    </b>
+    , click
+    <b>
+     Next
+    </b>
+    to go to the Export panel.
+   </li>
+   <li value="3">
+    If you selected
+    <b>
+     ICA
+    </b>
+    , set the following parameters:
+   </li>
+   <ul>
+    <li value="1">
+     Enter a
+     <b>
+      Sampling Percentage
+     </b>
+     to improve performance for larger images. Specify a percent value from 0.1 to 100.  The sample pixels are chosen based on a uniform random distribution.
+    </li>
+    <li value="2">
+     Enter the
+     <b>
+      Maximum Iterations
+     </b>
+     to perform for IC optimization using a fixed-point algorithm. The default is 100. The lower limit is 100. More iterations help to find more optimal components; however, each iteration adds to processing time, depending on the CPU and system load.
+    </li>
+    <li value="3">
+     Enter the
+     <b>
+      Maximization Stabilization Iterations
+     </b>
+     for IC optimization using a stabilized fixed-point algorithm. When estimating one independent component, the fixed-point algorithm runs first. If the algorithm does not converge after maximization iterations, the stabilized fixed-point algorithm runs to improve convergence. The default value is 100. The lower limit is 0 (no stabilization step). Enabling stabilization and increasing stabilization iterations helps to find the optimal components; however, each iteration adds to processing time, depending on the CPU and system load.
+    </li>
+    <li value="4">
+     <p>
+      Select one of the following
+      <b>
+       Contrast Function
+      </b>
+      types from the drop-down list:
+     </p>
+     <p>
+      <b>
+       LogCosh.
+      </b>
+      (default). LogCosh is a good general-purpose contrast function. Its first-order derivative follows:
+     </p>
+     <p class="indent">
+      <img src="../../Resources/Images/ImageChange/LogCosh.gif" alt="LogCosh" />
+     </p>
+     <p>
+      <b>
+       Kurtosis.
+      </b>
+      Its first-order derivative follows:
+     </p>
+     <p class="indent">
+      <img src="../../Resources/Images/ImageChange/Kurtosis.gif" alt="Kurtosis" />
+     </p>
+     <p>
+      <b>
+       Gaussian.
+      </b>
+      Its first-order derivative follows:
+     </p>
+     <p class="indent">
+      <img src="../../Resources/Images/ImageChange/Gaussian.gif" alt="Gaussian" />
+     </p>
+    </li>
+   </ul>
+   <li value="4">
+    Click
+    <b>
+     Next
+    </b>
+    to go to the Band Choice panel.
+   </li>
+  </ol>
+  <h2>
+   <a name="ICBand">
+   </a>
+   Select a Band
+  </h2>
+  <p>
+   If you are performing an image transform, the Band Choice panel appears after the transform is complete. In this panel, you can select a specific band to view, and you can export the selected band.
+  </p>
+  <ol>
+   <li value="1">
+    From the
+    <b>
+     Select Band to Reflect Change
+    </b>
+    drop-down list, select the band to view.
+   </li>
+   <li value="2">
+    The selected band is added to the Layer Manager and the band appears in the view. If needed, you can select a different band and the new selection will appear in the view.
+   </li>
+   <li value="3">
+    Click
+    <b>
+     Next
+    </b>
+    to go to the Export panel.
+   </li>
+  </ol>
+  <h2>
+   <a name="ICExport">
+   </a>
+   Export Image Change Results
+   <a name="kanchor263">
+   </a>
+  </h2>
+  <ol>
+   <li value="1">
+    In the Export Files tab in the Export panel, enable the output options you want. The following are available:
+   </li>
+   <ul>
+    <li value="1">
+     <b>
+      Export Change Class Image
+     </b>
+     saves the thresholding result to an ENVI raster.
+    </li>
+    <li value="2">
+     <p>
+      <b>
+       Export Change Class Vectors
+      </b>
+      saves  the vectors created during thresholding.  The supported vector output formats are shapefile and geodatabase. The output area units are in square meters.
+     </p>
+     <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+      <span class="autonumber">
+       <span>
+        <b>
+         Note:
+        </b>
+       </span>
+      </span>
+      Depending on the image size, exporting to vectors may be time-consuming.  To reduce the export time, performing the Cleanup step prior to export is recommended.
+     </p>
+    </li>
+   </ul>
+   <li value="2">
+    <p>
+     In the Additional Export tab, enable any other output options you want. The following are available:
+    </p>
+    <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+     <span class="autonumber">
+      <span>
+       <b>
+        Note:
+       </b>
+      </span>
+     </span>
+     If you did not apply thresholding, or if you chose the
+     <b>
+      Image Transform
+     </b>
+     option during the workflow, the only available option is
+     <b>
+      Export Change Grayscale Image
+     </b>
+     .
+    </p>
+   </li>
+   <ul>
+    <li value="1">
+     <b>
+      Export Change Class Statistics
+     </b>
+     saves statistics on the thresholding image.The output area units are in square meters.
+    </li>
+    <li value="2">
+     <b>
+      Export Change Grayscale Image
+     </b>
+     saves  the difference image to an image. The supported image output formats are ENVI, geodatabase, and TIFF.
+    </li>
+   </ul>
+   <li value="3">
+    Click
+    <b>
+     Finish
+    </b>
+    to create the output, add the new layers to the Layer Manager, and save the files to the directories you specified. For
+    <b>
+     Image Transform
+    </b>
+    , the output is from the single band you selected in the Band Choice panel. When the export is complete, the workflow view closes. The original data and the export data display in the Image window view.
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

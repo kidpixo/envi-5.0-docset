@@ -1,0 +1,390 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Explore Imagery|Open and Browse Data" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   View NITF Metadata
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/TableStyles/Description.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#ExploreImagery/ViewingNITFMetadata.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="ExploreImagery.htm">
+    Explore Imagery
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="OpenBrowseData.htm">
+    Open and Browse Data
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    View NITF Metadata
+   </span>
+  </div>
+  <h1>
+   View NITF Metadata
+   <a name="kanchor19">
+   </a>
+  </h1>
+  <p>
+   The NITF Metadata Viewer allows you to view the metadata in the header and subheaders of
+
+a NITF file and optionally save the metadata to an ASCII file. You can also view the contents
+
+of tagged record extensions (TREs), data extension segments (DESes), annotation segments, and text segments in the file.
+
+To view the metadata of a NITF file, perform the following steps:
+  </p>
+  <ol>
+   <li value="1">
+    In the Data Manager or Layer Manager, right-click on the NITF filename and select
+    <b>
+     View NITF Metadata
+    </b>
+    . The NITF Metadata Viewer dialog appears.
+
+The number and type of items shown vary, according to the dataset being displayed.
+
+The metadata displayed in each item vary per different versions of NITF.
+   </li>
+   <li value="2">
+    Click the + next to the file header, image segment, text segment, or DES to
+
+expand the information available. See
+    <a href="#NITF">
+     NITF Metadata Icons
+    </a>
+    . Metadata are grouped as follows:
+    <p>
+     <b>
+      NITF File Header Metadata
+     </b>
+    </p>
+    <ul>
+     <li value="1">
+      Security Metadata
+     </li>
+     <li value="2">
+      TRE Metadata (if present)
+     </li>
+    </ul>
+    <p>
+     <b>
+      Image Segment Metadata
+     </b>
+    </p>
+    <ul>
+     <li value="1">
+      Security Metadata
+     </li>
+     <li value="2">
+      Band Metadata (one for each band)
+     </li>
+     <li value="3">
+      Image Comments (if present)
+     </li>
+     <li value="4">
+      TRE Metadata (if present)
+     </li>
+    </ul>
+    <p>
+     <b>
+      Text Segment Metadata
+     </b>
+     (if present)
+    </p>
+    <ul>
+     <li value="1">
+      Security Metadata
+     </li>
+     <li value="2">
+      TRE Metadata (if present)
+     </li>
+    </ul>
+    <p>
+     <b>
+      Data Extension Segments
+     </b>
+     (DESes, if present)
+    </p>
+    <ul>
+     <li value="1">
+      Security Metadata
+     </li>
+     <li value="2">
+      User-defined Subheader (if present)
+     </li>
+    </ul>
+    <p>
+     <b>
+      Annotation Segment Metadata
+     </b>
+     (if present)
+    </p>
+    <ul>
+     <li value="1">
+      Security Metadata
+     </li>
+     <li value="2">
+      Annotation Object Metadata (if present)
+     </li>
+     <li value="3">
+      TRE Metadata (if present)
+     </li>
+    </ul>
+    <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+     <span class="autonumber">
+      <span>
+       <b>
+        Note:
+       </b>
+      </span>
+     </span>
+     Header and segment fields are described in
+     <a href="http://www.gwg.nga.mil/ntb/baseline/docs/2500c/index.html" target="_blank">
+      MIL-STD-2500C
+     </a>
+     and
+     <a href="http://www.gwg.nga.mil/ntb/baseline/docs/2500a/index.html" target="_blank">
+      MIL-STD-2500A
+     </a>
+     .
+    </p>
+   </li>
+   <li value="3">
+    To optionally save the metadata to an ASCII file, click
+    <b>
+     Save Metadata
+    </b>
+    . The Output
+
+Metadata Filename dialog appears. Enter an output filename (
+    <code>
+     .txt
+    </code>
+    ) and click
+    <b>
+     Save
+    </b>
+    .
+   </li>
+   <li value="4">
+    <b>
+     Click Close
+    </b>
+    to dismiss the NITF Metadata Viewer.
+   </li>
+  </ol>
+  <h2>
+   <a name="NITF">
+   </a>
+   NITF Metadata Icons
+   <a name="kanchor20">
+   </a>
+  </h2>
+  <p>
+   The following icons appear in the NITF Metadata Viewer to identify the types of metadata that may appear in a particular container:
+  </p>
+  <table style="mc-table-style: url('../Resources/TableStyles/Description.css');" cellspacing="0" class="TableStyle_Description">
+   <col />
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       Container
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       Icon
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p class="TableHead">
+       Description
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep" style="font-size: 10pt;">
+      <p>
+       File Header
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep" style="text-align: center;font-size: 10pt;">
+      <p>
+       <img src="../Resources/Images/IconsButtons/NITFHeader.gif" title="NITF Metadata Header Icon" />
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd" style="font-size: 10pt;">
+      <p>
+       Contains metadata common to the entire NITF file. It may also include tags (TREs) or security metadata pertaining to the entire file.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep" style="font-size: 10pt;">
+      <p>
+       Security
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep" style="text-align: center;font-size: 10pt;">
+      <p>
+       <img src="../Resources/Images/IconsButtons/NITFSecurity.gif" title="NITF Metadata Security Icon" />
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd" style="font-size: 10pt;">
+      <p>
+       Contains security metadata for the file, image segment, text segment, annotation segment, or data extension segment.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep" style="font-size: 10pt;">
+      <p>
+       TRE
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep" style="text-align: center;font-size: 10pt;">
+      <p>
+       <img src="../Resources/Images/IconsButtons/NITF_TREWhite.gif" title="NITF Metadata Non-editable TRE Icon" />
+       <br />
+       <img src="../Resources/Images/IconsButtons/NITF_TREGreen.gif" title="NITF Metadata Editable TRE Icon" />
+       <br />
+       <img src="../Resources/Images/IconsButtons/NITF_TREBlue.gif" title="NITF Metadata TRE Overflow DES Icon" />
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd" style="font-size: 10pt;">
+      <p>
+       A white icon contains metadata for a TRE that cannot be edited.
+       <br />
+       A green icon contains editable metadata for the TRE.
+       <br />
+       A blue icon contains TREs from a TRE Overflow DES.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep" style="font-size: 10pt;">
+      <p>
+       DES
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep" style="text-align: center;font-size: 10pt;">
+      <p>
+       <img src="../Resources/Images/IconsButtons/NITF_DES.gif" title="NITF Metadata DES Icon" />
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd" style="font-size: 10pt;">
+      <p>
+       Contains Data Extension Segments (DESes). It may also include security metadata and user-defined subheader fields.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep" style="font-size: 10pt;">
+      <p>
+       Single-band Image Segment
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep" style="text-align: center;font-size: 10pt;">
+      <p>
+       <img src="../Resources/Images/IconsButtons/NITFImageSegment.gif" title="NITF Metadata Single Band Image Segment Icon" />
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd" style="font-size: 10pt;">
+      <p>
+       Contains image metadata for a single-band image segment. It may also include security metadata, image comments, and TRE metadata containers.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep" style="font-size: 10pt;">
+      <p>
+       Multi-band Image Segment
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep" style="text-align: center;font-size: 10pt;">
+      <p>
+       <img src="../Resources/Images/IconsButtons/DataManagerMultispectralData.gif" title="NITF Metadata Multi-band Image Segment Icon" />
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd" style="font-size: 10pt;">
+      <p>
+       Contains image metadata for a multiple-band image segment. It may also include security metadata, image comments, and TRE metadata containers.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep" style="font-size: 10pt;">
+      <p>
+       Annotation Segment
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep" style="text-align: center;font-size: 10pt;">
+      <p>
+       <img src="../Resources/Images/IconsButtons/DataManagerAnnotationFile.gif" title="NITF Metadata Annotation Segment Icon" />
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd" style="font-size: 10pt;">
+      <p>
+       Contains metadata for an annotation segment. In addition to one or more annotation object containers, it may also include security tag metadata containers.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep" style="font-size: 10pt;">
+      <p>
+       Text Segment
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep" style="text-align: center;font-size: 10pt;">
+      <p>
+       <img src="../Resources/Images/IconsButtons/NITFTextSegment.gif" title="NITF Metadata Text Segment Icon" />
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColEnd" style="font-size: 10pt;">
+      <p>
+       Contains metadata for a text segment.
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

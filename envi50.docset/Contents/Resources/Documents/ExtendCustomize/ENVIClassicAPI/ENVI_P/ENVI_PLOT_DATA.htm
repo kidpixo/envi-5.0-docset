@@ -1,0 +1,364 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming|Routines|Data Control|ENVI Classic" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   ENVI_PLOT_DATA
+  </title>
+  <link href="../../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../../ENVIHelp_CSH.htm#ExtendCustomize/ENVIClassicAPI/ENVI_P/ENVI_PLOT_DATA.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../Routines.htm">
+    Routines
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../ENVICoordSys.htm">
+    Data Control
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    ENVI_PLOT_DATA
+   </span>
+  </div>
+  <h1>
+   <a name="kanchor565">
+   </a>
+   ENVI_PLOT_DATA
+  </h1>
+  <p>
+   <a href="#Syntax">
+    Syntax
+   </a>
+   |
+   <a href="#Arguments">
+    Arguments
+   </a>
+   |
+   <a href="#Keywords">
+    Keywords
+   </a>
+   |
+   <a href="#Example">
+    Example
+   </a>
+  </p>
+  <p>
+   Use this procedure to display an x,y plot in a new
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   plot window. Depending on the dimensions of the y array, one or more plots display.
+  </p>
+  <h2 class="API">
+   <a name="Syntax">
+   </a>
+   Syntax
+  </h2>
+  <p>
+   ENVI_PLOT_DATA, X, Y [,
+   <a href="#BASE">
+    BASE
+   </a>
+   =
+   <i>
+    variable
+   </i>
+   ] [,
+   <a href="#GROUP">
+    GROUP
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ] [,
+   <a href="#PLOT_COLORS">
+    PLOT_COLORS
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ] [,
+   <a href="#PLOT_NAMES">
+    PLOT_NAMES
+   </a>
+   =
+   <i>
+    string array
+   </i>
+   ] [,
+   <a href="#PLOT_STYLES">
+    PLOT_STYLES
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ] [,
+   <a href="#PLOT_TITLE">
+    PLOT_TITLE
+   </a>
+   =
+   <i>
+    string
+   </i>
+   ] [,
+   <a href="#TITLE">
+    TITLE
+   </a>
+   =
+   <i>
+    string
+   </i>
+   ] [,
+   <a href="#XOFF">
+    XOFF
+   </a>
+   =
+   <i>
+    integer
+   </i>
+   ] [,
+   <a href="#XTITLE">
+    XTITLE
+   </a>
+   =
+   <i>
+    string
+   </i>
+   ] [,
+   <a href="#YOFF">
+    YOFF
+   </a>
+   =
+   <i>
+    integer
+   </i>
+   ] [,
+   <a href="#YTITLE">
+    YTITLE
+   </a>
+   =
+   <i>
+    string
+   </i>
+   ]
+  </p>
+  <h2 class="API">
+   <a name="Arguments">
+   </a>
+   Arguments
+  </h2>
+  <h3>
+   X
+  </h3>
+  <p>
+   This is an array of
+   <i>
+    N
+   </i>
+   points representing the x values to plot.
+  </p>
+  <h3>
+   Y
+  </h3>
+  <p>
+   This is an array with dimensions [
+   <i>
+    N
+   </i>
+   ,
+   <i>
+    number of plot
+   </i>
+   s] representing the y values to plot.
+  </p>
+  <h2 class="API">
+   <a name="Keywords">
+   </a>
+   Keywords
+  </h2>
+  <h3>
+   <a name="BASE">
+   </a>
+   BASE (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a named variable that contains the returned widget base of the plot window.
+  </p>
+  <h3>
+   <a name="GROUP">
+   </a>
+   GROUP (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the group leader for this widget. The default is the
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   main base, which removes the plot window when you exit
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   .
+  </p>
+  <h3>
+   <a name="PLOT_COLORS">
+   </a>
+   PLOT_COLORS (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the plot graphic color index. PLOT_COLORS is an array of long integers with [number of plots] elements.
+  </p>
+  <h3>
+   <a name="PLOT_NAMES">
+   </a>
+   PLOT_NAMES (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the plot names. PLOT_NAMES is a string array with [number of plots] elements.
+  </p>
+  <h3>
+   <a name="PLOT_STYLES">
+   </a>
+   PLOT_STYLES (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the plot styles. PLOT_STYLES is an array of long integers with the form [
+   <i>
+    number of plots
+   </i>
+   ], specifying the style index. Set this keyword to one of the following values:
+  </p>
+  <ul>
+   <li value="1">
+    0: Solid
+   </li>
+   <li value="2">
+    1: Dotted
+   </li>
+   <li value="3">
+    2: Dashed
+   </li>
+   <li value="4">
+    3: Dash dot
+   </li>
+   <li value="5">
+    4: Dash dot dot dot
+   </li>
+   <li value="6">
+    5: Long dashes
+   </li>
+  </ul>
+  <h3>
+   <a name="PLOT_TITLE">
+   </a>
+   PLOT_TITLE (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the plot title. PLOT_TITLE is a string.
+  </p>
+  <h3>
+   <a name="TITLE">
+   </a>
+   TITLE (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the plot window title. The default is '
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   Plot Window'.
+  </p>
+  <h3>
+   <a name="XOFF">
+   </a>
+   XOFF (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the x offset (in pixels) of the upper-left corner of the plot window relative to the upper-left corner of the screen. If you do not specify XOFF, the plot window is centered horizontally on the screen.
+  </p>
+  <h3>
+   <a name="XTITLE">
+   </a>
+   XTITLE (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the x-axis title.
+  </p>
+  <h3>
+   <a name="YOFF">
+   </a>
+   YOFF (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the y offset (in pixels) of the upper-left corner of the plot window relative to the upper-left corner of the screen. If you do not specify YOFF, the plot window is centered vertically on the screen.
+  </p>
+  <h3>
+   <a name="YTITLE">
+   </a>
+   YTITLE (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the y-axis title.
+  </p>
+  <h2 class="API">
+   <a name="Example">
+   </a>
+   Example
+  </h2>
+  <p>
+   The example plot creates a plot window with two plots.
+  </p>
+  <p class="Code">
+   x = findgen(100)
+  </p>
+  <p class="Code">
+   y = reform([x, sin(x)], 100, 2)
+  </p>
+  <p class="Code">
+   plot_names = ['XY Line', 'SIN(X)']
+  </p>
+  <p class="Code">
+   envi_plot_data, x, y, plot_names=plot_names
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

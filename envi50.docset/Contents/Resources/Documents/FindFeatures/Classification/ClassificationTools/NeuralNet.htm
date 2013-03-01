@@ -1,0 +1,269 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Classification|Classification Tools|Supervised Methods" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Neural Net
+  </title>
+  <link href="../../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../../ENVIHelp_CSH.htm#FindFeatures/Classification/ClassificationTools/NeuralNet.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../ClassificationMain.htm">
+    Classification
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="ClassificationTools.htm">
+    Classification Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="AdaptiveCoherenceEstimator.htm">
+    Supervised Methods
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Neural Net
+   </span>
+  </div>
+  <h1>
+   Neural Net
+   <a name="kanchor293">
+   </a>
+  </h1>
+  <p>
+   Use
+   <b>
+    Neural Net
+   </b>
+   to apply a layered feed-forward neural network classification technique. The Neural Net technique uses standard backpropagation for supervised learning. You can select the number of hidden layers to use and you can choose between a logistic or hyperbolic activation function. Learning occurs by adjusting the weights in the node to minimize the difference between the output node activation and the output. The error is backpropagated through the network and weight adjustment is made using a recursive method. You can use Neural Net classification to perform non-linear classification.
+  </p>
+  <p>
+   <b>
+    References
+   </b>
+   <![CDATA[ ]]>
+  </p>
+  <p>
+   Richards, J.A., 1999,
+   <i>
+    Remote Sensing Digital Image Analysis
+   </i>
+   , Springer-Verlag, Berlin, p.240.
+  </p>
+  <p>
+   Rumelhart, D., and J. Mc Clelland, 1987
+   <i>
+    Parallel Distributed Processing
+   </i>
+   Vol. 1, MIT Press, Chp. 8 “Learning Internal Representation by Error Propagation,” Rumelhart, Hinton, and Williams.
+  </p>
+  <ol>
+   <li value="1">
+    Use the ROI&#160;Tool in
+    <span class="DocumentTitleProductNameENVIClassic">
+     ENVI Classic
+    </span>
+    to define training regions for each class. The more pixels and classes, the better the results will be.
+   </li>
+   <li value="2">
+    Use the ROI Tool to save the ROIs to an
+    <code>
+     .roi
+    </code>
+    file.
+   </li>
+   <li value="3">
+    Display the input image in
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    .
+   </li>
+   <li value="4">
+    From the menu bar, select
+    <b>
+     File &gt; Open
+    </b>
+    and open the ROI file. It displays on top of the input image.
+   </li>
+   <li value="5">
+    From the Toolbox, select
+    <b>
+     Classification &gt; Supervised Classification &gt; Neural Net Classification
+    </b>
+    . The Classification Input File dialog appears.
+   </li>
+   <li value="6">
+    Select the input file and perform optional spatial and spectral
+    <a href="../../../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , and/or masking, then click
+    <b>
+     OK
+    </b>
+    . The Neural Net Parameters dialog appears.
+   </li>
+   <li value="7">
+    In the
+    <b>
+     Select Classes from Regions
+    </b>
+    list, select ROIs and/or vectors as training classes. The ROIs listed are derived from the available ROIs in the ROI Tool dialog. The vectors listed are derived from the open vectors in the Available Vectors List.
+   </li>
+   <li value="8">
+    Select the activation method from one of the
+    <b>
+     Activation
+    </b>
+    radio buttons.
+   </li>
+   <li value="9">
+    In the
+    <b>
+     Training Threshold Contribution
+    </b>
+    field, enter a value from 0 to 1.0. The training threshold contribution determines the size of the contribution of the internal weight with respect to the activation level of the node. It is used to adjust the changes to a node’s internal weight. The training algorithm interactively adjusts the weights between nodes and optionally the node thresholds to minimize the error between the output layer and the desired response. Setting the
+    <b>
+     Training Threshold Contribution
+    </b>
+    to zero does not adjust the node’s internal weights. Adjustments of the nodes internal weights could lead to better classifications but too many weights could also lead to poor generalizations.
+   </li>
+   <li value="10">
+    In the
+    <b>
+     Training Rate
+    </b>
+    field, enter a value from 0 to 1.0. The training rate determines the magnitude of the adjustment of the weights. A higher rate will speed up the training, but will also increase the risk of oscillations or non-convergence of the training result.
+   </li>
+   <li value="11">
+    In the
+    <b>
+     Training Momentum
+    </b>
+    field, enter a value from 0 to 1.0. Entering a momentum rate greater than zero allows you to set a higher training rate without oscillations. A higher momentum rate trains with larger steps than a lower momentum rate. Its effect is to encourage weight changes along the current direction.
+   </li>
+   <li value="12">
+    <p>
+     In the
+     <b>
+      Training RMS Exit Criteria
+     </b>
+     field, enter the RMS error value at which the training should stop.
+    </p>
+    <p>
+     If the RMS error, which is shown in the plot during training, falls below the entered value, the training will stop, even if the number of iterations has not been met. The classification will then be executed.
+    </p>
+   </li>
+   <li value="13">
+    Enter the
+    <b>
+     Number of Hidden Layers
+    </b>
+    to use. For a linear classification, enter a value of 0. With no hidden layers the different input regions must be linearly separable with a single hyperplane. Non-linear classifications are performed by setting the
+    <b>
+     Number of Hidden Layers
+    </b>
+    to a value of 1 or greater. When the input regions are linearly inseparable and require two hyperplanes to separate the classes you must have a least one hidden layer to solve the problem. Two hidden layers are used to classify input space where the different elements are neither contiguous or connected.
+   </li>
+   <li value="14">
+    Enter the
+    <b>
+     Number of Training Iterations
+    </b>
+    .
+   </li>
+   <li value="15">
+    To enter a minimum output activation threshold, enter a value in the
+    <b>
+     Min Output Activation Threshold
+    </b>
+    field. If the activation value of the pixel being classified is less than this threshold value, then that pixel will be labeled unclassified in the output.
+   </li>
+   <li value="16">
+    Select classification output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="17">
+    Use the
+    <b>
+     Output Rule Images?
+    </b>
+    toggle button to select whether or not to create rule images. Use rule images to create intermediate classification image results before final assignment of classes. You can later use rule images in the
+    <a href="ClassifyingFromRuleImages.htm">
+     Rule Classifier
+    </a>
+    to create a new classification image without having to recalculate the entire classification.
+   </li>
+   <li value="18">
+    If you selected
+    <b>
+     Yes
+    </b>
+    to output rule images, select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="19">
+    Click
+    <b>
+     OK
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds the resulting output to the Layer Manager. During the training, a plot window appears showing the RMS error at each iteration. The error should decrease and approach a steady low value if proper training occurs. If the errors are oscillating and not converging, try using a lower training rate value or different ROIs.
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    lists the resulting neural net classification image, and rule images if output, in the Layer Manager.
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

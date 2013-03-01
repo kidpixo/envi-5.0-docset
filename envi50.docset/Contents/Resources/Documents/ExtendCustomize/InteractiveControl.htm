@@ -1,0 +1,211 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Interactive Control
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#ExtendCustomize/InteractiveControl.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Application Control
+   </span>
+  </div>
+  <h1>
+   Interactive Control
+   <a name="kanchor470">
+   </a>
+  </h1>
+  <p>
+   You can  issue program calls at the IDL command line one-by-one to display and process data instead of strictly interacting with the user interface and selecting menu options. This interactive approach is meant for users who want more control over display options or who want to run custom scripts while displaying data in the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   user interface.
+  </p>
+  <p>
+   The following steps show a simple exercise of entering program calls at the command line while also interacting with the user interface.
+  </p>
+  <p>
+   Start an IDL session and type commands into the IDL or
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   command line as shown below (in boldface).
+  </p>
+  <ol>
+   <li value="1">
+    Start the
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    application.
+   </li>
+   <p class="Code">
+    IDL&gt;
+    <b>
+     e = ENVI()
+    </b>
+   </p>
+   <p class="Tip" madcap:autonum="&lt;b&gt;Tip: &lt;/b&gt;">
+    <span class="autonumber">
+     <span>
+      <b>
+       Tip:
+      </b>
+     </span>
+    </span>
+    Windows users can also start ENVI by selecting
+    <b>
+     Start &gt; Programs &gt; ENVI
+     <i>
+      x.x
+     </i>
+     &gt; ENVI +&#160;IDL
+    </b>
+    , which will start the IDL Workbench and the ENVI application.
+   </p>
+   <li value="2">
+    Define an input image.
+   </li>
+   <p class="Code">
+    ENVI&gt;
+    <b>
+     file = FILEPATH('qb_boulder_msi', ROOT_DIR = e.Root_Dir, SUBDIR = ['data'])
+    </b>
+   </p>
+   <li value="3">
+    Open the image.
+   </li>
+   <p class="Code">
+    ENVI&gt;
+    <b>
+     image = e.OpenRaster(file)
+    </b>
+   </p>
+   <li value="4">
+    Obtain the current active view:
+   </li>
+   <p class="Code">
+    ENVI&gt;
+    <b>
+     view1 = e.GetView()
+    </b>
+   </p>
+   <li value="5">
+    Add an RGB color layer to the current view.
+   </li>
+   <p class="Code">
+    ENVI&gt;
+    <b>
+     rgb = view1.CreateLayer(image)
+    </b>
+   </p>
+   <li value="6">
+    Add a second view.
+   </li>
+   <p class="Code">
+    ENVI&gt;
+    <b>
+     view2 = e.CreateView()
+    </b>
+   </p>
+   <li value="7">
+    Add a color-infrared layer to the second view.
+   </li>
+   <p class="Code">
+    ENVI&gt;
+    <b>
+     cir = view2.CreateLayer(image, /CIR)
+    </b>
+   </p>
+   <li value="8">
+    Geographically link the two views.
+   </li>
+   <p class="Code">
+    ENVI&gt;
+    <b>
+     view1.GeoLink, view2
+    </b>
+   </p>
+   <li value="9">
+    In the
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    user interface, select
+    <b>
+     Full Extent
+    </b>
+    from the
+    <b>
+     Zoom To
+    </b>
+    drop-down list.
+   </li>
+   <li value="10">
+    Click the
+    <b>
+     Pan
+    </b>
+    button and pan around the image.
+   </li>
+   <li value="11">
+    Remove the first view from the display.
+   </li>
+   <p class="Code">
+    ENVI&gt;
+    <b>
+     view1.Close
+    </b>
+   </p>
+   <li value="12">
+    Close
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    .
+   </li>
+   <p class="Code">
+    ENVI&gt;
+    <b>
+     e.Close
+    </b>
+   </p>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

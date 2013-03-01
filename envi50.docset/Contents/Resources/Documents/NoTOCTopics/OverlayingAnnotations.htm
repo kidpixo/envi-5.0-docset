@@ -1,0 +1,235 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Overlay Annotations
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#NoTOCTopics/OverlayingAnnotations.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <h1>
+   Overlay Annotations
+  </h1>
+  <p class="HighlightText">
+   This topic describes how to add annotations to plots or images that are displayed in an
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   display group. See
+   <a href="../ROIVectorAnnotation/WorkWithAnnotations.htm">
+    Annotations
+   </a>
+   for the recommended method to creating annotations in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   .
+  </p>
+  <p>
+   For complete details on using the Annotation dialog, refer to the topic "Annotating Images and Plots" in the
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   Help. Here are some basic steps for adding annotations:
+  </p>
+  <ol>
+   <li value="1">
+    The Annotation dialog appears with the current annotation mode; Text is the default mode. Select the display group
+    <b>
+     Window
+    </b>
+    you want to use for adding the annotation. The choices are
+    <b>
+     Image
+    </b>
+    ,
+    <b>
+     Scroll
+    </b>
+    , and
+    <b>
+     Zoom
+    </b>
+    . To disable annotation mode, select
+    <b>
+     Off
+    </b>
+    .
+   </li>
+   <li value="2">
+    From the Annotation dialog menu bar, select
+    <b>
+     Object &gt;
+    </b>
+    <![CDATA[ ]]>
+    <i>
+     annotation_type
+    </i>
+    . Where
+    <i>
+     annotation_type
+    </i>
+    is one of the following:
+   </li>
+   <ul>
+    <li value="1">
+     <b>
+      Text
+     </b>
+     : (default) Type the text in the field provided mid-dialog. Left-click on the image or plot to place the text.
+    </li>
+    <li value="2">
+     <b>
+      Symbol
+     </b>
+     : The available symbols display for the
+     <b>
+      Misc
+     </b>
+     font. Left-click to select the desired symbol, which
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     highlights in red. Left-click on the image or plot to place the symbol. Additional symbols are available when you select
+     <b>
+      Special
+     </b>
+     or
+     <b>
+      Math
+     </b>
+     from the
+     <b>
+      Font
+     </b>
+     drop-down button.
+    </li>
+    <li value="3">
+     <b>
+      Rectangle
+     </b>
+     : Left-click and drag on the image or plot to draw the rectangle or middle-click to draw a square.
+    </li>
+    <li value="4">
+     <b>
+      Ellipse
+     </b>
+     : Left-click and drag on the image or plot to draw the ellipse or middle-click to draw a circle.
+    </li>
+    <li value="5">
+     <b>
+      Polygon
+     </b>
+     : Left-click on the image or plot to add polygon vertices. Right-click to complete the polygon.
+    </li>
+    <li value="6">
+     <b>
+      Polyline
+     </b>
+     : Left-click on the image or plot to add polyline vertices. Right-click to complete the polyline.
+    </li>
+    <li value="7">
+     <b>
+      Arrow
+     </b>
+     : Left-click and drag on the image or plot to draw the arrow.
+    </li>
+    <li value="8">
+     <b>
+      Scale Bar
+     </b>
+     : For data that is not georeferenced, the Input Display Pixel Size dialog appears for you to enter an x,y pixel value and units. When the value is set (or if the data was already georeferenced), left-click in the display or plot window to place the scale bar.
+    </li>
+    <li value="9">
+     <b>
+      Color Ramp
+     </b>
+     : Left-click in the display or plot to place a gray scale wedge or color table. The color table or wedge represents the currently applied
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     color table. For a gray scale image the color ramp is a gray scale wedge from the minimum gray scale value to the maximum gray scale value. For a color image, the color ramp shows the distribution of the selected color palette.
+    </li>
+    <li value="10">
+     <b>
+      Declination
+     </b>
+     : Left-click in the display or plot to place the declination diagram. The declination diagram includes any combination of arrows pointing to true North (shown with a star), grid North (shown with GN), and magnetic North (shown with MN).
+    </li>
+    <li value="11">
+     <b>
+      Map Key
+     </b>
+     : Left-click in the display or plot to place a map key that consists of colored squares and corresponding labels for each map item or class in a classification image. You can define map keys interactively.
+    </li>
+    <li value="12">
+     <b>
+      Image
+     </b>
+     : Left-click in the display or plot to place other images, such as imported logos or subsampled images, inside the current image or plot.
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     keeps a copy of the image in memory so it is best not to use large images. Note that this is not the same as mosaicking.
+    </li>
+    <li value="13">
+     <p>
+      <b>
+       Plot
+      </b>
+      : Click
+      <b>
+       Select New Plot
+      </b>
+      to select the plot from the Select Plot Window dialog. Left-click and drag in the display or plot to place the selected plot overlay. If annotating multiple plots, use a test image to annotate and output multiple plots on a single page. From the
+      <span class="DocumentTitleProductName">
+       ENVI
+      </span>
+      main menu bar, select
+      <b>
+       Raster Management &gt; Generate Test Data
+      </b>
+      and create a blank white image (see
+      <a href="../PreprocessImagery/ManageRasterData.htm#Generate">
+       Generate Test Data
+      </a>
+      for details). The plot colors are automatically reversed to black on white for output.
+     </p>
+    </li>
+   </ul>
+   <li value="3">
+    Annotation characteristics and mouse button functions vary, depending on the annotation type you select.
+   </li>
+   <li value="4">
+    Use the colored diamond-shaped handle to move the annotation to another location as needed.
+   </li>
+   <li value="5">
+    Right-click to accept the annotation placement.
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

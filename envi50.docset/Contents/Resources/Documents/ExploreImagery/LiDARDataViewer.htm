@@ -1,0 +1,717 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Explore Imagery|Open and Browse Data" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   3D LiDAR Viewer
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/TableStyles/Description.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#ExploreImagery/LiDARDataViewer.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="ExploreImagery.htm">
+    Explore Imagery
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="OpenBrowseData.htm">
+    Open and Browse Data
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    3D LiDAR Viewer
+   </span>
+  </div>
+  <h1>
+   <a name="kanchor26">
+   </a>
+   3D LiDAR Viewer
+  </h1>
+  <p>
+   Use the
+   <b>
+    3D LiDAR Viewer
+   </b>
+   to interactively explore the (x,y,z) point values in a LAS-format file. You can adjust the elevation and viewing angle of the LiDAR data, and color the point data by attribute (for example, height, intensity, return value, or feature class).
+  </p>
+  <p>
+   See the following topics:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#Before">
+     Before You Begin
+    </a>
+   </li>
+   <li value="2">
+    <a href="#Start">
+     Start the 3D LiDAR Viewer
+    </a>
+   </li>
+   <li value="3">
+    <a href="#Manage">
+     Manage Files
+    </a>
+   </li>
+   <li value="4">
+    <a href="#Navigate">
+     Navigate the Display
+    </a>
+   </li>
+   <li value="5">
+    <a href="#Set">
+     Set Display Properties
+    </a>
+   </li>
+   <li value="6">
+    <a href="#Measure">
+     Measure Data
+    </a>
+   </li>
+  </ul>
+  <h2>
+   <a name="Before">
+   </a>
+   Before You Begin
+  </h2>
+  <ul>
+   <li value="1">
+    Large datasets may take some time to display the first time they are opened; ensure that you have adequate disk space to process large LiDAR datasets.
+   </li>
+   <li value="2">
+    Ensure that the directory containing your LAS files has write permissions, as
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    may create auxiliary data files during processing to speed up the display of vectors.
+   </li>
+  </ul>
+  <h2>
+   <a name="Start">
+   </a>
+   Start the 3D LiDAR&#160;Viewer
+  </h2>
+  <p>
+   Access the 3D LiDAR Data Viewer from the Toolbox by selecting
+   <b>
+    LiDAR &gt; 3D LiDAR Data Viewer
+   </b>
+   .
+  </p>
+  <h2>
+   <a name="Manage">
+   </a>
+   Manage Files
+  </h2>
+  <ol>
+   <li value="1">
+    To open LAS files, select the
+    <b>
+     File Open
+    </b>
+    button from the LiDAR Viewer toolbar.  The Select LAS File dialog appears.
+   </li>
+   <li value="2">
+    Select one or more
+    <code>
+     .las
+    </code>
+    files, and click
+    <b>
+     Open
+    </b>
+    .
+   </li>
+   <li value="3">
+    The LiDAR Data appears in Data Manager on the left side of the viewer.
+   </li>
+   <li value="4">
+    To close a LAS file, right-click the filename in the LiDAR Viewer Data Manager and select
+    <b>
+     Close File
+    </b>
+    .
+   </li>
+   <li value="5">
+    To save the image displayed in the LiDAR Data Viewer to an image file, select the Export to TIFF button from the LiDAR Data Viewer menu bar.
+   </li>
+  </ol>
+  <h2>
+   <a name="Navigate">
+   </a>
+   Navigate the Display
+  </h2>
+  <p>
+   Use the following mouse and keyboard controls to explore the data displayed in the LiDAR Data Viewer:
+  </p>
+  <table style="mc-table-style: url('../Resources/TableStyles/Description.css');margin-left: 0;margin-right: auto;" cellspacing="0" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p>
+       Key
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p>
+       Function
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       Right mouse button +&#160;drag
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Pan (left, right, forward, backward)
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       Left mouse button +&#160;drag
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Look in all directions; pivots around a stationary point
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       Mouse wheel
+       <br />
+       (or i and o)
+       <br />
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Zoom In/Out
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       a
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Fly forward; press again to stop
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       1 through 7
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Speed of zoom, fly, and pan (1=slowest, 7=fastest)
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       z
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Record flight path; press again to stop recording
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       x
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Play an animation of the flight path
+      </p>
+      <p>
+       To save the animation to an MPEG file, select
+       <b>
+        File &gt;&#160;Save Mpeg
+       </b>
+       from the LiDAR&#160;Data Viewer menu bar
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       s
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Increase z-scale
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       b
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Decrease z-scale
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       [
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Increase level of detail (LoD) bias
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       ]
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Decrease LoD bias
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       c
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Toggle LoD coloring
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       +
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Increase point size
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <p>
+       -
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColEnd">
+      <p>
+       Decrease point size
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <p class="Tip" madcap:autonum="&lt;b&gt;Tip: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Tip:
+     </b>
+    </span>
+   </span>
+   To adjust your zoom speed, click
+   <b>
+    1-7
+   </b>
+   on your numeric keypad before using the mouse wheel to zoom.
+  </p>
+  <p>
+   Select the
+   <b>
+    Reset Camera
+   </b>
+   button from the LiDAR&#160;Data Viewer toolbar to reset the viewing location to its initial placement.
+  </p>
+  <h2>
+   <a name="Set">
+   </a>
+   Set Display Properties
+  </h2>
+  <p>
+   The following display properties affect all LiDAR files at once; you cannot set different properties for individual files when more than one file is displayed.
+   <![CDATA[ ]]>
+  </p>
+  <p>
+   The following display properties affect all LiDAR files at once; you cannot set different properties for individual files when more than one file is displayed.
+  </p>
+  <ul>
+   <li value="1">
+    Select the
+    <b>
+     Point Cloud
+    </b>
+    button to display the data as a point cloud.
+   </li>
+   <li value="2">
+    Select the
+    <b>
+     Wireframe
+    </b>
+    button to display the data as a wireframe.
+   </li>
+   <li value="3">
+    Select the
+    <b>
+     Solid Surface
+    </b>
+    button to display the data as a solid surface.
+   </li>
+   <li value="4">
+    Select the
+    <b>
+     Filter
+    </b>
+    button to open the Point Cloud Filter dialog.  This works only with the Point Cloud display style.   It can filter the display of points for
+    <b>
+     Elevation
+    </b>
+    ,
+    <b>
+     Intensity
+    </b>
+    , and by
+    <b>
+     Return
+    </b>
+    , or any combination of the three.  See the
+    <b>
+     Color Style
+    </b>
+    description below for definitions of each attribute.
+   </li>
+   <li value="5">
+    Select the
+    <b>
+     Intensity Modulation
+    </b>
+    button to perform an intensity modulation stretch on the displayed data. Select the menu option again to turn off the stretch. This type of stretch displays higher laser intensity values as brighter pixel values.
+   </li>
+   <li value="6">
+    Select the
+    <b>
+     Set Background Color
+    </b>
+    button to choose the background/fill color in the LiDAR Data Viewer.  The RGB values can be adjusted by entering the value or using the sliders.  Press the
+    <b>
+     Accept
+    </b>
+    button to retain the color setting.
+   </li>
+   <li value="7">
+    Select the
+    <b>
+     Increase Z Scale
+    </b>
+    or
+    <b>
+     Decrease Z Scale
+    </b>
+    buttons to change the vertical scaling of the data in the display.
+   </li>
+   <li value="8">
+    Select the Color Table drop down list to choose a color table.  This affects the
+    <b>
+     Color by Elevation
+    </b>
+    display.
+   </li>
+   <li value="9">
+    Select the
+    <b>
+     Color Stretch
+    </b>
+    drop down list to choose the histogram stretch.  Color stretches affect the display of the color table based on the generated histogram.  Available stretches include
+    <b>
+     Linear
+    </b>
+    ,
+    <b>
+     Linear 2%
+    </b>
+    ,
+    <b>
+     Gaussian
+    </b>
+    ,
+    <b>
+     Equalization
+    </b>
+    , and
+    <b>
+     Square Root
+    </b>
+    .   Histogram stretches are effective at removing outliers from the displayed data.
+   </li>
+   <li value="10">
+    Select the
+    <b>
+     Coloring Style
+    </b>
+    pull-down menu to choose how to group the data by color, according to various attributes in the LAS file.  The options are as follows:
+    <ul>
+     <li value="1">
+      <b>
+       Color by Elevation
+      </b>
+      (default): Height is determined by Z-values in the LAS file, which is typically height above sea level.  The color ranges from the minimum Z value to the maximum Z value.
+     </li>
+     <li value="2">
+      <b>
+       Color by Return
+      </b>
+      : This attribute represents the total number of returns for a given pulse. Color by Intensity: Intensity values are integers that represent the pulse return magnitude. Color by Class: The Class attribute classifies each point into feature types such as vegetation, building, water, etc. All points of the same class are colored the same. See the  LAS specification for details on classification.
+     </li>
+     <li value="3">
+      <b>
+       Color by RGB
+      </b>
+      : Each laser point has an RGB attribute that defines a red, green, and blue value for that point. Use this option to group the data by RGB color.
+     </li>
+    </ul>
+   </li>
+   <li value="11">
+    Select the
+    <b>
+     Point Pixel Size
+    </b>
+    slider to change the LiDAR point sizes so that you can better see individual points. Values range from 1 to 10. This option only works when
+    <b>
+     Point Cloud
+    </b>
+    is enabled.
+   </li>
+   <li value="12">
+    Select the
+    <b>
+     Move Speed
+    </b>
+    slider to increase the LiDAR point sizes so that you can better see individual points. Values range from 1 to 10. This option only works when
+    <b>
+     Point Cloud
+    </b>
+    is enabled.
+   </li>
+  </ul>
+  <h2>
+   <a name="Measure">
+   </a>
+   Measure Data
+  </h2>
+  <ol>
+   <li value="1">
+    <p>
+     Select the
+     <b>
+      1D Mensuration
+     </b>
+     button from the LiDAR Data Viewer to measure the linear distance between two data points. The Mensuration dialog appears.
+    </p>
+   </li>
+   <li value="2">
+    Zoom to the range of points that you want to measure, and  adjust the point size to better view the points.
+   </li>
+   <li value="3">
+    With the
+    <b>
+     Point 1
+    </b>
+    radio button selected, use
+    <b>
+     Shift
+    </b>
+    -
+    <b>
+     click
+    </b>
+    to select the first data point in the LiDAR&#160;Data Viewer. Your cursor must be directly on a data point to select it.
+   </li>
+   <li value="4">
+    The
+    <b>
+     Point 2
+    </b>
+    radio button is automatically selected.
+    <b>
+     Shift
+    </b>
+    -
+    <b>
+     click
+    </b>
+    to select the second data point. A yellow line is drawn between the two points, and the distance is reported in the Mensuration dialog. The distance units vary by LAS&#160;file.
+   </li>
+   <li value="5">
+    Click
+    <b>
+     Reset
+    </b>
+    in the Mensuration dialog to clear the data points and measurements.
+   </li>
+  </ol>
+  <h3>
+   Measure Data in Two or Three Dimensions
+  </h3>
+  <ol>
+   <li value="1">
+    <p>
+     Select the
+     <b>
+      Other Mensurations
+     </b>
+     button and select
+     <b>
+      2D/3D Mensuration
+     </b>
+     . The 2D/3D Mensuration dialog appears.
+    </p>
+   </li>
+   <li value="2">
+    Zoom to the range of points that you want to measure, and optionally adjust the point size to better see the points.
+   </li>
+   <li value="3">
+    <b>
+     Shift
+    </b>
+    -
+    <b>
+     click
+    </b>
+    to select the first data point in the LiDAR&#160;Data Viewer. Your cursor must be directly on a data point to select it. The first row in the table is populated with the (x,y,z) values of the point you selected.
+   </li>
+   <li value="4">
+    Repeat with at least two more points. When you select three points, a polygon is drawn between the points, and the 2D distance is reported in the 2D/3D Mensuration dialog.
+   </li>
+   <li value="5">
+    To add a third dimension and compute the height and volume of the polygon, use
+    <b>
+     Ctrl
+    </b>
+    -
+    <b>
+     click
+    </b>
+    and drag your mouse up or down inside the LiDAR&#160;Data Viewer. A translated copy of the polygon is drawn above or below your initial polygon, and the 2D/3D Mensuration dialog reports the height (
+    <b>
+     Z
+    </b>
+    ) and volume (
+    <b>
+     3D
+    </b>
+    ). The units of distance, height, and volume are based on the units of the LAS file.
+   </li>
+  </ol>
+  <h2>
+   Displaying Cross Sections of LiDAR Data
+  </h2>
+  <ol>
+   <li value="1">
+    Select
+    <b>
+     Other Mensurations
+    </b>
+    &gt;
+    <b>
+     Polygon ROI
+    </b>
+    from the LiDAR Data Viewer. The Polygon ROI dialog appears.
+   </li>
+   <li value="2">
+    Zoom to the range of points that you want to measure, and optionally adjust the point size to better see the points.
+   </li>
+   <li value="3">
+    <b>
+     Shift-click
+    </b>
+    to select the first data point in the LiDAR Data Viewer. Your cursor must be directly on a data point to select it. The first row in the table is populated with the (x,y,z) values of the point you selected.
+   </li>
+   <li value="4">
+    The Xobjview window displays an overhead snapshot of the points in the selected region.  Slide the Upper and Lower limits to filter the view by elevation.
+   </li>
+  </ol>
+  <p>
+   <b>
+    References
+   </b>
+  </p>
+  <p>
+   <a name="reference">
+   </a>
+   ASPRS, 2009. LAS Specification, Version 1.3 - R10.
+   <a href="http://www.asprs.org/society/committees/standards/lidar_exchange_format.html" target="_blank">
+    http://www.asprs.org/society/committees/standards/lidar_exchange_format.html
+   </a>
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

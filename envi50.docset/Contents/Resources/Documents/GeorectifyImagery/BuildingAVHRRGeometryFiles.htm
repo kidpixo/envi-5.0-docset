@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Georectify|Georeferencing Tools" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Build AVHRR Geometry Files
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#GeorectifyImagery/BuildingAVHRRGeometryFiles.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="GeorectifyImagery.htm">
+    Georectify
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="GeoreferencingTools.htm">
+    Georeferencing Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Build AVHRR Geometry Files
+   </span>
+  </div>
+  <h1>
+   Build AVHRR Geometry Files
+   <a name="kanchor236">
+   </a>
+  </h1>
+  <p>
+   Use
+   <b>
+    AVHRR Build Geometry File
+   </b>
+   to calculate the geometry values for each pixel. You may select which values to calculate: latitude, longitude, solar zenith, and/or sensor zenith angles.
+  </p>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   uses the same solar geometry calculations as the NOAA Earth System Research Laboratory (see
+   <a href="http://www.srrb.noaa.gov/" target="_blank">
+    http://www.srrb.noaa.gov
+   </a>
+   ), except that it uses lookup tables to obtain equations for time, declination, and julian day.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   You can also georeference your AVHRR data by using the results from this procedure as the IGM input file in Georeferencing from Input Geometry.
+  </p>
+  <ol>
+   <li value="1">
+    Open an AVHRR file by selecting
+    <b>
+     File &gt; Open As &gt; AVHRR &gt;
+    </b>
+    <i>
+     data_type
+    </i>
+    from the menu bar.
+   </li>
+   <li value="2">
+    Select
+    <b>
+     Geometric Correction &gt; Build Geometry File by Sensor &gt; AVHRR Build Geometry File
+    </b>
+    from the Toolbox. The AVHRR Input File dialog appears.
+   </li>
+   <li value="3">
+    Select the original AVHRR file.
+   </li>
+   <li value="4">
+    Click
+    <b>
+     OK
+    </b>
+    . The AVHRR Image Geometry Parameters dialog appears.
+   </li>
+   <li value="5">
+    Select which values to compute.
+   </li>
+   <li value="6">
+    <p>
+     Select the
+     <b>
+      Degrees
+     </b>
+     or
+     <b>
+      Radians
+     </b>
+     radio button to indicate the output units for zenith angle.
+    </p>
+    <p>
+     The zenith angle is measured vertically from each pixel to the sensor or sun (straight above the pixel = 0 degrees).
+    </p>
+   </li>
+   <li value="7">
+    Enter an output filename.
+   </li>
+   <li value="8">
+    Select
+    <b>
+     Double
+    </b>
+    or
+    <b>
+     Floating Point
+    </b>
+    output data type from the
+    <b>
+     Output Data Type
+    </b>
+    drop-down list.
+   </li>
+   <li value="9">
+    Click
+    <b>
+     OK
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    extracts the header information and calculates the geometry values for each pixel.
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

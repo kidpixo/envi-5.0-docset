@@ -1,0 +1,356 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Classification|Classification Tools|Supervised Methods" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Maximum Likelihood
+  </title>
+  <link href="../../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../../ENVIHelp_CSH.htm#FindFeatures/Classification/ClassificationTools/MaximumLikelihood.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../ClassificationMain.htm">
+    Classification
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="ClassificationTools.htm">
+    Classification Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="AdaptiveCoherenceEstimator.htm">
+    Supervised Methods
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Maximum Likelihood
+   </span>
+  </div>
+  <h1>
+   Maximum Likelihood
+   <a name="kanchor291">
+   </a>
+  </h1>
+  <p>
+   Maximum likelihood classification assumes that the statistics for each class in each band are normally distributed and calculates the probability that a given pixel belongs to a specific class. Unless you select a probability threshold, all pixels are classified. Each pixel is assigned to the class that has the highest probability (that is, the maximum likelihood). If the highest probability is smaller than a threshold you specify, the pixel remains unclassified.
+  </p>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   implements maximum likelihood classification by calculating the following discriminant functions for each pixel in the image (Richards, 1999):
+  </p>
+  <p>
+   <img src="../../../Resources/Images/Classification/max_likelihood_equation_296x19.gif" style="margin-left: 42.97464px;margin-top: 8.39952px;margin-right: 42.97537px;margin-bottom: 8.40024px;width: 296;height: 19;" />
+  </p>
+  <p>
+   Where:
+  </p>
+  <p class="indent">
+   <i>
+    i
+   </i>
+   = class
+  </p>
+  <p class="indent">
+   <i>
+    x
+   </i>
+   =
+   <i>
+    n
+   </i>
+   -dimensional data (where
+   <i>
+    n
+   </i>
+   is the number of bands)
+  </p>
+  <p class="indent">
+   <i>
+    p
+   </i>
+   (ω
+   <sub style="font-style: italic;">
+    i
+   </sub>
+   ) = probability that class ω
+   <sub style="font-style: italic;">
+    i
+   </sub>
+   occurs in the image and is assumed the same for all classes
+  </p>
+  <p class="indent">
+   |Σ
+   <sub style="font-style: italic;">
+    i
+   </sub>
+   | = determinant of the covariance matrix of the data in class ω
+   <sub style="font-style: italic;">
+    i
+   </sub>
+  </p>
+  <p class="indent">
+   Σ
+   <sub style="font-style: italic;">
+    i
+   </sub>
+   <sup>
+    -1
+   </sup>
+   = its inverse matrix
+  </p>
+  <p class="indent">
+   <i>
+    m
+   </i>
+   <sub style="font-style: italic;">
+    i
+   </sub>
+   = mean vector
+  </p>
+  <p>
+   <b>
+    Reference
+   </b>
+   <![CDATA[ ]]>
+  </p>
+  <p>
+   Richards, J.A., 1999,
+   <i>
+    Remote Sensing Digital Image Analysis
+   </i>
+   , Springer-Verlag, Berlin, p. 240.
+  </p>
+  <ol>
+   <li value="1">
+    Select one of the following:
+    <ul>
+     <li value="1">
+      From the Toolbox, select
+      <b>
+       Classification &gt; Supervised Classification &gt; Maximum Likelihood Classification
+      </b>
+      .
+     </li>
+     <li value="2">
+      From the Endmember Collection dialog menu bar, select
+      <b>
+       Algorithm &gt; Maximum Likelihood
+      </b>
+      .
+     </li>
+    </ul>
+   </li>
+   <p class="indent">
+    The Classification Input File dialog appears.
+   </p>
+   <li value="2">
+    Select an input file and perform optional spatial and spectral
+    <a href="../../../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , and/or masking, then click
+    <b>
+     OK
+    </b>
+    . The Maximum Likelihood Parameters dialog appears.
+   </li>
+   <li value="3">
+    Import (or re-import) the endmembers in the Endmember Collection dialog after selecting
+    <b>
+     Maximum Likelihood
+    </b>
+    as the classification method so that
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    will import the endmember covariance information along with the endmember spectra.
+   </li>
+   <li value="4">
+    In the
+    <b>
+     Select Classes from Regions
+    </b>
+    list, select ROIs and/or vectors as training classes. The ROIs listed are derived from the available ROIs in the ROI Tool dialog. The vectors listed are derived from the open vectors in the Available Vectors List.
+   </li>
+   <li value="5">
+    Select one of the following thresholding options from the
+    <b>
+     Set Probability Threshold
+    </b>
+    area:
+    <ul>
+     <li value="1">
+      <b>
+       None
+      </b>
+      : Use no threshold.
+     </li>
+     <li value="2">
+      <b>
+       Single Value
+      </b>
+      : Use a single threshold for all classes. Enter a value between 0 and 1 in the
+      <b>
+       Probability Threshold
+      </b>
+      field.
+      <span class="DocumentTitleProductName">
+       ENVI
+      </span>
+      does not classify pixels with a value lower than this value.
+     </li>
+     <li value="3">
+      <b>
+       Multiple Values
+      </b>
+      : Enter a different threshold for each class. Use this option as follows:
+     </li>
+    </ul>
+    <ol style="list-style-type: upper-alpha;">
+     <li value="1">
+      In the list of classes, select the class or classes to which you want to assign different threshold values and click
+      <b>
+       Multiple Values
+      </b>
+      . The Assign Probability Threshold dialog appears.
+     </li>
+     <li value="2">
+      Select a class, then enter a threshold value in the field at the bottom of the dialog. Repeat for each class. Click
+      <b>
+       OK
+      </b>
+      when you are finished.
+     </li>
+    </ol>
+   </li>
+   <li value="6">
+    Enter a
+    <b>
+     Data Scale Factor
+    </b>
+    . The scale factor is a division factor used to convert integer scaled reflectance or radiance data into floating-point values. For example, for reflectance data scaled into the range of zero to 10,000, set the scale factor to 10,000. For uncalibrated integer data, set the scale factor to the maximum value the instrument can measure 2
+    <sup>
+     n
+    </sup>
+    - 1, where
+    <i>
+     n
+    </i>
+    is the bit depth of the instrument). For example, for 8-bit instruments (such as Landsat 4) set the scale factor to 255, for 10-bit instruments (such as NOAA 12 AVHRR) set the scale factor to 1023, for 11-bit instruments (such as IKONOS) set the scale factor to 2047.
+   </li>
+   <li value="7">
+    Select classification output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="8">
+    Use the
+    <b>
+     Output Rule Images?
+    </b>
+    toggle button to select whether or not to create rule images. Use rule images to create intermediate classification image results before final assignment of classes. You can later use rule images in the
+    <a href="ClassifyingFromRuleImages.htm">
+     Rule Classifier
+    </a>
+    to create a new classification image without having to recalculate the entire classification.
+   </li>
+   <li value="9">
+    If you selected
+    <b>
+     Yes
+    </b>
+    to output rule images, select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="10">
+    Click
+    <b>
+     Preview
+    </b>
+    to
+    <a href="Parallelepiped.htm#previewing">
+     see a 256&#160;x&#160;256 spatial subset
+    </a>
+    from the center of the output classification image. Change the parameters as needed and click
+    <b>
+     Preview
+    </b>
+    again to update the display.
+   </li>
+   <li value="11">
+    Click
+    <b>
+     OK
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds the resulting output to the Layer Manager. The rule images, one per class, contain a maximum likelihood discriminant function with a modified Chi Squared probability distribution. Higher rule image values indicate higher probabilities. The final classification allocates each pixel to the class with the highest probability.
+   </li>
+  </ol>
+  <p>
+   To convert between the rule image’s data space and probability, use the
+   <a href="ClassifyingFromRuleImages.htm">
+    Rule Classifier
+   </a>
+   . For the classification threshold, enter the probability threshold used in the maximum likelihood classification as a percentage (for example, 95%). The Rule Classifier automatically finds the corresponding rule image Chi Squared value.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   If you specify an ROI as a training set for maximum likelihood classification, you may receive a “Too May Iterations in TQLI” error message if the ROI includes only pixels that all have the same value in one band. A band with no variance at all (every pixel in that band in the subset has the same value) leads to a singularity problem where the band becomes a near-perfect linear combination of other bands in the dataset, resulting in an error message.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

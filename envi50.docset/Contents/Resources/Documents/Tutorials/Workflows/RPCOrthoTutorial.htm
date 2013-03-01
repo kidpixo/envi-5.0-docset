@@ -1,0 +1,697 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Tutorials|Using Workflows" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   RPC&#160;Orthorectification Tutorial
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/TableStyles/Description.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#Tutorials/Workflows/RPCOrthoTutorial.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../Tutorials.htm">
+    Tutorials
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../Tutorials.htm">
+    Using Workflows
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    RPC&#160;Orthorectification
+   </span>
+  </div>
+  <h1>
+   RPC&#160;Orthorectification Tutorial
+  </h1>
+  <p>
+   A rational polynomial coefficient (RPC) model is a type of sensor model, which is a mathematical model that maps the physical relationship between 3D ground points and 2D image points.  RPCs are not the same as a map projection. Most modern high-resolution sensors such as QuickBird and GeoEye-1 include pre-computed RPCs with their imagery. If your file has RPCs, you can use them to georeference image pixels.
+  </p>
+  <p>
+   In this tutorial, you will use ground control points (GCPs) and a digital elevation model (DEM) to improve the accuracy of RPC orthorectification for a QuickBird scene of El Paso, Texas.
+  </p>
+  <h2>
+   Files Used in this Tutorial
+  </h2>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   Resource DVD:
+   <code>
+    rpc_ortho
+   </code>
+  </p>
+  <table style="mc-table-style: url('../../Resources/TableStyles/Description.css');margin-left: 0;margin-right: auto;" cellspacing="0" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p>
+       Folder
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p>
+       Description
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <pre xml:space="preserve">
+       000000004627_01_P001\
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       This folder contains a multispectral QuickBird image of El Paso, TX (in GeoTIFF format), at 2.44 meter resolution, captured on January 5, 2002. The folder also includes associated ephemeris data, metadata, and RPCs.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <pre xml:space="preserve">
+       DEM\
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       This folder contains a National Elevation Dataset (NED) digital elevation model at 1/3 arc second resolution.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+      <pre xml:space="preserve">
+       GCPs\
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColEnd">
+      <p>
+       This folder contains a shapefile with 21 GCPs that lie within the extent of the El Paso image.
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h2>
+   Selecting Input Files
+  </h2>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Geometric Correction &gt; Orthorectification &gt; RPC Orthorectification Workflow
+    </b>
+    . The File Selection panel appears.
+   </li>
+   <li value="2">
+    Click
+    <b>
+     Browse
+    </b>
+    next to the
+    <b>
+     Input File
+    </b>
+    field.
+   </li>
+   <li value="3">
+    Click
+    <b>
+     Open File
+    </b>
+    , navigate to
+    <code>
+     rpc_ortho\000000004627_01_P001
+    </code>
+    , and select
+    <code>
+     02JAN05175446-M1BS-000000004627_01_P001.tif
+    </code>
+    . Click
+    <b>
+     Open
+    </b>
+    , then
+    <b>
+     OK
+    </b>
+    .
+   </li>
+   <li value="4">
+    Click
+    <b>
+     Browse
+    </b>
+    next to the
+    <b>
+     DEM File
+    </b>
+    field.
+   </li>
+   <li value="5">
+    Click
+    <b>
+     Open File
+    </b>
+    , navigate to
+    <code>
+     rpc_ortho\DEM
+    </code>
+    , and select
+    <code>
+     DEM.tif
+    </code>
+    . Click
+    <b>
+     Open
+    </b>
+    , then
+    <b>
+     OK
+    </b>
+    .
+   </li>
+   <li value="6">
+    Click
+    <b>
+     Next
+    </b>
+    . The image displays, and the RPC Refinement panel appears. A new view is added to the Layer Manager that contains an Overview, GCPs, and the image filename.
+   </li>
+   <li value="7">
+    From the
+    <b>
+     Zoom To
+    </b>
+    drop-down list in the main toolbar, select
+    <b>
+     Full Extent
+    </b>
+    .
+   </li>
+  </ol>
+  <h2>
+   Working with Ground Control Points
+  </h2>
+  <p>
+   In this section, you will load some existing ground control points (GCPs) into the workflow, evaluate their horizontal and vertical accuracy, and adjust them as needed to improve the accuracy of the RPC model.
+  </p>
+  <ol>
+   <li value="1">
+    Click the
+    <b>
+     Load GCPs
+    </b>
+    button in the RPC Refinement panel.
+   </li>
+   <li value="2">
+    Navigate to
+    <code>
+     rpc_ortho\GCPs
+    </code>
+    , and select
+    <code>
+     el_paso_gcps.shp
+    </code>
+    . Click
+    <b>
+     Open
+    </b>
+    . The GCPs appear as green crosshairs in the image display, and they are listed in the RPC Refinement panel as follows:
+   </li>
+   <p>
+    <img src="../../Resources/Images/RPCOrtho/tutorial_gcp_list.gif" />
+   </p>
+   <p>
+    This panel provides some basic details about the GCPs:
+   </p>
+   <ul>
+    <li value="1">
+     The green check marks indicate that these GCPs are
+     <i>
+      active
+     </i>
+     and will be used to adjust the RPC model. These points are called
+     <i>
+      adjustment GCPs
+     </i>
+     .
+    </li>
+    <li value="2">
+     When you select a GCP in the list, the details of the GCP location appear in the GCP Properties table to the right. Included are the longitude and latitude in a Geographic Lat/Lon WGS-84 projection; height in meters above the WGS-84 ellipsoid; image coordinates; status (adjustment or independent); and error statistics. The next section will discuss the error statistics in more detail.
+    </li>
+    <li value="3">
+     The
+     <b>
+      Horizontal Accuracy
+     </b>
+     value is the horizontal root mean square error (RMSE) in meters. In the example above, all of the adjustment GCPs taken together would yield an orthorectified image that is accurate to within 33 meters. You will try to reduce this value by assessing the quality of your GCPs.
+    </li>
+   </ul>
+   <li value="3">
+    Select
+    <b>
+     GCP 1
+    </b>
+    from the list, The image display centers over that point, and the GCP 1 marker is surrounded by a cyan-colored box.
+   </li>
+   <li value="4">
+    Right-click on
+    <b>
+     GCP 1
+    </b>
+    in the list, and select
+    <b>
+     Change GCP&#160;status
+    </b>
+    . It changes from an adjustment GCP to an
+    <i>
+     independent GCP
+    </i>
+    (indicated by a grey diamond symbol). It remains in the GCP list and provides an independent accuracy measurement, but it will not be used to adjust the RPC model and will not contribute to the overall model error. Changing the GCP&#160;status allows you to turn GCPs on and off without actually deleting them.
+   </li>
+   <li value="5">
+    Right-click on
+    <b>
+     GCP 1
+    </b>
+    again and select
+    <b>
+     Change GCP status
+    </b>
+    to change it back to an adjustment GCP.
+   </li>
+  </ol>
+  <h3>
+   Viewing Errors
+  </h3>
+  <p>
+   In this section, you will assess the quality of your GCPs and how they contribute to the overall accuracy of the orthorectification, Once you identify GCPs with large errors, you can adjust them or delete them, then re-evaluate the accuracy of the orthorectification.
+  </p>
+  <p>
+   Rather than give a mathematical definition of all of the available error statistics, this tutorial will highlight the most important ones to evaluate and give you a more practical approach to understanding their meaning. For more details on the error statistics, click the
+   <b>
+    Help
+   </b>
+   button in the lower-left corner of the RPC Refinement panel. When the ENVI Help displays, follow the link to "Accuracy Assessment Background."
+  </p>
+  <ol>
+   <li value="1">
+    From the
+    <b>
+     Zoom To
+    </b>
+    drop-down menu in the main toolbar, select
+    <b>
+     Full Extent
+    </b>
+    .
+   </li>
+   <li value="2">
+    In the RPC Refinement panel, click the
+    <b>
+     Show error overlay
+    </b>
+    button
+    <img src="../../Resources/Images/IconsButtons/ShowErrorOverlay.gif" class="VertCenter" />
+    . A transparent image overlays the scene, showing a color gradient of interpolated GCP errors. The darkest areas indicate GCPs with the least error, and the bright red areas indicate GCPs with higher errors.
+   </li>
+   <p>
+    The white area represents a potentially large error with a GCP location. If you scroll to the middle of the GCP list, you will see that GCP 14 has an orange marker. This means that the difference between the image-estimated ground coordinate and the GCP location is greater than three times the root mean square error in the X or Y direction.
+   </p>
+   <p>
+    The error overlay should look like the following image:
+   </p>
+   <p>
+    <img src="../../Resources/Images/RPCOrtho/tutorial_error_overlay.gif" />
+   </p>
+   <p>
+    The error overlay is useful for quickly evaluating how the GCP errors are distributed across the entire image. Use the
+    <b>
+     Zoom
+    </b>
+    and
+    <b>
+     Pan
+    </b>
+    tools in the main toolbar to explore the image in more detail if needed.
+   </p>
+   <li value="3">
+    In the RPC Refinement panel, select
+    <![CDATA[ ]]>
+    <b>
+     GCP 14
+    </b>
+    . The image display centers over that GCP&#160;location. The GCP marker is surrounded by a cyan-colored box in the image display.
+   </li>
+   <li value="4">
+    Look at the
+    <b>
+     Error Magnitude
+    </b>
+    value in the GCP Properties table. Compare its value of -135.59 meters to the
+    <b>
+     Error Magnitude
+    </b>
+    values of other GCPs in the list, and you should see that this GCP does have the highest error.
+   </li>
+   <p>
+    <img src="../../Resources/Images/RPCOrtho/tutorial_gcp14_error_magnitude.gif" />
+   </p>
+   <li value="5">
+    From the
+    <b>
+     Zoom To
+    </b>
+    drop-down list in the main toolbar, select
+    <b>
+     800% (8:1)
+    </b>
+    .
+   </li>
+   <li value="6">
+    In the RPC Refinement panel, click the
+    <b>
+     Show error vector
+    </b>
+    button
+    <img src="../../Resources/Images/IconsButtons/ShowErrorVector.gif" class="VertCenter" />
+    . This tool provides another way to view individual GCP errors. You should see something similar to the following:
+   </li>
+   <p>
+    <img src="../../Resources/Images/RPCOrtho/tutorial_error_vector_GCP14.gif" />
+   </p>
+   <p>
+    The cyan-colored vector shows the
+    <i>
+     direction
+    </i>
+    and the
+    <i>
+     magnitude
+    </i>
+    of the error in GCP 14. Notice how the vector points to the southwest. If you look at the
+    <b>
+     Error X
+    </b>
+    value in the
+    <b>
+     GCP Properties
+    </b>
+    table, you will see that GCP 14 shows a predicted difference of -20.98 meters between the ground point and the corresponding image point, in the x-direction. Since the value is negative, the error is to the west. The
+    <b>
+     Error Y
+    </b>
+    value shows a predicted difference of -135.59 meters in the y-direction; since the value is negative, the error is to the south. So both values confirm what the error vector shows.
+   </p>
+   <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+    <span class="autonumber">
+     <span>
+      <b>
+       Note:
+      </b>
+     </span>
+    </span>
+    The Error Z value is not shown in the error vector. It represents a predicted difference between the
+    <b>
+     Height
+    </b>
+    value of the GCP and the corresponding DEM height above the WGS-84 ellipsoid.
+   </p>
+   <p>
+    The length of the cyan-colored vector corresponds to the
+    <b>
+     Error Magnitude
+    </b>
+    value (137.2 meters).
+   </p>
+   <p>
+    The red circle around GCP&#160;14 shows the
+    <i>
+     circular standard error
+    </i>
+    at the 95% confidence level.This means that after you orthorectify the image, you are 95% confident that the error of this point will be within this circle. The
+    <b>
+     CE95
+    </b>
+    value under the Statistics tab gives the numeric value of this circle, in meters.
+   </p>
+  </ol>
+  <h3>
+   Correcting Errors
+  </h3>
+  <p>
+   If you happen to have more accurate geolocation information available for a given GCP, you can directly edit its
+   <b>
+    Map X
+   </b>
+   and
+   <b>
+    Map Y
+   </b>
+   values in the
+   <b>
+    GCP Properties
+   </b>
+   table. You can also experiment with different
+   <b>
+    Image X
+   </b>
+   and
+   <b>
+    Image Y
+   </b>
+   values. However, in most cases, it is more practical to interactively move the GCP&#160;location in the image display, then re-evaluate its error statistics.
+  </p>
+  <ol>
+   <li value="1">
+    With the
+    <b>
+     Select
+    </b>
+    icon
+    <img src="../../Resources/Images/IconsButtons/Select.gif" class="VertCenter" />
+    active in the main toolbar, click and drag the GCP 22 marker southeast to the starting point of the cyan-colored error vector.
+   </li>
+   <p>
+    <img src="../../Resources/Images/RPCOrtho/tutorial_error_vector_drag_GCP.gif" />
+   </p>
+   <p>
+    The error vector and error overlay both automatically update. You can see from the updated error vector and the Error Magnitude value how the error decreased for this GCP. But how did this affect the overall model? How did the
+    <b>
+     Horizontal Accuracy
+    </b>
+    value change?
+   </p>
+   <li value="2">
+    From the
+    <b>
+     Zoom To
+    </b>
+    drop-down list, select
+    <b>
+     Full Extent
+    </b>
+    . Notice how the GCP errors have been re-computed and how this affects the error overlay.
+   </li>
+   <li value="3">
+    In the RPC Refinement panel, select
+    <b>
+     GCP 14
+    </b>
+    and click the
+    <b>
+     Delete
+    </b>
+    button
+    <img src="../../Resources/Images/IconsButtons/Delete.gif" class="VertCenter" />
+    . Interactively moving the GCP&#160;location decreased its error, but after visually evaluating this GCP, you realize the position and elevation are incorrect. You do not have much confidence in the position of the GCP based on accurate site maps or aerial photos, so you choose to delete the GCP. The
+    <b>
+     Horizontal Accuracy
+    </b>
+    is now 5 meters.
+   </li>
+   <li value="4">
+    You can continue selecting GCPs and interactively moving their locations, but the entire model will recompute each time and you will still see areas with high errors when viewing the error overlay. This process could go on indefinitely. You do not want to adjust too many GCP locations; two or three will suffice.
+   </li>
+  </ol>
+  <h3>
+   Understanding Vertical Accuracy
+  </h3>
+  <p>
+   Elevation data significantly improves the accuracy of RPC&#160;orthorectification, so that is why a digital elevation model (DEM) is required for input. The RPC Orthorectification workflow uses elevation data in conjunction with horizontal geolocation data to compute an RPC solution. Various statistics are available for you to evaluate the vertical accuracy of the model.
+  </p>
+  <ol>
+   <li value="1">
+    Under the Advanced tab, the
+    <b>
+     Geoid Correction
+    </b>
+    option is enabled by default. You should leave this option enabled to improve the vertical and horizontal accuracy of the RPC model. If you disable this option, the Horizontal Accuracy value will increase significantly. The RPC Orthorectification workflow performs geoid correction by using the Earth Gravitational Model (EGM) 1996 to automatically determine the geoid offset, which is displayed next to the
+    <b>
+     Geoid Correction
+    </b>
+    option.
+   </li>
+   <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+    <span class="autonumber">
+     <span>
+      <b>
+       Note:
+      </b>
+     </span>
+    </span>
+    The
+    <i>
+     geoid offset
+    </i>
+    is the height (in meters) of the geoid above the WGS-84 ellipsoid. This constant value is added to every value in the DEM. The geoid offset accounts for the difference between the elevation above mean sea level and the height above the ellipsoid.
+   </p>
+   <li value="2">
+    Select the Statistics tab. The
+    <b>
+     RMSE Z
+    </b>
+    value is the root mean square of the
+    <b>
+     Error Z
+    </b>
+    values for the entire image. It reports the vertical accuracy of the entire RPC model. The
+    <b>
+     LE95
+    </b>
+    value is the difference (in meters) between the GCP-measured elevation and the DEM elevation, using the calculated geoid offset at the 95% confidence level.
+   </li>
+  </ol>
+  <h2>
+   Saving GCPs to a Shapefile
+  </h2>
+  <p>
+   Once you are satisfied with the quality of your GCPs, click the
+   <b>
+    Save GCPs
+   </b>
+   button under the
+   <br />
+   GCPs tab in the RPC Refinement panel. Select an output shapefile name and location. If you quit the workflow, you can continue where you left off by re-loading the input image, DEM, and new GCP&#160;shapefile.
+  </p>
+  <p>
+   Now that you have reduced the individual GCP errors and the overall model error, you can preview the orthorectification in a limited area before orthorectifying the entire image.
+  </p>
+  <h2>
+   Previewing Orthorectification Results
+  </h2>
+  <ol>
+   <li value="1">
+    In the GCPs tab, click the
+    <b>
+     Hide error overlay
+    </b>
+    and
+    <b>
+     Hide error vector
+    </b>
+    buttons.
+   </li>
+   <li value="2">
+    From the
+    <b>
+     Zoom To
+    </b>
+    drop-down list, select
+    <b>
+     200% (2:1)
+    </b>
+    .
+   </li>
+   <li value="3">
+    In the
+    <b>
+     Go To
+    </b>
+    field in the main toolbar, type pixel coordinates
+    <b>
+     2925, 2500
+    </b>
+    and press
+    <b>
+     Enter
+    </b>
+    . The image centers over a residential area with a freeway.
+   </li>
+   <li value="4">
+    Enable the
+    <b>
+     Preview
+    </b>
+    option in the RPC Refinement panel. A Preview Portal appears, showing the orthorectification results. You should see a significant shift in the location of roads, compared to the original image.
+   </li>
+  </ol>
+  <h2>
+   Orthorectifying the Entire Image
+  </h2>
+  <ol>
+   <li value="1">
+    Select the Export tab. Choose a directory where you want to create the orthorectified image.
+   </li>
+   <li value="2">
+    Enable the
+    <b>
+     Export Orthorectification Report
+    </b>
+    option, and choose a directory for the output report. This report will list the source files used, adjustment and independent GCPs, geoid offset, error statistics, and output settings.
+   </li>
+   <li value="3">
+    Click
+    <b>
+     Finish
+    </b>
+    to generate the orthorectified image. This process will take several minutes due to the large file size. When processing is complete, the RPC Refinement panel closes, and the input and output images are loaded into the active view.
+   </li>
+   <li value="4">
+    When you are finished evaluating the orthorectified image, exit
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    .
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

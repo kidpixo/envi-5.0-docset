@@ -1,0 +1,210 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Vegetation" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Vegetation Index Calculator
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#Vegetation Analysis/VegetationIndexCalculator.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="VegetationAnalysis.htm">
+    Vegetation
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Vegetation Index Calculator
+   </span>
+  </div>
+  <h1>
+   Vegetation Index Calculator
+  </h1>
+  <p>
+   <a name="kanchor450">
+   </a>
+   Use the
+   <b>
+    Vegetation Index Calculator
+   </b>
+   to compute
+   <a href="VegetationIndices.htm">
+    vegetation indices (VIs)
+   </a>
+   that are applicable to your imagery. When you select an input file,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   determines which VIs it can calculate from the input dataset and you choose the specific VIs for
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   to calculate.
+  </p>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   provides
+   <a href="VegetationIndices.htm">
+    27 VIs
+   </a>
+   you can use to detect the presence and relative abundance of various vegetation properties. All, some, or none of the VIs may be available for a given file. Each VI depends upon sensor response in two or more spectral bands, which are combined to create a single index value that corresponds to the density, intensity, or volume of a biophysical parameter significant to vegetation.
+  </p>
+  <p>
+   Applying VIs to vegetative materials to analyze their conditions does not produce absolute results. The results derived from the VIs are relative when determining where distribution or stress is, providing a theoretical level ranging from a low to high value.
+  </p>
+  <p>
+   Shadowed or highly shaded areas in an input file may not have enough light to cause the vegetation signal to register for the VIs. Atmospheric correction does not improve the quality of these areas. Under these conditions, the VIs may provide inaccurate representations of the vegetation conditions.
+  </p>
+  <p>
+   To generate ecosystem-specific classifications from your data, see
+   <a href="VegetationAnalysisTools.htm">
+    Vegetation Analysis Tools
+   </a>
+   .
+  </p>
+  <p>
+   To calculate VIs:
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Spectral &gt; Vegetation &gt; Vegetation Index Calculator
+    </b>
+    . The Vegetation Indices Input File dialog appears.
+   </li>
+   <li value="2">
+    Select an input file and perform optional spatial and spectral
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , and/or masking, then click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+   <li value="3">
+    <p>
+     Click
+     <b>
+      OK
+     </b>
+     . The Vegetation Indices Parameters dialog appears.
+    </p>
+    <p>
+     If the
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     header for the input file contains a bad bands list, the bad bands are excluded from the VI calculation.
+    </p>
+   </li>
+   <li value="4">
+    Select one or more VIs to calculate for the input file from the
+    <b>
+     Select Vegetation Indices
+    </b>
+    <b style="font-weight: normal;">
+     list
+    </b>
+    . This list shows the VIs that
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    verified as applicable to the input file. All applicable VIs are selected by default. You must select at least one VI to continue. The number of selected VIs appears in the
+    <b>
+     Number of items selected
+    </b>
+    field.
+   </li>
+   <li value="5">
+    <p>
+     Use the
+     <b>
+      Biophysical Cross Checking
+     </b>
+     toggle button to specify whether or not to perform biophysical cross-checking for this calculation. Biophysical cross-checking compares VIs to validate their results. If conflicting values exist between VIs (for example, a greenness index shows insufficient vegetation to support the water content measurement from a canopy water index), those data values are ignored. When biophysical cross-checking is turned off, masking is not applied, and
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     stores all output data in the result. The default value is
+     <b>
+      On
+     </b>
+     .
+    </p>
+    <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+     <span class="autonumber">
+      <span>
+       <b>
+        Note:
+       </b>
+      </span>
+     </span>
+     Do not set
+     <b style="font-weight: normal;">
+      Biophysical Cross Checking
+     </b>
+     to
+     <b>
+      On
+     </b>
+     if you plan to use the VI calculations in the vegetation analysis tools.
+    </p>
+   </li>
+   <li value="6">
+    Select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="7">
+    Click
+    <b>
+     OK
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds the resulting output, a band for each calculated VI, to the Layer Manager. From the Available Bands List, you can open each VI for analysis.
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

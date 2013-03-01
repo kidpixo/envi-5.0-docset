@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plist version="1.0">
+<dict>
+<key>CFBundleIdentifier</key>
+<string>envi50</string>
+<key>CFBundleName</key>
+<string>envi50</string>
+<key>DocSetPlatformFamily</key>
+<string>envi50</string>
+<key>isDashDocset</key><true/>
+<key>dashIndexFilePath</key>
+<string>index.htm</string>
+</dict>
+</plist>
+

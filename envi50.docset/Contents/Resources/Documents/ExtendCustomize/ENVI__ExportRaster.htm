@@ -1,0 +1,543 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming|Routines|Application Control|ENVI function" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   ENVI::ExportRaster
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/TableStyles/VersionTable.css" rel="stylesheet" />
+  <link href="../Resources/TableStyles/Description.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#ExtendCustomize/ENVI__ExportRaster.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="Routines.htm">
+    Routines
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="ENVI.htm">
+    Application Control
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    ENVI::ExportRaster
+   </span>
+  </div>
+  <h1 class="ObjMethod">
+   ENVI::ExportRaster
+  </h1>
+  <p>
+   The
+   <a name="kanchor482">
+   </a>
+   ExportRaster method allows the user the save a raster to a specific format. This method creates a new file, but does not change the existing raster.
+  </p>
+  <h2 class="API">
+   Example
+  </h2>
+  <p class="Code">
+   ; Launch the application
+  </p>
+  <p class="Code">
+   e = ENVI()
+  </p>
+  <p xml:space="preserve" class="Code">
+   &#160;
+  </p>
+  <p xml:space="preserve" class="Code">
+   ; Create an ENVIRaster
+  </p>
+  <p class="Code">
+   file = FILEPATH('qb_boulder_pan', ROOT_DIR=e.ROOT_DIR, $
+  </p>
+  <p class="Code_Indented">
+   SUBDIRECTORY = ['data'])
+  </p>
+  <p class="Code">
+   raster1 = e.OpenRaster(file)
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Create a scratch output file
+  </p>
+  <p class="Code">
+   newFile = e.GetTemporaryFilename()
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Export a subset of the raster as a TIFF file
+  </p>
+  <p class="Code">
+   e.ExportRaster, raster1, newFile, 'TIFF', SUB_RECT=[500,2500,1699,3999]
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Open the TIFF file
+  </p>
+  <p class="Code">
+   raster2 = e.OpenRaster(newFile)
+  </p>
+  <p class="Code">
+   view = e.GetView()
+  </p>
+  <p class="Code">
+   layer = view.CreateLayer(raster2)
+  </p>
+  <h2 class="API">
+   Syntax
+  </h2>
+  <p class="Syntax">
+   <i>
+    ENVI
+   </i>
+   .ExportRaster,
+   <i>
+    Raster
+   </i>
+   ,
+   <i>
+    URI
+   </i>
+   ,
+   <i>
+    Format
+   </i>
+   [, BANDS =
+   <i>
+    array
+   </i>
+   ] [, DTED_LEVEL=
+   <i>
+    {0|1|2}
+   </i>
+   ] [, ERROR=
+   <i>
+    variable
+   </i>
+   ] [, NITF_COMPRESSION=
+   <i>
+    string
+   </i>
+   ] [, SUB_RECT=
+   <i>
+    array
+   </i>
+   ]
+  </p>
+  <h2 class="API">
+   Arguments
+  </h2>
+  <h3 class="Argument">
+   Raster
+  </h3>
+  <p>
+   A reference to an existing ENVIRaster object to export.
+  </p>
+  <p>
+   If exporting as a NITF file,
+   <i>
+    Raster
+   </i>
+   can be an array of raster segments from a multi-segment NITF file.
+  </p>
+  <h3 class="Argument">
+   URI
+  </h3>
+  <p>
+   A scalar string denoting the fully-qualified filepath in which the raster will be saved.
+  </p>
+  <h3 class="Argument">
+   Format
+  </h3>
+  <p>
+   A scalar string denoting the format in which the raster(s) will be saved.  An error will be thrown if the format is unrecognized or unsupported by the raster. The valid string values are:
+  </p>
+  <table style="mc-table-style: url('../Resources/TableStyles/Description.css');" cellspacing="0" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      Format Strings
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      Notes
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      'dted'
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       The Digital Terrain Elevation Data (DTED) format is supported if the raster has only one band.
+      </p>
+      <p>
+       Set the level using the DTED_LEVEL keyword.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      'envi'
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      &#160;
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      'nitf'
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      Set the National Imagery Transmission Format (NITF) compression type with the NITF_COMPRESSION keyword.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      'tiff'
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColEnd">
+      &#160;
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h2 class="API">
+   Keywords
+  </h2>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   Keywords not associated with the given format are quietly ignored.
+  </p>
+  <h3 class="Keyword">
+   BANDS
+  </h3>
+  <p>
+   Set this keyword to an
+   <i>
+    n
+   </i>
+   -element array expressing the integer indices (0-based) of the bands to be included in the data that will be exported. By default, all bands will be included.
+  </p>
+  <h3 class="Keyword">
+   DTED_LEVEL
+  </h3>
+  <p>
+   If you used
+   <code>
+    'dted'
+   </code>
+   as the
+   <i>
+    Format
+   </i>
+   value, set this keyword to an integer denoting the DTED level (0, 1, or 2).
+  </p>
+  <p>
+   If exporting as a DTED file and DTED_LEVEL is not set, the default value is 1.
+  </p>
+  <h3 class="Keyword">
+   ERROR
+  </h3>
+  <p>
+   Set this keyword to a named variable that will contain any error message issued during execution of this routine. If no error occurs, the ERROR variable will be set to a null string (
+   <code>
+    ''
+   </code>
+   ). If an error occurs and the routine is a function, then the function result will be undefined.
+  </p>
+  <p>
+   When this keyword is not set and an error occurs,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   returns to the caller and execution halts. In this case, the error message is contained within !ERROR_STATE and can be caught using IDL's CATCH routine. See IDL Help for more information on !ERROR_STATE and CATCH.
+  </p>
+  <p>
+   See
+   <a href="ErrorHandling.htm">
+    Manage Errors
+   </a>
+   for more information on error handling in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   programming.
+  </p>
+  <h3 class="Keyword">
+   NITF_COMPRESSION
+  </h3>
+  <p>
+   If you used
+   <code>
+    'nitf'
+   </code>
+   as the
+   <i>
+    Format
+   </i>
+   value, set this keyword to a string denoting the NITF compression type. (These strings also appear in the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   <![CDATA[ ]]>
+   <b>
+    File &gt; Save As...
+   </b>
+   menu dialog).
+  </p>
+  <p>
+   The valid string values are:
+  </p>
+  <table style="mc-table-style: url('../Resources/TableStyles/Description.css');" cellspacing="0" class="TableStyle_Description">
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      NITF_COMPRESSION  Strings
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <pre xml:space="preserve">
+       'epje num lossless'
+      </pre>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <pre xml:space="preserve">
+       'epje vis lossless'
+      </pre>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <pre xml:space="preserve">
+       'jpeg dct (high)'
+      </pre>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <pre xml:space="preserve">
+       'jpeg dct (low)'
+      </pre>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <pre xml:space="preserve">
+       'jpeg dct (medium)'
+      </pre>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <pre xml:space="preserve">
+       'no compression'
+      </pre>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <pre xml:space="preserve">
+       'npje num lossless'
+      </pre>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <pre xml:space="preserve">
+       'npje vis lossless'
+      </pre>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <pre xml:space="preserve">
+       'transcode epje to npje'
+      </pre>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColEnd">
+      <pre xml:space="preserve">
+       'transcode npje to epje'
+      </pre>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <p>
+   The default is
+   <code>
+    'no compression'
+   </code>
+   .
+  </p>
+  <h3 class="Keyword">
+   SUB_RECT
+  </h3>
+  <p>
+   Set this keyword to a four-element array expressing the spatial range (in pixels) of the data. The array is of the form [
+   <i>
+    x
+    <sub>
+     1
+    </sub>
+   </i>
+   ,
+   <i>
+    y
+    <sub>
+     1
+    </sub>
+   </i>
+   ,
+   <i>
+    x
+    <sub>
+     2
+    </sub>
+   </i>
+   ,
+   <i>
+    y
+    <sub>
+     2
+    </sub>
+   </i>
+   ], where:
+  </p>
+  <p>
+   <i>
+    x
+    <sub>
+     1
+    </sub>
+   </i>
+   = First pixel of the columns dimension
+  </p>
+  <p>
+   <i>
+    y
+    <sub>
+     1
+    </sub>
+   </i>
+   = First pixel of the rows dimension
+  </p>
+  <p>
+   <i>
+    x
+    <sub>
+     2
+    </sub>
+   </i>
+   = Last pixel of the columns dimension
+  </p>
+  <p>
+   <i>
+    y
+    <sub>
+     2
+    </sub>
+   </i>
+   = Last pixel of the rows dimension
+  </p>
+  <p>
+   Pixel coordinates are zero-based.
+  </p>
+  <h2 class="API">
+   Version History
+  </h2>
+  <table style="mc-table-style: url('../Resources/TableStyles/VersionTable.css');" class="TableStyle_VersionTable" cellspacing="0">
+   <col />
+   <col />
+   <tbody>
+    <tr>
+     <td class="TableStyle_VersionTable_Body_0_0_RowEnd_ColSep">
+      <p>
+       5.0
+      </p>
+     </td>
+     <td class="TableStyle_VersionTable_Body_0_0_RowEnd_ColEnd">
+      <p>
+       Introduced
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h2 class="API">
+   See Also
+  </h2>
+  <p>
+   <a href="enviRaster.htm">
+    ENVIRaster
+   </a>
+   ,
+   <a href="enviRaster__Save.htm">
+    ENVIRaster::Save
+   </a>
+   ,
+   <a href="ENVI__CreateRaster.htm">
+    ENVI::CreateRaster
+   </a>
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

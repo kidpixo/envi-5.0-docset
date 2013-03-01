@@ -1,0 +1,1118 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Feature Extraction" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Rule-Based Classification&#160;
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#FindFeatures/FeatureExtraction/Rule_Based_Classification.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="ExtractFeatures.htm">
+    Feature Extraction
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Rule-Based
+   </span>
+  </div>
+  <h1>
+   Rule-Based Classification
+   <a name="kanchor316">
+   </a>
+   <a href="../../Tutorials/Workflows/FXRuleBasedTutorial.htm">
+    &#160;
+   </a>
+  </h1>
+  <p>
+   <img src="../../Resources/Images/IconsButtons/Tutorial.gif" class="VertCenter" />
+   <![CDATA[ ]]>
+   <a href="../../Tutorials/Workflows/FXRuleBasedTutorial.htm">
+    Feature Extraction with Rule-Based Classification Tutorial
+   </a>
+  </p>
+  <p>
+   Rule classification is the process of taking a segmented image and grouping similar pixel clusters into groups called
+   <i>
+    classes
+   </i>
+   . A class contains one or more rules that you can build based on your knowledge of certain features. Each rule contains one or more attributes  such as area, length, or texture, which you constrain to a specific range of values. For example, we know that roads are elongated, some buildings approximate a rectangular shape,  and trees are highly textured compared to grass.
+  </p>
+  <p>
+   See the following sections:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#Building">
+     Building New Rules
+    </a>
+   </li>
+   <li value="2">
+    <a href="#Selecting">
+     Selecting Attributes
+    </a>
+   </li>
+   <li value="3">
+    <a href="#Previewi">
+     Previewing Classification Results
+    </a>
+   </li>
+  </ul>
+  <p>
+   From the Toolbox, select
+   <b>
+    Feature Extraction &gt; Rule Based Feature Extraction Workflow
+   </b>
+   . The Data Selection panel appears.
+  </p>
+  <h2>
+   <a name="SelectInputFiles">
+   </a>
+   Select Input Files for Feature Extraction
+  </h2>
+  <p>
+   For best results with Feature Extraction, consider preprocessing your imagery to reduce noisy or redundant data, to correct for atmospheric effects, or to suppress vegetation. See
+   <a href="../../PreprocessImagery/PreprocessImagery.htm">
+    Preprocess Imagery
+   </a>
+   for available options.
+  </p>
+  <p>
+   For hyperspectral imagery, we strongly recommend that you run a
+   <a href="../../PreprocessImagery/Transforms/PrincipalComponentAnalysis.htm">
+    principal components analysis
+   </a>
+   or
+   <a href="../../PreprocessImagery/Transforms/IndependentComponentsAnalysis.htm">
+    independent components analysis
+   </a>
+   on the dataset before using it in Feature Extraction. Segmentation and merging work best on datasets with only a few bands.
+  </p>
+  <p>
+   Also consider reducing the spatial resolution of your input image to speed up processing and to remove small, unwanted features. For example, you can down-sample a 10,000 by 10,000 pixel image by a factor of 10 to yield a 1,000 by 1,000 pixel image.
+  </p>
+  <ol>
+   <li value="1">
+    Click
+    <b>
+     Browse
+    </b>
+    and select a panchromatic or multispectral image for input. Feature Extraction accepts any image format listed in
+    <a href="../../ExploreImagery/SupportedFormats.htm">
+     Supported File Formats
+    </a>
+    .
+   </li>
+   <li value="2">
+    You can perform optional spatial or spectral
+    <a href="../../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    from within the Select Input File dialog.
+   </li>
+   <li value="3">
+    To apply a
+    <a href="../../NoTOCTopics/WorkingWithMasks.htm">
+     mask
+    </a>
+    , select the Input Mask tab in the File Selection panel. In addition to the mask, any pixel values specified in the
+    <b>
+     Data Ignore Value
+    </b>
+    field of the associated header (for
+    <a href="../../ExploreImagery/ENVIImageFiles.htm">
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     -format files
+    </a>
+    ) will be treated as mask values and will not be processed by Feature Extraction.
+   </li>
+   <li madcap:conditions="" value="4">
+    You can import ancillary data to help extract features of interest. An example is combining a LiDAR digital surface model (DSM) with a multispectral image to identify rooftops in a residential area, then
+    <a href="#">
+     building a rule
+    </a>
+    using height data from the DSM to more accurately extract the rooftops. (The height data would be in the
+    <code>
+     Spectral Mean
+    </code>
+    <![CDATA[ ]]>
+    <a href="AttributeList.htm">
+     attribute
+    </a>
+    for the DSM band.) Multiple datasets often provide more accurate results. The following rules apply:
+    <ul>
+     <li madcap:conditions="" value="1">
+      You can only use raster data for ancillary data. Vector data must be converted to raster format prior to import.
+     </li>
+     <li madcap:conditions="" value="2">
+      The ancillary image file must be georeferenced to a standard map projection or use
+      <a href="../../GeorectifyImagery/BackgroundNonStandardProjections.htm#Sensor">
+       rational polynomial coefficients
+      </a>
+      (RPCs). If the ancillary data is not in the same map projection as the input image,
+      <span class="DocumentTitleProductName">
+       ENVI
+      </span>
+      will reproject the ancillary data to match the base projection. Images with arbitrary map projections or
+      <a href="../../GeorectifyImagery/BackgroundNonStandardProjections.htm">
+       affine map transformations
+      </a>
+      (designated as "pseudo" in the Data Manager) cannot be used as ancillary data.
+     </li>
+     <li madcap:conditions="" value="3">
+      The ancillary data and input image must have some geographic overlap.
+     </li>
+     <li madcap:conditions="" value="4">
+      If you spatially subset the input image, the ancillary data will be reprojected to match that spatial extent.
+     </li>
+    </ul>
+   </li>
+   <p madcap:conditions="">
+    Select the Ancillary Data tab and click
+    <b>
+     Add Data
+    </b>
+    . Select one or more ancillary files for input. You can select spectral subsets from each ancillary data file.
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    will create new bands for each ancillary file that you import; you can then use these bands for
+    <a href="#">
+     rule-based classification
+    </a>
+    . The ancillary bands are identified by the name of the ancillary file and the respective band number of that file.
+   </p>
+   <li value="5">
+    Select the Custom Bands tab and enable the following options if desired. The input image must be georeferenced to a standard map projection for these options to be available.
+    <ul>
+     <li madcap:conditions="" value="1">
+      <b>
+       Normalized Difference:
+      </b>
+      Select two bands for computing a normalized band ratio as follows:
+     </li>
+     <p class="indent" madcap:conditions="">
+      [(b2 - b1) / (b2 + b1 + eps)]
+     </p>
+     <p class="indent" madcap:conditions="">
+      Where "eps" is a very small number to avoid division by zero.
+     </p>
+     <p madcap:conditions="">
+      If b2 is near-infrared and b1 is red, then
+      <b>
+       Normalized Difference
+      </b>
+      will be a measure of normalized difference vegetation index (NDVI).
+     </p>
+     <p madcap:conditions="">
+      For example, if you have a QuickBird image with four bands where Band 3 is red and Band 4 is near-infrared and you want to compute NDVI, select
+      <b>
+       Band 3
+      </b>
+      from the
+      <b>
+       Band 1
+      </b>
+      drop-down list. Select
+      <b>
+       Band 4
+      </b>
+      from the
+      <b>
+       Band 2
+      </b>
+      drop-down list.
+     </p>
+     <p madcap:conditions="">
+      <span class="DocumentTitleProductName">
+       ENVI
+      </span>
+      will create a "Normalized Difference" band that you can use for segmentation or classification.
+     </p>
+     <li madcap:conditions="" value="2">
+      <b>
+       Color Space:
+      </b>
+      Select the
+      <b>
+       Red
+      </b>
+      ,
+      <b>
+       Green
+      </b>
+      , and
+      <b>
+       Blue
+      </b>
+      band names from the image.
+      <span class="DocumentTitleProductName">
+       ENVI
+      </span>
+      will perform an RGB to HSI color space transformation and will create new bands for Hue, Saturation, and Intensity that you can use for segmentation or
+      <a href="BackgroundRuleClassification.htm">
+       rule-based classification
+      </a>
+      .
+     </li>
+     <p class="indent" madcap:conditions="">
+      <b>
+       Hue:
+      </b>
+      Often used as a color filter, measured in degrees from 0 to 360. A value of 0 is red, 120 is green, and 240 is blue.
+     </p>
+     <p class="indent" madcap:conditions="">
+      <b>
+       Saturation:
+      </b>
+      Often used as a color filter, measured in floating-point values that range from 0 to 1.0.
+     </p>
+     <p class="indent" madcap:conditions="">
+      <b>
+       Intensity:
+      </b>
+      Often provides a better measure of brightness than the
+      <code>
+       Spectral_Mean
+      </code>
+      spectral attributes. Intensity is measured in floating-point values that range from 0 to 1.0.
+     </p>
+    </ul>
+   </li>
+   <p madcap:conditions="" class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+    <span class="autonumber">
+     <span>
+      <b>
+       Note:
+      </b>
+     </span>
+    </span>
+    You should not perform segmentation with a combination of custom bands (normalized difference or HSI color space) and visible/NIR bands. You can perform segmentation on the normalized difference or color space bands by themselves, but not in combination with visible and NIR bands.
+   </p>
+   <li madcap:conditions="" value="6">
+    Click
+    <b>
+     Next
+    </b>
+    .
+   </li>
+  </ol>
+  <p madcap:conditions="">
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   will create a single dataset  from the combined bands of the input image, ancillary data, normalized difference, hue, saturation, and intensity (if selected). This single dataset will be used throughout the rest of the Feature Extraction workflow.
+  </p>
+  <p madcap:conditions="">
+   When file selection is complete, the file opens in a new workflow view. If the selected file is displayed in an active view before you start the workflow, the display bands and image location are retained, as well as  any brightness, contrast, stretch, and sharpen settings. The image location is not retained for pixel-based images or those with pseudo or arbitrary projections.
+  </p>
+  <h2>
+   <a name="SegmentImages">
+   </a>
+   Segment Images
+  </h2>
+  <p>
+   Segmentation is the process of partitioning an image into objects by grouping neighboring pixels with common values. The objects in the image ideally correspond to real-world features. Effective segmentation ensures that classification results are more accurate.
+  </p>
+  <ol>
+   <li value="1">
+    Enable the
+    <b>
+     Preview
+    </b>
+    option in the Object Creation panel. A Preview Portal appears with segments outlined in green.
+   </li>
+   <li value="2">
+    Under
+    <b>
+     Segment Settings
+    </b>
+    , select an
+    <b>
+     Algorithm
+    </b>
+    from the drop-down list provided. The following options are available:
+    <ul>
+     <li value="1">
+      <b>
+       Edge:
+      </b>
+      Best for detecting edges of features where objects of interest have sharp edges. Set an appropriate
+      <b>
+       Scale Level
+      </b>
+      and
+      <b>
+       Merge Level
+      </b>
+      (see steps below) to effectively delineate features.
+     </li>
+     <li value="2">
+      <b>
+       Intensity:
+      </b>
+      Best for segmenting images with subtle gradients such as digital elevation models (DEMs) or images of electromagnetic fields. When selecting this method, don't perform any merging; set the
+      <b>
+       Merge Level
+      </b>
+      to
+      <b>
+       0
+      </b>
+      . Merging is used primarily to combine segments with similar spectral information. Elevation and other related attributes are not appropriate for merging.
+     </li>
+    </ul>
+   </li>
+   <p>
+    See
+    <a href="BackgroundSegmentationAlgorithm.htm">
+     Watershed Algorithm Background
+    </a>
+    for more detailed descriptions of each option.
+   </p>
+   <li value="3">
+    Adjust the
+    <b>
+     Scale Level
+    </b>
+    slider as needed to effectively delineate the boundaries of features as much as possible without
+    <i>
+     over
+    </i>
+    -segmenting the features. Increasing the slider results in fewer segments; decreasing the slider results in more segments. You should also ensure that features of interest are not grouped into segments represented by other features. See
+    <a href="BackgroundSegmentationAlgorithm.htm">
+     Watershed Algorithm Background
+    </a>
+    for a more detailed discussion of how the
+    <b>
+     Scale Level
+    </b>
+    is used with respect to gradient and intensity images.
+   </li>
+   <li value="4">
+    Click the
+    <b>
+     Select Segment Bands
+    </b>
+    button to choose specific bands for applying the segmentation settings. The settings will apply to a grayscale image derived from the average of all selected bands. All available bands are selected by default.
+   </li>
+   <p class="Tip" madcap:autonum="&lt;b&gt;Tip: &lt;/b&gt;">
+    <span class="autonumber">
+     <span>
+      <b>
+       Tip:
+      </b>
+     </span>
+    </span>
+    For best segmentation results, select a combination of bands that have similar spectral ranges such as R, G, B, and NIR bands. You should not perform segmentation with a combination of custom bands (normalized difference or HSI color space) and visible/NIR bands. You can perform segmentation on the normalized difference or color space bands by themselves, but not in combination with visible and NIR bands.
+   </p>
+   <li value="5">
+    Merging combines adjacent segments with similar spectral attributes. Under
+    <b>
+     Merge Settings
+    </b>
+    , select an
+    <b>
+     Algorithm
+    </b>
+    from the drop-down list provided. The following options are available:
+    <ul>
+     <li value="1">
+      <b>
+       Full Lambda Schedule:
+      </b>
+      (default). Merges small segments within larger, textured areas such as trees or clouds, where over-segmentation may be a problem.
+     </li>
+     <li value="2">
+      <b>
+       Fast Lambda:
+      </b>
+      Merges adjacent segments with similar colors and border sizes.
+     </li>
+    </ul>
+   </li>
+   <p>
+    See
+    <a href="BackgroundMergeAlgorithms.htm">
+     Merge Algorithms Background
+    </a>
+    for more detailed descriptions of each option.
+   </p>
+   <li value="6">
+    Adjust the
+    <b>
+     Merge Level
+    </b>
+    slider as needed to combine segments with similar colors (Fast Lambda) or to merge over-segmented areas (Full Lambda Schedule). Increasing the slider results in more merging; no merging will occur if you leave the slider value at 0. For example, if a red building consists of three segments, selecting
+    <b>
+     Fast Lambda
+    </b>
+    <![CDATA[ ]]>
+    and increasing the
+    <b>
+     Merge Level
+    </b>
+    should combine them into one segment. All available bands are selected by default. To delineate treetops or other highly textured features, select
+    <b>
+     Full Lambda Schedule
+    </b>
+    and increase the
+    <b>
+     Merge Level
+    </b>
+    value.
+   </li>
+   <li value="7">
+    Click the
+    <b>
+     Select Merge Bands
+    </b>
+    button to choose specific bands for applying the merge settings. Merging will be based on the differences between region colors based on all selected bands.
+   </li>
+   <li value="8">
+    Select a
+    <b>
+     Texture Kernel Size
+    </b>
+    value, which is the size (in pixels) of a moving box centered over each pixel in the image.
+    <a href="AttributeList.htm#texture_attributes">
+     Texture attributes
+    </a>
+    are computed for each kernel. Enter an odd number of 3 or higher. The maximum value is 19. The default value is 3. Select a higher kernel size if you are segmenting large areas with little texture variance such as fields. Select a lower kernel size if you are segmenting smaller areas with higher variance such as urban neighborhoods.
+   </li>
+   <li value="9">
+    Click
+    <b>
+     Next
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    loads a segmentation image into the display.
+   </li>
+  </ol>
+  <h2>
+   <a name="Building">
+   </a>
+   Build New Rules
+  </h2>
+  <p>
+   Each class will contain one or more rules (which contain a combination of various attributes) that best define the class. For example, if you want to extract roads from an image, you could build a rule that will use a combination of
+   <code>
+    Elongation
+   </code>
+   ,
+   <code>
+    Length
+   </code>
+   , and
+   <code>
+    Area
+   </code>
+   spatial attributes:
+  </p>
+  <p>
+   <img src="../../Resources/Images/FXRuleBasedClassification/example.gif" />
+  </p>
+  <p>
+   The rule logic for this class is as follows:
+  </p>
+  <p>
+   <img src="../../Resources/Images/FXRuleBasedClassification/example_logic.gif" />
+  </p>
+  <p>
+   To meet the conditions of the Roads class, either one of the two rules must apply (i.e., the OR operation). The first rule has only one attribute definition. To satisfy the conditions of the second rule, both the Length and Area attribute definitions must apply (i.e., the AND operator). Each rule is equally weighted, which works well in most cases.
+  </p>
+  <p>
+   However, if you discover an attribute that effectively identifies the feature of interest, you could override the default weight and promote that rule above other rules. See
+   <a href="BackgroundRuleClassification.htm">
+    Rule Classification Background
+   </a>
+   for details.
+  </p>
+  <p>
+   If you are building a rule set for the first time, the Rule Classification panel appears with an empty folder called
+   <b>
+    All Classes
+   </b>
+   . This folder will contain all of the feature types (classes) that you define.
+  </p>
+  <ol>
+   <li value="1">
+    Click the
+    <b>
+     Add Class
+    </b>
+    button. A new class appears with one undefined rule and one default attribute.
+   </li>
+   <li value="2">
+    Select the new class, and edit the name and color as needed within the Class Properties table. The
+    <b>
+     Class Threshold
+    </b>
+    property is an advanced setting; the default value is acceptable in most cases; see
+    <a href="BackgroundRuleClassification.htm">
+     Rule Classification Background
+    </a>
+    for details.
+   </li>
+   <li value="3">
+    Select the new rule name that was created for you (
+    <code style="font-weight: bold;">
+     Rule [1.0]
+    </code>
+    ), and add attributes to the rule as described in
+    <a href="#Selecting">
+     Select Attributes
+    </a>
+    .
+   </li>
+   <li value="4">
+    To add another rule to a class, select the class name and click the
+    <b>
+     Add Rule to Class
+    </b>
+    button. An OR logical operation is used to combine multiple rules within a class. To remove a rule from a given class, select the rule name and click the
+    <b>
+     Remove Rule
+    </b>
+    button.
+   </li>
+   <li value="5">
+    To add a new class, select
+    <b>
+     All Classes
+    </b>
+    and click the
+    <b>
+     Add Class
+    </b>
+    button.
+   </li>
+   <li value="6">
+    To save your rule set to disk (as a
+    <code>
+     .rul
+    </code>
+    file), click the
+    <b>
+     Save Rule Set
+    </b>
+    button. Click the
+    <b>
+     Restore Rule Set File
+    </b>
+    button  to later restore the file.
+   </li>
+  </ol>
+  <h2>
+   <a name="Selecting">
+   </a>
+   Select Attributes
+  </h2>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   computes various attributes for each segment in the segmentation image after you click
+   <b>
+    Next
+   </b>
+   in the Segment and Merge panel. See
+   <a href="AttributeList.htm#spatial_attributes">
+    Spatial Attributes
+   </a>
+   ,
+   <a href="AttributeList.htm#spectral_attributes">
+    Spectral Attributes
+   </a>
+   , and
+   <a href="AttributeList.htm#texture_attributes">
+    Texture Attributes
+   </a>
+   for definitions of each attribute.
+  </p>
+  <p>
+   Each rule can have multiple attributes; an AND&#160;logical operator is used to combine multiple attributes within a rule.
+  </p>
+  <ol>
+   <li value="1">
+    Select the default attribute that was added for you (
+    <code style="font-weight: bold;">
+     Spectral Mean(0) &gt; 0
+    </code>
+    ). You will change this to an attribute of your choice.
+   </li>
+   <li value="2">
+    The right side of the panel displays several options that let you edit the attribute values.
+    <ul>
+     <li value="1">
+      From the
+      <b>
+       Type
+      </b>
+      drop-down list, select
+      <b>
+       <a href="AttributeList.htm#spatial_attributes">
+        Spatial
+       </a>
+      </b>
+      ,
+      <b>
+       <a href="AttributeList.htm#spectral_attributes">
+        Spectral
+       </a>
+      </b>
+      , or
+      <b>
+       <a href="AttributeList.htm#texture_attributes">
+        Texture
+       </a>
+      </b>
+      . If you select
+      <b>
+       Spectral
+      </b>
+      or
+      <b>
+       Texture
+      </b>
+      , select the
+      <b>
+       Band
+      </b>
+      number that the spectral attribute will apply to.
+     </li>
+     <li value="2">
+      From the
+      <b>
+       Name
+      </b>
+      drop-down list, select an attribute name.
+     </li>
+     <li value="3">
+      The
+      <b>
+       Weight
+      </b>
+      ,
+      <b>
+       Tolerance
+      </b>
+      , and
+      <b>
+       Algorithm
+      </b>
+      fields under the Advanced tab are advanced settings that are used in assigning pixels to classes. See
+      <a href="BackgroundRuleClassification.htm">
+       Rule Classification Background
+      </a>
+      for further details.
+     </li>
+    </ul>
+    <p class="Tip" madcap:autonum="&lt;b&gt;Tip: &lt;/b&gt;">
+     <span class="autonumber">
+      <span>
+       <b>
+        Tip:
+       </b>
+      </span>
+     </span>
+     If you don't yet know which attributes would best identify your feature of interest, experiment with different attributes and enable the
+     <b>
+      Show Attribute Image
+     </b>
+     option each time, to view an image of attribute values in a Preview Portal. Use the Cursor Value tool (available from the main toolbar) to examine the attribute values of your features. You can quickly tell if your feature has high values for that attribute (bright pixels) or low values (dark pixels). This will help you decide the approximate range of attribute values that best identify that feature.
+    </p>
+   </li>
+   <li value="3">
+    A histogram of attribute values is displayed in the Rule Classification panel. Click the
+    <b>
+     Dock/Undock Histogram Window
+    </b>
+    button
+    <img src="../../Resources/Images/IconsButtons/FXHistogramWindow.gif" />
+    to display the histogram in a separate dialog that you can resize to better view the histogram. This option is only available for Windows users.
+   </li>
+   <li value="4">
+    To constrain the attribute values to a subset of values, click and drag the left and right vertical bars on the histogram to define a range of values. Or, enter values in the text fields provided. The range of values included in the attribute calculation is shown with a white background. Click
+    <b>
+     Invert
+    </b>
+    to select the range of values outside of the current range. The following examples illustrate different subsets of values:
+    <p>
+     <img src="../../Resources/Images/FXRuleBasedClassification/histogram_examples.gif" alt="Examples of histograms" />
+    </p>
+   </li>
+  </ol>
+  <h2>
+   <a name="Previewi">
+   </a>
+   Preview Classification Results
+  </h2>
+  <ul>
+   <li value="1">
+    Select a class and click
+    <b>
+     Preview
+    </b>
+    to display a Preview Portal that shows a
+    <i>
+     class confidence image
+    </i>
+    based on your current classes and settings. The class confidence image shows the likelihood of a class meeting the requirements of the rules that you have defined. The brightest regions represent objects with the highest confidence of meeting the rule requirements, while the darkest regions represent the lowest confidence.
+   </li>
+   <li value="2">
+    Select
+    <b>
+     All Classes
+    </b>
+    and click
+    <b>
+     Preview
+    </b>
+    to show a
+    <i>
+     classification image
+    </i>
+    of all the classes you have defined in your image.
+   </li>
+   <li value="3">
+    Select a rule and click
+    <b>
+     Preview
+    </b>
+    to show a
+    <i>
+     rule confidence image
+    </i>
+    . This type of image shows the relative confidence of each object (in the segmentation image) satisfying the conditions of the rule. The higher the brightness of an object, the higher the confidence that the object satisfies the conditions of the rule. If an object is very dark, it likely does not meet the rule requirements.
+   </li>
+   <li value="4">
+    Select an attribute name and click
+    <b>
+     Preview
+    </b>
+    to show an
+    <i>
+     attribute score image
+    </i>
+    for that attribute. The attribute score image gives you a visual guide of how well objects meet the attribute criteria that you set with the histogram.
+   </li>
+   <p>
+    If you select the
+    <b>
+     Binary
+    </b>
+    classification algorithm under the Advanced tab, objects have pixel values of 0 (no match) or 1 (match). If you select the
+    <b>
+     Linear
+    </b>
+    or
+    <b>
+     Quadratic
+    </b>
+    classification algorithm, objects range in value from 0 to 1, indicating how well they meet the attribute criteria. As you use the histogram to adjust the range of attribute values, the attribute score image automatically includes or excludes objects from consideration.
+   </p>
+   <li value="5">
+    Click
+    <b>
+     Show Attribute Image
+    </b>
+    to show an image of attribute values in the Preview Portal, rather than an attribute score image. Use the Cursor Value tool to view the pixel values of the attribute image. You can adjust the image transparency to view the underlying image, if needed, using the Transparency slider on the main toolbar.
+   </li>
+  </ul>
+  <h2>
+   <a name="Export">
+   </a>
+   Export Classification Results
+  </h2>
+  <p>
+   In this step, you will select the types of images, vectors, and statistics to export to various formats. By default, files are saved to the directory that you specify in the
+   <a style="font-weight: bold;" href="../../Preferences.htm#OutputDirectory">
+    Output Directory
+   </a>
+   preference. When the export is complete, the workflow view closes. The original data and the export data display in the Image window view. The available output options vary, depending on your workflow.
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#Rule-Bas">
+     Rule-Based and Example-Based Classification
+    </a>
+   </li>
+   <li value="2">
+    <a href="#Segment-">
+     Segment-Only
+    </a>
+   </li>
+  </ul>
+  <h3>
+   <a name="Rule-Bas">
+   </a>
+   Rule-Based and Example-Based Classification
+  </h3>
+  <p>
+   Choose the classification file types you want to save.
+  </p>
+  <h4>
+   Export Vector Tab
+  </h4>
+  <ul>
+   <li value="1">
+    <b>
+     Export Classification Vectors:
+    </b>
+    Save all classes to a single shapefile with a filename of
+    <code>
+     <i>
+      &lt;prefix&gt;
+     </i>
+     _vectors.shp
+    </code>
+    , or to a geodatabase. Shapefiles have a maximum file size of 2 GB, so if the image has a large number of classes and the resulting shapefile exceeds this file size, it will be broken into smaller shapefiles. Shapefiles larger than 1.5 GB cannot be displayed. To avoid these issues when working with large datasets, you can save the vectors to a geodatabase.
+   </li>
+   <li value="2">
+    <b>
+     Merge Adjacent Features:
+    </b>
+    Select this option if you are confident that adjacent polygons belong to the same class and you want to consolidate them into a single polygon. This results in a smaller file size. This option merges all adjacent segments at once across the entire image; you cannot select specific polygons to merge.
+   </li>
+   <p class="Tip" madcap:autonum="&lt;b&gt;Tip: &lt;/b&gt;">
+    <span class="autonumber">
+     <span>
+      <b>
+       Tip:
+      </b>
+     </span>
+    </span>
+    A good example is an angled rooftop that reveals different brightness levels from an aerial sensor, depending on the sun's angle. The segmentation step would typically create multiple regions within the rooftop, each with different spectral values. But if you build a good rule set that identifies rooftops, the classification image (and/or shapefile) will assign these regions to the same class. Since you know that they all belong to one rooftop, you can choose to merge the adjacent segments so that the entire rooftop is one polygon.
+   </p>
+   <li value="3">
+    <b>
+     Export Attributes:
+    </b>
+    Select this option if you want to include the spatial, spectral, and texture attributes that were computed for each region in the output shapefile.
+   </li>
+  </ul>
+  <h4>
+   Export Raster Tab
+  </h4>
+  <ul>
+   <li value="1">
+    <b>
+     Export Classification Image:
+    </b>
+    Create an image in ENVI raster format whose pixel values represent different classes. The filename will be
+    <code>
+     <i>
+      &lt;prefix&gt;
+     </i>
+     _class.dat
+    </code>
+    .
+   </li>
+   <li value="2">
+    <b>
+     Export Segmentation Image:
+    </b>
+    Create a multispectral image in ENVI raster format that shows the regions defined by segmentation; each region is assigned the mean spectral values of all the pixels that belong to that region. The filename will be
+    <code>
+     <i>
+      &lt;prefix&gt;
+     </i>
+     _segmentation.dat
+    </code>
+    .
+   </li>
+  </ul>
+  <h4>
+   Advanced Export Tab
+  </h4>
+  <ul>
+   <li value="1">
+    <b>
+     Export Attributes Image:
+    </b>
+    Create a multi-layer image in ENVI raster format where each layer represents the values of a specific attribute. The filename will be
+    <code>
+     <i>
+      &lt;prefix&gt;
+     </i>
+     _attributes.dat
+    </code>
+    . When you select this option, a new dialog appears that lets you select which attributes to export to an attribute image. The
+    <b>
+     Selected Attributes
+    </b>
+    column is initially populated with the attributes you used in your rule set. If an attribute does not contain any valid values, then that attribute band will be assigned pixel values of 0. See
+    <a href="Example_Based_Classification.htm#Selectin">
+     Selecting Attributes for Classification
+    </a>
+    for further details on using this dialog.
+   </li>
+   <li value="2">
+    <b>
+     Export Confidence Image:
+    </b>
+    Create an image in ENVI raster format that shows the relative confidence of each object belonging to a class. The higher the brightness of an object, the higher the confidence that the object belongs to the class. If an object is very dark, it likely does not belong to the class. This is a multi-layer file, with each layer representing one class. The filename will be
+    <code>
+     <i>
+      &lt;prefix&gt;
+     </i>
+     _confidence.dat
+    </code>
+    .
+   </li>
+  </ul>
+  <h4>
+   Auxiliary Export Tab
+  </h4>
+  <ul>
+   <li value="1">
+    <b>
+     Export Feature Examples:
+    </b>
+    Example-based classification only. Save the training samples that you selected for all classes to an XML file named
+    <code>
+     &lt;
+     <i>
+      prefix
+     </i>
+     &gt;_trainingset.ftr
+    </code>
+    .
+   </li>
+   <li value="2">
+    <b>
+     Export Feature Ruleset:
+    </b>
+    Rule-based classification only. Save the rules that you defined to a file named
+    <code>
+     <i>
+      &lt;prefix&gt;
+     </i>
+     _ruleset.rul
+    </code>
+    .
+   </li>
+   <li value="3">
+    <b>
+     Export Processing Report:
+    </b>
+    Create a text report that summarizes the segmentation options, rules, and attributes that you used to classify the image. The filename will be
+    <code>
+     <i>
+      &lt;prefix&gt;
+     </i>
+     _report.txt
+    </code>
+    .
+   </li>
+  </ul>
+  <h3>
+   <a name="Segment-">
+   </a>
+   Segment-Only
+  </h3>
+  <h4>
+   Export Vector Tab
+  </h4>
+  <ul>
+   <li value="1">
+    <b>
+     Export Segmentation Vectors:
+    </b>
+    Save the regions in the segmentation image to a shapefile. Shapefiles have a maximum file size of 2 GB, so if your image has a large number of segments and the resulting shapefile exceeds this file size, it will be broken into smaller shapefiles. Shapefiles larger than 1.5 GB cannot be displayed. To avoid these issues when working with large datasets, you can save the vectors to a geodatabase.
+   </li>
+  </ul>
+  <ul>
+   <li value="1">
+    <b>
+     Export Attributes:
+    </b>
+    Select this option if you want to include the spatial, spectral, and texture attributes that were computed for each region in the output shapefile.
+   </li>
+  </ul>
+  <h4>
+   Export Raster Tab
+  </h4>
+  <ul>
+   <li value="1">
+    <b>
+     Export Segmentation Image:
+    </b>
+    Create a multispectral image in ENVI&#160;raster format that shows the regions defined by segmentation; each region is assigned the mean spectral values of all the pixels that belong to that region.
+   </li>
+  </ul>
+  <h4>
+   Advanced Export Tab
+  </h4>
+  <ul>
+   <li value="1">
+    <b>
+     Export Attributes Image:
+    </b>
+    Create a multi-layer image in ENVI raster format where each layer represents the values of a specific attribute. When you select this option, a new dialog appears that lets you select which attributes to export to an attribute image. The
+    <b>
+     Selected Attributes
+    </b>
+    column is initially empty. Select the attribute name(s) that you want to export in the
+    <b>
+     Available Attributes
+    </b>
+    column, and click the
+    <b>
+     Add Selected Attribute
+    </b>
+    button. If an attribute does not contain any valid values, then that attribute band will be assigned pixel values of 0. See
+    <a href="Example_Based_Classification.htm#Selectin">
+     Selecting Attributes for Classification
+    </a>
+    for further details on using this dialog.
+   </li>
+  </ul>
+  <h4>
+   Auxiliary Export Tab
+  </h4>
+  <ul>
+   <li value="1">
+    <b>
+     Export Processing Report:
+    </b>
+    Create a report that summarizes the segmentation options, rules, and attributes that you used to classify the image.
+   </li>
+  </ul>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

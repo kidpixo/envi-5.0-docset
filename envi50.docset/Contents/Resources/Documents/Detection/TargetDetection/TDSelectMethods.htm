@@ -1,0 +1,240 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Detection|Target Detection|Target Detection Wizard" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Select Target Detection Methods
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#Detection/TargetDetection/TDSelectMethods.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../DetectionTools.htm">
+    Detection
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="TargetDetection.htm">
+    Target Detection
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="TargetDetectionWizard.htm">
+    Target Detection Wizard
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Select Target Detection Methods
+   </span>
+  </div>
+  <h1>
+   <a name="usrSpectral_2221882392_1320093">
+   </a>
+   <a name="usrSpectral_2221882392_93347">
+   </a>
+   Select Target Detection Methods
+   <a name="kanchor276">
+   </a>
+  </h1>
+  <p>
+   In Step 6 of the Target Detection Wizard, you select the methods to use to find the spatial location (and, for some methods, abundance) of each of the selected targets. The availability of the methods depends on the selections you made in the previous steps, for example:
+  </p>
+  <ul>
+   <li value="1">
+    If you did not apply the
+    <a href="TDApplyMNFTransform.htm">
+     MNF transform
+    </a>
+    , the ACE method is selected by default and the MTMF and MTTCIMF methods are not available.
+   </li>
+   <li value="2">
+    If you did apply the MNF transform, the MTMF method is selected by default.
+   </li>
+   <li value="3">
+    If you did not specify
+    <a href="TDSelectNonTargetSpectra.htm">
+     non-target spectra
+    </a>
+    and provided only one
+    <a href="TDSelectTargetSpectra.htm">
+     target spectrum
+    </a>
+    , the OSP, TCIMF, and MTTCIMF methods are not available.
+   </li>
+  </ul>
+  <p>
+   You can select multiple methods and compare the results later. If you are certain which method is suitable for your application, you can make just one selection.
+  </p>
+  <ol>
+   <li value="1">
+    Select one or more target detection methods to use for processing from the following. To select all available methods, click
+    <b>
+     Select All
+    </b>
+    .
+    <ul>
+     <li value="1">
+      <b>
+       Matched Filtering (MF)
+      </b>
+      : Finds the abundance of targets using a partial unmixing algorithm. This technique maximizes the response of the known spectra and suppresses the response of the composite unknown background, therefore matching the known signature. It provides a rapid means of detecting specific materials based on matches to target spectra and does not require knowledge of all the endmembers within an image scene.
+     </li>
+     <li value="2">
+      <b>
+       Constrained Energy Minimization (CEM)
+      </b>
+      : Similar to ACE and MF, CEM does not require knowledge of all the endmembers within a scene. Using a specific constraint, CEM uses a finite impulse response (FIR) filter to pass through the desired target while minimizing its output energy resulting from backgrounds other than the desired targets. A correlation or covariance matrix is used to characterize the composite unknown background. In a mathematical sense, MF is a mean-centered version of CEM, where the data mean is subtracted from all pixel vectors.
+     </li>
+     <li value="3">
+      <b>
+       Adaptive Coherence Estimator (ACE)
+      </b>
+      : Derived from the Generalized Likelihood Ratio (GLR) approach, ACE is invariant to relative scaling of input spectra and has a Constant False Alarm Rate (CFAR) with respect to such scaling. As with CEM and MF, ACE does not require knowledge of all the endmembers within a scene.
+     </li>
+     <li value="4">
+      <b>
+       Spectral Angle Mapper (SAM)
+      </b>
+      : Matches image spectra to reference target spectra in
+      <i>
+       n
+      </i>
+      dimensions. SAM compares the angle between the target spectrum (considered an
+      <i>
+       n
+      </i>
+      -dimensional vector, where
+      <i>
+       n
+      </i>
+      is the number of bands) and each pixel vector in
+      <i>
+       n
+      </i>
+      -dimensional space. Smaller angles represent closer matches to the reference spectrum. When used on calibrated data, this technique is relatively insensitive to illumination and albedo effects.
+     </li>
+     <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+      <span class="autonumber">
+       <span>
+        <b>
+         Note:
+        </b>
+       </span>
+      </span>
+      Lower values in SAM rule images represent closer matches to the target spectrum and higher probability of being a target.
+     </p>
+    </ul>
+    <ul>
+     <li value="1">
+      <b>
+       Orthogonal Subspace Projection (OSP)
+      </b>
+      : OSP first designs an orthogonal subspace projector to eliminate the response of non-targets, then applies MF to match the desired target from the data. OSP is efficient and effective when target signatures are distinct. When the spectral angle between the target signature and the non-target signature is small, the attenuation of the target signal is dramatic and the performance of OSP could be poor. This method is only available if you provided more than one target spectra in Step 3, or you provided non-target spectra in Step 4.
+     </li>
+     <li value="2">
+      <b>
+       Target-Constrained Interference-Minimized Filter (TCIMF)
+      </b>
+      : TCIMF detects the desired targets, eliminates non-targets, and minimizes interfering effects in one operation. TCIMF is constrained to eliminate the response of non-targets rather than minimizing their energy, just like other interferences in CEM. Previous studies show that if the spectral angle between the target and the non-target is significant, TCIMF can potentially reduce the number of false positives over CEM results. This method is only available if you provided more than one target spectra in Step 3, or you provided non-target spectra in Step 4.
+     </li>
+     <li value="3">
+      <b>
+       Mixture Tuned Target-Constrained Interference-Minimized Filter (MTTCIMF)
+      </b>
+      : This method combines the Mixture Tuned technique and TCIMF target detector. It uses a Minimum Noise Fraction (MNF) transform input file to perform TCIMF, and it adds an infeasibility image to the results. The infeasibility image is used to reduce the number of false positives that are sometimes found when using TCIMF alone. The output of MTTCIMF is a set of rule images corresponding to TCIMF scores and a set of images corresponding to infeasibility values. The infeasibility results are in noise sigma units and indicate the feasibility of the TCIMF result. Correctly mapped pixels have a high TCIMF score and a low infeasibility value. If non-target spectra were specified, MTTCIMF can potentially reduce the number of false positives over MTMF. This method is only available if you provided more than one target spectra in Step 3 or you provided non-target spectra in Step 4, and you applied the MNF transform in Step 5.
+     </li>
+     <li value="4">
+      <b>
+       Mixture Tuned Matched Filtering (MTMF)
+      </b>
+      : MTMF uses an MNF transform input file to perform MF, and it adds an infeasibility image to the results. The infeasibility image is used to reduce the number of false positives that are sometimes found when using MF alone. Pixels with a high infeasibility are likely to be MF false positives. Correctly mapped pixels will have an MF score above the background distribution around zero and a low infeasibility value. The infeasibility values are in noise sigma units that vary in DN scale with an MF score. This method is only available if you applied the MNF transform in Step 5.
+     </li>
+    </ul>
+   </li>
+   <li value="2">
+    If you wish to set advanced parameters for the target detection methods, click
+    <b>
+     Show Advanced Options
+    </b>
+    . Otherwise, click
+    <b>
+     Next
+    </b>
+    to proceed. The next steps pertain to the advanced settings.
+   </li>
+   <li value="3">
+    If you selected the CEM and/or TCIMF method(s), you need to model the composite unknown background with statistics such as a covariance or correlation matrix. The reference target signature is generally only present in a small number of pixels in a scene, so the background statistics are usually computed over the whole scene. Click the toggle button to select using the
+    <b>
+     Covariance Matrix
+    </b>
+    or
+    <b>
+     Correlation Matrix
+    </b>
+    for the calculation.
+   </li>
+   <li value="4">
+    If you selected the ACE, CEM, MF, TCIMF, MTMF, and/or MTTCIMF method(s), you can model the scene background by removing anomalous pixels before calculating background statistics. To model the subspace background, enable the
+    <b>
+     Use Subspace Background
+    </b>
+    check box. By better characterizing the subspace background, you achieve greater target-to-background separation and can potentially improve ACE, CEM, MF, TCIMF, MTMF, and/or MTTCIMF detection results, particularly in scenes that contain a lot of clutter or man-made objects.
+   </li>
+   <li value="5">
+    If
+    <b>
+     Use Subspace Background
+    </b>
+    is enabled, specify the
+    <b>
+     Background Threshold
+    </b>
+    to use for calculating the subspace background statistics. This value indicates the fraction of the background in the anomalous image to use. The allowable range is 0.500 to 1.000 (the entire image).
+   </li>
+   <li value="6">
+    Click
+    <b>
+     Next
+    </b>
+    in the Wizard.
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    generates one file per method, with a corresponding suffix in the filename. Each file includes one rule image per target. For MF, CEM, OSP, and TCIMF, the value in the rule image represents the sub-pixel abundance of the target in each pixel. For MTMF and MTTCIMF, the file also includes an infeasibility band for each target.
+   </li>
+  </ol>
+  <p class="indent">
+   When processing is complete, the Load Rule Images and Preview Results panel appears.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

@@ -1,0 +1,559 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Spectral Tools|SPEAR Tools" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   SPEAR Relative Water Depth
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#SpectralTools/SPEARTools/SPEARRelativeWaterDepth.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../SpectralTools.htm">
+    Spectral Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="SpearTools.htm">
+    SPEAR Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    SPEAR Relative Water Depth
+   </span>
+  </div>
+  <h1>
+   SPEAR Relative Water Depth
+  </h1>
+  <p>
+   <a name="kanchor378">
+   </a>
+   The Relative Water Depth tool enables you to quickly generate a product depicting relative water depths for a region of interest. This tool uses a bottom albedo-independent Bathymetry algorithm developed by Stumpf and Holderied (2003). The bottom albedo-independent nature of the algorithm means that sea floor covered with dark sea grass or bright sand is shown to be at the same depth when they are at the same depth.
+  </p>
+  <p>
+   The water depth results are relative since they do not depict absolute depths (the results are scaled from zero to one). The intent of these results is to provide a general feel for the Bathymetry; they are not to be used for navigational purposes.
+  </p>
+  <p>
+   <b>
+    Reference
+   </b>
+  </p>
+  <p>
+   Stumpf, R.P., K. Holderied, 2003, Determination of Water Depth with High-Resolution Satellite Imagery Over Variable Bottom Types, Liminology and Oceanography, 48(1):547-556.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     SPEAR &gt; SPEAR Relative Water Depth
+    </b>
+    . The
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    Relative Water Depth Wizard displays the File Selection panel.
+   </li>
+   <li value="2">
+    Click
+    <b>
+     Select Input File
+    </b>
+    , choose a file, then click
+    <b>
+     OK
+    </b>
+    . The input file must be multispectral, with at least blue, green, and near infrared bands.
+   </li>
+   <li value="3">
+    If wavelengths are not embedded in the image header, a series of Select Band dialogs appear. Select the Blue band, Green band, Red band, and NIR band, then click
+    <b>
+     OK
+    </b>
+    after each selection.
+   </li>
+   <li value="4">
+    To optionally process only a portion of the scene, click
+    <b>
+     Select Subset
+    </b>
+    . A small Select Spatial Subset dialog appears.
+   </li>
+   <li value="5">
+    Click
+    <b>
+     Spatial Subset
+    </b>
+    . The standard Select Spatial Subset dialog appears. When finished, click
+    <b>
+     OK
+    </b>
+    to return to the File Selection panel.
+   </li>
+   <li value="6">
+    By default, output files are saved to the same directory and use the same rootname as the input file, minus any extension. Output files are appended with a unique suffix. To change the directory and/or root filename, click
+    <b>
+     Select Output Root Name
+    </b>
+    .
+   </li>
+   <li value="7">
+    Click
+    <b>
+     Next
+    </b>
+    . The Atmospheric Correction panel appears.
+   </li>
+   <li value="8">
+    Optionally
+    <a href="SPEARAtmosphericCorrection.htm">
+     perform atmospheric correction
+    </a>
+    . For calculating relative water depths, it is typically best to not perform atmospheric correction. Atmospheric correction of littoral or marine areas often alters the data such that calculating water depths may produce anomalous and unsatisfactory results. Unless there is a specific need to perform atmospheric correction and the implications are understood, it is best to skip this step.
+   </li>
+   <li value="9">
+    Click
+    <b>
+     Next
+    </b>
+    . The Method Selection panel appears.
+   </li>
+   <li value="10">
+    Select the desired Bathymetry method:
+   </li>
+   <ul>
+    <li value="1">
+     <b>
+      Log Ratio Transform
+     </b>
+    </li>
+    <li value="2">
+     <b>
+      Principal Component
+     </b>
+    </li>
+    <li value="3">
+     <p>
+      <b>
+       Independent Components
+      </b>
+     </p>
+     <p>
+      <b>
+       Log Ratio Transform
+      </b>
+      typically produces better results. If you use
+      <b>
+       Principal Components
+      </b>
+      , you need to examine each resulting Principal Component image to find the one corresponding to water depth. Even then, water depth may not be entirely decorrelated from bottom albedo or other sources of error.
+     </p>
+    </li>
+   </ul>
+   <li value="11">
+    If you selected
+    <b>
+     Log Ratio Transform
+    </b>
+    , click
+    <b>
+     Show Advanced Options
+    </b>
+    to see additional parameter settings. The following are available:
+   </li>
+   <ul>
+    <li value="1">
+     <b>
+      Median Filter:
+     </b>
+     The default setting is 3x3 to remove high frequency noise that often occurs in the water depth results. If desired, select a different kernel size for the filter or turn filtering off from the drop-down list. Setting the median filter to larger sizes creates smoother results, but may smooth over small submerged features.
+    </li>
+    <li value="2">
+     <p>
+      <b>
+       Calibrate to absolute depth:
+      </b>
+      Enable this check box to calibrate the relative depths to absolute depths by using ground truth information. A display group opens and a
+      <b>
+       Calibration Points
+      </b>
+      table for the ground truth points appears in the Method Selection panel. You need to add at least three ground truth points.
+     </p>
+     <p>
+      To enter ground truth points manually, move the cursor in to the pixel with the known depth. In the Method Selection panel, click
+      <b>
+       Add Current Location as New Point
+      </b>
+      . A new row is added to the
+      <b>
+       Calibration Points
+      </b>
+      table with the column and row location of the selected pixel. Select the value in the
+      <b>
+       Depth
+      </b>
+      column and enter the depth value, in meters. Repeat this process for each ground truth point.
+     </p>
+     <p>
+      You can also import ground truth points from ASCII files. The ASCII file must contain three columns: x coordinate, y coordinate, and depth. The x and y coordinates must be in the same map projection as the input image, and the columns may be in any order. To import a file, click
+      <b>
+       Import ASCII
+      </b>
+      in the Method Selection panel. Select the text file containing the ground truth data. A dialog appears asking you to identify the three columns, and to select the map projection of the x and y coordinates. When finished, all the points in the ASCII file that fall within the image’s bounds are entered into the table.
+     </p>
+     <p>
+      The following shows Example Water Depths Using Different Median Kernel Sizes, Left&#160;=&#160;None, Center = 5x5, Right = 13x13 (Imagery Courtesy of DigitalGlobe)
+     </p>
+     <p>
+      <img src="../../Resources/Images/Spectral/bathy_medianfilters_520x190.gif" style="margin-left: 5.99976px;margin-top: 5.99976px;margin-right: 6.000484px;margin-bottom: 5.999767px;width: 520;height: 190;" />
+     </p>
+    </li>
+   </ul>
+   <li value="12">
+    Click
+    <b>
+     Next
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    processes the imagery.
+   </li>
+   <li value="13">
+    If you did not select
+    <b>
+     Calibrate to absolute depth
+    </b>
+    , the
+    <a href="#examining_results">
+     Examine Results dialog
+    </a>
+    appears.
+   </li>
+   <li value="14">
+    <p>
+     If you selected
+     <b>
+      Calibrate to absolute depth
+     </b>
+     , the Absolute Depth Calibration plot appears. Use this plot to select a model to fit the ground truth information.
+    </p>
+    <p>
+     In most cases, ground truth points follow a pattern. Shallow pixels show a wide range in Log Ratio Transform values. As the water gets deeper, it becomes uniformly dark so it has a narrow range of log ratio transform values. A pixel with a log ratio transform of 1 could be either 20, 100, or even 1,000 meters deep. It is better to choose a model that fits the shallow pixels well than the deep pixels, as the deep pixels are prone to error (due to no light being reflected back to the sensor). By selecting a
+     <b>
+      Measurement Errors
+     </b>
+     value other than
+     <b>
+      Equal (1.0)
+     </b>
+     in the Absolute Depth Calibration plot, the model focuses on the shallow pixels when fitting the model. Click
+     <b>
+      Update
+     </b>
+     in the Absolute Depth Calibration plot when you change the
+     <b>
+      Type of Fit
+     </b>
+     or
+     <b>
+      Measurement Errors
+     </b>
+     value. A measure of how well the model fits the data shows as the
+     <b>
+      R-Squared
+     </b>
+     value in the area below the plot.
+    </p>
+    <p>
+     Absolute Depth Calibration Plot
+    </p>
+    <p>
+     <img src="../../Resources/Images/Spectral/bathy_modeldisplay_243x287.gif" style="margin-left: 5.99976px;margin-top: 5.99976px;margin-right: 5.999752px;margin-bottom: 6.000484px;width: 243;height: 287;" />
+    </p>
+    <p>
+     Exponential Models using SQRT(Y) (left) and Equal(1.0) (right) Measurement Errors
+    </p>
+    <p>
+     <img src="../../Resources/Images/Spectral/bathy_modelerrors_427x301.gif" style="margin-left: 5.99976px;margin-top: 5.99976px;margin-right: 5.999783px;margin-bottom: 6.000469px;width: 427;height: 301;" />
+    </p>
+   </li>
+   <li value="15">
+    Click
+    <b>
+     OK
+    </b>
+    in the Absolute Depths Calibration dialog. The
+    <a href="#examining_results">
+     Examine Results panel
+    </a>
+    appears.
+   </li>
+  </ol>
+  <h2>
+   <a name="examining_results">
+   </a>
+   Examining the Relative Water Depth Results
+  </h2>
+  <p>
+   A display group appears with a natural color composite. This is the
+   <i>
+    reference image
+   </i>
+   .
+  </p>
+  <ol>
+   <li value="1">
+    To change the reference image to a false-color composite or to water reflectance, select the appropriate choice in the
+    <b>
+     Reference Image
+    </b>
+    drop-down list, then click
+    <b>
+     Load
+    </b>
+    .
+   </li>
+   <li value="2">
+    To change the source of the Bathymetry data used to display water depths, select an item from the
+    <b>
+     Bathymetry Source
+    </b>
+    drop-down list. This list contains either or both of the log ratio transform results and the Principal Component bands, depending on what was processed.
+   </li>
+   <li value="3">
+    To load a water depth image with a
+    <a href="#color_table">
+     color table
+    </a>
+    applied, select the
+    <b>
+     Color Table
+    </b>
+    tab.
+   </li>
+   <li value="4">
+    To load a density sliced image with the default parameters, select the
+    <b>
+     Density Slice
+    </b>
+    tab. A new display group opens with the density sliced image. The new display group is dynamically linked to the reference image display group.
+   </li>
+   <li value="5">
+    Use
+    <b>
+     <a href="AutoFlicker.htm">
+      Auto-Flicker
+     </a>
+    </b>
+    to examine your results (for detailed information on using this tool.
+   </li>
+   <li value="6">
+    When you are finished examining results, click
+    <b>
+     Next
+    </b>
+    in the Examine Results panel, then click
+    <b>
+     Finish
+    </b>
+    to exit the Wizard.
+   </li>
+  </ol>
+  <h3>
+   <a name="color_table">
+   </a>
+   Color Table
+  </h3>
+  <ol>
+   <li value="1">
+    Select a color table from the
+    <b>
+     Color Tables
+    </b>
+    list, then click
+    <b>
+     Apply Color Table
+    </b>
+    . A new display group opens with the colorized image. The new display group is dynamically linked to the reference image display group.
+   </li>
+   <li value="2">
+    To preview new color tables, select the desired color table in the list, then click
+    <b>
+     Apply Color Table
+    </b>
+    .
+   </li>
+   <li value="3">
+    <p>
+     Use the
+     <b>
+      Stretch Bottom
+     </b>
+     and
+     <b>
+      Stretch Top
+     </b>
+     slider bars to change the way the color table is applied. See the following figure for an example. Move the slider bar positions to reverse the color table order if needed.
+    </p>
+    <p>
+     <img src="../../Resources/Images/Spectral/bathy_colortablestretch_511x222.gif" style="margin-left: 18.76536px;margin-top: 5.99976px;margin-right: 18.76464px;margin-bottom: 5.099758px;width: 511;height: 222;" />
+    </p>
+    <p class="FigureCaption">
+     Changing Color Table Appearance with Slider Bars (Imagery Courtesy of DigitalGlobe)
+    </p>
+   </li>
+   <li value="4">
+    To save the displayed color table image to a graphics file suitable for use in a briefing or report, click
+    <b>
+     Save to File
+    </b>
+    . The Output Display to Image File dialog appears.
+   </li>
+   <li value="5">
+    To create an output file showing the applied color table overlaid on the reference image, click
+    <b>
+     Create Overlay Mosaic
+    </b>
+    . Non-water pixels (black in the color table image) are transparent, allowing the underlying reference image to show through.
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    prompts you to select an output filename, then adds the mosaic to the Layer Manager.
+   </li>
+   <li value="6">
+    To export the overlay mosaic to a graphics file suitable for use in a report or brief, load the image into a display group, then select
+    <b>
+     File &gt; Save Image As &gt; Image File
+    </b>
+    . The Output Display to Image File dialog appears.
+   </li>
+   <li value="7">
+    <p>
+     To export the overlay mosaic to a geodatabase, click
+     <b>
+      Export Mosaic to ArcGIS Geodatabase
+     </b>
+     . This button appears below the color table list. The Select Output Geodatabase dialog appears.
+    </p>
+    <p>
+     <img src="../../Resources/Images/Spectral/bathy_colortableoverlay_521x169.gif" style="margin-left: 19.02024px;margin-top: 5.99976px;margin-right: 19.0195px;margin-bottom: 6.17976px;width: 521;height: 169;" />
+    </p>
+    <p class="FigureCaption">
+     Overlay Mosaic (Imagery Courtesy of DigitalGlobe)
+    </p>
+   </li>
+  </ol>
+  <h3>
+   Density Slice
+  </h3>
+  <ol>
+   <li value="1">
+    Select the
+    <b>
+     Base Image
+    </b>
+    to use from the drop-down list, then click
+    <b>
+     Load Image
+    </b>
+    . A new display group opens with the density slice, dynamically linked to the base image type you selected.
+   </li>
+   <li value="2">
+    There are four display ranges available for use. Default depth ranges are general rules of thumb that apply in many, but not all, cases. Adjust the ranges to suit your particular data by entering new values or using the up/down arrows. The ranges are as follows:
+   </li>
+   <ul>
+    <li value="1">
+     <b>
+      Very Shallow
+     </b>
+    </li>
+    <li value="2">
+     <b>
+      Shallow
+     </b>
+    </li>
+    <li value="3">
+     <b>
+      Moderate
+     </b>
+    </li>
+    <li value="4">
+     <b>
+      Deep
+     </b>
+    </li>
+   </ul>
+   <p>
+    The numbers shown for each range indicate the bottom depth threshold. For example, the default for
+    <b>
+     Shallow
+    </b>
+    are pixels with a depth between 3.0 and 10.0 meters when calibration to absolute depths is performed.
+   </p>
+   <p>
+    The default ranges differ depending on whether or not the Bathymetry was calibrated to absolute depths. If the depths are relative, the results range from 0 to 1. Otherwise, the results range between whatever the calibrated depths are.
+   </p>
+   <p>
+    Adjust the color for each range by right-clicking on the color box and selecting a new color.
+   </p>
+   <p>
+    To turn off a range to show the
+    <b>
+     Base Image
+    </b>
+    beneath it, clear the
+    <b>
+     On/Off
+    </b>
+    check box for that particular range. The following shows a natural color reference image (left), density sliced image (center), with corresponding parameters (right) (imagery courtesy of DigitalGlobe)
+   </p>
+   <p>
+    <img src="../../Resources/Images/Spectral/bathy_densityslice_571x202.gif" style="margin-left: 20.28024px;margin-top: 5.99976px;margin-right: 20.27951px;margin-bottom: 6.359753px;width: 571;height: 202;" />
+   </p>
+   <li value="3">
+    To restore the Density Slice parameters to their original state, click
+    <b>
+     Restore Defaults
+    </b>
+    in the Examine Results panel.
+   </li>
+   <li value="4">
+    To save the density slice image to a graphics file suitable for use in a briefing or report, click
+    <b>
+     Save to File
+    </b>
+    in the Examine Results panel. The Output Display to Image File dialog appears. Density slices may be exported to shapefiles or regions of interest (ROIs) by clicking the buttons provided.
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

@@ -1,0 +1,848 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Explore Imagery|Open and Browse Data" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Open and Display Files
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/TableStyles/NoLines.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#ExploreImagery/OpeningLocalFiles.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="ExploreImagery.htm">
+    Explore Imagery
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="OpenBrowseData.htm">
+    Open and Browse Data
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Open and Display Files
+   </span>
+  </div>
+  <h1>
+   Open and Display Files
+  </h1>
+  <p>
+   Use
+   <b>
+    File &gt; Open
+   </b>
+   ,
+   <b>
+    File &gt; Open As
+   </b>
+   ,
+   <b>
+    File &gt; Data Manager
+   </b>
+   , or toolbar buttons to open and display
+   <a href="SupportedFormats.htm">
+    supported file types
+   </a>
+   .  To display data in multiple views, see
+   <a href="Views.htm">
+    Image Window Views
+   </a>
+   .
+  </p>
+  <p>
+   See the following topics:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#OpenFileMenu">
+     Open Files
+    </a>
+   </li>
+   <li value="2">
+    <a href="#OpenDataManager">
+     Open and Display Files from the Data Manager
+    </a>
+   </li>
+  </ul>
+  <h2>
+   <a name="OpenFileMenu">
+   </a>
+   Open Files
+  </h2>
+  <p>
+   To open files:
+  </p>
+  <ul>
+   <li value="1">
+    From the menu bar, select
+    <b>
+     File &gt; Open
+    </b>
+    and browse for a file from the Open dialog.
+   </li>
+   <li value="2">
+    From the toolbar, click the
+    <b>
+     Open
+    </b>
+    button.
+   </li>
+   <li value="3">
+    From the menu bar, select
+    <b>
+     File &gt; Open As
+    </b>
+    and choose a sensor or file type from the options listed. Opening files through this menu option ensures the correct metadata and ancillary files are read along with the respective image files.
+   </li>
+   <li value="4">
+    Windows users can click and drag a file from ArcMap™, ArcCatalog™, or the Windows File Manager into the Image window. If multiple views are open, you can drag and drop to a desired view.
+   </li>
+   <li value="5">
+    Select a file or files to open in the Open dialog. You can multi-select files by using
+    <b>
+     Ctrl
+    </b>
+    +click or
+    <b>
+     Shift
+    </b>
+    + click.
+   </li>
+   <li value="6">
+    If the
+    <b>
+     <a href="../Preferences.htm#AutoDisplayFilesOnOpen">
+      Auto Display Files On Open
+     </a>
+    </b>
+    preference is set to
+    <b>
+     True
+    </b>
+    (the  default),
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    automatically displays the true-color image, a grayscale image, an annotation layer, a vector layer, an Esri feature class, or an Esri layer in the Image window.
+   </li>
+   <li value="7">
+    If the
+    <b>
+     <a href="../Preferences.htm#AutoDisplayFilesOnOpen">
+      Auto Display Files On Open
+     </a>
+    </b>
+    preference is set to
+    <b>
+     False
+    </b>
+    , the Data Manager appears for you to select how to display the data.
+   </li>
+   <li value="8">
+    To remove an image from the Image window, right-click on the filename in the Layer Manager and select
+    <b>
+     Remove
+    </b>
+    . The file remains open in the Data Manager but is not displayed in the Image window.
+   </li>
+  </ul>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   uses information from the image metadata to determine how to automatically load the image. The following items assume the
+   <a style="font-weight: bold;" href="../Preferences.htm#AutoDisplayMethodForMultispectralFiles">
+    Auto Display Method For Multispectral Files
+   </a>
+   preference is set to
+   <b>
+    True Color
+   </b>
+   .
+  </p>
+  <ul>
+   <li value="1">
+    If the image has wavelength information and bands are available for visible red, green, and blue wavelengths, they will be assigned red, green, and blue.
+   </li>
+   <li value="2">
+    If the image has wavelengths, but they are not in the visible region, or the image does not have wavelength information, the following rules apply:
+   </li>
+   <li class="Indent" value="3">
+    If the image has three bands,
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    assumes that they are red, green, and blue (in that order), and assigns band 1 to red, band 2 to green, and band 3 to blue.
+   </li>
+   <li class="Indent" value="4">
+    If the image has four bands,
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    assumes that they are blue, green, red, and near infrared (in that order), and assigns band 3 to red, band 2 to green, and band 1 to blue.
+   </li>
+   <li class="Indent" value="5">
+    If the image has more than four bands,
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    loads band 1 into a grayscale display.
+   </li>
+   <li class="Indent" value="6">
+    If the image is in NITF format and has default bands set, default bands take precedence.
+   </li>
+   <li value="7">
+    If the image has an associated header file with default bands set, those take precedence upon loading the image.
+   </li>
+  </ul>
+  <h2>
+   <a name="OpenDataManager">
+   </a>
+   Open and Display Files from the Data Manager
+   <a name="kanchor2">
+   </a>
+  </h2>
+  <p>
+   To open files using the Data Manager:
+  </p>
+  <ul>
+   <li value="1">
+    From the menu bar, select
+    <b>
+     File &gt; Data Manager
+    </b>
+    and click the
+    <b>
+     Open
+    </b>
+    button in the Data Manager toolbar browse for a file from the Open dialog.
+   </li>
+   <li value="2">
+    From the toolbar, click the
+    <b>
+     Data Manager
+    </b>
+    button.
+   </li>
+   <li value="3">
+    If the
+    <b>
+     <a href="../Preferences.htm#AutoDisplayFilesOnOpen">
+      Auto Display Files On Open
+     </a>
+    </b>
+    preference is set to
+    <b>
+     True
+    </b>
+    (the  default),
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    automatically displays a true-color image, a grayscale image, an annotation layer, a vector layer, an Esri feature class, or an Esri layer based on your file type.
+   </li>
+   <li value="4">
+    If the
+    <b>
+     Auto Display Files On Open
+    </b>
+    preference is set to
+    <b>
+     False
+    </b>
+    , select how to display the data.
+   </li>
+   <li value="5">
+    Esri® layer files display in the Layer Manager and Data Manager with the layer name (not the filename).
+   </li>
+   <li value="6">
+    To close files, use the Close buttons in the Data Manager or right-click on a filename and select a Close option.
+   </li>
+  </ul>
+  <p>
+   To manually display data:
+  </p>
+  <ul>
+   <li value="1">
+    To assign an RGB combination, click the band name you want to assign to red, then repeat to make the green and blue selections, then click
+    <b>
+     Load Data
+    </b>
+    . The band assignments appear in the
+    <b>
+     Band Selections
+    </b>
+    category of the Data Manager dialog when you expand it.
+   </li>
+   <li value="2">
+    To load a true-color image, right-click on a filename in the Data Manager and select
+    <b>
+     Load True Color
+    </b>
+    .
+   </li>
+   <li value="3">
+    To load a color-infrared (CIR) image, right-click on a filename in the Data Manager and select
+    <b>
+     Load CIR
+    </b>
+    .
+   </li>
+   <li value="4">
+    To load a color-infrared (CIR) image, right-click on a filename in the Data Manager and select
+    <b>
+     Load Grayscale
+    </b>
+    .
+   </li>
+   <li value="5">
+    Right-click on a filename and select
+    <b>
+     Load Default
+    </b>
+    to display an image that has assigned default bands in the associated
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    header. If you do not define default bands to load but the image file contains wavelength information,
+    <b>
+     Load Default
+    </b>
+    uses the default setting in the
+    <b>
+     <a href="../Preferences.htm#AutoDisplayMethodForMultispectralFiles">
+      Auto Display Method For Multispectral Files
+     </a>
+    </b>
+    preference.
+   </li>
+   <li value="6">
+    To display a grayscale image of a specific band, right-click on the band and select
+    <b>
+     Load Grayscale
+    </b>
+    .
+   </li>
+   <li value="7">
+    To load an ROI, right-click on the ROI name and select
+    <b>
+     Load ROI
+    </b>
+    , or select multiple ROIs, right-click, and select
+    <b>
+     Load Files
+    </b>
+    . You can also click and drag one or more ROIs from the Data Manager to the raster to associate it with in the Layer Manager. If the raster already has associated ROIs, you can click and drag to the Regions of Interest folder under the raster layer.
+   </li>
+   <li value="8">
+    Each NITF segment appears in that group as a separate layer. NITF files with multiple
+    <a href="BackgroundNITFNSIFFormat.htm#Image">
+     image segments
+    </a>
+    appear as subfolders under the NITF file. The name of each image segment begins with the highest level of security found in the file, followed by the word
+    <code>
+     Image
+    </code>
+    , followed by the number of the image segment (
+    <code>
+     Image #1
+    </code>
+    for example). The image segment name is then followed by the band names, which include the word
+    <code>
+     Band
+    </code>
+    and the index number (except in the case of a single-band  image). An example is
+    <code>
+     Band_1
+    </code>
+    .
+   </li>
+   <li value="9">
+    For vector shapefiles that are stored in the CSSHPA Data Extension Segment (DES), right-click on a vector name in the Data Manager and select
+    <b>
+     Load Vector
+    </b>
+    .
+   </li>
+   <li value="10">
+    To display
+    <a name="kanchor3">
+    </a>
+    Esri layer source data,  expand the Esri layer, select the data source, and load the source data. Layer files in ArcGIS® consist of a set of rules for displaying and working with datasets. Information in files can include symbols, classifications, labeling rules, and other information describing the appearance and actions of the layer. When visualizing an Esri layer,
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    inherits properties from ArcGIS. If you open the source data for an Esri layer, you will be using
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    properties (e.g. stretch) and the two may not display the same way.
+   </li>
+   <li value="11">
+    <p>
+     You can load multiple Esri layers with the same filename into the Data Manager.
+    </p>
+    <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+     <span class="autonumber">
+      <span>
+       <b>
+        Note:
+       </b>
+      </span>
+     </span>
+     Layer files
+     <i>
+      reference
+     </i>
+     data sources; they do not include the actual data. If referenced data in a file is renamed or moved, the layer files must be updated in ArcMap™ or ArcCatalog™ to use the new path. For more information on files and data sources, see the ArcGIS Help.
+    </p>
+   </li>
+  </ul>
+  <p style="font-weight: bold;">
+   Special Cases for NITF Files
+  </p>
+  <p>
+   The contents of the image representation (IREP) and band representation (IREPBAND) fields in the image subheader affect how NITF images display. The IREP values that occur most frequently are MONO (monochrome), RGB (three-band true color), RGB\LUT (single-band image with color palette), MULTI (multi-band imagery), and NODISPLY (image not intended for display). The IREPBAND values used in this process are R (Red), G (Green), B (Blue), M (Mono), and LU (Look-Up Table). The image contains one IREP value for the image segment, and one IREPBAND value for each band in the dataset.
+  </p>
+  <ul>
+   <li value="1">
+    Images with the IREP value RGB\LUT will be displayed in true color by default, and the image will be decomposed into red, green, and blue bands.
+   </li>
+   <li value="2">
+    Multiple-band images with three bands identified as R, G, and B are displayed as RGB composites, and the three bands will be represented as red, green, and blue bands.
+   </li>
+   <li value="3">
+    If no RGB values are found in the image, and there is a band marked LU, this band will be displayed with the lookup table applied.
+   </li>
+   <li value="4">
+    If the image contains a band with the value M, it is displayed as a grayscale image.
+   </li>
+   <li value="5">
+    If a NITF file contains a lookup table and mask, the software ignores the lookup table and uses the mask.
+   </li>
+  </ul>
+  <h3>
+   File Type Icons
+  </h3>
+  <p>
+   The different file types are indicated by icons that appear next to the filename in the Data Manager. The icons are as follows:
+  </p>
+  <table class="TableStyle_NoLines" style="mc-table-style: url('../Resources/TableStyles/NoLines.css');margin-left: 0;margin-right: auto;" cellspacing="0">
+   <col />
+   <col style="width: 290px;" />
+   <thead>
+    <tr>
+     <th class="TableStyle_NoLines_Head_0_0_ColSep">
+      <p>
+       <img src="../Resources/Images/IconsButtons/DataManagerMultispectralData.gif" title="Multispectral dataset" alt="Multispectral dataset" class="VertCenter" />
+      </p>
+     </th>
+     <th class="TableStyle_NoLines_Head_0_0_ColEnd" style="font-weight: normal;">
+      <p>
+       Multispectral file
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_NoLines_Body_0_0_RowSep_ColSep">
+      <p>
+       <img src="../Resources/Images/IconsButtons/DataManagerGrayscaleData.gif" title="Grayscale image" alt="Grayscale image" />
+      </p>
+     </td>
+     <td class="TableStyle_NoLines_Body_0_0_RowSep_ColEnd" style="font-weight: normal;">
+      <p>
+       Grayscale file
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_NoLines_Body_0_0_RowSep_ColSep">
+      <p>
+       <img src="../Resources/Images/IconsButtons/DataManagerClassificationFile.gif" title="Classification image" alt="Classification image" />
+      </p>
+     </td>
+     <td class="TableStyle_NoLines_Body_0_0_RowSep_ColEnd" style="font-weight: normal;">
+      <p>
+       Classification file
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_NoLines_Body_0_0_RowSep_ColSep">
+      <p>
+       <img src="../Resources/Images/IconsButtons/NITFHeader.gif" title="NITF dataset" />
+      </p>
+     </td>
+     <td class="TableStyle_NoLines_Body_0_0_RowSep_ColEnd" style="font-weight: normal;">
+      <p>
+       NITF file
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_NoLines_Body_0_0_RowSep_ColSep">
+      <img src="../Resources/Images/IconsButtons/ESRILayer.gif" title="ESRI Layer" class="VertCenter" />
+      <![CDATA[ ]]>
+      <img src="../Resources/Images/IconsButtons/ESRILayerPoint.gif" title="ESRI point icon" class="VertCenter" />
+      <![CDATA[ ]]>
+      <img src="../Resources/Images/IconsButtons/ESRILayerLinePolygon.gif" title="ESRI line" style="width: 16px;height: 15px;" class="VertCenter" />
+     </td>
+     <td class="TableStyle_NoLines_Body_0_0_RowSep_ColEnd" style="font-weight: normal;">
+      <p>
+       Esri raster, point, or line and polygon file
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_NoLines_Body_0_0_RowSep_ColSep">
+      <p>
+       <img src="../Resources/Images/IconsButtons/DataManagerAnnotationFile.gif" />
+      </p>
+     </td>
+     <td class="TableStyle_NoLines_Body_0_0_RowSep_ColEnd" style="font-weight: normal;">
+      <p>
+       Annotation file
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_NoLines_Body_0_0_RowSep_ColSep">
+      <p>
+       <img src="../Resources/Images/IconsButtons/DataManagerPointShapefile.gif" />
+      </p>
+     </td>
+     <td class="TableStyle_NoLines_Body_0_0_RowSep_ColEnd" style="font-weight: normal;">
+      <p>
+       Point file
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_NoLines_Body_0_0_RowEnd_ColSep">
+      <p>
+       <img src="../Resources/Images/IconsButtons/DataManagerPolylineShapefile.gif" />
+      </p>
+     </td>
+     <td class="TableStyle_NoLines_Body_0_0_RowEnd_ColEnd" style="font-weight: normal;">
+      <p>
+       Polyline file
+      </p>
+     </td>
+    </tr>
+   </tbody>
+   <tfoot>
+    <tr>
+     <td class="TableStyle_NoLines_Foot_0_0_ColSep">
+      <p>
+       <img src="../Resources/Images/IconsButtons/DataManagerPolygonShapefile.gif" />
+      </p>
+     </td>
+     <td class="TableStyle_NoLines_Foot_0_0_ColEnd" style="font-weight: normal;">
+      <p>
+       Polygon file
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_NoLines_Foot_0_0_ColSep">
+      <img src="../Resources/Images/IconsButtons/LayerManagerROILayer.gif" />
+     </td>
+     <td class="TableStyle_NoLines_Foot_0_0_ColEnd" style="font-weight: normal;">
+      ROI file
+     </td>
+    </tr>
+   </tfoot>
+  </table>
+  <h3>
+   <a name="File">
+   </a>
+   File Information
+   <a name="kanchor4">
+   </a>
+  </h3>
+  <p>
+   The File Information category of the Data Manager provides detailed information about a file. This category is collapsed by default. You can expand or collapse this category by clicking the arrow next to the category name. When expanded, the File Information category lists information derived from the file header.
+  </p>
+  <p>
+   You cannot edit the File Information fields in the Data Manager. To edit header information, see
+   <a href="ENVIHeaderFiles.htm">
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    Header Files
+   </a>
+   .
+  </p>
+  <h4>
+   Raster Layer Information
+  </h4>
+  <ul>
+   <li value="1">
+    <b>
+     File:
+    </b>
+    Filename, including the full path.
+   </li>
+   <li value="2">
+    <b>
+     Dims:
+    </b>
+    File dimensions, including number of lines, samples, and bands; and interleave (BIL, BIP, or BSQ).
+   </li>
+   <li value="3">
+    <b>
+     Data Type:
+    </b>
+    Data type (unsigned integer, byte, etc.)
+   </li>
+   <li value="4">
+    <b>
+     Size:
+    </b>
+    File size in bytes. This information is available for all datasets except for WCS, WMS, and JPIP remote datasets.
+   </li>
+   <li value="5">
+    <b>
+     File Type:
+    </b>
+    <a href="SupportedFormats.htm">
+     File format
+    </a>
+    .
+   </li>
+   <li value="6">
+    <b>
+     Wavelength:
+    </b>
+    Wavelength range, if wavelength information is available.
+   </li>
+   <li value="7">
+    <b>
+     <a name="kanchor5">
+     </a>
+     Projection:
+    </b>
+    Projection name (for georeferenced images), including datum and pixel size. If the file contains rational polynomial coefficient (RPC) information, the text *RPC* precedes the projection type.
+   </li>
+   <li value="8">
+    <b>
+     Upper Left Corner:
+    </b>
+    Image coordinates for the upper-left pixel in the image for images with XSTART and YSTART values (extracted from the
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    header). If your image is a spatial subset of a larger image, the image coordinate system references the parent (or larger) image.
+   </li>
+  </ul>
+  <h4>
+   Vector Layer Information
+  </h4>
+  <ul>
+   <li value="1">
+    <b>
+     File:
+    </b>
+    Filename, including the full path.
+   </li>
+   <li value="2">
+    <b>
+     Shape Type:
+    </b>
+    Type of vector record (Point, Polyline, Polygon).
+   </li>
+   <li value="3">
+    <b>
+     Number of Records:
+    </b>
+    Number of vector records in the file.
+   </li>
+   <li value="4">
+    <b>
+     Number of Vertices:
+    </b>
+    Number of vertices in the file.
+   </li>
+   <li value="5">
+    <b>
+     Number of Quad-Tree Nodes:
+    </b>
+    Number of quadtree nodes created.
+   </li>
+   <li value="6">
+    <b>
+     File Size:
+    </b>
+    File size, in bytes.
+   </li>
+   <li value="7">
+    <b>
+     Attributes:
+    </b>
+    Indicates whether or not an
+    <a href="../ROIVectorAnnotation/ViewingAttributes.htm">
+     attribute table
+    </a>
+    exists for this layer.
+   </li>
+   <li value="8">
+    <b>
+     Projection:
+    </b>
+    Projection name (for georeferenced data), including datum and measurement units.
+   </li>
+  </ul>
+  <h4>
+   Annotation Layer Information
+  </h4>
+  <ul>
+   <li value="1">
+    <b>
+     File:
+    </b>
+    Filename, including the full path.
+   </li>
+   <li value="2">
+    <b>
+     Number of Annotation Items:
+    </b>
+    Number of annotation items in the file.
+   </li>
+   <li value="3">
+    <b>
+     Number of Quad-Tree Nodes:
+    </b>
+    Number of quadtree nodes created. Annotations currently use only one node.
+   </li>
+   <li value="4">
+    <b>
+     Projection:
+    </b>
+    Projection  measurement units.
+   </li>
+  </ul>
+  <h4>
+   Esri&#160;Layer Information
+  </h4>
+  <ul>
+   <li value="1">
+    <b>
+     File:
+    </b>
+    Filename, including the full path.
+   </li>
+   <li value="2">
+    <b>
+     Data Name:
+    </b>
+    Esri layer name (name displayed in the ArcMap Table of Contents).
+   </li>
+   <li value="3">
+    <b>
+     Layer Type:
+    </b>
+    Feature Layer or Raster Layer
+   </li>
+   <li value="4">
+    <b>
+     Shape Type
+    </b>
+    (for Esri feature classes only): Type of vector record (Point, Polyline, Polygon).
+   </li>
+   <li value="5">
+    <b>
+     Data Type
+    </b>
+    (for Esri raster layers only): Data type (unsigned integer, byte, etc.)
+   </li>
+   <li value="6">
+    <b>
+     Dims:
+    </b>
+    File dimensions, including number of lines, samples, and bands; and interleave (BIL, BIP, or BSQ).
+   </li>
+   <li value="7">
+    <b>
+     Top/Bottom/Left/Right:
+    </b>
+    The left, top, right, bottom coordinates of the raster dataset.
+   </li>
+   <li value="8">
+    <b>
+     Projection:
+    </b>
+    Projection name (for georeferenced data), including datum and measurement units.
+   </li>
+  </ul>
+  <h4>
+   ROI Layer Information
+  </h4>
+  <ul>
+   <li value="1">
+    <b>
+     Region Name:
+    </b>
+    Region of interest name.
+   </li>
+   <li value="2">
+    <b>
+     Number of Elements:
+    </b>
+    The number of elements, which is 1.
+   </li>
+   <li value="3">
+    <b>
+     Name:
+    </b>
+    Region name from
+    <span class="DocumentTitleProductNameENVIClassic">
+     ENVI Classic
+    </span>
+    .
+   </li>
+   <li value="4">
+    <b>
+     Dims:
+    </b>
+    File dimensions as samples and lines.
+   </li>
+   <li value="5">
+    <b>
+     Npts:
+    </b>
+    The number of image pixels for this ROI.
+   </li>
+  </ul>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

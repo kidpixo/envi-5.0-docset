@@ -1,0 +1,365 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Feature Extraction|Reference" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Support Vector Machine Background
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/TableStyles/NoLines.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#FindFeatures/FeatureExtraction/BackgroundSVM.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="ExtractFeatures.htm">
+    Feature Extraction
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="BackgroundSegmentationAlgorithm.htm">
+    Reference
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Support Vector Machine Background
+   </span>
+  </div>
+  <h2>
+   Support Vector Machine Background
+  </h2>
+  <p>
+   Support Vector Machine (SVM) is a supervised classification method derived from statistical learning theory that often yields good classification results from complex and noisy data. It separates the classes with a decision surface that maximizes the margin between the classes. The surface is often called the
+   <i>
+    optimal hyperplane
+   </i>
+   , and the data points closest to the hyperplane are called
+   <i>
+    support vectors
+   </i>
+   . The support vectors are the critical elements of the training set.
+  </p>
+  <p>
+   You can adapt SVM to become a nonlinear classifier through the use of nonlinear kernels. While SVM is a binary classifier in its simplest form, it can function as a multiclass classifier by combining several binary SVM classifiers (creating a binary classifier for each possible pair of classes).
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   ’s implementation of SVM uses the
+   <i>
+    pairwise classification
+   </i>
+   strategy for multiclass classification.
+  </p>
+  <p>
+   SVM includes a penalty parameter that allows a certain degree of misclassification, which is particularly important for non-separable training sets. The penalty parameter controls the trade-off between allowing training errors and forcing rigid margins. It creates a soft margin that permits some misclassifications, such as it allows some training points on the wrong side of the hyperplane. Increasing the value of the penalty parameter increases the cost of misclassifying points and forces the creation of a more accurate model that may not generalize well.
+  </p>
+  <ol>
+   <li value="1">
+    Select the
+    <b>
+     Kernel Type
+    </b>
+    from the drop-down list. Depending on the option you select, additional fields may appear. All of these options are different ways of mathematically representing a kernel function, which is a function that gives the weights of nearby data points in estimating target classes. See
+    <a href="#references">
+     References
+    </a>
+    below for more information. The
+    <b>
+     Radial Basis
+    </b>
+    kernel type (default) works well in most cases.
+   </li>
+   <p>
+    The mathematical representation of each kernel is listed below:
+   </p>
+   <table cellspacing="0" style="margin-left: 0;margin-right: auto;caption-side: top;mc-table-style: url('../../Resources/TableStyles/NoLines.css');" class="TableStyle_NoLines">
+    <col />
+    <col />
+    <tbody>
+     <tr>
+      <td class="TableStyle_NoLines_Body_0_0_RowSep_ColSep">
+       <p>
+        Linear
+       </p>
+      </td>
+      <td class="TableStyle_NoLines_Body_0_0_RowSep_ColEnd">
+       <p>
+        K(x
+        <sub>
+         i
+        </sub>
+        ,x
+        <sub>
+         j
+        </sub>
+        ) = x
+        <sub>
+         i
+        </sub>
+        <sup>
+         T
+        </sup>
+        x
+        <sub>
+         j
+        </sub>
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <td class="TableStyle_NoLines_Body_0_0_RowSep_ColSep">
+       <p>
+        Polynomial
+       </p>
+      </td>
+      <td class="TableStyle_NoLines_Body_0_0_RowSep_ColEnd">
+       <p>
+        K(x
+        <sub>
+         i
+        </sub>
+        ,x
+        <sub>
+         j
+        </sub>
+        ) = (gx
+        <sub>
+         i
+        </sub>
+        <sup>
+         T
+        </sup>
+        x
+        <sub>
+         j
+        </sub>
+        + r)
+        <sup>
+         d
+        </sup>
+        , g &gt; 0
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <td class="TableStyle_NoLines_Body_0_0_RowSep_ColSep">
+       <p>
+        RBF
+       </p>
+      </td>
+      <td class="TableStyle_NoLines_Body_0_0_RowSep_ColEnd">
+       <p>
+        K(x
+        <sub>
+         i
+        </sub>
+        ,x
+        <sub>
+         j
+        </sub>
+        ) = exp(-g||x
+        <sub>
+         i
+        </sub>
+        - x
+        <sub>
+         j
+        </sub>
+        ||
+        <sup>
+         2
+        </sup>
+        ), g &gt; 0
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <td class="TableStyle_NoLines_Body_0_0_RowEnd_ColSep">
+       <p>
+        Sigmoid
+       </p>
+      </td>
+      <td class="TableStyle_NoLines_Body_0_0_RowEnd_ColEnd">
+       <p>
+        K(x
+        <sub>
+         i
+        </sub>
+        ,x
+        <sub>
+         j
+        </sub>
+        ) = tanh(gx
+        <sub>
+         i
+        </sub>
+        <sup>
+         T
+        </sup>
+        x
+        <sub>
+         j
+        </sub>
+        + r)
+       </p>
+      </td>
+     </tr>
+    </tbody>
+   </table>
+   <p>
+    where:
+   </p>
+   <p class="indent">
+    g is the gamma term in the kernel function for all kernel types except linear.
+   </p>
+   <p class="indent">
+    d is the polynomial degree term in the kernel function for the polynomial kernel.
+   </p>
+   <p class="indent">
+    r is the bias term in the kernel function for the polynomial and sigmoid kernels.
+   </p>
+   <li value="2">
+    If the
+    <b>
+     Kernel Type
+    </b>
+    is
+    <b>
+     Polynomial
+    </b>
+    , set the
+    <b>
+     Degree of Kernel Polynomial
+    </b>
+    to specify the degree used for the SVM classification (the
+    <sup>
+     d
+    </sup>
+    term used in the above kernel functions). The minimum value is 1 (default), and the maximum value is 6. Increasing this parameter more accurately delineates the boundary between classes. A value of 1 represents a first-degree polynomial function, which is essentially a straight line between two classes. A value of 1 works well when you have two very distinctive classes. In most cases, however, you will be working with imagery that has a high degree of variation and mixed pixels. Increasing the polynomial value causes the algorithm to more accurately follow the contours between classes, but you risk fitting the classification to noise.
+   </li>
+   <li value="3">
+    If the
+    <b>
+     Kernel Type
+    </b>
+    is
+    <b>
+     Polynomial
+    </b>
+    or
+    <b>
+     Sigmoid
+    </b>
+    , specify the
+    <b>
+     Bias in Kernel Function
+    </b>
+    for the kernel to use in the SVM algorithm. The default value is 1.00. This is the "r" term used in the above kernel functions.
+   </li>
+   <li value="4">
+    If the kernel type is
+    <b>
+     Polynomial
+    </b>
+    ,
+    <b>
+     Radial Basis Function
+    </b>
+    , or
+    <b>
+     Sigmoid
+    </b>
+    , use the
+    <b>
+     Gamma in Kernel Function
+    </b>
+    field to set the gamma parameter used in the kernel function (the "g" term used in the above kernel functions). This value is a floating-point value greater than 0.01. The default is the inverse of the number of computed attributes.
+   </li>
+   <li value="5">
+    Specify the
+    <b>
+     Penalty Parameter
+    </b>
+    for the SVM algorithm to use. This value is a floating-point value greater than 0.01.  The default value is 100.0. The penalty parameter allows a certain degree of misclassification, which is particularly important for non-separable training sets. It lets you control the trade-off between allowing training errors and forcing rigid margins. The more you increase this value, the more the parameter suppresses training data from "jumping" classes as you make changes to other parameters. Increasing this value also increases the cost of misclassifying points and creates a more accurate model that may not generalize well.
+   </li>
+   <li value="6">
+    Use the
+    <b>
+     Threshold
+    </b>
+    slider to indicate your level of confidence that the closest segments of any given segment (in the segmentation image) represent the same class as that segment. Higher values mean more confidence, so only the nearest segments will be classified. As you increase the value of the
+    <b>
+     Threshold
+    </b>
+    slider, the Preview Portal will show more unclassified segments. Lower values mean that you are unsure if the closest neighbors represent the same class, so more distant segments will be classified. As you decrease the value of the
+    <b>
+     Threshold
+    </b>
+    slider, the Preview Portal will show fewer unclassified segments.
+   </li>
+  </ol>
+  <p>
+   <a name="references">
+   </a>
+   <b>
+    References
+   </b>
+  </p>
+  <p>
+   Chang, C.-C. and C.-J. Lin. (2001).
+   <i>
+    LIBSVM: a library for support vector machines
+   </i>
+   .
+  </p>
+  <p>
+   Hsu, C.-W., C.-C. Chang, and C.-J. Lin. (2010).
+   <i>
+    A practical guide to support vector classification
+   </i>
+   . National Taiwan University.
+   <a href="http://ntu.csie.org/~cjlin/papers/guide/guide.pdf" target="_blank">
+    http://ntu.csie.org/~cjlin/papers/guide/guide.pdf
+   </a>
+   .
+  </p>
+  <p>
+   Wu, T.-F., C.-J. Lin, and R. C. Weng. (2004). Probability estimates for multi-class classification by pairwise coupling.
+   <i>
+    Journal of Machine Learning Research
+   </i>
+   , 5:975-1005,
+   <a href="http://www.csie.ntu.edu.tw/~cjlin/papers/svmprob/svmprob.pdf" target="_blank">
+    http://www.csie.ntu.edu.tw/~cjlin/papers/svmprob/svmprob.pdf
+   </a>
+   .
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

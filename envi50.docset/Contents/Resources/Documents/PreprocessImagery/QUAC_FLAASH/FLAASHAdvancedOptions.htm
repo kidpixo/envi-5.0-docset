@@ -1,0 +1,562 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Preprocess|Atmospheric Correction Module|Fast Line-of-sight Atmospheric Analysis of Hypercubes (FLAASH)" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   FLAASH™ Advanced Options
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#PreprocessImagery/QUAC_FLAASH/FLAASHAdvancedOptions.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../PreprocessImagery.htm">
+    Preprocess
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="AboutAtmosphericCorrectionModule.htm">
+    Atmospheric Correction Module
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="FLAASH.htm">
+    Fast Line-of-sight Atmospheric Analysis of Hypercubes (FLAASH)
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    FLAASH Advanced Options
+   </span>
+  </div>
+  <h1>
+   <a name="kanchor137">
+   </a>
+   FLAASH™ Advanced Options
+  </h1>
+  <p>
+   Click
+   <b>
+    Advanced Settings
+   </b>
+   in the lower-right corner of the FLAASH™ Atmospheric Correction Model Input Parameters dialog. The FLAASH Advanced Settings dialog appears. Use this dialog to modify default values, to enter additional data, or to make changes to previous settings.
+  </p>
+  <p>
+   See the following sections:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#Select">
+     Select a Spectrograph Definition File
+    </a>
+   </li>
+   <li value="2">
+    <a href="#Select2">
+     Select Model Parameters
+    </a>
+   </li>
+   <li value="3">
+    <a href="#Select3">
+     Select Viewing Geometry Options
+    </a>
+   </li>
+   <li value="4">
+    <a href="#Select4">
+     Select Processing Controls
+    </a>
+   </li>
+  </ul>
+  <h2>
+   <a name="Select">
+   </a>
+   Select a Spectrograph Definition File
+  </h2>
+  <p>
+   The spectrograph definition file is used to assign the spectral features that are used to correct the wavelength calibration for hyperspectral input images. FLAASH includes built-in spectrograph definitions for the AVIRIS, HyMap, HYDICE, HYPERION, CASI, and AISA sensors. If the input image is from another hyperspectral sensor, or you wish to customize the built-in spectrograph definitions you must provide your own spectrograph definition file.
+  </p>
+  <p>
+   To select a file, click
+   <b>
+    Spectrograph Definition File
+   </b>
+   and navigate to the file on disk.
+  </p>
+  <p>
+   The Spectrograph Definition file is an ASCII text file which contains one line for each spectrometer in the sensor. Each spectrometer’s line contains the following information:
+  </p>
+  <ul>
+   <li value="1">
+    The wavelength (in nanometers) of the reference absorption feature being used to correct the wavelength calibration. If no reliable absorption feature is contained within the span of the spectrometer, then no correction can be made and this value should be set to zero.
+   </li>
+   <li value="2">
+    The full-width half-maximum (FWHM) factor for the reference absorption feature. A wavelength span equal to:
+   </li>
+  </ul>
+  <pre class="indent">
+   4*(FWHM factor)*(mean FWHM)
+  </pre>
+  <p class="indent">
+   on each side of the reference absorption feature is used to find the bands needed for identifying the feature. The exact value of the FWHM factor is not critical for a successful wavelength recalibration. Values between 0.5 and 1.5 tend to work well for hyperspectral sensors with critical sampling (where the FWHM is approximately equal to the band spacing). If no reference absorption feature exists for the spectrometer, then set this factor to zero.
+  </p>
+  <ul>
+   <li value="1">
+    The first band number in the spectrometer relative to the first band in the sensor (starting at band number 1).
+   </li>
+   <li value="2">
+    The last band number in the spectrometer relative to the first band in the sensor.
+   </li>
+  </ul>
+  <p>
+   The required format of the file is illustrated in the following example, which depicts the default Spectrograph Definition File for the AVIRIS sensor:
+  </p>
+  <pre class="indent">
+   ; FLAASH spectrograph definition for AVIRIS
+   <br />
+   spectrograph = {0., 0., 1, 32}
+   <br />
+   spectrograph = {760.17, 0.6, 33, 96}
+   <br />
+   spectrograph = {0., 0., 97, 160}
+   <br />
+   spectrograph = {2058.7, 1.5, 161, 224}
+  </pre>
+  <p>
+   The first line in the file is a comment (comments can be placed anywhere in the file, but must be preceded with the semi-colon character). Each of the next four lines contain a spectrograph definition for one of the AVIRIS instrument's four spectrometers.
+  </p>
+  <p>
+   The first spectrometer contains instrument bands 1-32, but does not span any known absorption feature that can be used to recalibrate the wavelengths (so the first 2 values are set to zero). The second spectrometer contains instrument bands 33-96, and the oxygen feature at 760.17 nm is used as the reference absorption feature, with a FWHM factor of 0.6. The third spectrometer contains instrument bands 97-160, but does not contain any reliable features. The fourth spectrometer contains bands 161-224, and the CO2 feature at 2058.7 nm is used, also with a FWHM factor of 1.5.
+  </p>
+  <p>
+   For CASI and AISA, the built-in spectrograph definition file assumes that the collected bands span the 760 nm oxygen feature.
+  </p>
+  <h2>
+   <a name="Select2">
+   </a>
+   Select Model Parameters
+  </h2>
+  <p>
+   Set the following modeling parameters:
+  </p>
+  <ol>
+   <li value="1">
+    In the
+    <b>
+     Aerosol Scale Height (km)
+    </b>
+    field, enter the effective 1/
+    <i>
+     e
+    </i>
+    height of the aerosol vertical profile in km. Typical values are 1 to 2 km. The default value is 1.5 km. The aerosol scale height is used only for the calculation of the adjacency scattering range.
+   </li>
+   <li value="2">
+    In the
+    <b>
+     CO2 Mixing Ratio (ppm)
+    </b>
+    field, enter the carbon dioxide (CO
+    <span style="vertical-align: sub;">
+     2
+    </span>
+    ) mixing ratio in parts per million by volume. In 2001, the value was approximately 370 ppm. For best results, add 20 ppm to the actual value.
+   </li>
+   <li value="3">
+    Click the
+    <b>
+     Use Square Slit Function
+    </b>
+    toggle button to select
+    <b>
+     Yes
+    </b>
+    for images that were derived by averaging together adjacent bands (for example, LASH). This better models the spectral response of the derived bands.
+   </li>
+   <li style="font-style: normal;" value="4">
+    Click the
+    <b>
+     Use Adjacency Correction
+    </b>
+    toggle button to specify whether or not to use adjacency correction. Unlike most atmospheric correction models, the FLAASH model accounts for both the radiance that is reflected from the surface that travels directly into the sensor and the radiance from the surface that is scattered by the atmosphere into the sensor. The distinction between the two accounts for the adjacency effect (spatial mixing of radiance among nearby pixels) caused by atmospheric scattering. More accurate reflectance retrievals result when adjacency correction is enabled; however, there may be occasions when it is desirable to ignore this effect. Turning adjacency correction off sets ρ
+    <span style="vertical-align: sub;">
+     e
+    </span>
+    = ρ in Equation (1) in
+    <a href="BackgroundFLAASH.htm">
+     Background on FLAASH
+    </a>
+    .
+   </li>
+   <li value="5">
+    Click the
+    <b>
+     Reuse MODTRAN Calculations
+    </b>
+    toggle button to specify whether or not to reuse previous MODTRAN calculations. Reusing previous MODTRAN calculations is useful for rapidly processing multiple images taken under essentially identical conditions; the identical illumination, viewing geometries, and visibility are assumed, but the water vapor retrieval is performed again. It is also useful for rapidly generating images with and without polishing, or with different polishing widths. Following is an explanation of the options:
+    <ul>
+     <li value="1">
+      <b>
+       No:
+      </b>
+      FLAASH computes a new set of MODRTRAN radiative transfer calculations for the selected image and model parameters
+     </li>
+     <li value="2">
+      <b>
+       Yes:
+      </b>
+      FLAASH performs the atmospheric correction using the MODTRAN calculations from the previous FLAASH run. This change causes FLAASH to perform a water retrieval; therefore, the
+      <b>
+       Water Retrieval
+      </b>
+      toggle button on the main FLAASH Input Parameters dialog is automatically set to
+      <b>
+       Yes
+      </b>
+      . You cannot reset
+      <b>
+       Water Retrieval
+      </b>
+      to
+      <b>
+       No
+      </b>
+      until you set
+      <b>
+       Reuse MODTRAN Calculations
+      </b>
+      to
+      <b>
+       No
+      </b>
+      .
+     </li>
+    </ul>
+   </li>
+   <p>
+    Following each FLAASH run, the MODTRAN calculations are stored in a file called
+    <code>
+     acc_modroot.fla
+    </code>
+    , and a copy is saved in both the FLAASH output directory as well as in
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    ’s temporary directory (defined in the
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    preferences file). If you set
+    <b>
+     Reuse MODTRAN Calculations
+    </b>
+    to
+    <b>
+     Yes
+    </b>
+    ,
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    first looks in the current FLAASH output directory for the
+    <code>
+     acc_modroot.fla file
+    </code>
+    . If the file is present, it is used. Otherwise,
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    uses the copy that is in the temporary directory. Therefore, you can force FLAASH to use the MODTRAN calculations from any previous run by copying the desired
+    <code>
+     acc_modroot.fla
+    </code>
+    from the desired run into the FLAASH output directory for the current run.
+   </p>
+   <li value="6">
+    In the
+    <b>
+     Modtran Resolution
+    </b>
+    drop-down list, select a resolution. The
+    <b>
+     Modtran Resolution
+    </b>
+    setting controls the MODTRAN spectral resolution and the trade-off of speed versus accuracy for the MODTRAN portion of the calculation. Lower resolution yields proportionally better speed but less accuracy. The main differences in accuracy are seen near 2000 nm and beyond. The 5 cm
+    <span style="vertical-align: super;">
+     -1
+    </span>
+    resolution is the default value when you select a hyperspectral sensor as input, but it changes to 15 cm
+    <span style="vertical-align: super;">
+     -1
+    </span>
+    when you select a multispectral sensor. If aerosol is being retrieved, there are two MODTRAN runs performed at 15 cm
+    <span style="vertical-align: sub;">
+     -1
+    </span>
+    resolution followed by one MODTRAN run at the resolution you select. If aerosols are not being retrieved, the first two runs are omitted.
+   </li>
+   <li value="7">
+    In the
+    <b>
+     Modtran Multiscatter Model
+    </b>
+    drop-down list, select a multiple-scattering algorithm to be used by MODTRAN. FLAASH offers three options for multiscatter models:
+    <b>
+     Isaacs
+    </b>
+    ,
+    <b>
+     Scaled DISORT
+    </b>
+    , and
+    <b>
+     DISORT
+    </b>
+    . The default is
+    <b>
+     Scaled DISORT
+    </b>
+    with eight streams.
+   </li>
+   <p>
+    The DISORT model provides the most accurate shortwave (less than ~ 1000 nm) corrections, however it is very computationally intensive. The Isaacs 2-stream method is fast but oversimplified. The Scaled DISORT method provides near-DISORT accuracy with almost the same speed as Isaacs. In the Scaled DISORT model, DISORT and Isaacs calculations are performed at a small number of atmospheric window wavelengths. The multiple scattering contributions in each method are identified and ratios of the DISORT and Isaacs methods are computed. This ratio is interpolated over the full wavelength range, and finally, applied as a multiple scattering scale factor in a spectral radiance calculation performed with the Isaacs method. This procedure yields near-DISORT accuracy at window wavelengths, and also improves the accuracy in absorbing regions.
+   </p>
+   <li value="8">
+    If you select
+    <b>
+     DISORT
+    </b>
+    or
+    <b>
+     Scaled DISORT
+    </b>
+    as the multiscatter model, specify the number of streams: 2, 4, 8, or 16. The number of streams is related to the number of scattering directions evaluated by the model. Calculations with two or four streams are not recommended, as they dramatically increase computation time (over
+    <b>
+     Isaacs
+    </b>
+    ) with little or no improvement. Increasing the number of streams for the Scaled DISORT model should not significantly increase processing time.
+   </li>
+   <p>
+    Use of the DISORT multiscatter model dramatically increases FLAASH processing time, and is rarely necessary for accurate atmospheric corrections. The magnitude of multiple scattering in any scene is dependent on the amount of haze (water vapor and aerosols) that are present. Moreover, scattering preferentially affects the shorter (visible) wavelengths; longer (near infrared) wavelengths are minimally affected. You should only consider using the DISORT model in the most severe cases, when haze is very strong and critical correction of the shortest wavelengths is required. Computation times vary with system resources, but typical relative computation times are:
+   </p>
+   <p>
+    Isaacs: DISORT-2: DISORT-4: DISORT-8: DISORT-16 = 1: 22: 24: 30: 60
+   </p>
+   <p>
+    That is, running DISORT with 8 streams usually takes about 30 times longer than using Isaacs. In addition, a combination of DISORT (with any number of streams) and a MODTRAN resolution of 1 cm-1 is extremely computationally intensive.
+   </p>
+  </ol>
+  <b>
+   References
+  </b>
+  <p>
+   K. Stamnes, S.-C. Tsay, W. Wiscombe, and K. Jayaweera.
+   <i>
+    Numerically Stable Algorithm for Discrete-Ordinate-Method Radiative Transfer in Multiple Scattering and Emitting Layered Media
+   </i>
+   . Applied Optics. Vol. 27. 1988. pp. 2502-2509.
+  </p>
+  <p>
+   R. G Isaacs, W. C. Wang, R. D. Worsham, and S. Goldenberg.
+   <i>
+    Multiple Scattering LOWTRAN and FASCODE Models
+   </i>
+   . Applied Optics. Vol. 26. 1987. pp. 1272-1281.
+  </p>
+  <h2>
+   <a name="Select3">
+   </a>
+   Select Viewing Geometry Options
+  </h2>
+  <p>
+   For instruments that use a non-nadir viewing geometry, you must specify the zenith and azimuth angles. The zenith angle is defined at the sensor as the angle between the line of sight and the zenith (180 for nadir-viewing sensors). Zenith angles must be positive and between 90 and 180 degrees. The azimuth angle is defined as the azimuth (the angle between the line of sight and due North) of the sensor as viewed from the ground. This angle is arbitrary for nadir-viewing sensors. Azimuth values must be between -180 and 180 degrees. For example, if your azimuth from the sensor is 90 degrees (due east), then the azimuth from the ground is -90 degrees (due west).
+  </p>
+  <p>
+   In the
+   <b>
+    Zenith Angle
+   </b>
+   and
+   <b>
+    Azimuth Angle
+   </b>
+   fields, enter the correct angles.
+  </p>
+  <p>
+   To toggle between degrees/minutes/seconds and decimal degrees, click the
+   <b>
+    DD &lt;-&gt; DMS
+   </b>
+   button.
+  </p>
+  <h2>
+   <a name="Select4">
+   </a>
+   Select Processing Controls
+  </h2>
+  <p>
+   Set the following parameters for processing:
+  </p>
+  <ol>
+   <li value="1">
+    Click the
+    <b>
+     Use Tiled Processing
+    </b>
+    toggle button to specify whether or not to use tiled processing. Like all
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    processing routines, FLAASH processes the input data in pieces (called tiles), then reassembles the tiles after processing is complete to produce the final result. Using tiled processing allows FLAASH to run on images of any size, regardless of system resources (that is, available memory).
+   </li>
+   <p>
+    The default setting in FLAASH is to use tiled processing (
+    <b>
+     Yes
+    </b>
+    ). Tiled processing is highly recommended; however, some cases occur when FLAASH runs faster without tiling.
+   </p>
+   <p>
+    If you select
+    <b>
+     Yes
+    </b>
+    , then enter a value (in megabytes) in the
+    <b>
+     Tile Size
+    </b>
+    field. The default tile size is set to the larger of your
+    <b>
+     ENVI Preferences Cache Size
+    </b>
+    system preference or 100 MB. See
+    <span class="DocumentTitleProductNameENVIClassic">
+     ENVI Classic
+    </span>
+    Help for details on this preference.
+   </p>
+   <p>
+    When processing, FLAASH ensures that the largest piece of the image that is read into memory at any time never exceeds the tile size. It is recommended that the tile size be set to the largest value that does not leave the rest of the computer system deprived of memory for essential functions. For single user machines, a reasonable estimate is about 75% of the installed RAM.
+   </p>
+   <p>
+    Large datasets that contain many pixels with values of 0 (such as a projected Landsat scene) may cause the FLAASH process to fail because the tile can return all “0” pixels. An error message may appear in a popup window and in the file
+    <code>
+     journal.txt
+    </code>
+    that is created in the output file directory specified in the FLAASH Atmospheric Corrections Model Input Parameters dialog.
+   </p>
+   <p>
+    To work around this problem, increase (or even
+    <i>
+     double
+    </i>
+    ) the
+    <b>
+     Tile Size
+    </b>
+    value so that each tile contains some image data.
+   </p>
+   <li value="2">
+    Click
+    <b>
+     Spatial Subset
+    </b>
+    to re-define the spatial subset you selected during original input file selection. You can also use the information displayed in the
+    <b>
+     Spatial Subset
+    </b>
+    field to verify the spatial subset that was defined when the input image was selected.
+   </li>
+   <li value="3">
+    Click
+    <b>
+     Choose
+    </b>
+    to re-define the scale factors you selected during the original input file selection. When the Radiance Scale Factors dialog appears, select a scale factor method (see Specifying Input and Output File Information for details).
+   </li>
+   <li value="4">
+    <a name="scale_factor">
+    </a>
+    In the
+    <b>
+     Output Reflectance Scale Factor
+    </b>
+    field, enter the value used to scale the output reflectance image from floating-point into 2-byte integer data space.
+   </li>
+   <li value="5">
+    Signed integers have an absolute data range between -32768 and +32767. The recommended scale factor is 10,000. This value is stored as the Reflectance Scale Factor Attribute in the header file of the output image.
+   </li>
+   <li value="6">
+    <p>
+     Click the
+     <b>
+      Automatically Save Template File
+     </b>
+     toggle button to specify if you want to automatically
+     <a href="FLAASH.htm#Create">
+      save FLAASH parameters to a template file
+     </a>
+     in the FLAASH output directory. The filename is
+     <code>
+      template.txt
+     </code>
+     appended to your defined root name.
+    </p>
+    <p class="Tip" madcap:autonum="&lt;b&gt;Tip: &lt;/b&gt;">
+     <span class="autonumber">
+      <span>
+       <b>
+        Tip:
+       </b>
+      </span>
+     </span>
+     It is recommended you leave this setting at
+     <b>
+      Yes
+     </b>
+     (default), as it can be helpful to retain a copy of each run’s parameters for later reference.
+    </p>
+   </li>
+   <li value="7">
+    Click the
+    <b>
+     Output Diagnostic Files
+    </b>
+    toggle button to specify whether or not to create intermediate data files, including the channel definition files used for both hyperspectral and multispectral corrections. The intermediate files can be helpful in diagnosing runtime problems.
+   </li>
+   <li value="8">
+    It is recommended you leave this setting at
+    <b>
+     No
+    </b>
+    (the default) unless instructed otherwise, or if you want to see the channel definition file used by FLAASH.
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

@@ -1,0 +1,378 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming|Routines|Processing" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   ENVI_RADARSAT_GEOREF_DOIT
+  </title>
+  <link href="../../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../../ENVIHelp_CSH.htm#ExtendCustomize/ENVIClassicAPI/ENVI_R/ENVI_RADARSAT_GEOREF_DOIT.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../Routines.htm">
+    Routines
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../A/ADAPT_FILT_DOIT.htm">
+    Processing
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    ENVI_RADARSAT_GEOREF_DOIT
+   </span>
+  </div>
+  <h1>
+   <a name="kanchor721">
+   </a>
+   ENVI_RADARSAT_GEOREF_DOIT
+  </h1>
+  <p>
+   Use this procedure to extract embedded geolocation points from a processed RADARSAT file. The points are then used to georeference the RADARSAT data to a specific map projection.
+  </p>
+  <p>
+   Not all RADARSAT files contain embedded geolocation points. If the RADARSAT input data does not have geolocation points, ENVI_RADARSAT_GEOREF_DOIT cannot georegister the file.
+  </p>
+  <h2 class="API">
+   <a name="Syntax">
+   </a>
+   Syntax
+  </h2>
+  <p>
+   ENVI_DOIT, 'ENVI_RADARSAT_GEOREF_DOIT' [,
+   <a href="#BACKGROUND">
+    BACKGROUND
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ] [,
+   <a href="#DEGREE">
+    DEGREE
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ] [,
+   <a href="#DIMS">
+    DIMS
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ],
+   <a href="#FID">
+    FID
+   </a>
+   =
+   <i>
+    file ID
+   </i>
+   [,
+   <a href="#GCP_NAME">
+    GCP_NAME
+   </a>
+   =
+   <i>
+    string
+   </i>
+   ], /
+   <a href="#IN_MEMORY">
+    IN_MEMORY
+   </a>
+   [,
+   <a href="#METHOD">
+    METHOD
+   </a>
+   ={0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8}],
+   <a href="#OUT_FNAME">
+    OUT_FNAME
+   </a>
+   =
+   <i>
+    string
+   </i>
+   [,
+   <a href="#PIXEL_SIZE">
+    PIXEL_SIZE
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ] [,
+   <a href="#PROJ">
+    PROJ
+   </a>
+   =
+   <i>
+    structure
+   </i>
+   ] [,
+   <a href="#R_FID">
+    R_FID
+   </a>
+   =
+   <i>
+    variable
+   </i>
+   ] [,
+   <a href="#SKIP_LINES">
+    SKIP_LINES
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ]
+  </p>
+  <h2 class="API">
+   <a name="Keywords">
+   </a>
+   Keywords
+  </h2>
+  <h3>
+   <a name="BACKGROUND">
+   </a>
+   BACKGROUND (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the value for all background pixels. The default is 0.
+  </p>
+  <h3>
+   <a name="DEGREE">
+   </a>
+   DEGREE (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the degree of the polynomial warp when METHOD=3, 4, or 5. The default is DEGREE=1.
+  </p>
+  <h3>
+   <a name="DIMS">
+   </a>
+   DIMS (optional)
+  </h3>
+  <p>
+   The “dimensions” keyword is a five-element array of long integers that defines the spatial subset (of a file or array) to use for processing. Nearly every time you specify the keyword FID, you must also specify the spatial subset of the corresponding file (even if the entire file, with no spatial subsetting, is to be processed).
+  </p>
+  <ul>
+   <li value="1">
+    DIMS[0]: A pointer to an open ROI; use only in cases where ROIs define the spatial subset. Otherwise, set to -1L.
+   </li>
+   <li value="2">
+    DIMS[1]: The starting sample number. The first x pixel is 0.
+   </li>
+   <li value="3">
+    DIMS[2]: The ending sample number
+   </li>
+   <li value="4">
+    DIMS[3]: The starting line number. The first y pixel is 0.
+   </li>
+   <li value="5">
+    DIMS[4]: The ending line number
+   </li>
+  </ul>
+  <p>
+   To process an entire file (with no spatial subsetting), define DIMS as shown in the following code example. This example assumes you have already opened a file using
+   <a href="../ENVI_S/ENVI_SELECT.htm">
+    ENVI_SELECT
+   </a>
+   or
+   <a href="../ENVI_P/ENVI_PICKFILE.htm">
+    ENVI_PICKFILE
+   </a>
+   :
+  </p>
+  <p class="Code_Indented">
+   envi_file_query, fid, dims=dims
+  </p>
+  <p>
+   You
+   <i>
+    cannot
+   </i>
+   define DIMS as a pointer to a region of interest (ROI) in any of
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   ’s _DOIT library routines. Using the following example code with a _DOIT library routine will result in an error message when you run the program:
+  </p>
+  <p class="Code_Indented">
+   roi_ids = ENVI_GET_ROI_IDS()
+  </p>
+  <p class="Code_Indented">
+   <br />
+   roi_dims = ENVI_GET_ROI_DIMS_PTR(roi_ids[0])
+  </p>
+  <p class="Code_Indented">
+   <br />
+   dims= [roi_dims,0,0,0,0]
+  </p>
+  <h3>
+   <a name="FID">
+   </a>
+   FID
+  </h3>
+  <p>
+   The file ID (FID) is a long-integer scalar with a value greater than 0. An invalid FID has a value of -1. The FID is provided as a named variable by any routine used to open or select a file. Often, the FID is returned from the keyword R_FID in the
+   <a href="../../ENVIRasterToFID.htm">
+    ENVIRasterToFID
+   </a>
+   routine. Files are processed by referring to their FIDs. If you work directly with the file in IDL, the FID is
+   <i>
+    not
+   </i>
+   equivalent to a logical unit number (LUN).
+  </p>
+  <h3>
+   <a name="GCP_NAME">
+   </a>
+   GCP_NAME&#160;(optional)
+  </h3>
+  <p>
+   Use this keyword to specify the name of the output file to contain the extracted ground control points (GCPs). If you do not set this keyword, the points are not saved to disk.
+  </p>
+  <h3>
+   <a name="IN_MEMORY">
+   </a>
+   IN_MEMORY
+  </h3>
+  <p>
+   Set this keyword to specify that output should be stored in memory. If you do not set IN_MEMORY, output will be stored on disk and you must specify OUT_NAME (see below).
+  </p>
+  <h3>
+   <a name="METHOD">
+   </a>
+   METHOD (optional)
+  </h3>
+  <p>
+   Set this keyword to one of the following values to specify the warping method to use.
+  </p>
+  <ul>
+   <li value="1">
+    0: RST with nearest neighbor
+   </li>
+   <li value="2">
+    1: RST with bilinear
+   </li>
+   <li value="3">
+    2: RST with cubic convolution
+   </li>
+   <li value="4">
+    3: Polynomial with nearest neighbor (default)
+   </li>
+   <li value="5">
+    4: Polynomial with bilinear
+   </li>
+   <li value="6">
+    5: Polynomial with cubic convolution
+   </li>
+   <li value="7">
+    6: Triangulation with nearest neighbor
+   </li>
+   <li value="8">
+    7: Triangulation with bilinear
+   </li>
+   <li value="9">
+    8: Triangulation with cubic convolution
+   </li>
+  </ul>
+  <h3>
+   <a name="OUT_FNAME">
+   </a>
+   OUT_FNAME (optional)
+  </h3>
+  <p>
+   Use this keyword to specify an output filename for the resulting data. If you do not set OUT_FNAME, the default output is to memory. If you set the keyword IN_MEMORY, you do not need this keyword.
+  </p>
+  <h3>
+   <a name="PIXEL_SIZE">
+   </a>
+   PIXEL_SIZE (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a two-element array for the output pixel size [
+   <i>
+    x
+   </i>
+   ,
+   <i>
+    y
+   </i>
+   ]. If you do not specify a value for PIXEL_SIZE, the default is [12.5, 12.5] in meters.
+  </p>
+  <h3>
+   <a name="PROJ">
+   </a>
+   PROJ (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the projection of the resulting data. You cannot set PROJ to the Arbitrary projection. PROJ is a projection structure returned from
+   <a href="../ENVI_P/ENVI_PROJ_CREATE.htm">
+    ENVI_PROJ_CREATE
+   </a>
+   or
+   <a href="../ENVI_G/ENVI_GET_PROJECTION.htm">
+    ENVI_GET_PROJECTION
+   </a>
+   . The default projection is UTM.
+  </p>
+  <h3>
+   <a name="R_FID">
+   </a>
+   R_FID (optional)
+  </h3>
+  <p>
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   library routines that result in new images also have an R_FID, or “returned FID.” This is simply a named variable containing the file ID to access the processed data. Specifying this keyword saves you the step of opening the new file from disk.
+  </p>
+  <h3>
+   <a name="SKIP_LINES">
+   </a>
+   SKIP_LINES (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the number of lines to skip when extracting the GCPs. The default value is 100.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

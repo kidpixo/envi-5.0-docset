@@ -1,0 +1,365 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="ROIs, Vectors, Annotations" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Vectors
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#ROIVectorAnnotation/WorkwithVectors.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="ROIVectorAnno.htm">
+    ROIs, Vectors, Annotations
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Vectors
+   </span>
+  </div>
+  <h1>
+   <a name="kanchor445">
+   </a>
+   Vectors
+  </h1>
+  <p>
+   <img src="../Resources/Images/IconsButtons/Tutorial.gif" />
+   <a href="../Tutorials/Tools/VectorTutorial.htm" alt="Tutorial">
+    Vectors Tutorial
+   </a>
+  </p>
+  <p>
+   Vectors are points, multipoints, polylines, or polygons used to mark areas of interest within an image. Use the
+   <b>
+    Vector
+   </b>
+   <![CDATA[ ]]>
+   toolbar buttons to work with vectors. For additional details on vectors, see
+   <a href="BackgroundVectorRecords.htm">
+    Vector Records Background.
+   </a>
+  </p>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   supports shapefiles (
+   <code>
+    .shp
+   </code>
+   ) and
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   vector files (
+   <code>
+    .evf
+   </code>
+   ).
+  </p>
+  <h2>
+   Create and Save a Vector Layer
+  </h2>
+  <ul>
+   <li value="1">
+    Create a new layer by selecting
+    <b>
+     File &gt; New &gt; Vector Layer
+    </b>
+    from the menu bar.
+   </li>
+   <li value="2">
+    Each layer may contain only one
+    <b>
+     Record Type
+    </b>
+    (for example, points).
+   </li>
+   <p>
+    You can select a
+    <b>
+     Source Data
+    </b>
+    file when creating an new layer to define the new layer’s extents and map projection using an existing file.
+   </p>
+   <li value="3">
+    When the layer has been modified, the icon next to the layer name in the Layer Manager becomes shaded
+    <img src="../Resources/Images/IconsButtons/LayerManagerDirtyVectorLayer.gif" class="VertCenter" alt="Dirty vector layer icon" />
+    . The icon shading is removed once the layer is saved.
+   </li>
+   <li value="4">
+    Save layer changes by right-clicking in the Image window view and selecting
+    <b>
+     Save
+    </b>
+    .
+   </li>
+   <li value="5">
+    Save layer changes to a new file by right-clicking in the Image window and selecting
+    <b>
+     Save As
+    </b>
+    . Also use
+    <b>
+     Save As
+    </b>
+    <![CDATA[ ]]>
+    when saving a new vector layer for the first time.
+   </li>
+   <li value="6">
+    Saving the new layer  creates a new
+    <a href="ViewingAttributes.htm">
+     attribute table
+    </a>
+    , which consists of the numeric attribute RECORD_ID.
+   </li>
+   <li value="7">
+    See
+    <a href="ConvertingToDXF.htm">
+     Convert Vectors to DXF Files
+    </a>
+    for instructions on saving regions of interest (ROIs), EVFs, and annotations to DXF format.
+   </li>
+   <li value="8">
+    To hide a vector layer in a view, disable the check box for that layer in the Layer Manager. To show the layer, enable the check box.
+   </li>
+   <li value="9">
+    To remove a vector layer from the Layer Manager, right-click on the layer and select
+    <b>
+     Remove
+    </b>
+    . This removes the layer from the Layer Manager, but the file remains open and you can access it for redisplay from the Data Manager.
+   </li>
+   <li value="10">
+    Each time you open a new vector file, the layer appears at the top of the Layer Manager and becomes the
+    <i>
+     selected layer
+    </i>
+    . The purpose of a selected layer is to allow you to apply a display enhancement (transparency, etc.) to that layer only, without affecting other layers. To select a layer, click its name in the Layer Manager.
+   </li>
+  </ul>
+  <h2>
+   Add Vectors
+  </h2>
+  <ul>
+   <li value="1">
+    In the
+    <a href="ActiveLayers.htm">
+     active layer
+    </a>
+    , click the
+    <b>
+     Vector Create
+    </b>
+    <![CDATA[ ]]>
+    <img src="../Resources/Images/IconsButtons/VectorCreate.gif" />
+    button, then click on the image where you want to add the vector.
+   </li>
+   <li value="2">
+    Create polygons or polylines by clicking and dragging to draw them, or click at intervals to add vertices one at a time.
+   </li>
+   <li value="3">
+    Use the right-click menu options to accept vectors when they are drawn.
+   </li>
+   <li value="4">
+    Multipoint vectors can be added only to a vector file that is designated a multipoint file.
+   </li>
+   <li value="5">
+    Group or ungroup vectors by selecting them and using the right-click menu options.
+   </li>
+   <li value="6">
+    Editing a vector layer with an associated attribute table does not change the existing attribute values. Depending on the type of edits you make, this may mean the values in that record are no longer valid.
+   </li>
+   <li value="7">
+    Vector layers originating from a geodatabase or referenced by an Esri® layer are not editable; however, you can access and edit the source data for an Esri&#160;layer.
+   </li>
+  </ul>
+  <h2>
+   Edit or Delete Vectors
+  </h2>
+  <p>
+   Vector edit or delete options include: deleting a record, moving a polyline or polygon vertex, adding or deleting a polyline or polygon vertex, grouping or ungrouping records. joining polylines, merging or splitting polylines or polygons, smoothing polygons, rectangulating polygons. and removing polygon holes.
+  </p>
+  <ul>
+   <li value="1">
+    To edit or delete polygon or polyline records in the
+    <a href="ActiveLayers.htm">
+     active layer
+    </a>
+    , click the
+    <b>
+     Vector Edit
+    </b>
+    <![CDATA[ ]]>
+    <img src="../Resources/Images/IconsButtons/VectorEdit.gif" />
+    button.
+   </li>
+   <li value="2">
+    To edit or delete points in the active layer, click the
+    <b>
+     Vertex Edit
+    </b>
+    <![CDATA[ ]]>
+    <img src="../Resources/Images/IconsButtons/VertexEdit.gif" />
+    button.
+   </li>
+   <li value="3">
+    Select a record by clicking on it.
+   </li>
+   <li value="4">
+    Select multiple records by using
+    <b>
+     Ctrl
+    </b>
+    +click, or by clicking and dragging to draw a box around the records.
+   </li>
+   <li value="5">
+    Use the right-click menu to choose edit or delete options for the selected record(s).
+   </li>
+  </ul>
+  <h2>
+   Change Properties for Vectors&#160;
+  </h2>
+  <p>
+   To change the properties of a vector layer, right-click in the Layer Manager on the vector layer to modify and select
+   <b>
+    Properties
+   </b>
+   .
+  </p>
+  <p>
+   You can group vectors by attribute and select a color for that group, as long as the selected attribute has less than 256 unique values. For example, you could assign different colors to different road types such as dirt, multi-lane divided, single-lane divided, etc.
+  </p>
+  <p>
+   From the
+   <b>
+    Select Attribute
+   </b>
+   drop-down list in the Properties dialog, select an attribute name. The groups for the attribute appear in the left column, along with an associated color for the group. Select a group, and change the color as needed in the Properties table. To select a different range of colors, select an option from the
+   <b>
+    Color Table
+   </b>
+   drop-down list.
+  </p>
+  <p>
+   To apply the same properties for all attributes, select
+   <b>
+    All Values
+   </b>
+   from the
+   <b>
+    Select Attribute
+   </b>
+   drop-down list.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   The
+   <b>
+    Fill Interior
+   </b>
+   property is disabled for any polygon layer that is the
+   <a href="ActiveLayers.htm">
+    active layer
+   </a>
+   , when the
+   <b>
+    Vector Edit
+   </b>
+   or
+   <b>
+    Vertex Edit
+   </b>
+   button is selected.
+  </p>
+  <h2>
+   View Attributes for Vectors
+  </h2>
+  <p>
+   If a vector or Esri feature class layer has an associated attribute table, you can open and view the attributes. Right-click on the layer name in the Layer Manager and select
+   <b>
+    View Attributes
+   </b>
+   to open the
+   <a href="ViewingAttributes.htm">
+    Attribute Viewer
+   </a>
+   .
+  </p>
+  <h2>
+   Zoom Options
+  </h2>
+  <ul>
+   <li value="1">
+    To zoom to the full extent of a given vector layer, right-click on the layer name in the Layer Manager and select
+    <b>
+     Zoom to Layer
+    </b>
+    .
+   </li>
+   <li value="2">
+    Selecting
+    <b>
+     Full Extent
+    </b>
+    from the
+    <b>
+     Zoom
+    </b>
+    drop-down menu or clicking the
+    <b>
+     Zoom to Full Extent
+    </b>
+    button
+    <img src="../Resources/Images/IconsButtons/ZoomToFullExtent.gif" class="VertCenter" />
+    in the main toolbar zooms to the combined extents of all layers for the current view.
+   </li>
+  </ul>
+  <ul>
+   <li value="1">
+    If a vector layer is georeferenced, the
+    <b>
+     Zoom To
+    </b>
+    drop-down list in the main toolbar displays options for Map Scale:
+    <p>
+     <img src="../Resources/Images/Tools/ZoomMapScaleOptions.gif" />
+    </p>
+   </li>
+  </ul>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

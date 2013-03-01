@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Georectify|Georeferencing Tools" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Build SeaWiFS Geometry Files
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#GeorectifyImagery/BuildingSeaWiFSGeometryFiles.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="GeorectifyImagery.htm">
+    Georectify
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="GeoreferencingTools.htm">
+    Georeferencing Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Build SeaWiFS Geometry Files
+   </span>
+  </div>
+  <h1>
+   Build SeaWiFS Geometry Files
+   <a name="kanchor232">
+   </a>
+  </h1>
+  <p>
+   Use
+   <b>
+    Build SeaWiFS Geometry File
+   </b>
+   to calculate the geometry for HDF and CEOS format LAC SeaWiFS data. When you select this procedure,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   extracts the header information and calculates the geometry values for each pixel. You can select which values to calculate: latitude, longitude, sensor azimuth and zenith angles, sun azimuth and zenith angles, and UTC time. The zenith angle is measured vertically from each pixel to the sensor or sun (straight above the pixel = 0 degrees) and the azimuth angle is the direction from each pixel to the sensor or sun with north = 0 degrees, and angles increasing clockwise (that is, east = 90 degrees).
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   You can also georeference your SeaWiFS data by using the results from this procedure as the IGM input file in Georeferencing from Input Geometry.
+  </p>
+  <ol>
+   <li value="1">
+    Open a SeaWiFS file by selecting
+    <b>
+     File &gt; Open As &gt; SeaWiFS &gt; HDF
+    </b>
+    or
+    <b>
+     CEOS
+    </b>
+    from the menu bar.
+   </li>
+   <li value="2">
+    Select
+    <b>
+     Geometric Correction &gt; Build Geometry File by Sensor &gt; SeaWiFS CEOS Build Geometry File
+    </b>
+    or
+    <b>
+     SeaWiFS HDF Build Geometry File
+    </b>
+    from the Toolbox. The SeaWiFS Input File dialog appears.
+   </li>
+   <li value="3">
+    Select an input file and perform optional spatial and spectral
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+   <li value="4">
+    If your input file is not in HDF or CEOS format, select the associated HDF or CEOS annotation file to read the header information from.
+   </li>
+   <li value="5">
+    Click
+    <b>
+     OK
+    </b>
+    . The SeaWiFS Geometry Parameters dialog appears.
+   </li>
+   <li value="6">
+    Select the values to compute by selecting one of the following options:
+   </li>
+   <ul>
+    <li value="1">
+     To select individual values, select the check boxes next to the desired value.
+    </li>
+    <li value="2">
+     To select a range of values, enter the beginning and ending numbers into the two fields next to the
+     <b>
+      Add Range
+     </b>
+     button and click
+     <b>
+      Add Range
+     </b>
+     .
+    </li>
+    <li value="3">
+     To select all values, click
+     <b>
+      Select All
+     </b>
+     .
+    </li>
+    <li value="4">
+     To de-select any selected items, click
+     <b>
+      Clear
+     </b>
+     .
+    </li>
+   </ul>
+   <li value="7">
+    Select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="8">
+    From the
+    <b>
+     Output Data Type
+    </b>
+    drop-down button, select
+    <b>
+     Double
+    </b>
+    or
+    <b>
+     Floating Point
+    </b>
+    .
+   </li>
+   <li value="9">
+    Click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

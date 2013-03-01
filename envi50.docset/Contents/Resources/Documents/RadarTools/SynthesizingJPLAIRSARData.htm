@@ -1,0 +1,438 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Radar" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Synthesize JPL AIRSAR Data
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#RadarTools/SynthesizingJPLAIRSARData.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="RadarTools.htm">
+    Radar
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Synthesize JPL AIRSAR Data
+   </span>
+  </div>
+  <h1>
+   Synthesize JPL AIRSAR Data
+   <a name="kanchor364">
+   </a>
+  </h1>
+  <p>
+   AIRSAR images must be synthesized before you can use them in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   processing routines. Use
+   <b>
+    Synthesize AIRSAR Data
+   </b>
+   to synthesize standard and specific transmit and receive polarization and total power images from compressed Stokes files.
+  </p>
+  <p>
+   The input AIRSAR data must be in JPL Stokes matrix format (standard file extension
+   <code>
+    .stk
+   </code>
+   ). For easier processing, name the three files with the following convention:
+   <code>
+    <i>
+     filename
+    </i>
+    _p.stk
+   </code>
+   ,
+   <code>
+    <i>
+     filename
+    </i>
+    _l.stk
+   </code>
+   , and
+   <code>
+    <i>
+     filename
+    </i>
+    _c.stk
+   </code>
+   .
+  </p>
+  <p>
+   JPL AIRSAR data are usually delivered on 9-track, 8mm, or 4mm tape as three separate files (P, L, and C-band) in compressed Stokes matrix format. You can use AIRSAR data with missing or non-standard headers, but you must enter the data parameters as described in
+   <a href="#entering_missing_parameters">
+    Entering Missing AIRSAR Parameters
+   </a>
+   ).
+  </p>
+  <p>
+   You can generate byte images to conserve disk space when quantitative analysis is not an issue.
+  </p>
+  <p>
+   See the following sections:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#Overall">
+     Workflow
+    </a>
+   </li>
+   <li value="2">
+    <a href="#entering_missing_parameters">
+     Enter Missing AIRSAR Parameters
+    </a>
+   </li>
+   <li value="3">
+    <a href="#selecting_synthesizing_parameters">
+     Select Synthesizing Parameters
+    </a>
+   </li>
+  </ul>
+  <h2>
+   <a name="Overall">
+   </a>
+   Workflow
+  </h2>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Radar &gt; AIRSAR &gt; Synthesize AIRSAR Data
+    </b>
+    . The Input Stokes Matrix Files dialog appears. Use this dialog to read the compressed Stokes matrix files.
+   </li>
+   <li value="2">
+    Click
+    <b>
+     Open File
+    </b>
+    . The Enter Filename dialog appears.
+   </li>
+   <li value="3">
+    Select a Stokes matrix filename. If the file has a valid AIRSAR header with all of the required parameters,
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds it to one of the
+    <b>
+     Selected Files
+    </b>
+    fields in the Input Stokes Matrix File dialog (depending on whether the file is P-, L-, or C-band data). If you followed the suggested file naming convention described previously,
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    automatically adds the correct filenames for the other two files to the appropriate fields. Otherwise, repeat the file selection process for each of the bands.
+   </li>
+   <p>
+    If your radar data filenames do not appear in your directory, set the filename filter to
+    <code>
+     *.*
+    </code>
+    using the
+    <b>
+     Files of Type
+    </b>
+    drop-down list. To clear the names in the Input File dialog at any time, click
+    <b>
+     Reset
+    </b>
+    or click
+    <b>
+     Cancel
+    </b>
+    to quit without processing.
+   </p>
+   <p>
+    If the Stokes matrix input file does not have a valid AIRSAR header, or if values are missing from the header, the AIRSAR Header Parameters dialog appears.
+    <a href="#entering_missing_parameters">
+     Enter the missing AIRSAR&#160;parameters
+    </a>
+    .
+   </p>
+   <li value="4">
+    Click
+    <b>
+     OK
+    </b>
+    . The Synthesize Parameters dialog appears.
+   </li>
+   <li value="5">
+    <a href="#selecting_synthesizing_parameters">
+     Select the synthesizing parameters
+    </a>
+    .
+   </li>
+   <li value="6">
+    Select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="7">
+    Click
+    <b>
+     OK
+    </b>
+    . All of the synthesized bands are placed in a single file.
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds the synthesized images to the Layer Manager.
+   </li>
+  </ol>
+  <h2>
+   <a name="entering_missing_parameters">
+   </a>
+   Enter Missing AIRSAR Parameters
+  </h2>
+  <p>
+   In the AIRSAR Header Parameters dialog, all of the known parameters are listed in the dialog. The dialog often appears because JPL has changed header parameters for a particular processor version. Typically, the
+   <b>
+    COMP SCALE FACTOR
+   </b>
+   (also known as
+   <b>
+    GENFAC
+   </b>
+   ) or the
+   <b>
+    Band
+   </b>
+   might be missing from the header.
+  </p>
+  <ol>
+   <li value="1">
+    Enter the
+    <b>
+     Offset to Data
+    </b>
+    in bytes.
+   </li>
+   <li value="2">
+    Enter the
+    <b>
+     COMP SCALE FACTOR
+    </b>
+    . A factor of 1.0 is typically suitable.
+   </li>
+   <li value="3">
+    Enter the
+    <b>
+     Number or Samples
+    </b>
+    and
+    <b>
+     Number of Lines
+    </b>
+    in the corresponding fields.
+   </li>
+   <li value="4">
+    Select the
+    <b>
+     Band
+    </b>
+    to which the settings apply.
+   </li>
+   <li value="5">
+    Click
+    <b>
+     OK
+    </b>
+    . The Input Stokes Matrix Files dialog appears.
+   </li>
+  </ol>
+  <h2>
+   <a name="selecting_synthesizing_parameters">
+   </a>
+   Select Synthesizing Parameters
+  </h2>
+  <p>
+   Use the Synthesize Parameters dialog to select specific send and receive polarization combinations to synthesize into
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   images. The standard polarizations HH, VV, HV (where H=horizontal, V=vertical), and a total power (TP) image are generated for each of the three frequencies (bands) by default. These bands appear in the
+   <b>
+    Select Bands to Synthesize
+   </b>
+   list.
+  </p>
+  <ol>
+   <li value="1">
+    From the
+    <b>
+     Select Band Combinations to Synthesize
+    </b>
+    list, select the check boxes next to bands to include.
+   </li>
+   <li value="2">
+    Enter the transmit and receive ellipticity and orientation angles in the
+    <b>
+     Transmit Ellip/Orien
+    </b>
+    and
+    <b>
+     Receive Ellip/Orien
+    </b>
+    fields.
+   </li>
+   <li value="3">
+    Click
+    <b>
+     Add Combination
+    </b>
+    . Ellipticity values range from -45 to 45 degrees with an ellipticity of 0 producing linear polarizations. Orientation values range from 0 to 180 degrees with 0 representing horizontal and 90 degrees for vertical polarizations.
+   </li>
+   <li value="4">
+    Select the desired bands, C, L, and /or P by selecting the box to the left of the band name.
+   </li>
+   <li value="5">
+    Click
+    <b>
+     Add Combination
+    </b>
+    . The selected images are listed in the
+    <b>
+     Additional Images
+    </b>
+    field.
+   </li>
+   <li value="6">
+    To perform spatial subsetting of the image to synthesize directly from the Stokes matrix data, click
+    <b>
+     Spatial Subset
+    </b>
+    .
+   </li>
+   <li value="7">
+    From the
+    <b>
+     Output Data Type
+    </b>
+    drop-down list, select one of the following:
+   </li>
+  </ol>
+  <ul>
+   <li class="Indent" value="1">
+    <b>
+     Floating Point
+    </b>
+    : To output the data in floating-point. If you are creating output to a floating-point data type to mask bad data values, enter the minimum and maximum data values to use, in units of intensity, in the
+    <b>
+     Intensity Min
+    </b>
+    and
+    <b>
+     Max
+    </b>
+    fields.
+   </li>
+   <p class="indent">
+    In the
+    <b>
+     Output in dB
+    </b>
+    field, select
+    <b>
+     Yes
+    </b>
+    to output the converted image to decibels, or select
+    <b>
+     No
+    </b>
+    to output the converted images as intensity values.
+   </p>
+   <p class="indent">
+    When creating output images in dB, the
+    <b>
+     Intensity Min
+    </b>
+    and
+    <b>
+     Max
+    </b>
+    values are still entered in units of intensity as the output is bounded by these values prior to computing dB (for example, if you bound the data by 0 to 1 then a dB image will be bounded by -Inf to 0).
+   </p>
+   <p class="indent">
+    Synthesized values less than the
+    <b>
+     Intensity Min
+    </b>
+    are set to zero (0) and values greater than the
+    <b>
+     Max
+    </b>
+    are replaced by the value one (1).
+   </p>
+   <li class="Indent" value="2">
+    <b>
+     Byte
+    </b>
+    : To output the data in byte format. Use this setting when quantitative analysis is not required. In the
+    <b>
+     Std Multiplier
+    </b>
+    field that appears, enter the standard deviation multiplier used to calculate a minimum and maximum for scaling. The default value of 1.5 works for most AIRSAR and SIR-C scenes.
+   </li>
+   <li class="Indent" value="3">
+    Some additional fields vary, depending on your selection.
+   </li>
+  </ul>
+  <p>
+   <b>
+    References
+   </b>
+   <![CDATA[ ]]>
+  </p>
+  <p>
+   van Zyl, J.J., H.A. Zebker, and C. Elachi: Imaging radar polarization signatures: theory and observation.
+   <i>
+    Radio Science
+   </i>
+   22(4):pp. 529-543, 1987.
+  </p>
+  <p>
+   Zebker, H.A., J.J. van Zyl, and D.N. Held. Imaging radar polarimetry from wave synthesis.
+   <i>
+    Journal of Geophysical Research
+   </i>
+   92(31): pp. 683-701, 1987.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

@@ -1,0 +1,208 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Spectral Tools|Mapping Methods" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Spectral Feature Fitting
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#SpectralTools/SpectralFeatureFitting.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="SpectralTools.htm">
+    Spectral Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="SpectralMappingMethods.htm">
+    Mapping Methods
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Spectral Feature Fitting
+   </span>
+  </div>
+  <h1>
+   Spectral Feature Fitting
+   <a name="kanchor396">
+   </a>
+  </h1>
+  <p>
+   Use
+   <b>
+    Spectral Feature Fitting (SFF)
+   </b>
+   to compare the fit of image spectra to reference spectra using a least-squares technique. SFF is an absorption-feature-based methodology. The reference spectra are scaled to match the image spectra after the continuum is removed from both datasets.
+  </p>
+  <p>
+   For more information, see
+   <a href="SpectralToolsReferences.htm">
+    Spectral Tools References
+   </a>
+   and
+   <a href="#results">
+    Spectral Feature Fitting Results
+   </a>
+   .
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Spectral &gt; Mapping Methods &gt; Spectral Feature Fitting
+    </b>
+    . The Spectral Feature Fitting Input File dialog appears.
+   </li>
+   <li value="2">
+    Select the input file and perform optional spatial
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , and/or masking, then click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+   <p>
+    Input spectra for SFF should be from a continuum-removed perspective; there must be some degree of concavity within the spectral “curve” to avoid generating an error.
+   </p>
+   <p>
+    If the selected input file is not continuum-removed,
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    removes the continuum on-the-fly. However, the function executes much slower.
+   </p>
+   <li value="3">
+    In the Input File dialog, select
+    <b>
+     Spectral Subset
+    </b>
+    . The File Spectral Subset dialog appears.
+   </li>
+   <li value="4">
+    Select bands to subset around the region containing the absorption features of interest.
+   </li>
+   <li value="5">
+    Click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+   <li value="6">
+    Click
+    <b>
+     OK
+    </b>
+    in the Input File dialog. The Endmember Collection:Feature Fitting dialog appears.
+   </li>
+   <li value="7">
+    <a href="../FindFeatures/Classification/ClassificationTools/ImportingSpectra.htm">
+     Import the reference spectra
+    </a>
+    . For details, see Endmember Options and Managing Endmember Spectra.
+   </li>
+   <li value="8">
+    Click
+    <b>
+     Apply
+    </b>
+    . The Spectral Feature Fitting Parameters dialog appears.
+   </li>
+   <li value="9">
+    Use the toggle button to switch between
+    <b>
+     Output separate Scale and RMS Images
+    </b>
+    or
+    <b>
+     Output Combined (Scale/RMS) Image
+    </b>
+    . For more information, see
+    <a href="#working">
+     Working with SFF Results
+    </a>
+    .
+   </li>
+   <li value="10">
+    Select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="11">
+    Click
+    <b>
+     OK
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds the resulting output to the Layer Manager.
+   </li>
+  </ol>
+  <h2>
+   Spectral Feature Fitting Results
+  </h2>
+  <p>
+   A scale image and RMS image or a combined “fit” (scale/RMS) image is output for each reference spectrum. The image is a measure of absorption feature depth, which is related to material abundance. The brighter pixels in the scale image indicate a better match to the reference material in those pixels (for areas with a low RMS error). However, a large scale value (&gt; 1) can result if incorrect reference endmembers are input or if the incorrect wavelength range is used. The image and reference spectra are compared at each wavelength in a least-squares sense, and the RMS error is calculated for each reference spectrum. Dark pixels in the RMS error image indicate a low error. You can use the RMS errors and scale image results to locate areas that best match the reference spectrum.
+   <a name="results">
+   </a>
+  </p>
+  <h3>
+   <a name="working">
+   </a>
+   Working with SFF Results
+  </h3>
+  <p>
+   To view areas in the image that best match the reference spectrum, use 2D scatter plots to plot the scale versus RMS.
+  </p>
+  <p>
+   Another way to produce results that show the distribution of the reference material is to use the “fit” (scale/RMS) image. Higher fit values indicate better matches to the reference spectrum.
+  </p>
+  <p>
+   To generate an output classification-like image, select
+   <b>
+    Classification &gt; Post Classification &gt; Rule Classifier
+   </b>
+   from the Toolbox to threshold the output images using a maximum threshold value.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

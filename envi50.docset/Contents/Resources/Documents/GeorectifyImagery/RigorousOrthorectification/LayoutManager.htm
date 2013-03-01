@@ -1,0 +1,363 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Georectify|Rigorous Orthorectification" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Layout Manager
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#GeorectifyImagery/RigorousOrthorectification/LayoutManager.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../GeorectifyImagery.htm">
+    Georectify
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="Introduction.htm">
+    Rigorous Orthorectification
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Layout Manager
+   </span>
+  </div>
+  <h1>
+   Layout Manager
+  </h1>
+  <p>
+   The
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   Orthorectification Layout Manager (hereafter called the “Layout Manager”) provides a visual and tabular view of the current state of the orthorectification process. You can quickly see the spatial coverage of all of the components used to create an orthorectified image, including the input images, DEMs, ground control points (GCPs), tie points, cutlines, and output area. The Layout Manager also displays the root mean square error (RMSE) of the model.
+  </p>
+  <p>
+   This dialog is for viewing only. It cannot be used to edit GCP or tie point locations or to interactively move the vectors representing images, DEMs, cutlines, output area, or residuals.
+  </p>
+  <p>
+   As you edit GCPs and tie points in the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   Orthorectification Wizard, the Layout Manager automatically updates to show the locational changes. The orthorectification model is recomputed anytime you edit GCPs or tie points. You can quickly determine if your GCPs have broad spatial coverage across the input images and if you have enough tie points to cover image overlap regions. You can view all of these components at the same time, or you can select to view specific items of interest.
+  </p>
+  <p>
+   For more information on using the Layout Manager, select
+   <b>
+    Help &gt; Help on Layout Manager
+   </b>
+   from the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   Orthorectification Wizard menu bar (for any step in the workflow). Select
+   <b>
+    Help &gt; Mouse Button Descriptions
+   </b>
+   to display a list of mouse button controls when working in the Layout Manager.
+  </p>
+  <p>
+   The dialog consists of four parts, as shown in the following figure:
+   <a href="#Location">
+    Location Bar
+   </a>
+   ,
+   <a href="#Layout">
+    Layout View Area
+   </a>
+   ,
+   <a href="#Identifi">
+    Identification Area
+   </a>
+   , and
+   <a href="#Display">
+    Display Controls
+   </a>
+   .
+  </p>
+  <p>
+   <img src="../../Resources/Images/GeorectifyImagery/RigorousOrthorectification/layout_manager_508x548.gif" style="width: 508;height: 548;" />
+  </p>
+  <h2>
+   <a name="Location">
+   </a>
+   Location Bar
+  </h2>
+  <p>
+   The Location Bar indicates the cursor position in meters for a UTM WGS-84 map projection.
+  </p>
+  <h2>
+   <a name="Layout">
+   </a>
+   Layout View Area
+  </h2>
+  <p>
+   The Layout View Area shows the spatial coverage (in map space) of the input images, DEMs, GCPs, tie points, cutlines, output area, and residuals. When the project consists of multiple images, the image boundaries are shown as white lines and filled with different colors to visually show the image stack order.
+  </p>
+  <h3>
+   Layout View Area Controls
+  </h3>
+  <p>
+   Following are controls for working in the Layout View Area.
+  </p>
+  <h4>
+   Identify Images and DEMs
+  </h4>
+  <p>
+   Moving the cursor over the Layout View Area shows the map coordinates in the Location Bar and lists the images (in stack order) and DEMs in the Identification Area.
+  </p>
+  <h4>
+   Select the Active Image
+  </h4>
+  <ul>
+   <li value="1">
+    <b>
+     Shift
+    </b>
+    -click to select the active image. (The top image in the image stack under the cursor will become active in the
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    display group.) The active image is highlighted with a red border.
+   </li>
+   <li value="2">
+    <b>
+     Ctrl
+    </b>
+    -click to select a second active image in the tie points step (see
+    <a href="CollectingEditingTiePoints.htm">
+     Collect and Edit Tie Points
+    </a>
+    ). The secondary active image is highlighted with a yellow border.
+   </li>
+  </ul>
+  <h4>
+   Zoom
+  </h4>
+  <ul>
+   <li value="1">
+    Click once inside the Layout View Area to set the zoom center, then use the middle mouse wheel to zoom in and out of the display.
+   </li>
+   <li value="2">
+    Right-click and select
+    <b>
+     Zoom In
+    </b>
+    or
+    <b>
+     Zoom Out
+    </b>
+    to zoom incrementally.
+   </li>
+   <li value="3">
+    Right-click and select
+    <b>
+     Reset
+    </b>
+    to revert back to the original view.
+   </li>
+  </ul>
+  <h4>
+   <a name="ChangingStackOrder">
+   </a>
+   Change the Image Stack Order
+  </h4>
+  <p>
+   You typically select the active image using
+   <b>
+    Shift
+   </b>
+   -click; however, if an image is behind all other images with no exposed area visible in the Layout View Area, you cannot select it using
+   <b>
+    Shift
+   </b>
+   -click. To expose the image, use the Layout View Area controls to move the upper images down the stack. The image stack order affects the final mosaic output. Parts of images that are underneath other images will not be seen in the final mosaic output (see
+   <a href="ReorderingImagesDefiningCutlines.htm">
+    Reorder Images and Define Cutlines
+   </a>
+   ).
+  </p>
+  <ol>
+   <li value="1">
+    In the Layout View Area,
+    <b>
+     Shift
+    </b>
+    -click inside an image boundary.
+   </li>
+   <li value="2">
+    Right-click and select one of the following options:
+   </li>
+  </ol>
+  <ul>
+   <li class="Indent" value="1">
+    <b>
+     Move Image Down:
+    </b>
+    Moves the active image down one position in the stack.
+   </li>
+   <li class="Indent" value="2">
+    <b>
+     Move Image Up:
+    </b>
+    Moves the active image up one position in the stack.
+   </li>
+   <li class="Indent" value="3">
+    <b>
+     Move to Bottom:
+    </b>
+    Moves the active image to the bottom of the stack.
+   </li>
+   <li class="Indent" value="4">
+    <b>
+     Move to Top:
+    </b>
+    Moves the active image to the top of the stack.
+   </li>
+  </ul>
+  <h2>
+   <a name="Identifi">
+   </a>
+   Identification Area
+  </h2>
+  <p>
+   The Identification Area lists the images and DEMs under the cursor location. Images are listed in their stack order; the first listed image is at the top of the stack. Use the Layout View Area and Identification Area to identify images, to verify the image stack order, and to ensure that DEMs cover a spatial extent greater than the image area.
+  </p>
+  <p>
+   <img src="../../Resources/Images/GeorectifyImagery/RigorousOrthorectification/identification_area.gif" />
+  </p>
+  <h2>
+   <a name="Display">
+   </a>
+   Display Controls
+  </h2>
+  <p>
+   Use the check boxes in the Display Controls area to select which components of the orthorectification process to view in the Layout View Area:
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     Image:
+    </b>
+    Bounding boxes for all input images (white)
+   </li>
+   <li value="2">
+    <b>
+     DEM:
+    </b>
+    Bounding boxes for all input DEMs (red). By default, the Layout View Area is set to the total image output area. If a DEM is significantly larger than this area, then the DEM boundary is only visible if you zoom out. DEMs are not automatically subsetted to the total image output area. If you use a global DEM, the Layout View Area will not display its full spatial extent. A global DEM is shown with a bounding box that is twice the size of the total image output area.
+   </li>
+   <li value="3">
+    <b>
+     GCP:
+    </b>
+    Symbols representing locations of GCPs (yellow)
+   </li>
+   <li value="4">
+    <b>
+     GCP Labels:
+    </b>
+    Labels identifying GCPs (red)
+   </li>
+   <li value="5">
+    <b>
+     Tie Point:
+    </b>
+    Symbols representing locations of tie points (magenta)
+   </li>
+   <li value="6">
+    <b>
+     Tie Point Labels:
+    </b>
+    Labels identifying tie points (purple)
+   </li>
+   <li value="7">
+    <b>
+     Cutline:
+    </b>
+    Polygons representing cutlines (blue)
+   </li>
+   <li value="8">
+    <b>
+     Output Area:
+    </b>
+    Polygon representing output area for the orthorectified output (yellow). The default is the collective boundary of all input images.
+   </li>
+   <li value="9">
+    <b>
+     Residual Vectors:
+    </b>
+    Vectors representing the magnitude and direction of errors in the image plane at each GCP location (cyan). This option is only available when you have at least three active GCPs. See
+    <a href="CollectingEditingGroundControlPoints.htm#Evaluate">
+     Evaluate Residual Errors in GCPs
+    </a>
+    .
+   </li>
+   <li value="10">
+    <b>
+     Residual Image:
+    </b>
+    A contour view of the overall residual error as a function of GCPs. Red areas represent the highest error values, and blue-to-white values represent the lowest values. The Residual Image option is not a recommended choice for viewing the error magnitudes of GCPs that share the same map location or are very close to one another. Use the Residual Vectors option and the Orthorectification Ground Control Points List instead. This option is only available when you have at least three active GCPs. See
+    <a href="CollectingEditingGroundControlPoints.htm#Evaluate">
+     Evaluate Residual Errors in GCPs
+    </a>
+    .
+   </li>
+  </ul>
+  <p>
+   The
+   <b>
+    RMSE
+   </b>
+   field shows the root mean square error (RMSE) for the overall model.
+  </p>
+  <p>
+   To the right of the
+   <b>
+    RMSE
+   </b>
+   field is an area that lists the filenames of the input image and DEM underlying the cursor location in the Layout View Area.
+  </p>
+  <p>
+   The
+   <b>
+    Residual Exaggeration
+   </b>
+   slider controls the relative magnitude of the residual vectors when you select the
+   <b>
+    Residual Vectors
+   </b>
+   check box. The multiplication factor ranges from 1 to 10,000.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

@@ -1,0 +1,752 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Georectify|Rigorous Orthorectification" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Collect and Edit Ground Control Points
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#GeorectifyImagery/RigorousOrthorectification/CollectingEditingGroundControlPoints.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../GeorectifyImagery.htm">
+    Georectify
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="Introduction.htm">
+    Rigorous Orthorectification
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Collect and Edit Ground Control Points
+   </span>
+  </div>
+  <h1>
+   Collect and Edit Ground Control Points
+   <a name="kanchor197">
+   </a>
+  </h1>
+  <p>
+   When you click
+   <b>
+    Next
+   </b>
+   in Step 1, the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   Orthorectification Wizard proceeds to the GCP Selection panel (Step 2 of 5). In this step, you associate image pixels to points on the ground whose locations are known through a horizontal coordinate system and vertical datum. These points are called ground control points (GCPs).
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   Be sure that your GCPs are of a quality that is consistently better than the initial accuracy of the sensor model; this varies with data type and vendor. For example, mid-latitude QuickBird scenes of a relatively flat area may provide an accurate orthorectification without the use of GCPs.
+   <br />
+   <br />
+   GCP elevations should be expressed in meters above mean sea level (orthometric height), not as height above the ellipsoid.
+  </p>
+  <p>
+   The controls in this step of the Wizard allow you to optionally restore GCP files, to add new GCPs, and to edit existing GCPs. You may choose to bypass this step by clicking Next; the orthorectified solution will be computed without GCPs in this case.
+  </p>
+  <p>
+   See the following sections:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#GCP">
+     GCP&#160;File Format
+    </a>
+   </li>
+   <li value="2">
+    <a href="#Restore">
+     Restore GCP Files
+    </a>
+   </li>
+   <li value="3">
+    <a href="#Add">
+     Add GCPs
+    </a>
+   </li>
+   <li value="4">
+    <a href="#Edit">
+     Edit GCPs
+    </a>
+   </li>
+   <li value="5">
+    <a href="#Remove">
+     Remove GCPs
+    </a>
+   </li>
+   <li value="6">
+    <a href="#Turn">
+     Turn GCPs On and Off
+    </a>
+   </li>
+   <li value="7">
+    <a href="#GCP2">
+     GCP&#160;Coordinate Projection
+    </a>
+   </li>
+   <li value="8">
+    <a href="#Save">
+     Save GCP&#160;Files
+    </a>
+   </li>
+   <li value="9">
+    <a href="#Evaluate">
+     Evaluate Residual Errors
+    </a>
+   </li>
+  </ul>
+  <h2>
+   <a name="GCP">
+   </a>
+   GCP File Format
+  </h2>
+  <p>
+   The
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   Orthorectification Module uses the Rigorous Orthorectification GCP file format, which is an ASCII file that contains image file IDs, map X/Y coordinates, elevation in meters, and image X/Y coordinates. Fields are tab-delimited. You can either create a Rigorous Orthorectification GCP file from scratch using your map and elevation data (see example below), or you can enter map/image coordinates and elevations directly in the Wizard and save it to the Rigorous Orthorectification GCP file format.
+  </p>
+  <p>
+   A Rigorous Orthorectification GCP file requires a
+   <code>
+    .pts
+   </code>
+   file extension and begins with the words "
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   Rigorous Orthorectification GCP File." The first several rows that begin with semicolons are header rows. Following is an example:
+  </p>
+  <p class="Code">
+   ; ENVI Rigorous Orthorectification GCP File
+  </p>
+  <p class="Code">
+   ; FileName0=image1.TIF
+
+; FileName1=image2.TIF
+  </p>
+  <p class="Code">
+   ; projection info = {UTM, 12, North, WGS-84, units=Meters}
+  </p>
+  <p class="Code">
+   ; ImageFile#, Map (x,y,elev), Image (x,y)
+  </p>
+  <p class="Code">
+   ;
+  </p>
+  <p class="Code">
+   1  408620.653090  3698080.965069  314.977000  4366.000000  447.000000
+  </p>
+  <p class="Code">
+   1  406652.054304  3698011.485774  311.083000  3569.000000  479.000000
+  </p>
+  <p class="Code">
+   1  398163.369353  3694523.413367  309.603000  245.000000  1861.000000
+  </p>
+  <p>
+   The header rows that say "FileName
+   <i>
+    x
+   </i>
+   " refer to the input image filenames, where
+   <i>
+    x
+   </i>
+   is an index number used to reference the filename throughout the rest of the GCP file. In the example above, a line that begins with “1” indicates GCP data for the file
+   <code>
+    image2.TIF
+   </code>
+   , as indicated in the header. If you ever change the mapped drive, you must remember to update the GCP file headers.
+  </p>
+  <p>
+   If you are creating your own GCP file in a text editor or other application, you do not need to include a full path to the image filenames (in the lines that begin with "FileName
+   <i>
+    x
+   </i>
+   ") as long as your filenames are unique. In cases where the filenames may be the same for all images (for example, CARTOSAT-1 and SPOT data), you need to include the full path to each image file in the "FileName
+   <i>
+    x
+   </i>
+   " lines.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   Files in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   GCP format will not work with the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   Orthorectification Wizard; they must be in the Rigorous Orthorectification GCP file format.
+  </p>
+  <h2>
+   <a name="Restore">
+   </a>
+   Restore GCP Files
+  </h2>
+  <p>
+   Follow these steps to restore an existing GCP file:
+  </p>
+  <ol>
+   <li value="1">
+    Click the
+    <b>
+     Load a new GCP file
+    </b>
+    button. The Select GCP File dialog appears.
+   </li>
+   <li value="2">
+    Select an ASCII file with GCPs, and click
+    <b>
+     Open
+    </b>
+    . The GCP locations are displayed in the Layout View Area of the Layout Manager (if you enabled the
+    <b>
+     GCP
+    </b>
+    check box) and in the display group. You have two options to view the list of GCPs:
+    <ul>
+     <li value="1">
+      Click
+      <b>
+       Show List
+      </b>
+      in the
+      <span class="DocumentTitleProductName">
+       ENVI
+      </span>
+      Orthorectification Wizard. The Orthorectification Ground Control Points List appears. See
+      <a href="#Edit">
+       Edit GCPs
+      </a>
+      for instructions on working with this dialog.
+     </li>
+    </ul>
+   </li>
+   <li value="3">
+    Evaluate the RMSE for the entire model and the error residuals for individual GCPs (as described in
+    <a href="#Evaluate">
+     Evaluate Residual Errors in GCPs
+    </a>
+    ), and proceed with adding new GCPs or editing GCPs as needed.
+   </li>
+  </ol>
+  <h2>
+   <a name="Add">
+   </a>
+   Add GCPs
+  </h2>
+  <p>
+   Follow these steps to add new GCPs to an existing set, or to create a new set of GCPs.
+  </p>
+  <ol>
+   <li value="1">
+    A display group shows the image selected as the
+    <b>
+     Active Image
+    </b>
+    in the GCP Selection panel. To change the image that is displayed, select a different image from the
+    <b>
+     Active Image
+    </b>
+    list or
+    <b>
+     Shift
+    </b>
+    -click an image boundary in the Layout Manager to make that image active. The active image is shown with a red border in the Layout Manager, and
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    will load the appropriate display group. (See
+    <a href="LayoutManager.htm#ChangingStackOrder">
+     Changing the Image Stack Order
+    </a>
+    for more information about reordering images.)
+   </li>
+   <li value="2">
+    In the Image window, go to where you want to add a new GCP.
+   </li>
+   <li value="3">
+    In the Zoom window of the display group, click on a specific pixel to center the Zoom window over that pixel or portion of that pixel.
+   </li>
+   <p>
+    The
+    <b>
+     Image X/Y
+    </b>
+    fields in the
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    Orthorectification Wizard show the image coordinates of the selected pixel underlying the crosshairs in the Zoom window. Subpixel coordinates are supplied to provide higher accuracy in selecting GCPs. Whole-number pixel coordinates correspond to the upper-left corner of the pixel. The x,y values increase to the right and bottom of the pixel, respectively.
+   </p>
+   <li value="4">
+    If your image is not already georeferenced, you can enter known map coordinates for the GCP location into the
+    <b>
+     E/N
+    </b>
+    or
+    <b>
+     Lat/Lon
+    </b>
+    fields of the
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    Orthorectification Wizard.
+    <ul>
+     <li value="1">
+      To enter map coordinates, select a map projection and datum. Click the toggle button next to the map projection name to switch between
+      <b>
+       E/N
+      </b>
+      and
+      <b>
+       Lat/Lon
+      </b>
+      fields.
+     </li>
+     <li value="2">
+      Use negative (-) longitude for the western hemisphere and negative (-) latitude for the southern hemisphere.
+     </li>
+     <li value="3">
+      To change the latitude and longitude values to decimal degrees, click
+      <b>
+       DDEG
+      </b>
+      . To use degrees, minutes, and seconds, click
+      <b>
+       DMS
+      </b>
+      .
+     </li>
+    </ul>
+   </li>
+   <li value="5">
+    If your image is georeferenced, a recommended method is to use
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    ’s Pixel Locator dialog to enter coordinates into the
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    Orthorectification Wizard. From the Display group menu bar, select
+    <b>
+     Tools &gt; Pixel Locator
+    </b>
+    . The Pixel Locator dialog appears. The
+    <b>
+     Sample
+    </b>
+    and
+    <b>
+     Line
+    </b>
+    values reflect the pixel location where the Zoom window is centered.
+   </li>
+   <li value="6">
+    Set the correct map projection and datum (if needed) in the Pixel Locator dialog.
+   </li>
+   <li value="7">
+    Click
+    <b>
+     Export
+    </b>
+    in the Pixel Locator dialog. The map coordinates are transferred to the corresponding fields in the
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    Orthorectification Wizard. (You do not need to perform this step with the
+    <b>
+     Image X/Y
+    </b>
+    fields.)
+   </li>
+   <li value="8">
+    Enter the elevation in meters above mean sea level for the point described by the
+    <b>
+     Lat/Lon
+    </b>
+    (or
+    <b>
+     E/N
+    </b>
+    ) values, into the
+    <b>
+     Elev
+    </b>
+    field of the
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    Orthorectification Wizard.
+   </li>
+   <li value="9">
+    Click
+    <b>
+     Add Point
+    </b>
+    in the
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    Orthorectification Wizard to add the point to the GCP list.
+   </li>
+   <p>
+    When you add a GCP, a marker is placed in the Layout View Area of the Layout Manager and in the display group. The marker consists of an ID next to a + symbol and indicates the selected pixel (or subpixel location). The center of the marker (located under the + symbol) indicates the GCP location.
+   </p>
+   <li value="10">
+    Add more GCPs as needed, using the same procedures.
+   </li>
+  </ol>
+  <p>
+   When you enter at least three GCPs, the GCP list shows the residual errors for each GCP, along with the RMSE for the entire model. While
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   accepts as few as one GCP, it is desirable to have four or more GCPs evenly distributed around each image. See
+   <a href="#Evaluate">
+    Evaluate Residual Errors in GCPs
+   </a>
+   .
+  </p>
+  <h2>
+   <a name="Edit">
+   </a>
+   Edit GCPs
+  </h2>
+  <p>
+   You can edit the location of a GCP by changing the map and/or image coordinates in the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   Orthorectification Wizard.
+  </p>
+  <p>
+   To edit the location of a GCP in the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   Orthorectification Wizard, perform the following steps:
+  </p>
+  <ol>
+   <li value="1">
+    Click
+    <b>
+     Show List
+    </b>
+    . The Orthorectification Ground Control Points List appears.
+   </li>
+   <li value="2">
+    Click a row number to select a given GCP, or click in a table cell corresponding to a GCP and click
+    <b>
+     Goto
+    </b>
+    . The display group centers over that GCP location, and the GCP is highlighted in the Layout Manager. If the image that corresponds to the GCP is not already displayed,
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    loads the appropriate image into the display group.
+   </li>
+   <li value="3">
+    Edit the
+    <b>
+     E/N
+    </b>
+    (or
+    <b>
+     Lat/Lon
+    </b>
+    ),
+    <b>
+     Image X/Y
+    </b>
+    , and
+    <b>
+     Elev
+    </b>
+    values in the Orthorectification Ground Control Points List. You can also use the Pixel Locator dialog to determine map coordinates, as described in
+    <a href="#Add">
+     Add GCPs
+    </a>
+    .
+   </li>
+   <li value="4">
+    Click
+    <b>
+     Update
+    </b>
+    in the Orthorectification Ground Control Points List. The changes are reflected in the GCP list, display group, and the Layout Manager.
+   </li>
+  </ol>
+  <h2>
+   <a name="Remove">
+   </a>
+   Remove GCPs
+  </h2>
+  <p>
+   To remove any GCP from the table in the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   Orthorectification Wizard, select the row for that GCP and click
+   <b>
+    Delete
+   </b>
+   . To remove
+   <i>
+    all
+   </i>
+   GCPs, select
+   <b>
+    Options &gt; Clear All Points
+   </b>
+   from the Orthorectification Ground Control Points List menu bar.
+  </p>
+  <h2>
+   <a name="Turn">
+   </a>
+   Turn GCPs On and Off
+  </h2>
+  <ol>
+   <li value="1">
+    In the Orthorectification Ground Control Points List, click on a row corresponding to a GCP you want to turn off.
+   </li>
+   <li value="2">
+    Click
+    <b>
+     On/Off
+    </b>
+    . The color of the GCP marker in the display group changes to green (by default) to indicate that it is off. You can change the default colors by clicking the
+    <b>
+     Set GCP Color
+    </b>
+    button
+    <img src="../../Resources/Images/IconsButtons/RigOrthoGCPColor.gif" class="VertCenter" />
+    . The Point Color dialog appears. Right-click on a color box and select the desired color.
+   </li>
+   <p>
+    GCPs that you turn off are moved to the end of the Orthorectification Ground Control Points List if you have sorted the GCPs by error magnitude (see
+    <a href="#Evaluate">
+     Evaluate Residual Errors in GCPs
+    </a>
+    ). Their ID values have a minus symbol to indicate they are turned off, and their Magnitude (m) values are 0. These GCPs are not used in the bundle adjustment model as long as they are off. The RMSE calculation is based only on GCPs that are turned on.
+   </p>
+   <p>
+    When you click
+    <b>
+     Next
+    </b>
+    to proceed to the Tie Points panel, GCPs that were previously off are turned back on and used in the model. The purpose of the
+    <b>
+     On/Off
+    </b>
+    functionality is so that you can experiment with GCPs and decide whether or not to permanently delete any.
+   </p>
+  </ol>
+  <h2>
+   <a name="GCP2">
+   </a>
+   GCP Coordinate Projection
+  </h2>
+  <p>
+   If you change the map projection in the Orthorectification Wizard, close the Orthorectification Ground Control Points List if it is currently open. Then re-open it to see the updated coordinate values.
+  </p>
+  <h2>
+   <a name="Save">
+   </a>
+   Save GCP Files
+  </h2>
+  <p>
+   To save edits to an existing GCP file, or to save new GCPs to a new file:
+  </p>
+  <ol>
+   <li value="1">
+    Click the
+    <b>
+     Save current GCP list
+    </b>
+    button  in the
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    Orthorectification Wizard.
+   </li>
+   <li value="2">
+    The Select GCP File dialog appears.
+   </li>
+   <li value="3">
+    Specify an output location and filename, then click
+    <b>
+     Save
+    </b>
+    .
+   </li>
+  </ol>
+  <p>
+   GCP files are saved in the current projection.
+  </p>
+  <h2>
+   <a name="Evaluate">
+   </a>
+   Evaluate Residual Errors in GCPs
+  </h2>
+  <p>
+   For the best orthorectification results, try to minimize the RMSE for the entire model by refining the positions of the pixels with the largest errors or by removing them. The RMSE is calculated when three or more GCPs are available. You can reduce errors by adding more GCPs. If you only have a few GCPs, place them near the image corners or widely scatter them throughout the image.
+  </p>
+  <p>
+   To see which GCPs have the highest error magnitudes, within the GCP list:
+  </p>
+  <ol>
+   <li value="1">
+    Click
+    <b>
+     Show List
+    </b>
+    in the
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    Orthorectification Wizard. The Orthorectification Ground Control Points List appears.
+   </li>
+   <li value="2">
+    Scroll to the right until you see the
+    <b>
+     Magnitude (m)
+    </b>
+    column. From the Orthorectification Ground Control Points List menu bar, select
+    <b>
+     Options &gt; Order Points by Error
+    </b>
+    . The GCPs are reordered so that those with the highest errors appear at the top of the list.
+   </li>
+   <li value="3">
+    Click on a row number for a given GCP to center the Layout View Area (in the Layout Manager) over that GCP.
+   </li>
+   <li value="4">
+    You can examine the impact of the model RMSE by turning GCPs on and off.
+   </li>
+  </ol>
+  <p>
+   You can also enable the
+   <b>
+    Residual Vectors
+   </b>
+   option in the Layout Manager and increase the
+   <b>
+    Residual Exaggeration
+   </b>
+   slider to view the error magnitudes at each GCP location, as shown in the following figure. The
+   <b>
+    Residual Vectors
+   </b>
+   option is only available when you have at least three active GCPs.
+  </p>
+  <p>
+   <img src="../../Resources/Images/GeorectifyImagery/RigorousOrthorectification/error_magnitude_434x557.gif" style="width: 434;height: 557;" />
+  </p>
+  <p>
+   Enable the
+   <b>
+    Residual Image
+   </b>
+   option in the Layout Manager to see a contour view of the residual error magnitudes across the entire model. Red areas represent the highest errors, and blue-to-white areas represent the lowest errors. This area is restricted to the minimum bounding rectangle of the GCPs. The
+   <b>
+    Residual Image
+   </b>
+   option is only available when you have at least three active GCPs.
+  </p>
+  <p>
+   <img src="../../Resources/Images/GeorectifyImagery/RigorousOrthorectification/residual_image_432x346.gif" style="width: 432;height: 346;" />
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   The accuracy of this plot is highly dependent on the distribution of GCPs. True errors may not follow a trend, but this contour plot provides an alternative to the residual vector display. Also, the
+   <b>
+    Residual Image
+   </b>
+   option is not a recommended choice for viewing the error magnitudes of GCPs that share the same map location or are very close to one another. Use the
+   <b>
+    Residual Vectors
+   </b>
+   option and Orthorectification Ground Control Points List instead.
+  </p>
+  <p>
+   Use the
+   <b>
+    Residual Image
+   </b>
+   option along with the
+   <b>
+    Residual Vectors
+   </b>
+   option,
+   <b>
+    Residual Exaggeration
+   </b>
+   slider, and
+   <b>
+    RMSE
+   </b>
+   field to evaluate which GCPs have the highest residual values. You can then correct or delete GCPs as needed to decrease the overall model error. The
+   <b>
+    Residual Image
+   </b>
+   option does not become available until you have selected at least three GCPs.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

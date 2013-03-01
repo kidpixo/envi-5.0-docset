@@ -1,0 +1,198 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Spectral Tools|SPEAR Tools" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   SPEAR Metadata Browser
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#SpectralTools/SPEARTools/SPEARMetadataBrowser.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../SpectralTools.htm">
+    Spectral Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="SpearTools.htm">
+    SPEAR Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    SPEAR Metadata Browser
+   </span>
+  </div>
+  <h1>
+   SPEAR Metadata Browser
+  </h1>
+  <p>
+   The SPEAR Metadata Browser extracts key metadata from National Imagery Transmission Format (NITF) images and displays it in a simple-to-read format. In addition, this tool provides a way to compare multiple images for use in change detection, and to view a 3D graphic of the sensor's and sun's geometry at the time of collection.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     SPEAR &gt; SPEAR Metadata Browser
+    </b>
+    . The SPEAR Metadata Browser Wizard displays the File Selection panel.
+   </li>
+   <li value="2">
+    Click
+    <b>
+     Add Files
+    </b>
+    to select images to be exported. The input image should be a panchromatic or multispectral file in NITF format. Select more than one file at a time using the
+    <b>
+     Shift
+    </b>
+    or
+    <b>
+     Ctrl
+    </b>
+    keys. To remove files from the Input File List, select the files to be removed and click
+    <b>
+     Remove Files
+    </b>
+    .
+   </li>
+   <li value="3">
+    Click
+    <b>
+     Next
+    </b>
+    . The Examine Results dialog appears.
+   </li>
+   <li value="4">
+    The File Info table contains raw metadata displayed in one column per input image. Resize columns by clicking and dragging the edges of any column header. Information (if present in the metadata) may include the information below. If the metadata is not present, fields will display as blank or will be populated with a question mark.
+   </li>
+   <ul>
+    <li value="1">
+     <b>
+      Image Title
+     </b>
+     : Title of the image.
+    </li>
+    <li value="2">
+     <b>
+      Image Date
+     </b>
+     : Acronym for the image type. Includes: VIS (Visible Imagery, usually panchromatic), MAP (maps), SAR (synthetic aperture radar), IR (infrared), and MS (multispectral).
+    </li>
+    <li value="3">
+     <b>
+      Target ID
+     </b>
+     : Primary target for the image. If present, the first 10 digits correspond to the BE (Basic Encyclopedia) identifier: five characters of functional category code, followed by the two-character country code.
+    </li>
+    <li value="4">
+     <b>
+      Source
+     </b>
+     : Alphanumeric acronym for the image source. For example, 'QB02' refers to DigitalGlobe QuickBird 2 imagery.
+    </li>
+    <li value="5">
+     <b>
+      Classification
+     </b>
+     : Image security classification level.
+    </li>
+    <li value="6">
+     <b>
+      GSD
+     </b>
+     : The mean ground sampling distance (GSD) in inches.
+    </li>
+    <li value="7">
+     <b>
+      NIIRS
+     </b>
+     : The National Image Interpretability Rating Scale (NIIRS) value.
+    </li>
+    <li value="8">
+     <b>
+      Sensor Az/Elev
+     </b>
+     : The azimuth and elevation angle (degrees above horizon) to the sensor from the center of the image.
+    </li>
+    <li value="9">
+     <b>
+      Solar Az/Elev
+     </b>
+     : The azimuth and elevation angle (degrees above horizon) to the sun from the center of the image.
+    </li>
+   </ul>
+   <li value="5">
+    The Difference table displays image pair suitability for change detection analysis. The table lists the angular difference between sensor vectors as well as solar vectors (in order). Cells display the sum of the angular differences by color:
+   </li>
+   <ul>
+    <li value="1">
+     0-30 degrees: Highly suitable for change detection (green).
+    </li>
+    <li value="2">
+     30-60 degrees: Moderately suitable for change detection (yellow).
+    </li>
+    <li value="3">
+     60+ degrees: Poorly suited for change detection (red).
+    </li>
+   </ul>
+   <li value="6">
+    Click on a cell in the Difference table to display the
+    <b>
+     Time Difference
+    </b>
+    between two collections.
+   </li>
+   <li value="7">
+    <p>
+     When a cell for a valid image pair is selected in the Difference table, a 3D graphic at the bottom of the SPEAR dialog updates to show the relative sensor and solar geometries. Click and drag the graphic to change the view perspective. Green cubes indicate sensor positions, yellow spheres indicate solar positions, and red and blue lines indicate which sensor and solar vector pair belong to each other.
+    </p>
+    <p>
+     To view a single image, select the row or column header for that image.
+    </p>
+   </li>
+   <li value="8">
+    Optionally, right-click and select
+    <b>
+     Save Image to File
+    </b>
+    to save the image to a graphic file.
+   </li>
+   <li value="9">
+    When you are finished viewing the metadata, click
+    <b>
+     Finish
+    </b>
+    to exit the Wizard.
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

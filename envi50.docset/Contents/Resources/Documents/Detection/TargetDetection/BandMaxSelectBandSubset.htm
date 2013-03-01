@@ -1,0 +1,190 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Detection|Target Detection|SAM Target Finder with BandMax" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Select Band Subset
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#Detection/TargetDetection/BandMaxSelectBandSubset.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../DetectionTools.htm">
+    Detection
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="TargetDetection.htm">
+    Target Detection
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="SAMTargetFinderWithBandMax.htm">
+    SAM Target Finder with BandMax
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Select Band Subset
+   </span>
+  </div>
+  <h1>
+   Select Band Subset
+  </h1>
+  <p>
+   The Select Optimal Bands panel represents step 4 in the
+   <a href="SAMTargetFinderWithBandMax.htm#workflow">
+    workflow
+   </a>
+   .
+  </p>
+  <p>
+   Here, you will customize the band subset used to suppress your backgrounds. The BandMax algorithm calculates a significance value for each band in the input image. This unitless value ranges from 0 to 1, where a higher value indicates the band has a higher probability of distinguishing a target response from a background response. BandMax compares the significance value to a significance threshold to derive a subset of bands, based upon the current list of targets and backgrounds.
+  </p>
+  <p>
+   BandMax calculates the significance threshold by attempting to select 25% of the input bands, but never fewer than six bands. However, in some cases, even using a threshold of 0 (the lowest) does not provide an adequate number of bands. In this case, it is best to modify your selection of
+   <a href="BandMaxSelectTargets.htm">
+    targets
+   </a>
+   or
+   <a href="BandMaxSelectBackground.htm">
+    backgrounds
+   </a>
+   (typically by removing one or more) and run the BandMax algorithm again.
+  </p>
+  <p>
+   The results of the BandMax calculations are shown in the right part of the panel. You can customize the number of bands that will be chosen for SAM analysis (step 3 of the Wizard workflow) by modifying the values in the following steps.
+  </p>
+  <ol>
+   <li value="1">
+    Review the
+    <b>
+     Significant Bands
+    </b>
+    <b style="font-weight: normal;">
+     list,
+    </b>
+    which shows the bands that BandMax automatically determined were significant when you clicked
+    <b>
+     Next
+    </b>
+    in the Background Selection and Rejection panel
+    <b style="font-weight: normal;">
+     .
+    </b>
+   </li>
+   <li value="2">
+    <p>
+     Modify the
+     <b>
+      Band Significance Threshold
+     </b>
+     value as needed. The threshold ranges from 0 to 1. Only bands with a significance value greater than or equal to the significance threshold will be used. Setting the
+     <b>
+      Band Significance Threshold
+     </b>
+     to a higher value results in fewer selected bands in the subset.
+    </p>
+    <p>
+     The increase/decrease buttons change the threshold by increments of 0.01. An increase in the
+     <b>
+      Band Significance Threshold
+     </b>
+     value decreases the
+     <b>
+      Number of Significant Bands
+     </b>
+     value and updates the
+     <b>
+      Significant Bands
+     </b>
+     <b>
+      list
+     </b>
+     . If a change of 0.01 is not enough to update the
+     <b>
+      Number of Significant Bands
+     </b>
+     , increase the increment until it does.
+    </p>
+   </li>
+   <li value="3">
+    <p>
+     You can also decrease the
+     <b>
+      Number of Significant Bands
+     </b>
+     <b style="font-weight: normal;">
+      value
+     </b>
+     , which increases the
+     <b>
+      Band Significance Threshold
+     </b>
+     value and updates the
+     <b>
+      Significant Bands
+     </b>
+     <b style="font-weight: normal;">
+      list
+     </b>
+     .
+    </p>
+    <p>
+     The increase/decrease buttons change the number of bands by at least 1. If two or more bands have the same significance value, a greater increment is used to include all of these bands.
+    </p>
+   </li>
+   <li value="4">
+    Click
+    <b>
+     Save Significant Bands to File
+    </b>
+    if you want to save the band subset in the
+    <b>
+     Significant Bands
+    </b>
+    list to an ASCII file. When you have derived the subset of bands that effectively detects your targets, you may want to use this same band subset to perform a series of classifications on a set of images from the same sensor. You can use this output ASCII file as input when spectrally subsetting a file.
+   </li>
+   <li value="5">
+    Click
+    <b>
+     Next
+    </b>
+    in the Wizard. The Select SAM Maximum Angle Threshold panel appears. The bands in the
+    <b>
+     Significant Bands
+    </b>
+    list form a band subset that is used as input in the following SAM analysis.
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

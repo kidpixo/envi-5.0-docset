@@ -1,0 +1,271 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming|Routines|Processing" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   RADAR_INC_ANGLE_DOIT
+  </title>
+  <link href="../../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../../ENVIHelp_CSH.htm#ExtendCustomize/ENVIClassicAPI/R/RADAR_INC_ANGLE_DOIT.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../Routines.htm">
+    Routines
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../A/ADAPT_FILT_DOIT.htm">
+    Processing
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    RADAR_INC_ANGLE_DOIT
+   </span>
+  </div>
+  <h1>
+   <a name="kanchor757">
+   </a>
+   RADAR_INC_ANGLE_DOIT
+  </h1>
+  <p>
+   Use this procedure to calculate an incidence angle for a radar image. No DEM data are used to calculate the incidence angle.
+  </p>
+  <h2 class="API">
+   <a name="Syntax">
+   </a>
+   Syntax
+  </h2>
+  <p>
+   ENVI_DOIT, 'RADAR_INC_ANGLE_DOIT' [, /
+   <a href="#DEGREES">
+    DEGREES
+   </a>
+   ],
+   <a href="#DIMS">
+    DIMS
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ,
+   <a href="#FR_ANGLE">
+    FR_ANGLE
+   </a>
+   =
+   <i>
+    value
+   </i>
+   , /
+   <a href="#IN_MEMORY">
+    IN_MEMORY
+   </a>
+   , /
+   <a href="#LEFT_LOOK">
+    LEFT_LOOK
+   </a>
+   ,
+   <a href="#NR_ANGLE">
+    NR_ANGLE
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ,
+   <a href="#OUT_BNAME">
+    OUT_BNAME
+   </a>
+   =
+   <i>
+    string array
+   </i>
+   ,
+   <a href="#OUT_NAME">
+    OUT_NAME
+   </a>
+   =
+   <i>
+    string
+   </i>
+   ,
+   <a href="#RANGE_DIR">
+    RANGE_DIR
+   </a>
+   ={0 | 1}
+  </p>
+  <h2 class="API">
+   <a name="Keywords">
+   </a>
+   Keywords
+  </h2>
+  <h3>
+   <a name="DEGREES">
+   </a>
+   DEGREES (optional)
+  </h3>
+  <p>
+   Set this keyword to specify that the input and output angles are in degrees. Otherwise, the angles are in radians.
+  </p>
+  <h3>
+   <a name="DIMS">
+   </a>
+   DIMS
+  </h3>
+  <p>
+   The “dimensions” keyword is a five-element array of long integers that defines the spatial subset (of a file or array) to use for processing. Nearly every time you specify the keyword FID, you must also specify the spatial subset of the corresponding file (even if the entire file, with no spatial subsetting, is to be processed).
+  </p>
+  <ul>
+   <li value="1">
+    DIMS[0]: A pointer to an open ROI; use only in cases where ROIs define the spatial subset. Otherwise, set to -1L.
+   </li>
+   <li value="2">
+    DIMS[1]: The starting sample number. The first x pixel is 0.
+   </li>
+   <li value="3">
+    DIMS[2]: The ending sample number
+   </li>
+   <li value="4">
+    DIMS[3]: The starting line number. The first y pixel is 0.
+   </li>
+   <li value="5">
+    DIMS[4]: The ending line number
+   </li>
+  </ul>
+  <p>
+   To process an entire file (with no spatial subsetting), define DIMS as shown in the following code example. This example assumes you have already opened a file using
+   <a href="../ENVI_S/ENVI_SELECT.htm">
+    ENVI_SELECT
+   </a>
+   or
+   <a href="../ENVI_P/ENVI_PICKFILE.htm">
+    ENVI_PICKFILE
+   </a>
+   :
+  </p>
+  <p class="Code_Indented">
+   envi_file_query, fid, dims=dims
+  </p>
+  <p>
+   You
+   <i>
+    cannot
+   </i>
+   define DIMS as a pointer to a region of interest (ROI) in any of
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   ’s _DOIT library routines. Using the following example code with a _DOIT library routine will result in an error message when you run the program:
+  </p>
+  <p class="Code_Indented">
+   roi_ids = ENVI_GET_ROI_IDS()
+  </p>
+  <p class="Code_Indented">
+   <br />
+   roi_dims = ENVI_GET_ROI_DIMS_PTR(roi_ids[0])
+  </p>
+  <p class="Code_Indented">
+   <br />
+   dims= [roi_dims,0,0,0,0]
+  </p>
+  <h3>
+   <a name="FR_ANGLE">
+   </a>
+   FR_ANGLE
+  </h3>
+  <p>
+   Use this keyword to specify the far-range angle for the locations specified by the DIMS array.
+  </p>
+  <h3>
+   <a name="IN_MEMORY">
+   </a>
+   IN_MEMORY
+  </h3>
+  <p>
+   Set this keyword to specify that output should be stored in memory. If you do not set IN_MEMORY, output will be stored on disk and you must specify OUT_NAME (see below).
+  </p>
+  <h3>
+   <a name="LEFT_LOOK">
+   </a>
+   LEFT_LOOK
+  </h3>
+  <p>
+   Set this keyword to use a left-looking instrument to calculate the incidence angle image.
+  </p>
+  <h3>
+   <a name="NR_ANGLE">
+   </a>
+   NR_ANGLE
+  </h3>
+  <p>
+   Use this keyword to specify the near-range angle for the locations specified by the DIMS array.
+  </p>
+  <h3>
+   <a name="OUT_BNAME">
+   </a>
+   OUT_BNAME
+  </h3>
+  <p>
+   Use this keyword to specify a string array of output band names.
+  </p>
+  <h3>
+   <a name="OUT_NAME">
+   </a>
+   OUT_NAME
+  </h3>
+  <p>
+   Use this keyword to specify a string with the output filename for the resulting data. If you set the keyword IN_MEMORY, you do not need to specify OUT_NAME.
+  </p>
+  <h3>
+   <a name="RANGE_DIR">
+   </a>
+   RANGE_DIR
+  </h3>
+  <p>
+   Use this keyword to specify the range direction. RANGE_DIR is an integer value with the following definitions:
+  </p>
+  <ul>
+   <li value="1">
+    0: Range by samples
+   </li>
+   <li value="2">
+    1: Range by lines
+   </li>
+  </ul>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

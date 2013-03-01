@@ -1,0 +1,562 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Spectral Tools|The n-D Visualizer" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   General n-D Controls Dialog Functions
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#SpectralTools/GeneralNDVisualizerControlDialogFunctions.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="SpectralTools.htm">
+    Spectral Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="nDimensionalVisualizer.htm">
+    The n-D Visualizer
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    General n-D Controls Dialog Functions
+   </span>
+  </div>
+  <h1>
+   General n-D Controls Dialog Functions
+  </h1>
+  <p>
+   The n-D Controls dialog contains representations of all of the bands that you selected during the file selection. The bands are represented by numbered boxes that initially appear black.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   If you have more bands than the n-D Visualizer can display, middle-click or right-click to toggle through groups containing those bands.
+  </p>
+  <ul>
+   <li value="1">
+    Clicking an individual band number in the n-D Controls dialog turns the band number white and displays the corresponding band pixel data in the n-D scatter plot. You must select at least two bands to view a scatter plot.
+   </li>
+   <li value="2">
+    Clicking the same band number again turns it black and turns off the band pixel data in the n-D scatter plot.
+   </li>
+   <li value="3">
+    Selecting two bands in the n-D Controls dialog produces a 2D scatter plot; selecting three bands produces a 3D scatter plot, and so on. You can select any combination of bands at once.
+   </li>
+  </ul>
+  <p>
+   See the following sections:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#Selectin">
+     Select Dimensions and Rotate
+    </a>
+   </li>
+   <li value="2">
+    <a href="#Identify">
+     Identify Endmembers
+    </a>
+   </li>
+   <li value="3">
+    <a href="#Defining">
+     Define Classes
+    </a>
+   </li>
+   <li value="4">
+    <a href="#interacting_with_classes">
+     Interact with Classes
+    </a>
+   </li>
+   <li value="5">
+    <a href="#Collapsi">
+     Collapse Classes
+    </a>
+   </li>
+  </ul>
+  <h2>
+   <a name="Selectin">
+   </a>
+   Select Dimensions and Rotate
+  </h2>
+  <p>
+   Rotate data points by stepping between random projection views. You can control the speed and stop the rotation at any time. You can move forward and backward step-by-step through the projection views, which allows you to step back to a desired projection view after passing it.
+  </p>
+  <ol>
+   <li value="1">
+    In the n-D Controls dialog, click the band numbers (thus the number of dimensions) you want to project in the n-D Visualizer. If you select only two dimensions, rotation is not possible. If you select 3D, you have the option of driving the axes, or initiating automatic rotation. If you select more than 3D, only automatic random rotation is available.
+   </li>
+   <li value="2">
+    Select from the following options.
+    <ul>
+     <li value="1">
+      To drive the axes, select
+      <b>
+       Options &gt; 3D: Drive Axes
+      </b>
+      from the n-D Controls menu bar. Click and drag in the n-D Visualizer to manually spin the axes of the 3D scatter plot.
+     </li>
+     <li value="2">
+      To display the axes themselves, select
+      <b>
+       Options &gt; Show Axes
+      </b>
+      from the n-D Controls menu bar.
+     </li>
+     <li value="3">
+      To start or stop the rotation, click
+      <b>
+       Start
+      </b>
+      or
+      <b>
+       Stop
+      </b>
+      in the n-D Controls dialog.
+     </li>
+     <li value="4">
+      To control the rotation speed, enter a
+      <b>
+       Speed
+      </b>
+      value in the n-D Controls dialog. Higher values cause faster rotation with fewer steps between views.
+     </li>
+     <li value="5">
+      The information in the
+      <b>
+       View
+      </b>
+      status box in the n-D Controls dialog tells you the number of steps you are moving through between the random projection views.
+     </li>
+     <li value="6">
+      To move step-by-step through the projection views, click
+      <b>
+       &lt;-
+      </b>
+      to go backward and
+      <b>
+       -&gt;
+      </b>
+      to go forward.
+     </li>
+     <li value="7">
+      To display a new random projection view, click
+      <b>
+       New
+      </b>
+      in the n-D Controls dialog.
+     </li>
+    </ul>
+   </li>
+  </ol>
+  <h2>
+   <a name="Identify">
+   </a>
+   Identify Endmembers
+  </h2>
+  <p>
+   When using the n-D Visualizer, your goal is to visually identify and distinguish the purest pixels in the image. The purest pixels always form the very tip of a corner in the data cloud. Each corner corresponds to one spectrally unique material in the image. Therefore, you should try to find all the corners of the data cloud and assign each corner a different color. Once you separate the purest pixels into different classes this way, you can use the pixel spectra from those classes as the endmembers for spectral analysis (such as Linear Spectral Unmixing or Matched Filtering).
+  </p>
+  <p>
+   To determine which pixels correspond to different image endmembers, watch the data cloud rotate until the pixels form a protrusion, or
+   <i>
+    arm
+   </i>
+   , out of the data cloud. When a distinct corner becomes visible, stop the animation, select a class color from the
+   <b>
+    Class
+   </b>
+   menu, and circle the most extreme corner pixels to signify that they represent one endmember. It is best not to circle all of the pixels that cluster into a corner. If possible, you should try to identify only the few pixels in that corner that form the most extreme tip of the corner. These pixels contain the largest fraction of that particular endmember material. The less extreme pixels contain larger fractions of other materials. A corner may consist of tens of clustered pixels or only one or two similar pixels.
+  </p>
+  <p>
+   After you have colored the corner pixels, watch the data cloud rotate, and make sure that the pixels you selected stay together in all projections. You should change the bands used in the scatter plot periodically, so that every band is ultimately included in the scatter plot. This ensures that all of the pixels you have identified as being in the same class really do have similar values at all wavelengths. If the pixels do not cluster in all projections, they do not correspond to the same material. If you find that some of the pixels separate from the rest of the class in some projections, then you can delete those pixels from the class by choosing White as the class color and circling the errant pixels.
+  </p>
+  <h2>
+   <a name="Defining">
+   </a>
+   Define Classes
+  </h2>
+  <p>
+   Typically, classes are defined when groups of pixels stay together during rotation and are separated from the rest of the pixels. You can define multiple classes at once. Use the Z Profile option to help
+   <a href="NDVisualizerControlsOptions.htm">
+    define classes
+   </a>
+   .
+  </p>
+  <ol>
+   <li value="1">
+    Click
+    <b>
+     Stop
+    </b>
+    in the n-D Controls dialog to stop the rotation when a group of pixels is isolated from the main body of pixels plotted in the n-D Visualizer. Or, use the arrow buttons to go to a particular projection view.
+   </li>
+   <li value="2">
+    Highlight the desired pixels on the n-D Visualizer by left-clicking to set vertices, and right-clicking to close the polygon.
+   </li>
+   <li value="3">
+    From the n-D Controls menu bar, select
+    <b>
+     Class
+    </b>
+    and choose a color for the class.
+   </li>
+   <p>
+    To automatically use the next available class color for the next ROI, select
+    <b>
+     Class &gt; New
+    </b>
+    from the n-D Controls menu bar (or right-click in the n-D Visualizer and select
+    <b>
+     New Class
+    </b>
+    ).
+   </p>
+   <li value="4">
+    Click
+    <b>
+     Start
+    </b>
+    to rotate the scatter plot until additional groups of pixels are isolated, and repeat the class definition process.
+   </li>
+  </ol>
+  <h2>
+   <a name="interacting_with_classes">
+   </a>
+   Interact with Classes
+  </h2>
+  <p>
+   Use the n-D Class Controls dialog to interact with individual classes. The dialog lists the number of points in each defined class and the class color. You can change the symbol, turn individual classes on and off, and select classes to collapse. You can also plot the minimum, maximum, mean, and standard deviation spectra for a class, plot the mean for a single class, and plot all the spectra within a class. Also, you can clear a class and export a class to an ROI.
+  </p>
+  <p>
+   From the n-D Controls menu bar, select
+   <b>
+    Options &gt; Class Controls
+   </b>
+   .
+  </p>
+  <p>
+   All of the defined classes appear in the dialog. The white class contains all of the unclustered or unassigned points. The number of points in each class is shown in the fields next to the colored squares.
+  </p>
+  <h3>
+   Turni Classes On/Off
+  </h3>
+  <p>
+   To turn a class off in the n-D Visualizer, de-select the
+   <b>
+    On
+   </b>
+   check box for that class in the n-D Class Controls dialog. Click again to turn it back on.
+  </p>
+  <p>
+   To turn all but one of the classes off in the n-D Visualizer, double-click the colored box at the bottom of the n-D Class Controls dialog representing the class that you want to remain displayed. Double-click again to turn the other classes back on.
+  </p>
+  <h3>
+   Select the Active Class
+  </h3>
+  <p>
+   To designate a class as the active class, click once on the colored square (at the bottom of the n-D Class Controls dialog) corresponding to that class.
+  </p>
+  <p>
+   The color appears next to the
+   <b>
+    Active Class
+   </b>
+   label in the n-D Class Controls dialog, and any functions you execute from the n-D Class Controls dialog affect only that class.
+  </p>
+  <p>
+   You may designate a class as the active class even though it is not enabled in the n&#8209;D Visualizer.
+  </p>
+  <h3>
+   Change Plot symbols
+  </h3>
+  <p>
+   In the n-D Class Controls dialog, click
+   <b>
+    Symbol
+   </b>
+   and select the desired symbol.
+  </p>
+  <h3>
+   Produce Spectral Plots
+  </h3>
+  <p>
+   To produce spectral plots for the active class:
+  </p>
+  <ol>
+   <li value="1">
+    Click the
+    <b>
+     Stats
+    </b>
+    ,
+    <b>
+     Mean
+    </b>
+    , or
+    <b>
+     Plot
+    </b>
+    button on the n-D Class Controls dialog. The Input File Associated with n-D Data dialog appears.
+    <ul>
+     <li value="1">
+      <b>
+       Stats
+      </b>
+      : Display the mean, minimum, maximum, and standard deviation spectra of the current class in one plot. These should be derived from the original reflectance or radiance data file.
+     </li>
+     <li value="2">
+      <b>
+       Mean
+      </b>
+      : Display the mean spectrum of the current class alone. This should be derived from the original reflectance or radiance data file.
+     </li>
+     <li value="3">
+      <b>
+       Plot
+      </b>
+      : Display the spectrum of each pixel in the class together in one plot. This should be derived from the original reflectance or radiance data file.
+     </li>
+    </ul>
+   </li>
+   <li value="2">
+    Select the input file that you want to calculate the spectra from.
+   </li>
+   <p>
+    If you select a file with different spatial dimensions than the file you used as input into the n-D visualizer, enter the x and y offset values for the n-D subset when prompted.
+   </p>
+   <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+    <span class="autonumber">
+     <span>
+      <b>
+       Note:
+      </b>
+     </span>
+    </span>
+    If you select
+    <b>
+     Plot
+    </b>
+    for a class that contains hundreds of points, the spectra for all the points will be plotted and the plot may be unreadable.
+   </p>
+  </ol>
+  <h3>
+   Clear Classes
+  </h3>
+  <p>
+   To remove all points from a class, click
+   <b>
+    Clear
+   </b>
+   on the n-D Class Controls dialog, or right-click in the n-D Visualizer and select
+   <b>
+    Clear Class
+   </b>
+   or
+   <b>
+    Clear All
+   </b>
+   .
+  </p>
+  <h3>
+   Export Classes
+  </h3>
+  <p>
+   To export the points to an ROI, click
+   <b>
+    Export
+   </b>
+   on the n-D Class Controls dialog, or right-click in the n-D Visualizer and select
+   <b>
+    Export Class
+   </b>
+   or
+   <b>
+    Export All
+   </b>
+   .
+  </p>
+  <h3>
+   Designate Classes to Collapse
+  </h3>
+  <p>
+   To include the statistics from a class when calculating the projection used to collapse the data, select the
+   <b>
+    Clp
+   </b>
+   check box next to that class name in the n-D Class Controls dialog.
+  </p>
+  <p>
+   If the data are in a collapsed state, they will be re-collapsed using the selected classes when you select any of the
+   <b>
+    Clp
+   </b>
+   check boxes.
+  </p>
+  <h2>
+   <a name="Collapsi">
+   </a>
+   Collapse Classes
+  </h2>
+  <p>
+   You can collapse the classes by means or by variance to make class definition easier when the dimensionality of a dataset is higher than four or five. With more than four or five dimensions, interactively identifying and defining many classes becomes difficult. Both methods iteratively collapse the data cloud based on the defined classes.
+  </p>
+  <p>
+   To collapse the data, calculate a projection (based either on class means or covariance) to minimize or hide the space spanned by the pre-defined classes and to maximize or enhance the remaining variation in the dataset. The data are subjected to this special projection and replace the original data in the n-D Visualizer.
+  </p>
+  <p>
+   Additionally, an eigenvalue plot displays the residual spectral dimension of the collapsed data. The collapsed classes should form a tight cluster so you can more readily examine the remaining pixels. The dimensionality of the data, shown by the eigenvalue plot, should decrease with each collapse.
+  </p>
+  <ol>
+   <li value="1">
+    From the n-D Controls menu bar, select
+    <b>
+     Options &gt; Collapse Classes by Means
+    </b>
+    or
+    <b>
+     Collapse Classes by Variance
+    </b>
+    (see the descriptions in the following sections).
+   </li>
+   <p>
+    An eigenvalue plot displays, showing the remaining dimensionality of the data and suggesting the number of remaining classes to define. The
+    <b>
+     n-D Selected Bands
+    </b>
+    widget changes color to red to indicate that collapsed data are displayed in the n-D Visualizer.
+   </p>
+   <li value="2">
+    Use the low-numbered bands to rotate and to select additional classes.
+   </li>
+   <li value="3">
+    From the n-D Controls menu bar, select
+    <b>
+     Options &gt; Collapse Classes by Means
+    </b>
+    or
+    <b>
+     Collapse Classes by Variance
+    </b>
+    again to collapse all of the defined classes.
+   </li>
+   <li value="4">
+    Repeat these steps until you select all of the desired classes.
+   </li>
+  </ol>
+  <h3>
+   Collapse Classes by Means
+  </h3>
+  <p>
+   You must define at least two classes before using this collapsing method. The space spanned by the spectral mean of each class is derived through a modified Gram-Schmidt process. The complementary, or null, space is also calculated. The dataset is projected onto the null space, and the means of all classes are forced to have the same location in the scatter plot. For example, if you have identified two classes in the data cloud and you collapse the classes by their mean values,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   arranges the data cloud so that the two means of the identified classes appear on top of each other in one place. As the scatter plot rotates,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   only uses the orientations where these two corners appear to be on top of each other.
+  </p>
+  <h3>
+   Collapse Classes by Variance
+  </h3>
+  <p>
+   With this method,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   calculates the band-by-band covariance matrix of the classified pixels (lumped together regardless of class), along with eigenvectors and eigenvalues. A standard principal components transformation is performed, packing the remaining unexplained variance into the low-numbered bands of the collapsed data. At each iterative collapsing, this process is repeated using all of the defined classes. The eigenvalue plot shows the dimensionality of the transformed data, suggesting the number of remaining classes to define.
+  </p>
+  <p>
+   The full dataset is projected onto the eigenvectors of the classified pixels. Each of these projected bands is divided by the square root of the associated eigenvalue. This transforms the classified data into a space where they have no covariance and one standard deviation.
+  </p>
+  <p>
+   You should have at least
+   <i>
+    nb
+   </i>
+   *
+   <i>
+    nb
+   </i>
+   /2 pixels (where
+   <i>
+    nb
+   </i>
+   is the number of bands in the dataset) classified so that
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   can calculate the
+   <i>
+    nb
+   </i>
+   *
+   <i>
+    nb
+   </i>
+   covariance matrix.
+  </p>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   calculates a
+   <i>
+    whitening
+   </i>
+   transform from the covariance matrix of the classified pixels, and it applies the transform to all of the pixels. Whitening collapses the colored pixels into a fuzzy ball in the center of the scatter plot, thereby hiding any corners they may form. If any of the unclassified pixels contain mixtures of the endmembers included among the classified pixels, those unclassified pixels also collapse to the center of the data cloud. Any unclassified pixels that do not contain mixtures of endmembers defined so far will stick out of the data cloud much better after class collapsing, making them easier to distinguish.
+  </p>
+  <p>
+   Collapsing by variance is often used for partial unmixing work. For example, if you are trying to distinguish very similar (but distinct) endmembers, you can put all of the other pixels of the data cloud into one class and collapse this class by variance. The subtle distinctions between the unclassified pixels are greatly enhanced in the resulting scatter plot.
+  </p>
+  <h3>
+   UnCollapse Classes
+  </h3>
+  <p>
+   To uncollapse the data and return to the original dataset, select
+   <b>
+    Options &gt; UnCollapse
+   </b>
+   from the n-D Controls menu bar.
+  </p>
+  <p>
+   All defined classes are shown in the n-D Visualizer, and the band numbers return to a white color in the n-D Controls menu bar.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

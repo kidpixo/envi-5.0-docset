@@ -1,0 +1,1088 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming|Routines|Data Control|ENVI Classic" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   ENVI_ENTER_DATA
+  </title>
+  <link href="../../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../../ENVIHelp_CSH.htm#ExtendCustomize/ENVIClassicAPI/ENVI_E/ENVI_ENTER_DATA.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../Routines.htm">
+    Routines
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../ENVICoordSys.htm">
+    Data Control
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    ENVI_ENTER_DATA
+   </span>
+  </div>
+  <h1>
+   <a name="kanchor531">
+   </a>
+   ENVI_ENTER_DATA
+  </h1>
+  <p>
+   <a href="#Syntax">
+    Syntax
+   </a>
+   |
+   <a href="#Arguments">
+    Arguments
+   </a>
+   |
+   <a href="#Keywords">
+    Keywords
+   </a>
+   |
+   <a href="#Examples">
+    Examples
+   </a>
+  </p>
+  <p class="HighlightText">
+   This routine has been replaced with the
+   <a href="../../ENVI__CreateRaster.htm">
+    CreateRaster
+   </a>
+   method to ENVI. Also see the
+   <a href="../../enviRaster__SetData.htm">
+    SetData
+   </a>
+   method to ENVIRaster.
+  </p>
+  <p>
+   Use this routine to enter image data from an array into
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   memory. ENVI_ENTER_DATA internally calls ENVI_SETUP_HEAD and registers the bands in the Available Bands List. This routine automatically creates an ENVI header file for the image (which is also stored in memory), and it returns the FID for the in-memory image. Once the image appears in the Available Bands List, you can use it like any other ENVI-format image and even save it to disk by selecting
+   <b>
+    File &gt; Save File As &gt; ENVI Standard
+   </b>
+   from the
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   main menu bar.
+  </p>
+  <h2 class="API">
+   <a name="Syntax">
+   </a>
+   Syntax
+  </h2>
+  <p>
+   ENVI_ENTER_DATA,
+   <i>
+    Data
+   </i>
+   [,
+   <a href="#BBL">
+    BBL
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ] [,
+   <a href="#BNAMES">
+    BNAMES
+   </a>
+   =
+   <i>
+    string array
+   </i>
+   ] [,
+   <a href="#CLASS_NAMES">
+    CLASS_NAMES
+   </a>
+   =
+   <i>
+    string array
+   </i>
+   ] [,
+   <a href="#DATA_GAINS">
+    DATA_GAINS
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ] [,
+   <a href="#DATA_IGNORE_VALUE">
+    DATA_IGNORE_VALUE
+   </a>
+   =
+   <i>
+    variable
+   </i>
+   ] [,
+   <a href="#DATA_OFFSET">
+    DATA_OFFSET
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ] [,
+   <a href="#DEF_STRETCH">
+    DEF_STRETCH
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ] [,
+   <a href="#DESCRIP">
+    DESCRIP
+   </a>
+   =
+   <i>
+    string
+   </i>
+   ] [,
+   <a href="#FILE_TYPE">
+    FILE_TYPE
+   </a>
+   =
+   <i>
+    integer
+   </i>
+   ] [,
+   <a href="#FUNC_COMPLEX">
+    FUNC_COMPLEX
+   </a>
+   ={0 | 1 | 2 | 3 | 4}] [,
+   <a href="#FWHM">
+    FWHM
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ] [,
+   <a href="#GEO_POINTS">
+    GEO_POINTS
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ] [,
+   <a href="#INFO">
+    INFO
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ] [,
+   <a href="#INHERIT">
+    INHERIT
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ] [, /
+   <a href="#INVISIBL">
+    INVISIBLE
+   </a>
+   ] [,
+   <a href="#LOOKUP">
+    LOOKUP
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ] [,
+   <a href="#MAP_INFO">
+    MAP_INFO
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ] [,
+   <a href="#NUM_CLASSES">
+    NUM_CLASSES
+   </a>
+   =
+   <i>
+    integer
+   </i>
+   ] [,
+   <a href="#PIXEL_SIZE">
+    PIXEL_SIZE
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ] [,
+   <a href="#R_FID">
+    R_FID
+   </a>
+   =
+   <i>
+    variable
+   </i>
+   ] [,
+   <a href="#REFLECTANCE_SCALE_FACTOR">
+    REFLECTANCE_SCALE_FACTOR
+   </a>
+   =
+   <i>
+    variable
+   </i>
+   ] [,
+   <a href="#SENSOR_TYPE">
+    SENSOR_TYPE
+   </a>
+   =
+   <i>
+    integer
+   </i>
+   ] [,
+   <a href="#SPEC_NAMES">
+    SPEC_NAMES
+   </a>
+   =
+   <i>
+    string array
+   </i>
+   ] [,
+   <a href="#UNITS">
+    UNITS
+   </a>
+   =
+   <i>
+    integer
+   </i>
+   ] [,
+   <a href="#WAVELENGTH_UNIT">
+    WAVELENGTH_UNIT
+   </a>
+   ={0 | 1 | 2 | 3 | 4 | 5 | 6}] [,
+   <a href="#WL">
+    WL
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ] [,
+   <a href="#XSTART">
+    XSTART
+   </a>
+   =
+   <i>
+    integer
+   </i>
+   ] [,
+   <a href="#YSTART">
+    YSTART
+   </a>
+   =
+   <i>
+    integer
+   </i>
+   ] [,
+   <a href="#ZPLOT_AVERAGE">
+    ZPLOT_AVERAGE
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ] [,
+   <a href="#ZPLOT_TITLES">
+    ZPLOT_TITLES
+   </a>
+   =
+   <i>
+    string array
+   </i>
+   ] [,
+   <a href="#ZRANGE">
+    ZRANGE
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ]
+  </p>
+  <h2 class="API">
+   <a name="Arguments">
+   </a>
+   Arguments
+  </h2>
+  <h3>
+   Data
+  </h3>
+  <p>
+   This is a 2D or 3D data array of type byte, integer, unsigned integer, long integer, unsigned long integer, long 64-bit integer, unsigned long 64-bit integer, floating point, double precision, complex, or double complex. The data must be in BSQ format and have the dimensions [
+   <i>
+    samples
+   </i>
+   ,
+   <i>
+    lines
+   </i>
+   ] or [
+   <i>
+    samples
+   </i>
+   ,
+   <i>
+    lines
+   </i>
+   ,
+   <i>
+    bands
+   </i>
+   ].
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   The array is incorporated into the
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   session directly, rendering the variable undefined after the call to ENVI_ENTER_DATA. If you wish to use the array after the call to ENVI_ENTER_DATA, first copy the array and set the
+   <i>
+    Data
+   </i>
+   argument equal to the copy.
+  </p>
+  <h2 class="API">
+   <a name="Keywords">
+   </a>
+   Keywords
+  </h2>
+  <h3>
+   <a name="BBL">
+   </a>
+   BBL (optional)
+  </h3>
+  <p>
+   Use this keyword to specify an array of ones and zeros representing the good and bad bands, respectively. The number of elements in BBL must be equal to the number of bands in the image.
+  </p>
+  <h3>
+   <a name="BNAMES">
+   </a>
+   BNAMES (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the band names assigned to the data. BNAMES is a string array (with
+   <i>
+    num_bands
+   </i>
+   elements) of band names. The default band names are
+   <code>
+    [band 1, band 2]
+   </code>
+   , etc.
+  </p>
+  <h3>
+   <a name="CLASS_NAMES">
+   </a>
+   CLASS_NAMES (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a string array of class names for classification images. The first element (Class 0) is “Unclassified.” Only use CLASS_NAMES if the result is a classification image, in which case this keyword is required. If the result is not a classification image, this keyword is optional.
+  </p>
+  <h3>
+   <a name="DATA_GAINS">
+   </a>
+   DATA_GAINS
+  </h3>
+  <p>
+   Use this keyword to specify a named variable that contains an array of gain values for each band in the dataset. DATA_GAINS can be used in conjunction with DATA_OFFSETS in
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   's general purpose utility,
+   <b>
+    Apply Gain and Offset
+   </b>
+   .
+  </p>
+  <h3>
+   <a name="DATA_IGNORE_VALUE">
+   </a>
+   DATA_IGNORE_VALUE (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a named variable that contains a scalar number representing the data value to ignore in the dataset. If you set DATA_IGNORE_VALUE, it is the same type as the input dataset, and an undefined ignore value is represented by the double-precision number 1e-34. Currently, this value is used only in user-written
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   code.
+  </p>
+  <h3>
+   <a name="DATA_OFFSET">
+   </a>
+   DATA_OFFSET (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a named variable that contains an array of offsets for each band in the dataset. DATA_OFFSETS can be used in conjunction with DATA_GAINS in
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   's general purpose utility,
+   <b>
+    Apply Gain and Offset
+   </b>
+   .
+  </p>
+  <h3>
+   <a name="DEF_STRETCH">
+   </a>
+   DEF_STRETCH (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the default stretch information. Set DEF_STRETCH equal to the value returned from
+   <a href="../ENVI_D/ENVI_DEFAULT_STRETCH_CREATE.htm">
+    ENVI_DEFAULT_STRETCH_CREATE
+   </a>
+   .
+  </p>
+  <h3>
+   <a name="DESCRIP">
+   </a>
+   DESCRIP (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a text description of the data, or of the type of processing performed.
+  </p>
+  <h3>
+   <a name="FILE_TYPE">
+   </a>
+   FILE_TYPE (optional)
+  </h3>
+  <p>
+   Use this keyword to specify an integer value indicating the file type. See
+   <a href="../ENVI_F/ENVI_FILE_TYPE.htm">
+    ENVI_FILE_TYPE
+   </a>
+   for details on how to determine the integer value of a file type.
+  </p>
+  <h3>
+   <a name="FUNC_COMPLEX">
+   </a>
+   FUNC_COMPLEX (optional)
+  </h3>
+  <p>
+   Set this keyword to one of the following values to specify the complex lookup function that determines how to display complex data.
+  </p>
+  <ul>
+   <li value="1">
+    0: Power (default): The natural log of the magnitude
+   </li>
+   <li value="2">
+    1: Magnitude:
+   </li>
+   <li value="3">
+    2: Real: The real portion of the complex number
+   </li>
+   <li value="4">
+    3: Imaginary: The imaginary part of the complex number
+   </li>
+   <li value="5">
+    4: Phase:
+   </li>
+  </ul>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   Only set this keyword if the IDL data type of the image is complex or double-precision complex.
+  </p>
+  <h3>
+   <a name="FWHM">
+   </a>
+   FWHM (optional)
+  </h3>
+  <p>
+   Use this keyword to specify an array of floating-point values representing FWHM responses for each band. The number of elements in this array is equal to the number of bands in the image.
+  </p>
+  <h3>
+   <a name="GEO_POINTS">
+   </a>
+   GEO_POINTS
+  </h3>
+  <p>
+   Use this keyword to specify a 16-element array of double-precision, floating-point values representing geographic coordinates for the upper-left, upper-right, lower-left, and lower-right corners of the image. The array consists of four groups of x and y pixel locations and their corresponding latitude and longitude values with the form [
+   <i>
+    x
+   </i>
+   ,
+   <i>
+    y
+   </i>
+   ,
+   <i>
+    lat
+   </i>
+   ,
+   <i>
+    lon
+   </i>
+   ]. South latitudes and west longitudes have negative values. The array is defined as follows:
+  </p>
+  <ul>
+   <li value="1">
+    GEO_POINTS[0:3]: Upper left
+   </li>
+   <li value="2">
+    GEO_POINTS[4:7]: Upper right
+   </li>
+   <li value="3">
+    GEO_POINTS[8:11]: Lower left
+   </li>
+   <li value="4">
+    GEO_POINTS[12:15]: Lower right
+   </li>
+  </ul>
+  <h3>
+   <a name="INFO">
+   </a>
+   INFO (optional)
+  </h3>
+  <p>
+   Use this keyword to store information that you can pass to your spatial and spectral readers. INFO is retrieved from
+   <a href="../ENVI_F/ENVI_FILE_QUERY.htm">
+    ENVI_FILE_QUERY
+   </a>
+   using the keyword H_INFO, which is a handle to the data. Use
+   <a href="../H/HANDLE_VALUE.htm">
+    HANDLE_VALUE
+   </a>
+   and the handle H_INFO to retrieve the data for INFO.
+  </p>
+  <h3>
+   <a name="INHERIT">
+   </a>
+   INHERIT (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the file inheritance. Set INHERIT equal to the value returned from
+   <a href="../ENVI_S/ENVI_SET_INHERITANCE.htm">
+    ENVI_SET_INHERITANCE
+   </a>
+   .
+  </p>
+  <h3>
+   <a name="INVISIBL">
+   </a>
+   INVISIBLE (optional)
+  </h3>
+  <p>
+   Set this keyword to prevent the file from automatically displaying in the
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   interface. This keyword only applies when using ENVI_OPEN_FILE in
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   programming. A file opened with the INVISIBLE keyword set will not appear in the Available Bands List and will not automatically display. Refer to "Programming in
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   " in
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   Help for more information.
+  </p>
+  <h3>
+   <a name="LOOKUP">
+   </a>
+   LOOKUP (optional)
+  </h3>
+  <p>
+   Use this keyword to specify an array of long integers representing class RGB values for classification images. The LOOKUP array contains an RGB triplet for each class specified by the keyword NUM_CLASSES. The dimensions of the array are [3,
+   <i>
+    num_classes
+   </i>
+   ], and the RGB triplet is ordered [
+   <i>
+    r
+   </i>
+   ,
+   <i>
+    g
+   </i>
+   ,
+   <i>
+    b
+   </i>
+   ]. You must set LOOKUP when entering a classification image.
+  </p>
+  <h3>
+   <a name="MAP_INFO">
+   </a>
+   MAP_INFO (optional)
+  </h3>
+  <p>
+   Use this keyword to specify map information. Set MAP_INFO equal to the value returned from
+   <a href="../ENVI_M/ENVI_MAP_INFO_CREATE.htm">
+    ENVI_MAP_INFO_CREATE
+   </a>
+   .
+  </p>
+  <h3>
+   <a name="NUM_CLASSES">
+   </a>
+   NUM_CLASSES (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the number of classes for classification images. Remember to include Class 0 (“Unclassified”) in the number of classes. You only need to set NUM_CLASSES when entering a classification image.
+  </p>
+  <h3>
+   <a name="PIXEL_SIZE">
+   </a>
+   PIXEL_SIZE (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the pixel size of images that are not georeferenced. PIXEL_SIZE is a two-element array of floating-point values representing the x and y pixel sizes, respectively.
+  </p>
+  <h3>
+   <a name="R_FID">
+   </a>
+   R_FID (optional)
+  </h3>
+  <p>
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   library routines that result in new images also have an R_FID, or “returned FID.” This is simply a named variable containing the file ID to access the processed data. Specifying this keyword saves you the step of opening the new file from disk.
+  </p>
+  <h3>
+   <a name="REFLECTANCE_SCALE_FACTOR ">
+   </a>
+   REFLECTANCE_SCALE_FACTOR (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a named variable that contains a single scalar number used to convert the input data into reflectance. For example, REFLECTANCE_SCALE_FACTOR would be used to convert integer scaled reflectance data into floating point [0, 1] reflectance values.
+  </p>
+  <h3>
+   <a name="SENSOR_TYPE">
+   </a>
+   SENSOR_TYPE (optional)
+  </h3>
+  <p>
+   Use this keyword to specify an integer value indicating the sensor type. See
+   <a href="../ENVI_S/ENVI_SENSOR_TYPE.htm">
+    ENVI_SENSOR_TYPE
+   </a>
+   for details on how to determine the integer value of a sensor type.
+  </p>
+  <h3>
+   <a name="SPEC_NAMES">
+   </a>
+   SPEC_NAMES (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a string array of spectral library names. You only need to set SPEC_NAMES when entering spectral library files.
+  </p>
+  <h3>
+   <a name="UNITS">
+   </a>
+   UNITS (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the PIXEL_SIZE units for images that are not georeferenced. UNITS is an integer value returned from
+   <a href="../ENVI_T/ENVI_TRANSLATE_PROJECTION_UNITS.htm">
+    ENVI_TRANSLATE_PROJECTION_UNITS
+   </a>
+   . Georeferenced images do not use this value. Instead, they use the pixel size and units contained in the map information structure.
+  </p>
+  <h3>
+   <a name="WAVELENGTH_UNIT">
+   </a>
+   WAVELENGTH_UNIT (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a named variable that contains one of the following values, indicating the wavelength units.
+  </p>
+  <ul>
+   <li value="1">
+    0: Micrometers
+   </li>
+   <li value="2">
+    1: Nanometers
+   </li>
+   <li value="3">
+    2: Wavenumber
+   </li>
+   <li value="4">
+    3: GHz
+   </li>
+   <li value="5">
+    4: MHz
+   </li>
+   <li value="6">
+    5: Index
+   </li>
+   <li value="7">
+    6: Unknown
+   </li>
+  </ul>
+  <h3>
+   <a name="WL">
+   </a>
+   WL (optional)
+  </h3>
+  <p>
+   Use this keyword to specify an array of wavelength values. The number of elements is equal to the number of bands.
+  </p>
+  <h3>
+   <a name="XSTART">
+   </a>
+   XSTART (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the x starting sample for the first pixel in the file. The default value is 0. Use XSTART in conjunction with YSTART to preserve the spatial reference for subsetted files. When processing a file, you typically set the XSTART of the output file to the XSTART of the input file plus the value of DIMS[1] (the starting sample).
+  </p>
+  <h3>
+   <a name="YSTART">
+   </a>
+   YSTART (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the y starting sample for the first pixel in the file. The default value is 0. Use YSTART in conjunction with XSTART to preserve the spatial reference for subsetted files. When processing a file, you typically set the YSTART of the output file to the YSTART of the input file plus the value of DIMS[3] (the starting line).
+  </p>
+  <h3>
+   <a name="ZPLOT_AVERAGE">
+   </a>
+   ZPLOT_AVERAGE (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a two-element array of long integers representing the x and y window size (in pixels) for the Z Profile. The window size must be a value of 1 or greater. The Z Profile is formed from the average of the profiles within the specified window. The default window size is [1, 1].
+  </p>
+  <h3>
+   <a name="ZRANGE">
+   </a>
+   ZRANGE (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a 2D array for the lower and upper range used by default in spectral plots.
+  </p>
+  <h3>
+   <a name="ZPLOT_TITLES">
+   </a>
+   ZPLOT_TITLES (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a two-element string array for the x and y plot titles. The default x title is “Band Number” for images with no wavelength information and “Wavelength” for images with wavelength information. The default y axis title is “Value.”
+  </p>
+  <h2 class="API">
+   <a name="Examples">
+   </a>
+   Examples
+  </h2>
+  <p>
+   The following example generates a 256 x 256 byte ramp using the function BINDGEN. You enter this array into
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   using the ENVI_ENTER_DATA procedure. This is the simplest use of ENVI_ENTER_DATA.
+  </p>
+  <p class="Code">
+   data = BINDGEN(256,256)
+  </p>
+  <p class="Code">
+   ENVI_ENTER_DATA, data
+  </p>
+  <p>
+   The following example creates two classes (plus the “Unclassified” class) from the ramp image and enters the resulting classification image into ENVI. The “Unclassified” class is black [0, 0, 0], the first class is red [255, 0, 0], and the second class is yellow [255, 255, 0]. The classification image has the description “Example Classification Image” and the band name “Ramp Classification.”
+  </p>
+  <p class="Code">
+   PRO EXAMPLE_ENVI_ENTER_DATA
+  </p>
+  <p class="Code_Indented">
+   compile_opt IDL2
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ; First restore all the base save files.
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   envi, /restore_base_save_files
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ; Initialize ENVI and send all errors
+  </p>
+  <p class="Code_Indented">
+   ; and warnings to the file batch.txt
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   envi_batch_init, log_file='batch.txt'
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ; Create a 2D ramp and then classify all values
+  </p>
+  <p class="Code_Indented">
+   ; from 20 to 100 in the first class (classification
+  </p>
+  <p class="Code_Indented">
+   ; data value equal to one) and classify all values
+  </p>
+  <p class="Code_Indented">
+   ; from 101 to 220 into the second class
+  </p>
+  <p class="Code_Indented">
+   ; (classification data value equal to two)
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   data = BINDGEN(256,256)
+  </p>
+  <p class="Code_Indented">
+   class = BYTE((data ge 20 and data le 100) + $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;2B * (data ge 101 and data le 220))
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ; Create the classification information
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   class_names = ['Unclassified','Red','Yellow']
+  </p>
+  <p class="Code_Indented">
+   lookup = [[0,0,0],[255,0,0],[255,255,0]]
+  </p>
+  <p class="Code_Indented">
+   bnames = ['Ramp Classification']
+  </p>
+  <p class="Code_Indented">
+   descrip = 'Example Classification Image'
+  </p>
+  <p class="Code_Indented">
+   file_type = ENVI_FILE_TYPE('ENVI Classification')
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ; Enter the data into ENVI
+  </p>
+  <p class="Code_Indented">
+   ENVI_ENTER_DATA, class, num_classes=3, $
+  </p>
+  <p class="Code_Indented">
+   class_names=class_names, lookup=lookup, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;file_type=file_type, bnames=bnames, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;descrip=descrip
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ; Exit ENVI
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   envi_batch_exit
+  </p>
+  <p class="Code">
+   END
+  </p>
+  <p>
+   The following example assigns a geographic projection to the ramp image with the upper-left corner at 15 degrees south, 48 degrees west, with an x and y pixel size of one arc second. The map projection is created using
+   <a href="../ENVI_M/ENVI_MAP_INFO_CREATE.htm">
+    ENVI_MAP_INFO_CREATE
+   </a>
+   , and the resulting structure uses the MAP_INFO keyword when the data are entered into
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   .
+  </p>
+  <p class="Code">
+   PRO EXAMPLE2_ENVI_ENTER_DATA
+  </p>
+  <p class="Code_Indented">
+   compile_opt IDL2
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ; First restore all the base save files.
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   envi, /restore_base_save_files
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ; Initialize ENVI and send all errors
+  </p>
+  <p class="Code_Indented">
+   ; and warnings to the file batch.txt
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   envi_batch_init, log_file='batch.txt'
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ; First create the ramp image. The ramp image
+  </p>
+  <p class="Code_Indented">
+   ; would actually be replaced by a real
+  </p>
+  <p class="Code_Indented">
+   ; georeferenced image.
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   data = BINDGEN(256,256)
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ; Create the item used for the projection
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   mc = [.5D,.5, -48,-15]
+  </p>
+  <p class="Code_Indented">
+   ps = [1D/3600, 1D/3600]
+  </p>
+  <p class="Code_Indented">
+   units = ENVI_TRANSLATE_PROJECTION_UNITS('Degrees')
+  </p>
+  <p class="Code_Indented">
+   map_info = ENVI_MAP_INFO_CREATE(/geographic, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;mc=mc, ps=ps, units=units)
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ; Enter the data into ENVI
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ENVI_ENTER_DATA, data, map_info=map_info
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ; Exit ENVI
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   envi_batch_exit
+  </p>
+  <p class="Code">
+   END
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

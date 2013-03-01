@@ -1,0 +1,268 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Explore Imagery" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Spectral Profile
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#ExploreImagery/SpectralProfile.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="ExploreImagery.htm">
+    Explore Imagery
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Spectral Profile
+   </span>
+  </div>
+  <h1>
+   Spectral Profile
+   <a name="kanchor44">
+   </a>
+  </h1>
+  <p>
+   Use the Spectral Profile to plot the spectrum of all bands for the selected pixel. You can extract spectra from any multispectral dataset.
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   uses header information to scale the plot. If multiple layers are displayed in the Image window view,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   plots a spectral profile from each layer. To turn the plot of for an individual layer, disable the check box for that layer in the Layer Manager.
+  </p>
+  <p>
+   Select
+   <b>
+    Display &gt; Spectral Profile
+   </b>
+   from the menu bar to open the Spectral Profile dialog.
+  </p>
+  <h2>
+   Extract Spectra
+  </h2>
+  <ul>
+   <li value="1">
+    To extract spectra, click the
+    <b>
+     Select
+    </b>
+    button on the toolbar, then click on a pixel in the Image window to plot it in the Spectral Profile. When you click on a different pixel, the plot updates with the spectrum for that pixel.
+   </li>
+   <li value="2">
+    Press and hold the
+    <b>
+     Shift
+    </b>
+    key as you click on pixels to overplot spectra.
+   </li>
+   <li value="3">
+    Click and drag the cursor to browse the spectra under the cursor. Press and hold the
+    <b>
+     Shift
+    </b>
+    key as you drag the cursor to overplot spectra.
+   </li>
+   <li value="4">
+    The X axis (Wavelength) is determined by the first spectrum that is plotted. The Y axis (Value) is auto-scaled by default unless you right-click on the plot and select
+    <b>
+     Auto Scale Y-Axis
+    </b>
+    to disable auto-scaling, or if you have a Z plot range defined.
+   </li>
+  </ul>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   X/Y pixel coordinates in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   -displayed spectra are one
+   <i>
+    less
+   </i>
+   than those displayed in an
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   Z profile. For example, a pixel location of [X:165, Y:73] in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   yields the same spectrum as location [X:166, Y:74] in
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   .
+  </p>
+  <h2>
+   Plot Controls
+  </h2>
+  <ul>
+   <li value="1">
+    Click on the arrow on the right side of the Spectral Plot dialog to expand the dialog panel. The panel shows a list of spectra included in the plot.
+   </li>
+   <li value="2">
+    To change the display properties of the plot or a spectrum, double-click in the plot, or on a specific spectrum in the plot, or on the spectrum listed in the expanded panel. The Properties dialog appears for you to edit the settings.
+   </li>
+   <li value="3">
+    Zoom in and out of the plot by clicking in the plot, then rolling the mouse wheel. Or, press the
+    <b>
+     Ctrl
+    </b>
+    key and draw a box around the area to zoom into. Right-click in the plot and select
+    <b>
+     Reset Plot Range
+    </b>
+    to return to the plot to full view.
+   </li>
+   <li value="4">
+    Pan the plot by pressing the
+    <![CDATA[ ]]>
+    <b>
+     Shift
+    </b>
+    key and dragging inside the plot.
+   </li>
+   <li value="5">
+    To display an X-Y line cursor, click in the plot. Then click on spectrum in the plot, or expand the dialog panel and select the spectrum from the list. As you move the cursor over the plot, the line cursor snaps to the closest data point . The x and y values of the point appear in the lower-right corner of the dialog. To close the X-Y line cursor, click outside the plot.
+   </li>
+   <li value="6">
+    To remove all spectra from the plot, right-click and select
+    <b>
+     Remove All
+    </b>
+    . To remove a spectrum or selected spectra from the plot, right-click on a spectrum or use
+    <b>
+     Ctrl
+    </b>
+    +click to more than one, then right-click and select
+    <b>
+     Remove Selected Spectrum
+    </b>
+    .
+   </li>
+   <li value="7">
+    To save the plotted spectra to a spectral library, click the
+    <b>
+     Save to Spectral Library
+    </b>
+    button provided on the expanded dialog panel.
+   </li>
+  </ul>
+  <h2>
+   Drag and Drop Spectra to the Spectral Library Viewer
+  </h2>
+  <p>
+   You can drag and drop spectra between the
+   <a href="SpectralLibBrowser.htm">
+    Spectral Library Viewer
+   </a>
+   and the Spectral Profile for analysis:
+  </p>
+  <ol>
+   <li value="1">
+    Open a spectral library file in the Spectral Library Viewer.
+   </li>
+   <li value="2">
+    Click the arrow on the right side of the Spectral Profile dialog and the Spectral Library Viewer dialog to expand the panels.
+   </li>
+   <li value="3">
+    From the Spectral Profile expanded panel, select a spectrum, or use
+    <b>
+     Ctrl
+    </b>
+    +click to multi select.
+   </li>
+   <li value="4">
+    Drag the selected items to the expanded panel of the Spectral Library Viewer dialog.  The spectra appear in the corresponding plot.
+   </li>
+  </ol>
+  <h2>
+   Additional Controls
+  </h2>
+  <p>
+   The button controls at the bottom of the dialog do the following:
+  </p>
+  <ul>
+   <li value="1">
+    Click
+    <b>
+     Print
+    </b>
+    to print the plot.
+   </li>
+   <li value="2">
+    Click
+    <b>
+     Save As
+    </b>
+    to open the Save As dialog and save the plot.
+   </li>
+   <li value="3">
+    Click
+    <b>
+     Properties
+    </b>
+    to open the Properties dialog and edit the attributes of the plot lines. Double-clicking in the plot also opens the Properties dialog.
+   </li>
+   <li value="4">
+    Click
+    <b>
+     Reset Axis Range
+    </b>
+    to change the range for the x/y axis.
+   </li>
+   <li value="5">
+    Click
+    <b>
+     Edit
+    </b>
+    to select from a drop-down list of options.
+   </li>
+   <li value="6">
+    Click
+    <b>
+     Annotations
+    </b>
+    to select from a list of options to annotate the plot.
+   </li>
+  </ul>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

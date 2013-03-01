@@ -1,0 +1,227 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Spectral Tools|THOR Tools|Shared Tools" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Background Signature Selection
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#SpectralTools/THORTools/THORBackgroundSignatureSelection.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../SpectralTools.htm">
+    Spectral Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="THORWorkflows.htm">
+    THOR Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="THORSharedTools.htm">
+    Shared Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Background Signature Selection
+   </span>
+  </div>
+  <h1>
+   Background Signature Selection
+  </h1>
+  <p>
+   Use the Background Signature Selection panel to define the background clutter that can interfere with searching for target signatures in the hyperspectral image. This is an optional task in most cases. Background signatures are required as input into the
+   <a href="THORAutomatedBandSelection.htm#BandMax">
+    BandMax
+   </a>
+   or
+   <a href="THORAutomatedBandSelection.htm#Advanced">
+    Advanced Signature Optimization
+   </a>
+   band selection methods, or if you intend to use the
+   <a href="THORSignatureMatching.htm#TCIMF">
+    TCIMF
+   </a>
+   or
+   <a href="THORSignatureMatching.htm#OSP">
+    OSP
+   </a>
+   target detection methods.
+  </p>
+  <p>
+   To define background signatures, unselect the
+   <b>
+    Skip background signature selection
+   </b>
+   option. You can select background signatures by defining regions of interest (ROIs) on the input or
+   <a href="THORAtmosphericCorrection.htm">
+    atmospherically corrected
+   </a>
+   image, or you can let THOR automatically derive background signatures using various unsupervised methods.
+  </p>
+  <p>
+   See the following sections:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#Selectin">
+     Selecting Backgrounds Using ROIs
+    </a>
+   </li>
+   <li value="2">
+    <a href="#Automati">
+     Automatically Deriving Background Signatures
+    </a>
+   </li>
+   <li value="3">
+    <a href="#Confirmi">
+     Confirming Your Selections
+    </a>
+   </li>
+  </ul>
+  <h2>
+   <a name="Selectin">
+   </a>
+   Selecting Backgrounds Using ROIs
+  </h2>
+  <p>
+   To select background signatures by manually defining ROIs, click the Regions of Interest tab. The atmospherically corrected (or input) image loads into a display group, and the ROI Tool appears. The Available ROIs list on the Background Signature Selection panel and the list of ROIs in the ROI Tool are synchronized so that when one list changes, the other list updates too.
+  </p>
+  <p>
+   Use the ROI Tool to define ROIs for each desired background, and draw the ROIs. Name the ROIs so that you will recognize them later in the workflow. As you create ROIs, they will appear in the Available ROIs list in the Background Signature Selection panel.
+  </p>
+  <p>
+   Click
+   <b>
+    Plot Signature(s)
+   </b>
+   to plot the mean signatures for the selected ROIs. Click
+   <b>
+    ROI Options
+   </b>
+   to create new ROIs, delete ROIs, or save the ROIs to a file. You can also perform these functions through the ROI Tool. If you accidentally close the image or the ROI Tool, click
+   <b>
+    Reload Image and ROIs
+   </b>
+   .
+  </p>
+  <p>
+   To designate ROIs as backgrounds, select the desired ROIs in the Available ROIs list, then click the arrow button to move them to the Background ROIs list. You can remove ROIs from the Background ROIs list by clicking
+   <b>
+    Remove ROIs
+   </b>
+   or by right-clicking the desired ROIs and selecting the appropriate option. This will remove them from the Background ROIs list, but it will not delete them.
+  </p>
+  <p>
+   <img src="../../Resources/Images/Spectral/THOR_background_ROIs.gif" />
+  </p>
+  <h2>
+   <a name="Automati">
+   </a>
+   Automatically Deriving Background Signatures
+  </h2>
+  <p>
+   To automatically derive background signatures, select the Auto-Derive tab. Use the
+   <b>
+    Processing Method
+   </b>
+   drop-down list to select whether signatures should be auto-derived using
+   <a href="../SMACC.htm">
+    SMACC
+   </a>
+   or
+   <a href="../../FindFeatures/Classification/ClassificationTools/KMeansClassification.htm">
+    K-Means
+   </a>
+   classification.
+  </p>
+  <p>
+   These processes should ideally run on a reduced-resolution version of the input image to save processing time. Set the
+   <b>
+    Spatial scale factor
+   </b>
+   to the desired value for spatial reduction. For example, a value of 0.25 means that every fourth pixel will be used. Set the
+   <b>
+    Number of background signatures
+   </b>
+   to the number of background signatures you wish to generate. For SMACC, you may also change the default value for the
+   <b>
+    SAM threshold
+   </b>
+   (in units of radians). SMACC generates a set of signatures, which THOR then uses in a
+   <a href="../../FindFeatures/Classification/ClassificationTools/SpectralAngleMapper.htm">
+    Spectral Angle Mapper (SAM)
+   </a>
+   classification so you can see the distribution of the backgrounds within the image. Smaller SAM threshold values mean that image pixels must be closer to the background signatures to be classified as that background type.
+  </p>
+  <p>
+   Click
+   <b>
+    Process
+   </b>
+   when you are ready to generate the background signatures. When processing is finished, the reduced-resolution versions of the input image and background classification image will be displayed, along with a plot window showing the derived background signatures. In addition, the
+   <b>
+    Select Background Signatures
+   </b>
+   list in the Background Signature Selection panel will be populated with the derived signatures. After examining the images and signatures, select the signatures you want to designate as background signatures (if any) from the
+   <b>
+    Select Background Signatures
+   </b>
+   list.
+  </p>
+  <p>
+   <img src="../../Resources/Images/Spectral/THOR_auto_derive_background_sigs.gif" />
+  </p>
+  <h2>
+   <a name="Confirmi">
+   </a>
+   Confirming Your Selections
+  </h2>
+  <p>
+   When you click
+   <b>
+    Next
+   </b>
+   , THOR will display the selected background signatures (both from ROIs and auto-derived) and ask you to confirm before proceeding. Click
+   <b>
+    Yes
+   </b>
+   to confirm or
+   <b>
+    No
+   </b>
+   to go back and change your selections.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="1271" MadCap:lastWidth="531">
+    <head>
+    </head>
+    <body>
+        <p>Segmentation is the process of partitioning an image into objects by grouping neighboring pixels with common values. The objects in the image ideally correspond to real-world features. Effective segmentation ensures that classification results are more accurate. </p>
+        <ol>
+            <li>Enable the <b>Preview</b> option in the Object Creation panel. A Preview Portal appears with segments outlined in green.</li>
+            <li>Under <b>Segment Settings</b>, select an <b>Algorithm</b> from the drop-down list provided. The following options are available:
+       
+        <ul><li><b>Edge:</b> Best for detecting edges of features where objects of interest have sharp edges. Set an appropriate <b>Scale Level</b> and <b>Merge Level</b> (see steps below) to effectively delineate features.</li><li><b>Intensity:</b> Best for segmenting images with subtle gradients such as digital elevation models (DEMs) or images of electromagnetic fields. When selecting this method, don't perform any merging; set the <b>Merge Level</b> to <b>0</b>. Merging is used primarily to combine segments with similar spectral information. Elevation and other related attributes are not appropriate for merging.</li></ul></li>
+            <p>See <a href="../../FindFeatures/FeatureExtraction/BackgroundSegmentationAlgorithm.htm">Watershed Algorithm Background</a> for more detailed descriptions of each option.</p>
+            <li>Adjust the <b>Scale Level</b> slider as needed to effectively delineate the boundaries of features as much as possible without <i>over</i>-segmenting the features. Increasing the slider results in fewer segments; decreasing the slider results in more segments. You should also ensure that features of interest are not grouped into segments represented by other features. See <a href="../../FindFeatures/FeatureExtraction/BackgroundSegmentationAlgorithm.htm">Watershed Algorithm Background</a> for a more detailed discussion of how the <b>Scale Level</b> is used with respect to gradient and intensity images.</li>
+            <li>Click the <b>Select Segment Bands</b> button to choose specific bands for applying the segmentation settings. The settings will apply to a grayscale image derived from the average of all selected bands. All available bands are selected by default.</li>
+            <p class="Tip" MadCap:autonum="&lt;b&gt;Tip: &lt;/b&gt;">For best segmentation results, select a combination of bands that have similar spectral ranges such as R, G, B, and NIR bands. You should not perform segmentation with a combination of custom bands (normalized difference or HSI color space) and visible/NIR bands. You can perform segmentation on the normalized difference or color space bands by themselves, but not in combination with visible and NIR bands.</p>
+            <li>Merging combines adjacent segments with similar spectral attributes. Under <b>Merge Settings</b>, select an <b>Algorithm</b> from the drop-down list provided. The following options are available:
+        
+        <ul><li><b>Full Lambda Schedule:</b> (default). Merges small segments within larger, textured areas such as trees or clouds, where over-segmentation may be a problem.</li><li><b>Fast Lambda:</b> Merges adjacent segments with similar colors and border sizes.</li></ul></li>
+            <p>See <a href="../../FindFeatures/FeatureExtraction/BackgroundMergeAlgorithms.htm">Merge Algorithms Background</a> for more detailed descriptions of each option.</p>
+            <li>Adjust the <b>Merge Level</b> slider as needed to combine segments with similar colors (Fast Lambda) or to merge over-segmented areas (Full Lambda Schedule). Increasing the slider results in more merging; no merging will occur if you leave the slider value at 0. For example, if a red building consists of three segments, selecting <b>Fast Lambda</b> <![CDATA[ ]]>and increasing the <b>Merge Level</b> should combine them into one segment. All available bands are selected by default. To delineate treetops or other highly textured features, select <b>Full Lambda Schedule</b> and increase the <b>Merge Level</b> value.</li>
+            <li>Click the <b>Select Merge Bands</b> button to choose specific bands for applying the merge settings. Merging will be based on the differences between region colors based on all selected bands.</li>
+            <li>Select a <b>Texture Kernel Size</b> value, which is the size (in pixels) of a moving box centered over each pixel in the image. <a href="../../FindFeatures/FeatureExtraction/AttributeList.htm#texture_attributes">Texture attributes</a> are computed for each kernel. Enter an odd number of 3 or higher. The maximum value is 19. The default value is 3. Select a higher kernel size if you are segmenting large areas with little texture variance such as fields. Select a lower kernel size if you are segmenting smaller areas with higher variance such as urban neighborhoods.</li>
+            <li>Click <b>Next</b>. <MadCap:variable name="DocumentTitle.ProductName" /> loads a segmentation image into the display.</li>
+        </ol>
+    </body>
+</html>

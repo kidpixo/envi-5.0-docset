@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Georectify|Reference" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Frame and Line Central Projections
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#GeorectifyImagery/FrameLineCentralProjections.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="GeorectifyImagery.htm">
+    Georectify
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="BackgroundCoordinateSystems.htm">
+    Reference
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Frame and Line Central Projections
+   </span>
+  </div>
+  <h1>
+   Frame and Line Central Projections
+   <a name="kanchor244">
+   </a>
+   <a name="kanchor245">
+   </a>
+  </h1>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   uses two modeling scenarios for the image-ground relationship when computing RPCs: a
+   <i>
+    frame central
+   </i>
+   projection and a
+   <i>
+    line-central
+   </i>
+   projection.
+  </p>
+  <p>
+   Frame camera and digital (frame central) aerial photography use the frame central projection. This projection has one
+   <i>
+    perspective center
+   </i>
+   (
+   <i>
+    S
+   </i>
+   ) defined as the optical center of a camera lens through which all light rays pass and create imaging signatures in the image focal plane. Any object point (
+   <i>
+    A
+   </i>
+   ), its image point (
+   <i>
+    a
+   </i>
+   ), and its perspective center (
+   <i>
+    S
+   </i>
+   ) are collinear in space. The
+   <i>
+    principal point
+   </i>
+   (
+   <i>
+    o
+   </i>
+   ) is defined as the foot of the perpendicular from the perspective center to the plane of an aerial photograph.
+  </p>
+  <p>
+   <img src="../Resources/Images/GeorectifyImagery/frame_central_projection_222x192.gif" style="margin-left: 5.99976px;margin-top: 5.99976px;margin-right: 6.000484px;margin-bottom: 6.000484px;width: 222;height: 192;" />
+  </p>
+  <p>
+   Imagery from pushbroom sensors and aerial photography from line central digital cameras use the line central projection. Each scan line has its own projection center, as the following figure shows.
+  </p>
+  <p>
+   <img src="../Resources/Images/GeorectifyImagery/line_central_projection_218x210.gif" style="margin-left: 5.99976px;margin-top: 5.99976px;margin-right: 6.000469px;margin-bottom: 5.999767px;width: 218;height: 210;" />
+  </p>
+  <p>
+   To compute RPCs, the angles of each axis in the object space system, along with the location of the projection center, must also be determined. These are referred to as
+   <i>
+    exterior orientation parameters
+   </i>
+   .
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   can automatically calculate these parameters based on GCPs that you select, but you can also edit them or manually enter them as needed.
+  </p>
+  <p>
+   <b>
+    References
+   </b>
+  </p>
+  <p>
+   Wang, Zhizhuo, 1990, Principles of Photogrammetry (with Remote Sensing), Beijing: Publishing House of Surveying and Mapping.
+  </p>
+  <p>
+   McGlone, J. C., editor, 2004, Manual of Photogrammetry, Fifth Edition, American Society for Photogrammetry and Remote Sensing.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

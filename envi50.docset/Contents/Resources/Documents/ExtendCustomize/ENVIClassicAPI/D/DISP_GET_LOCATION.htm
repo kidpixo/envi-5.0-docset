@@ -1,0 +1,272 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming|Routines|Display Control|ENVI Classic" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   DISP_GET_LOCATION
+  </title>
+  <link href="../../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../../ENVIHelp_CSH.htm#ExtendCustomize/ENVIClassicAPI/D/DISP_GET_LOCATION.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../Routines.htm">
+    Routines
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../enviPortal.htm">
+    Display Control
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    DISP_GET_LOCATION
+   </span>
+  </div>
+  <h1>
+   <a name="kanchor623">
+   </a>
+   DISP_GET_LOCATION
+  </h1>
+  <p class="HighlightText">
+   This routine only works with
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   display groups and cannot be used with the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   display or in code that starts the application with the
+   <a href="../../ENVI.htm">
+    ENVI&#160;function
+   </a>
+   .
+  </p>
+  <p>
+   Use this procedure to return the x and y locations of the current pixel in a given display group. Pixel locations are returned in a modified file coordinate system:
+  </p>
+  <p class="Code">
+   pixel coord = file coord + (x|y)start - 1
+  </p>
+  <p>
+   Where
+   <code>
+    (x|y)start
+   </code>
+   is the
+   <i>
+    xstart
+   </i>
+   or
+   <i>
+    ystart
+   </i>
+   value in the ENVI header for the displayed image.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   An interactive
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   session is required to run this procedure.
+  </p>
+  <h2 class="API">
+   Syntax
+  </h2>
+  <p>
+   DISP_GET_LOCATION,
+   <i>
+    DN
+   </i>
+   ,
+   <i>
+    XFLOC
+   </i>
+   ,
+   <i>
+    YFLOC
+   </i>
+   [, /
+   <a href="#FLOATING">
+    FLOATING
+   </a>
+   ] [, /
+   <a href="#NO">
+    NO_OFFSET
+   </a>
+   ]
+  </p>
+  <h2 class="API">
+   Arguments
+  </h2>
+  <h3>
+   DN
+  </h3>
+  <p class="HighlightText">
+   This keyword cannot be used to reference the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   display. It is only for use with
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   display groups.
+  </p>
+  <p>
+   This is the display number corresponding to an open display group. Display numbers (DNs) are zero-based;
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   Display #1 corresponds to DN=0. You can retrieve DNs in the event handler of user-managed display events. For example, use the following code to retrieve the
+   <code>
+    uvalue
+   </code>
+   for
+   <code>
+    ev.top
+   </code>
+   :
+  </p>
+  <p xml:space="preserve" class="Code">
+   widget_control, ev.top, get_uvalue=dn
+  </p>
+  <h3>
+   XFLOC
+  </h3>
+  <p>
+   This returned variable contains the x location of the current pixel in modified file coordinates.
+  </p>
+  <h3>
+   YFLOC
+  </h3>
+  <p>
+   This returned variable contains the y location of the current pixel in modified file coordinates.
+  </p>
+  <h2 class="API">
+   Keywords
+  </h2>
+  <h3>
+   <a name="FLOATING">
+   </a>
+   FLOATING (optional)
+  </h3>
+  <p>
+   Set this keyword if you want the XFLOC and YFLOC coordinates to be returned as floating-point values. If you do not set this keyword, then XFLOC and YFLOC will be long-integer values.
+  </p>
+  <h3>
+   <a name="NO">
+   </a>
+   NO_OFFSET (optional)
+  </h3>
+  <p>
+   Set this keyword to return the current pixel location in ordinary zero-based file coordinates without
+   <code>
+    (x|y)start
+   </code>
+   values being added.
+  </p>
+  <h2 class="API">
+   Example
+  </h2>
+  <p>
+   The following example prints the location of the current pixel for each display.
+  </p>
+  <p class="Code">
+   PRO EXAMPLE_DISP_GET_LOCATION
+  </p>
+  <p class="Code_Indented">
+   compile_opt IDL2
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ; Get all the display numbers and
+  </p>
+  <p class="Code_Indented">
+   ; check to make sure at least one
+  </p>
+  <p class="Code_Indented">
+   ; display is present.
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   display = envi_get_display_numbers()
+  </p>
+  <p class="Code_Indented">
+   if (display[0] eq -1) then return
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ; Print out the location of the
+  </p>
+  <p class="Code_Indented">
+   ; current pixel for each display
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   for i=0, n_elements(display)-1 do begin
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;disp_get_location, display[i], xloc, yloc
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;print, display[i], xloc, yloc
+  </p>
+  <p class="Code_Indented">
+   endfor
+  </p>
+  <p class="Code">
+   END
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

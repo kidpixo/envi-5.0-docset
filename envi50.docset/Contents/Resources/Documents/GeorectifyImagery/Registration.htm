@@ -1,0 +1,298 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Georectify|Georeferencing Tools" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Registration
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#GeorectifyImagery/Registration.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="GeorectifyImagery.htm">
+    Georectify
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="GeoreferencingTools.htm">
+    Georeferencing Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Registration
+   </span>
+  </div>
+  <h1>
+   Registration
+   <a name="kanchor204">
+   </a>
+  </h1>
+  <p>
+   Image co-registration is the process of geometrically aligning two or more images to integrate or fuse corresponding pixels that represent the same objects. You can typically obtain the geometric relationship between a warp image and a base image through a number of tie points and you can model the relationship using transformation capabilities, such as polynomial functions, Delaunay triangulation, or affine transform. The image coregistration tool allow you to automatically generate tie points, thus making fully automatic image registration possible.
+  </p>
+  <h2>
+   <a name="using_gcps">
+   </a>
+   Automatic Image to Image Registration
+   <a name="kanchor205">
+   </a>
+  </h2>
+  <p>
+   The automatic image coregistration tool uses area-based matching to obtain tie points:
+  </p>
+  <p>
+   <a name="area_based">
+   </a>
+   Area-based image matching compares the gray scale values of patches of two or more images and tries to find conjugate image locations based on similarity in those gray scale value patterns. The results of area-based matching largely depend upon the quality of the approximate relationship between the base image and the warp image. This is determined through traditional or pseudo (RPC or RSM) map information, or by using three or more tie points. If both map information and three or more tie points exist, the three or more tie points condition is used. In the case where the pseudo map information is not sufficiently accurate, it is recommended that you select three or more tie points to obtain good matching results.
+  </p>
+  <p>
+   Follow these steps to perform automatic registration:
+  </p>
+  <ol>
+   <li value="1">
+    With two images open in two views, select
+    <b>
+     Geometric Correction &gt; Registration &gt; Registration: Image to Image
+    </b>
+    from the Toolbox. The Image to Image Registration dialog appears.
+   </li>
+   <li value="2">
+    Select the input band from the represents the
+    <b>
+     Base Image
+    </b>
+    .
+   </li>
+   <li value="3">
+    Select the file that represents the
+    <b>
+     Warp Image
+    </b>
+    .
+   </li>
+   <li value="4">
+    If either the base image or the warp image displays in color, the Base Image Band Matching Choice and/or Warp Band Matching Choice dialogs appear for you to select the band to use for matching. Select the base image band and/or warp image band.
+   </li>
+   <li value="5">
+    Click
+    <b>
+     OK
+    </b>
+    . If both images display in gray scale, step 4 is skipped. The Automatic Tie Points Parameters dialog appears.
+   </li>
+   <li value="6">
+    Set parameters as follows:
+    <ul>
+     <li value="1">
+      <b>
+       Number of Tie Points
+      </b>
+      : Specify the number of tie points to generate.
+      <span class="DocumentTitleProductName">
+       ENVI
+      </span>
+      uses this value to automatically filter out certain incorrect tie points. This value can be as few as 9, but the recommended value is 25 (default setting). If the
+      <b>
+       Point Oversampling
+      </b>
+      value is greater than 1,
+      <span class="DocumentTitleProductName">
+       ENVI
+      </span>
+      trades off between tie point quality and point distribution. Therefore, if you want to obtain at least 25 points, you may want to enter a larger value in this field, such as 50, to allow for further filtering.
+     </li>
+     <li value="2">
+      <p>
+       <b>
+        Search Window Size
+       </b>
+       : Specify the search window size, in square pixels. The search window is a defined subset of the image, within which the smaller moving window scans to find a topographic feature match for a tie point placement. The search window size can be any integer greater than or equal to 21, but it must be larger than the
+       <b>
+        Moving Window Size
+       </b>
+       . The default is 81. This value depends upon the quality of the initial user-defined tie points (a minimum of three points) or the correctness of traditional or pseudo (RPC or RSM) map information for the base and warp image, and it also depends on the roughness of terrain.
+      </p>
+      <p>
+       If both images have certain map information, then a good way to establish the minimum search window size is to geographically link the base and warp images. Click a feature point (point A) in the base image, then click a feature point in the warp image. The cursor automatically moves to a point (point B) that is close to the ground feature point (point C) that represents the same ground feature as point A. Measure (in pixels) the distance between point B and point C in the warp image and use 2*(distance+1) as the minimum search window size. The search window size may vary considerably with different images. For example, 81 may be sufficient for one image pair, while 781 may be necessary for another image pair. Using a larger value results in a greater the chance of finding the conjugate point, but takes longer processing time. Setting an excessively large value may result in false matches because more similar points may exist in a larger area.
+      </p>
+     </li>
+     <li value="3">
+      <b>
+       Moving Window Size
+      </b>
+      : Specify the moving window size, in square pixels. The moving window scans methodically in the image subset area defined by the
+      <b>
+       Search Window Size
+      </b>
+      , looking for matches to a topographic feature. The moving window size must be an odd integer. The smallest allowable value is 5. The default is 11. Using a larger value results in a more reliable tie point placement, but takes longer processing time; conversely, a smaller value takes less processing time, but the tie points are less reliable. Determining a good moving window size largely depends upon the image resolution and terrain type. Some general guidelines follow:
+     </li>
+     <li class="Indent" value="4">
+      For a 10 meters or higher resolution image, use a range of 9-15.
+     </li>
+     <li class="Indent" value="5">
+      For a 5-10 meter resolution image, use a range of 11-21.
+     </li>
+     <li class="Indent" value="6">
+      For a 1-5 meter resolution image, use a range of 15-41.
+     </li>
+     <li class="Indent" value="7">
+      For a 1 meter or less resolution image, use a range of 21-81 or higher.
+     </li>
+     <li class="Indent" value="8">
+      Because most buildings in very high-resolution images in an urban area appear similar, specify a larger value to take the surrounding area into account for more robust matching results. To reduce the computational time for image matching,
+      <span class="DocumentTitleProductName">
+       ENVI
+      </span>
+      automatically uses a hierarchical matching method when the moving window size is greater than or equal to&#160;19.
+     </li>
+     <li value="9">
+      <b>
+       Area Chip Size
+      </b>
+      : Specify the image chip size to use to extract tie points. The default is 128 (128&#160;x&#160;128), which works best in most instances. The minimum setting is 64, and the maximum setting is 2048.
+     </li>
+     <li value="10">
+      <b>
+       Minimum Correlation
+      </b>
+      : Specify the minimum correlation coefficient required for a
+      <span class="DocumentTitleProductName">
+       ENVI
+      </span>
+      to consider a pair of conjugate points a candidate match.
+      <span class="DocumentTitleProductName">
+       ENVI
+      </span>
+      immediately removes any tie points with a correlation coefficient less than this value. If you are using a larger
+      <b>
+       Moving Window Size
+      </b>
+      , set this field to a smaller value. For example, for a
+      <b>
+       Moving Window Size
+      </b>
+      of 31 or larger, a minimum correlation of 0.60 or smaller may be appropriate. The default is 0.70.
+     </li>
+     <li value="11">
+      <b>
+       Point Oversampling
+      </b>
+      : Specify the number of tie points to collect from a single image chip. The default is 1. If you use a value greater than 1,
+      <span class="DocumentTitleProductName">
+       ENVI
+      </span>
+      generates more robust results, but processing time is longer. If tie point quality is critical and you do not want to examine the tie points, a value of 2 is recommended.
+     </li>
+     <li value="12">
+      <p>
+       <b>
+        Interest Operator
+       </b>
+       : Specify the interest operator to identifying feature points. The options are:
+      </p>
+      <p>
+       <b>
+        Moravec
+       </b>
+       : (default) Searches for gray scale value differences between one pixel and its adjacent pixels. The Moravec operator is typically faster than the Förnster operator.
+      </p>
+      <p>
+       <b>
+        Förnster
+       </b>
+       : Obtains and analyzes the gray scale gradient matrix between one pixel and its adjacent pixels. The Förnster operator is typically better for image matching than the Moravec operator.
+      </p>
+     </li>
+    </ul>
+    <ul>
+     <li value="1">
+      <b>
+       Examine tie points before warping
+      </b>
+      : Use this toggle button to indicate whether or not to allow the examination of tie points before warping the image. The default is
+      <b>
+       Yes
+      </b>
+      . It is recommended that you accept the
+      <b>
+       Yes
+      </b>
+      default setting, so that you can review the tie points and edit those that are less than optimal.
+     </li>
+     <li value="2">
+      <b>
+       Warp Parameters
+      </b>
+      : These parameters are available when you select
+      <b>
+       No
+      </b>
+      with the toggle button. Use these parameters to set
+      <a href="WarpingResampling.htm#parameters">
+       warping and resampling values
+      </a>
+      .
+     </li>
+     <li value="3">
+      <b>
+       Output Parameters
+      </b>
+      : These parameters are available when you select
+      <b>
+       No
+      </b>
+      with the toggle button. Use these parameters to specify the
+      <b>
+       Output Tie Points Filename [.pts]
+      </b>
+      and the output method for the results (
+      <b>
+       File
+      </b>
+      or
+      <b>
+       Memory
+      </b>
+      ).
+     </li>
+    </ul>
+   </li>
+   <li value="7">
+    Click
+    <b>
+     OK
+    </b>
+    . When processing is complete, the resulting image is added to the Layer Manager.
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

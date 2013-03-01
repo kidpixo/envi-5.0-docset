@@ -1,0 +1,227 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Spectral Tools|SPEAR Tools" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   SPEAR Pan Sharpening
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#SpectralTools/SPEARTools/SPEARPanSharpening.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../SpectralTools.htm">
+    Spectral Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="SpearTools.htm">
+    SPEAR Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    SPEAR Pan Sharpening
+   </span>
+  </div>
+  <h1>
+   SPEAR Pan Sharpening
+  </h1>
+  <p>
+   <a name="kanchor377">
+   </a>
+   Pan Sharpening is an image fusion method in which high-resolution panchromatic data is fused with lower resolution multispectral data to create a colorized high-resolution dataset. The resulting product should only serve as an aid to literal analysis and not for further spectral analysis.
+  </p>
+  <p>
+   The following shows a Pan-sharpened Product, High-Resolution Panchromatic Image Fused with Lower Resolution Multispectral Image (IKONOS Imagery Courtesy of GeoEye, Copyright 2007)
+  </p>
+  <p>
+   <img src="../../Resources/Images/Spectral/pansharp_example_471x166.gif" style="margin-left: 5.99976px;margin-top: 5.99976px;margin-right: 6.000454px;margin-bottom: 6.000469px;width: 471;height: 166;" />
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     SPEAR &gt; SPEAR Pan Sharpening
+    </b>
+    . The SPEAR Pan Sharpening Wizard displays the File Selection panel.
+   </li>
+   <li value="2">
+    Click
+    <b>
+     Select High Res File
+    </b>
+    , select a panchromatic image, select the input band to use, then click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+   <li value="3">
+    Click
+    <b>
+     Select Low Res File
+    </b>
+    , select a multispectral image, select the input band to use, then click
+    <b>
+     OK
+    </b>
+    . Simultaneous image collections are not required but will produce better results.
+   </li>
+   <li value="4">
+    To optionally process only a portion of the scene, select the
+    <b>
+     High Res
+    </b>
+    or
+    <b>
+     Low Res
+    </b>
+    image as the subset source, then click
+    <b>
+     Select Subset
+    </b>
+    . A small Select Spatial Subset dialog appears.
+   </li>
+   <li value="5">
+    Click
+    <b>
+     Spatial Subset
+    </b>
+    . The standard Select Spatial Subset dialog appears.  When finished, click
+    <b>
+     OK
+    </b>
+    to return to the File Selection panel.
+   </li>
+   <li value="6">
+    By default, output files are saved to the same directory and use the same rootname as the input file, minus any extension. Output files are appended with a unique suffix. To change the directory and/or root filename, click
+    <b>
+     Select Output Root Name
+    </b>
+    .
+   </li>
+   <li value="7">
+    Click
+    <b>
+     Next
+    </b>
+    . The Method Selection panel appears with coregistration parameters.
+   </li>
+   <li value="8">
+    <a href="SPEARCoregistration.htm">
+     Set the coregistration parameters
+    </a>
+    . Even if the images were acquired simultaneously, the georeferencing accuracy is seldom good enough to allow a straight fusion. Check the accuracy of the coregistration and fix tie points if needed.
+   </li>
+   <li value="9">
+    Use
+    <b>
+     <a href="AutoFlicker.htm">
+      Auto-Flicker
+     </a>
+    </b>
+    to examine your results.
+   </li>
+   <li value="10">
+    If you are coregistering for the Pan Sharpening tool, set the sharpening method to use:
+   </li>
+   <ul>
+    <li value="1">
+     <b>
+      <a href="../../PreprocessImagery/Transforms/GramSchmidtSpectralSharpening.htm">
+       Gram-Schmidt
+      </a>
+     </b>
+    </li>
+    <li value="2">
+     <b>
+      <a href="../../PreprocessImagery/Transforms/PCSpectralSharpening.htm">
+       Principal Components
+      </a>
+     </b>
+    </li>
+    <li value="3">
+     <b>
+      <a href="../../PreprocessImagery/Transforms/HSVSharpening.htm">
+       Hue, Saturation, Value (HSV)
+      </a>
+     </b>
+    </li>
+    <li value="4">
+     <b>
+      <a href="../../PreprocessImagery/Transforms/ColorNormalizedSharpening.htm">
+       Color Normalized (Brovey)
+      </a>
+     </b>
+    </li>
+   </ul>
+   <li value="11">
+    When coregistration is complete, click
+    <b>
+     Next
+    </b>
+    . The Processing Complete panel appears.
+   </li>
+   <li value="12">
+    The Spectral Quality Indices that appear on the Processing Complete panel are a way to gauge the degradation of the spectral properties of the multispectral bands due to the pan-sharpening process. For instance, Gram-Schmidt results in higher spectral quality indices than the Brovey Transform. The algorithm measures the correlation coefficient, brightness, and contrast between the input and output bands. Perfect spectral correspondence would result in a value of 1. These indices are for informational purposes.
+   </li>
+   <li value="13">
+    Optionally,
+    <b>
+     Export Image to NITF
+    </b>
+    .
+   </li>
+   <li value="14">
+    Optionally, click
+    <b>
+     Export Image to ArcGIS Geodatabase
+    </b>
+    . The Select Output Geodatabase dialog appears.
+   </li>
+   <li value="15">
+    <p>
+     When you are finished examining results, click
+     <b>
+      Finish
+     </b>
+     in the Processing Complete panel to exit the Wizard.
+    </p>
+    <p>
+     The following shows Pan Sharpening Results using Different Methods (IKONOS Imagery Courtesy of GeoEye, Copyright 2007)
+    </p>
+    <p>
+     <img src="../../Resources/Images/Spectral/pansharp_methods_337x225.gif" style="margin-left: 5.99976px;margin-top: 5.99976px;margin-right: 6.000484px;margin-bottom: 6.000484px;width: 337;height: 225;" />
+    </p>
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

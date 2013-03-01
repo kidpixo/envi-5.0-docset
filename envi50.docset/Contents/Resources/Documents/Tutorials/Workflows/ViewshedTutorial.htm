@@ -1,0 +1,777 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Tutorials|Using Workflows" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Viewshed Analysis Tutorial
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/TableStyles/Description.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#Tutorials/Workflows/ViewshedTutorial.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../Tutorials.htm">
+    Tutorials
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../Tutorials.htm">
+    Using Workflows
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Viewshed Analysis
+   </span>
+  </div>
+  <h1>
+   Viewshed Analysis Tutorial
+  </h1>
+  <p>
+   In this tutorial, you will use the Viewshed Analysis workflow to determine visibility from specified view sources. A source can be a single point, a polyline, or a polygon. In this tutorial, you will do the following:
+  </p>
+  <ul>
+   <li value="1">
+    Find an area visible to at least one source and then find an area visible to all sources, using multiple points as view sources.
+   </li>
+   <li value="2">
+    Find an area visible from all points from within a view source, using a polyline as a view source.
+   </li>
+   <li value="3">
+    Find an area visible from a higher point of ground, using a polygon as a view source.
+   </li>
+  </ul>
+  <p>
+   If a single view source is selected, then the viewshed represents all locations with an unobstructed line of sight to the view source. It is assumed that an observer could move anywhere along or within the source. If multiple view sources are selected, then the viewshed can be defined as either (1) all locations visible from at least one of the view sources, or (2) locations visible from all view sources.  You can also use a line or polygon to define a collection of individual view points. In this case, the line or polygon is not a source; rather, each point along the road or within the polygon is considered a source.
+  </p>
+  <h2>
+   Files Used in this Tutorial
+  </h2>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   Resource DVD:
+   <code>
+    viewshed
+   </code>
+  </p>
+  <table style="caption-side: top;mc-table-style: url('../../Resources/TableStyles/Description.css');margin-left: 0;margin-right: auto;" cellspacing="0" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       File
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p class="TableHead">
+       Description
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <pre xml:space="preserve">
+       DEM.tif
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      Digital Elevation Model from the National Elevation Dataset (NED)
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <pre xml:space="preserve">
+       Orthoimagery.tif
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      Aerial imagery acquired by Denver, CO (Mar 2008)
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+      <pre xml:space="preserve">
+       Orthoimagery.tif
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColEnd">
+      Header file for above
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h2>
+   Finding an Area Visible to Any Source or All Sources
+  </h2>
+  <p>
+   In the following scenario, you will add point view sources to determine areas that will be visible to at least one of the sources, then change the viewshed analysis to determine areas that will be visible to all of the sources.
+  </p>
+  <ol>
+   <li value="1">
+    Start
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    .
+   </li>
+   <li value="2">
+    From the Toolbox, select
+    <b>
+     Terrain &gt; Viewshed Analysis Workflow
+    </b>
+    . The Select File panel appears.
+   </li>
+   <li value="3">
+    In the File Selection panel, click
+    <b>
+     Browse
+    </b>
+    next to the
+    <b>
+     DEM File
+    </b>
+    field, navigate to the
+    <code>
+     \viewshed
+    </code>
+    directory and select the
+    <code>
+     DEM.tif
+    </code>
+    file, then click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+   <li value="4">
+    Click
+    <b>
+     Next
+    </b>
+    to proceed to the Viewshed Analysis panel.
+   </li>
+   <li value="5">
+    In the File Selection panel, click
+    <b>
+     Browse
+    </b>
+    next to the
+    <b>
+     Image File
+    </b>
+    field, navigate to the
+    <code>
+     \viewshed
+    </code>
+    directory and select the
+    <code>
+     Orthoimagery.tif
+    </code>
+    file, then click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+   <li value="6">
+    In the Viewshed Analysis panel, enter a
+    <b>
+     Default Range
+    </b>
+    of 1000 meters. This specifies the range of analysis for each view source, and any locations outside this radius will be defined as unclassified.
+   </li>
+   <li value="7">
+    Enter a
+    <![CDATA[ ]]>
+    <b>
+     Default Viewing Height
+    </b>
+    of 100 meters, to specify the viewing height for each view source to use when calculating visible areas.
+   </li>
+   <li value="8">
+    To add point view sources, select the
+    <b>
+     Symbol Annotation
+    </b>
+    tool
+    <img src="../../Resources/Images/IconsButtons/AnnotationSymbol.gif" class="VertCenter" alt="Symbol annotation" />
+    from the toolbar.
+   </li>
+   <li value="9">
+    <p>
+     Find an area in the image and click to add four points as view sources, keeping the points close to each other. The total number of individual view points for the viewshed is calculated and added to the
+     <b>
+      Total Points
+     </b>
+     field in the Viewshed Analysis panel.
+    </p>
+    <p>
+     <img src="../../Resources/Images/Viewshed/viewsources1.gif" alt="View sources" />
+    </p>
+   </li>
+   <li value="10">
+    Select to calculate the visibility from
+    <b>
+     Any Source
+    </b>
+    .
+   </li>
+   <li value="11">
+    <p>
+     Enable the
+     <b>
+      Preview Portal
+     </b>
+     check box and move the Preview Portal over to the area where view sources are.
+    </p>
+    <p>
+     <img src="../../Resources/Images/Viewshed/viewpreview1.gif" alt="Preview Portal" />
+    </p>
+   </li>
+   <li value="12">
+    <p>
+     Keep the
+     <b>
+      Preview Portal
+     </b>
+     check box enabled and change the visibility to be
+     <b>
+      All Sources
+     </b>
+     . Notice how the viewshed changes when it shows all locations that are visible from all four points.
+    </p>
+    <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+     <span class="autonumber">
+      <span>
+       <b>
+        Note:
+       </b>
+      </span>
+     </span>
+     If the four points are placed too far away from each other, their analysis areas will not overlap, and no locations will be visible from all points.
+    </p>
+    <p>
+     <img src="../../Resources/Images/Viewshed/viewpreview1a.gif" alt="Preview Portal" />
+    </p>
+   </li>
+   <li value="13">
+    <p>
+     Click
+     <b>
+      Next
+     </b>
+     . The viewshed is calculated and appears.
+    </p>
+    <p>
+     <img src="../../Resources/Images/Viewshed/viewshed1.gif" alt="Viewshed results" />
+    </p>
+   </li>
+   <li value="14">
+    Click
+    <b>
+     Next
+    </b>
+    . In the Export panel, enter the name for the export image and deselect the option to export the viewshed vectors.
+   </li>
+   <li value="15">
+    Click
+    <b>
+     Finish
+    </b>
+    to complete the viewshed analysis.
+   </li>
+   <li value="16">
+    <p>
+     You can view an overlay of the viewshed output on the image. To do this, use the
+     <b>
+      Transparency
+     </b>
+     slider on the toolbar and change the transparency to 50%.
+    </p>
+    <p>
+     <img src="../../Resources/Images/Viewshed/viewtransp1.gif" alt="View transparency" />
+    </p>
+   </li>
+   <li value="17">
+    Select
+    <b>
+     File &gt; Data Manager
+    </b>
+    to open the Data Manager. Close all the files in preparation for the next scenario in the tutorial.
+   </li>
+  </ol>
+  <h2>
+   Finding an Area Visible to All Points Within a Source
+  </h2>
+  <p>
+   In this scenario you will look for an area to place a communications tower so that it has an unobstructed view to all locations on a section of road.
+  </p>
+  <ol>
+   <li value="1">
+    In the Toolbox, double-click
+    <b>
+     Viewshed Analysis
+    </b>
+    . The Select File panel appears.
+   </li>
+   <li value="2">
+    In the File Selection panel, click
+    <b>
+     Browse
+    </b>
+    next to the
+    <b>
+     DEM File
+    </b>
+    field, navigate to the
+    <code>
+     \viewshed
+    </code>
+    directory and select the
+    <code>
+     DEM.tif
+    </code>
+    file, then click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+   <li value="3">
+    In the File Selection panel, click
+    <b>
+     Browse
+    </b>
+    next to the
+    <b>
+     Image File
+    </b>
+    field, navigate to the
+    <code>
+     \viewshed
+    </code>
+    directory and select the
+    <code>
+     Orthoimagery.tif
+    </code>
+    file, then click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+   <li value="4">
+    Click
+    <b>
+     Next
+    </b>
+    to proceed to the Viewshed Analysis panel.
+   </li>
+   <li value="5">
+    In the Viewshed Analysis panel, enter a
+    <b>
+     Default Range
+    </b>
+    of 5000 meters.
+   </li>
+   <li value="6">
+    Enter a
+    <b>
+     Default Viewing Height
+    </b>
+    of 100 meters.
+   </li>
+   <li value="7">
+    Change the
+    <b>
+     Point Spacing
+    </b>
+    to 10 pixels. Individual view points are automatically generated along polylines or inside polygons using this value.
+   </li>
+   <li value="8">
+    To add view sources, select the
+    <b>
+     Polyline Annotation
+    </b>
+    tool
+    <img src="../../Resources/Images/IconsButtons/AnnotationPolyline.gif" class="VertCenter" alt="Polyline annotation" />
+    from the toolbar.
+   </li>
+   <li value="9">
+    Find a road and create a path by left-clicking to add segments. You can also create a path by pressing and holding the left mouse button and tracing along the road, then right-click and select
+    <b>
+     Accept
+    </b>
+    . Create a path that has approximately 5 to 15 points along it. The total number of individual view points for the viewshed are calculated and added to the
+    <b>
+     Total Points
+    </b>
+    field in the Viewshed Analysis panel.
+   </li>
+   <li value="10">
+    <p>
+     Click
+     <b>
+      Show Point Spacing
+     </b>
+     <img src="../../Resources/Images/IconsButtons/ViewshedShowPointSpacing.gif" alt="Show point spacing" class="VertCenter" />
+     in the Viewshed Analysis panel to see the individual points.
+    </p>
+    <p>
+     <img src="../../Resources/Images/Viewshed/viewsources2.gif" alt="View sources" />
+    </p>
+   </li>
+   <li value="11">
+    Select to calculate the visibility from
+    <b>
+     All Points Within Sources
+    </b>
+    .
+   </li>
+   <li value="12">
+    <p>
+     Enable the
+     <b>
+      Preview Portal
+     </b>
+     check box and move the Preview Portal over to the area where the view sources are. A few things to note about using the Preview Portal and about processing the viewshed:
+    </p>
+    <ul>
+     <li value="1">
+      The more points there are as view sources, the longer the preview or viewshed analysis takes to process.
+     </li>
+     <li value="2">
+      The image resolution must be at 1:2 resolution or better.
+     </li>
+     <li value="3">
+      If no locations are visible to all points on the road, all points will appear black in the preview or the output.
+     </li>
+     <li value="4">
+      If the
+      <b>
+       Default View Range
+      </b>
+      is set too short, it is more likely that no locations will be seen by all points.
+     </li>
+    </ul>
+    <p>
+     <img src="../../Resources/Images/Viewshed/viewpreview2.gif" alt="Preview Portal" />
+    </p>
+   </li>
+   <li value="13">
+    To see how different parameter settings will affect the viewshed result, right-click on the view source in the
+    <b>
+     View Sources
+    </b>
+    list and select
+    <b>
+     Edit View Source Parameters
+    </b>
+    , then modify the settings as desired.
+   </li>
+   <li value="14">
+    <p>
+     Click
+     <b>
+      Next
+     </b>
+     . The viewshed is calculated and appears.
+    </p>
+    <p>
+     <img src="../../Resources/Images/Viewshed/viewshed2.gif" alt="Viewshed results" />
+    </p>
+   </li>
+   <li value="15">
+    <p>
+     Click
+     <b>
+      Next
+     </b>
+     . In the Export panel, enter the name names for the export image and deselect the option to export the viewshed vectors.
+    </p>
+    <p>
+     After viewshed analysis is complete and the Viewshed Export panel appears, you can use the
+     <b>
+      Transparency
+     </b>
+     tool to see how the viewshed will look. To do this, set the
+     <b>
+      Transparency
+     </b>
+     slider on the toolbar to 50%, and in the Layer Manager move the Viewshed layer to be underneath the image layer.
+    </p>
+    <p>
+     <img src="../../Resources/Images/Viewshed/viewtransp2.gif" alt="Transparency" />
+    </p>
+   </li>
+   <li value="16">
+    Click
+    <b>
+     Finish&#160;
+    </b>
+    to complete the viewshed analysis.
+   </li>
+   <li value="17">
+    Select
+    <b>
+     File &gt; Data Manager
+    </b>
+    to open the Data Manager. Close all the files in preparation for the final scenario in the tutorial.
+   </li>
+  </ol>
+  <h2>
+   Finding an Area Visible from a Higher Point of Ground
+  </h2>
+  <p>
+   In the final scenario you will determine areas that will be visible from higher ground.
+  </p>
+  <ol>
+   <li value="1">
+    In the Toolbox, double-click
+    <b>
+     Viewshed Analysis
+    </b>
+    . The Select File panel appears.
+   </li>
+   <li value="2">
+    In the File Selection panel, click
+    <b>
+     Browse
+    </b>
+    next to the
+    <b>
+     DEM File
+    </b>
+    field, navigate to the
+    <code>
+     \viewshed
+    </code>
+    directory and select the
+    <code>
+     DEM.tif
+    </code>
+    file, then click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+   <li value="3">
+    In the File Selection panel, click
+    <b>
+     Browse
+    </b>
+    next to the
+    <b>
+     Image File
+    </b>
+    field, navigate to the
+    <code>
+     \viewshed
+    </code>
+    directory and select the
+    <code>
+     Orthoimagery.tif
+    </code>
+    file, then click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+   <li value="4">
+    Click
+    <b>
+     Next
+    </b>
+    to proceed to the Viewshed Analysis panel.
+   </li>
+   <li value="5">
+    In the Viewshed Analysis panel, use a
+    <b>
+     Default Range
+    </b>
+    of 3000 meters.
+   </li>
+   <li value="6">
+    Use a
+    <b>
+     Default Viewing Height
+    </b>
+    of 0 meters.
+   </li>
+   <li value="7">
+    Change the
+    <b>
+     Point Spacing
+    </b>
+    to 10 pixels.
+   </li>
+   <li value="8">
+    To add view sources, select the
+    <b>
+     Polygon Annotation
+    </b>
+    tool
+    <img src="../../Resources/Images/IconsButtons/AnnotationPolygon.gif" class="VertCenter" alt="Polygon Annotation" />
+    from the toolbar.
+   </li>
+   <li value="9">
+    <p>
+     Find a suitable location of higher ground and draw a polygon. The total number of individual view points for the viewshed are calculated are added to the
+     <b>
+      Total Points
+     </b>
+     field in the Viewshed Analysis panel. Click
+     <b>
+      Show Point Spacing
+     </b>
+     <![CDATA[ ]]>
+     <img src="../../Resources/Images/IconsButtons/ViewshedShowPointSpacing.gif" alt="Show point spacing" />
+     to see the individual points.
+    </p>
+    <p>
+     <img src="../../Resources/Images/Viewshed/viewsources3.gif" alt="View sources" />
+    </p>
+   </li>
+   <li value="10">
+    Select to calculate the view from
+    <b>
+     Any Source
+    </b>
+    .
+   </li>
+   <li value="11">
+    <p>
+     Enable the
+     <b>
+      Preview Portal
+     </b>
+     check box and move the Preview Portal over to the area where view sources are. Enlarge the portal so that you can see all of the viewshed.
+    </p>
+    <p>
+     <img src="../../Resources/Images/Viewshed/viewshed3.gif" alt="Viewshed results" />
+    </p>
+   </li>
+   <li value="12">
+    Now you will change the parameter settings for the view source, to see how the viewshed differs. Right-click on the view source in the Viewshed Analysis panel and select
+    <b>
+     Edit View Source Parameters
+    </b>
+    . Set a
+    <b>
+     Default Range
+    </b>
+    of 2000 meters, a
+    <b>
+     Default Viewing Height
+    </b>
+    of 0 meters, and a
+    <b>
+     Point Spacing
+    </b>
+    of 10 pixels. The new viewshed appears in the preview portal.
+    <p>
+     <img src="../../Resources/Images/Viewshed/viewshed3a.gif" alt="Viewshed results" />
+    </p>
+   </li>
+   <li value="13">
+    <p>
+     Change the settings again.  Try a
+     <b>
+      Default Range
+     </b>
+     of 3000 meters, a
+     <b>
+      Default Viewing Height
+     </b>
+     of 100 meters, and a
+     <b>
+      Point Spacing
+     </b>
+     of 10 pixels. When the new viewshed preview appears in the portal, enlarge the portal so that you can see all of it.
+    </p>
+    <p>
+     <img src="../../Resources/Images/Viewshed/viewshed3b.gif" alt="Viewshed results" />
+    </p>
+   </li>
+   <li value="14">
+    <p>
+     Change the settings a third time, using a
+     <b>
+      Default Range
+     </b>
+     of 3000 meters, a
+     <b>
+      Default Viewing Height
+     </b>
+     of 0 meters, and a
+     <b>
+      Point Spacing
+     </b>
+     of 50 pixels.
+    </p>
+    <p>
+     <img src="../../Resources/Images/Viewshed/viewshed3c.gif" alt="Viewshed results" />
+    </p>
+   </li>
+   <li value="15">
+    Last, try using a mix of polylines, polygons, and points as view sources, then preview the viewshed for
+    <b>
+     Any Source
+    </b>
+    ,
+    <b>
+     All Sources
+    </b>
+    , and
+    <b>
+     All Points Within Sources
+    </b>
+    .
+   </li>
+   <li value="16">
+    Exit
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    .
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

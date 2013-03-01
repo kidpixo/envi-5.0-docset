@@ -1,0 +1,257 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Terrain" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Convert Vector Topographic Maps into Raster DEMs
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#Topographic/ConvertingVectorTopoMaps.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="TopographicTools.htm">
+    Terrain
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Convert Vector Topographic Maps into Raster DEMs
+   </span>
+  </div>
+  <h1>
+   Convert Vector Topographic Maps into Raster DEMs
+  </h1>
+  <p>
+   Topographic data is frequently available in both vector and raster formats. While each format has its advantages,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   offers several tools for extracting additional information from raster digital
+   <a name="kanchor436">
+   </a>
+   elevation model (DEM) data. For example, you can use raster DEMs to do the following:
+  </p>
+  <ul>
+   <li value="1">
+    Derive complementary topographic datasets including
+    <a href="ModelTopographicFeatures.htm">
+     slope, aspect, and shaded relief
+    </a>
+    .
+   </li>
+   <li value="2">
+    Create a
+    <a href="ExtractingTopographicFeatures.htm">
+     topographic classification image
+    </a>
+    .
+   </li>
+   <li value="3">
+    <a href="3DSurfaceView.htm">
+     Drape imagery
+    </a>
+    onto topographic elevation data using the 3D Surface View.
+   </li>
+  </ul>
+  <p>
+   Use
+   <b>
+    Convert Contours to DEM
+   </b>
+   to triangulate a raster grid for the DEM from the vector records’ nodes. It is recommended that the output pixel size be set no smaller than the approximate sampling distance of the vector nodes. If the output pixel size differs significantly from the node sampling distance, the vector contour lines are automatically made more dense in an attempt to reduce interpolation artifacts. All vector records contained in the file are used unless their corresponding elevation attribute value falls outside the valid elevation range you specified.
+  </p>
+  <p>
+   The vector data must be an
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   vector format (
+   <code>
+    .evf
+   </code>
+   ) file. The
+   <code>
+    .evf
+   </code>
+   file must contain an attribute that defines the elevation of each vector contour line. If the vector topography is in an external format file (such as a shapefile), open the data in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   and the import routine prompts you to convert the file into an
+   <code>
+    .evf
+   </code>
+   .
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Terrain &gt; Convert Contours to DEM
+    </b>
+    . The Select Input EVF File dialog appears.
+   </li>
+   <li value="2">
+    Select an
+    <code>
+     .evf
+    </code>
+    file containing topographic contour lines and an elevation attribute, and click
+    <b>
+     Open
+    </b>
+    . If
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    does not find an associated attribute file, the Choose the Associated Attribute File dialog appears. Otherwise, skip the next step.
+   </li>
+   <li value="3">
+    Select a
+    <code>
+     .dbf
+    </code>
+    file and click
+    <b>
+     Open
+    </b>
+    . The Convert Elevation Contours to Raster DEM dialog appears.
+   </li>
+   <li value="4">
+    From the
+    <b>
+     Elevation Attribute Column
+    </b>
+    drop-down list, select the attribute that contains the elevation of the vector contours.
+   </li>
+   <li value="5">
+    If desired, enter a
+    <b>
+     Valid Elevation Range
+    </b>
+    in the same units as the elevation attributes.
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    omits vectors whose elevation falls outside of the valid range when constructing the DEM.
+   </li>
+   <li value="6">
+    Enter an
+    <b>
+     Output Pixel Size
+    </b>
+    and
+    <b>
+     Output Data Type
+    </b>
+    . You can change the pixel size before you click
+    <b>
+     OK
+    </b>
+    to begin processing. It is recommended that you do not set the output pixel size to a value smaller than the approximate sampling distance between the nodes that define the vector contours.
+   </li>
+   <li value="7">
+    Use the
+    <b>
+     Gridding Interpolation Method
+    </b>
+    and the
+    <b>
+     Extrapolate Edge of Image
+    </b>
+    toggle buttons to set the gridding parameters.
+   </li>
+   <li value="8">
+    To spatially subset the output DEM, click one of the following buttons:
+   </li>
+   <ul>
+    <li value="1">
+     <b>
+      Map
+     </b>
+     : To restrict the DEM output to an area defined in map coordinates. The Spatial Subset by Map Coordinates dialog appears.
+    </li>
+    <li value="2">
+     <b>
+      File
+     </b>
+     : To restrict the output DEM to the same area as an existing georeferenced file. The Choose a File on Which to Base the Spatial Subset dialog appears.
+    </li>
+   </ul>
+   <li value="9">
+    In the
+    <b>
+     Select Output Projection
+    </b>
+    area, choose a map projection for the output DEM. This does not have to be the same projection as the input vector data.
+   </li>
+   <li value="10">
+    Click
+    <b>
+     OK
+    </b>
+    . The DEM Output Parameters dialog appears.
+   </li>
+   <li value="11">
+    Examine the information displayed under the
+    <b>
+     Gridded DEM Output Image
+    </b>
+    title to make sure it is accurate. If you need to change any of the output parameters, including the pixel size, click
+    <b>
+     Change Output Parameters
+    </b>
+    .
+   </li>
+   <li value="12">
+    Select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="13">
+    Click
+    <b>
+     OK
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds the resulting output to the Layer Manager.
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

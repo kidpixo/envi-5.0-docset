@@ -1,0 +1,722 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming|Routines|Data Control" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   ENVIRasterMetadata
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/TableStyles/VersionTable.css" rel="stylesheet" />
+  <link href="../Resources/TableStyles/Keyword_Table.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#ExtendCustomize/ENVIRasterMetaData.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="Routines.htm">
+    Routines
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="ENVICoordSys.htm">
+    Data Control
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    ENVIRasterMetadata
+   </span>
+  </div>
+  <h1 class="ClassObject">
+   ENVIRasterMetadata
+  </h1>
+  <p>
+   This is a reference to a
+   <a name="kanchor510">
+   </a>
+   raster metadata object.
+  </p>
+  <p>
+   There are two ways to get a reference to an ENVIRasterMetadata object:
+  </p>
+  <ul>
+   <li value="1">
+    The
+    <a href="ENVI__CreateRasterMetaData.htm">
+     ENVI::CreateRasterMetadata
+    </a>
+    method returns a reference to a new, empty object that contains no metadata information.
+   </li>
+   <li value="2">
+    An existing ENVIRaster object's
+    <a href="enviRaster.htm#METADATA">
+     METADATA
+    </a>
+    property contains a reference to the populated ENVIRasterMetadata object associated with the ENVIRaster object.
+   </li>
+  </ul>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   For an ENVIRasterMetadata object created with the
+   <a href="ENVI__CreateRasterMetaData.htm">
+    ENVI::CreateRasterMetadata
+   </a>
+   method, the
+   <code>
+    band names
+   </code>
+   metadata field may be added, removed, or updated. For an ENVIRasterMetadata object associated with an existing ENVIRaster object, the
+   <code>
+    band names
+   </code>
+   metadata field is always defined, and so it may only be updated.
+  </p>
+  <p>
+   The following table lists the special ENVIRasterMetadata fields that are used by the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   application:
+  </p>
+  <table class="TableStyle-Keyword_Table" style="mc-table-style: url('../Resources/TableStyles/Keyword_Table.css');margin-left: 0;margin-right: auto;" cellspacing="0">
+   <col class="Column-Column1" />
+   <col class="Column-Column1" />
+   <thead>
+    <tr class="Head-Header1">
+     <th class="HeadE-Column1-Header1">
+      ENVIRasterMetadata Editable Field
+     </th>
+     <th class="HeadD-Column1-Header1">
+      Description
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr class="Body-Body1">
+     <td class="BodyE-Column1-Body1">
+      <pre xml:space="preserve">
+       band names
+      </pre>
+     </td>
+     <td class="BodyD-Column1-Body1">
+      Allows entry of specific names for each band of an image.
+     </td>
+    </tr>
+    <tr class="Body-Body2">
+     <td class="BodyE-Column1-Body2">
+      <pre xml:space="preserve">
+       bbl
+      </pre>
+     </td>
+     <td class="BodyD-Column1-Body2">
+      Lists the bad band multiplier values of each band in an image, typically 0 for bad bands and 1 for good bands.
+     </td>
+    </tr>
+    <tr class="Body-Body1">
+     <td class="BodyE-Column1-Body1">
+      <pre xml:space="preserve">
+       class lookup
+      </pre>
+     </td>
+     <td class="BodyD-Column1-Body1">
+      This field pertains to classification files and lists RGB color definitions for class names and each respective class.
+     </td>
+    </tr>
+    <tr class="Body-Body2">
+     <td class="BodyE-Column1-Body2">
+      <pre xml:space="preserve">
+       class names
+      </pre>
+     </td>
+     <td class="BodyD-Column1-Body2">
+      This field pertains to classification files and lists the classification names.
+     </td>
+    </tr>
+    <tr class="Body-Body1">
+     <td class="BodyE-Column1-Body1">
+      <pre xml:space="preserve">
+       classes
+      </pre>
+     </td>
+     <td class="BodyD-Column1-Body1">
+      This field pertains to classification files and defines the number of classes (including unclassified classes).
+     </td>
+    </tr>
+    <tr class="Body-Body2">
+     <td class="BodyE-Column1-Body2">
+      <pre xml:space="preserve">
+       complex function
+      </pre>
+     </td>
+     <td class="BodyD-Column1-Body2">
+      Specifies the values to calculate from a complex image and to use when displaying the image, calculating statistics for the image, or writing the image to a new file. Values include
+      <code>
+       Real
+      </code>
+      ,
+      <code>
+       Imaginary
+      </code>
+      ,
+      <code>
+       Power
+      </code>
+      ,
+      <code>
+       Magnitude
+      </code>
+      , and
+      <code>
+       Phase
+      </code>
+      (the default value).
+     </td>
+    </tr>
+    <tr class="Body-Body1">
+     <td class="BodyE-Column1-Body1">
+      <pre xml:space="preserve">
+       data gain values
+      </pre>
+     </td>
+     <td class="BodyD-Column1-Body1">
+      Gain values for each band.
+     </td>
+    </tr>
+    <tr class="Body-Body2">
+     <td class="BodyE-Column1-Body2">
+      <pre xml:space="preserve">
+       data ignore value
+      </pre>
+     </td>
+     <td class="BodyD-Column1-Body2">
+      <p>
+       Pixel values that should be ignored in image processing.
+      </p>
+     </td>
+    </tr>
+    <tr class="Body-Body1">
+     <td class="BodyE-Column1-Body1">
+      <pre xml:space="preserve">
+       data offset values
+      </pre>
+     </td>
+     <td class="BodyD-Column1-Body1">
+      Offset values for each band.
+     </td>
+    </tr>
+    <tr class="Body-Body2">
+     <td class="BodyE-Column1-Body2">
+      <pre xml:space="preserve">
+       default bands
+      </pre>
+     </td>
+     <td class="BodyD-Column1-Body2">
+      If set, indicates which bands to display every time the file is opened. By default, a new image is automatically displayed when a file that has default bands defined in its header is opened. If only one band number is used, a gray scale image is loaded.
+     </td>
+    </tr>
+    <tr class="Body-Body1">
+     <td class="BodyE-Column1-Body1">
+      <pre xml:space="preserve">
+       default stretch
+      </pre>
+     </td>
+     <td class="BodyD-Column1-Body1">
+      <p>
+       Determines what type of stretch to use when the image is displayed. Values include
+       <code>
+        No stretch
+       </code>
+       ,
+       <code>
+        Linear 1%
+       </code>
+       ,
+       <code>
+        Linear 2%
+       </code>
+       ,
+       <code>
+        Linear 5%
+       </code>
+       ,
+       <code>
+        Equalization
+       </code>
+       ,
+       <code>
+        Gaussian
+       </code>
+       ,
+       <code>
+        Square Root
+       </code>
+       ,
+       <code>
+        Logarithmic
+       </code>
+       , and
+       <code>
+        Optimized Linear
+       </code>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr class="Body-Body2">
+     <td class="BodyE-Column1-Body2">
+      <pre xml:space="preserve">
+       dem band
+      </pre>
+     </td>
+     <td class="BodyD-Column1-Body2">
+      Path and filename of a DEM that you associate with an image.
+     </td>
+    </tr>
+    <tr class="Body-Body1">
+     <td class="BodyE-Column1-Body1">
+      <pre xml:space="preserve">
+       dem file
+      </pre>
+     </td>
+     <td class="BodyD-Column1-Body1">
+      Index (starting at 1) of a selected DEM band that you associate with an image. The
+      <code>
+       dem band
+      </code>
+      is not written if the DEM file contains a single band, or if the first band of an image was chosen. In these cases, the
+      <code>
+       dem band
+      </code>
+      value defaults to 0.
+     </td>
+    </tr>
+    <tr class="Body-Body2">
+     <td class="BodyE-Column1-Body2">
+      <pre xml:space="preserve">
+       description
+      </pre>
+     </td>
+     <td class="BodyD-Column1-Body2">
+      A character string describing the image or the processing performed.
+     </td>
+    </tr>
+    <tr class="Body-Body1">
+     <td class="BodyE-Column1-Body1">
+      <pre xml:space="preserve">
+       fwhm
+      </pre>
+     </td>
+     <td class="BodyD-Column1-Body1">
+      Lists full-width-half-maximum (FWHM) values of each band in an image. Units should be the same as those used for wavelength and set in the wavelength units parameter.
+     </td>
+    </tr>
+    <tr class="Body-Body2">
+     <td class="BodyE-Column1-Body2">
+      <pre xml:space="preserve">
+       major frame offsets
+      </pre>
+     </td>
+     <td class="BodyD-Column1-Body2">
+      The number of extra bytes to skip at the beginning and ending of the major frame.
+     </td>
+    </tr>
+    <tr class="Body-Body1">
+     <td class="BodyE-Column1-Body1">
+      <pre xml:space="preserve">
+       minor frame offsets
+      </pre>
+     </td>
+     <td class="BodyD-Column1-Body1">
+      The number of extra bytes to skip at the beginning and ending of the minor frame.
+     </td>
+    </tr>
+    <tr class="Body-Body2">
+     <td class="BodyE-Column1-Body2">
+      <pre xml:space="preserve">
+       reflectance scale factor
+      </pre>
+     </td>
+     <td class="BodyD-Column1-Body2">
+      The value that, when divided into your data, would scale it from 0-1 reflectance.
+     </td>
+    </tr>
+    <tr class="Body-Body1">
+     <td class="BodyE-Column1-Body1">
+      <pre xml:space="preserve">
+       sensor type
+      </pre>
+     </td>
+     <td class="BodyD-Column1-Body1">
+      Instrument types, such as Landsat TM, SPOT, RADARSAT, and so on. The available sensor types are located in the
+      <code>
+       sensor.txt
+      </code>
+      file (described in
+      <a href="../NoTOCTopics/ENVISensorFile.htm">
+       <span class="DocumentTitleProductNameENVIClassic">
+        ENVI Classic
+       </span>
+       Sensor File
+      </a>
+      ). The sensor type code character tag defined here must match one of the entries in the
+      <code>
+       sensor.txt
+      </code>
+      file verbatim, including case.
+     </td>
+    </tr>
+    <tr class="Body-Body2">
+     <td class="BodyE-Column1-Body2">
+      <pre xml:space="preserve">
+       spectra names
+      </pre>
+     </td>
+     <td class="BodyD-Column1-Body2">
+      This field pertains to spectral library files only. It contains a comma-separated list of ASCII names enclosed in { } (curly brackets).
+     </td>
+    </tr>
+    <tr class="Body-Body1">
+     <td class="BodyE-Column1-Body1">
+      <pre xml:space="preserve">
+       x start
+      </pre>
+      <pre xml:space="preserve">
+       y start
+      </pre>
+     </td>
+     <td class="BodyD-Column1-Body1">
+      <p>
+       Defines the image coordinates for the upper-left pixel in the image. Images that are spatial subsets of larger images often use an image coordinate system that references the parent (or larger) image so that you can link and dynamically overlay the two images. The default values for the upper-left pixel are (1,1).
+      </p>
+      <p>
+       Changing these values does not affect the way
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       reads the image data from the file.
+      </p>
+     </td>
+    </tr>
+    <tr class="Body-Body2">
+     <td class="BodyE-Column1-Body2">
+      <pre xml:space="preserve">
+       wavelength
+      </pre>
+     </td>
+     <td class="BodyD-Column1-Body2">
+      Lists the center wavelength values of each band in an image. Units should be the same as those used for the
+      <code>
+       fwhm
+      </code>
+      field and set in the wavelength units parameter.
+     </td>
+    </tr>
+    <tr class="Body-Body1">
+     <td class="BodyE-Column1-Body1">
+      <pre xml:space="preserve">
+       wavelength units
+      </pre>
+     </td>
+     <td class="BodyD-Column1-Body1">
+      Text string indicating the wavelength units. Values include
+      <code>
+       Micrometers
+      </code>
+      ,
+      <code>
+       Nanometers
+      </code>
+      ,
+      <code>
+       Wavenumber
+      </code>
+      ,
+      <code>
+       GHz
+      </code>
+      ,
+      <code>
+       MHz
+      </code>
+      , and
+      <code>
+       Index
+      </code>
+      . If this field contains any other text upon querying, the value
+      <code>
+       Unknown
+      </code>
+      is returned.
+     </td>
+    </tr>
+    <tr class="Body-Body2">
+     <td class="BodyE-Column1-Body2">
+      <pre xml:space="preserve">
+       z plot average
+      </pre>
+     </td>
+     <td class="BodyD-Column1-Body2">
+      Values indicating the number of pixels in the x and y directions to average for
+      <span class="DocumentTitleProductNameENVIClassic">
+       ENVI Classic
+      </span>
+      Z profiles.
+     </td>
+    </tr>
+    <tr class="Body-Body1">
+     <td class="BodyE-Column1-Body1">
+      <pre xml:space="preserve">
+       z plot range
+      </pre>
+     </td>
+     <td class="BodyD-Column1-Body1">
+      Values indicating the default minimum and maximum values for
+      <span class="DocumentTitleProductNameENVIClassic">
+       ENVI Classic
+      </span>
+      Z profiles.
+     </td>
+    </tr>
+    <tr class="Body-Body2">
+     <td class="BodyB-Column1-Body2">
+      <pre xml:space="preserve">
+       z plot titles
+      </pre>
+     </td>
+     <td class="BodyA-Column1-Body2">
+      Allows entry of specific x and y axis titles for
+      <span class="DocumentTitleProductNameENVIClassic">
+       ENVI Classic
+      </span>
+      Z profiles.
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h2 class="API">
+   <a name="Example">
+   </a>
+   Example
+  </h2>
+  <p class="Syntax">
+   The following code creates an ENVIRaster and prints all available metadata tag names and values.
+  </p>
+  <p class="Code">
+   ; Launch the application
+  </p>
+  <p class="Code">
+   e = ENVI()
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Create an ENVIRaster
+  </p>
+  <p class="Code">
+   file = FILEPATH('image.tif', $
+  </p>
+  <p class="Code">
+   &#160;&#160;SUBDIRECTORY=['examples','data'])
+  </p>
+  <p class="Code">
+   raster = e.OpenRaster(file)
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Print all metadata values
+  </p>
+  <p class="Code">
+   metadata = raster.METADATA
+  </p>
+  <p class="Code">
+   PRINT, metadata  ; print tag names and values
+  </p>
+  <p class="Code">
+   PRINT, metadata.TAGS  ; print string array of tag names
+  </p>
+  <p class="Code">
+   PRINT, metadata['lines'] EQ raster.NROWS ; true
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Add, then update, a user-defined item
+  </p>
+  <p class="Code">
+   metadata.AddItem, 'Author', 'EXELISVIS'
+  </p>
+  <p class="Code">
+   metadata.UpdateItem, 'Author', 'Exelis Visual Information Solutions'
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Update a format-defined item
+  </p>
+  <p class="Code">
+   metadata.UpdateItem, 'band names', $
+  </p>
+  <p class="Code">
+   &#160;&#160;['Blue', 'Green', 'Red', 'NIR']
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Print the updated metadata values
+  </p>
+  <p class="Code">
+   PRINT, metadata
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Remove an item
+  </p>
+  <p class="Code">
+   metadata.RemoveItem, 'Author'
+  </p>
+  <p class="Code">
+   PRINT, metadata
+  </p>
+  <h2 class="API">
+   Syntax
+  </h2>
+  <p class="Syntax">
+   <i>
+    Result
+   </i>
+   = ENVIRaster.metadata
+  </p>
+  <p>
+   Use brackets to retrieve metadata values, using the following syntax. Type the metadata field exactly as it appears in the above table.
+  </p>
+  <p>
+   <i>
+    var
+   </i>
+   =
+   <i>
+    metadata
+   </i>
+   ['
+   <i>
+    field name
+   </i>
+   ']
+  </p>
+  <h2 class="API">
+   Methods
+  </h2>
+  <p>
+   <a href="ENVIRasterMetaData__AddItem.htm">
+    AddItem
+   </a>
+  </p>
+  <p>
+   <a href="ENVIRasterMetaData__RemoveItem.htm">
+    RemoveItem
+   </a>
+  </p>
+  <p>
+   <a href="ENVIRasterMetaData__UpdateItem.htm">
+    UpdateItem
+   </a>
+  </p>
+  <h2 class="API">
+   Properties
+  </h2>
+  <p>
+   Properties marked as (Get) can be retrieved, but not set.
+  </p>
+  <h3 class="Property">
+   COUNT (Get)
+  </h3>
+  <p>
+   A long integer that represents the number of available tags.
+  </p>
+  <h3 class="Property">
+   TAGS (Get)
+  </h3>
+  <p>
+   A string array of tag names used to retrieve metadata items. Metadata tags are defined by the file format from which the ENVIRaster was opened. Consult your data provider or file format specification for more information on metadata fields for specific sensors and/or data formats (GeoTIFF, NITF, and others).
+  </p>
+  <h2 class="API">
+   Version History
+  </h2>
+  <table style="mc-table-style: url('../Resources/TableStyles/VersionTable.css');" class="TableStyle_VersionTable" cellspacing="0">
+   <col />
+   <col />
+   <tbody>
+    <tr>
+     <td class="TableStyle_VersionTable_Body_0_0_RowEnd_ColSep">
+      <p>
+       5.0
+      </p>
+     </td>
+     <td class="TableStyle_VersionTable_Body_0_0_RowEnd_ColEnd">
+      <p>
+       Introduced
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h2 class="API">
+   See Also
+  </h2>
+  <p>
+   <a href="enviRaster.htm">
+    ENVIRaster
+   </a>
+   ,
+   <a href="ENVI__CreateRasterMetaData.htm">
+    ENVI::CreateRasterMetadata
+   </a>
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

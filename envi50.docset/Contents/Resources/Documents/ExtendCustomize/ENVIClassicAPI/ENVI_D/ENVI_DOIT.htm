@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming|Routines|Processing" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   ENVI_DOIT
+  </title>
+  <link href="../../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../../ENVIHelp_CSH.htm#ExtendCustomize/ENVIClassicAPI/ENVI_D/ENVI_DOIT.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../Routines.htm">
+    Routines
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../A/ADAPT_FILT_DOIT.htm">
+    Processing
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    ENVI_DOIT
+   </span>
+  </div>
+  <h1>
+   <a name="kanchor707">
+   </a>
+   ENVI_DOIT
+  </h1>
+  <p>
+   The ENVI_DOIT procedure is the interface for all of the
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   processing routines (those that end with _DOIT). Each _DOIT is a string argument to ENVI_DOIT with specific keywords that follow.
+  </p>
+  <h2 class="API">
+   <a name="Syntax">
+   </a>
+   Syntax
+  </h2>
+  <p>
+   ENVI_DOIT, '
+   <i>
+    Routine_Name
+   </i>
+   ' [, /
+   <a href="#NO_CATCH">
+    NO_CATCH
+   </a>
+   ] [, /
+   <a href="#INVISIBL">
+    INVISIBLE
+   </a>
+   ] [, /
+   <a href="#NO_REALIZE">
+    NO_REALIZE
+   </a>
+   ]
+  </p>
+  <h2 class="API">
+   <a name="Arguments">
+   </a>
+   Arguments
+  </h2>
+  <h3>
+   Routine_Name
+  </h3>
+  <p>
+   <i>
+    Routine_Name
+   </i>
+   is a string variable specifying the processing routine to execute.
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   commonly refers to processing routines as “DOIT.” Many of the internal
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   processing routines are available to you in batch mode. The value of
+   <i>
+    Routine_Name
+   </i>
+   should be any valid _DOIT routine in
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   . Keywords specific to each of these routines are described in this Help.
+  </p>
+  <h2 class="API">
+   <a name="Keywords">
+   </a>
+   Keywords
+  </h2>
+  <h3>
+   <a name="NO_CATCH">
+   </a>
+   NO_CATCH (optional)
+  </h3>
+  <p>
+   Set this keyword to disable the
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   catch mechanism, which provides a generalized method for handling exceptions and errors. By disabling the
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   catch mechanism, you have the option to add your own. If you do not use a catch mechanism and an error occurs,
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   stops program execution, prints an error message, and reverts control to the command line. The
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   session (interactive or batch) must be continued manually from the command line. See the IDL procedure CATCH for instructions on adding your own catch mechanism. Use NO_CATCH only with the procedure ENVI_DOIT.
+  </p>
+  <h3>
+   <a name="INVISIBL">
+   </a>
+   INVISIBLE (optional)
+  </h3>
+  <p>
+   Set this keyword to prevent the result of the _DOIT processing routine (usually the output of the R_FID keyword) from being automatically opened and listed in the Available Bands List at the end of the
+   <i>
+    Routine_Name
+   </i>
+   process. In cases when an opened file is automatically displayed, setting the INVISIBLE keyword will also suppress the automatic display of the output result. Some processing routines (such as
+   <a href="../ENVI_S/ENVI_STATS_DOIT.htm">
+    ENVI_STATS_DOIT
+   </a>
+   ) produce dialogs, but they do not produce output files. The INVISIBLE keyword only applies to cases when an output file is created. Otherwise, this keyword is ignored.
+  </p>
+  <h3>
+   <a name="NO_REALIZE">
+   </a>
+   NO_REALIZE (optional)
+  </h3>
+  <p>
+   Set this keyword to prevent the Available Bands List from displaying if a new output file is created at the end of the
+   <i>
+    Routine_Name
+   </i>
+   process. If the Available Bands List is already realized, this keyword has no effect. Some processing routines (such as ENVI_STATS_DOIT) produce dialogs, but they do not produce output files. The NO_REALIZE keyword only applies to cases resulting in an output file. Otherwise, this keyword is ignored.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

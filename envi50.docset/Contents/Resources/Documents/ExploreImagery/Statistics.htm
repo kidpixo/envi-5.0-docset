@@ -1,0 +1,707 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Explore Imagery" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Statistics
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#ExploreImagery/Statistics.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="ExploreImagery.htm">
+    Explore Imagery
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Statistics
+   </span>
+  </div>
+  <h1>
+   Statistics
+   <a name="kanchor46">
+   </a>
+  </h1>
+  <p>
+   Use the
+   <b>
+    Statistics
+   </b>
+   menu option to generate statistical reports and display plots of histograms, mean spectra, eigenvalues, and other statistics for image files.
+  </p>
+  <p>
+   See the following sections:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#Compute">
+     Compute Statistics
+    </a>
+   </li>
+   <li value="2">
+    <a href="#Open">
+     Open Statistics Files
+    </a>
+   </li>
+   <li value="3">
+    <a href="#Sum">
+     Sum Data Bands
+    </a>
+   </li>
+  </ul>
+  <p>
+   Also see
+   <a href="GlobalSpatialStatistics.htm">
+    Global Spatial Statistics
+   </a>
+   and
+   <a href="LocalSpatialStatistics.htm">
+    Local Spatial Statistics
+   </a>
+   .
+  </p>
+  <h2>
+   <a name="Compute">
+   </a>
+   Compute Statistics
+  </h2>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   can calculate basic statistics and/or tabulated histogram information (frequency distributions) for single-band or multi-band images. The minimum, maximum, and mean spectra can only be calculated for multi-band images. Similarly, covariance statistics, which include eigenvectors and a correlation matrix, can only be calculated for multi-band images. The statistics are calculated in double-precision.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     <![CDATA[ ]]>
+     Statistics &gt; Compute Statistics
+    </b>
+    . The Compute Statistics Input File dialog appears.
+   </li>
+   <li value="2">
+    In the
+    <b>
+     Select Input File
+    </b>
+    list, select the input file by selecting the filename.
+   </li>
+   <li value="3">
+    Select an input file and perform optional spatial and spectral
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , and/or masking, then click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+   <li value="4">
+    Click
+    <b>
+     OK
+    </b>
+    . The Compute Statistics Parameters dialog appears.
+   </li>
+   <li value="5">
+    Select the type of statistics to include:
+    <ul>
+     <li value="1">
+      <b>
+       Basic Stats
+      </b>
+      : Calculates basic statistics (the minimum, maximum, mean, and standard deviation for all bands) for your data. These basic statistics are always calculated. This option is always set.
+     </li>
+    </ul>
+   </li>
+   <p class="indent">
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    does not calculate statistics for any bands specified as bad bands in the image’s header file.
+   </p>
+   <ul>
+    <li value="1">
+     <b>
+      <a name="kanchor47">
+      </a>
+      Histograms
+     </b>
+     : Calculates the histogram of each band. The frequency distribution calculations also return the number of points, cumulative points, percent for each bin, and cumulative percentage for each DN (digital number) in the image histogram.
+    </li>
+    <li value="2">
+     <b>
+      <a name="kanchor48">
+      </a>
+      Covariance
+     </b>
+     : Calculates the covariance matrix, the correlation matrix, eigenvalues, and eigenvectors. When selected, a
+     <b>
+      Covariance Image
+     </b>
+     check box also appears in the dialog. Select the
+     <b>
+      Covariance Image
+     </b>
+     check box to return the covariance and correlation matrices, and the eigenvectors as images in the Available Bands List. The dimensions of the resulting images are
+     <i>
+      nb
+     </i>
+     by
+     <i>
+      nb
+     </i>
+     , where
+     <i>
+      nb
+     </i>
+     is the number of bands of the input data. The eigenvectors are associated with the rows in the output eigenvector image.
+    </li>
+   </ul>
+   <p>
+    Operations that require
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    to invert the covariance matrix for an input image (such as MNF transforms and principal components analysis) use an iterative method to perform the inversion. Typically, the operation converges on a solution after three or four iterations. However, if one image band is a near-perfect linear combination of other bands in a dataset, a “singularity” problem may result that prevents the matrix from being inverted. If this happens, a “Too Many Iterations in TQLI” error message appears.
+   </p>
+   <li value="6">
+    Specify the factors to use for resizing the samples and the lines of the image while calculating the statistics in the
+    <b>
+     Samples Resize Factor
+    </b>
+    and
+    <b>
+     Lines Resize Factor
+    </b>
+    fields. To improve the performance for larger images, specify a value of less than 1 to skip pixels. For example, a factor of 0.5 indicates to use only every other pixel to calculate the statistics.
+   </li>
+   <li value="7">
+    Select the
+    <b>
+     Output to the Screen
+    </b>
+    check box to display the statistics report on the screen. When selected, a Statistics Results dialog displays the resulting statistics.
+   </li>
+   <li value="8">
+    <a name="kanchor49">
+    </a>
+    To save the output to an
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    -format statistics file, select the
+    <b>
+     Output to a Statistics File
+    </b>
+    check box.
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    uses this file format to improve the speed of some processes. When selected, enter a filename in the
+    <b>
+     Enter Output Stats Filename
+    </b>
+    field. The default file extension for statistics files is
+    <code>
+     .sta
+    </code>
+    .
+   </li>
+   <li value="9">
+    <a name="kanchor50">
+    </a>
+    To save the output to a text file, select the
+    <b>
+     Output to a Text Report File
+    </b>
+    check box to save the statistics report to a text file. When selected, enter a filename in the
+    <b>
+     Enter Output Text Filename
+    </b>
+    field.
+   </li>
+   <li value="10">
+    To change the data precision displayed in the output statistics report, click
+    <b>
+     Report Precision
+    </b>
+    . The Set Report Precision dialog appears.
+   </li>
+   <ol style="list-style-type: upper-alpha;">
+    <li value="1">
+     Use the
+     <b>
+      Data Precision
+     </b>
+     field to set the number of digits to display after the decimal point.
+    </li>
+    <li value="2">
+     Use the
+     <b>
+      Floating Report
+     </b>
+     toggle button to designate the format (
+     <b>
+      Normal
+     </b>
+     or
+     <b>
+      Scientific
+     </b>
+     ) for the numbers in the ASCII report.
+     <b>
+      Normal
+     </b>
+     numbers are in decimal format (for example, 25.88).
+     <b>
+      Scientific
+     </b>
+     numbers are a single digit followed by a decimal value, the letter e, and the exponential power (for example, 2.588e+001).
+    </li>
+   </ol>
+   <li value="11">
+    Click
+    <b>
+     OK
+    </b>
+    . When the statistics are calculated, the Statistics Results plot window appears.
+   </li>
+  </ol>
+  <h3>
+   <a name="viewing_statistics_reports">
+   </a>
+   View Statistics Reports
+   <a name="kanchor51">
+   </a>
+  </h3>
+  <p>
+   The plot section of the Statistics Results dialog displays the plot you selected from the
+   <b>
+    Select Plot
+   </b>
+   drop-down button. In the plot window, mouse buttons allow you to perform the following tasks:
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     Left Mouse Button
+    </b>
+    : Displays a crosshair cursor on the nearest data point and reports its (x,y) location.
+   </li>
+   <li value="2">
+    <b>
+     Middle Mouse Button
+    </b>
+    : Zooms in or out of the plot.
+   </li>
+   <li value="3">
+    <b>
+     Right Mouse Button
+    </b>
+    : Contains all the options associated with a regular plot window. See
+    <a href="../NoTOCTopics/UsingInteractivePlotFunctions.htm">
+     <span class="DocumentTitleProductNameENVIClassic">
+      ENVI Classic
+     </span>
+     Plot Functions
+    </a>
+    for details.
+   </li>
+  </ul>
+  <p>
+   The plot section also contains the following items:
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     Select Plot
+    </b>
+    : Click to change the current display in the plot window. When the Statistics Results dialog first appears, the plot window contains the minimum, maximum, and mean values for each band in the image. Use the
+    <b>
+     Select Plot
+    </b>
+    drop-down button to change the display to the standard deviation, eigenvalues (if the
+    <b>
+     Covariance
+    </b>
+    check box was selected in the previous Compute Statistics Parameters dialog), or histograms (if the
+    <b>
+     Histograms
+    </b>
+    check box was selected in the previous Compute Statistics Parameters dialog) for each or all bands.
+   </li>
+   <li value="2">
+    <b>
+     Clear Plot
+    </b>
+    : Clears the plot window.
+   </li>
+  </ul>
+  <p>
+   A text section containing the following items:
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     report text
+    </b>
+    : Contains the values of the calculated statistics in a table format. Each table in this box shows the resulting type of statistics (basic, covariance, eigenvalues, and histograms) calculated for each band in the image.
+   </li>
+  </ul>
+  <p class="indent">
+   The text fields include: File Information; Basic Statistics; Covariance, Correlation, and Eigenvectors (only if you selected the
+   <b>
+    Covariance
+   </b>
+   check box in the Compute Statistics Parameters dialog); Histograms for Each Band (only if you selected the
+   <b>
+    Histograms
+   </b>
+   check box in the Compute Statistics Parameters dialog).
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     Select Stat
+    </b>
+    : Enables you to change the information displayed. At any point, you can use the
+    <b>
+     File Info
+    </b>
+    option in the
+    <b>
+     Select Stat
+    </b>
+    drop-down button to return to the file information section, which is at the beginning (top) of the text. You can also use the scroll bars to move around this area.
+   </li>
+   <li value="2">
+    The
+    <b>
+     File
+    </b>
+    menu in the Statistics Results dialog contains the following items:
+   </li>
+   <li value="3">
+    <b>
+     Save results to
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     stats file
+    </b>
+    : Saves the statistics report to an ENVI-format statistics file to speed processing for later use with
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    functions. When this option is selected, the Save results to
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    stats file dialog appears. In the
+    <b>
+     Enter Output Stats Filename[.sta]
+    </b>
+    field, enter a filename. The default file extension for statistics files is
+    <code>
+     .sta
+    </code>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    saves the statistics report to the specified file when you click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+   <li value="4">
+    <p>
+     <b>
+      Save results to text file
+     </b>
+     : Saves the statistics report to a text file. When this option is selected, the Save Results to Text File dialog appears. In the
+     <b>
+      Enter Output Text Filename[.txt]
+     </b>
+     field, enter a filename. The statistics report is saved to the specified file when you click
+     <b>
+      OK
+     </b>
+     .
+    </p>
+    <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+     <span class="autonumber">
+      <span>
+       <b>
+        Note:
+       </b>
+      </span>
+     </span>
+     The resulting text file is tab-delimited for easy import into external spreadsheet programs, such as Excel.
+    </p>
+   </li>
+  </ul>
+  <ul>
+   <li value="1">
+    <b>
+     Save Current Covariance to Image
+    </b>
+    : Adds the covariance and correlation matrices as well as the eigenvectors as images to the Available Bands List. The dimensions of the resulting images are
+    <i>
+     nb
+    </i>
+    by
+    <i>
+     nb
+    </i>
+    , where
+    <i>
+     nb
+    </i>
+    is the number of bands of the input data. The eigenvectors are associated with the rows in the output eigenvector image. This
+    <b>
+     <![CDATA[ ]]>
+    </b>
+    option is available only if you selected the
+    <b>
+     Covariance
+    </b>
+    check box in the Compute Statistics Parameters dialog.
+   </li>
+   <li value="2">
+    <b>
+     View Statistics Files
+    </b>
+    : Enables you to open one or more ENVI statistics files (
+    <code>
+     .sta
+    </code>
+    ) and display them in other Statistics Results dialogs. You can use this option to compare your current statistics with information in an anotherENVI statistics file.
+   </li>
+  </ul>
+  <p class="indent">
+   You can open multiple ENVI statistics files only if they are related (such as, files saved from a group of classes or ROIs with the same output root name).
+  </p>
+  <ul>
+   <li value="1">
+    The
+    <b>
+     Options
+    </b>
+    menu in the Statistics Results dialog contains the following items:
+   </li>
+   <li value="2">
+    <b>
+     Copy results to new window
+    </b>
+    : Enables you to compare statistics for different bands. When selected, a copy of the Statistics Results plot window appears. You can use this copy to compare various statistics. For example, you click
+    <b>
+     Select Plot
+    </b>
+    in one dialog to display the histogram of one band, then click
+    <b>
+     Select Plot
+    </b>
+    in the copied plot window to display the histogram of a different band. As with other plot windows, you can drag-and-drop a plot display from one window to another.
+   </li>
+   <li value="3">
+    <b>
+     Set Report Precision
+    </b>
+    : Provides access to the Set Report Precision dialog to change the precision of the information displayed in the Statistics Results dialog. This option does not affect histogram precision.
+   </li>
+   <li value="4">
+    Use the
+    <b>
+     Data Precision
+    </b>
+    field to set the number of digits to display after the decimal point.
+   </li>
+   <li value="5">
+    Use the
+    <b>
+     Floating Report
+    </b>
+    toggle button to designate the format (
+    <b>
+     Normal
+    </b>
+    or
+    <b>
+     Scientific
+    </b>
+    ) for the numbers in the ASCII report.
+    <b>
+     Normal
+    </b>
+    numbers are in decimal format (for example, 25.88).
+    <b>
+     Scientific
+    </b>
+    numbers are a single digit followed by a decimal value, the letter e, and the exponential power (for example, 2.588e+001).
+   </li>
+  </ul>
+  <h2>
+   <a name="Open">
+   </a>
+   Open Statistics Files
+  </h2>
+  <p>
+   Use
+   <b>
+    View Statistics File
+   </b>
+   to view previously saved statistics files.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     <![CDATA[ ]]>
+     Statistics &gt; View Statistics File
+    </b>
+    . The Enter Statistics Filename dialog appears.
+   </li>
+   <li value="2">
+    Select a statistics file. The Stats File plot window appears. Use this window to select the type of reports to generate.
+   </li>
+  </ol>
+  <p>
+   The options available in the Stats File plot window depend on the type of statistics computed for the original file (for example, if covariance statistics were not calculated for the original file, then covariance options are not available in the View Statistics File dialog).
+  </p>
+  <h2>
+   <a name="Sum">
+   </a>
+   Sum Data Bands
+   <a name="kanchor52">
+   </a>
+  </h2>
+  <p>
+   Use
+   <b>
+    Sum Data Bands
+   </b>
+   to add all of the bands in an image together or to calculate spectral statistics for every pixel in an image. You can calculate up to eight different statistics: sum, sum of squares, mean, standard deviation, variance, skewness, kurtosis, and mean absolute deviation.
+  </p>
+  <p>
+   The statistics calculated using
+   <b>
+    Sum Data Bands
+   </b>
+   are spectral, which means that the statistics are calculated using all of the bands for every pixel and that output images will result. The statistics calculated using the other statistics functions are spatial, which means that they are calculated using all pixels for every band.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     <![CDATA[ ]]>
+     Statistics &gt; Sum Data Bands
+    </b>
+    . The Sum Data Input File dialog appears.
+   </li>
+   <li value="2">
+    Select an input file and perform optional spatial and spectral
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The Sum Data Parameters dialog appears.
+   </li>
+   <li value="3">
+    Select one or more output bands to calculate.
+   </li>
+   <li value="4">
+    From the
+    <b>
+     Output Data Type
+    </b>
+    drop-down list, select the output data type. If the output data falls outside the data type range, the output data will be clipped to the highest or lowest data type value (that is, byte output will have values only between 0-255 and all negative values will clip to 0).
+   </li>
+   <li value="5">
+    Select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="6">
+    Click
+    <b>
+     OK
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds the resulting output to the Layer Manager.
+   </li>
+   <p>
+    ENVI calculates the various statistics as follows, where
+    <i>
+     x
+    </i>
+    <i style="font-size: 80%;vertical-align: sub;">
+     j
+    </i>
+    is the value of a pixel for band
+    <i>
+     j
+    </i>
+    and
+    <i>
+     N
+    </i>
+    = number of bands:
+   </p>
+   <p>
+    <img src="../Resources/Images/statistics_equations.gif" style="margin-left: 5.99976px;margin-top: 5.99976px;margin-right: 6.000484px;margin-bottom: 6.000484px;" />
+   </p>
+  </ol>
+  <p>
+   To generate a random sample of points, see
+   <a href="../FindFeatures/Classification/ClassificationTools/GeneratingRandomSample.htm">
+    Generate a Random Sample
+   </a>
+   .
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

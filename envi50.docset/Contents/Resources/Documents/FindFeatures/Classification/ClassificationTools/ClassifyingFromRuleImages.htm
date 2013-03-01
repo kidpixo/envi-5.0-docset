@@ -1,0 +1,310 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Classification|Classification Tools|Post Classification" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Classify from Rule Images
+  </title>
+  <link href="../../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../../ENVIHelp_CSH.htm#FindFeatures/Classification/ClassificationTools/ClassifyingFromRuleImages.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../ClassificationMain.htm">
+    Classification
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="ClassificationTools.htm">
+    Classification Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="#">
+    Post Classification
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Classify from Rule Images
+   </span>
+  </div>
+  <h1>
+   Classify from Rule Images
+   <a name="kanchor300">
+   </a>
+  </h1>
+  <p>
+   Use
+   <b>
+    Rule Classifier
+   </b>
+   to use previously saved rule images to generate new classification images from different thresholds. The previously saved rule images may contain the classification measures such as the number of matches, distance measures, or probabilities. Much of the time required to run classification routines is attributed to calculation of the classification measures; classification itself does not require extensive computation.
+  </p>
+  <p>
+   To use the Rule Classifier, you must first generate rule images from a supervised classification method.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Classification &gt; Post Classification &gt; Rule Classifier
+    </b>
+    . The Rule Image Classifier dialog appears.
+   </li>
+   <li value="2">
+    Select an input file and perform optional spatial
+    <a href="../../../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The Rule Image Classifier Tool dialog appears.
+   </li>
+   <li value="3">
+    Click the
+    <b>
+     Classify By
+    </b>
+    toggle button to select whether the image will be classified by
+    <b>
+     Minimum
+    </b>
+    or
+    <b>
+     Maximum
+    </b>
+    values.
+   </li>
+   <li value="4">
+    Select one of the following options to set a threshold value:
+   </li>
+   <ul>
+    <li value="1">
+     To enter the same threshold value for all classes, enter a value in the
+     <b>
+      Set All Thresholds
+     </b>
+     field and click
+     <b>
+      Set All Thresholds
+     </b>
+     . The threshold value appears in the
+     <b>
+      Thresh
+     </b>
+     field for each class.
+    </li>
+    <li value="2">
+     To enter a different threshold for each class, enter a value in the
+     <b>
+      Thresh
+     </b>
+     field for each class.
+    </li>
+    <li value="3">
+     <p>
+      To enter a threshold value based on histogram percentage, enter the percent value (for example, 5%) in the
+      <b>
+       Thresh
+      </b>
+      field.
+     </p>
+     <p class="Tip" madcap:autonum="&lt;b&gt;Tip: &lt;/b&gt;">
+      <span class="autonumber">
+       <span>
+        <b>
+         Tip:
+        </b>
+       </span>
+      </span>
+      You can plot a histogram of a rule band to help you determine threshold values, by clicking Hist for that class. A plot window displays with the histogram of the selected band.
+     </p>
+     <p>
+      If using maximum likelihood rule images that were produced from
+      <span class="DocumentTitleProductName">
+       ENVI
+      </span>
+      3.6 or later, enter the threshold using a percentage (for example, 95%), and the corresponding Chi Square value will automatically be computed using the histogram of the rule image.
+     </p>
+    </li>
+   </ul>
+   <li value="5">
+    <p>
+     Click
+     <b>
+      Quick Apply
+     </b>
+     . A classification image based on the current settings displays in a new display group.
+    </p>
+    <p>
+     To remove a class from the display, select the
+     <b>
+      On
+     </b>
+     check box for that class to deselect it. To display that class again, select the
+     <b>
+      On
+     </b>
+     check box again.
+    </p>
+   </li>
+   <li value="6">
+    Click
+    <b>
+     Quick Apply
+    </b>
+    to see how any of your changes affect the classification image.
+   </li>
+  </ol>
+  <h2>
+   Options in the Rule Image Classifier Tool Dialog
+  </h2>
+  <p>
+   Use the Rule Image Classifier Tool
+   <b>
+    Options
+   </b>
+   menu to change class names and/or colors, and to reorder classes. Click
+   <b>
+    Save to File
+   </b>
+   to save the classification image to a file.
+  </p>
+  <h3>
+   Change Class Names and Colors
+  </h3>
+  <ol>
+   <li value="1">
+    To change the class color or name select
+    <b>
+     Options &gt; Edit class colors/names
+    </b>
+    . The Class Color Map Editing dialog appears.
+   </li>
+   <li value="2">
+    Select a class name in the
+    <b>
+     Selected Classes
+    </b>
+    list and select from the following options:
+   </li>
+   <ul>
+    <li value="1">
+     To change the class name, enter the new name in the
+     <b>
+      Class Name
+     </b>
+     field.
+    </li>
+    <li value="2">
+     To change the class color, select a color system and/or color using the
+     <b>
+      Color
+     </b>
+     button. To further adjust the color, use the slider bars.
+    </li>
+   </ul>
+  </ol>
+  <h3>
+   Reorder Classes
+  </h3>
+  <p>
+   If two classes have the same rule value, the first one in the list will be used to make the output classification image.
+  </p>
+  <ol>
+   <li value="1">
+    To reorder the classes, selecting
+    <b>
+     Options &gt; Reorder Classes
+    </b>
+    . The Reorder Classes dialog appears with the class names displayed in a list.
+   </li>
+   <li value="2">
+    Click on a class name and drag it to the desired location in the list.
+   </li>
+   <li value="3">
+    Click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+  </ol>
+  <h3>
+   Calculate Statistics
+  </h3>
+  <p>
+   To calculate statistics for each
+   <b>
+    On
+   </b>
+   rule band, select
+   <b>
+    Options &gt; Stats for Selected Rule Bands
+   </b>
+   . The band minimum, maximum, mean, and standard deviation display in the Statistics Results window.
+  </p>
+  <p>
+   To save the report as an ASCII file, select
+   <b>
+    File &gt; Save Text to ASCII
+   </b>
+   in the report window.
+  </p>
+  <h3>
+   Turn Rule Bands On/Off
+  </h3>
+  <p>
+   To select all of the rule band check boxes without having to click on each one, select
+   <b>
+    Options &gt; Select All Rule Bands
+   </b>
+   , or
+   <b>
+    Options &gt; Clear All Rule Bands
+   </b>
+   .
+  </p>
+  <h3>
+   Save the Classification Image
+  </h3>
+  <p>
+   To save the displayed classification image to a file, click
+   <b>
+    Save To File
+   </b>
+   and enter or choose an output filename.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

@@ -1,0 +1,328 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Classification|Classification Tools|Post Classification" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Calculate Class Statistics
+  </title>
+  <link href="../../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../../ENVIHelp_CSH.htm#FindFeatures/Classification/ClassificationTools/ClassStatistics.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../ClassificationMain.htm">
+    Classification
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="ClassificationTools.htm">
+    Classification Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="ClassifyingFromRuleImages.htm">
+    Post Classification
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Calculate Class Statistics
+   </span>
+  </div>
+  <h1>
+   Calculate Class Statistics
+   <a name="kanchor301">
+   </a>
+  </h1>
+  <p>
+   Use
+   <b>
+    Class Statistics
+   </b>
+   to calculate statistics based upon classification results for any related input file. Basic statistics include the number of points in a class and minimum, maximum, mean, and standard deviation for each band for that class. You can plot minimum, maximum, mean, and standard deviation plots for each class. Histograms for each class can also be reported and plotted and the covariance matrix, correlation matrix, and eigenvalues and eigenvectors calculated. A summary report for all classes will also be displayed.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Classification &gt; Post Classification &gt; Class Statistics
+    </b>
+    . The Classification Input File dialog appears.
+   </li>
+   <li value="2">
+    Select an input file and perform optional spatial and spectral
+    <a href="../../../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . You can select only classified images (based upon the file type described in the image’s header). The Input File dialog appears.
+   </li>
+   <li value="3">
+    Select an input file from which to calculate the statistics. Select the file that will be used to calculate class statistics for the areas identified in the classification image (usually the data file). You can also apply a mask to the calculation through the
+    <b>
+     Select Mask Band
+    </b>
+    or
+    <b>
+     Build Mask
+    </b>
+    buttons on this dialog.
+   </li>
+   <li value="4">
+    Click
+    <b>
+     OK
+    </b>
+    . The Class Selection dialog appears.
+   </li>
+   <li value="5">
+    Select the classes that you want to calculate statistics for.
+   </li>
+   <li value="6">
+    Click
+    <b>
+     OK
+    </b>
+    . The Compute Statistics Parameters dialog appears.
+   </li>
+   <li value="7">
+    Select the statistics options by selecting the check boxes.
+   </li>
+   <li value="8">
+    Click
+    <b>
+     OK
+    </b>
+    . The class statistics are calculated and the Class Statistics Results dialog appears.
+   </li>
+  </ol>
+  <p>
+   The Class Statistics Results dialog is very similar to the Statistics Results dialog and contains the same functions. However, the Class Statistics Results dialog also contains additional sections for reporting multiple instances of statistical information.
+  </p>
+  <p>
+   The
+   <b>
+    File
+   </b>
+   menu contains the following additional options:
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     Save current Class result to
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     stats file
+    </b>
+    : This option enables you to save the statistics report for the class specified in the
+    <b>
+     Stats for
+    </b>
+    section of the Class Statistics Results dialog to an
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    statistics file. When this option is selected, the Save Current Class Result to
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    Stats File dialog appears. In the
+    <b>
+     Enter Output Stats Filename[.sta]
+    </b>
+    section of this dialog, enter a filename. The default file extension for
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    statistics files is
+    <code>
+     .sta
+    </code>
+    . The statistics report is saved to the specified file when you click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+   <li value="2">
+    <b>
+     Save current Class result to text file
+    </b>
+    : This option enables you to save the statistics report for the class specified in the
+    <b>
+     Stats for
+    </b>
+    section of the Class Statistics Results dialog to a text file. When this option is selected, the Save Current Class Result to Text File dialog appears. In the
+    <b>
+     Enter Output Text Filename[.txt]
+    </b>
+    section of this dialog, enter a filename. The statistics report is saved to the specified file when you click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+  </ul>
+  <p class="TipIndent" madcap:autonum="&lt;b&gt;Tip: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Tip:
+     </b>
+    </span>
+   </span>
+   The resulting text file is tab-delimited for easy import into external spreadsheet programs, such as Excel.
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     Save all Class results to
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     stats files
+    </b>
+    : This option enables you to save the statistics reports for all the classes to separate
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    statistics files. When this option is selected, the Save All Class Results to
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    Stats Files dialog appears. In the
+    <b>
+     Enter Output Root Filename
+    </b>
+    section of this dialog, enter the root name of the statistics files. The default file extension for statistics files is
+    <code>
+     .sta
+    </code>
+    . The statistics report for each class or region is saved to individual files when you click
+    <b>
+     OK
+    </b>
+    . The individual files have the same root name that you specified and are appended with their appropriate class or ROI number.
+   </li>
+   <li value="2">
+    <b>
+     Save all Class results to text file
+    </b>
+    : This option enables you to save the statistics report for all the classes to a text file. When this option is selected, the Save All Class Results to Text File dialog appears. In the
+    <b>
+     Enter Output Text Filename[.txt]
+    </b>
+    section of this dialog, enter a filename. The statistics report is saved to the specified file when you click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+  </ul>
+  <p class="TipIndent" madcap:autonum="&lt;b&gt;Tip: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Tip:
+     </b>
+    </span>
+   </span>
+   The resulting text file is tab-delimited for easy import into external spreadsheet programs, such as Excel.
+  </p>
+  <p>
+   If the input file has an associated pixel size (via georeferencing or explicit setting of the size in the header file), the
+   <b>
+    Class Summary Area Units
+   </b>
+   submenu appears in the
+   <b>
+    Options
+   </b>
+   menu. This submenu enables you to specify the units of the reported area. The default area unit is Meter
+   <sup>
+    2
+   </sup>
+   . When a different unit is chosen, the Class Distribution Summary text section is updated to show this change.
+  </p>
+  <p>
+   The
+   <b>
+    Stats for
+   </b>
+   button contains a list of the available classes. The Class Statistics Results dialog reports the calculated statistics (in both the plot and text sections) of the class specified by this menu. To compare statistics for different classes with the current class shown in the Class Statistics Results dialog, use the
+   <b>
+    Options &gt; Copy results to new window
+   </b>
+   option to create a copy of the Class Statistics Results for the current class, then use the
+   <b>
+    Stats for
+   </b>
+   menu to display a different class.
+  </p>
+  <p>
+   The
+   <b>
+    Select Plot
+   </b>
+   drop-down button also contains the following additional options:
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     Mean for all Classes
+    </b>
+    : This option displays a plot of the mean of all the classes.
+   </li>
+   <li value="2">
+    <b>
+     Stdev for all Classes
+    </b>
+    : This option displays a plot of the standard deviation of all the classes.
+   </li>
+   <li value="3">
+    <b>
+     Eigenvalues for all Classes
+    </b>
+    : This option displays a plot of the eigenvalues of all the classes.
+   </li>
+   <li value="4">
+    <b>
+     Histogram for all Classes
+    </b>
+    : This option and its submenu display a plot of the histogram of all the classes for each band of data.
+   </li>
+  </ul>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

@@ -1,0 +1,406 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming|Routines|Processing" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   ROC_CURVE_DOIT
+  </title>
+  <link href="../../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../../ENVIHelp_CSH.htm#ExtendCustomize/ENVIClassicAPI/R/ROC_CURVE_DOIT.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../Routines.htm">
+    Routines
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../A/ADAPT_FILT_DOIT.htm">
+    Processing
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    ROC_CURVE_DOIT
+   </span>
+  </div>
+  <h1>
+   <a name="kanchor762">
+   </a>
+   ROC_CURVE_DOIT
+  </h1>
+  <p>
+   Use this procedure to compute ROC curves, which compare a series of rule-image classification results for different threshold values with ground truth information. A probability of detection (P
+   <span style="vertical-align: sub;font-size: 9pt;">
+    d
+   </span>
+   ) versus probability of false alarm (P
+   <span style="vertical-align: sub;font-size: 9pt;">
+    fa
+   </span>
+   ) curve and a P
+   <span style="vertical-align: sub;font-size: 9pt;">
+    d
+   </span>
+   versus threshold curve are reported for each selected class (rule band).
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   can calculate a ROC curve using either a ground truth image or using ground truth ROIs.
+  </p>
+  <h2 class="API">
+   Syntax
+  </h2>
+  <p>
+   ENVI_DOIT, 'ROC_CURVE_DOIT',
+   <a href="#CDIMS">
+    CDIMS
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ,
+   <a href="#CFID">
+    CFID
+   </a>
+   =
+   <i>
+    file ID
+   </i>
+   ,
+   <a href="#CPOS">
+    CPOS
+   </a>
+   =
+   <i>
+    array
+   </i>
+   [,
+   <a href="#GDIMS">
+    GDIMS
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ] [,
+   <a href="#GFID">
+    GFID
+   </a>
+   =
+   <i>
+    file ID
+   </i>
+   ] [,
+   <a href="#GPOS">
+    GPOS
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ] [,
+   <a href="#GT_PTR">
+    GT_PTR
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ],
+   <a href="#MAX_THRESH">
+    MAX_THRESH
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ,
+   <a href="#METHOD">
+    METHOD
+   </a>
+   ={0 | 1},
+   <a href="#MIN_THRESH">
+    MIN_THRESH
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ,  /
+   <a href="#PLOT_THRESH">
+    PLOT_THRESH
+   </a>
+   ,
+   <a href="#PPC">
+    PPC
+   </a>
+   =
+   <i>
+    long integer
+   </i>
+   ,
+   <a href="#PPW">
+    PPW
+   </a>
+   =
+   <i>
+    long integer
+   </i>
+   [,
+   <a href="#RESULT">
+    RESULT
+   </a>
+   =
+   <i>
+    variable
+   </i>
+   ] [,
+   <a href="#ROI_IDS">
+    ROI_IDS
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ]
+  </p>
+  <h2 class="API">
+   Keywords
+  </h2>
+  <h3>
+   <a name="CDIMS">
+   </a>
+   CDIMS
+  </h3>
+  <p>
+   Use this keyword to specify the spatial dimensions on which to perform the operation. CDIMS, CFID, and CPOS define the classification rule image used to compute the ROC curves. CDIMS is a five-element array of long integers with the following definitions:
+  </p>
+  <ul>
+   <li value="1">
+    CDIMS[0]: A pointer to an open ROI; use only in cases where ROIs define the spatial subset. Otherwise, set to -1L.
+   </li>
+   <li value="2">
+    CDIMS[1]: The starting sample number. The first x pixel is 0.
+   </li>
+   <li value="3">
+    CDIMS[2]: The ending sample number
+   </li>
+   <li value="4">
+    CDIMS[3]: The starting line number. The first y pixel is 0.
+   </li>
+   <li value="5">
+    CDIMS[4]: The ending line number
+   </li>
+  </ul>
+  <h3>
+   <a name="CFID">
+   </a>
+   CFID
+  </h3>
+  <p>
+   Use this keyword to specify the file ID for the open classification rule image file. CDIMS, CFID, and CPOS define the classification rule image used to compute the ROC curves. CFID is the value returned from the keyword R_FID in the
+   <a href="../ENVI_O/ENVI_OPEN_FILE.htm">
+    ENVI_OPEN_FILE
+   </a>
+   procedure. CFID is a long integer with a value greater than 0. An invalid file ID has a value of -1.
+  </p>
+  <h3>
+   <a name="CPOS">
+   </a>
+   CPOS
+  </h3>
+  <p>
+   Use this keyword to specify an array of band positions, indicating the band numbers on which to perform the operation. CDIMS, CFID, and CPOS define the classification rule image used to compute the ROC curves. CPOS is an array of long integers, ranging from 0 to the number of bands minus 1.
+  </p>
+  <h3>
+   <a name="GDIMS">
+   </a>
+   GDIMS (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the spatial dimensions on which to perform the operation. GDIMS, GFID, and GPOS define the ground truth classification image used to compute the ROC curves. GDIMS is a five-element array of long integers with the following definitions:
+  </p>
+  <ul>
+   <li value="1">
+    GDIMS[0]: A pointer to an open ROI; use only in cases where ROIs define the spatial subset. Otherwise, set to -1L.
+   </li>
+   <li value="2">
+    GDIMS[1]: The starting sample number. The first x pixel is 0.
+   </li>
+   <li value="3">
+    GDIMS[2]: The ending sample number
+   </li>
+   <li value="4">
+    GDIMS[3]: The starting line number. The first y pixel is 0.
+   </li>
+   <li value="5">
+    GDIMS[4]: The ending line number
+   </li>
+  </ul>
+  <p>
+   If you do not set the keyword ROI_IDS, then you must set GDIMS, GFID, GPOS, and GT_PRT.
+  </p>
+  <h3>
+   <a name="GFID">
+   </a>
+   GFID (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the file ID for the open ground truth classification image file. GDIMS, GFID, and GPOS define the ground truth classification image used to compute the ROC curves. GFID is the value returned from the keyword R_FID in the
+   <a href="../ENVI_O/ENVI_OPEN_FILE.htm">
+    ENVI_OPEN_FILE
+   </a>
+   procedure. GFID is a long integer with a value greater than 0. An invalid file ID has a value of -1. If you do not set the keyword ROI_IDS, then you must set GDIMS, GFID, GPOS, and GT_PTR.
+  </p>
+  <h3>
+   <a name="GPOS">
+   </a>
+   GPOS (optional)
+  </h3>
+  <p>
+   Use this keyword to specify an array of band positions, indicating the band numbers on which to perform the operation. GDIMS, GFID, and GPOS define the ground truth classification image used to compute the ROC curves. GPOS is an array of long integers, ranging from 0 to the number of bands minus 1. If you do not set the keyword ROI_IDS, then you must set GDIMS, GFID, GPOS, and GT_PTR.
+  </p>
+  <h3>
+   <a name="GT_PTR">
+   </a>
+   GT_PTR (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a link between the ground truth class and the corresponding rule image classes. For example, the ground truth class value (the actual pixel value of the ground truth classification image) GT_PTR[
+   <i>
+    k
+   </i>
+   ] corresponds to the class created from the rule image band CPOS[
+   <i>
+    k
+   </i>
+   ]. GT_PTR is an array of long integers with the same number of elements as CPOS. If you do not set the keyword ROI_IDS, then you must set GDIMS, GFID, GPOS, and GT_PTR.
+  </p>
+  <h3>
+   <a name="MAX_THRESH">
+   </a>
+   MAX_THRESH
+  </h3>
+  <p>
+   Use this keyword to specify the threshold maximum for classifying the rule images. The points per curve, as specified by PPC, are evenly distributed between MIN_THRESH and MAX_THRESH.
+  </p>
+  <h3>
+   <a name="METHOD">
+   </a>
+   METHOD
+  </h3>
+  <p>
+   Set this keyword equal to one of the following values to specify the method for classifying the rule images.
+  </p>
+  <ul>
+   <li value="1">
+    0: Minimum
+   </li>
+   <li value="2">
+    1: Maximum
+   </li>
+  </ul>
+  <h3>
+   <a name="MIN_THRESH">
+   </a>
+   MIN_THRESH
+  </h3>
+  <p>
+   Use this keyword to specify the threshold minimum for classifying the rule images. The points per curve, as specified by PPC, are evenly distributed between MIN_THRESH and MAX_THRESH.
+  </p>
+  <h3>
+   <a name="PLOT_THRESH">
+   </a>
+   PLOT_THRESH
+  </h3>
+  <p>
+   Set this keyword to enable plotting the probability of detection (PD) versus threshold plot. The default is to only plot the ROC curves.
+  </p>
+  <h3>
+   <a name="PPC">
+   </a>
+   PPC
+  </h3>
+  <p>
+   Use this keyword to specify the number of points per ROC curve. The points are evenly distributed between MIN_THRESH and MAX_THRESH. PPC is a long-integer value greater than or equal to 2.
+  </p>
+  <h3>
+   <a name="PPW">
+   </a>
+   PPW
+  </h3>
+  <p>
+   Use this keyword to specify the maximum number of plots per plot window. PPW is a long-integer value greater than 0.
+  </p>
+  <h3>
+   <a name="RESULT">
+   </a>
+   RESULT (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a named variable that contains the x,y data from the ROC curves. RESULT is a double-precision array of size [
+   <i>
+    num_points
+   </i>
+   , 2,
+   <i>
+    num_classes
+   </i>
+   ]. The x and y values are calculated for each class as follows:
+  </p>
+  <p class="Code">
+   x = reform(result[*,0,i]); probability of false alarm
+   <br />
+  </p>
+  <p class="Code">
+   y = reform(result[*,1,i]); probability of detection
+  </p>
+  <h3>
+   <a name="ROI_IDS">
+   </a>
+   ROI_IDS (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the ground truth ROIs. ROI_IDS are the selected IDs of the ground truth ROIs returned from the function
+   <a href="../ENVI_G/ENVI_GET_ROI_IDS.htm">
+    ENVI_GET_ROI_IDS
+   </a>
+   . If you do not set ROI_IDS, then you must set GDIMS, GFID, and GPOS.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

@@ -1,0 +1,447 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Spectral Tools" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Spectral Analyst
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#SpectralTools/SpectralAnalyst.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="SpectralTools.htm">
+    Spectral Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Spectral Analyst
+   </span>
+  </div>
+  <h1>
+   Spectral Analyst
+   <a name="kanchor402">
+   </a>
+  </h1>
+  <p>
+   Use the
+   <b>
+    Spectral Analyst
+   </b>
+   to help identify materials based on their spectral characteristics. The Spectral Analyst uses
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   techniques such as
+   <a href="../FindFeatures/Classification/ClassificationTools/BinaryEncoding.htm">
+    Binary Encoding
+   </a>
+   ,
+   <a href="../FindFeatures/Classification/ClassificationTools/SpectralAngleMapper.htm">
+    Spectral Angle Mapper
+   </a>
+   , and
+   <a href="SpectralFeatureFitting.htm">
+    Spectral Feature Fitting
+   </a>
+   to rank the match of an unknown spectrum to the materials in a spectral library.
+  </p>
+  <p>
+   The output of the Spectral Analyst is a ranked or weighted score for each of the materials in the input spectral library. The highest score indicates the closest match and indicates higher confidence in the spectral similarity. Similar materials may have relatively high scores, but unrelated materials should have low scores. For more information, see
+   <a href="#Tips">
+    Tips for Successful Use of the Spectral Analyst
+   </a>
+   .
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   This function does not identify spectra; it only recommends likely candidates for identification. The results may change when the similarity methods or weights are changed. You are still responsible for the actual identification.
+  </p>
+  <p>
+   See the following sections:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#Opening">
+     Open the Spectral Analyst
+    </a>
+   </li>
+   <li value="2">
+    <a href="#Spectral">
+     Spectral Analyst Options
+    </a>
+   </li>
+   <li value="3">
+    <a href="#Tips">
+     Tips for Successfully Using the Spectral Analyst
+    </a>
+   </li>
+  </ul>
+  <h2>
+   <a name="Opening">
+   </a>
+   Open the Spectral Analyst
+  </h2>
+  <ol>
+   <li value="1">
+    You must display a
+    <a href="../ExploreImagery/SpectralProfile.htm">
+     spectral profile
+    </a>
+    with at least one spectrum before running the Spectral Analyst.
+   </li>
+   <li value="2">
+    From the Toolbox, select
+    <b>
+     Spectral &gt; Spectral Analyst
+    </b>
+    . The Spectral Analyst Input Spectral Library dialog appears.
+   </li>
+   <li value="3">
+    If a spectral library is not already open, click
+    <b>
+     Open &gt; Spectral Library
+    </b>
+    and select the spectral library to use for the comparisons.
+   </li>
+   <li value="4">
+    Click
+    <b>
+     OK
+    </b>
+    . The Edit Identify Methods Weighting and Spectral Analyst dialogs appear.
+   </li>
+   <li value="5">
+    Enter a
+    <b>
+     Weight
+    </b>
+    for each similarity method. See
+    <a href="../FindFeatures/Classification/ClassificationTools/SpectralAngleMapper.htm">
+     Spectral Angle Mapper Classification
+    </a>
+    ,
+    <a href="SpectralFeatureFitting.htm">
+     Spectral Feature Fitting
+    </a>
+    , and
+    <a href="../FindFeatures/Classification/ClassificationTools/BinaryEncoding.htm">
+     Binary Encoding Classification
+    </a>
+    for method descriptions. By default,
+    <b>
+     Spectral Feature Fitting
+    </b>
+    has a weight of 1.0. This is a recommended starting point.
+   </li>
+   <li value="6">
+    The
+    <b>
+     Min
+    </b>
+    and
+    <b>
+     Max
+    </b>
+    factors for each method indicate which values are considered a perfect match by scaling them from 0 to 1 (or from 1 to 0) scores.
+    <ul>
+     <li value="1">
+      For
+      <b>
+       Spectral Angle Mapper
+      </b>
+      , enter the
+      <b>
+       Min
+      </b>
+      and
+      <b>
+       Max
+      </b>
+      values in radians. (The similarity to the library spectra is measured in radians.)
+     </li>
+     <li value="2">
+      For
+      <b>
+       Spectral Feature Fitting
+      </b>
+      , enter the
+      <b>
+       Min
+      </b>
+      and
+      <b>
+       Max
+      </b>
+      values in RMS error units. (The similarity is measured using the RMS fit error.)
+     </li>
+    </ul>
+   </li>
+   <p>
+    A SAM or SFF result less than or equal to
+    <b>
+     Min
+    </b>
+    indicates a perfect match and receives a score of 1. A SAM or SFF result greater than or equal to
+    <b>
+     Max
+    </b>
+    receives a score of 0.
+   </p>
+   <ul>
+    <li value="1">
+     For
+     <b>
+      Binary Encoding
+     </b>
+     , enter the
+     <b>
+      Min
+     </b>
+     and
+     <b>
+      Max
+     </b>
+     values as a percentage of bands correctly matched (0 to 1). A Binary Encoding result less than or equal to
+     <b>
+      Min
+     </b>
+     receives a score of 0, and a result greater than or equal to
+     <b>
+      Max
+     </b>
+     receives a score of 1.
+    </li>
+   </ul>
+   <li value="7">
+    In the Edit Identify Methods Weighting dialog, click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+   <li value="8">
+    In the Spectral Analyst dialog, click
+    <b>
+     Apply
+    </b>
+    to load a spectrum.
+   </li>
+   <ul>
+    <li value="1">
+     If one spectrum is plotted, it is automatically entered into the Spectral Analyst.
+    </li>
+    <li value="2">
+     If more than one spectrum is plotted, select the desired spectrum name from the Spectral Profile. You can only select one spectrum at a time. Click
+     <b>
+      OK
+     </b>
+     .
+    </li>
+    <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+     <span class="autonumber">
+      <span>
+       <b>
+        Note:
+       </b>
+      </span>
+     </span>
+     X/Y pixel coordinates in
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     -displayed spectra are one
+     <i>
+      less
+     </i>
+     than those displayed in an
+     <span class="DocumentTitleProductNameENVIClassic">
+      ENVI Classic
+     </span>
+     Z profile. For example, a pixel location of [X:165, Y:73] in
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     yields the same spectrum as location [X:166, Y:74] in
+     <span class="DocumentTitleProductNameENVIClassic">
+      ENVI Classic
+     </span>
+     .
+    </p>
+   </ul>
+   <li value="9">
+    The Spectral Analyst dialog lists the results of the similarity measures.
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    resamples the spectral library to match the spectral resolution of the input spectrum.
+   </li>
+  </ol>
+  <h2>
+   <a name="Spectral">
+   </a>
+   Spectral Analyst Options
+  </h2>
+  <p>
+   Use the Spectral Analyst dialog to open a new spectral library; edit the weights, minimum, and maximum values; input x and y scale factors; and get input spectra from a Z Profile plot. The following is a description of the various options available from the are Spectral Analyst dialog:
+  </p>
+  <ul>
+   <li value="1">
+    To use a specific wavelength range, draw a box around the desired range in the spectral plot window, using the middle mouse button. Click Apply in the Spectral Analyst dialog.
+   </li>
+   <li value="2">
+    To display the input spectrum and a selected library spectrum (with the continuum removed) in a plot together, double-click on a library spectrum name in the Spectral Analyst list.
+   </li>
+   <li value="3">
+    To open a new spectral library file to use in the comparisons, select
+    <b>
+     File &gt; New Spectral Library File
+    </b>
+    from the Spectral Analyst menu bar. Select the spectral library to use for the comparisons, and click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+   <li value="4">
+    To edit the weights, minimum values, and maximum values for each method, select
+    <b>
+     Options &gt; Edit Method Weights
+    </b>
+    from the Spectral Analyst menu bar. Refer to steps 5-7 in Opening the Spectral Analyst for information about the
+    <b>
+     Weight
+    </b>
+    ,
+    <b>
+     Min
+    </b>
+    , and
+    <b>
+     Max
+    </b>
+    fields in the Edit Identify Methods Weighting dialog.
+   </li>
+   <li value="5">
+    To enter or edit x and y scale factors used to scale the input spectrum into the same space as the spectral library, select
+    <b>
+     Options &gt; Edit (x,y) Scale Factors
+    </b>
+    from the Spectral Analyst menu bar. Enter values for
+    <b>
+     X Data Multiplier
+    </b>
+    and
+    <b>
+     Y Data Multiplier
+    </b>
+    in the Edit (x,y) Scale Factors dialog.
+   </li>
+   <li value="6">
+    To enter spectra directly from a Z Profile plot, first open the Z Profile plot. In the Spectral Analyst window, select
+    <b>
+     Options &gt; Auto Input via Z-profile
+    </b>
+    . In the Select Z Profiles dialog, select a Z Profile name and click OK. In the Image or Zoom window, select a pixel to analyze. The Z Profile is updated, and the spectral comparison information appears in the Spectral Analyst dialog. As you move the Zoom box in the Image window, the information in the Spectral Analyst changes accordingly.  If you display two images, you must select
+    <b>
+     Options &gt; Clear Auto Inputs
+    </b>
+    before using the Spectral Analyst in the second display.
+   </li>
+  </ul>
+  <h2>
+   <a name="Tips">
+   </a>
+   Tips for Successfully Using the Spectral Analyst
+  </h2>
+  <p>
+   The Spectral Analyst is based on spectral matching techniques with specific requirements for successful operation. The items in this section summarize some of factors needed to effectively use the Spectral Analyst.
+  </p>
+  <ul>
+   <li value="1">
+    Many materials are similar in one wavelength range, yet they are very different in another range. For best results, use the wavelength range that contains the diagnostic absorption features. When a spectrum displays, the Spectral Analyst works over the range displayed in the corresponding plot being analyzed. To analyze a smaller range, use the middle mouse button in the plot to zoom to the desired wavelength range before clicking
+    <b>
+     Apply
+    </b>
+    in the Spectral Analyst.
+   </li>
+   <li value="2">
+    Determine whether materials have absorption features. If so,
+    <b>
+     Spectral Feature Fitting
+    </b>
+    is probably the best method. Otherwise,
+    <b>
+     Spectral Angle Mapper
+    </b>
+    or
+    <b>
+     Binary Encoding
+    </b>
+    will yield better results.
+   </li>
+   <li value="3">
+    The Spectral Analyst will not identify materials of interest in the input spectra that are not in the spectral library. If a material is not in the spectral library, materials similar to it may score relatively high.
+   </li>
+   <li value="4">
+    High scores for multiple materials may indicate mixtures, particularly for minerals with absorption features in different parts of the spectrum. Because of this, you should run the Spectral Analyst on the results of an endmember determination, the
+    <i>
+     pure
+    </i>
+    endmember spectra.
+   </li>
+   <li value="5">
+    Higher scores indicate higher confidence because more of the rules were satisfied. Greater separation between adjacent scores indicates higher confidence in the similarity. For example, a score of 0.98 for one material followed by a score of 0.96 for another material indicates that the unknown material is very similar to both sets of rules. A score of 0.98 for one material and a score of 0.50 for another material indicates a high probability that the spectrum represents the first material.
+   </li>
+   <li value="6">
+    In many cases, the Spectral Analyst lists multiple identical scores for different materials in the rule base. This indicates that the Spectral Analyst cannot discriminate the two materials under the identification conditions. In this case, try a different wavelength range or use the different weighted methods to produce a unique result.
+   </li>
+   <li value="7">
+    In some cases, the Spectral Analyst may list a score of 0.000 (no match) for all materials in the spectral library. This is a good indication that the material is not in the spectral library, or the material is not similar to other materials in the spectral library.
+   </li>
+   <li value="8">
+    <p>
+     Examine the spectral ranking in the context of the image setting and known information. If a suggested identification seems invalid with respect to the known information, it is probably not the correct identification.
+    </p>
+   </li>
+   <li value="9">
+    <p>
+     The Spectral Analyst tool is not foolproof. It should be used as a starting point to identify the materials in an image scene. If you use it properly with a good spectral library, it can provide excellent suggestions for identification. Used blindly, it can produce erroneous results.
+    </p>
+   </li>
+  </ul>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

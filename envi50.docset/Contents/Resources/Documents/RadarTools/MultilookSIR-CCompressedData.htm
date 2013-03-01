@@ -1,0 +1,185 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Radar" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Multilook SIR-C Compressed Data
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#RadarTools/MultilookSIR-CCompressedData.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="RadarTools.htm">
+    Radar
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Multilook SIR-C Compressed Data
+   </span>
+  </div>
+  <h1>
+   Multilook SIR-C Compressed Data
+   <a name="kanchor368">
+   </a>
+  </h1>
+  <p>
+   Use
+   <b>
+    SIR-C Multilook
+   </b>
+   to reduce speckle noise in SAR data and to multilook SIR-C data on disk to a specified number of looks, number of lines and samples, or azimuth and range resolutions.
+  </p>
+  <p>
+   The data to multilook must be compressed data.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Radar &gt; SIR-C &gt; SIR-C Multi-Look
+    </b>
+    . The Input Data Product Files dialog appears.
+   </li>
+   <li value="2">
+    <a href="SynthesizingSIR-CData.htm#workflow">
+     Select a compressed input file
+    </a>
+    . The SIRC Multi-Look Parameters dialog appears.
+   </li>
+   <li value="3">
+    Choose the files to multilook by from the
+    <b>
+     Select Files to Multilook
+    </b>
+    list.
+   </li>
+   <li value="4">
+    Enter the number of looks in the
+    <b>
+     Samples (range)
+    </b>
+    and
+    <b>
+     Lines (az)
+    </b>
+    directions or select from the following options.
+    <ul>
+     <li value="1">
+      To specify the number of pixels in the output image, enter the values in the
+      <b>
+       Pixels
+      </b>
+      fields for the samples and lines.
+     </li>
+     <li value="2">
+      To specify the output pixel size in meters, enter the values in the
+      <b>
+       Pixel Size (m)
+      </b>
+      fields for samples and lines.
+     </li>
+    </ul>
+   </li>
+   <p>
+    When you enter a value for one of the parameters,
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    automatically calculates the others to match. For example, if you enter the
+    <b>
+     Pixel Size
+    </b>
+    as 30&#160;m, then
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    calculates the corresponding number of pixels and the looks and changes them in the corresponding fields.
+   </p>
+   <p>
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    supports both integer and floating-point number.
+   </p>
+   <li value="5">
+    Perform optional spatial
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    by clicking
+    <b>
+     Spatial Subset
+    </b>
+    .
+   </li>
+   <li value="6">
+    Enter a base name in the
+    <b>
+     Enter Base Filename
+    </b>
+    field.
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    uses this value as the basis for multiple filenames, one for each frequency selected. For example if you enter
+    <code>
+     sirc
+    </code>
+    as the base name and both C-band and L-band data are being processed, then
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    creates two output files named
+    <code>
+     sirc_c.cdp
+    </code>
+    and
+    <code>
+     sirc_l.cdp
+    </code>
+   </li>
+   <li value="7">
+    Click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+  </ol>
+  <p>
+   Use the
+   <a href="SynthesizingSIR-CData.htm">
+    synthesize function
+   </a>
+   to generate image data from the output multilooked compressed data files.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

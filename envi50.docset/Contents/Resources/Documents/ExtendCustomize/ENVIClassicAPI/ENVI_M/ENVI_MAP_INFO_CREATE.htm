@@ -1,0 +1,618 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming|Routines|Data Control|ENVI Classic" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   ENVI_MAP_INFO_CREATE
+  </title>
+  <link href="../../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../../ENVIHelp_CSH.htm#ExtendCustomize/ENVIClassicAPI/ENVI_M/ENVI_MAP_INFO_CREATE.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../Routines.htm">
+    Routines
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../ENVICoordSys.htm">
+    Data Control
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    ENVI_MAP_INFO_CREATE
+   </span>
+  </div>
+  <h1>
+   <a name="kanchor559">
+   </a>
+   ENVI_MAP_INFO_CREATE
+  </h1>
+  <p>
+   <a href="#Syntax">
+    Syntax
+   </a>
+   |
+   <a href="#Keywords">
+    Keywords
+   </a>
+   |
+   <a href="#Example">
+    Example
+   </a>
+  </p>
+  <p class="HighlightText">
+   This routine has been replaced with the
+   <a href="../../ENVI__CreateRasterSpatialRef.htm">
+    CreateRasterSpatialRef
+   </a>
+   method to ENVI. Also see the
+   <a href="../../ENVIRaster__WriteMetadata.htm">
+    WriteMetaData
+   </a>
+   method to ENVIRaster, and the SPATIALREF_OVERRIDE keyword in various methods.
+  </p>
+  <p>
+   This function returns an
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   map information structure for any of the supported map projections. Arbitrary, Geographic, UTM, and State Plane map information structures use their corresponding keyword. All other projections use the PROJ keyword to define the associated projection. You can define projections using the procedure
+   <a href="../ENVI_P/ENVI_PROJ_CREATE.htm">
+    ENVI_PROJ_CREATE
+   </a>
+   . With optional keywords, you can define the datum, name, units, projection parameters, pixel size, rotation, and map coordinates. The result of this function can be used for functions that require an input MAP_INFO structure. For example, to georeference an image,
+   <a href="../ENVI_S/ENVI_SETUP_HEAD.htm">
+    ENVI_SETUP_HEAD
+   </a>
+   requires an input MAP_INFO structure.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   Use this function instead of accessing the map information structure directly.
+  </p>
+  <h2 class="API">
+   <a name="Syntax">
+   </a>
+   Syntax
+  </h2>
+  <p>
+   <i>
+    Result
+   </i>
+   = ENVI_MAP_INFO_CREATE([, /
+   <a href="#ARBITRARY">
+    ARBITRARY
+   </a>
+   ] [,
+   <a href="#DATUM">
+    DATUM
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ] [, /
+   <a href="#GEOGRAPHIC">
+    GEOGRAPHIC
+   </a>
+   ] [, /
+   <a href="#MAP_BASED">
+    MAP_BASED
+   </a>
+   ],
+   <a href="#MC">
+    MC
+   </a>
+   =
+   <i>
+    array
+   </i>
+   [,
+   <a href="#NAME">
+    NAME
+   </a>
+   =
+   <i>
+    string
+   </i>
+   ] [,
+   <a href="#PARAMS">
+    PARAMS
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ] [,
+   <a href="#PE_COORD_SYS_CODE">
+    PE_COORD_SYS_CODE
+   </a>
+   =
+   <i>
+    integer
+   </i>
+   ] [,
+   <a href="#PE_COORD_SYS_STR">
+    PE_COORD_SYS_STR
+   </a>
+   =
+   <i>
+    string
+   </i>
+   ] [,
+   <a href="#PROJ">
+    PROJ
+   </a>
+   =
+   <i>
+    structure
+   </i>
+   ],
+   <a href="#PS">
+    PS
+   </a>
+   =
+   <i>
+    array
+   </i>
+   [,
+   <a href="#ROTATION">
+    ROTATION
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ] [, /
+   <a href="#SOUTH">
+    SOUTH
+   </a>
+   ] [, /
+   <a href="#STATE_PLANE">
+    STATE_PLAN
+   </a>
+   E] [,
+   <a href="#TYPE">
+    TYPE
+   </a>
+   =
+   <i>
+    integer
+   </i>
+   ] [,
+   <a href="#UNITS">
+    UNITS
+   </a>
+   =
+   <i>
+    integer
+   </i>
+   ] [, /
+   <a href="#UTM">
+    UTM
+   </a>
+   ] [,
+   <a href="#ZONE">
+    ZONE
+   </a>
+   =
+   <i>
+    integer
+   </i>
+   ])
+  </p>
+  <h2 class="API">
+   <a name="Keywords">
+   </a>
+   Keywords
+  </h2>
+  <h3>
+   <a name="ARBITRARY">
+   </a>
+   ARBITRARY (optional)
+  </h3>
+  <p>
+   Set this keyword to create an Arbitrary projection for the map information. Set the keyword MAP_BASED to create a map-based projection. The default is a non-map based projection. A map-based projection uses the lower-left corner of the image as the projection origin, while a pixel-based projection (non-map based) uses the upper-left corner as the origin.
+  </p>
+  <h3>
+   <a name="DATUM">
+   </a>
+   DATUM
+  </h3>
+  <p>
+   Use this keyword to specify the datum for the map information projection. The default for a Geographic projection is WGS-84, and the default for UTM and State Plane projections is North America 1927 (NAD27). All other projections default to no datum. The exact name that
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   uses for each datum is listed in the
+   <code>
+    datum.txt
+   </code>
+   file in the
+   <code>
+    map_proj
+   </code>
+   directory of your
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   installation.
+  </p>
+  <h3>
+   <a name="GEOGRAPHIC">
+   </a>
+   GEOGRAPHIC (optional)
+  </h3>
+  <p>
+   Set this keyword to create a Geographic projection for the map information.
+  </p>
+  <h3>
+   <a name="MAP_BASED">
+   </a>
+   MAP_BASED (optional)
+  </h3>
+  <p>
+   Set this keyword to interpret the Arbitrary projection as map-based. This keyword does not have any effect for other projections.
+  </p>
+  <h3>
+   <a name="MC">
+   </a>
+   MC
+  </h3>
+  <p>
+   Set this keyword to specify the map location tie point, which is the reference point for a pixel at a known map coordinate. MC is a four-element double-precision array where,
+  </p>
+  <ul>
+   <li value="1">
+    MC[0]: x pixel location corresponding to the x map location, MC[2]
+   </li>
+   <li value="2">
+    MC[1]: y pixel location corresponding to the y map location, MC[3]
+   </li>
+   <li value="3">
+    MC[2]: is the x map location corresponding to the x pixel location, MC[0]
+   </li>
+   <li value="4">
+    MC[3]: is the y map location corresponding to the y pixel location, MC[1]
+   </li>
+  </ul>
+  <h3>
+   <a name="NAME">
+   </a>
+   NAME
+  </h3>
+  <p>
+   Use this keyword to specify a string variable with the name of the map information projection.
+  </p>
+  <h3>
+   <a name="PARAMS">
+   </a>
+   PARAMS (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the parameters for the map information projection. PARAMS is a array of double-precision values with 1 to 15 elements. The number of elements is determined by the projection type (see the TYPE keyword). Do not use PARAMS with Arbitrary, Geographic, State Plane, or UTM projections. The PARAMS keyword must contain all projection parameters listed in the above document (for the specified projection) except the datum and name, which you specify using the DATUM and NAME keywords, respectively.
+  </p>
+  <h3>
+   <a name="PE_COORD_SYS_CODE">
+   </a>
+   PE_COORD_SYS_CODE (optional)
+  </h3>
+  <p>
+   Use this keyword to pass in a valid geographic (GEOGCS) or projected (PROJCS) coordinate system
+   <i>
+    code
+   </i>
+   , typically a five-digit number.
+  </p>
+  <p>
+   For a full list of coordinate system strings and codes, refer to the following text files in the
+   <code>
+    \IDL
+    <i>
+     xx
+    </i>
+    \resource\pedata\predefined
+   </code>
+   directory of the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   distribution:
+  </p>
+  <ul>
+   <li value="1">
+    <code>
+     EnviPEProjcsStrings.txt
+    </code>
+    : PROJCS codes and strings
+   </li>
+   <li value="2">
+    <code>
+     EnviPeGeogcs.txt
+    </code>
+    : GEOGCS codes and strings
+   </li>
+  </ul>
+  <p>
+   Set the TYPE keyword to 1 when passing in a GEOGCS code, or set TYPE to 42 when passing in a PROJCS code.
+  </p>
+  <h3>
+   <a name="PE_COORD_SYS_STR">
+   </a>
+   PE_COORD_SYS_STR (optional)
+  </h3>
+  <p>
+   Use this keyword to pass in a a geographic (GEOGCS) or projected (PROJCS) coordinate system
+   <i>
+    string
+   </i>
+   .
+  </p>
+  <p>
+   For a full list of coordinate system strings and codes, refer to the following text files in the
+   <code>
+    \IDL
+    <i>
+     xx
+    </i>
+    \resource\pedata\predefined
+   </code>
+   directory of the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   distribution:
+  </p>
+  <ul>
+   <li value="1">
+    <code>
+     EnviPEProjcsStrings.txt
+    </code>
+    : PROJCS codes and strings
+   </li>
+   <li value="2">
+    <code>
+     EnviPeGeogcs.txt
+    </code>
+    : GEOGCS codes and strings
+   </li>
+  </ul>
+  <p>
+   Set the TYPE keyword to 1 when passing in a GEOGCS string, or set TYPE to 42 when passing in a PROJCS string. See
+   <a href="#Example">
+    Example
+   </a>
+   .
+  </p>
+  <h3>
+   <a name="PROJ">
+   </a>
+   PROJ (optional)
+  </h3>
+  <p>
+   Set this keyword to specify the projection for the map information. PROJ is an
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   projection structure returned from
+   <a href="../ENVI_P/ENVI_PROJ_CREATE.htm">
+    ENVI_PROJ_CREATE
+   </a>
+   or
+   <a href="../ENVI_G/ENVI_GET_PROJECTION.htm">
+    ENVI_GET_PROJECTION
+   </a>
+   . PROJ is not needed if the keyword ARBITRARY, GEOGRAPHIC, STATE_PLANE, or UTM is used. For all other projections, either set the PROJ keyword or define the projection using the keywords DATUM, NAME, PARAMS, SOUTH, TYPE, UNITS, and ZONE.
+  </p>
+  <h3>
+   <a name="PS">
+   </a>
+   PS
+  </h3>
+  <p>
+   Set this keyword to specify the pixel size of the image. PS is a two-element, double-precision array, where:
+  </p>
+  <ul>
+   <li value="1">
+    PS[0]: x pixel size
+   </li>
+   <li value="2">
+    PS[1]: y pixel size
+   </li>
+  </ul>
+  <h3>
+   <a name="ROTATION">
+   </a>
+   ROTATION (optional)
+  </h3>
+  <p>
+   Set this keyword to specify the rotation of the image in the defined projection. Rotation is expressed in degrees clockwise from north.
+  </p>
+  <h3>
+   <a name="SOUTH">
+   </a>
+   SOUTH (optional)
+  </h3>
+  <p>
+   Set this keyword to specify that the UTM projection is in the southern hemisphere.
+  </p>
+  <h3>
+   <a name="STATE_PLANE">
+   </a>
+   STATE_PLANE (optional)
+  </h3>
+  <p>
+   Set this keyword to create a State Plane projection for the map information.
+  </p>
+  <h3>
+   <a name="TYPE">
+   </a>
+   TYPE (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the map information projection type. TYPE is an integer value corresponding to the projection type. See
+   <a href="../../../GeorectifyImagery/BackgroundCoordinateSystems.htm#Coordina">
+    Coordinate System Strings
+   </a>
+   for more information.
+  </p>
+  <h3>
+   <a name="UNITS">
+   </a>
+   UNITS (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the projection units. UNITS is an integer value indicating the projection units. The function
+   <a href="../ENVI_T/ENVI_TRANSLATE_PROJECTION_UNITS.htm">
+    ENVI_TRANSLATE_PROJECTION_UNITS
+   </a>
+   converts projection unit strings to integer values. The default units are degrees for Geographic, feet for State Plane, and meters for all other projections.
+  </p>
+  <h3>
+   <a name="UTM">
+   </a>
+   UTM (optional)
+  </h3>
+  <p>
+   Set this keyword to create a UTM projection for the map information.
+  </p>
+  <h3>
+   <a name="ZONE">
+   </a>
+   ZONE (optional)
+  </h3>
+  <p>
+   Use this keyword only with UTM and State Plane projections to specify the zone number.
+  </p>
+  <h2 class="API">
+   <a name="Example">
+   </a>
+   Example
+  </h2>
+  <p>
+   This example creates a Geographic map information structure with a Geographic projection, default datum of WGS-84, default units of degrees, and a pixel size of one second (1. / 3600). Set the map tie point for the center of the first pixel (0.5, 0.5) to 34.5 degrees north, 117.4 degrees west. This is one of the simplest uses of ENVI_MAP_INFO_CREATE.
+  </p>
+  <p class="Code">
+   ;
+  </p>
+  <p class="Code">
+   ; Set the pixel size and map tie point
+  </p>
+  <p class="Code">
+   ;
+  </p>
+  <p class="Code">
+   ps = [1D/3600, 1D/3600]
+  </p>
+  <p class="Code">
+   mc = [0.5D, 0.5D, -117.4D, 34.5D]
+  </p>
+  <p class="Code">
+   ;
+  </p>
+  <p class="Code">
+   ; Create the map information
+  </p>
+  <p class="Code">
+   ;
+  </p>
+  <p class="Code">
+   map_info = envi_map_info_create(/geographic, $
+  </p>
+  <p class="Code">
+   &#160;&#160;&#160;mc=mc, ps=ps)
+  </p>
+  <p>
+   This example creates map information for a UTM projection Zone 23 South with units of kilometers and a North America 1983 datum. Set the map tie point for the upper-left corner of the first pixel to 8339330 North and 177246 East. Use the keywords for ENVI_MAP_INFO_CREATE instead of first creating a projection structure and then using the PROJ keyword.
+  </p>
+  <p class="Code">
+   ;
+  </p>
+  <p class="Code">
+   ; First convert the kilometers to its integer
+  </p>
+  <p class="Code">
+   ; representation.
+  </p>
+  <p class="Code">
+   ;
+  </p>
+  <p class="Code">
+   units = ENVI_TRANSLATE_PROJECTION_UNITS('km')
+  </p>
+  <p class="Code">
+   ;
+  </p>
+  <p class="Code">
+   ; Set the datum and map tie points
+  </p>
+  <p class="Code">
+   ;
+  </p>
+  <p class="Code">
+   datum = 'North America 1983'
+  </p>
+  <p class="Code">
+   mc = [0D, 0, 177246, 8339330]
+  </p>
+  <p class="Code">
+   ps=[30, 30]
+  </p>
+  <p class="Code">
+   ;
+  </p>
+  <p class="Code">
+   ; Now create the UTM map information
+  </p>
+  <p class="Code">
+   ;
+  </p>
+  <p class="Code">
+   map_info = ENVI_MAP_INFO_CREATE(/UTM, ZONE=23, /SOUT, $
+  </p>
+  <p class="Code">
+   &#160;&#160;&#160;DATUM = datum, UNITS = units, MC = mc, PS = ps)
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

@@ -1,0 +1,527 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming|Routines|Processing" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   ENVI_REGISTER_DOIT
+  </title>
+  <link href="../../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../../ENVIHelp_CSH.htm#ExtendCustomize/ENVIClassicAPI/ENVI_R/ENVI_REGISTER_DOIT.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../Routines.htm">
+    Routines
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../A/ADAPT_FILT_DOIT.htm">
+    Processing
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    ENVI_REGISTER_DOIT
+   </span>
+  </div>
+  <h1>
+   <a name="kanchor722">
+   </a>
+   ENVI_REGISTER_DOIT
+  </h1>
+  <p>
+   Use this procedure to warp (georeference) image data, such as image-to-image or image-to-map registration. Use the keyword PTS to specify the base points and the corresponding input image warp points. The goal is to warp the image so that the warp points align with the base points. If the base and warp points are in pixel coordinates, image-to-image registration is performed, and you must specify both a base and warp file ID. If the base points are in map coordinates and the warp points are in pixel coordinates, then image-to-map registration is performed and you only specify the warp file ID. See
+   <a href="../../../GeorectifyImagery/Registration.htm">
+    Registration
+   </a>
+   for more information.
+  </p>
+  <h2 class="API">
+   <a name="Syntax">
+   </a>
+   Syntax
+  </h2>
+  <p>
+   ENVI_DOIT, 'ENVI_REGISTER_DOIT' [,
+   <a href="#B_FID">
+    B_FID
+   </a>
+   =
+   <i>
+    file ID
+   </i>
+   ] [,
+   <a href="#BACKGROUND">
+    BACKGROUND
+   </a>
+   =
+   <i>
+    integer
+   </i>
+   ] [,
+   <a href="#DEGREE">
+    DEGREE
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ] [, /
+   <a href="#IN_MEMORY">
+    IN_MEMORY
+   </a>
+   ] [,
+   <a href="#METHOD">
+    METHOD
+   </a>
+   ={0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8}] [,
+   <a href="#OUT_BNAME">
+    OUT_BNAME
+   </a>
+   =
+   <i>
+    string array
+   </i>
+   ] [,
+   <a href="#OUT_NAME">
+    OUT_NAME
+   </a>
+   =
+   <i>
+    string
+   </i>
+   ] [,
+   <a href="#PIXEL_SIZE">
+    PIXEL_SIZE
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ] [,
+   <a href="#PROJ">
+    PROJ
+   </a>
+   =
+   <i>
+    structure
+   </i>
+   ],
+   <a href="#PTS">
+    PTS
+   </a>
+   =
+   <i>
+    array
+   </i>
+   [,
+   <a href="#R_FID">
+    R_FID
+   </a>
+   =
+   <i>
+    variable
+   </i>
+   ],
+   <a href="#W_DIMS">
+    W_DIMS
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ,
+   <a href="#W_FID">
+    W_FID
+   </a>
+   =
+   <i>
+    file ID
+   </i>
+   ,
+   <a href="#W_POS">
+    W_POS
+   </a>
+   =
+   <i>
+    array
+   </i>
+   [,
+   <a href="#X0">
+    X0
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ] [,
+   <a href="#XSIZE">
+    XSIZE
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ] [,
+   <a href="#Y0">
+    Y0
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ] [,
+   <a href="#YSIZE">
+    YSIZE
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ] [, /
+   <a href="#ZERO_EDGE">
+    ZERO_EDGE
+   </a>
+   ]
+  </p>
+  <h2 class="API">
+   <a name="Keywords">
+   </a>
+   Keywords
+  </h2>
+  <h3>
+   <a name="B_FID">
+   </a>
+   B_FID (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the file ID for the base file. B_FID is only specified when performing image-to-image warping (georeferencing). The goal is to warp the warp image (W_FID) so it aligns with the base image (B_FID). This is the value returned from the keyword R_FID in the
+   <a href="../ENVI_O/ENVI_OPEN_FILE.htm">
+    ENVI_OPEN_FILE
+   </a>
+   procedure. FID is a long integer with a value greater than 0. An invalid file ID has a value of -1.
+  </p>
+  <h3>
+   <a name="BACKGROUND">
+   </a>
+   BACKGROUND (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the value for all background pixels. The default is 0.
+  </p>
+  <h3>
+   <a name="DEGREE">
+   </a>
+   DEGREE (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the degree of the warping polynomial for the polynomial method. The degree of the polynomial is limited by the number of ground control points (GCPs), and you must be sure that
+   <i>
+    #GCPs &gt;= (degree + 1)
+    <span style="vertical-align: super;font-size: 9pt;">
+     2
+    </span>
+   </i>
+   . DEGREE has no effect for RST and triangulation methods. The default is DEGREE=1.
+  </p>
+  <h3>
+   <a name="IN_MEMORY">
+   </a>
+   IN_MEMORY (optional)
+  </h3>
+  <p>
+   Set this keyword to specify that output should be stored in memory. If you do not set IN_MEMORY, output will be stored on disk and you must specify OUT_NAME (see below).
+  </p>
+  <h3>
+   <a name="METHOD">
+   </a>
+   METHOD (optional)
+  </h3>
+  <p>
+   Set this keyword to one of the following values to specify the warping method to use.
+  </p>
+  <ul>
+   <li value="1">
+    0: RST with nearest neighbor
+   </li>
+   <li value="2">
+    1: RST with bilinear
+   </li>
+   <li value="3">
+    2: RST with cubic convolution
+   </li>
+   <li value="4">
+    3: Polynomial with nearest neighbor (default)
+   </li>
+   <li value="5">
+    4: Polynomial with bilinear
+   </li>
+   <li value="6">
+    5: Polynomial with cubic convolution
+   </li>
+   <li value="7">
+    6: Triangulation with nearest neighbor
+   </li>
+   <li value="8">
+    7: Triangulation with bilinear
+   </li>
+   <li value="9">
+    8: Triangulation with cubic convolution
+   </li>
+  </ul>
+  <h3>
+   <a name="OUT_BNAME">
+   </a>
+   OUT_BNAME (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a string array of output band names.
+  </p>
+  <h3>
+   <a name="OUT_NAME">
+   </a>
+   OUT_NAME (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a string with the output filename for the resulting data. If you set the keyword IN_MEMORY, you do not need to specify OUT_NAME.
+  </p>
+  <h3>
+   <a name="PIXEL_SIZE">
+   </a>
+   PIXEL_SIZE (optional)
+  </h3>
+  <p>
+   Use this keyword only when performing image-to-map warping. Set this keyword to an array of double-precision values containing the x and y pixel sizes of the output image. You should specify the pixel sizes in the units contained in the projection structure passed to the PROJ keyword. The default is PIXEL_SIZE = [1.0d, 1.0d].
+  </p>
+  <h3>
+   <a name="PROJ">
+   </a>
+   PROJ (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the projection of the x and y map coordinates listed in the PTS array when performing image-to-map registration. You must set PROJ when performing image-to-map registration. PROJ is a projection structure returned from
+   <a href="../ENVI_G/ENVI_GET_PROJECTION.htm">
+    ENVI_GET_PROJECTION
+   </a>
+   or
+   <a href="../ENVI_P/ENVI_PROJ_CREATE.htm">
+    ENVI_PROJ_CREATE
+   </a>
+   .
+  </p>
+  <h3>
+   <a name="PTS">
+   </a>
+   PTS
+  </h3>
+  <p>
+   Use this keyword to specify an array of double-precision values representing the x and y positions of the base and warp tie points. The dimensions of the array are [4,
+   <i>
+    #points
+   </i>
+   ], where the base and warp points for image-to-image are defined as follows.
+  </p>
+  <ul>
+   <li value="1">
+    PTS[0,
+    <i>
+     #points
+    </i>
+    ]: x base points
+   </li>
+   <li value="2">
+    PTS[1,
+    <i>
+     #points
+    </i>
+    ]: y base points
+   </li>
+   <li value="3">
+    PTS[2,
+    <i>
+     #points
+    </i>
+    ]: x warp points
+   </li>
+   <li value="4">
+    PTS[3,
+    <i>
+     #points
+    </i>
+    ]: y warp points
+   </li>
+  </ul>
+  <p>
+   Image-to-map warp points are defined as follows:
+  </p>
+  <ul>
+   <li value="1">
+    PTS[0,
+    <i>
+     #points
+    </i>
+    ]: x map points
+   </li>
+   <li value="2">
+    PTS[1,
+    <i>
+     #points
+    </i>
+    ]: y map points
+   </li>
+   <li value="3">
+    PTS[2,
+    <i>
+     #points
+    </i>
+    ]: x image points
+   </li>
+   <li value="4">
+    PTS[3,
+    <i>
+     #points
+    </i>
+    ]: y image points
+   </li>
+  </ul>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   This procedure converts any variable used for PTS to double-precision. It also converts x and y base points to x and y map points.
+  </p>
+  <h3>
+   <a name="R_FID">
+   </a>
+   R_FID (optional)
+  </h3>
+  <p>
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   library routines that result in new images also have an R_FID, or “returned FID.” This is simply a named variable containing the file ID to access the processed data. Specifying this keyword saves you the step of opening the new file from disk.
+  </p>
+  <h3>
+   <a name="W_DIMS">
+   </a>
+   W_DIMS
+  </h3>
+  <p>
+   Use this keyword to specify the spatial dimensions of the warp image (W_FID) on which to perform the operation. W_DIMS is a five-element array of long integers with the following definitions:
+  </p>
+  <ul>
+   <li value="1">
+    W_DIMS[0]: A pointer to an open ROI; use only in cases where ROIs define the spatial subset. Otherwise, set to -1L.
+   </li>
+   <li value="2">
+    W_DIMS[1]: The starting sample number. The first x pixel is 0.
+   </li>
+   <li value="3">
+    W_DIMS[2]: The ending sample number
+   </li>
+   <li value="4">
+    W_DIMS[3]: The starting line number. The first y pixel is 0.
+   </li>
+   <li value="5">
+    W_DIMS[4]: The ending line number
+   </li>
+  </ul>
+  <h3>
+   <a name="W_FID">
+   </a>
+   W_FID
+  </h3>
+  <p>
+   Use this keyword to specify the file ID for the warp file. This is the file ID of the image that is warped to the base points. This value is returned from the keyword R_FID in the
+   <a href="../ENVI_O/ENVI_OPEN_FILE.htm">
+    ENVI_OPEN_FILE
+   </a>
+   procedure. FID is a long integer with a value greater than 0. An invalid file ID has a value of -1.
+  </p>
+  <h3>
+   <a name="W_POS">
+   </a>
+   W_POS
+  </h3>
+  <p>
+   Use this keyword to specify an array of band positions for the warp image indicating the band numbers on which to perform the operation. W_POS is an array of long integers, ranging from 0 to the number of bands minus 1.
+  </p>
+  <h3>
+   <a name="X0">
+   </a>
+   X0 (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the x location (in pixel coordinates for image-to-image or map coordinates for image-to-map) of the upper-left pixel of the output image.
+  </p>
+  <h3>
+   <a name="XSIZE">
+   </a>
+   XSIZE (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the output image x size. This value is in pixels for image-to-image or output map units for image-to-map.
+  </p>
+  <h3>
+   <a name="Y0">
+   </a>
+   Y0 (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the y location (in pixel coordinates for image-to-image or map coordinates for image-to-map) of the upper-left pixel of the output image.
+  </p>
+  <h3>
+   <a name="YSIZE">
+   </a>
+   YSIZE (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the output image y size. This value is in pixels for image-to-image or output map units for image-to-map.
+  </p>
+  <h3>
+   <a name="ZERO_EDGE">
+   </a>
+   ZERO_EDGE (optional)
+  </h3>
+  <p>
+   Set this keyword to set the edges outside of any triangles to the value specified by BACKGROUND. Use this keyword only when METHOD=6, 7, or 8.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

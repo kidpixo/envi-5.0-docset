@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Georectify" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Select a Coordinate System
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#GeorectifyImagery/SelectCoordinateSystem.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="GeorectifyImagery.htm">
+    Georectify
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Select a Coordinate System
+   </span>
+  </div>
+  <h1>
+   Select a Coordinate System
+   <a name="kanchor202">
+   </a>
+  </h1>
+  <p>
+   Use the Select Coordinate System dialog to choose a pre-defined coordinate system, to define a new coordinate system, to customize an existing coordinate system, or to copy a coordinate system string to the clipboard.
+  </p>
+  <ul>
+   <li value="1">
+    The Selected Coordinate System table is populated with the coordinate system information from the input dataset. To choose a different coordinate system, click to expand the lists of
+    <a href="BackgroundCoordinateSystems.htm#Geograph">
+     Geographic Coordinate Systems
+    </a>
+    or
+    <a href="BackgroundCoordinateSystems.htm#Projecte">
+     Projected Coordinate Systems
+    </a>
+    , then select the specific coordinate system. Its properties display in the Selected Coordinate System table.
+   </li>
+   <p class="Tip" madcap:autonum="&lt;b&gt;Tip: &lt;/b&gt;">
+    <span class="autonumber">
+     <span>
+      <b>
+       Tip:
+      </b>
+     </span>
+    </span>
+    WGS 1984 is located under the
+    <b>
+     Geographic Coordinate Systems &gt; World
+    </b>
+    folder.
+   </p>
+   <li value="2">
+    To define a new coordinate system, click the
+    <b>
+     Create New
+    </b>
+    button. The Edit Coordinate System dialog appears. Here, you will define the details of a projected coordinate system, which includes properties of a geographic coordinate system plus a map projection type, projection parameters, and projection units.
+   </li>
+   <p>
+    In the Edit Coordinate System dialog, click
+    <b>
+     Select
+    </b>
+    to choose a geographic coordinate system. Then choose a projected coordinate system
+    <b>
+     Type
+    </b>
+    and
+    <b>
+     Units
+    </b>
+    from the drop-down lists provided. Enter a
+    <b>
+     Name
+    </b>
+    for the new coordinate system.
+   </p>
+   <li value="3">
+    To edit the projection information of a coordinate system that you already selected, click the
+    <b>
+     Modify Existing
+    </b>
+    button. The Edit Coordinate System dialog appears with the projection details populated. Modify the geographic coordinate system and projected coordinate systems as needed. Click in the
+    <b>
+     Type
+    </b>
+    and
+    <b>
+     Units
+    </b>
+    fields to edit them.
+   </li>
+   <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+    <span class="autonumber">
+     <span>
+      <b>
+       Note:
+      </b>
+     </span>
+    </span>
+    The edits only apply during the active session and are not permanently saved. To save your edits, add the edited coordinate system as a favorite (described in the next step).
+   </p>
+   <li value="4">
+    If you frequently work with a specific coordinate system, select its name and click the
+    <b>
+     Add Favorite
+    </b>
+    button. The coordinate system is added to the "Favorite Geographic" or "Favorite Projected" folder in the Select Coordinate System dialog. You can also select custom coordinate systems as favorites, and favorites can have duplicate names. To remove a coordinate system from either folder, select its name and click the
+    <b>
+     Remove Favorite
+    </b>
+    button.
+   </li>
+   <li value="5">
+    Each coordinate system is represented by a text string that describes its properties for use with
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    programming and header files. See
+    <a href="BackgroundCoordinateSystems.htm#Coordina">
+     Coordinate System Strings
+    </a>
+    for details. To retrieve the text string, select a coordinate system name and click the
+    <b>
+     View as String
+    </b>
+    button. Copy and paste the string into your application where needed.
+   </li>
+   <li value="6">
+    To use the same coordinate system as another dataset, click the
+    <b>
+     Import from Existing Dataset
+    </b>
+    button and select the source dataset.
+   </li>
+   <li value="7">
+    If you are writing a custom
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    script, refer to the
+    <a href="../ExtendCustomize/ENVIRasterSpatialRefPseudo.htm">
+     ENVIRasterSpatialRefPseudo
+    </a>
+    ,
+    <a href="../ExtendCustomize/ENVIRasterSpatialRefRPC.htm">
+     ENVIRasterSpatialRefRPC
+    </a>
+    , or
+    <a href="../ExtendCustomize/ENVIRasterSpatialRefStandard.htm">
+     ENVIRasterSpatialRefStandard
+    </a>
+    object for details on working with different types of map information.
+   </li>
+  </ul>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

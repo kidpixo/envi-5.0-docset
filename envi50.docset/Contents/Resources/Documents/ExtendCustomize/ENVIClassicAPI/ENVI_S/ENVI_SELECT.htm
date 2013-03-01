@@ -1,0 +1,364 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming|Routines|Display Control|ENVI Classic" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   ENVI_SELECT
+  </title>
+  <link href="../../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../../ENVIHelp_CSH.htm#ExtendCustomize/ENVIClassicAPI/ENVI_S/ENVI_SELECT.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../Routines.htm">
+    Routines
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../enviPortal.htm">
+    Display Control
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    ENVI_SELECT
+   </span>
+  </div>
+  <h1>
+   <a name="kanchor644">
+   </a>
+   ENVI_SELECT
+  </h1>
+  <p>
+   <a href="#Syntax">
+    Syntax
+   </a>
+   |
+   <a href="#Keywords">
+    Keywords
+   </a>
+   |
+   <a href="#Example">
+    Example
+   </a>
+  </p>
+  <p class="HighlightText">
+   This routine has been replaced with the
+   <a href="../../ENVIUI__SelectInputData.htm">
+    UISelectInputData
+   </a>
+   method to ENVI.
+  </p>
+  <p>
+   This routine produces a widget that prompts you to select a file from those that have already been opened. ENVI_SELECT produces
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   ’s Input Selection Dialog by File/Band, including buttons for spatial and spectral subsetting and for choosing a mask band. This routine also incorporates the functionality of
+   <a href="../ENVI_P/ENVI_PICKFILE.htm">
+    ENVI_PICKFILE
+   </a>
+   because the widget includes a button to open ENVI-format files from disk. ENVI_SELECT not only returns an FID for the selected file, but also the DIMS and POS variables that will likely be required for further processing.
+  </p>
+  <p>
+   <img src="../../../Resources/Images/ENVIClassicAPI/file_select.gif" />
+  </p>
+  <p>
+   <img src="../../../Resources/Images/ENVIClassicAPI/band_select.gif" />
+  </p>
+  <h2 class="API">
+   <a name="Syntax">
+   </a>
+   Syntax
+  </h2>
+  <p>
+   ENVI_SELECT [, /BAND_ONLY] [,
+   <a href="#DIMS">
+    DIMS
+   </a>
+   =
+   <i>
+    variable
+   </i>
+   ] [,
+   <a href="#FID">
+    FID
+   </a>
+   =
+   <i>
+    variable
+   </i>
+   ] [, /
+   <a href="#FILE_ONLY">
+    FILE_ONLY
+   </a>
+   ] [,
+   <a href="#FILE_TYPE">
+    FILE_TYPE
+   </a>
+   =
+   <i>
+    integer
+   </i>
+   ] [, /
+   <a href="#MASK">
+    MASK
+   </a>
+   ] [,
+   <a href="#M_FID">
+    M_FID
+   </a>
+   =
+   <i>
+    variable
+   </i>
+   ] [,
+   <a href="#M_POS">
+    M_POS
+   </a>
+   =
+   <i>
+    variable
+   </i>
+   ] [, /
+   <a href="#NO_DIMS">
+    NO_DIMS
+   </a>
+   ] [, /
+   <a href="#NO_SPEC">
+    NO_SPEC
+   </a>
+   ] [,
+   <a href="#POS">
+    POS
+   </a>
+   =
+   <i>
+    variable
+   </i>
+   ] [, /
+   <a href="#ROI">
+    ROI
+   </a>
+   ] [,
+   <a href="#TITLE">
+    TITLE
+   </a>
+   =
+   <i>
+    string
+   </i>
+   ]
+  </p>
+  <h2 class="API">
+   <a name="Keywords">
+   </a>
+   Keywords
+  </h2>
+  <h3>
+   <a name="BAND_ONLY">
+   </a>
+   BAND_ONLY
+  </h3>
+  <p>
+   Set this keyword to disable selection of files using the Input File toggle button and to only allow band selection.
+  </p>
+  <h3>
+   <a name="DIMS">
+   </a>
+   DIMS
+  </h3>
+  <p>
+   Use this optional keyword to specify a named variable that contains the spatial dimensions of the file.
+  </p>
+  <h3>
+   <a name="FID">
+   </a>
+   FID
+  </h3>
+  <p>
+   Use this keyword to specify a named variable that will contain the file ID of the selected file when the
+   <b>
+    OK
+   </b>
+   button is selected. If FID[0] = -1, the
+   <b>
+    Cancel
+   </b>
+   button was selected and the user should take the appropriate action.
+  </p>
+  <h3>
+   <a name="FILE_ONLY">
+   </a>
+   FILE_ONLY
+  </h3>
+  <p>
+   Set this keyword to disable selection of single bands using the Input band toggle button and only allow file selection.
+  </p>
+  <h3>
+   <a name="FILE_TYPE">
+   </a>
+   FILE_TYPE
+  </h3>
+  <p>
+   Set this keyword to an integer value specifying the allowable file type. Only files with matching types are considered valid. See
+   <a href="../ENVI_F/ENVI_FILE_TYPE.htm">
+    ENVI_FILE_TYPE
+   </a>
+   for details on how to determine the integer value of a file type.
+  </p>
+  <h3>
+   <a name="MASK">
+   </a>
+   MASK
+  </h3>
+  <p>
+   Set this keyword to allow selection of a mask.
+  </p>
+  <h3>
+   <a name="M_FID">
+   </a>
+   M_FID
+  </h3>
+  <p>
+   Use this keyword to specify a named variable that will contain the file ID of the selected mask file. To enable mask selection, you must set the MASK keyword.
+  </p>
+  <h3>
+   <a name="M_POS">
+   </a>
+   M_POS
+  </h3>
+  <p>
+   Use this keyword to specify a named variable that will contain the band position of the selected mask. To enable mask selection, you must set the MASK keyword.
+  </p>
+  <h3>
+   <a name="NO_DIMS">
+   </a>
+   NO_DIMS
+  </h3>
+  <p>
+   Set this keyword to disable spatial subsetting.
+  </p>
+  <h3>
+   <a name="NO_SPEC">
+   </a>
+   NO_SPEC
+  </h3>
+  <p>
+   Set this keyword to disable spectral subsetting.
+  </p>
+  <h3>
+   <a name="POS">
+   </a>
+   POS
+  </h3>
+  <p>
+   Use this keyword to specify a named variable that will contain an array holding the bands selected.
+  </p>
+  <h3>
+   <a name="ROI">
+   </a>
+   ROI
+  </h3>
+  <p>
+   Set this keyword to allow ROI subsetting. The array element DIMS[0] contains the ROI pointer.
+  </p>
+  <h3>
+   <a name="TITLE">
+   </a>
+   TITLE
+  </h3>
+  <p>
+   Use this keyword to specify the string used in the title bar of the File Selection dialog window.
+  </p>
+  <h2 class="API">
+   <a name="Example">
+   </a>
+   Example
+  </h2>
+  <p>
+   This example shows how to select a file or band and return the FID, DIMS, and POS information. This is typically the simplest use of ENVI _SELECT. Also, if you click the
+   <b>
+    Cancel
+   </b>
+   button (FID[0] = -1), then return from the current user procedure as shown below.
+  </p>
+  <p xml:space="preserve" class="Code">
+   ENVI_SELECT, fid=fid,dims=dims,pos=pos
+   <br />
+   if (fid[0] eq -1) then return
+  </p>
+  <p>
+   The following example allows you to select a single classification band with no spatial subset. The FILE_TYPE keyword set to “Classification” only allows you to select a classification band and issues a warning on attempts to select non-classification data. You can use the keyword FILE_TYPE keyword with any file type, not just classification images. The BAND_ONLY and NO_DIMS keywords limit you to only allow a single band with no spatial subset. The returned file ID and band number are retrieved with the FID and POS keywords, respectively. Use the keyword TITLE to set the dialog title bar to "Classification Input File."
+  </p>
+  <p class="Code">
+   ;
+  </p>
+  <p class="Code">
+   ; First get the integer file type value using ENVI_FILE_TYPE
+  </p>
+  <p class="Code">
+   ;
+  </p>
+  <p class="Code">
+   ftype = ENVI_FILE_TYPE('Classification')
+  </p>
+  <p class="Code">
+   ;
+  </p>
+  <p class="Code">
+   ; Prompt the user for the classification band
+  </p>
+  <p class="Code">
+   ;
+  </p>
+  <p class="Code">
+   ENVI_SELECT, fid=fid, pos=pos, /band_only, $
+  </p>
+  <p class="Code">
+   &#160;&#160;&#160;/no_dims, file_type=ftype, $
+  </p>
+  <p class="Code">
+   &#160;&#160;&#160;title='Classification Input File'
+  </p>
+  <p class="Code">
+   if (fid[0] eq -1) then return
+  </p>
+  <p class="Code">
+   ;
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

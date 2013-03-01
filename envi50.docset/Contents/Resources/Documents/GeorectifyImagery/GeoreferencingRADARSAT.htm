@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Georectify|Georeferencing Tools" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Georeference RADARSAT
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#GeorectifyImagery/GeoreferencingRADARSAT.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="GeorectifyImagery.htm">
+    Georectify
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="GeoreferencingTools.htm">
+    Georeferencing Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Georeference RADARSAT
+   </span>
+  </div>
+  <h1>
+   Georeference RADARSAT
+   <a name="kanchor240">
+   </a>
+  </h1>
+  <p>
+   Use
+   <b>
+    Georeference RADARSAT
+   </b>
+   to georeference RADARSAT data with embedded geolocation point information. You can use the geolocation points associated with each line of RADARSAT data to georeference the data to a specified map projection. You can use all of the geolocation points from the file, or specify how many points to extract from the data for georeferencing.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   Not all RADARSAT files contain embedded geolocation points. If your RADARSAT data does not have geolocation points, you will be unable to georeference the file.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   If a RADARSAT-2 file includes a valid GeoTIFF&#160;header, map information will be available upon opening the file.
+  </p>
+  <ol>
+   <li value="1">
+    Select
+    <b>
+     Geometric Correction &gt; Georeference by Sensor &gt; Georeference RADARSAT
+    </b>
+    from the Toolbox. The Input File dialog appears.
+   </li>
+   <li value="2">
+    <p>
+     Select an input file and perform optional spatial and spectral
+     <a href="../NoTOCTopics/Subsetting.htm">
+      subsetting
+     </a>
+     , then click
+     <b>
+      OK
+     </b>
+     . The Extract RADARSAT GCP Parameters dialog appears.
+    </p>
+    <p>
+     Use the settings in this dialog to select an output projection and to specify how to extract geolocation points from the RADARSAT file:
+    </p>
+   </li>
+   <ul>
+    <li value="1">
+     <b>
+      Select Output Projection For Registration
+     </b>
+     : Choose the projection into which to warp the data. The default projection is UTM (if map information is available).
+    </li>
+    <li value="2">
+     <b>
+      X Pixel Size
+     </b>
+     /
+     <b>
+      Y Pixel Size
+     </b>
+     : Set the output data pixel size in units of degrees, meters, or feet. The units to use depends on the units used for the selected projection. If your input image does not have a pixel size defined, the default values are 12.5 meters for both x and y. If pixel size data is included in your file, those values appear in the
+     <b>
+      X
+     </b>
+     and
+     <b>
+      Y Pixel Size
+     </b>
+     fields.
+    </li>
+    <li value="3">
+     <p>
+      <b>
+       Number of Lines to Skip
+      </b>
+      : Use this option to optimize either the accuracy or the processing speed of the geolocation point extraction.
+     </p>
+     <p>
+      The larger the value in this field, the fewer number of points are extracted. In this case, processing is faster but the accuracy is more approximate.
+     </p>
+     <p>
+      If you choose a smaller value for the number of lines to skip, the processing time increases but the accuracy is improved. The default value is 100.
+     </p>
+    </li>
+    <li value="4">
+     <b>
+      Enter Output GCP File Name
+     </b>
+     : Allows you to optionally save the extracted GCPs in a file with a specified name.
+    </li>
+   </ul>
+   <li value="3">
+    Click
+    <b>
+     OK
+    </b>
+    . The Registration Parameters dialog appears.
+   </li>
+   <li value="4">
+    <p>
+     The
+     <a href="WarpingResampling.htm#parameters">
+      Registration Parameters dialog
+     </a>
+     allows you to further refine the warp method, resampling technique, background value, and output parameters.
+    </p>
+    <p>
+     In the
+     <b>
+      Enter Output Filename
+     </b>
+     field, enter the filename for your georegistered image.
+    </p>
+   </li>
+   <li value="5">
+    Click
+    <b>
+     OK
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds the resulting output to the Layer Manager.
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

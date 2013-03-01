@@ -1,0 +1,544 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Tutorials|Using the Tools" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Annotations Tutorial
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/TableStyles/Description.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#Tutorials/Tools/AnnotationTutorial.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../Tutorials.htm">
+    Tutorials
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../Tutorials.htm">
+    Using the Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Annotations
+   </span>
+  </div>
+  <h1>
+   Annotations Tutorial
+  </h1>
+  <p>
+   In this tutorial, you will use
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   to display a QuickBird multispectral image on which you will create new annotation layers.
+  </p>
+  <h2>
+   Files Used in This Tutorial
+  </h2>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   Resource DVD:
+   <code>
+    feature_extraction
+   </code>
+  </p>
+  <table style="margin-left: 0;margin-right: auto;caption-side: top;mc-table-style: url('../../Resources/TableStyles/Description.css');" cellspacing="0" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       File
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p class="TableHead">
+       Description
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <pre xml:space="preserve">
+       qb_colorado.dat
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       QuickBird multispectral image, Boulder, CO, USA, captured July 4, 2005
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <pre>
+       qb_colorado.hdr
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColEnd">
+      <p>
+       Header file for above
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <p>
+   QuickBird files are courtesy of DigitalGlobe and may not be reproduced without explicit permission from DigitalGlobe.
+  </p>
+  <h2>
+   Starting
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+  </h2>
+  <ul>
+   <li madcap:excludeaction="unbind" value="1">
+    Windows Start menu: Select
+    <b>
+     Programs &gt; ENVI
+     <i>
+      x.x
+     </i>
+     &gt; ENVI
+    </b>
+    .
+   </li>
+   <li madcap:excludeaction="unbind" value="2">
+    UNIX: Type
+    <code>
+     envi
+    </code>
+    at the UNIX command line.
+   </li>
+  </ul>
+  <h2>
+   Opening and Displaying an Image
+  </h2>
+  <ol>
+   <li value="1">
+    Click the
+    <b>
+     Open
+    </b>
+    button
+    <img src="../../Resources/Images/IconsButtons/Open.gif" class="VertCenter" alt="Open" />
+    on the toolbar. The Open dialog appears.
+   </li>
+   <li value="2">
+    Navigate to
+    <code>
+     feature_extraction
+    </code>
+    and open
+    <code>
+     qb_colorado.dat
+    </code>
+    .
+   </li>
+  </ol>
+  <h2>
+   Creating an Annotation Layer
+  </h2>
+  <p>
+   In the steps below, you will create one annotation layer. Annotation layers and vector layers are different in that you can have multiple annotation item types within an annotation layer. A single annotation layer may contain a combination of text, polygon, symbol, and other annotation items.
+  </p>
+  <ol>
+   <li value="1">
+    From the menu bar, select
+    <b>
+     File &gt; New &gt; Annotation Layer
+    </b>
+    . The Create New Annotation Layer dialog appears.
+   </li>
+   <li value="2">
+    Enter
+    <code style="font-weight: bold;">
+     Boulder_Anno
+    </code>
+    as the Layer Name.
+   </li>
+   <li value="3">
+    Select
+    <code style="font-weight: bold;">
+     qb_colorado.dat
+    </code>
+    as the source file that defines the new layer’s extents and map projection.
+   </li>
+   <li value="4">
+    Click
+    <b>
+     OK
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds the new annotation layer to the Layer Manager.
+   </li>
+   <p>
+    <img src="../../Resources/Images/Tools/AnnotationTutorialLayerManagerNewAnnoLayer.gif" alt="Annotation layer" />
+   </p>
+  </ol>
+  <h2>
+   Adding and Saving Annotation Items
+  </h2>
+  <p>
+   In the steps below, you will add several types of annotation items. When you created the annotation layer, the
+   <b>
+    Text Annotation
+   </b>
+   button
+   <img src="../../Resources/Images/IconsButtons/AnnotationText.gif" class="VertCenter" alt="Text annotation" />
+   was automatically selected.
+  </p>
+  <p class="Tip" madcap:autonum="&lt;b&gt;Tip: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Tip:
+     </b>
+    </span>
+   </span>
+   To see the properties for any annotation you add, you can click the
+   <b>
+    Select
+   </b>
+   tool, select the annotation, then right-click and select
+   <b>
+    Properties
+   </b>
+   .
+  </p>
+  <ol>
+   <li value="1">
+    In the Image window view, find a park area in the scene to label, and click in it. The cursor turns into a vertical line, ready for you to enter text.
+   </li>
+   <li value="2">
+    Type
+    <code style="font-weight: bold;">
+     Central Park
+    </code>
+    and press
+    <b>
+     Enter
+    </b>
+    . The annotation item is added to the Layer Manager under the annotation layer tree.
+   </li>
+   <p>
+    <img src="../../Resources/Images/Tools/AnnotationTutorialNewText.gif" alt="Annotation layer" />
+   </p>
+   <li value="3">
+    Change the preferences set for the text annotations you will add next. Click in the next park location to label, then right-click and select
+    <b>
+     Preferences
+    </b>
+    . The Preference dialog appears.
+   </li>
+   <p>
+    <img src="../../Resources/Images/Tools/AnnotationTutorialPreferences.gif" alt="Preferences" />
+   </p>
+   <li value="4">
+    Change the
+    <b>
+     Font Name
+    </b>
+    to
+    <code style="font-weight: bold;">
+     Times New Roman
+    </code>
+    and the
+    <b>
+     Font Size
+    </b>
+    to
+    <code style="font-weight: bold;">
+     14
+    </code>
+    , then close the dialog.
+   </li>
+   <li value="5">
+    Using the new preference settings, click in the image and label two more items as text annotations.
+   </li>
+   <li value="6">
+    Save the annotation layer before you continue. Right-click on
+    <code>
+     Boulder_Anno
+    </code>
+    in the Layer Manager and select
+    <b>
+     Save As
+    </b>
+    . The Save As dialog appears with
+    <code>
+     Boulder_Anno
+    </code>
+    in the
+    <b>
+     File name
+    </b>
+    field.
+   </li>
+   <li value="7">
+    Click
+    <b>
+     Save
+    </b>
+    .
+   </li>
+  </ol>
+  <p>
+   Next, you will add symbol annotations to the scene.
+  </p>
+  <ol>
+   <li value="1">
+    Click the
+    <b>
+     Symbol Annotation
+    </b>
+    button
+    <img src="../../Resources/Images/IconsButtons/AnnotationSymbol.gif" class="VertCenter" alt="Symbol annotation" />
+    .
+   </li>
+   <li value="2">
+    In the Image window view, click and release at each location you want to add a symbol. The annotation items are added to the Layer Manager under the annotation layer tree.
+   </li>
+   <p>
+    <img src="../../Resources/Images/Tools/AnnotationTutorialNewLayers.gif" alt="Annotation layer tree" />
+   </p>
+   <li value="3">
+    With the annotation you just added still selected, click and drag it to a new location.
+   </li>
+   <li value="4">
+    Save the layer. Right-click in the Image window and select
+    <b>
+     Save
+    </b>
+    .
+   </li>
+  </ol>
+  <p>
+   Now add some arrow annotations.
+  </p>
+  <ol>
+   <li value="1">
+    Click the
+    <b>
+     Arrow Annotation
+    </b>
+    button
+    <img src="../../Resources/Images/IconsButtons/AnnotationArrow.gif" class="VertCenter" alt="Arrow annotation" />
+    .
+   </li>
+   <li value="2">
+    In the Image window, add two arrow items. To draw arrows, click and drag to draw an arrow. The annotation items are added to the Layer Manager under the annotation layer tree.
+   </li>
+   <li value="3">
+    Change the appearance of the last arrow only. With the last arrow item still selected, right click and select
+    <b>
+     Properties
+    </b>
+    . The Properties dialog appears.
+   </li>
+   <p>
+    <img src="../../Resources/Images/Tools/AnnotationTutorialProperties.gif" alt="Properties" />
+   </p>
+   <li value="4">
+    Change the
+    <b>
+     Line Color
+    </b>
+    to
+    <code style="font-weight: bold;">
+     Yellow
+    </code>
+    , the
+    <b>
+     Line Thickness
+    </b>
+    to
+    <code style="font-weight: bold;">
+     2
+    </code>
+    , and the
+    <b>
+     Arrow Head Size
+    </b>
+    to
+    <code style="font-weight: bold;">
+     15
+    </code>
+    . Press
+    <b>
+     Enter
+    </b>
+    to accept the change to the arrow head size, then close the dialog.
+   </li>
+   <li value="5">
+    Save the layer. Right-click in the Image window and select
+    <b>
+     Save
+    </b>
+    .
+   </li>
+  </ol>
+  <p>
+   Next, add rectangles and resize them. Before you draw the rectangles, you will change the preferences.
+  </p>
+  <ol>
+   <li value="1">
+    Click the
+    <b>
+     Rectangle Annotation
+    </b>
+    button
+    <img src="../../Resources/Images/IconsButtons/AnnotationRectangle.gif" class="VertCenter" alt="Rectangle annotation" />
+    .
+   </li>
+   <li value="2">
+    Right-click in the Image window and select
+    <b>
+     Preferences
+    </b>
+    . The Preferences dialog for rectangles appears.
+   </li>
+   <li value="3">
+    Set the
+    <b>
+     Fill Interior
+    </b>
+    to
+    <code style="font-weight: bold;">
+     Solid
+    </code>
+    , then close the dialog.
+   </li>
+   <li value="4">
+    In the Image window, add two new rectangles. The annotation items are added to the Layer Manager under the annotation layer tree.
+   </li>
+   <li value="5">
+    Resize any of the rectangles you drew by clicking and dragging on the selection handles.
+   </li>
+   <p>
+    <img src="../../Resources/Images/Tools/AnnotationTutorialHandles.gif" alt="Selection handles" />
+   </p>
+   <li value="6">
+    Save the layer. Right-click in the Image window and select
+    <b>
+     Save
+    </b>
+    .
+   </li>
+  </ol>
+  <p>
+   In the final steps for annotations, you will rotate the image and the annotation items.
+  </p>
+  <ol>
+   <li value="1">
+    Click the
+    <b>
+     Rotate
+    </b>
+    button
+    <img src="../../Resources/Images/IconsButtons/RotateView.gif" class="VertCenter" alt="Rotate" />
+    , then click and drag the cursor in a clockwise or counter-clockwise direction to rotate the image. The
+    <b>
+     Rotate To
+    </b>
+    drop-down list on the toolbar interactively reports the current degree of rotation.
+   </li>
+   <li value="2">
+    Most annotation items (except text, symbol, and picture) rotate with the image. By default, text annotation and symbol items do not rotate with the image.
+   </li>
+   <p>
+    <img src="../../Resources/Images/Tools/AnnotationTutorialImage1.gif" alt="Rotate To" />
+   </p>
+   <li value="3">
+    To change this setting, right-click on the text annotation item in the Layer Manger and select
+    <b>
+     Properties
+    </b>
+    . The Properties dialog appears. Change the
+    <b>
+     Rotate with View
+    </b>
+    value to
+    <code style="font-weight: bold;">
+     True
+    </code>
+    . You can change the
+    <b>
+     Rotate with View
+    </b>
+    value for any annotation item through the Properties dialog.
+   </li>
+   <p>
+    <img src="../../Resources/Images/Tools/AnnotationTutorialImage2.gif" alt="Rotate with View" />
+   </p>
+   <li value="4">
+    Save the layer. Select
+    <b>
+     File &gt; Save
+    </b>
+    .
+   </li>
+   <li value="5">
+    Remove the layer from the Image window. Right-click on
+    <code>
+     Boulder_Anno
+    </code>
+    in the Layer Manager and select
+    <b>
+     Remove
+    </b>
+    .
+   </li>
+   <li value="6">
+    In the
+    <b>
+     Rotate To
+    </b>
+    drop-down list, select
+    <code style="font-weight: bold;">
+     0
+    </code>
+    degrees.
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

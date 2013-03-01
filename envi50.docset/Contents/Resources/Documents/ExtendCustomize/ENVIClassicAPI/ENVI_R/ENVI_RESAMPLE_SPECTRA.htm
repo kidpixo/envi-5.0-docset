@@ -1,0 +1,235 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming|Routines|Data Control|ENVI Classic" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   ENVI_RESAMPLE_SPECTRA
+  </title>
+  <link href="../../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../../ENVIHelp_CSH.htm#ExtendCustomize/ENVIClassicAPI/ENVI_R/ENVI_RESAMPLE_SPECTRA.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../Routines.htm">
+    Routines
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../ENVICoordSys.htm">
+    Data Control
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    ENVI_RESAMPLE_SPECTRA
+   </span>
+  </div>
+  <h1>
+   <a name="kanchor568">
+   </a>
+   ENVI_RESAMPLE_SPECTRA
+  </h1>
+  <p>
+   This procedure spectrally resamples individual spectra.
+  </p>
+  <h2 class="API">
+   Syntax
+  </h2>
+  <p>
+   ENVI_RESAMPLE_SPECTRA,
+   <i>
+    I_WL
+   </i>
+   ,
+   <i>
+    I_Spec
+   </i>
+   ,
+   <i>
+    O_WL
+   </i>
+   ,
+   <i>
+    O_Spec
+   </i>
+   [,
+   <a href="#BAD_VALUE">
+    BAD_VALUE
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ] [,
+   <a href="#INTERLEAVE">
+    INTERLEAVE
+   </a>
+   ={0 | 1 | 2}] ,
+   <a href="#OUT_DT">
+    OUT_DT
+   </a>
+   =
+   <i>
+    integer
+   </i>
+   [,
+   <a href="#OUT_FWHM">
+    OUT_FWHM
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ]
+  </p>
+  <h2 class="API">
+   Arguments
+  </h2>
+  <h3>
+   I_WL
+  </h3>
+  <p>
+   This is a vector of input wavelengths corresponding to the input spectra (
+   <i>
+    I_Spec
+   </i>
+   ).
+  </p>
+  <h3>
+   I_Spec
+  </h3>
+  <p>
+   This is a vector of input spectra to be resampled.
+  </p>
+  <h3>
+   O_WL
+  </h3>
+  <p>
+   This is a vector containing the output wavelengths to resample to. This argument must have the same units as
+   <i>
+    I_WL
+   </i>
+   .
+  </p>
+  <h3>
+   O_Spec
+  </h3>
+  <p>
+   This is a vector containing the resampled output spectra.
+  </p>
+  <h2 class="API">
+   Keywords
+  </h2>
+  <h3>
+   <a name="BAD_VALUE">
+   </a>
+   BAD_VALUE (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a value for spectra that fall outside the input wavelength range. In this case, no extrapolation will be performed. All spectra values equal to BAD_VALUE are considered bad values. BAD_VALUE is a single number.
+  </p>
+  <h3>
+   <a name="INTERLEAVE">
+   </a>
+   INTERLEAVE (optional)
+  </h3>
+  <p>
+   Set this keyword to one of the following values to specify an interleave type:
+  </p>
+  <ul>
+   <li value="1">
+    0: BSQ
+   </li>
+   <li value="2">
+    1: BIL
+   </li>
+   <li value="3">
+    2: BIP
+   </li>
+  </ul>
+  <h3>
+   <a name="OUT_DT">
+   </a>
+   OUT_DT
+  </h3>
+  <p>
+   This keyword indicates the IDL data type of the output data. Set the keyword to one of the following integer values:
+  </p>
+  <ul>
+   <li value="1">
+    1: Byte (8 bits)
+   </li>
+   <li value="2">
+    2: Integer (16 bits)
+   </li>
+   <li value="3">
+    3: Long integer (32 bits)
+   </li>
+   <li value="4">
+    4: Floating-point (32 bits)
+   </li>
+   <li value="5">
+    5: Double-precision floating-point (64 bits)
+   </li>
+   <li value="6">
+    6: Complex (2x32 bits)
+   </li>
+   <li value="7">
+    9: Double-precision complex (2x64 bits)
+   </li>
+   <li value="8">
+    12: Unsigned integer (16 bits)
+   </li>
+   <li value="9">
+    13: Unsigned long integer (32 bits)
+   </li>
+   <li value="10">
+    14: Long 64-bit integer
+   </li>
+   <li value="11">
+    15: Unsigned long 64-bit integer
+   </li>
+  </ul>
+  <h3>
+   <a name="OUT_FWHM">
+   </a>
+   OUT_FWHM (optional)
+  </h3>
+  <p>
+   Use this keyword to specify an array of floating-point values representing FWHM responses for each output band. The number of elements in this array is equal to the number of output bands.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

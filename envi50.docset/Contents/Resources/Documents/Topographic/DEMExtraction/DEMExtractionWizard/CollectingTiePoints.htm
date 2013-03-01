@@ -1,0 +1,338 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Terrain|DEM Extraction|DEM Extraction Wizard" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Collect Tie Points
+  </title>
+  <link href="../../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../../ENVIHelp_CSH.htm#Topographic/DEMExtraction/DEMExtractionWizard/CollectingTiePoints.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../TopographicTools.htm">
+    Terrain
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../IntroductionToDEMExtraction.htm">
+    DEM Extraction
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="DEMExtractionWizard.htm">
+    DEM Extraction Wizard
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Collect Tie Points
+   </span>
+  </div>
+  <h1>
+   Collect Tie Points
+  </h1>
+  <p>
+   Next, define the relationship between the stereo images by selecting or generating tie points. The tie points are used to define the epipolar geometry and to create epipolar images, which are used to extract the DEM.
+  </p>
+  <p>
+   Define tie points using one of the following methods:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#Generate">
+     Generate Tie Points Automatically
+    </a>
+    : Generate tie points automatically, based on terrain features within the image.
+   </li>
+   <li value="2">
+    <a href="#Define">
+     Define Tie Points Interactively
+    </a>
+    : Manually define tie points between the two stereo images.
+   </li>
+   <li value="3">
+    <a href="#Read">
+     Read Tie Points From File
+    </a>
+    : Select a tie point file from which to read the tie points.
+   </li>
+  </ul>
+  <h2>
+   <a name="Generate">
+   </a>
+   Generate Tie Points Automatically
+  </h2>
+  <p>
+   Automatic tie point generation requires five parameters to be specified in Step 4 of the DEM Extraction Wizard:
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     Number of Tie Points:
+    </b>
+    Specify the number of tie points to generate. This can be as few as 9, but the recommended value is 25 (default setting).
+   </li>
+   <li value="2">
+    <b>
+     Search Window Size:
+    </b>
+    Specify the search window size, in square pixels. The search window is a defined subset of the image, within which the smaller moving window scans to find a topographic feature match for a tie point placement. The search window size can be any integer greater than or equal to 21, but it must be larger than the
+    <b>
+     Moving Window Size
+    </b>
+    . The default is 81. This value depends upon the quality of the initial user-defined tie points (a minimum of three points) or the correctness of map, rational polynomial coefficient (RPC), replacement sensor model (RSM), or pseudo map information for the base and warp image, and it also depends on the roughness of terrain.
+   </li>
+  </ul>
+  <p class="indent">
+   If both images have certain map information, then a good way to establish the minimum search window size is to geographically link the base and warp images. Click a feature point (point A) in the base image, then click a feature point in the warp image. The cursor automatically moves to a point (point B) that is close to the ground feature point (point C) that represents the same ground feature as point A. Measure (in pixels) the distance between point B and point C in the warp image and use 2*(distance+1) as the minimum search window size. The search window size may vary considerably with different images.
+  </p>
+  <p class="indent">
+   For example, 81 may be sufficient for one image pair, while 781 may be necessary for another image pair. Using a larger value results in a greater the chance of finding the conjugate point, but takes longer processing time. Setting an excessively large value may result in false matches because more similar points may exist in a larger area.
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     Moving Window Size:
+    </b>
+    Specify the moving window size, in square pixels. The moving window scans methodically in the image subset area defined by the
+    <b>
+     Search Window Size
+    </b>
+    , looking for matches to a topographic feature. The moving window size must be an odd integer. The smallest allowable value is 5. The default is 11. Using a larger value results in a more reliable tie point placement, but takes longer processing time; conversely, a smaller value takes less processing time, but the tie points are less reliable. Determining a good moving window size largely depends upon the image resolution and terrain type. Some general guidelines follow:
+   </li>
+   <li class="Indent" value="2">
+    For a 10 meters or higher resolution image, use a range of 9–15.
+   </li>
+   <li class="Indent" value="3">
+    For a 5–10 meter resolution image, use a range of 11–21.
+   </li>
+   <li class="Indent" value="4">
+    For a 1–5 meter resolution image, use a range of 15–41.
+   </li>
+   <li class="Indent" value="5">
+    For a 1 meter or less resolution image, use a range of 21–81 or higher.
+   </li>
+   <li class="Indent" value="6">
+    Because most buildings in very high-resolution images in an urban area appear similar, specify a larger value to take the surrounding area into account for more robust matching results. To reduce the computational time for image matching,
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    automatically uses a hierarchical matching method when the moving window size is greater than or equal to 19.
+   </li>
+   <li value="7">
+    <b>
+     Minimum Correlation:
+    </b>
+    Set this value between 0.00 and 1.00. This is the correlation coefficient threshold used to determine whether or not two points are a good match. If a correlation coefficient is smaller than this minimum, then the two points are not considered a good match. Using a smaller threshold value allows more matches, but it reduces the accuracy since some of the matches will be false match points. A higher threshold value increases the accuracy, but it will result in fewer matches. In general, a value greater than 0.6 is reasonable. The default is 0.65.
+   </li>
+   <li value="8">
+    <b>
+     Region Elevation:
+    </b>
+    The value shown in this field is an average elevation based on the dominant elevation of the image. It is estimated based on the associated rational polynomial (RPC) information. You may need to adjust this value based on your own knowledge of the dominant elevation of your image.
+   </li>
+  </ul>
+  <p class="NoteIndent" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   Increasing the
+   <b>
+    Number of Tie Points
+   </b>
+   , the
+   <b>
+    Search Window Size
+   </b>
+   , and/or the
+   <b>
+    Moving Window Size
+   </b>
+   increases the processing time but should also increase the reliability of the matching.
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     Examine and Edit Tie Points:
+    </b>
+    This option is available when generating tie points automatically. This option is set to
+    <b>
+     Yes
+    </b>
+    by default. It is recommended that you accept the
+    <b>
+     Yes
+    </b>
+    default setting so that you can review the tie points and edit those that are less than optimal. Selecting
+    <b>
+     No
+    </b>
+    results in the Wizard applying the tie points, skipping Step 5, and proceeding to Step 6 of 9 (see
+    <a href="GeneratingEpipolarImages.htm">
+     Generate Epipolar Images
+    </a>
+    ).
+   </li>
+  </ul>
+  <p>
+   Click
+   <b>
+    Next
+   </b>
+   to continue.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   If the y-parallax error of any of the tie points exceeds 10 pixels, an
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   Error dialog appears with the maximum y-parallax value. You should use the Prev button in Step 6 of the Wizard to return to Step 5 (see
+   <a href="ViewingAddingEditingTiePoints.htm">
+    View, Add, and Edit Tie Points
+   </a>
+   ), and make sure all of the tie points are correct before proceeding.
+  </p>
+  <h2>
+   <a name="Define">
+   </a>
+   Define Tie Points Interactively
+  </h2>
+  <p>
+   Use this option to input your tie points by selecting them in one or both images. You must enter a minimum of 9 tie points in the images; however, 25 tie points is recommended.
+  </p>
+  <p>
+   Click
+   <b>
+    Next
+   </b>
+   to begin entering the tie points in Step 5 of 9.
+  </p>
+  <h2>
+   <a name="Read">
+   </a>
+   Read Tie Points from a File
+  </h2>
+  <p>
+   Choosing this option requires that you select a tie points file to use with the images file. When you select this option, you must provide a filename in the
+   <b>
+    User Defined Tie Points File
+   </b>
+   field.
+  </p>
+  <ol>
+   <li value="1">
+    Click the
+    <b>
+     Select New Tie Points File
+    </b>
+    button to bring up the Select Input Tie Points File dialog.
+   </li>
+   <li value="2">
+    In the Select Input Tie Points File dialog, navigate to your tie points file and click
+    <b>
+     Open
+    </b>
+    . The path and filename appear in the User Defined Tie Points File text field.
+   </li>
+   <li value="3">
+    Choose whether you want to edit the tie points from the file before continuing in the Wizard. The
+    <b>
+     Examine and Edit Tie Points
+    </b>
+    toggle button is set to
+    <b>
+     No
+    </b>
+    by default, but it is recommended that you examine the tie points before proceeding. To do this, switch the toggle to Yes, so that you can review the tie points and edit those which are less than optimal.
+   </li>
+   <li value="4">
+    If you do not want to examine the tie points, leave the toggle button set to
+    <b>
+     No
+    </b>
+    (the default setting). Selecting
+    <b>
+     No
+    </b>
+    results in the Wizard applying the tie points, skipping Step 5, and proceeding to Step 6 of 9 (see
+    <a href="GeneratingEpipolarImages.htm">
+     Generate Epipolar Images
+    </a>
+    ) when you click
+    <b>
+     Next
+    </b>
+    .
+   </li>
+   <li value="5">
+    Click
+    <b>
+     Next
+    </b>
+    to proceed.
+   </li>
+  </ol>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   If the y-parallax error of any of the tie points exceeds 10 pixels, an
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   Error dialog appears with the maximum y-parallax value. You should use the
+   <b>
+    Prev
+   </b>
+   button in Step 6 of the Wizard to return to Step 5 (see
+   <a href="ViewingAddingEditingTiePoints.htm">
+    View, Add, and Edit Tie Points
+   </a>
+   ), and make sure all of the tie points are correct before proceeding.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

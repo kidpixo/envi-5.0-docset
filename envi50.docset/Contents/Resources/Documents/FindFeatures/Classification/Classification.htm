@@ -1,0 +1,1246 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Classification" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Classification
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#FindFeatures/Classification/Classification.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="ClassificationMain.htm">
+    Classification
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Classification
+   </span>
+  </div>
+  <h1>
+   Classification
+   <a name="kanchor277">
+   </a>
+  </h1>
+  <p>
+   <img src="../../Resources/Images/IconsButtons/Tutorial.gif" alt="Tutorial" />
+   <a href="../../Tutorials/Workflows/ClassificationTutorial.htm">
+    Classification Tutorial
+   </a>
+  </p>
+  <p>
+   The Classification workflow uses either unsupervised or supervised methods to categorize pixels in an image into many classes. You can perform an unsupervised classification without providing training data, or you can perform a supervised classification, where you provide training data and specify a classification method of maximum likelihood, minimum distance, Mahalanobis distance, or Spectral Angle Mapper (SAM). See
+   <a href="ClassificationReferences.htm">
+    Classification References
+   </a>
+   for algorithm reference information.
+  </p>
+  <p>
+   See the following for help on a particular step of the workflow:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#ClassSelect">
+     Select Input Files for Classification
+    </a>
+   </li>
+   <li value="2">
+    <a href="#ClassMethod">
+     Select a Classification Method (unsupervised or supervised)
+    </a>
+   </li>
+   <li value="3">
+    <a href="#ClassUnsupervised">
+     Unsupervised Classification Settings
+    </a>
+   </li>
+   <li value="4">
+    <a href="#ClassSupervised">
+     Supervised Classification Settings
+    </a>
+   </li>
+   <li value="5">
+    <a href="#ClassClean">
+     Clean Up Classification Results
+    </a>
+   </li>
+   <li value="6">
+    <a href="#ClassExport">
+     Export Classification Results
+    </a>
+   </li>
+  </ul>
+  <h2>
+   <a name="ClassSelect">
+   </a>
+   Select Input Files for Classification
+   <a name="kanchor278">
+   </a>
+  </h2>
+  <ol>
+   <li value="1">
+    Click
+    <b>
+     Browse
+    </b>
+    and select a panchromatic or multispectral image for input. The Classification workflow accepts any image format listed in
+    <a href="../../ExploreImagery/SupportedFormats.htm">
+     Supported File Formats
+    </a>
+    .
+   </li>
+   <li value="2">
+    You can perform optional spatial or spectral
+    <a href="../../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    from within the Select Input File dialog.
+   </li>
+   <li value="3">
+    To apply a
+    <a href="../../NoTOCTopics/WorkingWithMasks.htm">
+     mask
+    </a>
+    , select the Input Mask tab in the File Selection panel.          Masked pixels constitute a separate class in classification output.
+   </li>
+   <li value="4">
+    Click
+    <b>
+     Next
+    </b>
+    . The Classification Type panel appears and the file opens in a new workflow view. If the selected file is displayed in an active view before you start the workflow, the display bands and image location are retained, as well as  any brightness, contrast, stretch, and sharpen settings. The image location is not retained for pixel-based images or those with pseudo or arbitrary projections.
+   </li>
+  </ol>
+  <h2>
+   <a name="ClassMethod">
+   </a>
+   Select a Classification Method
+   <a name="kanchor279">
+   </a>
+  </h2>
+  <p>
+   In the Classification Type panel, select the type of workflow you want to follow, then click
+   <b>
+    Next
+   </b>
+   .
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     No Training Data:
+    </b>
+    opens the Unsupervised Classification panel to begin the
+    <a href="#ClassUnsupervised">
+     unsupervised classification
+    </a>
+    workflow. The unsupervised method does not rely on training data to perform classification.
+   </li>
+   <li value="2">
+    <b>
+     Use Training Data:
+    </b>
+    opens the Supervised Classification panel to begin the
+    <a href="#ClassSupervised">
+     supervised classification
+    </a>
+    workflow. The supervised method uses training data from existing vector files, or from regions or points you interactively create on the image to perform classification.
+   </li>
+  </ul>
+  <h2>
+   <a name="ClassUnsupervised">
+   </a>
+   Unsupervised Classification Settings
+   <a name="kanchor280">
+   </a>
+  </h2>
+  <p>
+   Unsupervised classification clusters pixels in a dataset based on statistics only, without requiring you to define training classes.
+  </p>
+  <p>
+   ISODATA unsupervised classification starts by calculating class means evenly distributed in the data space, then iteratively clusters the remaining pixels using minimum distance techniques. Each iteration recalculates means and reclassifies pixels with respect to the new means. This process continues until the percentage of pixels that change classes during an iteration is less than the change threshold or the maximum number of iterations is reached.
+  </p>
+  <p>
+   <b>
+    Preview
+   </b>
+   is not available for unsupervised classification, as
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   would need to process the entire image in order to provide a preview image.
+  </p>
+  <p>
+   In the Unsupervised Classification panel, set the values  to use for classification.
+  </p>
+  <ol>
+   <li value="1">
+    Enter the
+    <b>
+     Requested Number of Classes
+    </b>
+    to define. The default is
+    <b>
+     5
+    </b>
+    .
+   </li>
+   <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+    <span class="autonumber">
+     <span>
+      <b>
+       Note:
+      </b>
+     </span>
+    </span>
+    If the output will be used in ArcMap™ or ArcCatalog™, creating 30 or more classes will cause ArcMap or ArcCatalog to use a stretch renderer by default. You can modify the ArcMap or ArcCatalog  default by adding a new registry key. For steps, contact Technical Support.
+   </p>
+   <li value="2">
+    Click the Advanced tab for additional options.
+    <ul>
+     <li value="1">
+      Enter the
+      <b>
+       Maximum Iterations
+      </b>
+      to perform.  If the
+      <b>
+       Change Threshold %
+      </b>
+      is not met before the maximum number of iterations is reached, the classification process ends. The default is
+      <b>
+       10
+      </b>
+      .
+     </li>
+     <li value="2">
+      Enter the
+      <b>
+       Change Threshold %
+      </b>
+      to specify when to end the classification process. When the percentage of pixels that change classes during an iteration is less than the threshold value, the classification process ends. The default is
+      <b>
+       2
+      </b>
+      .
+     </li>
+    </ul>
+   </li>
+   <li value="3">
+    Click
+    <b>
+     Next
+    </b>
+    . The classification process begins, and the status displays on the Unsupervised Classification panel. When the classification process is complete, the Cleanup panel appears.
+   </li>
+  </ol>
+  <h2>
+   <a name="ClassSupervised">
+   </a>
+   Supervised Classification Settings
+   <a name="kanchor281">
+   </a>
+  </h2>
+  <p>
+   Supervised classification clusters pixels in a dataset into classes based on user-defined training data. The training data can come from the following sources:
+  </p>
+  <ul>
+   <li value="1">
+    Polygons, points, or multipoints from existing vector layers or shapefiles.
+   </li>
+   <li value="2">
+    3D point or polygon shapefiles.
+   </li>
+   <li value="3">
+    Polygons or points that you interactively create on a loaded image.
+   </li>
+  </ul>
+  <p>
+   The training data must be defined before you can continue in the supervised classification workflow (see
+   <a href="#TrainingData">
+    Work with Training Data
+   </a>
+   ). Once defined, select the classes that you want mapped in the output.
+  </p>
+  <p>
+   Supervised classification methods include Maximum likelihood, Minimum distance, Mahalanobis distance, and Spectral Angle Mapper (SAM). If you used single-band input data, only Maximum likelihood and Minimum distance are available.
+  </p>
+  <p>
+   In the Supervised Classification panel, select the supervised classification method to use, and define training data.
+  </p>
+  <ol>
+   <li value="1">
+    Under the Algorithm tab, select a classification method from the drop-down list provided. To optionally adjust parameter settings for the algorithms, see
+    <a href="#AdjustingParameters">
+     Set Advanced Options
+    </a>
+    :
+    <ul>
+     <li value="1">
+      <b>
+       Maximum Likelihood:
+      </b>
+      Assumes that the statistics for each class in each band are normally distributed and calculates the probability that a given pixel belongs to a specific class. Each pixel is assigned to the class that has the highest probability (that is, the maximum likelihood). This is the default.
+     </li>
+     <li value="2">
+      <b>
+       Minimum Distance:
+      </b>
+      Uses the mean vectors for each class and calculates the Euclidean distance from each unknown pixel to the mean vector for each class. The pixels are classified to the nearest class.
+     </li>
+     <li value="3">
+      <b>
+       Mahalanobis Distance:
+      </b>
+      A direction-sensitive distance classifier that uses statistics for each class. It is similar to maximum likelihood classification, but it assumes all class covariances are equal, and therefore is a faster method. All pixels are classified to the closest training data.
+     </li>
+     <li value="4">
+      <b>
+       Spectral Angle Mapper:
+      </b>
+      (SAM) is a physically-based spectral classification that uses an
+      <em>
+       n
+      </em>
+      -D angle to match pixels to training data. This method determines the spectral similarity between two spectra by calculating the angle between the spectra and treating them as vectors in a space with dimensionality equal to the number of bands. This technique, when used on calibrated reflectance data, is relatively insensitive to illumination and albedo effects. SAM compares the angle between the training mean vector and each pixel vector in
+      <i>
+       n
+      </i>
+      -D space. Smaller angles represent closer matches to the reference spectrum. The pixels are classified to the class with the smallest angle.
+     </li>
+    </ul>
+   </li>
+   <li value="2">
+    <p>
+     <a href="#TrainingData">
+      Define the training data
+     </a>
+     to use for classification. You must define a minimum of two classes, with at least one training sample per class.
+    </p>
+    <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+     <span class="autonumber">
+      <span>
+       <b>
+        Note:
+       </b>
+      </span>
+     </span>
+     If the output will be used in ArcMap™ or ArcCatalog™, creating 30 or more classes will cause ArcMap or ArcCatalog to use a stretch renderer by default. You can modify the ArcMap or ArcCatalog  default by adding a new registry key. For steps, contact Technical Support.
+    </p>
+   </li>
+   <li value="3">
+    Enable the
+    <b>
+     Preview
+    </b>
+    option to preview your results in a  Preview Portal before classifying the entire image. You can change the classification method and/or training data, then preview the results again as needed.
+   </li>
+   <li value="4">
+    Click
+    <b>
+     Next
+    </b>
+    . The classification process begins, and the status displays on the Supervised Classification panel.
+When the classification process is complete, the Cleanup panel appears.
+   </li>
+  </ol>
+  <h3>
+   <a name="AdjustingParameters">
+   </a>
+   Set Advanced Options
+  </h3>
+  <p>
+   In the Algorithm tab, you can apply no thresholding, one thresholding value for all classes, or different thresholding values for each class. Specifying a different threshold value for each class includes more or fewer pixels in a class.  Enabling the Preview Portal helps you to see the adjusted the values. To specify multiple values, select the class in the
+   <b>
+    Training Data
+   </b>
+   tree and enter the value. Press the
+   <b>
+    Enter
+   </b>
+   key to accept the value.
+  </p>
+  <h4>
+   Maximum Likelihood
+  </h4>
+  <p>
+   <b>
+    Set Probability Threshold
+   </b>
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     None:
+    </b>
+    No thresholding.
+   </li>
+   <li value="2">
+    <b>
+     Single Value
+    </b>
+    or
+    <b>
+     Multiple Values
+    </b>
+    : Enter a value between 0 and 1 in the
+    <b>
+     Probability Threshold
+    </b>
+    field for all classes (
+    <b>
+     Single Value
+    </b>
+    ) or specify a different threshold for each class (
+    <b>
+     Multiple Values
+    </b>
+    ).
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    does not classify pixels with a value lower than this value. The threshold is a probability  minimum for inclusion in a class. For example, a value of .9 will include fewer pixels in a class than a setting of .5, because a 90% probability requirement is more strict than allowing a pixel in a class based on a chance of 50%.
+   </li>
+  </ul>
+  <h4>
+   Minimum Distance
+  </h4>
+  <p>
+   Set thresholding options for
+   <b>
+    Set Standard Deviations from Mean
+   </b>
+   and/or
+   <b>
+    Set Maximum Distance Error
+   </b>
+   .
+  </p>
+  <p>
+   <b>
+    Set Standard Deviations from Mean
+   </b>
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     None:
+    </b>
+    No thresholding.
+   </li>
+   <li value="2">
+    <b>
+     Single Value
+    </b>
+    or
+    <b>
+     Multiple Values
+    </b>
+    : Specify the number of standard deviations to use around the mean for all classes (
+    <b>
+     Single Value
+    </b>
+    ) or specify a different threshold for each class (
+    <b>
+     Multiple Values
+    </b>
+    ). Enter a pixel value between 0 and 10
+    <sup>
+     7
+    </sup>
+    in the
+    <b>
+     Standard Deviations from Mean
+    </b>
+    field.
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    does not classify pixels outside this range. The lower the value, the more pixels that are unclassified.
+   </li>
+  </ul>
+  <p>
+   <b>
+    Set Maximum Distance Error
+   </b>
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     None:
+    </b>
+    No thresholding.
+   </li>
+   <li value="2">
+    <p>
+     <b>
+      Single Value
+     </b>
+     or
+     <b>
+      Multiple Values
+     </b>
+     : Enter a pixel value between 0 and 10
+     <sup>
+      7
+     </sup>
+     in the
+     <b>
+      Distance Error
+     </b>
+     field for all classes (
+     <b>
+      Single Value
+     </b>
+     ) or specify a different threshold for each class (
+     <b>
+      Multiple Values
+     </b>
+     ).
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     does not classify pixels outside this range. The smaller the distance threshold, the more pixels that are unclassified.
+    </p>
+    <p>
+     The pixel of interest must be within both the threshold for distance to mean and the threshold for the standard deviation for a class. The condition for Minimum Distance reduces to the lesser of the two thresholds. A higher value set for each parameter is more inclusive in that more pixels are included in a class for a higher threshold.
+    </p>
+    <p>
+     If you select
+     <b>
+      None
+     </b>
+     for both parameters, then
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     classifies all pixels.
+    </p>
+   </li>
+  </ul>
+  <h4>
+   Mahalanobis Distance
+  </h4>
+  <p>
+   <b>
+    Set Maximum Distance Error:
+   </b>
+   Select one of the following options:
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     None:
+    </b>
+    No thresholding.
+   </li>
+   <li value="2">
+    <b>
+     Single Value
+    </b>
+    or
+    <b>
+     Multiple Values
+    </b>
+    : Enter a pixel value between 0 and 10
+    <sup>
+     7
+    </sup>
+    in the
+    <b>
+     Distance Error
+    </b>
+    field for all classes (
+    <b>
+     Single Value
+    </b>
+    ) or specify a different threshold for each class (
+    <b>
+     Multiple Values
+    </b>
+    ).
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    does not classify pixels outside this range. Mahalanobis Distance accounts for possible non-spherical probability distributions. The distance threshold is the distance within which a class must fall from the center or mean of the distribution for a class.  The smaller the distance threshold, the more pixels that are unclassified.
+   </li>
+  </ul>
+  <h4>
+   Spectral Angle Mapper
+  </h4>
+  <p>
+   <b>
+    Set Maximum Spectral Angle:
+   </b>
+   Select one of the following options:
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     None:
+    </b>
+    No thresholding.
+   </li>
+   <li value="2">
+    <b>
+     Single Value
+    </b>
+    or
+    <b>
+     Multiple Values
+    </b>
+    :  Enter a value in radians between 0 and 1.5708 (PI/2) in the
+    <b>
+     Spectral Angle
+    </b>
+    field for all classes (
+    <b>
+     Single Value
+    </b>
+    ) or specify a different threshold for each class (
+    <b>
+     Multiple Values
+    </b>
+    ).
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    does not classify pixels with an angle larger than this value. The threshold angle is the angle in radians within which the pixel of interest must lie to be considered part of a class.The lower the value, the more pixels that are unclassified.
+   </li>
+  </ul>
+  <h4>
+   Compute Rule Images
+  </h4>
+  <p>
+   You can export rule images to a file at the end of the workflow and use them to perform additional analysis outside of the Classification workflow, such as apply different stretches or thresholding, or in the
+   <a href="ClassificationTools/ClassifyingFromRuleImages.htm">
+    Rule Classifier
+   </a>
+   to create a new classification image without having to recalculate the entire classification. To compute rule images for the selected classification algorithm, enable the
+   <b>
+    Compute Rule Images
+   </b>
+   check box. The output is a single file containing one rule image per class, with measurements for each pixel related to each class.  The measures for the rule images differ based on the classification algorithm you choose. In contrast, the final classification image is a single-band image that contains the final class assignments; pixels are either classified or unclassified.
+  </p>
+  <p>
+   The pixel values in the rule images are calculated as follows:
+  </p>
+  <p>
+   <b>
+    Maximum Likelihood
+   </b>
+   classification calculates the following discriminant functions for each pixel in the image:
+  </p>
+  <p>
+   <img src="../../Resources/Images/Classification/max_likelihood_equation.gif" />
+  </p>
+  <p>
+   where:
+  </p>
+  <p class="indent">
+   <i>
+    i
+   </i>
+   = the
+   <i>
+    i
+   </i>
+   th class
+  </p>
+  <p class="indent">
+   <i>
+    x
+   </i>
+   =
+   <i>
+    n
+   </i>
+   -dimensional data (where
+   <i>
+    n
+   </i>
+   is the number of bands)
+  </p>
+  <p class="indent">
+   <i>
+    p
+   </i>
+   (ω
+   <sub style="font-style: italic;">
+    i
+   </sub>
+   ) = probability that a class occurs in the image and is assumed the same for all classes
+  </p>
+  <p class="indent">
+   |Σ
+   <sub style="font-style: italic;">
+    i
+   </sub>
+   | = determinant of the covariance matrix of the data in a class
+  </p>
+  <p class="indent">
+   Σ
+   <sub style="font-style: italic;">
+    i
+   </sub>
+   <sup>
+    -1
+   </sup>
+   = the inverse of the covariance matrix of a class
+  </p>
+  <p class="indent">
+   <i>
+    m
+   </i>
+   <sub style="font-style: italic;">
+    i
+   </sub>
+   = mean vector of a class
+  </p>
+  <p class="indent">
+   &#160;
+  </p>
+  <p>
+   <b>
+    Minimum Distance
+   </b>
+   classification calculates the Euclidean distance for each pixel in the image to each class:
+  </p>
+  <p>
+   <img src="../../Resources/Images/Classification/min_distance_equation.gif" />
+  </p>
+  <p>
+   where:
+  </p>
+  <p class="indent">
+   <i>
+    D
+   </i>
+   = Euclidean distance
+  </p>
+  <p class="indent">
+   <i>
+    i
+   </i>
+   = the
+   <i>
+    i
+   </i>
+   th class
+  </p>
+  <p class="indent">
+   <i>
+    x
+   </i>
+   =
+   <i>
+    n
+   </i>
+   -dimensional data (where
+   <i>
+    n
+   </i>
+   is the number of bands)
+  </p>
+  <p class="indent">
+   <i>
+    m
+   </i>
+   <sub style="font-style: italic;">
+    i
+   </sub>
+   = mean vector of a class
+  </p>
+  <p class="indent">
+   &#160;
+  </p>
+  <p>
+   <b>
+    Mahalanobis Distance
+   </b>
+   classification calculates the Mahalanobis distance for each pixel in the image to each class:
+  </p>
+  <p>
+   <img src="../../Resources/Images/Classification/mahalanobis_equation.gif" />
+  </p>
+  <p>
+   where:
+  </p>
+  <p class="indent">
+   <i>
+    D
+   </i>
+   =Mahalanobis distance
+  </p>
+  <p class="indent">
+   <i>
+    i
+   </i>
+   = the
+   <i>
+    i
+   </i>
+   th class
+  </p>
+  <p class="indent">
+   <i>
+    x
+   </i>
+   =
+   <i>
+    n
+   </i>
+   -dimensional data (where
+   <i>
+    n
+   </i>
+   is the number of bands)
+  </p>
+  <p class="indent">
+   Σ
+   <sub style="font-style: italic;">
+    i
+   </sub>
+   <sup>
+    -1
+   </sup>
+   = the inverse of the covariance matrix of a class
+  </p>
+  <p class="indent">
+   <i>
+    m
+   </i>
+   <sub style="font-style: italic;">
+    i
+   </sub>
+   = mean vector of a class
+  </p>
+  <p class="indent">
+   &#160;
+  </p>
+  <p>
+   <b>
+    Spectral Angle Mapper
+   </b>
+   classification calculates the spectral angle in radians for each pixel in the image to the mean spectral value for each class:
+  </p>
+  <p>
+   <img src="../../Resources/Images/Classification/sam_equation.gif" />
+  </p>
+  <p>
+   where:
+  </p>
+  <p class="indent">
+   <i>
+    x
+   </i>
+   =
+   <i>
+    n
+   </i>
+   -dimensional data (where
+   <i>
+    n
+   </i>
+   is the number of bands)
+  </p>
+  <p class="indent">
+   <i>
+    m
+   </i>
+   <sub style="font-style: italic;">
+    i
+   </sub>
+   = mean vector of a class
+  </p>
+  <h3>
+   <a name="TrainingData">
+   </a>
+   <a name="kanchor282">
+   </a>
+   Work with Training Data
+  </h3>
+  <p>
+   You can load previously defined training data or create your own training data using the input image.
+  </p>
+  <h4>
+   Load Previously Defined Training Data
+   <a name="kanchor283">
+   </a>
+  </h4>
+  <p>
+   Click the
+   <b>
+    Load Training Data Set
+   </b>
+   button and select a shapefile, 3D shapefile, or geodatabase that contains polygon-based or point-based training data. When you load training data that uses a different projection as the input image,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   reprojects it. If the training data uses different extents, the overlapping area is used for training. Loading previously defined training data replaces any training data that were drawn on the screen previously.
+  </p>
+  <h4>
+   Interactively Define Training Data
+  </h4>
+  <p>
+   When you select
+   <b>
+    Use Training Data
+   </b>
+   , the
+   <b>
+    Symbol Annotation
+   </b>
+   ,
+   <b>
+    Polygon Annotation
+   </b>
+   ,
+   <b>
+    Rectangle Annotation
+   </b>
+   , and
+   <b>
+    Ellipse Annotation
+   </b>
+   buttons&#160;are enabled in the main toolbar, and a new layer named
+   <code>
+    Training Data
+   </code>
+   is added to the Layer Manager. The training layer can contain either all polygons or all points.
+  </p>
+  <ul>
+   <li value="1">
+    To create polygon-based training data, select the
+    <b>
+     Polygon Annotation
+    </b>
+    ,
+    <b>
+     Rectangle Annotation
+    </b>
+    , or
+    <b>
+     Ellipse Annotation
+    </b>
+    buttons.
+   </li>
+   <li value="2">
+    To create point-based training data, click the
+    <b>
+     Symbol Annotation
+    </b>
+    button.
+   </li>
+  </ul>
+  <p>
+   Once you add the first region or point to the class, the toolbar changes so that the other training data type is no longer available (for example, if you are creating polygon-based training data, the
+   <b>
+    Symbol Annotation
+   </b>
+   button is disabled).
+  </p>
+  <p>
+   To provide adequate training data, create a minimum of two classes, with at least one region or point per class. If you applied a mask to the input data, create training samples within the masked area only.
+  </p>
+  <ul>
+   <li value="1">
+    To select a class to modify, select it from the
+    <b>
+     Training Data
+    </b>
+    tree.
+   </li>
+   <li value="2">
+    Add, move, and edit regions or points in the selected class.
+    <a href="../../ROIVectorAnnotation/WorkWithAnnotations.htm">
+     Annotations
+    </a>
+    describes how to tools to mark training data. Do not draw regions or add points outside the raster bounds.
+   </li>
+   <li value="3">
+    To change the training data type if you have already added regions or points (i.e., you added points to the image but want to use polygon-based training data instead), you can delete the existing training data and start over. To delete the training data, click the
+    <b>
+     Delete Class
+    </b>
+    button
+    <img src="../../Resources/Images/IconsButtons/Delete.gif" class="VertCenter" alt="Delete Class" />
+    , or right-click on the class and select
+    <b>
+     Delete Class
+    </b>
+    . You can also click the
+    <b>
+     Select
+    </b>
+    tool
+    <img src="../../Resources/Images/IconsButtons/Select.gif" class="VertCenter" />
+    from the toolbar, select the data to delete, and press the
+    <b>
+     Delete
+    </b>
+    key on the keyboard. All regions or points must be deleted before you can proceed with the new training data type.
+   </li>
+   <li value="4">
+    To add a new class, click the
+    <b>
+     Add Class
+    </b>
+    button
+    <img src="../../Resources/Images/IconsButtons/WorkflowAddFeature.gif" class="VertCenter" alt="Add Class" />
+    , or right-click and select
+    <b>
+     Add Class
+    </b>
+    .
+   </li>
+   <li value="5">
+    To delete a class, select the class to delete and click the
+    <b>
+     Delete Class
+    </b>
+    button
+    <img src="../../Resources/Images/IconsButtons/Delete.gif" class="VertCenter" />
+    , or right-click on the class and select
+    <b>
+     Delete Class
+    </b>
+    .
+   </li>
+   <li value="6">
+    <p>
+     To save the training data, click the
+     <b>
+      Save Training Data Set
+     </b>
+     button.
+    </p>
+    <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+     <span class="autonumber">
+      <span>
+       <b>
+        Note:
+       </b>
+      </span>
+     </span>
+     Data originating from a 3D shapefile will not be saved in 3D format; it will be saved in the same 2D format as all other training data.
+    </p>
+   </li>
+   <li value="7">
+    To edit the properties for a class, see the following.
+   </li>
+  </ul>
+  <h4>
+   Edit Class Properties
+  </h4>
+  <p>
+   You can change the following properties in the Supervised Classification panel:
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     Class Name:
+    </b>
+    The name of the class that will be output in the results.
+   </li>
+   <li value="2">
+    <b>
+     Class Color:
+    </b>
+    The color that will display for that class in the results.
+   </li>
+   <li value="3">
+    <b>
+     Fill Interior:
+    </b>
+    Specifies whether the polygon has a fill (
+    <b>
+     Solid
+    </b>
+    ) or no fill (
+    <b>
+     None
+    </b>
+    ).
+   </li>
+  </ul>
+  <h2>
+   <a name="ClassClean">
+   </a>
+   Clean Up Classification Results
+   <a name="kanchor284">
+   </a>
+  </h2>
+  <p>
+   The optional Cleanup step refines the classification result. You can preview the refinement before you apply the settings.
+  </p>
+  <p class="Tip" madcap:autonum="&lt;b&gt;Tip: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Tip:
+     </b>
+    </span>
+   </span>
+   Cleanup is recommended if you plan to save the classification vectors to a file in the final step of the workflow. Performing cleanup significantly reduces the time needed to export classification vectors.
+  </p>
+  <ol>
+   <li value="1">
+    Enable the check boxes for the cleanup methods you want to use. The following are available:
+    <ul>
+     <li value="1">
+      <b>
+       Enable Smoothing:
+      </b>
+      removes salt-and-pepper noise during cleanup.
+     </li>
+     <li value="2">
+      <b>
+       Enable Aggregation:
+      </b>
+      removes small regions.
+     </li>
+    </ul>
+   </li>
+   <li value="2">
+    Enter values for the cleanup methods you enabled:
+    <ul>
+     <li value="1">
+      Specify the
+      <b>
+       Smooth Kernel Size
+      </b>
+      using an odd number (e.g., 3 = 3x3 pixels). The square kernel's center pixel will be replaced with the majority class value of the kernel. The default is
+      <b>
+       3
+      </b>
+      .
+     </li>
+     <li value="2">
+      Specify the
+      <b>
+       Aggregate Minimum Size
+      </b>
+      in pixels. Regions with a size of this value or smaller are aggregated to an adjacent, larger region. The default is
+      <b>
+       9
+      </b>
+      .
+     </li>
+    </ul>
+   </li>
+   <li value="3">
+    Enable the
+    <b>
+     Preview
+    </b>
+    option to see the cleanup results in a Preview Portal before processing the entire image. You can change the cleanup settings and preview the results again, as needed.
+   </li>
+   <li value="4">
+    Click
+    <b>
+     Next
+    </b>
+    . The Export panel appears.
+   </li>
+  </ol>
+  <h2>
+   <a name="ClassExport">
+   </a>
+   Export Classification Results
+   <a name="kanchor285">
+   </a>
+  </h2>
+  <ol>
+   <li value="1">
+    In the Export Files tab in the Export panel, enable the output options you want. The following are available:
+   </li>
+   <ul>
+    <li value="1">
+     <b>
+      Export Classification Image
+     </b>
+     saves the classification result to an ENVI raster.
+    </li>
+    <li value="2">
+     <p>
+      <b>
+       Export Classification Vectors
+      </b>
+      saves the vectors created during classification to a shapefile or geodatabase. The output area units are in square meters.
+     </p>
+     <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+      <span class="autonumber">
+       <span>
+        <b>
+         Note:
+        </b>
+       </span>
+      </span>
+      Depending on the image size, exporting to vectors may be time-consuming. Performing the Cleanup step is recommended before exporting to vectors.
+     </p>
+    </li>
+   </ul>
+   <li value="2">
+    In the Additional Export tab, enable any other output options you want. The following are available:
+   </li>
+   <ul>
+    <li value="1">
+     <b>
+      Export Classification Statistics
+     </b>
+     saves the classification statistics to a text file. The output area units are in square meters.
+    </li>
+    <li value="2">
+     <b>
+      Export Rule Images
+     </b>
+     saves the rule images to ENVI raster format. This option is available if you performed supervised classification and you enabled the
+     <b>
+      Compute Rule Images
+     </b>
+     option in the Algorithm tab of the Supervised Classification panel.
+    </li>
+   </ul>
+   <li value="3">
+    Click
+    <b>
+     Finish
+    </b>
+    to create the output, add the new layers to the Layer Manager, and save the files to the directories you specified. When the export is complete, the workflow view closes. The original data and the export data display in the Image window view. The
+    <a href="../../NoTOCTopics/ClassLayers.htm">
+     classes
+    </a>
+    display in the Layer Manager as children of the raster.
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

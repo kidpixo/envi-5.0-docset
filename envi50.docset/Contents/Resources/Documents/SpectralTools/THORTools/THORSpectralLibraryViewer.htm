@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Spectral Tools|THOR Tools|Shared Tools" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Spectral Library Viewer
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#SpectralTools/THORTools/THORSpectralLibraryViewer.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../SpectralTools.htm">
+    Spectral Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="THORWorkflows.htm">
+    THOR Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="THORSharedTools.htm">
+    Shared Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Spectral Library Viewer
+   </span>
+  </div>
+  <h1>
+   Spectral Library Viewer
+  </h1>
+  <p>
+   Use the Spectral Library Viewer to view data from Metadata Rich Spectral Library (MRSL) files that were created in the THOR
+   <a href="THORSpectralLibraryBuilder.htm">
+    Spectral Library Builder
+   </a>
+   . MRSL files provide several advantages over
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   ’s standard spectral libraries such as the ability to store signatures with variable spectral ranges and band spacings, as well as unlimited metadata for each signature. The THOR Spectral Library Viewer is essentially identical to
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   's Spectral Library Viewer, except that it also displays metadata associated with the selected signature.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     THOR &gt; THOR Spectral Library Viewer
+    </b>
+    . The Select Spectral Library File dialog appears.
+   </li>
+   <li value="2">
+    Open a spectral library file. If you select a standard
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    spectral library (
+    <code>
+     .sli
+    </code>
+    ),
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    's Spectral Library Viewer will launch. If you select an MRSL library, THOR's Spectral Library Viewer will launch.
+   </li>
+   <p>
+    The left side of the Spectral Library Viewer dialog lists all the signatures within the selected library. The right side of the viewer uses tabs to display metadata for the selected signature (if any) and query parameters.
+   </p>
+   <li value="3">
+    To plot a signature, click on the desired signature in the list. If a plot window is not already open, a new one will be created and the signature added to it. Otherwise, the signature will be plotted in the open window. The metadata for the selected signature (if any) will appear in the Metadata tab. Clicking on a metadata cell displays its contents in the text box below the table, making it easier to read long fields.
+   </li>
+   <p>
+    <img src="../../Resources/Images/Spectral/THOR_spectral_library_viewer.gif" />
+   </p>
+   <li value="4">
+    In some cases, you may want to compare library signatures to image signatures that have different wavelength units or y-axis scaling. Enter the desired values in the
+    <b>
+     X Scale
+    </b>
+    and/or
+    <b>
+     Y Scale
+    </b>
+    boxes. The next time you select a signature from the list, these scale factors will be applied to the signature. You can then drag these signatures into a plot window displaying an image signature for direct comparison.
+   </li>
+   <li value="5">
+    It is possible to list only those signatures in the library that match certain metadata criteria. Click the Query Parameters tab to show the
+    <a href="THORTargetSignatureSelection.htm#query_library">
+     metadata query parameters
+    </a>
+    .
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

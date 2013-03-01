@@ -1,0 +1,237 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming|Routines|Display Control|ENVI Classic" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   WIDGET_SLABEL
+  </title>
+  <link href="../../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../../ENVIHelp_CSH.htm#ExtendCustomize/ENVIClassicAPI/W/WIDGET_SLABEL.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../Routines.htm">
+    Routines
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../enviPortal.htm">
+    Display Control
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    WIDGET_SLABEL
+   </span>
+  </div>
+  <h1>
+   <a name="kanchor657">
+   </a>
+   WIDGET_SLABEL
+  </h1>
+  <p>
+   <a href="#Syntax">
+    Syntax
+   </a>
+   |
+   <a href="#Arguments">
+    Arguments
+   </a>
+   |
+   <a href="#Keywords">
+    Keywords
+   </a>
+   |
+   <a href="#Widget">
+    Widget Event
+   </a>
+   |
+   <a href="#Example">
+    Example
+   </a>
+  </p>
+  <p>
+   This function returns a widget used to display a string message with scroll bars. It is essentially a multi-line label widget that cannot be auto-managed on its own. You typically combine this widget with a compound widget that is auto-managed. The function returns the base ID of the widget, and an interactive
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   session is required to run it.
+  </p>
+  <p>
+   <img src="../../../Resources/Images/ENVIClassicAPI/widget_slabel.gif" />
+  </p>
+  <h2 class="API">
+   <a name="Syntax">
+   </a>
+   Syntax
+  </h2>
+  <p>
+   <i>
+    Result
+   </i>
+   = WIDGET_SLABEL(
+   <i>
+    Base
+   </i>
+   [, /
+   <a href="#FRAME">
+    FRAME
+   </a>
+   ],
+   <a href="#PROMPT">
+    PROMPT
+   </a>
+   =
+   <i>
+    string
+   </i>
+   [,
+   <a href="#XSIZE">
+    XSIZE
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ] [,
+   <a href="#YSIZE">
+    YSIZE
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ])
+  </p>
+  <h2 class="API">
+   <a name="Arguments">
+   </a>
+   Arguments
+  </h2>
+  <h3>
+   Base
+  </h3>
+  <p>
+   This is the ID of the base widget.
+  </p>
+  <h2 class="API">
+   <a name="Keywords">
+   </a>
+   Keywords
+  </h2>
+  <h3>
+   <a name="FRAME">
+   </a>
+   FRAME (optional)
+  </h3>
+  <p>
+   Set this keyword to create a frame around the widget.
+  </p>
+  <h3>
+   <a name="PROMPT">
+   </a>
+   PROMPT
+  </h3>
+  <p>
+   Use this keyword to specify the text to display.
+  </p>
+  <h3>
+   <a name="XSIZE">
+   </a>
+   XSIZE (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the width of the widget, in characters.
+  </p>
+  <h3>
+   <a name="YSIZE">
+   </a>
+   YSIZE (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the height of the widget, in characters.
+  </p>
+  <h2 class="API">
+   <a name="Widget">
+   </a>
+   Widget Event
+  </h2>
+  <p>
+   This is a passive widget that does not generate events.
+  </p>
+  <h2 class="API">
+   <a name="Example">
+   </a>
+   Example
+  </h2>
+  <p>
+   The following example creates the widget shown in the above description.
+  </p>
+  <p class="Code">
+   base = widget_auto_base(title='WIDGET_SLABEL')
+  </p>
+  <p class="Code">
+   ws = widget_slabel(base, prompt='This is a text message.')
+  </p>
+  <p class="Code">
+   widget_control, base, /realize
+  </p>
+  <p>
+   However, instead of creating a standalone widget with a text message, you typically combine WIDGET_SLABEL with another compound widget that is auto-managed. Following is an example of combining WIDGET_SLABEL with WIDGET_STRING.
+  </p>
+  <p class="Code">
+   base = widget_auto_base(title='Edit String')
+  </p>
+  <p class="Code">
+   ws = widget_string(base, uvalue='str', /auto)
+  </p>
+  <p class="Code">
+   wss = widget_slabel(base, $
+  </p>
+  <p class="Code">
+   &#160;&#160;&#160;prompt='This is the WIDGET_SLABEL text message')
+  </p>
+  <p class="Code">
+   result = auto_wid_mng(base)
+  </p>
+  <p>
+   Following is the resulting widget:
+  </p>
+  <p>
+   <img src="../../../Resources/Images/ENVIClassicAPI/widget_slabel2.gif" />
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

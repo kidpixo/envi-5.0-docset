@@ -1,0 +1,478 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Explore Imagery|Reference" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Remote Data Sources Background
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/TableStyles/Description.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#ExploreImagery/BackgroundRemoteDataSources.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="ExploreImagery.htm">
+    Explore Imagery
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="BackgroundSupportedFileFormats.htm">
+    Reference
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Remote Data Sources Background
+   </span>
+  </div>
+  <h2>
+   Remote Data Sources Background
+  </h2>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   supports
+   <a href="#OGC">
+    OGC
+   </a>
+   ,
+   <a href="#JPEG2000">
+    JPIP Servers
+   </a>
+   , and
+   <a href="#geodatabases">
+    geodatabases
+   </a>
+   as remote data sources.
+  </p>
+  <h3>
+   <a name="OGC">
+   </a>
+   OGC
+   <a name="kanchor119">
+   </a>
+  </h3>
+  <p>
+   The
+   <a href="http://www.opengeospatial.org/">
+    Open Geospatial Consortium (OGC)
+   </a>
+   provides a variety of protocol specifications for transmitting geospatial data via the web.
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   supports two of these specifications: WMS and WCS.
+  </p>
+  <p>
+   OGC servers have several common features:
+  </p>
+  <ul>
+   <li value="1">
+    Data are sent as image files. The supported formats are JPEG 2000, JPEG, and TIFF/GeoTIFF formats. If a dataset you are querying cannot be transmitted in one of these formats, you cannot open the dataset.
+   </li>
+   <li value="2">
+    You can customize data delivery by specifying a spatial extent, interpolation type, pixel size, and map projection, which saves you from reading unwanted data for regions you are not interested in.
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    <![CDATA[ ]]>
+    can manage the details of server requests, such as downloading data tiles, deleting temporary files, and reading data.
+   </li>
+  </ul>
+  <h4>
+   <a name="WCS">
+   </a>
+   OGC WCS
+   <a name="kanchor120">
+   </a>
+  </h4>
+  <p>
+   WCS is a protocol for serving raster data that represent properties of geographic locations. WCS servers provide coverages that you can manipulate. WCS servers list datasets at one level instead of in a folder hierarchy.
+  </p>
+  <p>
+   The WCS properties you can edit are Formats, Coordinate System, Boundary (Top, Bottom, Left, and Right), Interpolation Type, and Pixel Size (X and Y).
+  </p>
+  <ul>
+   <li value="1">
+    Formats, Coordinate System, and Interpolation Type are drop-down lists containing the values provided by the server. Select the value from the drop-down list.
+   </li>
+   <li value="2">
+    Boundary and Pixel Size values are derived from the coverage data. You can manually edit these values to customize the geographic extent and resolution of the dataset to open.
+   </li>
+  </ul>
+  <h4>
+   <a name="WMS">
+   </a>
+   OGC WMS
+   <a name="kanchor121">
+   </a>
+  </h4>
+  <p>
+   WMS is a protocol for serving maps that are generated on-the-fly for display purposes only. A powerful feature of WMS servers is that you can identify multiple datasets that meet your criteria, and the server combines them into one displayable map layer. WMS servers do not specify a pixel size for a given dataset, so
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   estimates a default pixel size. WMS servers list datasets on the server in a folder hierarchy.
+  </p>
+  <p>
+   The WMS properties you can edit are Formats, Spatial Reference System, Boundary (Top, Bottom, Left, and Right), Number of Samples, Number of Lines, and Map Style.
+  </p>
+  <ul>
+   <li value="1">
+    Formats, Spatial Reference System, and Map Style are drop-down lists containing the values provided by the server. Select the value from the drop-down list.
+   </li>
+   <li value="2">
+    Boundary, Number of Samples, and Number of Lines are derived from the layer data. You can manually edit these values to customize the geographic extent and resolution of the dataset to open.
+   </li>
+  </ul>
+  <p>
+   When you select multiple WMS layers to open, the properties that appear are a subset of the properties available for a single WMS dataset. The multi-WMS properties you can edit are Formats, Spatial Reference System, Boundary (Top, Bottom, Left, and Right), Number of Samples, and Number of Lines.
+  </p>
+  <ul>
+   <li value="1">
+    Formats and Spatial Reference System drop-down lists contain all of the options common to all of the selected datasets. Select the value from the drop-down list.
+   </li>
+   <li value="2">
+    The Boundary, Number of Samples, and Number of Lines values default to value of the first dataset you selected in the Remote Connection Manager.
+   </li>
+  </ul>
+  <h4>
+   <a name="connection_keywords">
+   </a>
+   OGC&#160;Connection Keywords
+  </h4>
+  <p>
+   The OGC keywords specify details about what data to open on the server and how to open it. You specify the details by using standard keywords defined by OGC. Separate keywords from their values with an equal sign (=), and separate keyword/value pairs with an ampersand (&amp;), for example:
+   <code>
+    width=500&amp;height=500
+   </code>
+   . The following keywords are supported:
+  </p>
+  <table cellspacing="0" style="caption-side: top;mc-table-style: url('../Resources/TableStyles/Description.css');margin-left: 0;margin-right: auto;" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       Keyword
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p class="TableHead">
+       Description
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep" colspan="2">
+      <p>
+       <b>
+        WCS and WMS
+       </b>
+       keywords
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <pre>
+       bbox
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       The geographic extent (or bounding box) of the dataset. The keyword value enables you to subset the data to open from the server (for example, if the dataset contains data for the whole world and you need only data for Colorado). Enter values in the following order: minx, miny, maxx, maxy. The default is to open the entire dataset. Example:
+      </p>
+      <pre>
+       bbox=23.73,37.97,23.752,37.984
+      </pre>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <pre>
+       width
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       The number of samples in the image when it is opened. The default for WCS is to use metadata from the image. Example:
+       <code>
+        width=500
+       </code>
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <pre>
+       height
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       The number of lines in the image when it is opened. The default for WCS is to use metadata from the image. Example:
+       <code>
+        height=500
+       </code>
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <pre>
+       format
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       The format in which to transmit the data across the Internet. The format must be among the list of formats supported by the OGC server. The supported transmission formats are JPEG 2000, JPEG, and TIFF. The default is to first look for JPEG 2000 (lower transmission time). If the server does not support JPEG 2000, then it looks for any supported JPEG format, then any supported TIFF format. If the server does not support the specified format, it returns an error.
+      </p>
+      <p>
+       Example for WMS:
+       <code>
+        format=image/jpeg
+       </code>
+      </p>
+      <p>
+       Example for WCS:
+       <code>
+        format=jpg
+       </code>
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep" colspan="2">
+      <p>
+       <b>
+        WCS-only keywords
+       </b>
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <pre>
+       coverage
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Required. The name of the dataset. Example:
+       <code>
+        coverage=srtmplus_raw
+       </code>
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <pre>
+       crs
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       The coordinate reference system of the image. This keyword value must be a string that comes from the list of reference systems supported by the server. Example:
+       <code>
+        crs=EPSG:4326
+       </code>
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep" colspan="2">
+      <p>
+       <b>
+        WMS-only keywords
+       </b>
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <pre>
+       layers
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Required. The name of the layer. You can specify multiple, comma-delimited layers.
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       will allow the server to combine the WMS layers and display them as a single layer. Example:
+       <code>
+        layers=streets
+       </code>
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <pre>
+       srs
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       The spatial reference system of the image. This value must be a string that comes from the list of reference systems supported by the server. Example:
+       <code>
+        srs=EPSG:4326
+       </code>
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <pre>
+       style
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColEnd">
+      <p>
+       The display style from the server-supported style list. This specifies how to display certain features, if used (for example, display a two-pixel yellow line for roads). Example:
+       <code>
+        style=visual
+       </code>
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3>
+   <a name="JPEG2000">
+   </a>
+   JPIP and IAS Servers
+   <a name="kanchor122">
+   </a>
+  </h3>
+  <p>
+   OGC and JPIP servers support delivery of image data at different resolutions that are automatically resampled by the servers. IAS and JPIP servers send compression parameters known as wavelets, while OGC servers send actual image files. This means that
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   can read any IAS server dataset.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   To view datasets from IAS and JPIP servers, you need a server that uses the ISO/IEC 15444-9 JPEG 2000 standard (JPEG 2000 Internet Protocol). IAS 3.x and higher provides support for this version of the standard.
+  </p>
+  <h4>
+   JPIP
+  </h4>
+  <p>
+   JPIP is a client-server protocol used to serve JPEG 2000 compressed imagery (
+   <code>
+    .jp2
+   </code>
+   ,
+   <code>
+    .j2c
+   </code>
+   , and
+   <code>
+    .jpx
+   </code>
+   ). The following is an example:
+  </p>
+  <pre xml:space="preserve">
+   jpip://exampleserver:1234/file.jp2
+  </pre>
+  <p>
+   If a dataset from a JPIP server contains map information, it is stored in the file header using a GeoJP2A protocol.
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   will attempt to read and import map information and apply it to the input file whenever possible. Raw JPIP servers cannot display properties for editing.
+  </p>
+  <h4>
+   <a name="IAS">
+   </a>
+   IAS
+   <a name="kanchor123">
+   </a>
+  </h4>
+  <p>
+   The IAS product, available from
+   <span class="DocumentTitleCompanyName">
+    Exelis
+   </span>
+   , provides a server that streams JPEG 2000 and NITF 2.1 C8 compressed imagery using the JPIP protocol for display and analysis. IAS supports full JPIP streaming capabilities, plus it provides a directory listing service, NITF support, and a tool to convert any image file to JPEG 2000 or NITF 2.1 C8 formats.
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   does not support opening CMYK compressed JPEG 2000 files using an IAS server.
+  </p>
+  <p>
+   All properties from IAS servers are read-only.  The JPEG 2000 compression properties that are always available for viewing are Number of Layers, Number of Components, Number of Discard Levels, Progression, Number of Tiles, Bit Depth, and flags to indicate if the data are reversibly compressed, YCC rotated, or signed.
+  </p>
+  <ul>
+   <li value="1">
+    If XML boxes or UUID boxes are present in the dataset, you can select from their respective drop-down lists to view them in a separate window.
+   </li>
+   <li value="2">
+    If NITF metadata is present in one of the XML boxes, the NITF metadata is imported if the file is opened, but only the XML data are accessible in the Remote Connection Manager’s Properties List.
+   </li>
+   <li value="3">
+    If a GeoJP2 style UUID box is present, the map information is extracted and the following fields are added to the properties listing: Projection, Top Boundary, Left Boundary, X Pixel Size, and Y Pixel Size.
+   </li>
+  </ul>
+  <h3>
+   <a name="geodatabases">
+   </a>
+   Geodatabases
+   <a name="kanchor124">
+   </a>
+  </h3>
+  <p>
+   The ArcGIS geodatabase is a data storage mechanism that allows for many types and sources of geographic data, both raster and vector, to be supported in a consistent manner.
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   supports reading and writing to personal geodatabases (in Microsoft Access
+   <code>
+    .mdb
+   </code>
+   format), file geodatabases, and enterprise geodatabases. Properties are not available for editing.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

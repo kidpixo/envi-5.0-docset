@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Check Coregistration Accuracy
+  </title>
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#SpectralTools/THORTools/THORCheckingCoregistrationAccuracy.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <h1>
+   Check Coregistration Accuracy
+  </h1>
+  <p>
+   When warping is complete, check the accuracy of the coregistration.
+  </p>
+  <ol>
+   <li value="1">
+    Roam around the dynamically linked images and check the accuracy of the coregistration. When flickering between the images, there should be little shift between features. If there is a shift, it could be due to several reasons:
+    <ul>
+     <li value="1">
+      <b>
+       Inaccurate Tie Points:
+      </b>
+      Inaccurate tie points cause poor coregistration. In this case, re-review tie points for accuracy. Add more if needed.
+     </li>
+     <li value="2">
+      <b>
+       Elevated Features:
+      </b>
+      Because of parallax caused by collection with different view geometries (even for panchromatic and multispectral images collected “simultaneously”), objects with height above the ground “lean” in different directions on the two images. In this case, coregistration is impossible to achieve. The taller the object, the greater the degree of error.
+     </li>
+     <li value="3">
+      <b>
+       Topography:
+      </b>
+      Topography and elevated features are related. Topography viewed from different directions “leans” different ways in the images, and is therefore difficult to impossible to coregister. You can use triangulation as the warping method to partially mitigate parallax in images with topography to create a better coregistration. However, to properly coregister an image with topography, you must orthorectify the images first using detailed digital elevation models, which is beyond the scope of THOR. When flickering between the images, if the image appears to shift in different directions in different areas, the cause is most likely topography. The only solution in THOR is to coregister small areas that do not include much variable topography.
+     </li>
+    </ul>
+   </li>
+   <li value="2">
+    If you are performing coregistration for the Change Detection - Subtractive tool, additional parameters for
+    <b>
+     Radiometric Processing
+    </b>
+    appear. The two images collected at different times will have different radiometric (brightness) properties because of different atmospheric conditions, solar elevation and azimuth differences, and so forth. Removing these radiometric differences allows the subsequent processing to focus on relevant changes instead of irrelevant atmospheric and solar changes. Select one or both of the following:
+    <ul>
+     <li value="1">
+      <b>
+       Perform dark object subtraction:
+      </b>
+      Performs a basic haze correction for atmospheric effects.
+     </li>
+     <li value="2">
+      <b>
+       Perform radiometric normalization:
+      </b>
+      Balances the overall brightness (band-by-band) between the two collections.
+     </li>
+    </ul>
+   </li>
+   <li value="3">
+    When coregistration accuracy is confirmed, click
+    <b>
+     Next
+    </b>
+    .
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

@@ -1,0 +1,806 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Filters" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Adaptive Filters
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#FilterTools/AdaptiveFilters.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="Filters.htm">
+    Filters
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Adaptive Filters
+   </span>
+  </div>
+  <h1>
+   Adaptive Filters
+   <a name="kanchor345">
+   </a>
+  </h1>
+  <p>
+   Adaptive filtering uses the standard deviation of those pixels within a local box surrounding each pixel to calculate a new pixel value. Typically, the original pixel value is replaced with a new value calculated based on the surrounding valid pixels (those that satisfy the standard deviation criteria). Unlike a typical low-pass smoothing filter, the adaptive filters preserve image sharpness and detail while suppressing noise.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   These filters may be slow to process.
+  </p>
+  <p>
+   See the following sections:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#Lee">
+     Lee Filters
+    </a>
+   </li>
+   <li value="2">
+    <a href="#Enhanced">
+     Enhanced Lee Filters
+    </a>
+   </li>
+   <li value="3">
+    <a href="#Frost">
+     Frost Filters
+    </a>
+   </li>
+   <li value="4">
+    <a href="#Enhanced2">
+     Enhanced Frost Filters
+    </a>
+   </li>
+   <li value="5">
+    <a href="#Gamma">
+     Gamma Filters
+    </a>
+   </li>
+   <li value="6">
+    <a href="#Kuan">
+     Kuan Filters
+    </a>
+   </li>
+   <li value="7">
+    <a href="#Local">
+     Local Sigma Filters
+    </a>
+   </li>
+   <li value="8">
+    <a href="#Bit">
+     Bit Error Filters
+    </a>
+   </li>
+  </ul>
+  <h2>
+   <a name="Lee">
+   </a>
+   Lee Filter
+   <a name="kanchor346">
+   </a>
+   s
+  </h2>
+  <p>
+   Use
+   <b>
+    Lee
+   </b>
+   filters to smooth noisy (speckled) data that have an intensity related to the image scene and that also have an additive and/or multiplicative component. Lee filtering is a standard deviation based (sigma) filter that filters data based on statistics calculated within individual filter windows. Unlike a typical low-pass smoothing filter, the Lee filter and other similar sigma filters preserve image sharpness and detail while suppressing noise. The pixel being filtered is replaced by a value calculated using the surrounding pixels.
+  </p>
+  <p>
+   <b>
+    Reference
+   </b>
+  </p>
+  <p>
+   Lee, Jong-Sen, “Digital Image Enhancement and Noise Filtering by Use of Local Statistics,”
+   <i>
+    IEEE Transactions on Pattern Analysis and Machine Intelligence
+   </i>
+   , Vol PAMI-2, No.2, March 1980, pp. 165-168.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Filter &gt; Lee Filter
+    </b>
+    .
+   </li>
+   <li value="2">
+    Select an input file and perform optional spatial and spectral
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The Lee Filter Parameters dialog appears.
+   </li>
+   <li value="3">
+    Enter the
+    <b>
+     Filter Size
+    </b>
+    .
+   </li>
+   <li value="4">
+    Select the
+    <b>
+     Noise
+    </b>
+    model from the drop-down list. The choices are:
+    <b>
+     Additive
+    </b>
+    ,
+    <b>
+     Multiplicative
+    </b>
+    , or
+    <b>
+     Both
+    </b>
+    . Typically, speckle in radar images is multiplicative.
+   </li>
+   <li value="5">
+    To change the
+    <b>
+     Additive Noise Mean
+    </b>
+    and
+    <b>
+     Multiplicative Noise Mean
+    </b>
+    default values of 0.0 and 1.0, respectively (the typical noise means), enter values in the appropriate fields. Larger noise mean values will produce less smoothing.
+   </li>
+   <li value="6">
+    To change the
+    <b>
+     Noise Variance
+    </b>
+    value, enter a new value in the field. The
+    <b>
+     Noise Variance
+    </b>
+    parameter is set to the additive noise variance when
+    <b>
+     Additive
+    </b>
+    and
+    <b>
+     Both
+    </b>
+    noise models are chosen. It is set to the multiplicative noise when the
+    <b>
+     Multiplicative
+    </b>
+    noise model is chosen.
+   </li>
+   <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+    <span class="autonumber">
+     <span>
+      <b>
+       Note:
+      </b>
+     </span>
+    </span>
+    To estimate the noise variance, calculate the data variance over a flat area, such as a lake or smooth playa, in the image. For multiplicative noise in radar data, estimate the noise variance by 1/(number of looks).
+   </p>
+  </ol>
+  <h2>
+   <a name="Enhanced">
+   </a>
+   Enhanced Lee Filters
+  </h2>
+  <p>
+   Use
+   <b>
+    Enhanced Lee
+   </b>
+   filters to reduce speckle in radar imagery while simultaneously preserving texture information. The Enhanced Lee filter is an adaptation of the Lee filter and similarly uses local statistics (coefficient of variation) within individual filter windows. Each pixel is put into one of three classes, which are treated as follows:
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     Homogeneous
+    </b>
+    : The pixel value is replaced by the average of the filter window.
+   </li>
+   <li value="2">
+    <b>
+     Heterogeneous
+    </b>
+    : The pixel value is replaced by a weighted average.
+   </li>
+   <li value="3">
+    <b>
+     Point target
+    </b>
+    : The pixel value is not changed.
+   </li>
+  </ul>
+  <p>
+   <b>
+    Reference
+   </b>
+   <![CDATA[ ]]>
+  </p>
+  <p>
+   Lopes, A., R. Touzi, and E. Nezry, 1990. “Adaptive Speckle Filters and Scene Heterogeneity,” IEEE Transactions on Geoscience and Remote Sensing, Vol. 28, No. 6, pp. 992-1000.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Filter &gt; Enhanced Lee Filter
+    </b>
+    .
+   </li>
+   <li value="2">
+    Select an input file and perform optional spatial and spectral
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The Enhanced Lee Filter Parameters dialog appears.
+   </li>
+   <li value="3">
+    Enter the filter size in the
+    <b>
+     Filter Size
+    </b>
+    field.
+   </li>
+   <li value="4">
+    Enter a
+    <b>
+     Damping Factor
+    </b>
+    that inversely defines the extent of the exponential damping in the weighted average for the heterogeneous class. A larger damping factor produces less averaging.
+   </li>
+   <li value="5">
+    Enter values that define the class cutoffs for the homogeneous (coefficient of variation
+    <span class="'SymbolProp BT'">
+     £
+    </span>
+    C
+    <span class="_Override" style="font-size: 80%;vertical-align: sub;">
+     u
+    </span>
+    ), heterogeneous (C
+    <span class="_Override" style="font-size: 80%;vertical-align: sub;">
+     u
+    </span>
+    &lt; coefficient of variation &lt; C
+    <span class="_Override" style="font-size: 80%;vertical-align: sub;">
+     max
+    </span>
+    ), and point target (coefficient of variation
+    <span class="'SymbolProp BT'">
+     ³
+    </span>
+    C
+    <span class="_Override" style="font-size: 80%;vertical-align: sub;">
+     max
+    </span>
+    ) classes.
+   </li>
+   <p>
+    Estimate the cutoff values based on the number of looks (L) of the radar image.
+   </p>
+   <p>
+    <img src="../Resources/Images/Filters/enhanced_lee_filter.jpg" />
+   </p>
+  </ol>
+  <h2>
+   <a name="Frost">
+   </a>
+   Frost Filters
+   <a name="kanchor347">
+   </a>
+  </h2>
+  <p>
+   Use
+   <b>
+    Frost
+   </b>
+   filters to reduce speckle while preserving edges in radar images. The Frost filter is an exponentially damped circularly symmetric filter that uses local statistics. The pixel being filtered is replaced with a value calculated based on the distance from the filter center, the damping factor, and the local variance.
+  </p>
+  <p>
+   <b>
+    Reference
+   </b>
+   <![CDATA[ ]]>
+  </p>
+  <p>
+   Zhenghao Shi and Ko B. Fung, “A Comparison of Digital Speckle Filters,”
+   <i>
+    Proceedings of IGARSS 94
+   </i>
+   , August 8-12, 1994, pp. 2129-2133.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Filter &gt; Frost Filter
+    </b>
+    .
+   </li>
+   <li value="2">
+    Select an input file and perform optional spatial and spectral
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The Frost Filter Parameters dialog appears.
+   </li>
+   <li value="3">
+    Enter the
+    <b>
+     Filter Size
+    </b>
+    .
+   </li>
+   <li value="4">
+    Enter the value in the
+    <b>
+     Damping Factor
+    </b>
+    field. The damping factor determines the amount of exponential damping and the default value of 1 is sufficient for most radar images. Larger damping values preserve edges better but smooth less, and smaller values smooth more. A damping value of 0 results in the same output as a low pass filter.
+   </li>
+  </ol>
+  <h2>
+   <a name="Enhanced2">
+   </a>
+   Enhanced Frost Filters
+  </h2>
+  <p>
+   Use
+   <b>
+    Enhanced Frost
+   </b>
+   filters to reduce speckle in radar imagery while simultaneously preserving texture information. The Enhanced Frost filter is an adaptation of the Frost filter and similarly uses local statistics (coefficient of variation) within individual filter windows. Each pixel is put into one of three classes, which are treated as follows:
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     Homogeneous
+    </b>
+    : The pixel value is replaced by the average of the filter window.
+   </li>
+   <li value="2">
+    <b>
+     Heterogeneous
+    </b>
+    : An impulse response is used as a convolution kernel to determine the pixel value.
+   </li>
+   <li value="3">
+    <b>
+     Point target
+    </b>
+    : The pixel value is not changed.
+   </li>
+  </ul>
+  <p>
+   <b>
+    Reference
+   </b>
+   <![CDATA[ ]]>
+  </p>
+  <p>
+   Lopes, A., R. Touzi, and E. Nezry, 1990. “Adaptive Speckle Filters and Scene Heterogeneity,” IEEE Transactions on Geoscience and Remote Sensing, Vol. 28, No. 6, pp. 992-1000.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Filter &gt; Enhanced Frost Filter
+    </b>
+    .
+   </li>
+   <li value="2">
+    Select an input file and perform optional spatial and spectral
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+   <li value="3">
+    Enter the filter size in the
+    <b>
+     Filter Size
+    </b>
+    field.
+   </li>
+   <li value="4">
+    Enter a
+    <b>
+     Damping Factor
+    </b>
+    that inversely defines the extent of the exponential damping in the weighted average for the heterogeneous class. A larger damping factor produces less averaging.
+   </li>
+   <li value="5">
+    Enter values that define the class cutoffs for the homogeneous (coefficient of variation
+    <span class="'SymbolProp BT'">
+     £
+    </span>
+    C
+    <span class="_Override" style="font-size: 80%;vertical-align: sub;">
+     u
+    </span>
+    ), heterogeneous (C
+    <span class="_Override" style="font-size: 80%;vertical-align: sub;">
+     u
+    </span>
+    &lt; coefficient of variation &lt; C
+    <span class="_Override" style="font-size: 80%;vertical-align: sub;">
+     max
+    </span>
+    ), and point target (coefficient of variation
+    <span class="'SymbolProp BT'">
+     ³
+    </span>
+    C
+    <span class="_Override" style="font-size: 80%;vertical-align: sub;">
+     max
+    </span>
+    ) classes.
+   </li>
+   <p>
+    Estimate the cutoff values based on the number of looks (L) of the radar image.
+   </p>
+   <p>
+    <img src="../Resources/Images/Filters/enhanced_frost_filter.jpg" />
+   </p>
+  </ol>
+  <h2>
+   <a name="Gamma">
+   </a>
+   Gamma Filters
+   <a name="kanchor348">
+   </a>
+  </h2>
+  <p>
+   Use
+   <b>
+    Gamma
+   </b>
+   filters to reduce speckle while preserving edges in radar images. The Gamma filter is similar to the Kuan filter but assumes that the data is gamma distributed. The pixel being filtered is replaced with a value calculated based on the local statistics.
+  </p>
+  <p>
+   <b>
+    Reference
+   </b>
+   <![CDATA[ ]]>
+  </p>
+  <p>
+   Zhenghao Shi and Ko B. Fung, “A Comparison of Digital Speckle Filters,”
+   <i>
+    Proceedings of IGRASS 94
+   </i>
+   , August 8-12, 1994, pp. 2129-2133.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Filter &gt; Gamma Filter
+    </b>
+    .
+   </li>
+   <li value="2">
+    Select an input file and perform optional spatial and spectral
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The Gamma Filter Parameters dialog appears.
+   </li>
+   <li value="3">
+    Enter the
+    <b>
+     Filter Size
+    </b>
+    .
+   </li>
+   <li value="4">
+    Enter the
+    <b>
+     Number of Looks
+    </b>
+    in the field provided.
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    uses the
+    <b>
+     Number of Looks
+    </b>
+    parameter to calculate the noise variance by 1/(number of looks).
+   </li>
+  </ol>
+  <h2>
+   <a name="Kuan">
+   </a>
+   Kuan Filters
+   <a name="kanchor349">
+   </a>
+  </h2>
+  <p>
+   Use
+   <b>
+    Kuan
+   </b>
+   filters to reduce speckle while preserving edges in radar images. It transforms the multiplicative noise model into an additive noise model. This filter is similar to the Lee filter but uses a different weighting function. The pixel being filtered is replaced with a value calculated based on the local statistics.
+  </p>
+  <p>
+   <b>
+    Reference
+   </b>
+   <![CDATA[ ]]>
+  </p>
+  <p>
+   Zhenghao Shi and Ko B. Fung, “A Comparison of Digital Speckle Filters,”
+   <i>
+    Proceedings of IGARSS 94
+   </i>
+   , August 8-12, 1994, pp. 2129-2133.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Filter &gt; Kuan Filter
+    </b>
+    .
+   </li>
+   <li value="2">
+    Select an input file and perform optional spatial and spectral
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The Kuan Filter Parameters dialog appears.
+   </li>
+   <li value="3">
+    Enter the
+    <b>
+     Filter Size
+    </b>
+    .
+   </li>
+   <li value="4">
+    Enter the
+    <b>
+     Number of Looks
+    </b>
+    in the appropriate field. The
+    <b>
+     Number of Looks
+    </b>
+    parameter is used to calculate the noise variance by 1/(number of looks).
+   </li>
+  </ol>
+  <h2>
+   <a name="Local">
+   </a>
+   Local Sigma Filters
+   <a name="kanchor350">
+   </a>
+  </h2>
+  <p>
+   Use
+   <b>
+    Local Sigma
+   </b>
+   filters to preserve fine detail (even in low contrast areas) and to reduce speckle significantly. The Local Sigma filter uses the local standard deviation computed for the filter box to determine valid pixels within the filter window. It replaces the pixel being filtered with the mean calculated using only the valid pixels within the filter box.
+  </p>
+  <p>
+   <b>
+    Reference
+   </b>
+   <![CDATA[ ]]>
+  </p>
+  <p>
+   Eliason, Eric M. and McEwen, Alfred S., “Adaptive Box Filters for Removal of Random Noise from Digital Images,”
+   <i>
+    Photogrammetric Engineering &amp; Remote Sensing
+   </i>
+   , April, 1990, V56 No. 4, p. 453.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Filter &gt; Local Sigma Filter
+    </b>
+    .
+   </li>
+   <li value="2">
+    Select an input file and perform optional spatial and spectral
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The Localized Sigma Filter Parameters dialog appears.
+   </li>
+   <li value="3">
+    Enter the filter size in pixels.
+   </li>
+   <li value="4">
+    Enter the number of standard deviations to consider valid in the
+    <b>
+     Sigma Factor
+    </b>
+    field.
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    uses the
+    <b>
+     Sigma Factor
+    </b>
+    to determine which pixels are valid by calculating a minimum and maximum pixel value based on the number of standard deviations (sigma) entered and the local statistics.
+   </li>
+   <p>
+    The pixel being filtered will be replaced by the average of surrounding valid pixels.
+   </p>
+  </ol>
+  <h2>
+   <a name="Bit">
+   </a>
+   Bit Error Filters
+   <a name="kanchor351">
+   </a>
+  </h2>
+  <p>
+   Use
+   <b>
+    Bit Error
+   </b>
+   filters to remove bit-error noise, which is usually the result of spikes in the data caused by isolated pixels that have extreme values unrelated to the image scene. The noise typically gives the image a salt-and-pepper appearance. Bit-error removal in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   uses an adaptive algorithm to replace spike pixels with the average of neighboring pixels. The local statistics (mean and standard deviation) within the filter box are used to set a threshold for valid pixels.
+  </p>
+  <p>
+   <b>
+    Reference
+   </b>
+   <![CDATA[ ]]>
+  </p>
+  <p>
+   Eliason, Eric M. and McEwen, Alfred S., “Adaptive Box Filters for Removal of Random Noise from Digital Images,”
+   <i>
+    Photogrammetric Engineering &amp; Remote Sensing
+   </i>
+   , April, 1990, V56 No. 4, p. 453.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Filter &gt; Bit Errors Filter
+    </b>
+    .
+   </li>
+   <li value="2">
+    Select an input file and perform optional spatial and spectral
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The Bit Error Removal Parameters dialog appears.
+   </li>
+   <li value="3">
+    Enter the
+    <b>
+     Filter Size
+    </b>
+    in pixels.
+   </li>
+   <li value="4">
+    Enter a
+    <b>
+     Sigma Factor
+    </b>
+    for the number of standard deviations to use for determining valid pixels.
+   </li>
+   <li value="5">
+    Enter a
+    <b>
+     Tolerance
+    </b>
+    (in data values). Pixels are only considered bad if they have a value greater than the tolerance. A pixel is classified as a bit error when the pixel value minus the filter box mean is greater than the
+    <b>
+     Sigma Factor
+    </b>
+    times the localized standard deviation and greater than the tolerance. The bad pixels will be replaced by the average of surrounding valid pixels by default.
+   </li>
+   <li value="6">
+    To set bad pixels to zero instead of replacing them with an average, click
+    <b>
+     Yes
+    </b>
+    for
+    <b>
+     Zero Bit Errors?
+    </b>
+    .
+   </li>
+   <li value="7">
+    Optionally, enter the minimum and maximum values to consider as valid data for the mean determination in the
+    <b>
+     Valid Data Min
+    </b>
+    and
+    <b>
+     Valid Data Max
+    </b>
+    fields.
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

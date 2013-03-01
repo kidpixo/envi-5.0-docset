@@ -1,0 +1,315 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Spectral Tools" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   SMACC
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#SpectralTools/SMACC.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="SpectralTools.htm">
+    Spectral Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    SMACC
+   </span>
+  </div>
+  <h1>
+   SMACC
+   <a name="kanchor401">
+   </a>
+  </h1>
+  <p>
+   The
+   <b>
+    Sequential Maximum Angle Convex Cone (SMACC)
+   </b>
+   spectral tool finds spectral endmembers and their abundances throughout an image. This tool is designed for use with previously calibrated hyperspectral data. In comparison to ENVI’s Spectral Hourglass Wizard, SMACC provides a faster and more automated method for finding spectral endmembers, but it is more approximate and yields less precision.
+  </p>
+  <p>
+   Endmembers are spectra that are chosen to represent pure surface materials in a spectral image. Endmembers that represent radiance or reflectance spectra must satisfy a positivity constraint (containing no values less than zero). Other physically-based constraints may be imposed, such as a sum-to-unity constraint (the pixels are weighted mixtures of the endmembers) or a sum-to-unity or less constraint (the pixels are weighted mixtures of the endmembers plus black). If the hyperspectral data are calibrated to either radiance or thermal IR emissivity, you should use a sum-to-unity unmixing constraint. If the data are calibrated to reflectance, you should use either a positivity only or sum-to-unity or less constraint. SMACC allows you to select of any of these constraints.
+  </p>
+  <p>
+   SMACC uses a convex cone model (also known as Residual Minimization) with these constraints to identify image endmember spectra. Extreme points are used to determine a convex cone, which defines the first endmember. A constrained oblique projection is then applied to the existing cone to derive the next endmember. The cone is increased to include the new endmember. The process is repeated until a projection derives an endmember that already exists within the convex cone (to a specified tolerance) or until the specified number of endmembers are found.
+  </p>
+  <p>
+   In other words, SMACC first finds the brightest pixel in the image, then it finds the pixel most different from the brightest. Then, it finds the pixel most different from the first two. The process is repeated until SMACC finds a pixel already accounted for in the group of the previously found pixels, or until it finds a specified number of endmembers. The spectra of pixels that SMACC finds become the endmembers of the resulting spectral library.
+  </p>
+  <p>
+   Unlike convex methods that rely on a simplex analysis, the number of endmembers is not restricted by the number of spectral channels. Although endmembers derived from SMACC are unique, a one-to-one correspondence does not exist between the number of materials in an image and the number of endmembers. SMACC derives endmembers from pixels in an image. Each pixel may contain only one material or it may contain a high percentage of a single material with unique combinations of other materials. Each material identified in an image is described by a subset spanning its spectral variability. SMACC provides an endmember basis that defines each of these material subsets. SMACC also provides abundance images to determine the fractions of the total spectrally integrated radiance or reflectance of a pixel contributed by each resulting endmember.
+  </p>
+  <p>
+   Mathematically, SMACC uses the following convex cone expansion for each pixel spectrum (endmember), defined as
+   <i>
+    H
+   </i>
+   :
+  </p>
+  <p>
+   <img src="../Resources/Images/Spectral/convex_cone_equation.jpg" />
+  </p>
+  <p>
+   where:
+  </p>
+  <p class="indent">
+   <i>
+    i
+   </i>
+   is the pixel index
+  </p>
+  <p class="indent">
+   <i>
+    j
+   </i>
+   and
+   <i>
+    k
+   </i>
+   are the endmember indices from 1 to the expansion length,
+   <i>
+    N
+   </i>
+  </p>
+  <p class="indent">
+   <i>
+    R
+   </i>
+   is a matrix that contains the endmember spectra as columns
+  </p>
+  <p class="indent">
+   <i>
+    c
+   </i>
+   is the spectral channel index
+  </p>
+  <p class="indent">
+   <i>
+    A
+   </i>
+   is a matrix that contains the fractional contribution (abundance) of each endmember
+   <i>
+    j
+   </i>
+   in each endmember
+   <i>
+    k
+   </i>
+   for each pixel
+  </p>
+  <p>
+   The 2D matrix representation of a spectral image is factored into a convex 2D basis (a span of a vector space) times a matrix of positive coefficients. In the image matrix (
+   <i>
+    R
+   </i>
+   ), the row elements represent individual pixels, and each column represents the spectrum of that pixel. The coefficients in
+   <i>
+    A
+   </i>
+   are the fractional contributions or abundances of the basis members of the original matrix. The basis forms an
+   <i>
+    n
+   </i>
+   -D convex cone within its subset. The convex cone of the data is the set of all positive linear combinations of the data vectors, while the convex hull is the set of all weighted averages of the data. The factor matrices are then determined sequentially. At each step, a new convex cone is formed by adding the selected vector from the original matrix that lies furthest from the cone defined by the existing basis.
+  </p>
+  <p>
+   <b>
+    Reference
+   </b>
+   <![CDATA[ ]]>
+  </p>
+  <p>
+   Gruninger, J, A. J. Ratkowski and M. L. Hoke. “The Sequential Maximum Angle Convex Cone (SMACC) Endmember Model”.
+   <i>
+    Proceedings SPIE
+   </i>
+   , Algorithms for Multispectral and Hyper-spectral and Ultraspectral Imagery, Vol. 5425-1, Orlando FL, April, 2004.
+  </p>
+  <h2>
+   Use the SMACC&#160;Spectral Tool
+  </h2>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Spectral &gt; SMACC Endmember Extraction
+    </b>
+    . The Select Input Image dialog appears.
+   </li>
+   <li value="2">
+    Select an input file.
+   </li>
+   <li value="3">
+    Select
+    <b>
+     OK
+    </b>
+    . The SMACC Endmember Extraction Parameters dialog appears.
+   </li>
+   <li value="4">
+    Enter the
+    <b>
+     Number of Endmembers
+    </b>
+    . This field specifies the number of endmembers to extract from the image. Only positive integers are allowed. The default value is 30.
+   </li>
+   <li value="5">
+    Enter an
+    <b>
+     RMS Error Tolerance
+    </b>
+    . This value specifies the unmixing RMS error tolerance. If set, the SMACC process exits as soon as the RMS error reaches this value. It exits regardless of whether or not it reaches the specified number of endmembers. The recommended starting value is 0.01 for reflectance data and 1.0 for radiance data. The default value is 0.0, which returns all of the requested endmembers. You should consider data units when choosing the tolerance. For example, RMS errors for reflectance should be lower than for most radiance units.
+   </li>
+   <li value="6">
+    Choose an option for
+    <b>
+     Unmixing Constraint for Endmember Abundances
+    </b>
+    .
+   </li>
+   <ul>
+    <li value="1">
+     <b>
+      Positivity Only
+     </b>
+     (default): This option constrains the endmember spectra to positive values for any wavelength. This option is typically used for images corrected to reflectance because a negative reflectance value has no physical meaning. This is the best constraint for unmixing reflectance spectra under conditions of variable illumination.
+    </li>
+    <li value="2">
+     <b>
+      Sum to Unity or Less
+     </b>
+     : This option constrains the sum of the fractions of each material calculated for each pixel to be one or less. With this constraint, a pixel cannot be more than 100% filled. Use this constraint when you want a strict physical interpretation of material and shadow fractions of the abundances of reflectance data. If you select this constraint, the output abundance cube contains
+     <i>
+      number of endmembers
+     </i>
+     +1 bands. The first resulting band is defined as Shadow Abundance.
+    </li>
+    <li value="3">
+     <b>
+      Sum to Unity
+     </b>
+     : This option constrains the sum of the fractions calculated for each pixel to equal 100%. This constraint fills every pixel to 100%. Use this constraint when a zero endmember is not physically plausible or when you want to find very dark endmembers, such as shadow endmembers. This option is recommended for unmixing spectra such as radiance or thermal IR emissivity.
+    </li>
+   </ul>
+   <li value="7">
+    Select or deselect
+    <b>
+     Coalesce Redundant Endmembers
+    </b>
+    . This option coalesces any endmembers that are within the specified spectral angle mapper threshold (
+    <b>
+     SAM Coalesce Value
+    </b>
+    ) into one endmember. The most extreme spectra are identified and used to represent the entire coalesced group of endmembers. You should not select this option if you are trying to distinguish spectrally similar materials. If you select this option, you must enter a
+    <b>
+     SAM Coalesce Value
+    </b>
+    , which is a threshold value for spectral similarity. The default value is 0.100000.
+   </li>
+   <li value="8">
+    Enter an output filename for
+    <b>
+     Endmember Location ROIs
+    </b>
+    . SMACC generates an ROI file with a single region corresponding to the location of each endmember pixel.
+   </li>
+   <li value="9">
+    Optionally output the
+    <b>
+     Abundance Image
+    </b>
+    to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    . If you choose
+    <b>
+     File
+    </b>
+    and enter an output filename, the resulting file is generated with a band for each endmember. If you selected the
+    <b>
+     Sum to Unity or Less
+    </b>
+    option, the first band corresponds to the shadow endmember. Generating abundance images is optional. If you choose
+    <b>
+     File
+    </b>
+    but do not enter an output filename, abundance images are not generated.
+   </li>
+   <li value="10">
+    Under
+    <b>
+     Select Output Spectral Library
+    </b>
+    , choose output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="11">
+    Click
+    <b>
+     OK
+    </b>
+    in the SMACC Endmember Extraction Parameters dialog to start the SMACC process.
+   </li>
+  </ol>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   adds the resulting output to the Layer Manager. Additionally, two
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   plot windows appear:
+  </p>
+  <ul>
+   <li value="1">
+    Maximum Relative Error Plot: This plot contains the RMS error of each respective endmember.
+   </li>
+   <li value="2">
+    Endmembers Spectral Library Plot: This plot shows the spectral signature of each of the endmembers resulting from the SMACC Endmember Extraction process. You can save this collection of endmember spectra as a spectral library, which you can then use in other spectral analyses.
+   </li>
+  </ul>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

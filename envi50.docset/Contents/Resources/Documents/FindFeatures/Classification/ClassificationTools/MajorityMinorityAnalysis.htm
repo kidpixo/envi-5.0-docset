@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Classification|Classification Tools|Post Classification" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Majority/Minority Analysis
+  </title>
+  <link href="../../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../../ENVIHelp_CSH.htm#FindFeatures/Classification/ClassificationTools/MajorityMinorityAnalysis.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../ClassificationMain.htm">
+    Classification
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="ClassificationTools.htm">
+    Classification Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="ClassifyingFromRuleImages.htm">
+    Post Classification
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Majority/Minority Analysis
+   </span>
+  </div>
+  <h1>
+   Majority/Minority Analysis
+   <a name="kanchor306">
+   </a>
+  </h1>
+  <p>
+   Use
+   <b>
+    Majority/Minority Analysis
+   </b>
+   to apply majority or minority analysis to a classification image. Use majority analysis to change spurious pixels within a large single class to that class. You enter a kernel size and the center pixel in the kernel will be replaced with the class value that the majority of the pixels in the kernel has. If you select Minority analysis, then the center pixel in the kernel will be replaced with the class value that the minority of the pixels in the kernel has.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Classification &gt; Post Classification &gt; Majority/Minority Analysis
+    </b>
+    . The Classification Input File dialog appears.
+   </li>
+   <li value="2">
+    Select the classification input file and any optional spatial and spectral
+    <a href="../../../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The Majority/Minority Parameters dialog appears.
+   </li>
+   <li value="3">
+    <p>
+     In the list of classes, select the classes that you want to apply the analysis to.
+    </p>
+    <p>
+     If the center pixel is from a class that you did not select in the
+     <b>
+      Select Classes
+     </b>
+     list,
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     does not change that pixel. However, if the unselected class is the majority class in the kernel,
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     can change center pixels of selected classes into an unselected class.
+    </p>
+   </li>
+   <li value="4">
+    Select the analysis method, by clicking the corresponding toggle button.
+   </li>
+   <li value="5">
+    <p>
+     Enter a kernel size. Kernel sizes are odd and the kernels do not have to be square. Larger kernel sizes produce more smoothing of the classification image.
+    </p>
+    <p>
+     If you select
+     <b>
+      Majority
+     </b>
+     analysis, enter the
+     <b>
+      Center Pixel Weight
+     </b>
+     . The center pixel weight is the weight used to determine how many times the class of the center pixel is counted when determining which class is in the majority. For example, if you enter a weight of 1,
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     will count the center pixel class only one time; if you enter 5,
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     will count the center pixel class five times.
+    </p>
+   </li>
+   <li value="6">
+    Select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="7">
+    Click
+    <b>
+     OK
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds the resulting output to the Layer Manager.
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

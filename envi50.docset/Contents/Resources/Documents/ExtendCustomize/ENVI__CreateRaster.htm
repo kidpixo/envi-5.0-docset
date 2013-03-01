@@ -1,0 +1,712 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming|Routines|Application Control|ENVI function" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   ENVI::CreateRaster
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/TableStyles/VersionTable.css" rel="stylesheet" />
+  <link href="../Resources/TableStyles/Description.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#ExtendCustomize/ENVI__CreateRaster.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="Routines.htm">
+    Routines
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="ENVI.htm">
+    Application Control
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    ENVI::CreateRaster
+   </span>
+  </div>
+  <h1 class="ObjMethod">
+   <a name="ENVI::Cr">
+   </a>
+   ENVI::CreateRaster
+  </h1>
+  <p>
+   The
+   <a name="kanchor478">
+   </a>
+   CreateRaster function method creates a new
+   <a href="enviRaster.htm">
+    ENVIRaster
+   </a>
+   that is ready for writing to a file. See
+   <a href="enviRaster__SetData.htm">
+    ENVIRaster::SetData
+   </a>
+   and
+   <a href="enviRaster__SetTile.htm">
+    ENVIRaster::SetTile
+   </a>
+   for additional ways to provide data to the new ENVIRaster.
+  </p>
+  <h2 class="API">
+   Example
+  </h2>
+  <p class="Code">
+   ; Launch the application
+  </p>
+  <p class="Code">
+   e = ENVI()
+  </p>
+  <p xml:space="preserve" class="Code">
+   &#160;
+  </p>
+  <p xml:space="preserve" class="Code">
+   ; Create an ENVIRaster
+  </p>
+  <p class="Code">
+   file = FILEPATH('qb_boulder_msi', ROOT_DIR=e.ROOT_DIR, $
+  </p>
+  <p class="Code_Indented">
+   SUBDIRECTORY = ['data'])
+  </p>
+  <p class="Code">
+   raster = e.OpenRaster(file)
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Create an output raster
+  </p>
+  <p xml:space="preserve" class="Code">
+   newFile = e.GetTemporaryFilename()
+  </p>
+  <p xml:space="preserve" class="Code">
+   &#160;
+  </p>
+  <p xml:space="preserve" class="Code">
+   ; Retrieve data from original raster that contains only a single band
+  </p>
+  <p class="Code">
+   origData = raster.GetData(BANDS=0)
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Create raster and save it in newFile
+  </p>
+  <p class="Code">
+   newRaster = e.CreateRaster(newFile, origData, NBANDS=1)
+  </p>
+  <p class="Code">
+   newRaster.Save
+  </p>
+  <h2 class="API">
+   Syntax
+  </h2>
+  <p class="Syntax">
+   <i>
+    Result
+   </i>
+   =
+   <i>
+    ENVI.
+   </i>
+   CreateRaster(
+   <i>
+    URI
+   </i>
+   [,
+   <i>
+    Data
+   </i>
+   ] [, DATA_IGNORE_VALUE=
+   <i>
+    value
+   </i>
+   ] [, DATA_TYPE=
+   <i>
+    variable
+   </i>
+   ] [, ERROR=
+   <i>
+    variable
+   </i>
+   ] [, INHERITS_FROM=
+   <i>
+    ENVIRaster
+   </i>
+   ] [, INTERLEAVE=string]   [, METADATA=
+   <i>
+    ENVIRasterMetadata
+   </i>
+   ][, NBANDS=
+   <i>
+    variable
+   </i>
+   ] [, NCOLUMNS=
+   <i>
+    variable
+   </i>
+   ]  [, NROWS=
+   <i>
+    variable
+   </i>
+   ] [, SPATIALREF=
+   <i>
+    ENVISpatialRef
+   </i>
+   ])
+  </p>
+  <h2 class="API">
+   Return Value
+  </h2>
+  <p>
+   This method returns a reference to an
+   <a href="enviRaster.htm">
+    ENVIRaster
+   </a>
+   .
+  </p>
+  <h2 class="API">
+   Arguments
+  </h2>
+  <h3 class="Argument">
+   URI
+  </h3>
+  <p>
+   A scalar string that is a fully-qualified filepath to a new ENVI Standard format file to which the raster data should be written.
+  </p>
+  <h3 class="Argument">
+   <a name="DATA">
+   </a>
+   Data
+  </h3>
+  <p>
+   A two-dimensional or three-dimensional array of data. When the
+   <i>
+    Data
+   </i>
+   argument is a three-dimensional array, use the INTERLEAVE keyword to specify the interleave of the raster.
+  </p>
+  <p>
+   If the
+   <i>
+    Data
+   </i>
+   is specified, then the values for the NBANDS, NCOLUMNS, NROWS, and DATA_TYPE keywords are taken from
+   <i>
+    Data
+   </i>
+   . If
+   <i>
+    Data
+   </i>
+   is not specified, the NBANDS, NCOLUMNS, NROWS, and DATA_TYPE keywords have precedence over the values in the INHERITS_FROM raster, if it is specified.
+  </p>
+  <p>
+   Also, if you do not specify
+   <i>
+    Data
+   </i>
+   , an empty ENVIRaster object is created. You can then use
+   <a href="enviRaster__SetData.htm">
+    ENVIRaster::SetData
+   </a>
+   or
+   <a href="enviRaster__SetTile.htm">
+    ENVIRaster::SetTile
+   </a>
+   to add data to the ENVIRaster.
+  </p>
+  <h2 class="API">
+   Keywords
+  </h2>
+  <h3 class="Keyword">
+   DATA_IGNORE_VALUE
+  </h3>
+  <p>
+   Set this keyword to a pixel value that will be ignored when the raster is displayed. This overrides any data ignore values set in the metadata.
+  </p>
+  <h3 class="Keyword">
+   DATA_TYPE
+  </h3>
+  <p>
+   Set this keyword to an integer or string specifying the raster data type (strings are not case-sensitive):
+  </p>
+  <table style="mc-table-style: url('../Resources/TableStyles/Description.css');margin-left: 0;margin-right: auto;caption-side: top;" cellspacing="0" class="TableStyle_Description">
+   <col />
+   <col />
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      String
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      Value
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      Data Type
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      Bit Length
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      byte
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      1
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      Byte
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      8
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      double
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      5
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      Double-precision floating point
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      64
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      float
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      4
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      Floating point
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      32
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      int
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      2
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      Integer
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      16
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+      long
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+      3
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+      Long integer
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColEnd">
+      32
+     </td>
+    </tr>
+   </tbody>
+   <tfoot>
+    <tr>
+     <td class="TableStyle_Description_Foot_0_0_ColSep">
+      uint
+     </td>
+     <td class="TableStyle_Description_Foot_0_0_ColSep">
+      12
+     </td>
+     <td class="TableStyle_Description_Foot_0_0_ColSep">
+      Unsigned integer
+     </td>
+     <td class="TableStyle_Description_Foot_0_0_ColEnd">
+      16
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Foot_0_0_ColSep">
+      ulong
+     </td>
+     <td class="TableStyle_Description_Foot_0_0_ColSep">
+      13
+     </td>
+     <td class="TableStyle_Description_Foot_0_0_ColSep">
+      Unsigned long integer
+     </td>
+     <td class="TableStyle_Description_Foot_0_0_ColEnd">
+      32
+     </td>
+    </tr>
+   </tfoot>
+  </table>
+  <p>
+   If
+   <i>
+    Data
+   </i>
+   is provided, this keyword is ignored.
+  </p>
+  <h3 class="Keyword">
+   ERROR
+  </h3>
+  <p>
+   Set this keyword to a named variable that will contain any error message issued during execution of this routine. If no error occurs, the ERROR variable will be set to a null string (
+   <code>
+    ''
+   </code>
+   ). If an error occurs and the routine is a function, then the function result will be undefined.
+  </p>
+  <p>
+   When this keyword is not set and an error occurs,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   returns to the caller and execution halts. In this case, the error message is contained within !ERROR_STATE and can be caught using IDL's CATCH routine. See IDL Help for more information on !ERROR_STATE and CATCH.
+  </p>
+  <p>
+   See
+   <a href="ErrorHandling.htm">
+    Manage Errors
+   </a>
+   for more information on error handling in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   programming.
+  </p>
+  <h3 class="Keyword">
+   <a name="INHERITS">
+   </a>
+   INHERITS_FROM
+  </h3>
+  <p>
+   Set this keyword to an ENVIRaster from which all metadata and the following properties will be copied: NCOLUMNS, NROWS, BANDS, DATA_TYPE, and INTERLEAVE.
+  </p>
+  <p>
+   Since new rasters are often created as the output of processing an input raster, they typically have the same spatial and spectral dimensions, interleave, and data type as the input raster. The INHERITS_FROM keyword provides convenience in inheriting these properties. If you do not specify the INHERITS_FROM keyword, you must either provide the
+   <i>
+    Data
+   </i>
+   argument and INTERLEAVE is assumed to be 'bsq' if not set, or specify the BANDS, NCOLUMNS, DATA_TYPE, and NROWS keywords when calling the CreateRaster method.
+  </p>
+  <p>
+   See
+   <a href="ENVIRasterMetaData.htm">
+    ENVIRasterMetadata
+   </a>
+   for details on creating and modifying metadata.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   If both the SPATIALREF and INHERITS_FROM keywords are specified, the spatial reference information from SPATIALREF takes precedence.
+  </p>
+  <h3 class="Keyword">
+   INTERLEAVE
+  </h3>
+  <p>
+   When the
+   <i>
+    Data
+   </i>
+   argument is a three-dimensional array, set this keyword to a string specifying the interleave of the raster:
+  </p>
+  <table style="mc-table-style: url('../Resources/TableStyles/Description.css');margin-left: 0;margin-right: auto;caption-side: top;" cellspacing="0" class="TableStyle_Description">
+   <col />
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      String
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      Interleave
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      Data Array
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      bil
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      Band interleaved by line
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      [
+      <i>
+       ncolumns
+      </i>
+      ,
+      <i>
+       nbands
+      </i>
+      ,
+      <i>
+       nrows
+      </i>
+      ]
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      bip
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      Band interleaved by pixel
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      [
+      <i>
+       nbands
+      </i>
+      ,
+      <i>
+       ncolumns
+      </i>
+      ,
+      <i>
+       nrows
+      </i>
+      ]
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+      bsq
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+      Band sequential
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColEnd">
+      [
+      <i>
+       ncolumns
+      </i>
+      ,
+      <i>
+       nrows
+      </i>
+      ,
+      <i>
+       nbands
+      </i>
+      ]
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <p>
+   This keyword is optional and the default value 'bsq' is used if it is not set. This keyword has no effect when the
+   <i>
+    Data
+   </i>
+   argument is a two-dimensional array.
+  </p>
+  <h3 class="Keyword">
+   METADATA
+  </h3>
+  <p>
+   Set this keyword to an ENVIRasterMetadata object which provides the metadata information for the newly-created ENVIRaster.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   If both the METADATA and INHERITS_FROM keywords are specified, the metadata information from METADATA takes precedence.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   The NO_DATA keyword takes precedence over the METADATA keyword.
+  </p>
+  <h3 class="Keyword">
+   NBANDS
+  </h3>
+  <p>
+   Set this keyword to the number of bands in the raster dataset. If
+   <i>
+    Data
+   </i>
+   is provided, this keyword is ignored.
+  </p>
+  <h3 class="Keyword">
+   NCOLUMNS
+  </h3>
+  <p>
+   Set this keyword to the number of columns in the raster dataset. If
+   <i>
+    Data
+   </i>
+   is provided, this keyword is ignored.
+  </p>
+  <h3 class="Keyword">
+   NROWS
+  </h3>
+  <p>
+   Set this keyword to the number of rows in the raster dataset. If
+   <i>
+    Data
+   </i>
+   is provided, this keyword is ignored.
+  </p>
+  <h3 class="Keyword">
+   <a name="SPATIALR">
+   </a>
+   SPATIALREF
+  </h3>
+  <p>
+   Set this keyword to an
+   <a href="ENVIRasterSpatialRefPseudo.htm">
+    ENVIRasterSpatialRefPseudo
+   </a>
+   ,
+   <a href="ENVIRasterSpatialRefRPC.htm">
+    ENVIRasterSpatialRefRPC
+   </a>
+   , or
+   <a href="ENVIRasterSpatialRefStandard.htm">
+    ENVIRasterSpatialRefStandard
+   </a>
+   object, which provides the spatial reference information for the newly-created ENVIRaster.
+  </p>
+  <p>
+   See
+   <a href="ENVI__CreateRasterSpatialRef.htm">
+    ENVI::CreateRasterSpatialRef
+   </a>
+   for an example of using a custom ENVIRasterSpatialRefPseudo, ENVIRasterSpatialRefRPC, or ENVIRasterSpatialRefStandard object as a template when creating a new ENVIRaster.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   If both the SPATIALREF and INHERITS_FROM keywords are specified, the spatial reference information from SPATIALREF takes precedence.
+  </p>
+  <h2 class="API">
+   Version History
+  </h2>
+  <table style="mc-table-style: url('../Resources/TableStyles/VersionTable.css');" class="TableStyle_VersionTable" cellspacing="0">
+   <col />
+   <col />
+   <tbody>
+    <tr>
+     <td class="TableStyle_VersionTable_Body_0_0_RowEnd_ColSep">
+      <p>
+       5.0
+      </p>
+     </td>
+     <td class="TableStyle_VersionTable_Body_0_0_RowEnd_ColEnd">
+      <p>
+       Introduced
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h2 class="API">
+   See Also
+  </h2>
+  <p>
+   <a href="ENVI.htm">
+    ENVI function
+   </a>
+   ,
+   <a href="enviRaster__SetData.htm">
+    ENVIRaster::SetData
+   </a>
+   ,
+   <a href="enviRaster__SetTile.htm">
+    ENVIRaster::SetTile
+   </a>
+   ,
+   <a href="enviView__CreateLayer.htm">
+    ENVIView::CreateLayer
+   </a>
+   ,
+   <a href="ENVI__CreateRasterSpatialRef.htm">
+    ENVI::CreateRasterSpatialRef
+   </a>
+   ,
+   <a href="ENVI__CreateRasterMetaData.htm">
+    ENVI::CreateRasterMetadata
+   </a>
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

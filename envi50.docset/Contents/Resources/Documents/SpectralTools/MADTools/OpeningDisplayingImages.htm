@@ -1,0 +1,221 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Spectral Tools|MAD Tools" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Opening and Displaying Images
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#SpectralTools/MADTools/OpeningDisplayingImages.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../SpectralTools.htm">
+    Spectral Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="MADIntroduction.htm">
+    MAD Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Opening and Displaying Images
+   </span>
+  </div>
+  <h1>
+   Opening and Displaying Images
+  </h1>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Multiband Analytic Display
+    </b>
+    , and choose a grid layout option. The choices are
+    <b>
+     MAD 4x4 Grid
+    </b>
+    ,
+    <b>
+     MAD 3x3 Grid
+    </b>
+    ,
+    <b>
+     MAD 2x2 Grid
+    </b>
+    ,
+    <b>
+     MAD 4x1 Grid
+    </b>
+    , and
+    <b>
+     MAD User Configuration
+    </b>
+    , which lets you restore a custom grid layout that you previously created.
+   </li>
+   <li value="2">
+    Select an image file, and click
+    <b>
+     Open
+    </b>
+    . MAD&#160;is designed to work with multispectral imagery, but it accepts any image format that
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    supports.
+   </li>
+   <p>
+    <a name="base_layer">
+    </a>
+    The first file that you open becomes the
+    <i>
+     base layer
+    </i>
+    , which defines the map projection and resolution for subsequent images loaded into the display. These images are reprojected to the base layer projection. If subsequent images are not georeferenced, MAD assumes they match the projection and pixel size of the base layer, so it will not resample or reproject the data.
+   </p>
+   <p>
+    Because the base layer defines the projection and resolution, you should ideally load images with map information or with higher resolution first. You should not load a classification or rule image first.
+   </p>
+   <li value="3">
+    To select a different image for the base layer, select
+    <b>
+     File &gt; Load Base Image
+    </b>
+    from the MAD&#160;menu bar.
+   </li>
+   <li value="4">
+    By default, the same image is displayed in all grid windows, but with different band combinations. To change the band combination displayed in a grid window, click inside the window to select it (a red outline will surround it). Right-click inside the window and select
+    <b>
+     Change Band Combination
+    </b>
+    . Select band names for the red, green, and blue channels, and click
+    <b>
+     Load RGB
+    </b>
+    .
+   </li>
+  </ol>
+  <h2>
+   Tips for Working with Grid Windows
+  </h2>
+  <ul>
+   <li value="1">
+    The Grid Windows&#160;folder in the
+    <a href="Interface.htm#Data">
+     Data Manager
+    </a>
+    lists all of the grids that are currently displayed. The band combination, stretch type, and filter type for each displayed image are listed. You can change any of these options for an individual grid window by selecting the grid name and right-clicking on
+    <b>
+     Band
+    </b>
+    ,
+    <b>
+     Stretch
+    </b>
+    , or
+    <b>
+     Filter
+    </b>
+    . Then select the desired  option.
+   </li>
+   <li value="2">
+    To load a different image in a grid window, click inside the window to select it, and choose
+    <b>
+     File &gt; Add An Image Layer
+    </b>
+    from the MAD&#160;menu bar. The new image must be a derived product and have the same spatial extent as the base layer. The new image is listed under the Loaded Images folder in the
+    <a href="Interface.htm#Data">
+     Data Manager
+    </a>
+    .
+   </li>
+   <li value="3">
+    To add a new grid window to your layout, select
+    <b>
+     Display &gt; Add a New Grid Window
+    </b>
+    from the MAD&#160;menu bar. A copy of the base layer (with the same band combination) is added to the new grid window. Change the band combination as needed.
+   </li>
+   <li value="4">
+    To remove a grid window from your layout, click inside the window to select it. Then right-click and select
+    <b>
+     Remove This Display
+    </b>
+    .
+   </li>
+   <li value="5">
+    All grid windows are dynamically linked, meaning that toolbar actions (Pan, Rotate, Zoom, etc.) apply to all the grid windows at once. To unlink a grid window, click inside the window to select it. Right-click and select
+    <b>
+     Unlink From Overview
+    </b>
+    . This "pins" the image in that grid window to its current location, while the other grid windows continue to update as you navigate the image. To re-link the image, right-click and select
+    <b>
+     Link to Overview
+    </b>
+    .
+   </li>
+   <li value="6">
+    To detach a grid window from the MAD interface, click inside the window to select it. Right-click and select
+    <b>
+     Detach from Grid
+    </b>
+    . The image is displayed in a floating dialog that you can resize or move to a second monitor. To re-attach the image to the MAD&#160;interface, right-click inside the floating dialog and select
+    <b>
+     Attach to Grid
+    </b>
+    .
+   </li>
+   <li value="7">
+    To enlarge a single grid window to fill up the entire display area of the MAD interface, double-click inside the grid window. Click the
+    <b>
+     Next
+    </b>
+    button to view the next grid window. Right-click menu options and Toolbar functions are still available for use in this display mode. Double-click inside the display to return to the grid layout.
+   </li>
+   <li value="8">
+    As you change a grid's band combination, stretch, or filter type, MAD creates a configuration file (
+    <code>
+     .xml
+    </code>
+    ) and saves it to your operating system's default temporary directory. You can choose a different location to save the configuration file by selecting
+    <b>
+     File &gt; Save Current Preferences
+    </b>
+    from the MAD menu bar. To later restore your MAD&#160;display settings, select
+    <b>
+     Spectral &gt; MAD &gt; User Config
+    </b>
+    from the Toolbox.
+   </li>
+  </ul>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

@@ -1,0 +1,298 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Georectify|Rigorous Orthorectification" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Reordering Images and Defining Cutlines
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#GeorectifyImagery/RigorousOrthorectification/ReorderingImagesDefiningCutlines.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../GeorectifyImagery.htm">
+    Georectify
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="Introduction.htm">
+    Rigorous Orthorectification
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Reordering Images and Defining Cutlines
+   </span>
+  </div>
+  <h1>
+   Reordering Images and Defining Cutlines
+  </h1>
+  <p>
+   When you click
+   <b>
+    Next
+   </b>
+   in Step 3, the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   Orthorectification Wizard proceeds to the Image Order and Cutline Selection panel (Step 4 of 5).
+  </p>
+  <p>
+   In this step, you optionally define which areas between two or more overlapping images that you want to appear in the final output. With each input image, you perform two steps: (1) define the hierarchy of the image relative to the others, and (2) define an optional cutline for the image.
+  </p>
+  <p>
+   You may choose to bypass this step by clicking
+   <b>
+    Next
+   </b>
+   . If you do not specify a cutline for a given image,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   uses the image frame by default. The image frame is the area of usable data within an image, excluding any background pixels.
+  </p>
+  <p>
+   You can only define one cutline per image, but they can be complex inclusion polygons encompassing detailed paths across the entire image.
+  </p>
+  <h2>
+   <a name="Set">
+   </a>
+   Set the Image Order
+  </h2>
+  <p>
+   Use the
+   <b>
+    Image order
+   </b>
+   list to define how multiple images are ordered in the final output. This list is populated with the
+   <a href="StartingENVIOrthoModule.htm">
+    image filenames you added to the workflow
+   </a>
+   . The image at the top of the list will be ordered first, followed by the second image, and so forth. Image ordering only pertains to areas of overlap between two or more images. The following figure shows an example.
+  </p>
+  <p>
+   <img src="../../Resources/Images/GeorectifyImagery/RigorousOrthorectification/imageorder1.gif" />
+  </p>
+  <p>
+   Follow these steps to reorder images:
+  </p>
+  <ol>
+   <li value="1">
+    Click
+    <b>
+     Reorder
+    </b>
+    . The Reorder Input Images dialog appears.
+   </li>
+   <li value="2">
+    Click-and-drag image filenames in the preferred order.
+   </li>
+   <li value="3">
+    Click
+    <b>
+     OK
+    </b>
+    . The Image Order list updates to show the new hierarchy.
+   </li>
+  </ol>
+  <p>
+   You can also set the image order in the Layout Manager, as described in
+   <a href="LayoutManager.htm#Layout">
+    Layout View Area
+   </a>
+   .
+  </p>
+  <h2>
+   Draw Cutlines
+  </h2>
+  <p>
+   Cutlines are polygons that are used in combination with image ordering to define areas that you want to keep in the final output. They are typically used to hide seams in the final mosaic or to exclude poor quality regions and instead use higher quality regions that are lower in the image stack. A cutline is an inclusion polygon, similar to a cookie cutter applied to one or more images. Cutlines are often defined by drawing a line along a geographic feature such as a river or street, and snapping to the nearest image edges or corners to define a polygon. The following example shows a cutline for a single image:
+  </p>
+  <p>
+   <img src="../../Resources/Images/GeorectifyImagery/RigorousOrthorectification/cutline_singleimage.gif" />
+  </p>
+  <p>
+   Following is an example of applying a cutline to the first-order (top-most) image when you have multiple images:
+  </p>
+  <p>
+   <img src="../../Resources/Images/GeorectifyImagery/RigorousOrthorectification/cutline_diagram_two_images.gif" />
+  </p>
+  <p>
+   If you do not specify a cutline for a given image,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   uses the image frame by default. The image frame is the area of usable data within an image, excluding any background pixels:
+  </p>
+  <p>
+   <img src="../../Resources/Images/GeorectifyImagery/RigorousOrthorectification/image_frame.gif" />
+  </p>
+  <p>
+   Follow these steps to define cutlines:
+  </p>
+  <ol>
+   <li value="1">
+    From the
+    <b>
+     Active Image
+    </b>
+    list, select an image that the cutline will apply to. Or,
+    <b>
+     Shift
+    </b>
+    -click on an image boundary in the Layout Manager to select an active image; it is shown with a red border.
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    loads the corresponding display group.
+   </li>
+   <li value="2">
+    Click the
+    <img src="../../Resources/Images/IconsButtons/RigOrthoAddFiles.gif" class="VertCenter" />
+    button. A new cutline name is added to the
+    <b>
+     Cutlines
+    </b>
+    list.
+   </li>
+   <li value="3">
+    In the Layout Manager, enable the
+    <b>
+     Cutline
+    </b>
+    option to view cutlines.
+   </li>
+   <p>
+    In the Scroll window of the
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    display group, draw a cutline using
+    <b>
+     Alt
+    </b>
+    -click to define the vertices. Use
+    <b>
+     Ctrl
+    </b>
+    -click to snap to the nearest image edge. Use
+    <b>
+     Shift
+    </b>
+    -click to snap to the nearest corner. Click the middle mouse button (if available) to delete the last vertex. Right-click to close the polygon. The cutline is shown in the Layout Manager. You can only add one cutline per image. Following is an example:
+   </p>
+   <p>
+    <img src="../../Resources/Images/GeorectifyImagery/RigorousOrthorectification/cutline_draw_steps.gif" />
+   </p>
+   <p>
+    A suggested method is to draw the cutline in the Scroll window of the display group because you can see the entire image. However, if you need to more precisely draw a line along a geographic feature, you can follow these steps:
+   </p>
+   <ol style="list-style-type: upper-alpha;">
+    <li value="1">
+     Click to center the Image window over a specific location.
+    </li>
+    <li value="2">
+     Add vertices (
+     <b>
+      Alt
+     </b>
+     -click) for your cutline in the Image window.
+    </li>
+    <li value="3">
+     Use
+     <b>
+      Ctrl
+     </b>
+     -click and
+     <b>
+      Shift
+     </b>
+     -click  to snap to the nearest edge and corner, respectively. Right-click in the Scroll window to to close the cutline polygon.
+    </li>
+   </ol>
+   <li value="4">
+    To remove a cutline, select the cutline name from the
+    <b>
+     Cutlines
+    </b>
+    list and click the
+    <img src="../../Resources/Images/IconsButtons/RigOrthoRemoveFiles.gif" class="VertCenter" />
+    button.
+   </li>
+   <li value="5">
+    To change the default color of cutlines as they appear in the display group, click the
+    <b>
+     Set cutline color
+    </b>
+    button
+    <img src="../../Resources/Images/IconsButtons/RigOrthoGCPColor.gif" class="VertCenter" />
+    . The Point Color dialog appears. Left-click to cycle through various colors, or right-click to select a specific color.
+   </li>
+   <li value="6">
+    If the active image is intially displayed as a grayscale image in the display group, you can click the
+    <b>
+     MB
+    </b>
+    button in the
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    Orthorectification Wizard to display a multispectral image of Bands 3, 2, and 1. Click the
+    <b>
+     MB
+    </b>
+    button again to display a grayscale image. See
+    <a href="TheENVIOrthorectificationWizard.htm#SelectingBands">
+     Selecting Bands
+    </a>
+    .
+   </li>
+   <li value="7">
+    Restoring a project during Step 4 (cutline selection) means that all GCPs and tie points will be turned on by default. See
+    <a href="TheENVIOrthorectificationWizard.htm#Save">
+     Save and Restore Projects
+    </a>
+    for more information.
+   </li>
+   <li value="8">
+    When you are done drawing cutlines, click
+    <b>
+     Next
+    </b>
+    in the
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    Orthorectification Wizard.
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

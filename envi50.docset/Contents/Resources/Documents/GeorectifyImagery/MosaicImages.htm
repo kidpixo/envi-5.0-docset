@@ -1,0 +1,1164 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Georectify|Georeferencing Tools" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Mosaic Images
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#GeorectifyImagery/MosaicImages.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="GeorectifyImagery.htm">
+    Georectify
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="GeoreferencingTools.htm">
+    Georeferencing Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Mosaic Images
+   </span>
+  </div>
+  <h1>
+   Mosaic Images
+   <a name="kanchor206">
+   </a>
+  </h1>
+  <p>
+   Use mosaicking to overlay two or more images that have overlapping areas (typically georeferenced) or to put together a variety of non-overlapping images and/or plots for presentation output (typically pixel-based). You can mosaic individual bands, entire files, and multi-resolution georeferenced images. You can use your mouse or pixel- or map-based coordinates to place images in mosaics and you can apply a feathering technique to blend image boundaries. You can save the mosaicked images as a virtual mosaic to avoid having to save an additional copy of the data to a disk file. Mosaic templates can also be saved and restored for other input files.
+  </p>
+  <p>
+   See the following sections:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#Georefer">
+     Georeferenced Mosaicking
+    </a>
+   </li>
+   <li value="2">
+    <a href="#Pixel-Ba">
+     Pixel-Based Mosaicking
+    </a>
+   </li>
+   <li value="3">
+    <a href="#Featheri">
+     Feather Images
+    </a>
+   </li>
+   <li value="4">
+    <a href="#color_balancing">
+     Color Balance Images
+    </a>
+   </li>
+   <li value="5">
+    <a href="#Create">
+     Create Virtual Mosaics
+    </a>
+   </li>
+  </ul>
+  <h2>
+   <a name="Georefer">
+   </a>
+   <a name="kanchor207">
+   </a>
+   Georeferenced Mosaicking
+  </h2>
+  <p>
+   Use Georeferenced Mosaicking to automatically overlay multiple georeferenced images. You can mosaic multi-resolution georeferenced images, apply feathering and color balancing to the images, and import georeferenced images and non-georeferenced images into the same mosaic.
+  </p>
+  <ol>
+   <li value="1">
+    To build mosaics using georeferenced images, select
+    <b>
+     Mosaicking &gt; Georeferenced Mosaicking
+    </b>
+    from the Toolbox.
+   </li>
+   <li value="2">
+    <p>
+     The Map Based Mosaic dialog appears. Use this dialog to set the output mosaic parameters and to select images to mosaic.
+    </p>
+   </li>
+  </ol>
+  <h3>
+   <a name="importing_images">
+   </a>
+   Import Images
+  </h3>
+  <p>
+   Use the
+   <b>
+    Import
+   </b>
+   menu to select input files for the mosaic. The first image imported into the mosaic must be a georeferenced image. The mosaic size will be set to the georeferenced image size.
+  </p>
+  <ol>
+   <li value="1">
+    <p>
+     Select either
+     <b>
+      Import &gt; Import Files
+     </b>
+     or
+     <b>
+      Import &gt; Import Files and Edit Properties
+     </b>
+     from the Map Based Mosaic dialog menu bar. Use the second option if you wish to enter a transparent background value, to perform feathering, to select which bands appear in the mosaic display, or to perform color balancing. The Mosaic Input Files dialog appears.
+    </p>
+    <p>
+     The background value mask is built from the first band used in the file. If a pixel in the first band used contains this background value, then that pixel will be masked out for all bands in the mosaicking process.
+    </p>
+   </li>
+   <li value="2">
+    <p>
+     Select an input file and perform optional spatial and spectral
+     <a href="../NoTOCTopics/Subsetting.htm">
+      subsetting
+     </a>
+     , then click
+     <b>
+      OK
+     </b>
+     .
+    </p>
+    <p>
+     You can mosaic individual bands or entire files. To select individual bands, click the
+     <b>
+      Select By
+     </b>
+     toggle button in the Mosaic Input Files dialog to select
+     <b>
+      Band
+     </b>
+     . Click
+     <b>
+      OK
+     </b>
+     .
+    </p>
+    <p>
+     When you select the first input file for the mosaic, a thumbnail image appears and the mosaic size is set.
+    </p>
+   </li>
+   <li value="3">
+    If you selected
+    <b>
+     Import Files and Edit Properties,
+    </b>
+    an Entry dialog for each selected file appears that allows you to set the following parameters:
+   </li>
+   <ul>
+    <li value="1">
+     <p>
+      Enter a
+      <b>
+       Data Value to Ignore
+      </b>
+      . This is the background see-through value to make pixels with that value transparent so that the underlying image is visible. (Use for mosaicking of images with constant DN value borders).
+     </p>
+     <p>
+      The background value mask is built from the first band used in the file. If a pixel in the first band used contains this background value, then that pixel will be masked out for all bands in the mosaicking process.
+     </p>
+    </li>
+    <li value="2">
+     Enter
+     <a href="#Featheri">
+      feathering parameters
+     </a>
+     as needed.
+    </li>
+    <li value="3">
+     Enter the upper-left coordinates (in pixels) in the
+     <b>
+      Xoffset
+     </b>
+     and
+     <b>
+      Yoffset
+     </b>
+     fields to position the image in the mosaic, or optionally click the
+     <b>
+      Use x/ystart in Positioning?
+     </b>
+     toggle button to select
+     <b>
+      Yes
+     </b>
+     . This option uses the x,y start values from the header to compose a relative start location.
+    </li>
+    <li value="4">
+     Click the
+     <b>
+      Mosaic Display
+     </b>
+     toggle button to select a
+     <b>
+      Gray Scale
+     </b>
+     or
+     <b>
+      RGB
+     </b>
+     color image display in the mosaicking window. For RGB, enter the desired band numbers to display in the
+     <b>
+      Red
+     </b>
+     ,
+     <b>
+      Green
+     </b>
+     , and
+     <b>
+      Blue
+     </b>
+     fields. Enter a
+     <b>
+      Linear Stretch
+     </b>
+     percentage.
+    </li>
+    <li value="5">
+     Select whether to apply
+     <a href="#color_balancing">
+      color balancin
+     </a>
+     g to the images by clicking
+     <b>
+      No
+     </b>
+     ,
+     <b>
+      Fixed
+     </b>
+     , or
+     <b>
+      Adjust
+     </b>
+     .
+    </li>
+    <li value="6">
+     Click
+     <b>
+      OK
+     </b>
+     .
+    </li>
+   </ul>
+   <li value="4">
+    <p>
+     Import additional georeferenced images into the mosaic as needed.
+    </p>
+    <p>
+     Georeferenced images are automatically positioned within the output mosaic according to their geographic coordinates. New images are placed in front of the other images, and the mosaic size is automatically adjusted to accommodate the new images. If a properly georeferenced image is imported with map coordinates that lay outside the current map extent of the mosaic, the mosaic size is automatically changed to include the new image location.
+    </p>
+    <p>
+     For multi-resolution mosaicking, the output pixel size is entered on output and
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     automatically resamples the lower resolution images to match.
+    </p>
+   </li>
+   <li value="5">
+    Import additional non-georeferenced images as needed. You can position these images in the same manner as Pixel Based Mosaicking. Each image name and the outline color are listed below the mosaic image.
+   </li>
+  </ol>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   You cannot adjust the mosaic positions of georeferenced images.
+  </p>
+  <p>
+   The following are some additional options:
+  </p>
+  <ul>
+   <li value="1">
+    Right-click in the mosaicking window to access options for changing the image layer levels, editing image parameters, or removing an image from the mosaic.
+   </li>
+   <li value="2">
+    To change the base projection of the images, select
+    <b>
+     Options &gt; Change Base Projection
+    </b>
+    . Select the new projection and enter the necessary parameters.
+   </li>
+   <li value="3">
+    To enable/disable the thumbnail images displayed in the mosaic window, select
+    <b>
+     Options &gt; Use Thumbnail Images
+    </b>
+    menu item.
+   </li>
+   <li value="4">
+    To disable or enable the graphic frames around the images in the mosaic, select
+    <b>
+     Options &gt; Image Frames
+    </b>
+    .
+   </li>
+   <li value="5">
+    To clear all the entries from the mosaic, select
+    <b>
+     Options &gt; Clear All Entries
+    </b>
+    .
+   </li>
+  </ul>
+  <p>
+   You do not need to save the mosaic to an output file unless you apply feathering, multi-resolution data, or color balancing. You can save the mosaic as a
+   <a href="#Create">
+    virtual mosaic
+   </a>
+   file to save time and disk space. If you decide to save the mosaic to disk, follow these steps:
+  </p>
+  <ol>
+   <li value="1">
+    Select
+    <b>
+     File &gt; Apply
+    </b>
+    from the Map Based Mosaic dialog menu bar. The Mosaic Parameters dialog appears with the output pixel size defaulted to the highest resolution of input images.
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    automatically resamples lower resolution images to match. Non-georeferenced images in the mosaic are not resampled.
+   </li>
+   <li value="2">
+    Edit the
+    <b>
+     Output X/Y Pixel Size
+    </b>
+    values as needed.
+   </li>
+   <li value="3">
+    Select an interpolation method from the
+    <b>
+     Resampling
+    </b>
+    drop-down list. The choices are
+    <b>
+     Nearest Neighbor
+    </b>
+    ,
+    <b>
+     Bilinear
+    </b>
+    , or
+    <b>
+     Cubic Convolution
+    </b>
+    .
+    <b>
+     Nearest Neighbor
+    </b>
+    resampling is recommended.
+   </li>
+   <li value="4">
+    Select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="5">
+    <p>
+     Enter a
+     <b>
+      Background Value
+     </b>
+     (a DN value for areas outside of the mosaic).
+    </p>
+    <p>
+     The background value mask is built from the first band used in the file. If a pixel in the first band used contains this background value, then that pixel will be masked out for all bands in the mosaicking process.
+    </p>
+   </li>
+   <li value="6">
+    If color balancing is selected, use the toggle button to select whether to use the entire image or to use only the overlapping areas for statistic calculations.
+   </li>
+   <li value="7">
+    Click
+    <b>
+     OK
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds the resulting output to the Layer Manager.
+   </li>
+  </ol>
+  <h2>
+   <a name="Pixel-Ba">
+   </a>
+   <a name="kanchor208">
+   </a>
+   Pixel-Based Mosaicking
+  </h2>
+  <p>
+   From the Toolbox, select
+   <b>
+    Mosaicking &gt; Pixel Based Mosaicking
+   </b>
+   . The Pixel-Based Mosaic window appears.
+  </p>
+  <h3>
+   Import Images
+  </h3>
+  <p>
+   Use the
+   <b>
+    Import
+   </b>
+   menu to choose input bands for the mosaic.
+   <a name="importing_images">
+   </a>
+  </p>
+  <ol>
+   <li value="1">
+    Select either
+    <b>
+     Import &gt; Import Files
+    </b>
+    or
+    <b>
+     Import &gt; Import Files and Edit Properties
+    </b>
+    from the Pixel-Based Mosaic menu bar. Use the second option if you want to enter a background see-through value, perform feathering, position the image on input, select which bands appear in the mosaic display, or perform color balancing. The Input File dialog appears.
+   </li>
+   <li value="2">
+    <p>
+     Select an input file and perform optional spatial and spectral
+     <a href="../NoTOCTopics/Subsetting.htm">
+      subsetting
+     </a>
+     , then click
+     <b>
+      OK
+     </b>
+     . You can mosaic individual bands or entire files.
+    </p>
+    <p>
+     To select individual bands, click the
+     <b>
+      Select By
+     </b>
+     toggle button in the Input File dialog to select
+     <b>
+      Band
+     </b>
+     .
+    </p>
+   </li>
+   <li value="3">
+    <p>
+     Click
+     <b>
+      OK
+     </b>
+     .
+    </p>
+   </li>
+   <li value="4">
+    If you selected
+    <b>
+     Import Files and Edit Properties
+    </b>
+    , an Entry dialog for each selected file appears that allows you to set the following parameters:
+   </li>
+   <ul>
+    <li value="1">
+     <p>
+      Enter a
+      <b>
+       Data Value to Ignore
+      </b>
+      . This is the background see-through value to make pixels with that value transparent so that the underlying image is visible. (Use for mosaicking of images with constant DN value borders).
+     </p>
+     <p>
+      The background value mask is built from the first band used in the file. If a pixel in the first band used contains this background value, then that pixel will be masked out for all bands in the mosaicking process.
+     </p>
+    </li>
+    <li value="2">
+     Enter
+     <a href="#Featheri">
+      feathering parameters
+     </a>
+     as needed.
+    </li>
+    <li value="3">
+     Enter the upper-left coordinates (in pixels) in the
+     <b>
+      Xoffset
+     </b>
+     and
+     <b>
+      Yoffset
+     </b>
+     fields to position the image in the mosaic, or optionally click the
+     <b>
+      Use x/ystart in Positioning?
+     </b>
+     toggle button to select
+     <b>
+      Yes
+     </b>
+     . This option uses the x,y start values from the header to compose a relative start location.
+    </li>
+    <li value="4">
+     Click the
+     <b>
+      Mosaic Display
+     </b>
+     toggle button to select a
+     <b>
+      Gray Scale
+     </b>
+     or
+     <b>
+      RGB
+     </b>
+     color image display in the mosaicking window. For RGB, enter the desired band numbers to display in the
+     <b>
+      Red
+     </b>
+     ,
+     <b>
+      Green
+     </b>
+     , and
+     <b>
+      Blue
+     </b>
+     fields. Enter a
+     <b>
+      Linear Stretch
+     </b>
+     percentage.
+    </li>
+    <li value="5">
+     Select whether to apply
+     <a href="#color_balancing">
+      color balancing
+     </a>
+     to the images by clicking
+     <b>
+      No
+     </b>
+     ,
+     <b>
+      Fixed
+     </b>
+     , or
+     <b>
+      Adjust
+     </b>
+     .
+    </li>
+    <li value="6">
+     Click
+     <b>
+      OK
+     </b>
+     .
+    </li>
+   </ul>
+   <li value="5">
+    The Select Mosaic Size dialog appears. Enter the desired output size (in pixels) of the mosaic image in the
+    <b>
+     Mosaic Xsize
+    </b>
+    and
+    <b>
+     Mosaic Ysize
+    </b>
+    fields, and click
+    <b>
+     OK
+    </b>
+    . A subsampled image appears in the Pixel Mosaic window for each file imported.
+   </li>
+   <li value="6">
+    Import other files as needed. Each image name and the outline color are listed below the mosaic image.
+   </li>
+  </ol>
+  <h3>
+   <a name="positioning_images">
+   </a>
+   Position Images
+  </h3>
+  <p>
+   The coordinates for the upper-left corner of the input image are listed in the X0 and Y0 fields at the bottom of the Pixel Mosaic dialog. Images with xstart and ystart values in their headers are automatically placed in the mosaic with the defined offset. Select from the following options:
+  </p>
+  <ul>
+   <li value="1">
+    <p>
+     To enable editing of the position coordinates, select any listed image in the Pixel Mosaic dialog and enter the desired upper-left coordinates in the
+     <b>
+      X0
+     </b>
+     and
+     <b>
+      Y0
+     </b>
+     fields. Press the
+     <b>
+      Enter
+     </b>
+     key.
+    </p>
+    <p>
+     The number of the currently selected image is shown in the
+     <b>
+      #
+     </b>
+     field. Any changes to the
+     <b>
+      X0
+     </b>
+     and
+     <b>
+      Y0
+     </b>
+     fields are applied to this item.
+    </p>
+   </li>
+   <li value="2">
+    You can also position the images in the Pixel Mosaic dialog by left-clicking on an image and dragging it to the desired location.
+   </li>
+   <li value="3">
+    To automatically place the images into a grid, select
+    <b>
+     Options &gt; Position Entries into Grid
+    </b>
+    from the Pixel Mosaic dialog menu bar. The Position Images dialog appears. Enter values for
+    <b>
+     Grid Columns
+    </b>
+    ,
+    <b>
+     Grid Rows
+    </b>
+    ,
+    <b>
+     Border Pixels
+    </b>
+    (the number of border pixels to place around the images), and
+    <b>
+     Separation Pixels
+    </b>
+    (the number of pixels to place between the images). Click
+    <b>
+     OK
+    </b>
+    . The mosaic image is resized to fit the grid.
+   </li>
+   <li value="4">
+    To center the images, keeping their relative positioning within the defined mosaic size, select
+    <b>
+     Options &gt; Center Entries
+    </b>
+    from the Pixel Mosaic dialog menu bar.
+   </li>
+   <li value="5">
+    To lock the relative positions of the images and move them as a group, select
+    <b>
+     Options &gt; Positioning Lock On
+    </b>
+    from the Pixel Mosaic dialog menu bar. Now click and drag the images to the desired position.
+   </li>
+  </ul>
+  <h3>
+   Other Options
+  </h3>
+  <ul>
+   <li value="1">
+    Right-click in the mosaicking window to access options for changing image layer levels, editing image parameters, or removing an image from the mosaic.
+   </li>
+   <li value="2">
+    To change the mosaic size, select Select
+    <b>
+     Options &gt; Change Mosaic Size
+    </b>
+    from the Pixel Mosaic dialog menu bar. Enter the desired size, in pixels, in the
+    <b>
+     Mosaic Xsize
+    </b>
+    and
+    <b>
+     Mosaic Ysize
+    </b>
+    fields.
+   </li>
+   <li value="3">
+    To enable or disable the thumbnail images displayed in the mosaic window, select
+    <b>
+     Options &gt; Use Thumbnail Images
+    </b>
+    from the Pixel Mosaic dialog menu bar.
+   </li>
+   <li value="4">
+    To turn the colored graphic frames around the images in the mosaic off or on, select
+    <b>
+     Options &gt; Image Frames
+    </b>
+    from the Pixel Mosaic dialog menu bar.
+   </li>
+   <li value="5">
+    To clear all the entries from the mosaic, select
+    <b>
+     Options &gt; Clear All Entries
+    </b>
+    from the Pixel Mosaic dialog menu bar.
+   </li>
+  </ul>
+  <h3>
+   Build the Mosaic
+  </h3>
+  <p>
+   Use
+   <b>
+    Apply
+   </b>
+   to build a mosaic after all of the images for the mosaic are positioned. Building the mosaic outputs the mosaic to a file.
+  </p>
+  <p>
+   You do not need to save the mosaic to an output file unless you apply feathering or color balancing. You can save the mosaic as a
+   <a href="#Create">
+    virtual mosaic
+   </a>
+   to save time and disk space. If you decide to save the mosaic to disk, follow these steps:
+  </p>
+  <ol>
+   <li value="1">
+    Select
+    <b>
+     File &gt; Apply
+    </b>
+    from the Pixel Mosaic dialog menu bar. The Mosaic Parameters dialog appears.
+   </li>
+   <li value="2">
+    Edit the
+    <b>
+     Output X/Y Pixel Size
+    </b>
+    values as needed.
+   </li>
+   <li value="3">
+    Select an interpolation method from the
+    <b>
+     Resampling
+    </b>
+    drop-down list. The choices are Nearest Neighbor, Bilinear, or Cubic Convolution.
+   </li>
+   <li value="4">
+    Select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="5">
+    <p>
+     Enter a
+     <b>
+      Background Value
+     </b>
+     (a DN value for areas outside of the mosaic).
+    </p>
+    <p>
+     The background value mask is built from the first band used in the file. If a pixel in the first band used contains this background value, then that pixel will be masked out for all bands in the mosaicking process.
+    </p>
+   </li>
+   <li value="6">
+    If color balancing is selected, use the toggle button to select whether to use the entire image or to use only the overlapping areas for statistic calculations.
+   </li>
+   <li value="7">
+    Click
+    <b>
+     OK
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds the resulting output to the Layer Manager.
+   </li>
+  </ol>
+  <h2>
+   <a name="Featheri">
+   </a>
+   Feather Images
+  </h2>
+  <p>
+   Use Feathering to blend the edges of overlapping areas in input images for pixel-based and georeferenced mosaicking. The two types of feathering in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   are edge feathering and cutline feathering.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   To use feathering when mosaicking images, import the bottom image without feathering. Import the overlapping images with edge or cutline feathering as desired.
+  </p>
+  <h3>
+   Using Edge Feathering
+   <a name="kanchor209">
+   </a>
+  </h3>
+  <p>
+   Use edge feathering to blend the edge of a top image with the bottom image based on a specified blending distance (see the figure below). The distance specified creates a linear ramp that averages the two images across that distance. For example, if the specified distance is 20 pixels, 0% of the top image is used in the blending at its edge and 100% of the bottom image is used to make the output image. At the specified distance (20 pixels) into the image from the edge, 100% of the top image is used to make the output image and 0% of the bottom image is used. 50% of each image is used to make the output at 10 pixels in from the edge.
+  </p>
+  <p>
+   <img src="../Resources/Images/GeorectifyImagery/edge_feather_372x237.gif" style="margin-left: 5.99976px;margin-right: 6.000454px;width: 372;height: 237;" />
+  </p>
+  <ol>
+   <li value="1">
+    From the Pixel Mosaic or Map Based Mosaic dialog menu bar, select
+    <b>
+     Import &gt; Import Files and Edit Properties
+    </b>
+    . A Mosaic Input Files dialog appears. Select the image to feather and click
+    <b>
+     OK
+    </b>
+    . An Entry dialog appears.
+   </li>
+   <li value="2">
+    Or, right-click on the image and select
+    <b>
+     Edit Entry
+    </b>
+    . The Entry dialog appears.
+   </li>
+   <li value="3">
+    In the
+    <b>
+     Feathering Distance
+    </b>
+    field, enter the number of pixels over which to blend the images.
+   </li>
+  </ol>
+  <h3>
+   Using Cutline Feathering
+   <a name="kanchor210">
+   </a>
+  </h3>
+  <p>
+   Use Cutline feathering to blend the boundary between two overlapping images based on a user-defined cutline. A specified blending distance is used to blend the images along the cutline.
+  </p>
+  <p>
+   Cutlines must be defined using annotation tools prior to mosaicking. The annotation file must contain a polyline defining the cutline that is drawn from edge-to-edge and a symbol placed in the region of the image that will be cut off.
+  </p>
+  <p>
+   The distance specified is used to create a linear ramp that averages the two images across that distance from the cutline outwards. For example, if the specified distance is 20 pixels, 100% of the top image is used in the blending at the cutline and 0% of the bottom image is used to make the output image. At the specified distance (20 pixels) out from the cutline, 0% of the top image is used to make the output image and 100% of the bottom image is used. 50% of each image is used to make the output at 10 pixels out from the cutline.
+  </p>
+  <ol>
+   <li value="1">
+    <p>
+     From the Pixel Mosaic or Map Based Mosaic dialog menu bar, select
+     <b>
+      Import &gt; Import Files and Edit Properties
+     </b>
+     . A Mosaic Input Files dialog appears. Select the image to feather and click
+     <b>
+      OK
+     </b>
+     . An Entry dialog appears.
+    </p>
+    <p>
+     Or, right-click on the image and select
+     <b>
+      Edit Entry
+     </b>
+     . The Entry dialog appears.
+    </p>
+   </li>
+   <li value="2">
+    Click
+    <b>
+     Select Cutline Annotation File
+    </b>
+    and select an annotation file.
+   </li>
+   <li value="3">
+    In the
+    <b>
+     Feathering Distance
+    </b>
+    field that appears in the
+    <b>
+     Cutline Feathering Frame
+    </b>
+    , specify the distance (in pixels) used to blend the image boundaries.
+   </li>
+  </ol>
+  <p>
+   <img src="../Resources/Images/GeorectifyImagery/cut_feather_377x246.gif" style="margin-left: 5.99976px;margin-top: 5.99976px;margin-right: 5.999752px;margin-bottom: 6.000469px;width: 377;height: 246;" />
+  </p>
+  <p>
+   The cutline appears as a graphic overlaid on the image.
+  </p>
+  <h2>
+   <a name="color_balancing">
+   </a>
+   Color Balance Images
+  </h2>
+  <p>
+   Use
+   <b>
+    Color Balancing
+   </b>
+   to match the statistics from one image to another (or many others) to balance the data range between different images. Gains and offsets are calculated from the fixed image and applied to the adjusted images so the adjusted images end up with the same statistical range. Gains and offsets are calculated individually for each band in the file. You can obtain the statistics from entire images or only from overlapping areas. You cannot perform color balancing with Virtual Mosaics.
+  </p>
+  <p>
+   If the images have data values you want to ignore, you must enter a
+   <b>
+    Data value to ignore
+   </b>
+   value in the Edit Entry dialog so they will not be included in the calculated statistics.
+  </p>
+  <ol>
+   <li value="1">
+    In the Pixel Mosaic dialog, right-click on the image you want to use as the basis for statistics, and select
+    <b>
+     Edit Entry
+    </b>
+    . The Entry dialog appears.
+   </li>
+   <li value="2">
+    Select the
+    <b>
+     Fixed
+    </b>
+    radio button in
+    <b>
+     Color Balancing
+    </b>
+    . This image will only be used to calculate statistics and will not be adjusted. Click
+    <b>
+     OK
+    </b>
+    in the Entry dialog.
+   </li>
+   <li value="3">
+    In the Pixel Mosaic dialog, right-click on the image to adjust and select
+    <b>
+     Edit Entry
+    </b>
+    . The Entry dialog appears.
+   </li>
+   <li value="4">
+    Select the
+    <b>
+     Adjust
+    </b>
+    radio button in
+    <b>
+     Color Balancing
+    </b>
+    . Click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+   <li value="5">
+    Select
+    <b>
+     Fixed
+    </b>
+    or
+    <b>
+     Adjust
+    </b>
+    for any other images, as desired.
+   </li>
+   <li value="6">
+    From the Pixel Mosaic menu bar, select
+    <b>
+     File &gt; Apply
+    </b>
+    to apply the color balancing and mosaicking. The Mosaic Parameters dialog appears.
+   </li>
+   <li value="7">
+    Click the
+    <b>
+     Color Balance
+    </b>
+    toggle button to select whether to use the entire image or overlapping areas for statistics calculations. When there is a significant area of overlap, the best results are usually achieved by choosing only the overlapping areas for statistics calculations.
+   </li>
+   <li value="8">
+    Enter a
+    <b>
+     Background
+    </b>
+    <b>
+     Value
+    </b>
+    . The background value mask is built from the first band used in the file. If a pixel in the first band used contains this background value, then that pixel will be masked out for all bands in the mosaicking process.
+   </li>
+   <li value="9">
+    When creating a mosaic of gray scale and RGB images, you can apply single-band images as RGB. Doing this, in addition to color balancing, creates an RGB mosaic where the gray scale images blend well with the color images.
+   </li>
+   <li value="10">
+    Enter an output filename.
+   </li>
+   <li value="11">
+    Click
+    <b>
+     OK
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds the resulting output to the Layer Manager.
+   </li>
+  </ol>
+  <h2>
+   <a name="Create">
+   </a>
+   Create Virtual Mosaics
+   <a name="kanchor211">
+   </a>
+  </h2>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   treats a Virtual Mosaic file (a saved mosaic template) like an image file. When a Virtual Mosaic template file is opened,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   opens the individual image files that make up the mosaic and puts them together on-the-fly.
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   cannot do feathering or color balancing on-the-fly, however. You can display, annotate, stretch, and so forth the mosaic template file in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   , as with any other image. Using a Virtual Mosaic prevents multiple files from containing the same images and therefore saves disk space.
+  </p>
+  <ol>
+   <li value="1">
+    Select
+    <b>
+     File &gt; Save Template
+    </b>
+    from the Pixel Mosaic dialog menu bar. An Output Mosaic Template dialog appears.
+   </li>
+   <li value="2">
+    Enter an output filename with the extension
+    <code>
+     .mos
+    </code>
+    for consistency.
+   </li>
+   <li value="3">
+    Click the toggle button to select whether or not to open the new template as a
+    <b>
+     Virtual Mosaic
+    </b>
+    .
+   </li>
+  </ol>
+  <p>
+   The template file is a Virtual Mosaic file in ASCII format. It contains the mosaic size, filenames, bands used, data dimensions, and mosaic information. The
+   <b>
+    Info
+   </b>
+   field contains the x and y offsets, edge feathering distance, cutline feathering distance, and data value to ignore.
+  </p>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   adds the mosaic template file to the Layer Manager where you can use it it as input for processing with other functions. You can edit the template file using any text editor, for example, to change the file or the bands used in the mosaic.
+  </p>
+  <h3>
+   Restore Saved Templates
+  </h3>
+  <ol>
+   <li value="1">
+    Select
+    <b>
+     File &gt; Restore Template
+    </b>
+    from the Pixel Mosaic dialog menu bar. The Enter Mosaic Template Filename dialog appears.
+   </li>
+   <li value="2">
+    <p>
+     Select the desired
+     <code>
+      .mos
+     </code>
+     filename to load into the mosaic and click
+     <b>
+      Open
+     </b>
+     .
+    </p>
+    <p>
+     Replace the existing input files with new images in the Mosaic dialog by editing the filenames in the ASCII
+     <code>
+      .mos
+     </code>
+     file.
+    </p>
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

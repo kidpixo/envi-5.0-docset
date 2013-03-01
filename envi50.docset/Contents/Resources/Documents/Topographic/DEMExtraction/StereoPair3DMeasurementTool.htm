@@ -1,0 +1,241 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Terrain|DEM Extraction" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Stereo Pair 3D Measurement Tool
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#Topographic/DEMExtraction/StereoPair3DMeasurementTool.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../TopographicTools.htm">
+    Terrain
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="IntroductionToDEMExtraction.htm">
+    DEM Extraction
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Stereo Pair 3D Measurement Tool
+   </span>
+  </div>
+  <h1>
+   Stereo Pair 3D Measurement Tool
+   <a name="kanchor425">
+   </a>
+  </h1>
+  <p>
+   The Stereo Pair 3D Measurement Tool allows you to select a common point from two stereo images and to calculate an elevation value for that point. Points obtained in this way can be exported to an ASCII file,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   vector file (EVF), or ArcView® 3D shapefile.
+  </p>
+  <p>
+   The stereo image pair must either contain rational polynomial coefficient (RPC) data or the necessary metadata from which RPCs can be calculated. DEM extraction does not currently support replacement sensor model (RSM) positioning.
+  </p>
+  <h2>
+   <a name="Opening">
+   </a>
+   Open the Stereo Pair 3D Measurement Tool
+  </h2>
+  <p>
+   The Stereo Pair 3D Measurement Tool requires a stereo pair of images containing RPC positioning from an along track or across track satellite acquisition, or from scanned or digital aerial photography. Along track stereo images are acquired on the same orbital pass by a satellite. Across track stereo images are those taken by the same sensor on multiple orbits. Open these files before starting the tool.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Terrain &gt; DEM Extraction &gt; Stereo 3D Measurement
+    </b>
+    . The Select Left Stereo Pair Image dialog opens. See
+    <a href="DEMExtractionWizard/SelectingStereoImagePair.htm">
+     Select the Stereo Image Pair
+    </a>
+    for instructions on opening the left and right image stereo pair.
+   </li>
+   <li value="2">
+    When you click
+    <b>
+     OK
+    </b>
+    in the Select Right Stereo Pair Image dialog, the RPCs are computed, if necessary (which is the case for ASTER and SPOT imagery), and the left and right stereo images open in new display groups. The Stereo Pair 3D Measurement Tool dialog opens.
+   </li>
+   <li value="3">
+    In either the left or right Image window, locate the Zoom box over a feature whose 3D measurement you want to collect. Click
+    <b>
+     Predict Right
+    </b>
+    or
+    <b>
+     Predict Left
+    </b>
+    to center the Zoom box in the second image on the conjugate point.&#160;
+   </li>
+   <li value="4">
+    At this point, you can adjust the selected locations in the Zoom window if necessary, or if the auto predict functionality failed to find a conjugate point, you may need to adjust the Auto Prediction Parameters. Click
+    <b>
+     Params
+    </b>
+    to open the Predict Left/Right Parameters dialog.
+   </li>
+   <p>
+    The Predict Left/Right Parameters dialog has two settings used to define the search area:
+    <b>
+     Search Window Size
+    </b>
+    and
+    <b>
+     Moving Window Size
+    </b>
+    . See
+    <a href="DEMExtractionWizard/CollectingTiePoints.htm#Generate">
+     Generate Tie Points Automatically
+    </a>
+    for a description of these parameters. If the image is a high resolution image, increase the
+    <b>
+     Moving Window Size
+    </b>
+    .
+   </p>
+   <li value="5">
+    Click
+    <b>
+     Get Map Location
+    </b>
+    to compute the Lat/Long and elevation based on the RPCs and selected points.
+   </li>
+   <li value="6">
+    When you are satisfied with the matching points, click
+    <b>
+     Export Location
+    </b>
+    to enter the map and elevation information to an
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    Point Collection dialog.
+   </li>
+   <li value="7">
+    Click
+    <b>
+     Cancel
+    </b>
+    to close the Stereo Pair 3D Measurement dialog.
+   </li>
+  </ol>
+  <h2>
+   <a name="Collecti">
+   </a>
+   Collect Elevation Points
+  </h2>
+  <p>
+   When you have found a pair of matching locations using the Stereo Pair 3D Measurement Tool, you can collect the map and elevation information using
+   <b>
+    Export Location
+   </b>
+   . When you click
+   <b>
+    Export Location
+   </b>
+   , an
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   Point Collection table opens.
+  </p>
+  <p>
+   <img src="../../Resources/Images/DEMExtract/Stereo3DPtCollect.gif" />
+  </p>
+  <p>
+   Each time you find a matching pair of locations and export the values using
+   <b>
+    Export Location
+   </b>
+   , the point is added to the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   Point Collection table. The following options are available from the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   Point Collection table include:
+  </p>
+  <ul>
+   <li value="1">
+    Left-click in the
+    <b>
+     Attribute Description
+    </b>
+    cell and type a description for the point. Do not use spaces in the description text. Left-click on the cell to accept the description text.
+   </li>
+   <li value="2">
+    To delete a point from the table, select the point number to highlight the row and click
+    <b>
+     Delete
+    </b>
+    .
+   </li>
+   <li value="3">
+    To clear all of the points, click
+    <b>
+     Delete All
+    </b>
+    .
+   </li>
+   <li value="4">
+    To save the points in an ASCII file, ENVI vector file (EVF), or as points, polylines, or polygons in an ArcView® 3D shapefile, click
+    <b>
+     File &gt; Save Points As &gt;
+    </b>
+    <i>
+     file format
+    </i>
+    .
+   </li>
+  </ul>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   The Goto button is inactive for use in the Stereo Pair 3D Measurement Tool point collection.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

@@ -1,0 +1,1280 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Preprocess|Radiometric Correction Tools" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Atmospheric Correction
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#PreprocessImagery/AtmosphericCorrection.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="PreprocessImagery.htm">
+    Preprocess
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="RadiometricCorrectionTools.htm">
+    Radiometric Correction Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Atmospheric Correction
+   </span>
+  </div>
+  <h1>
+   <a name="Correct">
+   </a>
+   Atmospheric
+   <a name="kanchor153">
+   </a>
+   Correction
+  </h1>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   offers several atmospheric correction tools. See the following sections:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#Using">
+     Dark Subtraction
+    </a>
+   </li>
+   <li value="2">
+    <a href="#empirical_line_calibration">
+     Empirical Line
+    </a>
+   </li>
+   <li value="3">
+    <a href="#FLAASH">
+     FLAASH™
+    </a>
+   </li>
+   <li value="4">
+    <a href="#Flat">
+     Flat Field
+    </a>
+   </li>
+   <li value="5">
+    <a href="#IAR">
+     IAR
+    </a>
+   </li>
+   <li value="6">
+    <a href="#Log">
+     Log Residuals
+    </a>
+   </li>
+   <li value="7">
+    <a href="#QUick">
+     QUAC®
+    </a>
+   </li>
+   <li value="8">
+    <a href="#Atmosphe">
+     Thermal Atmospheric Correction
+    </a>
+   </li>
+   <li value="9">
+    <a href="#Converti">
+     Convert to Emissivity and Temperature
+    </a>
+   </li>
+  </ul>
+  <h2>
+   <a name="Using">
+   </a>
+   Dark Subtraction
+   <a name="kanchor154">
+   </a>
+  </h2>
+  <p>
+   Use
+   <b>
+    Dark Subtraction
+   </b>
+   to apply atmospheric scattering corrections to the image data. The digital number (DN) to subtract from each band can be either the band minimum, an average based upon a region of interest (ROI), or a specific value.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Radiometric Correction &gt; Dark Subtraction
+    </b>
+    . The Dark Subtract Input File dialog appears.
+   </li>
+   <li value="2">
+    Select an input file and perform optional spatial and spectral
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The Dark Subtraction Values dialog appears.
+   </li>
+   <li value="3">
+    Select a
+    <b>
+     Subtraction Method
+    </b>
+    as described in the following sections.
+   </li>
+   <li value="4">
+    Click
+    <b>
+     OK
+    </b>
+    . The Dark Subtract Parameters dialog appears.
+   </li>
+   <li value="5">
+    Select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="6">
+    Click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+  </ol>
+  <h3>
+   Select Band Minimum Subtraction
+  </h3>
+  <p>
+   To automatically use the minimum DN value of each spectral band for the dark subtraction:
+  </p>
+  <ol>
+   <li value="1">
+    In the Dark Subtraction Values dialog, select the
+    <b>
+     Band Minimum
+    </b>
+    radio button.
+   </li>
+   <li value="2">
+    Click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+  </ol>
+  <h3>
+   Select Region of Interest Subtraction
+  </h3>
+  <p>
+   To use the average of an ROI in each spectral band as the value for dark subtraction:
+  </p>
+  <ol>
+   <li value="1">
+    Define the ROIs.
+   </li>
+   <li value="2">
+    In the Dark Subtraction Values dialog, select the
+    <b>
+     Region of Interest
+    </b>
+    radio button.
+   </li>
+   <li value="3">
+    From the list of available regions, select an ROI.
+   </li>
+   <li value="4">
+    Click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+  </ol>
+  <h3>
+   Select User Value Subtraction
+  </h3>
+  <p>
+   To enter a user-defined value to subtract from each band:
+  </p>
+  <ol>
+   <li value="1">
+    In the Dark Subtraction Values dialog, select the
+    <b>
+     User Value
+    </b>
+    radio button. A list of the bands and a default value of 0.0000 appear under the
+    <b>
+     Current Subtraction Values
+    </b>
+    label.
+   </li>
+   <li value="2">
+    Select one of the band names.
+   </li>
+   <li value="3">
+    In the
+    <b>
+     Edit Selected Item
+    </b>
+    field, enter the subtraction value. Press
+    <b>
+     Enter
+    </b>
+    .
+   </li>
+   <li value="4">
+    Edit the other band values as desired.
+   </li>
+   <li value="5">
+    Click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+  </ol>
+  <h2>
+   <a name="empirical_line_calibration">
+   </a>
+   Empirical Line Calibration
+   <a name="kanchor155">
+   </a>
+   &#160;
+  </h2>
+  <p>
+   Use
+   <b>
+    Empirical Line Compute Factors
+   </b>
+   calibration to force spectral data to match selected field reflectance spectra. A linear regression is used for each band to equate DN and reflectance. This is equivalent to removing the solar irradiance and the atmospheric path radiance. The following equation shows how the empirical line gain and offset values are calculated.
+  </p>
+  <pre xml:space="preserve" class="indent">
+   Reflectance (field spectrum) = gain * radiance (input data) + offset
+  </pre>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   ’s empirical line calibration requires at least one field, laboratory, or other reference spectrum; these can come from spectral profiles or plots, spectral libraries, ROIs, statistics or from ASCII files. Input spectra will automatically be resampled to match the selected data wavelengths. If more than one spectrum is used, then the regression for each band will be calculated by fitting the regression line through all of the spectra. If only one spectrum is used, then the regression line will be assumed to pass through the origin (zero reflectance equals zero DN). The calibration can also be performed on a dataset using existing factors.
+  </p>
+  <h3>
+   Compute Factors and Calibrate Data
+  </h3>
+  <p>
+   Typically, you should choose a dark and a bright region in the image for use in the empirical line calibration (providing that reference spectra are available for these regions). This provides a more accurate linear regression. Using as many paired data/field spectra as you can will also improve the calibration. At least one spectral pair is necessary.
+  </p>
+  <p>
+   To use spectra from ROIs, define the ROIs before running this function.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Radiometric Correction &gt; Empirical Line Compute Factors
+    </b>
+    . The Empirical Line Input File dialog appears.
+   </li>
+   <li value="2">
+    Select an input file and perform optional spatial and spectral
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The Empirical Line Spectra dialog appears.
+   </li>
+   <li value="3">
+    Collect image spectra and reference spectra, and pair spectra using the procedures described in the following sections.
+   </li>
+  </ol>
+  <h3>
+   Collect Data (Image) Spectra
+  </h3>
+  <p>
+   Use the Data Spectra Collection dialog to collect the image spectra (un-calibrated spectra), which can come from a plot or profile, a spectral library, ROI, or ASCII spectrum. Use the
+   <b>
+    Import
+   </b>
+   menu and other interactive options to import and collect spectra.
+  </p>
+  <ol>
+   <li value="1">
+    In the Empirical Line Spectra dialog, click
+    <b>
+     Data Spectra: Import Spectra
+    </b>
+    .
+   </li>
+   <li value="2">
+    <a href="../FindFeatures/Classification/ClassificationTools/CollectingEndmemberSpectra.htm">
+     Collect spectra
+    </a>
+    using the
+    <b>
+     Import
+    </b>
+    menu or using the black draw widget at the top of the dialog.
+   </li>
+   <li value="3">
+    After the data spectra are selected, click
+    <b>
+     Apply
+    </b>
+    . The spectra names are entered into the Empirical Line Spectra dialog.
+   </li>
+  </ol>
+  <h3>
+   Collect Field Spectra
+  </h3>
+  <p>
+   After importing Data (image) spectra into the Empirical Line Spectra dialog, import the corresponding Field (reference) spectra.
+  </p>
+  <ol>
+   <li value="1">
+    In the Empirical Line Spectra dialog, click Field Spectra
+    <b>
+     Import Spectra
+    </b>
+    .
+   </li>
+   <li value="2">
+    <a href="../FindFeatures/Classification/ClassificationTools/CollectingEndmemberSpectra.htm">
+     Collect spectra
+    </a>
+    using the
+    <b>
+     Import
+    </b>
+    menu or using the black draw widget at the top of the dialog.
+   </li>
+   <li value="3">
+    Click
+    <b>
+     Apply
+    </b>
+    to enter the spectra names.
+   </li>
+  </ol>
+  <h3>
+   Pair Spectra
+  </h3>
+  <p>
+   After importing Data and Field (reference) spectra into the Empirical Line Spectra dialog, use the following procedure to pair the Data and Field (reference) spectra for use in the regression.
+  </p>
+  <ol>
+   <li value="1">
+    In the Empirical Line Spectra dialog, select the data spectrum name at the top list.
+   </li>
+   <li value="2">
+    In the bottom list, select the corresponding field spectrum name.
+   </li>
+   <li value="3">
+    Click
+    <b>
+     Enter Pair
+    </b>
+    to associate the two spectra. The paired spectra are listed in the
+    <b>
+     Selected Pairs
+    </b>
+    field.
+   </li>
+   <li value="4">
+    Repeat the selection process for as many data and field spectra pairs as desired.
+   </li>
+   <li value="5">
+    Click
+    <b>
+     OK
+    </b>
+    . The Empirical Line Calibration Parameters dialog appears.
+   </li>
+  </ol>
+  <h3>
+   Complete the Calibration
+  </h3>
+  <ol>
+   <li value="1">
+    After collecting and pairing spectra, select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    in the Empirical Line Calibration Parameters dialog.
+   </li>
+   <p>
+    To save the correction coefficients in an ASCII file, enter a second filename in the Output Calibration Filename field.
+   </p>
+   <p>
+    The default extension for correction coefficients files is
+    <code>
+     .cff
+    </code>
+    .
+   </p>
+   <li value="2">
+    Click
+    <b>
+     OK
+    </b>
+    . When the calibration is completed, the calibration factors are plotted in a plot window and
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds the resulting output to the Layer Manager.
+   </li>
+  </ol>
+  <h3>
+   Calibrate Using Existing Factors
+  </h3>
+  <p>
+   Use
+   <b>
+    Empirical Line Calibrate Existing
+   </b>
+   to run Empirical Line Calibration using output correction factors that were saved during another calibration session.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Radiometric Correction &gt; Empirical Line Calibrate Existing
+    </b>
+    .
+   </li>
+   <li value="2">
+    Select an input file and perform optional spatial and spectral
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The Enter Calibration Factors Filename dialog appears.
+   </li>
+   <li value="3">
+    Choose a calibration factors file (
+    <code>
+     .cff
+    </code>
+    ) created during a previous Empirical Line Calibration session.
+   </li>
+   <li value="4">
+    Click
+    <b>
+     OK
+    </b>
+    . The Empirical Line Calibration Parameters dialog appears.
+   </li>
+   <li value="5">
+    Select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="6">
+    Click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+  </ol>
+  <h2>
+   <a name="FLAASH">
+   </a>
+   FLAASH™
+   <a name="kanchor156">
+   </a>
+   Calibration
+  </h2>
+  <p>
+   <a href="QUAC_FLAASH/FLAASH.htm">
+    Fast Line-of-sight Atmospheric Analysis of Spectral Hypercubes (FLAASH™)
+   </a>
+   is an atmospheric correction method in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   for retrieving spectral reflectance from hyperspectral radiance images. FLAASH™ incorporates the MODTRAN® radiation transfer model to compensate for atmospheric effects.
+  </p>
+  <p>
+   FLAASH is part of the
+   <i>
+    Atmospheric Correction Module: QUAC® and FLAASH™
+   </i>
+   and is available for purchase from
+   <span class="DocumentTitleCompanyName">
+    Exelis
+   </span>
+   or your
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   distributor. Contact your sales representative or
+   <span class="DocumentTitleCompanyName">
+    Exelis
+   </span>
+   (303-786-9900,
+   <code>
+    sales@exelisvis.com
+   </code>
+   ) for more information.
+  </p>
+  <h2>
+   <a name="Flat">
+   </a>
+   Flat Field Calibration
+   <a name="kanchor157">
+   </a>
+  </h2>
+  <p>
+   Use
+   <b>
+    Flat Field Calibration
+   </b>
+   to normalize images to an area of known “flat” reflectance. This is particularly effective for reducing hyperspectral data to relative reflectance. The method requires that you select a Region Of Interest (ROI) prior to execution. The average spectrum from the ROI is used as the reference spectrum, which is then divided into the spectrum at each pixel of the image.
+  </p>
+  <ol>
+   <li value="1">
+    Define an ROI over a spectrally flat area.
+   </li>
+   <li value="2">
+    From the Toolbox, select
+    <b>
+     Radiometric Correction &gt; Flat Field Calibration
+    </b>
+    . The Flat Field Input File dialog appears.
+   </li>
+   <li value="3">
+    Select an input file and perform optional spatial and spectral
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+   <li value="4">
+    Select the average spectrum to use for the flat field calibration by selecting the ROI name in the
+    <b>
+     Select Calibration from Regions
+    </b>
+    column. The selected ROI name appears at the bottom of the window in the
+    <b>
+     Selected Item
+    </b>
+    field.
+   </li>
+   <li value="5">
+    Select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="6">
+    Click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+  </ol>
+  <h2>
+   <a name="IAR">
+   </a>
+   IAR Reflectance Calibration
+   <a name="kanchor158">
+   </a>
+  </h2>
+  <p>
+   Use
+   <b>
+    IAR Reflectance Calibration
+   </b>
+   (Internal Average Relative Reflectance) to normalize images to a scene average spectrum. This is particularly effective for reducing hyperspectral data to relative reflectance in an area where no ground measurements exist and little is known about the scene. It works best for arid areas with no vegetation. An average spectrum is calculated from the entire scene and is used as the reference spectrum, which is then divided into the spectrum at each pixel of the image.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Radiometric Correction &gt; IAR Reflectance Calibration
+    </b>
+    . The Calibration Input File dialog appears.
+   </li>
+   <li value="2">
+    Select an input file and perform optional spatial and spectral
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The IARR Calibration Parameters dialog appears.
+   </li>
+   <li value="3">
+    Select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="4">
+    Click
+    <b>
+     OK
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds the resulting output to the Layer Manager.
+   </li>
+  </ol>
+  <h2>
+   <a name="Log">
+   </a>
+   Log Residuals
+  </h2>
+  <p>
+   The
+   <b>
+    Log Residuals Calibration
+   </b>
+   tool is designed to remove solar irradiance, atmospheric transmittance, instrument gain, topographic effects, and albedo effects from radiance data. This transform creates a pseudo reflectance image that is useful for analyzing mineral-related absorption features. Log residuals calibration is similar to IARR calibration in that both tools use only in-scene statistics to produce a result.
+  </p>
+  <p>
+   The logarithmic residuals of a dataset are defined as the input spectrum divided by the spectral geometric mean, then divided by the spatial geometric mean. The geometric mean is used because the transmittance and other effects are considered multiplicative; it is calculated using logarithms of the data values. The spectral mean is the mean of all bands for each pixel and removes topographic effects. The spatial mean is the mean of all pixels for each band and accounts for the solar irradiance, atmospheric transmittance, and instrument gain.
+  </p>
+  <p>
+   The following figure shows a comparison of input and output spectra.
+  </p>
+  <p>
+   <img src="../Resources/Images/PreprocessImagery/log_residuals.jpg" />
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Radiometric Correction &gt; Log Residuals Calibration
+    </b>
+    .
+   </li>
+   <p>
+    The Log Residuals Calibration Input File dialog appears.
+   </p>
+   <li value="2">
+    Select an input file and perform optional spatial and spectral
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The Log Residuals Calibration Parameters dialog appears.
+   </li>
+   <li value="3">
+    Select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="4">
+    Click
+    <b>
+     OK
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds the resulting output to the Layer Manager.
+   </li>
+  </ol>
+  <p>
+   <b>
+    Reference
+   </b>
+   <![CDATA[ ]]>
+  </p>
+  <p>
+   Green, A.A., M.D. Craig, “Analysis of aircraft spectrometer data, with logarithmic residuals”, Proceedings of the Airborne Imaging Spectrometer Data Analysis Workshop, April 8-10, 1985, G. Vane and A. Goetz editors, JPL, pp111-119.
+  </p>
+  <h2>
+   <a name="QUick">
+   </a>
+   QUick Atmospheric Correction Calibration®
+  </h2>
+  <p>
+   <a href="QUAC_FLAASH/QUAC.htm">
+    QUick Atmospheric Correction (QUAC)
+   </a>
+   is an automated atmospheric correction method in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   for retrieving spectral reflectance from multispectral and hyperspectral images.
+  </p>
+  <p>
+   QUAC is part of the
+   <i>
+    Atmospheric Correction Module: QUAC and FLAASH
+   </i>
+   and is available for purchase from
+   <span class="DocumentTitleCompanyName">
+    Exelis
+   </span>
+   or your
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   distributor. Contact your sales representative or
+   <span class="DocumentTitleCompanyName">
+    Exelis
+   </span>
+   (303-786-9900,
+   <code>
+    sales@exelisvis.com
+   </code>
+   ) for more information.
+  </p>
+  <h2>
+   <a name="Atmosphe">
+   </a>
+   Thermal Atmospheric Correction
+   <a name="kanchor159">
+   </a>
+  </h2>
+  <p>
+   Use
+   <b>
+    Thermal Atmospheric Correction
+   </b>
+   to approximate and remove the atmospheric contributions from thermal infrared radiance data. Thermal image data must be converted to radiance before performing the atmospheric correction. TIMS data should be converted to radiance using TIMS Radiance tool before performing the atmospheric correction. TIMS Radiance tools apply the correct band coefficients to convert to radiance in the appropriate units. No data scale factor is then required during the atmospheric correction. Perform the correction before converting your data to emissivity for the best results.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   does not check to make sure the images are thermal infrared data. Be sure that your data wavelengths measure between 8 and 14 μm before applying this correction.
+  </p>
+  <p>
+   The atmospheric correction algorithm used in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   is similar to the In-Scene Atmospheric Compensation algorithm, ISAC (see references at the end of this section). This algorithm assumes that the atmosphere is uniform over the data scene and that a near-blackbody surface exists within the scene. The location of the blackbody surface is not required for this correction. A single layer approximation of the atmosphere is used. No reflected downwelling radiance is also assumed.
+  </p>
+  <p>
+   The algorithm first determines the wavelength that most often exhibits the maximum brightness temperature. This wavelength is then used as the reference wavelength. Only spectra that have their brightest temperature at this wavelength are used to calculate the atmospheric compensation. At this point, for each wavelength, the reference blackbody radiance values are plotted against the measured radiances. A line is fitted to the highest points in these plotted data and the fit is weighted to assign more weight to regions with denser sampling. The compensation for this band is then applied as the slope and offset derived from the linear regression of these data with their computed blackbody radiances at the reference wavelength.
+  </p>
+  <p>
+   Upwelling atmospheric radiance and atmospheric transmission are approximated using the following method. First, the surface temperature of every pixel is estimated from the data and used to approximate the brightness temperature using the Planck function and assuming an emissivity of 1. Next, a line is fitted (using one of two methods) to a scatter plot of radiance vs. brightness temperature. The atmospheric upwelling and transmission are then derived from the slope and offset of this line.
+  </p>
+  <ol>
+   <li value="1">
+    <p>
+     From the Toolbox, select
+     <b>
+      Radiometric Correction &gt; Thermal Atmospheric Correction
+     </b>
+     .
+    </p>
+   </li>
+   <li value="2">
+    Select an input file and perform optional spatial and spectral
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The Thermal Atm Correction Parameters dialog appears.
+   </li>
+   <li value="3">
+    Enter the
+    <b>
+     Data Scale Factor
+    </b>
+    needed to scale your data to units of W/m
+    <sup>
+     2
+    </sup>
+    /μm/sr.
+   </li>
+   <p>
+    The image output from this atmospheric correction uses the same units as the input image. For example, if the results of the correction are used to calculate emissivity and temperature, then the same scale factor must be specified.
+   </p>
+   <li value="4">
+    Click
+    <b>
+     Wavelength Units
+    </b>
+    and select the units.
+   </li>
+   <li value="5">
+    Use the toggle button to select either
+    <b>
+     All
+    </b>
+    or
+    <b>
+     Max Hit
+    </b>
+    to determine which pixels to use in the surface temperature estimation regression.
+   </li>
+   <p>
+    Selecting
+    <b>
+     All
+    </b>
+    will estimate the surface temperature for each pixel by using the maximum value of the brightness temperatures found throughout the input wavelengths. Selecting
+    <b>
+     Max Hit
+    </b>
+    will estimate the surface temperature for only those pixels that have their maximum brightness temperatures at a particular wavelength. The wavelength used is the wavelength that has the largest number of pixels with a maximum brightness temperature value.
+   </p>
+   <li value="6">
+    Use the toggle button to select either
+    <b>
+     Top of Bins
+    </b>
+    or
+    <b>
+     Normalized Regression
+    </b>
+    for the scatter plot fitting technique.
+    <ul>
+     <li value="1">
+      <b>
+       Top of Bins
+      </b>
+      fits a line to the top of the scatter plot of radiance vs. brightness temperature. The top of the scatter plot corresponds to those pixels whose emissivity is closest to 1. This
+      <b>
+       Top of Bins
+      </b>
+      fit is achieved by doing a standard least squares regression on the top 5% of the data in the scatter plot. This technique is susceptible to sensor noise which may occur at the top of the scatter plot.
+     </li>
+     <li value="2">
+      <b>
+       Normalized Regression
+      </b>
+      first fits a line to the scatter plot of radiance vs. brightness temperature by doing a standard least squares regression. The residuals of this fit are then compared to a normal probability plot. Another regression is done on the residuals in the normal plot. Points that are 3 times the noise equivalent sensor response (NESR) away from the regression line are deemed outliers and are removed. A final regression is done on the scatter plot using this reduced set of pixels. This method uses all the points in the scatter plot that are not outliers and does not fit to only the top of the scatter plot where the emissivity values are closest to 1.
+     </li>
+     <li value="3">
+      If you choose
+      <b>
+       Normalized Regression
+      </b>
+      , enter the
+      <b>
+       Noise Equivalent Sensor Response
+      </b>
+      in the field.
+     </li>
+    </ul>
+   </li>
+   <li value="7">
+    Enter a gain and offset output filename, if desired.
+   </li>
+   <li value="8">
+    Use the toggle button to select whether to plot the resulting atmospheric transmission and upwelling spectra.
+   </li>
+   <li value="9">
+    Enter an output filename.
+   </li>
+   <li value="10">
+    Click
+    <b>
+     OK
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds the resulting output to the Layer Manager.
+   </li>
+  </ol>
+  <p>
+   <b>
+    References
+   </b>
+   <![CDATA[ ]]>
+  </p>
+  <p>
+   Johnson, B. R. and S. J. Young, “In-Scene Atmospheric Compensation: Application to SEBASS Data Collected at the ARM Site,” Technical Report, Space and Environment Technology Center, The Aerospace Corporation, May 1998.
+  </p>
+  <p>
+   Hernandez-Baquero, E., “Characterization of the Earths Surface and Atmosphere from Multispectral and Hyperspectral Thermal Imagery,” Ph.D. Dissertation, Rochester Institute of Technology, Chester F. Carlsom Center for Imaging Science, Rochester, NY, 2000.
+  </p>
+  <h2>
+   <a name="Converti">
+   </a>
+   Convert to Emissivity and Temperature
+   <a name="kanchor160">
+   </a>
+  </h2>
+  <p>
+   The radiation emitted from a surface in the thermal infrared wavelengths is a function of both the surface temperature and emissivity. The emissivity relates to the composition of the surface and is often used for surface constituent mapping.
+  </p>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   uses three techniques to separate the emissivity and temperature information in radiance data measured with thermal infrared sensors. Both the
+   <a href="#reference_channel_emissivity">
+    Emissivity Reference Channel
+   </a>
+   and
+   <a href="#using_emissivity_normalization">
+    Emissivity Normalization
+   </a>
+   techniques assume a fixed emissivity value and produce emissivity and temperature outputs. The
+   <a href="#using_alpha_residuals">
+    Emissivity Alpha Residuals
+   </a>
+   technique does not provide temperature information.
+  </p>
+  <p>
+   <a name="references">
+   </a>
+   <b>
+    References
+   </b>
+   <![CDATA[ ]]>
+  </p>
+  <p>
+   Hook, S. J., A. R. Gabell, A. A. Green, and P. S. Kealy, 1992. A comparison of techniques for extracting emissivity information from thermal infrared data for geologic studies.
+   <i>
+    Remote Sensing of Environment
+   </i>
+   , Vol. 42, pp. 123-135.
+  </p>
+  <p>
+   <a name="kealy">
+   </a>
+   Kealy, P. S. and S. J. Hook, 1993., Separating temperature and emissivity in thermal infrared multispectral scanner data: Implications for recovering land surface temperatures.
+   <i>
+    IEEE Transactions on Geoscience and Remote Sensing
+   </i>
+   , Vol. 31, No. 6, pp.1155-1164.
+  </p>
+  <h3>
+   <a name="reference_channel_emissivity">
+   </a>
+   Emissivity Reference Channel
+   <a name="kanchor161">
+   </a>
+  </h3>
+  <p>
+   Use
+   <b>
+    Emissivity Reference Channel
+   </b>
+   to calculate emissivity and temperature values from thermal infrared radiance data. The reference channel emissivity technique assumes that all the pixels in one channel (band) of the thermal infrared data have a constant emissivity. Using this constant emissivity, a temperature image is calculated and those temperatures are used to calculate the emissivity values in all the other bands using the Planck function. You can select the band to keep constant and enter the desired emissivity value for that band. See the previous references for more information.
+  </p>
+  <ol>
+   <li value="1">
+    <p>
+     From the Toolbox, select
+     <b>
+      Radiometric Correction &gt; Emissivity Reference Channel
+     </b>
+     .
+    </p>
+   </li>
+   <li value="2">
+    Select an input file and perform optional spatial and spectral
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The Calculate Emissivity Parameters dialog appears.
+   </li>
+   <li value="3">
+    Enter a data scale factor to scale the radiance values into the units of W/m
+    <sup>
+     2
+    </sup>
+    /μm/sr (for example, if your data is in microflicks (μW/cm
+    <sup>
+     2
+    </sup>
+    /μm/sr) enter a scale factor of .01).
+   </li>
+   <li value="4">
+    Enter a wavelength scale factor to scale the wavelengths that are read from the header into units of μm.
+   </li>
+   <li value="5">
+    From the
+    <b>
+     Emissivity Band
+    </b>
+    drop-down list, select which band to set to a constant emissivity value.
+   </li>
+   <li value="6">
+    In the
+    <b>
+     Assumed Emissivity Value
+    </b>
+    field, enter the emissivity value for the constant band.
+   </li>
+   <li value="7">
+    Click the
+    <b>
+     Output Temperature Image?
+    </b>
+    toggle button to designate whether or not to output a temperature image. Enter an output filename.
+   </li>
+   <li value="8">
+    Enter an output filename for the emissivity data.
+   </li>
+   <li value="9">
+    Click
+    <b>
+     OK
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds the temperature image (single band) and emissivity data cube (same number of bands as input radiance data) to the Layer Manager.
+   </li>
+  </ol>
+  <h3>
+   <a name="using_emissivity_normalization">
+   </a>
+   Emissivity Normalization
+   <a name="kanchor162">
+   </a>
+  </h3>
+  <p>
+   Use
+   <b>
+    Emissivity Normalization
+   </b>
+   to calculate emissivity and temperature values from thermal infrared radiance data. The emissivity normalization technique calculates the temperature for every pixel and band in the data using a fixed emissivity value. The highest temperature for each pixel is used to calculate the emissivity values using the Planck function. You can enter the desired fixed emissivity value. See
+   <a href="#references">
+    References
+   </a>
+   .
+  </p>
+  <ol>
+   <li value="1">
+    <p>
+     From the Toolbox, select
+     <b>
+      Radiometric Correction &gt; Emissivity Normalization
+     </b>
+     .
+    </p>
+   </li>
+   <li value="2">
+    Select an input file and perform optional spatial and spectral
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The Calculate Emissivity parameters dialog appears.
+   </li>
+   <li value="3">
+    Enter a data scale factor to scale the radiance values into the units of W/m
+    <sup>
+     2
+    </sup>
+    /μm/sr (for example, if your data is in microflicks (μW/cm
+    <sup>
+     2
+    </sup>
+    /μm/sr) enter a scale factor of .01).
+   </li>
+   <li value="4">
+    Enter a wavelength scale factor to scale the wavelengths (read from the header) into units of μm.
+   </li>
+   <li value="5">
+    In the Assumed Emissivity Value field, enter the fixed emissivity value to use to calculate the temperatures.
+   </li>
+   <li value="6">
+    Click the
+    <b>
+     Output Temperature Image?
+    </b>
+    toggle button to designate whether or not to output a temperature image. Enter an output filename.
+   </li>
+   <li value="7">
+    Enter an output filename for the emissivity data.
+   </li>
+   <li value="8">
+    Click
+    <b>
+     OK
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds the temperature image (single band) and emissivity data cube (same number of bands as input radiance data) to the Layer Manager.
+   </li>
+  </ol>
+  <h3>
+   <a name="using_alpha_residuals">
+   </a>
+   Emissivity Alpha Residuals
+   <a name="kanchor163">
+   </a>
+  </h3>
+  <p>
+   Use
+   <b>
+    Emissivity Alpha Residuals
+   </b>
+   to produce alpha residual spectra that approximate the shape of emissivity spectra from thermal infrared radiance data.
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   uses Wien’s approximation of the Planck function so it can linearize the equation with logarithms.
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   separates the temperature and emissivity terms, and uses means to subtract the temperature term out.
+  </p>
+  <p>
+   The alpha residual spectra are a function of emissivity only and have a similar shape as emissivity spectra but have a zero mean. Therefore emissivity spectra must be scaled for direct comparison to alpha residual spectra. You can calculate emissivity spectra from alpha residual spectra using empirical data as described in
+   <a href="#kealy">
+    Kealy (1993)
+   </a>
+   .
+  </p>
+  <ol>
+   <li value="1">
+    <p>
+     From the Toolbox, select
+     <b>
+      Radiometric Correction &gt; Emissivity Alpha Residuals
+     </b>
+     .
+    </p>
+   </li>
+   <li value="2">
+    Select an input file and perform optional spatial and spectral
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The Calculate Emissivity parameters dialog appears.
+   </li>
+   <li value="3">
+    Enter a data scale factor to scale the radiance values into the units of W/m
+    <sup>
+     2
+    </sup>
+    /μm/sr (for example, if your data is in microflicks (μW/cm
+    <span class="'SymbolProp BT'">
+     2
+    </span>
+    /μm/sr) enter a scale factor of .01).
+   </li>
+   <li value="4">
+    Enter a wavelength scale factor to scale the wavelengths (read from the header) into units of μm.
+   </li>
+   <li value="5">
+    Enter an output filename.
+   </li>
+   <li value="6">
+    Click
+    <b>
+     OK
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds the alpha residual data cube (same number of bands as input radiance data) to the Layer Manager.
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

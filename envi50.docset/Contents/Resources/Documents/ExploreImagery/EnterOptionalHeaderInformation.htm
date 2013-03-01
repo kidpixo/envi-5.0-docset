@@ -1,0 +1,1624 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Enter Optional Header Information
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/TableStyles/Description.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#ExploreImagery/EnterOptionalHeaderInformation.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <h1>
+   Enter Optional Header Information
+   <a name="kanchor800">
+   </a>
+  </h1>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   headers may have associated ancillary information, depending on the image data type.
+  </p>
+  <p>
+   From the Toolbox, select
+   <b>
+    Raster Management &gt; Edit ENVI Header
+   </b>
+   . In the Header Info dialog, click
+   <b>
+    Edit Attributes
+   </b>
+   and select the desired option to edit optional header information.
+  </p>
+  <p>
+   See the following sections:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#Edit">
+     Edit Band Names or Spectral Library Names
+    </a>
+   </li>
+   <li value="2">
+    <a href="#Import">
+     Import Header Data from ASCII Files
+    </a>
+   </li>
+   <li value="3">
+    <a href="#Set">
+     Set Default Bands to Load
+    </a>
+   </li>
+   <li value="4">
+    <a href="#Edit2">
+     Edit Wavelengths or FWHM
+    </a>
+   </li>
+   <li value="5">
+    <a href="#Select">
+     Select Bad Bands
+    </a>
+   </li>
+   <li value="6">
+    <a href="#Enter">
+     Enter Gains and Offsets
+    </a>
+   </li>
+   <li value="7">
+    <a href="#Enter2">
+     Enter Map Information for Georeferenced Files
+    </a>
+   </li>
+   <li value="8">
+    <a href="#Emulate">
+     Emulate an RPC or RSM Projection
+    </a>
+   </li>
+   <li value="9">
+    <a href="#Associat">
+     Associate a DEM to a File
+    </a>
+   </li>
+   <li value="10">
+    <a href="#Enter3">
+     Enter Geographic Corners for Non-Georeferenced Files
+    </a>
+   </li>
+   <li value="11">
+    <a href="#Enter4">
+     Enter Pixel Sizes for Non-Georeferenced Files
+    </a>
+   </li>
+   <li value="12">
+    <a href="#Edit3">
+     Edit Classification Information
+    </a>
+   </li>
+   <li value="13">
+    <a href="#Change">
+     Change Z Plot Information
+    </a>
+   </li>
+   <li value="14">
+    <a href="#Enter5">
+     Enter a Reflectance Scale Factor
+    </a>
+   </li>
+   <li value="15">
+    <a href="#Enter6">
+     Enter a Data Value to Ignore
+    </a>
+   </li>
+   <li value="16">
+    <a href="#Enter7">
+     Enter Sensor Types
+    </a>
+   </li>
+   <li value="17">
+    <a href="#Set2">
+     Set the Default Stretch
+    </a>
+   </li>
+   <li value="18">
+    <a href="#Use">
+     Use the Complex Lookup Function
+    </a>
+   </li>
+   <li value="19">
+    <a href="#Set3">
+     Set Row Offsets
+    </a>
+   </li>
+  </ul>
+  <h2>
+   <a name="Edit">
+   </a>
+   Edit Band Names or Spectral Library Names
+  </h2>
+  <p>
+   You can edit the default names of bands or spectral libraries. The dialog to perform either of these functions is similar, so both are described here.
+  </p>
+  <p>
+   In the Header Info dialog, click
+   <b>
+    Edit Attributes
+   </b>
+   and select either:
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     Band Names
+    </b>
+    : The Edit Band Name values dialog appears.
+   </li>
+   <li value="2">
+    <b>
+     Spectral Library Names
+    </b>
+    : The Edit Spectral Library Names values dialog appears.
+   </li>
+  </ul>
+  <h2>
+   <a name="Import">
+   </a>
+   Import Header Data from ASCII Files
+  </h2>
+  <p>
+   In some header editing dialogs you can import data from an ASCII file.
+  </p>
+  <ol>
+   <li value="1">
+    Click
+    <b>
+     Import ASCII
+    </b>
+    . The Enter ASCII Filename dialog appears.
+   </li>
+   <li value="2">
+    <p>
+     Open the ASCII file. The Input ASCII File dialog appears with first few values from the ASCII file listed. If you are editing band or spectral library names, the information from the ASCII file appears at the top of the Edit Band Name or Edit Spectral Library Names dialogs.
+    </p>
+    <p>
+     The number of rows of the ASCII file must match the number of bands in the image file. The ASCII file may have one or more columns of ASCII data; however, the file used to import band names can only contain strings.
+    </p>
+   </li>
+   <li value="3">
+    <p>
+     If available, in the
+     <b>
+      Wavelength Column
+     </b>
+     field enter the number of the ASCII column that contains the wavelengths.
+    </p>
+    <p>
+     To scale the wavelength values on-the-fly, enter a scale factor in the
+     <b>
+      Multiply Factor
+     </b>
+     field. For example, to multiply the imported wavelength values by 100, enter
+     <b>
+      100
+     </b>
+     .
+    </p>
+   </li>
+   <li value="4">
+    If available, in the
+    <b>
+     FWHM Column
+    </b>
+    field enter the number of the ASCII column that contains the band width information (used in spectral resampling). The ASCII file can also contain a
+    <b>
+     Bad Bands List
+    </b>
+    column. The
+    <b>
+     Bad Bands List
+    </b>
+    column specifies a good band with a
+    <b>
+     1
+    </b>
+    and bad band with a
+    <b>
+     0
+    </b>
+    .
+   </li>
+   <li value="5">
+    If available, in the
+    <b>
+     Data Gain Column
+    </b>
+    field enter the column number of the ASCII file that represents the gain.
+   </li>
+   <li value="6">
+    If available, in the
+    <b>
+     Data Offsets Column
+    </b>
+    field enter the column number of the ASCII file that represents the offsets.
+   </li>
+   <li value="7">
+    If available, enter the number of the ASCII column that contains the Bad Bands List.
+   </li>
+   <li value="8">
+    Click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+   <li value="9">
+    Click
+    <b>
+     OK
+    </b>
+    in the Header Info dialog to write all of the changes to the header file.
+   </li>
+  </ol>
+  <h2>
+   <a name="Set">
+   </a>
+   Set Default Bands to Load
+  </h2>
+  <p>
+   You can identify bands to automatically load into the display when you open the file. You can select either a gray scale image or a color image.
+  </p>
+  <ol>
+   <li value="1">
+    In the Header Info dialog, click
+    <b>
+     Edit Attributes
+    </b>
+    and select
+    <b>
+     Default Bands to Load
+    </b>
+    . The Default Bands to Load dialog appears with a list of all the bands in the file.
+   </li>
+   <li value="2">
+    Select the band names to load in the red (
+    <b>
+     R
+    </b>
+    ), green (
+    <b>
+     G
+    </b>
+    ), and blue (
+    <b>
+     B
+    </b>
+    ) options.
+   </li>
+   <ul>
+    <li value="1">
+     If you select only one band, it is loaded as a gray scale image.
+    </li>
+    <li value="2">
+     Click
+     <b>
+      Reset
+     </b>
+     to clear the bands.
+    </li>
+   </ul>
+   <li value="3">
+    Click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+  </ol>
+  <h2>
+   <a name="Edit2">
+   </a>
+   Edit Wavelengths or FWHM
+   <a name="kanchor801">
+   </a>
+  </h2>
+  <ol>
+   <li value="1">
+    In the Header Info dialog, click
+    <b>
+     Edit Attributes
+    </b>
+    and select either:
+   </li>
+   <ul>
+    <li value="1">
+     <b>
+      Wavelengths
+     </b>
+     : The Edit Wavelength values dialog appears.
+    </li>
+    <li value="2">
+     <b>
+      FWHM
+     </b>
+     : The Edit FWHM values dialog appears.
+    </li>
+   </ul>
+   <li value="2">
+    Select the value to change in the list. The value appears in the
+    <b>
+     Edit Selected Item
+    </b>
+    field.
+   </li>
+   <li value="3">
+    Type the new value and press
+    <b>
+     Enter
+    </b>
+    .
+   </li>
+   <li value="4">
+    In the
+    <b>
+     Wavelength/FWHM Units
+    </b>
+    drop-down list, select the units to use with your wavelength and FWHM values. The wavelength units are used to scale correctly between different wavelength units in the
+    <b>
+     Endmember Collection
+    </b>
+    dialog.
+   </li>
+   <li value="5">
+    Click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+  </ol>
+  <h2>
+   <a name="Select">
+   </a>
+   Select Bad Bands
+   <a name="kanchor802">
+   </a>
+  </h2>
+  <p>
+   Use
+   <b>
+    Bad Bands List
+   </b>
+   to select bands to exclude from plotting or optionally omit during processing. The Bad Bands list is often used to omit the water vapor bands in hyperspectral datasets.
+  </p>
+  <ol>
+   <li value="1">
+    In the Header Info dialog, click
+    <b>
+     Edit Attributes
+    </b>
+    and select
+    <b>
+     Bad Bands List
+    </b>
+    . The Edit Bad Bands List values dialog appears.
+   </li>
+   <li value="2">
+    <p>
+     All bands in the list are highlighted by default as good. Deselect any desired bands in to designate them as bad bands.
+    </p>
+    <p>
+     To specify a range of bands, enter the beginning and ending band numbers in the fields next to the
+     <b>
+      Add Range
+     </b>
+     button. Click
+     <b>
+      Add Range
+     </b>
+     .
+    </p>
+   </li>
+   <li value="3">
+    Click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+  </ol>
+  <h2>
+   <a name="Enter">
+   </a>
+   Enter Gains and Offsets
+   <a name="kanchor803">
+   </a>
+  </h2>
+  <p>
+   Use
+   <b>
+    Gains
+   </b>
+   and
+   <b>
+    Offsets
+   </b>
+   to enter default gain and offset values for the
+   <b>
+    Radiometric Correction &gt; Apply Gain and Offset
+   </b>
+   tool in the Toolbox.
+  </p>
+  <h2>
+   <a name="Enter2">
+   </a>
+   Enter Map Information for Georeferenced Files
+   <a name="kanchor804">
+   </a>
+  </h2>
+  <p>
+   Map information is associated with georeferenced files. The term
+   <i>
+    georeferenced
+   </i>
+   refers to images that are geometrically corrected (that is, rectified) so that they conform to a known projection. To establish the georeferenced data coordinate system, you must know the sample and line coordinates of one pixel (the reference pixel), the pixel size, the map projection, and map coordinates of this pixel.
+  </p>
+  <p>
+   In
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   , pixel values refer to the upper-left corner of the pixel. Map coordinates also typically refer to the upper-left corner of the pixel. However, if you want the map coordinate to reference the middle of the pixel, add 0.5 to the image coordinate of the reference pixel specified in the
+   <b>
+    Map Info
+   </b>
+   field of the header (for example, x&#160;= 1.5, y = 1.5 would make the map coordinates refer to the center of the pixel).
+  </p>
+  <ol>
+   <li value="1">
+    In the Header Info dialog, click
+    <b>
+     Edit Attributes
+    </b>
+    and select
+    <b>
+     Map Info
+    </b>
+    .
+   </li>
+   <li value="2">
+    In the Edit Map Information dialog, enter the reference pixel coordinates in the
+    <b>
+     Image Coordinate of Tie Points X
+    </b>
+    and
+    <b>
+     Y
+    </b>
+    fields and the pixel size in the
+    <b>
+     Pixel Size and Rotation X
+    </b>
+    and
+    <b>
+     Y
+    </b>
+    fields. Be sure to enter the pixel size in the units appropriate for your selected projection.
+   </li>
+   <li value="3">
+    If North is not up in the image, enter a rotation angle in degrees in the
+    <b>
+     Map Rotation
+    </b>
+    field. Measure the angle in a clockwise direction where zero degrees is straight up.
+   </li>
+   <li value="4">
+    Select the map projection by clicking on
+    <b>
+     Change Proj
+    </b>
+    and selecting the appropriate projection from the list of projections. For more detailed information, see the
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    Help.
+   </li>
+   <li value="5">
+    <p>
+     Enter the coordinates of the reference pixel in the appropriate fields.
+    </p>
+    <p>
+     The corresponding latitude and longitude are automatically calculated. To view the coordinates, click on the arrow toggle button for Proj.
+    </p>
+   </li>
+   <li value="6">
+    Click
+    <b>
+     OK
+    </b>
+    . The Header Info dialog appears.
+   </li>
+  </ol>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   Certain EOS products such as ASTER and MODIS HDF files contain global and local metadata that contain a wealth of map information. However,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   may not automatically read all of it. You may need to manually enter some of this information into the Edit Map Information dialog. For example, ASTER AST05 products contain the following tags, which you can use to enter map information: MAPPROJECTIONNAME, PROJECTIONPARAMETERS, UTMZONECODE, SCENEFOURCORNERS, and SCENEORIENTATIONANGLE.
+  </p>
+  <h2>
+   <a name="Emulate">
+   </a>
+   Emulate an RPC or RSM Projection
+   <a name="kanchor805">
+   </a>
+  </h2>
+  <p>
+   If your file has associated
+   <a href="../GeorectifyImagery/BackgroundNonStandardProjections.htm#Sensor">
+    rational polynomial coefficient (RPC)
+   </a>
+   or
+   <a href="../GeorectifyImagery/BackgroundNonStandardProjections.htm#Sensor">
+    replacement sensor model (RSM)
+   </a>
+   information, use this method to automatically derive RPC- or RSM-based geolocation information for individual pixels in an image. A file containing RPC or RSM information is required. The geolocation is calculated individually for each pixel, allowing
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   to emulate a pseudo projection from the provided RPC or RSM model. This method does not change the appearance of the image; it only calculates the correct geolocation for each individual pixel.
+  </p>
+  <p>
+   This method is less computationally- and disk-space intensive than a full orthorectification; however, the full orthorectification provides greater accuracy.
+  </p>
+  <ol>
+   <li value="1">
+    <p>
+     In the Header Info dialog, click
+     <b>
+      Edit Attributes
+     </b>
+     and select
+     <b>
+      RPC or RSM Projection Emulation
+     </b>
+     . If
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     cannot find associated RPC or RSM information, an error dialog appears, prompting you to select a file containing RPC coefficients. RSM coefficients cannot be imported from an external file.
+    </p>
+    <p>
+     The RPC Projection Emulation dialog appears when
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     determines the file contains RPCs, and the RSM Projection Emulation dialog appears when
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     determines the file contains RSM information.
+    </p>
+   </li>
+   <li value="2">
+    Select one of the following options:
+   </li>
+   <ul>
+    <li value="1">
+     <b>
+      Edit existing RPC/RSM projection emulation
+     </b>
+     : Edit the RPC or RSM information in the file. If you select this option and click
+     <b>
+      OK
+     </b>
+     , the RPC/RSM Parameters dialog appears. Proceed to step 3.
+    </li>
+    <li value="2">
+     <b>
+      Clear existing RPC/RSM projection emulation
+     </b>
+     : This option removes RPC or RSM information from the file. Selecting this option and clicking
+     <b>
+      OK
+     </b>
+     returns you to the Header Info dialog.
+    </li>
+   </ul>
+   <li value="3">
+    <p>
+     In the RPC or RSM Parameters dialog, click the
+     <b>
+      RPC or RSM Projection Emulation Enabled
+     </b>
+     toggle button, and select
+     <b>
+      On
+     </b>
+     to enable the projection or
+     <b>
+      Off
+     </b>
+     to use the native map information, if any.
+    </p>
+    <p>
+     Use the
+     <b>
+      Select Projection
+     </b>
+     section of the RPC or RSM Parameters dialog if you need to modify the projection used to report the resulting geolocation information. Different parameters are available depending on the selected projection type.
+    </p>
+   </li>
+   <ul>
+    <li value="1">
+     To build a customized map projection, click
+     <b>
+      New
+     </b>
+     .
+    </li>
+    <li value="2">
+     To change the datum for a projection type, click
+     <b>
+      Datum
+     </b>
+     and select a datum from the list in the Select Geographic Datum dialog.
+    </li>
+    <li value="3">
+     If you select
+     <b>
+      UTM
+     </b>
+     , click the
+     <b>
+      N
+     </b>
+     or
+     <b>
+      S
+     </b>
+     toggle button to indicate if the selected latitude is north (N) or south (S) of the equator. Enter a zone, or click
+     <b>
+      Set Zone
+     </b>
+     and enter the latitude and longitude values to automatically calculate the zone.
+    </li>
+    <li value="4">
+     <p>
+      If you select a
+      <b>
+       State Plane
+      </b>
+      projection, enter the zone or click
+      <b>
+       Set Zone
+      </b>
+      and select the zone name from the list.
+     </p>
+     <p>
+      Both NOS and USGS zone numbers are shown next to the zone name.
+     </p>
+    </li>
+    <li value="5">
+     To designate the units for a projection type, click
+     <b>
+      Units
+     </b>
+     and select a unit type from the drop-down list.
+    </li>
+   </ul>
+   <li value="4">
+    Click
+    <b>
+     OK
+    </b>
+    . The Header Info dialog appears.
+   </li>
+  </ol>
+  <h2>
+   <a name="Associat">
+   </a>
+   Associate a DEM
+   <a name="kanchor806">
+   </a>
+   to a File
+  </h2>
+  <p>
+   You can associate a digital elevation model (DEM) with an image via the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   header file. You can also end the association by editing the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   header file to remove the reference to the DEM file.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   When you choose a DEM band,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   does not verify that both files are georeferenced and cover the same area.
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   also automatically adds a geoid offset and assumes that the DEM is in meters above sea level, even for fixed-level DEMs.
+  </p>
+  <ol>
+   <li value="1">
+    In the Header Info dialog, click
+    <b>
+     Edit Attributes
+    </b>
+    and select
+    <b>
+     Associate DEM File
+    </b>
+    . The Select DEM to associate with this file dialog appears. If an association already exists, the Associate DEM with File dialog appears. Select either:
+   </li>
+   <ul>
+    <li value="1">
+     <b>
+      Edit existing DEM file association
+     </b>
+     : The Select DEM Band to Associate With This File dialog appears. The existing associated band is highlighted by default. Edit the DEM file association by selecting another band to associate. Click
+     <b>
+      OK
+     </b>
+     .
+    </li>
+    <li value="2">
+     <b>
+      Clear existing DEM file association
+     </b>
+     : The Associate DEM with File dialog closes, the association no longer exists, and the Header Info dialog appears.
+    </li>
+   </ul>
+   <li value="2">
+    If the association of a DEM with this image is new, select a DEM band.
+   </li>
+   <li value="3">
+    <p>
+     Click
+     <b>
+      OK
+     </b>
+     .
+    </p>
+    <p>
+     When you select a DEM association, two fields are written to the
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     header file:
+    </p>
+   </li>
+   <table style="caption-side: bottom;margin-left: 0;margin-right: auto;mc-table-style: url('../Resources/TableStyles/Description.css');" cellspacing="0" class="TableStyle_Description">
+    <col />
+    <col />
+    <thead>
+     <tr>
+      <td class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+       <p class="TableHead">
+        Field
+       </p>
+      </td>
+      <td class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+       <p class="TableHead">
+        Description
+       </p>
+      </td>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+       <pre xml:space="preserve">
+        dem file = /path/file
+       </pre>
+      </td>
+      <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+       <p>
+        Path and filename of selected DEM file.
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+       <pre xml:space="preserve">
+        dem band = 2
+       </pre>
+      </td>
+      <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+       <p>
+        Index (starting at 1) of the selected DEM band.
+       </p>
+       <p>
+        The
+        <code>
+         dem
+        </code>
+        <code>
+         band
+        </code>
+        is not written if the DEM file contains a single band, or if the first band of an image was chosen. In these cases, the
+        <code>
+         dem
+        </code>
+        <code>
+         band
+        </code>
+        value defaults to 0.
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <td colspan="2" class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+       <p>
+        Neither field is written if an in-memory band is selected as the associated DEM band. In this case, the DEM association exists for the current
+        <span class="DocumentTitleProductName">
+         ENVI
+        </span>
+        session only; it does not persist for subsequent sessions.
+       </p>
+      </td>
+     </tr>
+    </tbody>
+   </table>
+   <p>
+    When you open an image that has an associated DEM,
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds both the image and the DEM to the Layer Manager. If
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    cannot find the associated file,
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    displays an error message and adds only the base image to the Layer Manager.
+   </p>
+   <p>
+    This DEM association also affects the following functions in
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    .
+   </p>
+   <ul>
+    <li value="1">
+     Cursor Location/Value Tool: The DEM value for a given pixel displays next to the data value for areas where the DEM and the image share common geographic coordinates; for example,
+     <code>
+      Data:11&#160; (DEM=1280)
+     </code>
+     . The DEM value is not shown if either the image or the DEM are not georeferenced.
+    </li>
+    <li value="2">
+     3D SurfaceView:
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     uses the associated DEM file as the default and does not prompt you to select a DEM for the surface.
+    </li>
+    <li value="3">
+     <p>
+      <a href="#Emulate">
+       RPC or RSM Projection Emulation
+      </a>
+      : If an image displays using RPC or RSM projection emulation and it has an associated DEM,
+      <span class="DocumentTitleProductName">
+       ENVI
+      </span>
+      uses the DEM to refine the RPC or RSM solution, which improves its positional accuracy.
+     </p>
+     <p>
+      For RPC or RSM Projection Emulation, the DEM must contain map information covering the area for the RPC or RSM image; otherwise,
+      <span class="DocumentTitleProductName">
+       ENVI
+      </span>
+      uses the default elevation.
+     </p>
+    </li>
+    <li value="4">
+     RPC or RSM Orthorectification: If an image being orthorectified has an associated DEM file, then
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     uses it as the default elevation input to the orthorectification process. You can change this default designation at any time.
+    </li>
+   </ul>
+  </ol>
+  <h2>
+   <a name="Enter3">
+   </a>
+   Enter Geographic Corners for Non-Georeferenced Files
+   <a name="kanchor807">
+   </a>
+  </h2>
+  <p>
+   If an image is not georeferenced but does include geographic information for the four corner points, you can enter that information in the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   header file.
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   uses the four corner points to calculate an
+   <a href="../GeorectifyImagery/BackgroundNonStandardProjections.htm">
+    affine map transformation
+   </a>
+   for the image, indicated by the word “pseudo” under the File Information tab of the Data Manager.
+  </p>
+  <ol>
+   <li value="1">
+    In the Header Info dialog, click
+    <b>
+     Edit Attributes
+    </b>
+    and select
+    <b>
+     Geographic Corners
+    </b>
+    .
+   </li>
+   <li value="2">
+    <p>
+     In the
+     <b>
+      Geographic Point #
+     </b>
+     fields, enter one to four pixel locations and their corresponding latitudes and longitudes.
+    </p>
+    <p>
+     In
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     , pixel values always refer to the upper-left corner of the pixel. Map coordinates also typically refer to the upper-left corner of the pixel. However, if you want the map coordinate to reference the middle of the pixel, add 0.5 to the image coordinate of the reference pixel specified in the
+     <b>
+      Map Info
+     </b>
+     field of the header (for example, x = 1.5, y = 1.5 would make the map coordinates refer to the center of the pixel).
+    </p>
+   </li>
+   <li value="3">
+    Click
+    <b>
+     OK
+    </b>
+    . The Header Info dialog appears.
+   </li>
+  </ol>
+  <h2>
+   <a name="Enter4">
+   </a>
+   Enter Pixel Sizes for Non-Georeferenced Files
+  </h2>
+  <ol>
+   <li value="1">
+    In the Header Info dialog, click
+    <b>
+     Edit Attributes
+    </b>
+    and select
+    <b>
+     Pixel Sizes
+    </b>
+    .
+   </li>
+   <li value="2">
+    Enter the
+    <b>
+     X
+    </b>
+    and
+    <b>
+     Y
+    </b>
+    pixel sizes into the appropriate fields and select the desired units from the
+    <b>
+     Units
+    </b>
+    drop-down list.
+   </li>
+   <li value="3">
+    Click
+    <b>
+     OK
+    </b>
+    . The Header Info dialog appears.
+   </li>
+  </ol>
+  <h2>
+   <a name="Edit3">
+   </a>
+   Edit Classification Information
+  </h2>
+  <p>
+   The
+   <b>
+    File Type
+   </b>
+   must be set to
+   <b>
+    Classification
+   </b>
+   for this selection to be available.
+  </p>
+  <ol>
+   <li value="1">
+    In the Header Info dialog, click
+    <b>
+     Edit Attributes
+    </b>
+    and select
+    <b>
+     Classification Info
+    </b>
+    . The Classification Info dialog appears.
+   </li>
+   <li value="2">
+    Enter the number of classes.
+   </li>
+   <li value="3">
+    Click
+    <b>
+     OK
+    </b>
+    . The Class Color Map Editing dialog appears.
+   </li>
+   <li value="4">
+    Select the class name of the region to change from the list
+    <b>
+     Selected Classes
+    </b>
+    .
+   </li>
+   <ul>
+    <li value="1">
+     To change a selected class name, edit it in the
+     <b>
+      Class Name
+     </b>
+     text field. The header file does not allow class names that include commas.
+    </li>
+    <li value="2">
+     To change the class color in the RGB color space (0-255 for the three colors), move the three sliders for
+     <b>
+      Red
+     </b>
+     ,
+     <b>
+      Green
+     </b>
+     , or
+     <b>
+      Blue
+     </b>
+     .
+    </li>
+    <li value="3">
+     To reset the original class colors and names, click
+     <b>
+      Reset
+     </b>
+     .
+    </li>
+    <li value="4">
+     To change the class colors in the HSV or HLS color spaces, select the appropriate system from the
+     <b>
+      System
+     </b>
+     drop-down list. Move the
+     <b>
+      Hue
+     </b>
+     ,
+     <b>
+      Saturation
+     </b>
+     ,
+     <b>
+      Value
+     </b>
+     or
+     <b>
+      Hue
+     </b>
+     ,
+     <b>
+      Lightness
+     </b>
+     ,
+     <b>
+      Saturation
+     </b>
+     sliders to the desired values.
+    </li>
+   </ul>
+   <li value="5">
+    Click
+    <b>
+     OK
+    </b>
+    . On 24-bit color displays,
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    does not automatically apply the color changes. Instead, for 24-bit hardware, apply color changes to the image by clicking
+    <b>
+     Apply Changes
+    </b>
+    , which appears only when 24-bit color is available.
+   </li>
+  </ol>
+  <h2>
+   <a name="Change">
+   </a>
+   Change Z Plot Information
+  </h2>
+  <p>
+   Use
+   <b>
+    Z Plot Information
+   </b>
+   to change Z profiles, set axes titles, set a Z Plot box size, or specify an additional Z profile filename.
+  </p>
+  <ol>
+   <li value="1">
+    In the Header Info dialog, click
+    <b>
+     Edit Attributes
+    </b>
+    and select
+    <b>
+     Z Plot Information
+    </b>
+    . The Edit Z Plot Information dialog appears.
+   </li>
+   <li value="2">
+    Enter the minimum range value in the left and maximum value in the
+    <b>
+     Z Plot Range
+    </b>
+    fields.
+   </li>
+   <li value="3">
+    Enter the desired axes titles in the
+    <b>
+     X Axis Title
+    </b>
+    and
+    <b>
+     Y Axis Title
+    </b>
+    fields.
+   </li>
+   <li value="4">
+    To specify the size (in pixels) of the box used to calculate an average spectrum, enter the parameters into the
+    <b>
+     Z Plot Average Box
+    </b>
+    fields.
+   </li>
+   <li value="5">
+    To specify an additional filename from which to extract Z profiles, click
+    <b>
+     Default Additional Z Profiles
+    </b>
+    . The Default Additional Z Profiles dialog appears.
+   </li>
+   <li value="6">
+    Click
+    <b>
+     Add New File
+    </b>
+    .
+   </li>
+   <li value="7">
+    <p>
+     Select the desired filename and click
+     <b>
+      OK
+     </b>
+     . The filename appears in the list.
+    </p>
+    <p>
+     To remove a filename from the list, select the filename and click
+     <b>
+      Remove Selected File
+     </b>
+     .
+    </p>
+   </li>
+   <li value="8">
+    Click
+    <b>
+     OK
+    </b>
+    , then click
+    <b>
+     OK
+    </b>
+    again.
+   </li>
+  </ol>
+  <h2>
+   <a name="Enter5">
+   </a>
+   Enter a Reflectance Scale Factor
+  </h2>
+  <p>
+   Use
+   <b>
+    Reflectance Scale Factor
+   </b>
+   to enter a scale factor that is used in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   ’s Endmember Collection dialog to correctly scale library data or other reflectance data to match the image data. If one of the files used in the Endmember Collection does not have a reflectance scale factor defined, then no scaling is done.
+  </p>
+  <ol>
+   <li value="1">
+    In the Header Info dialog, click
+    <b>
+     Edit Attributes
+    </b>
+    and select
+    <b>
+     Reflectance Scale Factor
+    </b>
+    .
+   </li>
+   <li value="2">
+    Enter the value that, when divided into your data, would scale it from 0 to 1. For example, if the value of 10,000 in your data represents a reflectance value of 1.0, enter a reflectance scale factor of 10,000.
+   </li>
+   <li value="3">
+    Click
+    <b>
+     OK
+    </b>
+    . The Header Info dialog appears.
+   </li>
+  </ol>
+  <h2>
+   <a name="Enter6">
+   </a>
+   Enter a Data Value to Ignore
+  </h2>
+  <p>
+   Use
+   <b>
+    Data Ignore Value
+   </b>
+   to specify a pixel value to ignore in image processing workflows such as
+   <a href="../FindFeatures/FeatureExtraction/ExtractFeatures.htm">
+    Feature Extraction
+   </a>
+   .
+  </p>
+  <h2>
+   <a name="Enter7">
+   </a>
+   Enter Sensor Types
+  </h2>
+  <p>
+   Use
+   <b>
+    Sensor Type
+   </b>
+   to indicate the sensor used to capture the image, such as Landsat TM, SPOT, RADARSAT, and so on. The available sensor types are listed in the
+   <code>
+    sensor.txt
+   </code>
+   file described in
+   <a href="../NoTOCTopics/ENVISensorFile.htm">
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    Sensor File
+   </a>
+   .
+  </p>
+  <h2>
+   <a name="Set2">
+   </a>
+   Set the Default Stretch
+  </h2>
+  <p>
+   Use
+   <b>
+    Default Stretch
+   </b>
+   to set the default stretch to use when displaying an image.
+  </p>
+  <ol>
+   <li value="1">
+    In the Header Info dialog, click
+    <b>
+     Edit Attributes
+    </b>
+    and select
+    <b>
+     Default Stretch
+    </b>
+    .
+   </li>
+   <li value="2">
+    <p>
+     From the
+     <b>
+      Default Stretch
+     </b>
+     menu, select the stretch type. Your choices include: linear, linear range, Gaussian, equalize, square root, or none.
+    </p>
+    <p>
+     Some of the stretches require you to enter additional information:
+    </p>
+   </li>
+   <ul>
+    <li value="1">
+     For the
+     <b>
+      % Linear
+     </b>
+     stretch, enter the percentage of the data to clip (for example, 5%).
+    </li>
+    <li value="2">
+     For
+     <b>
+      Linear Range
+     </b>
+     stretching, enter the minimum and maximum pixel values to use in the stretch.
+    </li>
+    <li value="3">
+     For
+     <b>
+      Gaussian
+     </b>
+     stretching, enter the number of standard deviations to use in the stretch.
+    </li>
+   </ul>
+   <li value="3">
+    Click
+    <b>
+     OK
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    saves the stretch setting in the header file.
+   </li>
+  </ol>
+  <h2>
+   <a name="Use">
+   </a>
+   Use the Complex Lookup Function
+   <a name="kanchor808">
+   </a>
+  </h2>
+  <p>
+   For complex data types, use
+   <b>
+    Complex Lookup Function
+   </b>
+   to determine which image to display.
+  </p>
+  <ol>
+   <li value="1">
+    In the Header Info dialog, click
+    <b>
+     Edit Attributes
+    </b>
+    and select
+    <b>
+     Complex Lookup Function
+    </b>
+    . The Complex Data Lookup Function dialog appears.
+   </li>
+   <li value="2">
+    Select the desired lookup function from the drop-down list:
+   </li>
+   <ul>
+    <li value="1">
+     <b>
+      Real
+     </b>
+     (real portion of number)
+    </li>
+    <li value="2">
+     <b>
+      Imaginary
+     </b>
+     (imaginary portion)
+    </li>
+    <li value="3">
+     <b>
+      Power
+     </b>
+     (ln(magnitude); default)
+    </li>
+    <li value="4">
+     <b>
+      Magnitude
+     </b>
+     (square root of sum of the squares of the real and imaginary)
+    </li>
+    <li value="5">
+     <b>
+      Phase
+     </b>
+     (arc tangent of imaginary divided by real).
+    </li>
+   </ul>
+  </ol>
+  <h2>
+   <a name="Set3">
+   </a>
+   Set Row Offsets
+   <a name="kanchor809">
+   </a>
+  </h2>
+  <p>
+   Use
+   <b>
+    Major/Minor Frame Offsets
+   </b>
+   to set the number of extra bytes to skip at the beginning and ending of lines and bands. An offset is non-image data that you want to skip, and it comes before and/or after a frame. A minor frame is 1D, and a major frame is 2D.
+  </p>
+  <p>
+   See the following table for definitions of major and minor frames for the various file formats.
+  </p>
+  <ol>
+   <li value="1">
+    In the Header Info dialog, click
+    <b>
+     Edit Attributes
+    </b>
+    and select
+    <b>
+     Major/Minor Frame Offsets
+    </b>
+    .
+   </li>
+   <li value="2">
+    <p>
+     In the Major/Minor Frame Offsets dialog, enter the number of prefix and suffix bytes to skip per major or minor frame.
+    </p>
+    <p>
+     The following table contains major and minor definitions for the file formats in
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     .
+    </p>
+   </li>
+   <table style="caption-side: bottom;margin-left: 0;margin-right: auto;mc-table-style: url('../Resources/TableStyles/Description.css');" cellspacing="0" class="TableStyle_Description">
+    <col />
+    <col />
+    <col />
+    <thead>
+     <tr>
+      <td class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+       <p class="TableHead">
+        File Format
+       </p>
+      </td>
+      <td class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+       <p class="TableHead">
+        Minor Frame
+       </p>
+      </td>
+      <td class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+       <p class="TableHead">
+        Major Frame
+       </p>
+      </td>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+       <p>
+        BSQ
+       </p>
+      </td>
+      <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+       <p>
+        # of samples (line)
+       </p>
+      </td>
+      <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+       <p>
+        # of samples by # of lines (band)
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+       <p>
+        BIL
+       </p>
+      </td>
+      <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+       <p>
+        # of samples (line)
+       </p>
+      </td>
+      <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+       <p>
+        # of samples by # of bands
+       </p>
+      </td>
+     </tr>
+     <tr>
+      <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+       <p>
+        BIP
+       </p>
+      </td>
+      <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+       <p>
+        # of bands (spectrum)
+       </p>
+      </td>
+      <td class="TableStyle_Description_Body_0_0_RowEnd_ColEnd">
+       <p>
+        # of bands by # of samples
+       </p>
+      </td>
+     </tr>
+    </tbody>
+   </table>
+   <li value="3">
+    Click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

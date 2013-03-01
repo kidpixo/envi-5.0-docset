@@ -1,0 +1,540 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Spectral Tools|THOR Tools" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   THOR Atmospheric Correction
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#SpectralTools/THORTools/THORAtmosphericCorrection.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../SpectralTools.htm">
+    Spectral Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="THORWorkflows.htm">
+    THOR Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    THOR Atmospheric Correction
+   </span>
+  </div>
+  <h1>
+   THOR Atmospheric Correction
+  </h1>
+  <p>
+   Use the Atmospheric Correction workflow to correct hyperspectral imagery for atmospheric effects. Atmospheric correction is essential for hyperspectral image processing when you want to detect the presence of targets using a reference spectral library (spectral libraries are nearly always in units of reflectance). Atmospheric correction also provides limited benefits when using in-scene derived signatures for target detection.
+  </p>
+  <p>
+   Atmospheric correction methods available in THOR include Flat Field calibration, Internal Average Relative Reflectance (IARR), Log Residuals, Empirical Line calibration, FLAASH™ (if licensed), and QUAC® (if licensed). Dark object subtraction is available as a pre-processing step for Flat Field, IARR, and Log Residuals. (To use FLAASH and QUAC methods, you must purchase a separate license for the Atmospheric Correction Module: QUAC and FLAASH.)
+  </p>
+  <p>
+   The best method to use depends on your skill level, scene content, desired application, and available ancillary data. When using a spectral library to detect targets, a rigorous, model-based solution (such as QUAC or FLAASH) is normally best. When using in-scene signatures, an in-scene based correction method is sufficient (if needed at all). The IARR method, pre-processed with dark object subtraction, is the simplest method because it requires no user input and often produces good results.
+  </p>
+  <p>
+   See the following sections:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#Starting">
+     Starting Atmospheric Correction
+    </a>
+   </li>
+   <li value="2">
+    <a href="#Dark">
+     Dark Object Subtraction
+    </a>
+   </li>
+   <li value="3">
+    <a href="#Flat">
+     Flat Field Calibration
+    </a>
+   </li>
+   <li value="4">
+    <a href="#Internal">
+     Internal Average Relative Reflectance
+    </a>
+   </li>
+   <li value="5">
+    <a href="#Log">
+     Log Residuals
+    </a>
+   </li>
+   <li value="6">
+    <a href="#Empirica">
+     Empirical Line Calibration
+    </a>
+   </li>
+   <li value="7">
+    <a href="#QUAC">
+     QUAC
+    </a>
+   </li>
+   <li value="8">
+    <a href="#FLAASH">
+     FLAASH
+    </a>
+   </li>
+   <li value="9">
+    <a href="#Performi">
+     Performing Spectral Smoothing
+    </a>
+   </li>
+  </ul>
+  <h2>
+   <a name="Starting">
+   </a>
+   Starting Atmospheric Correction
+  </h2>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     THOR &gt; THOR Atmospheric Correction
+    </b>
+    . The Atmospheric Correction dialog appears.
+   </li>
+   <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+    <span class="autonumber">
+     <span>
+      <b>
+       Note:
+      </b>
+     </span>
+    </span>
+    Atmospheric Correction is also available as a panel in many workflows, in addition to being available as a stand-alone tool.
+   </p>
+   <p>
+    THOR extracts a rough estimate of the image’s mean spectrum and compares it to a generalized radiance spectrum using
+    <a href="../../FindFeatures/Classification/ClassificationTools/SpectralAngleMapper.htm">
+     Spectral Angle Mapper (SAM)
+    </a>
+    to determine whether the input image is radiance or reflectance. If THOR determines that the input is reflectance, it automatically selects
+    <b>
+     None / Already corrected
+    </b>
+    as the correction method and warns you if you try to apply a correction method. However, the initial screening is only an estimate, so you can still proceed with an atmospheric correction method if needed.
+   </p>
+   <li value="2">
+    Select a method from the
+    <b>
+     Atmospheric Correction Method
+    </b>
+    drop-down list, and specify the required parameters (described in the following sections). Then click the green
+    <b>
+     Run Process
+    </b>
+    button. You cannot proceed to the next step until you run at least one correction method or select the
+    <b>
+     None / Already corrected
+    </b>
+    option.
+   </li>
+   <li value="3">
+    You can also run more than one correction method and compare the results side-by-side. Click
+    <b>
+     Compare Results
+    </b>
+    , select which methods to compare, then click
+    <b>
+     OK
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    opens the resulting images from each correction method into separate display groups, with the displays linked and Z-profiles displayed.
+   </li>
+  </ol>
+  <h2>
+   <a name="Dark">
+   </a>
+   Dark Object Subtraction
+  </h2>
+  <p>
+   This method is available as a pre-processing step for several of the in-scene based atmospheric correction methods. Dark object subtraction searches each band for the darkest pixel value. Assuming that dark objects reflect no light, any value greater than zero must result from atmospheric scattering.
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   removes the scattering by subtracting this value from every pixel in the band. This simple technique is effective for haze correction and normally produces improved results for in-scene atmospheric correction in the shorter wavelengths where scattering dominates.
+  </p>
+  <p>
+   To perform dark object subtraction as a pre-processing step, refer to the Atmospheric Correction Parameters section near the bottom of the Atmospheric Correction dialog:
+  </p>
+  <ol>
+   <li value="1">
+    Select the
+    <b>
+     Perform dark object subtraction option
+    </b>
+    , if available for your correction method.
+   </li>
+   <li value="2">
+    Select the radio button to have the dark objects determined by
+    <b>
+     Band Minimums
+    </b>
+    or by
+    <b>
+     User Values
+    </b>
+    .
+    <ul>
+     <li value="1">
+      <b>
+       Band Minimums
+      </b>
+      : Indicate whether
+      <span class="DocumentTitleProductName">
+       ENVI
+      </span>
+      should search for the dark objects in the
+      <b>
+       entire scene
+      </b>
+      or just the
+      <b>
+       subsetted area
+      </b>
+      . Searching the entire image may take longer, but it will yield more accurate results. If the image contains black background pixels (for example, in a warped image), enter these pixel values in the
+      <b>
+       Data ignore value
+      </b>
+      field and check the
+      <b>
+       Use ignore data value
+      </b>
+      option.
+     </li>
+     <li value="2">
+      <b>
+       User Values
+      </b>
+      : Click the
+      <b>
+       Edit Values
+      </b>
+      button. The Enter User Values dialog appears. Enter pixel values to be subtracted from each band, then click
+      <b>
+       OK
+      </b>
+      .
+     </li>
+    </ul>
+   </li>
+  </ol>
+  <h2>
+   <a name="Flat">
+   </a>
+   Flat Field Calibration
+  </h2>
+  <p>
+   Flat Field calibration produces relative reflectance by dividing the mean spectrum of a user-defined region of interest (ROI) into the spectrum of each pixel in the image. The ROI should be a spectrally flat material within the wavelength range of the sensor. Beach sand and concrete are popular choices. Materials with spectral features such as vegetation are poor choices. Since the mean spectrum of the ROI is divided into each pixel, the relative reflectance for pixels within the ROI will be flat and have a value around 1.0.
+  </p>
+  <p>
+   To perform Flat Field calibration:
+  </p>
+  <ol>
+   <li value="1">
+    From the
+    <b>
+     Atmospheric Correction
+    </b>
+    drop-down list, select
+    <b>
+     Flat Field Calibration
+    </b>
+    .
+   </li>
+   <li value="2">
+    Click
+    <b>
+     Create Flat Field ROI
+    </b>
+    . A display group appears with a greyscale (single-band) version of the input image, along with the ROI Tool dialog.
+   </li>
+   <li value="3">
+    Use the ROI Tool dialog to define an ROI for a spectrally flat area.
+   </li>
+   <li value="4">
+    Click
+    <b>
+     Choose Flat Field ROI
+    </b>
+    . The ROI Selection dialog appears.
+   </li>
+   <li value="5">
+    Select the Flat Field ROI that you just defined, and click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+   <li value="6">
+    Click
+    <b>
+     Run Process
+    </b>
+    .
+   </li>
+  </ol>
+  <h2>
+   <a name="Internal">
+   </a>
+   Internal Average Relative Reflectance
+  </h2>
+  <p>
+   The IARR method is similar to Flat Field calibration in that a reference spectrum is divided into each pixel in the image to generate relative reflectance. However, the reflectance spectrum for IARR is the mean spectrum of the entire image versus a user-defined ROI. IARR requires no input from you.
+  </p>
+  <ol>
+   <li value="1">
+    From the
+    <b>
+     Atmospheric Correction Method
+    </b>
+    drop-down list, select
+    <b>
+     Internal Average Relative Reflectance
+    </b>
+    .
+   </li>
+   <li value="2">
+    Click
+    <b>
+     Run Process
+    </b>
+    .
+   </li>
+  </ol>
+  <h2>
+   <a name="Log">
+   </a>
+   Log Residuals
+  </h2>
+  <p>
+   The Log Residuals method produces a pseudo reflectance dataset by dividing each pixel’s spectrum by the spectral geometric mean and the spatial geometric mean. No user input is required to run this method. Log residuals is usually most effective for analyzing absorption features present in hyperspectral data.
+  </p>
+  <ol>
+   <li value="1">
+    From the
+    <b>
+     Atmospheric Correction Method
+    </b>
+    drop-down list, select
+    <b>
+     Log Residuals
+    </b>
+    .
+   </li>
+   <li value="2">
+    Click
+    <b>
+     Run Process
+    </b>
+    .
+   </li>
+  </ol>
+  <h2>
+   <a name="Empirica">
+   </a>
+   Empirical Line Calibration
+  </h2>
+  <p>
+   Empirical Line calibration forces the image spectra to match reflectance spectra collected from the field. This method can produce the most accurate results possible, but it requires ground truth information. Empirical Line calibration in THOR requires a dark and bright target.
+  </p>
+  <ol>
+   <li value="1">
+    From the
+    <b>
+     Atmospheric Correction Method
+    </b>
+    drop-down list, select
+    <b>
+     Empirical Line Calibration
+    </b>
+    .
+   </li>
+   <li value="2">
+    Click
+    <b>
+     Load Image and Create ROIs
+    </b>
+    . A display group appears with a greyscale (single-band) version of the input image, along with the ROI Tool dialog.
+   </li>
+   <li value="3">
+    The ROI Tool lists Dark Target and Bright Target ROIs. First, select the
+    <b>
+     Dark Target
+    </b>
+    ROI and draw a polygon in the display group inside a group of dark pixels for which ground truth spectra are available.
+   </li>
+   <li value="4">
+    In the Atmospheric Correction panel, click
+    <b>
+     Select Data ROI
+    </b>
+    in the Dark Target section. The ROI Selection dialog appears.
+   </li>
+   <li value="5">
+    Select the
+    <b>
+     Dark Target
+    </b>
+    ROI, and click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+   <li value="6">
+    With Empirical Line calibration, you should use a custom library with spectra collected in the field at the same time as the sensor overpass. To use a custom spectral library, load it into the Layer Manager.
+   </li>
+   <li value="7">
+    Click
+    <b>
+     Select Library Spectrum
+    </b>
+    in the Dark Target section of the Atmospheric Correction panel.
+   </li>
+   <li value="8">
+    Select a custom spectral library from the Available Bands List, then select a spectrum from the Library Selection dialog. Click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+   <li value="9">
+    Repeat Steps 3-8 for the Bright Target ROI, using the appropriate buttons under the Bright Target section of the Atmospheric Correction dialog.
+   </li>
+   <li value="10">
+    Click
+    <b>
+     Run Process
+    </b>
+    .
+   </li>
+  </ol>
+  <h2>
+   <a name="QUAC">
+   </a>
+   QUAC®
+  </h2>
+  <p>
+   The QUick Atmospheric Correction (QUAC) method is an in-scene based correction method that can produce results as accurate as the first-principles based Fast Line-of-sight Atmosphere Analysis of Spectral Hypercubes (FLAASH) method with no user input. QUAC works best when the input image has a reasonably diverse set (at least 10) of endmembers. Refer to the
+   <a href="../../PreprocessImagery/QUAC_FLAASH/AboutAtmosphericCorrectionModule.htm">
+    Atmospheric Correction Module
+   </a>
+   for more information on QUAC. To use the QUAC method, you must purchase a separate license for the Atmospheric Correction Module: QUAC and FLAASH.
+  </p>
+  <ol>
+   <li value="1">
+    From the
+    <b>
+     Atmospheric Correction Method
+    </b>
+    drop-down list, select
+    <b>
+     QUAC
+    </b>
+    .
+   </li>
+   <li value="2">
+    From the
+    <b>
+     Sensor Type
+    </b>
+    drop-down list, select the sensor from which your hyperspectral input image was captured. If you do not know the sensor, select
+    <b>
+     Unknown
+    </b>
+    and QUAC will attempt to figure out the sensor based on the bands of the input imagery.
+   </li>
+   <li value="3">
+    Click
+    <b>
+     Run Process
+    </b>
+    .
+   </li>
+  </ol>
+  <h2>
+   <a name="FLAASH">
+   </a>
+   FLAASH™
+  </h2>
+  <p>
+   The Fast Line-of-sight Atmosphere Analysis of Spectral Hypercubes (FLAASH) method is a physics-based approach to atmospheric correction that utilizes various metadata about time, location, and many other parameters to generate a radiative transfer model using MODTRAN®. FLAASH is capable of producing extremely accurate surface reflectance results, but it requires a lot of user input. THOR attempts to simplify this process by filling in as many of the parameters as possible using the input image's metadata.
+  </p>
+  <ol>
+   <li value="1">
+    From the
+    <b>
+     Atmospheric Correction Method
+    </b>
+    drop-down list, select FLAASH (Rigorous).
+   </li>
+   <li value="2">
+    THOR automatically populates the various parameter fields based on the image metadata. You can edit these values as needed. Refer to the
+    <a href="../../PreprocessImagery/QUAC_FLAASH/AboutAtmosphericCorrectionModule.htm">
+     Atmospheric Correction Module
+    </a>
+    for more information on these parameters. To use the FLAASH method, you must purchase a separate license for the Atmospheric Correction Module: QUAC and FLAASH.
+   </li>
+   <li value="3">
+    Click
+    <b>
+     Run Process
+    </b>
+    .
+   </li>
+  </ol>
+  <h2>
+   <a name="Performi">
+   </a>
+   Performing Spectral Smoothing
+  </h2>
+  <p>
+   Scroll to the bottom of the Atmospheric Correction panel, and click
+   <b>
+    Enable spectral smoothing
+   </b>
+   to smooth noisy signals from the data. See
+   <a href="THORBadDataTools.htm#Spectral2">
+    Spectral Smoothing
+   </a>
+   for more information on the available options.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

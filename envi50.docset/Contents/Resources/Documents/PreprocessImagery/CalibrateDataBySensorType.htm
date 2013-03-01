@@ -1,0 +1,871 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Preprocess|Radiometric Correction Tools" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Calibrate Data by Sensor Type
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/TableStyles/Description.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#PreprocessImagery/CalibrateDataBySensorType.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="PreprocessImagery.htm">
+    Preprocess
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="RadiometricCorrectionTools.htm">
+    Radiometric Correction Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Calibrate Data by Sensor Type
+   </span>
+  </div>
+  <h1>
+   Calibrate Data by Sensor Type
+   <a name="kanchor164">
+   </a>
+  </h1>
+  <p>
+   See the following sections:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#calibrating_avhrr_data">
+     AVHRR
+    </a>
+   </li>
+   <li value="2">
+    <a href="#landsat">
+     Landsat
+    </a>
+   </li>
+   <li value="3">
+    <a href="#quickbird">
+     QuickBird
+    </a>
+   </li>
+   <li value="4">
+    <a href="#tims_radiance_calibration">
+     TIMS
+    </a>
+   </li>
+   <li value="5">
+    <a href="#worldview">
+     WorldView
+    </a>
+   </li>
+  </ul>
+  <h2>
+   <a name="calibrating_avhrr_data">
+   </a>
+   AVHRR
+   <a name="kanchor165">
+   </a>
+  </h2>
+  <p>
+   Use
+   <b>
+    Calibrate AVHRR
+   </b>
+   to calibrate AVHRR data from the NOAA-12 though -19 satellites. Bands 1 and 2 are calibrated to percent reflectance, and bands 3, 4, and 5 are calibrated to brightness temperature, in degrees Kelvin.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Radiometric Correction &gt; Calibrate AVHRR
+    </b>
+    .
+   </li>
+   <li value="2">
+    Select an input file and perform optional spatial and spectral
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The AVHRR Calibrate Parameters dialog appears.
+   </li>
+   <li value="3">
+    Select the satellite number from the
+    <b>
+     Satellite
+    </b>
+    drop-down button.
+   </li>
+   <li value="4">
+    Select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="5">
+    Click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+  </ol>
+  <p>
+   Output bands 1 and 2 are in % reflectance, and output bands 3, 4, and 5 are in brightness temperature, in degrees Kelvin.
+  </p>
+  <h2>
+   <a name="landsat">
+   </a>
+   Landsat
+   <a name="kanchor166">
+   </a>
+  </h2>
+  <p>
+   Use
+   <b>
+    Calibrate Landsat
+   </b>
+   to convert Landsat MSS, TM, and ETM+ digital numbers to spectral radiance or exoatmospheric reflectance (reflectance above the atmosphere) using published post-launch gain and offset values.
+  </p>
+  <p>
+   The spectral radiance (L
+   <sub>
+    λ
+   </sub>
+   ) is calculated using the following equation:
+  </p>
+  <p>
+   <img src="../Resources/Images/PreprocessImagery/landsat_spectral_radiance.jpg" />
+  </p>
+  <p>
+   Where:
+  </p>
+  <ul>
+   <li value="1">
+    QCAL is the calibrated and quantized scaled radiance in units of digital numbers (DNs)
+   </li>
+   <li value="2">
+    LMIN
+    <sub>
+     λ
+    </sub>
+    is the spectral radiance at QCAL = 0
+   </li>
+   <li value="3">
+    LMAX
+    <sub>
+     λ
+    </sub>
+    is the spectral radiance at QCAL = QCALMAX
+   </li>
+  </ul>
+  <p class="indent">
+   LMIN
+   <sub>
+    λ
+   </sub>
+   and LMAX
+   <sub>
+    λ
+   </sub>
+   are derived from values published in Chander, Markham, and Helder (2009). See
+   <a href="#landsat_references">
+    References
+   </a>
+   .
+  </p>
+  <ul>
+   <li value="1">
+    QCALMIN is the minimum quantized calibrated pixel value (corresponding to LMIN
+    <sub>
+     λ
+    </sub>
+    ) in DN. Valid values are as follows:
+   </li>
+  </ul>
+  <p class="indent2">
+   1: LPGS products
+  </p>
+  <p class="indent2">
+   1: NLAPS products processed after 04 April 2004
+  </p>
+  <p class="indent2">
+   0: NLAPS products processed before 05 April 2004
+  </p>
+  <p class="indent2">
+   When metadata is not available to determine the appropriate values, QCALMIN is set by default to 1 (TM and ETM+) or 0 (MSS).
+  </p>
+  <ul>
+   <li value="1">
+    QCALMAX is the maximum quantized calibrated pixel value (corresponding to LMAX
+    <sub>
+     λ
+    </sub>
+    ) in DN. Valid values are 127, 254, or 255. When metadata is not available to determine the appropriate values, QCALMAX is set by default to 255 (TM and ETM+) or 127 (MSS).
+   </li>
+  </ul>
+  <p>
+   The resulting radiance (L
+   <sub>
+    λ
+   </sub>
+   ) is in units of watts per square meter per steradian per micrometer (W/(m
+   <sup>
+    2
+   </sup>
+   *sr*μm)).
+  </p>
+  <p>
+   The exoatmospheric reflectance (ρ
+   <sub>
+    p
+   </sub>
+   ) is calculated using the following equation:
+  </p>
+  <p>
+   <img src="../Resources/Images/PreprocessImagery/landsat_exoat_reflectance.jpg" />
+  </p>
+  <p>
+   Where:
+  </p>
+  <ul>
+   <li value="1">
+    L
+    <sub>
+     λ
+    </sub>
+    is the spectral radiance
+   </li>
+   <li value="2">
+    <i>
+     d
+    </i>
+    is the Earth-Sun distance in astronomical units
+   </li>
+   <li value="3">
+    ESUN
+    <sub>
+     λ
+    </sub>
+    is the mean solar exoatmospheric irradiance.
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    uses the ESUN
+    <sub>
+     λ
+    </sub>
+    values from the
+    <i>
+     Landsat 7 Science Data Users Handbook
+    </i>
+    for Landsat 7 ETM+.
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    uses the ESUN
+    <sub>
+     λ
+    </sub>
+    values from Chander and Markham (2003) for Landsat TM 4 and 5. See
+    <a href="#landsat_references">
+     References
+    </a>
+    .
+   </li>
+   <li value="4">
+    η
+    <sub>
+     s
+    </sub>
+    is the solar zenith angle in degrees.
+   </li>
+  </ul>
+  <p>
+   Follow these steps to specify the calibration coefficients and other related parameters for Landsat MSS, TM and ETM+ data:
+  </p>
+  <ol>
+   <li value="1">
+    Use
+    <b>
+     File &gt; Open As &gt; Landsat
+    </b>
+    from the menu bar to open a Landsat file. Landsat metadata files are preferred since
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    will use the metadata to automatically determine calibration parameters. The Landsat Calibration tool only works with
+    <a href="../ExploreImagery/BackgroundSupportedFileFormats.htm#Landsat2">
+     specific Landsat file formats
+    </a>
+    . You cannot calibrate a meta file consisting of multiple Landsat files.
+   </li>
+   <p>
+    The Landsat Calibration tool also works with Landsat data that you previously saved to
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    raster format. Use
+    <b>
+     File &gt; Open
+    </b>
+    to open a Landsat data file in
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    raster format.
+   </p>
+   <li value="2">
+    <p>
+     From the Toolbox, select
+     <b>
+      Radiometric Correction &gt; Calibrate Landsat
+     </b>
+     .
+    </p>
+   </li>
+   <p>
+    The
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    Landsat Calibration Input File dialog appears.
+   </p>
+   <li value="3">
+    Select an input file and perform optional spatial and spectral
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The ENVI Landsat Calibration dialog appears.
+   </li>
+   <p>
+    ENVI determines the calibration parameters from the metadata and populates the dialog accordingly.
+   </p>
+   <p>
+    For Landsat 7 GeoTIFF files
+    <i>
+     without
+    </i>
+    metadata, the dialog defaults to a date of January 1, 1984 and a sun elevation angle of 90 degrees. You can obtain calibration parameters from the EROS Data Center as CPF files and Metadata files. However, most Landsat GeoTIFF data now come with metadata, so if you use
+    <b>
+     File &gt; Open As &gt; Landsat &gt; GeoTIFF with Metadata
+    </b>
+    to open the data,
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    will automatically determine the calibration parameters.
+   </p>
+   <li value="4">
+    You can edit the
+    <b>
+     Data Acquistion Month/Day/Year
+    </b>
+    , and
+    <b>
+     Sun Elevation (deg)
+    </b>
+    values if you want to override the metadata-derived values.
+   </li>
+   <li value="5">
+    Select the desired
+    <b>
+     Calibration Type
+    </b>
+    using the
+    <b>
+     Radiance
+    </b>
+    or
+    <b>
+     Reflectance
+    </b>
+    radio buttons. If you selected a thermal band for input (Bands 61 or 62), the calibrated output will be temperature (in degrees Kelvin).
+   </li>
+   <li value="6">
+    Gain/Bias or Lmin/Lmax calibration values are automatically calculated from the associated metadata file(s). Click
+    <b>
+     Edit Calibration Values
+    </b>
+    if you want to enter your own calibration values instead of the metadata-derived values, or if the metadata contains
+    <b>
+     Gain/Bias
+    </b>
+    values of 0, or if there is no available metadata file. The Edit Calibration Values dialog appears.
+   </li>
+   <p>
+    Enter new values for
+    <b>
+     Gain/Bias
+    </b>
+    or
+    <b>
+     Lmin/Lmax
+    </b>
+    as needed, and click
+    <b>
+     OK
+    </b>
+    . Or, click
+    <b>
+     Restore Dataset Parameters
+    </b>
+    to reset the values to what was specified in the metadata.
+   </p>
+   <li value="7">
+    If you used
+    <b>
+     File &gt; Open As &gt; Landsat &gt; GeoTIFF
+    </b>
+    to open a
+    <code>
+     .TIF
+    </code>
+    file in Step 1,
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    cannot automatically determine the
+    <b>
+     Gain/Bias
+    </b>
+    or
+    <b>
+     Lmin/Lmax
+    </b>
+    values, so you will need to enter them manually. Follow these steps to continue:
+    <ul>
+     <li value="1">
+      The
+      <span class="DocumentTitleProductName">
+       ENVI
+      </span>
+      Landsat Calibration dialog contains two additional radio buttons:
+      <b>
+       Lmin-Lmax
+      </b>
+      and
+      <b>
+       Gain-Bias
+      </b>
+      . Select either option, depending on the processing type, and click
+      <b>
+       Edit Calibration Values
+      </b>
+      . The Edit Calibration Parameters dialog appears.
+     </li>
+     <li value="2">
+      For Landsat 7 ETM+ data only, select the
+      <b>
+       Low
+      </b>
+      or
+      <b>
+       High
+      </b>
+      radio button for
+      <b>
+       Radiance Range
+      </b>
+      .
+     </li>
+     <li value="3">
+      Enter
+      <b>
+       Gain/Bias
+      </b>
+      or
+      <b>
+       Lmin/Lmax
+      </b>
+      calibration values.
+     </li>
+     <li value="4">
+      Click
+      <b>
+       OK
+      </b>
+      to continue.
+     </li>
+    </ul>
+   </li>
+   <li value="8">
+    In the
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    Landsat Calibration dialog, select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="9">
+    Click
+    <b>
+     OK
+    </b>
+    . When complete,
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds the resulting output to the Layer Manager.
+   </li>
+  </ol>
+  <p>
+   <a name="landsat_references">
+   </a>
+   <b>
+    References
+   </b>
+  </p>
+  <p>
+   Chander, G., B. Markham, and D. Helder, 2009. Summary of current radiometric calibration coefficients for Landsat MSS, TM, ETM+, and EO-1 ALI sensors.
+   <i>
+    Remote Sensing of the Environment
+   </i>
+   , Vol. 113, pp. 893-903.
+  </p>
+  <p>
+   <i>
+    Landsat 7 Science Data Users Handbook
+   </i>
+   , updated March 2011. NASA Goddard Space Flight Center.
+   <a href="http://landsathandbook.gsfc.nasa.gov/">
+    http://landsathandbook.gsfc.nasa.gov
+   </a>
+   . Accessed May 2011.
+  </p>
+  <h2>
+   <a name="quickbird">
+   </a>
+   QuickBird
+   <a name="kanchor167">
+   </a>
+  </h2>
+  <p>
+   DigitalGlobe’s QuickBird image data is typically distributed in relative radiance. Use the
+   <b>
+    Calibrate QuickBird
+   </b>
+   tool to convert the relative radiance into absolute radiance in units of [(μW) / (cm
+   <sup>
+    2
+   </sup>
+   *nm*sr)]. The calibration is performed using the calibration factors in the QuickBird metadata file (the absCalFactor value in the
+   <code>
+    .imd
+   </code>
+   file). The units are converted from [W/(m
+   <sup>
+    2
+   </sup>
+   *sr)] into [(μW) / (cm
+   <sup>
+    2
+   </sup>
+   *nm*sr)] using the following nominal bandpass widths:
+  </p>
+  <table style="caption-side: top;margin-left: 0;margin-right: auto;mc-table-style: url('../Resources/TableStyles/Description.css');" class="TableStyle_Description" cellspacing="0">
+   <col />
+   <col />
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       Pan band:
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       398 nm
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       Multispectral Band 1 (Blue):
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       &#160;68 nm
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       Multispectral Band 2 (Green):
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       &#160;99 nm
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       Multispectral Band 3 (Red):
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       &#160;71 nm
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+      <p>
+       Multispectral Band 4 (NIR):
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColEnd">
+      <p>
+       114 nm
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   stores the gain factors that were applied in the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   header file of the calibrated image.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Radiometric Correction &gt; Calibrate QuickBird
+    </b>
+    .
+   </li>
+   <li value="2">
+    Select an input file and perform optional spatial and spectral
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . Select only an original unmodified QuickBird image product.
+   </li>
+   <p>
+    If
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    is unable to locate the associated QuickBird metadata file, you will be prompted to select it.
+   </p>
+   <p>
+    The QuickBird Calibration Parameters dialog appears.
+   </p>
+   <li value="3">
+    To scale the calibrated result into unsigned integers set the
+    <b>
+     Scale Output to Integers
+    </b>
+    toggle button to
+    <b>
+     Yes
+    </b>
+    and enter a scale factor. To output the result in floating-point set the toggle button to
+    <b>
+     No
+    </b>
+    .
+   </li>
+   <p>
+    Scaling the result into integers will produce a file that is half the size (in bytes) as the floating-point result, however the precision is typically reduced to three digits. The maximum value that an unsigned integer can hold is 65,535.
+   </p>
+   <li value="4">
+    Select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="5">
+    Click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+  </ol>
+  <h2>
+   <a name="tims_radiance_calibration">
+   </a>
+   TIMS
+  </h2>
+  <p>
+   Use
+   <b>
+    Calibrate TIMS
+   </b>
+   to calibrate raw data from the NASA Thermal Infrared Multispectral Scanner (TIMS) to radiance in units of W/m
+   <sup>
+    2
+   </sup>
+   /μm/sr.
+  </p>
+  <h2>
+   <a name="worldview">
+   </a>
+   WorldView
+   <a name="kanchor168">
+   </a>
+  </h2>
+  <p>
+   DigitalGlobe’s WorldView image data is typically distributed in relative radiance. Use the
+   <b>
+    Calibrate WorldView
+   </b>
+   tool to convert the relative radiance into absolute radiance in units of [(μW) / (cm
+   <sup>
+    2
+   </sup>
+   *nm*sr)]. This tool uses the calibration factors in the WorldView-1 or WorldView-2 metadata file (the
+   <code>
+    absCalFactor
+   </code>
+   value in the
+   <code>
+    .imd
+   </code>
+   file) to perform the conversion.
+  </p>
+  <p>
+   The gain factors that were applied are found in the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   header file of the calibrated image.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Radiometric Correction &gt; Calibrate WorldView
+    </b>
+    .
+   </li>
+   <li value="2">
+    Select an input file and perform optional spatial and spectral
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . Select only an original unmodified WorldView-1 or WorldView-2 image product.
+   </li>
+   <p>
+    If
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    is unable to locate the associated WorldView metadata file, you will be prompted to select it.
+   </p>
+   <p>
+    The WorldView Calibration Parameters dialog appears.
+   </p>
+   <li value="3">
+    To scale the calibrated result into unsigned integers set the
+    <b>
+     Scale Output to Integers
+    </b>
+    toggle button to
+    <b>
+     Yes
+    </b>
+    and enter a scale factor. To output the result in floating-point set the toggle button to
+    <b>
+     No
+    </b>
+    .
+   </li>
+   <p>
+    Scaling the result into integers will produce a file that is half the size (in bytes) as the floating-point result, however the precision is typically reduced to three digits. The maximum value that an unsigned integer can hold is 65,535.
+   </p>
+   <li value="4">
+    Select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="5">
+    Click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

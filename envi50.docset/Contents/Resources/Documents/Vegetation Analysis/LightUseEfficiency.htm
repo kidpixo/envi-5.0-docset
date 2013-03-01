@@ -1,0 +1,208 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Vegetation|Vegetation Index Calculator|Vegetation Indices" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Light Use Efficiency
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/TableStyles/Description.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#Vegetation Analysis/LightUseEfficiency.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="VegetationAnalysis.htm">
+    Vegetation
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="VegetationIndexCalculator.htm">
+    Vegetation Index Calculator
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="VegetationIndices.htm">
+    Vegetation Indices
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Light Use Efficiency
+   </span>
+  </div>
+  <h1>
+   <a name="Light">
+   </a>
+   Light Use Efficiency
+  </h1>
+  <p>
+   The light use efficiency VIs are designed to provide a measure of the efficiency with which vegetation is able to use incident light for photosynthesis. Light use efficiency is highly related to carbon uptake efficiency and vegetative growth rates, and is somewhat related to fractional absorption of photosynthetically active radiation (fAPAR). These VIs help to estimate growth rate and production, which is useful in precision agriculture. These VIs use reflectance measurements in the visible spectrum to take advantage of relationships between different pigment types to assess the overall light use efficiency of the vegetation.
+  </p>
+  <table style="caption-side: bottom;margin-left: 0;margin-right: auto;mc-table-style: url('../Resources/TableStyles/Description.css');" cellspacing="0" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <td class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       Index
+      </p>
+     </td>
+     <td class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p class="TableHead">
+       Description
+      </p>
+     </td>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       <a href="#photochemical_reflectance_index">
+        Photochemical Reflectance Index
+       </a>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Useful to estimate absorption by leaf carotenoids (especially xanthophyll) pigments, leaf stress, and carbon dioxide uptake.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       <a href="#structure_intensive_pigment_index">
+        Structure Insensitive Pigment Index
+       </a>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Indicator of leaf pigment concentrations normalized for variations in overall canopy structure and foliage content.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+      <p>
+       <a href="#red_green_ratio_index">
+        Red Green Ratio Index
+       </a>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColEnd">
+      <p>
+       Ratio of reflectance in RED-to-GREEN sensitive to ratio of anthocyanin to chlorophyll.
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h2>
+   <a name="photochemical_reflectance_index">
+   </a>
+   Photochemical Reflectance Index
+  </h2>
+  <p>
+   The Photochemical Reflectance Index (PRI) is a reflectance measurement that is sensitive to changes in carotenoid pigments (particularly xanthophyll pigments) in live foliage. Carotenoid pigments are indicative of photosynthetic light use efficiency, or the rate of carbon dioxide uptake by foliage per unit energy absorbed. As such, it is used in studies of vegetation productivity and stress. Applications include vegetation health in evergreen shrublands, forests, and agricultural crops prior to senescence. PRI is defined by the following equation:
+  </p>
+  <p>
+   <img src="../Resources/Images/Vegetation/11_16.jpg" />
+  </p>
+  <p>
+   The value of this index ranges from -1 to 1. The common range for green vegetation is -0.2 to 0.2.
+  </p>
+  <h4>
+   References
+  </h4>
+  <p>
+   Gamon, J.A., J. Penuelas, and C.B. Field, 1992.
+   <i>
+    A Narrow-Waveband Spectral Index That Tracks Diurnal Changes in Photosynthetic Efficiency
+   </i>
+   . Remote Sensing of Environment 41:35-44.
+  </p>
+  <p>
+   Gamon, J.A., L. Serrano, and J.S. Surfus, 1997.
+   <i>
+    The Photochemical Reflectance Index: An Optical Indicator of Photosynthetic Radiation Use Efficiency Across Species, Functional Types and Nutrient Levels
+   </i>
+   . Oecologia 112:492-501.
+  </p>
+  <h2>
+   <a name="structure_intensive_pigment_index">
+   </a>
+   Structure Insensitive Pigment Index
+  </h2>
+  <p>
+   The Structure Insensitive Pigment Index (SIPI) is a reflectance measurement designed to maximize the sensitivity of the index to the ratio of bulk carotenoids (for example, alpha-carotene and beta-carotene) to chlorophyll while decreasing sensitivity to variation in canopy structure (for example, leaf area index). Increases in SIPI are thought to indicate increased canopy stress (carotenoid pigment). Applications include vegetation health monitoring, plant physiological stress detection, and crop production and yield analysis. SIPI is defined by the following equation:
+  </p>
+  <p>
+   <img src="../Resources/Images/Vegetation/11_17.jpg" />
+  </p>
+  <p>
+   The value of this index ranges from 0 to 2. The common range for green vegetation is 0.8 to 1.8.
+  </p>
+  <h4>
+   Reference
+  </h4>
+  <p>
+   Penuelas, J., F. Baret, and I. Filella, 1995.
+   <i>
+    Semi-Empirical Indices to Assess Carotenoids/Chlorophyll-a Ratio from Leaf Spectral Reflectance
+   </i>
+   . Photosynthetica 31:221-230.
+  </p>
+  <h2>
+   <a name="red_green_ratio_index">
+   </a>
+   Red Green Ratio Index
+  </h2>
+  <p>
+   The Red Green Ratio (RG Ratio) index is a reflectance measurement that indicates the relative expression of leaf redness caused by anthocyanin to that of chlorophyll. The RG Ratio has been used to estimate the course of foliage development in canopies. The RG Ratio index is an indicator of leaf production and stress, and may also indicate flowering in some canopies.
+  </p>
+  <p>
+   Applications include plant growth cycle (phenology) studies, canopy stress detection, and crop yield prediction. Results are reported as the mean of all bands in the red range divided by the mean of all bands in the green range. The value of this index ranges from 0.1 to more than 8. The common range for green vegetation is 0.7 to 3.
+  </p>
+  <h4>
+   Reference
+  </h4>
+  <p>
+   Gamon, J.A. and J.S. Surfus, 1999.
+   <i>
+    Assessing Leaf Pigment Content and Activity With a Reflectometer
+   </i>
+   . New Phytologist 143:105-117.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

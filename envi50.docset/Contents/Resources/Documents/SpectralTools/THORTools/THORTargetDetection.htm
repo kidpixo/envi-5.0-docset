@@ -1,0 +1,343 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Spectral Tools|THOR Tools" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   THOR Target Detection
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#SpectralTools/THORTools/THORTargetDetection.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../SpectralTools.htm">
+    Spectral Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="THORWorkflows.htm">
+    THOR Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    THOR Target Detection
+   </span>
+  </div>
+  <h1>
+   <a name="kanchor384">
+   </a>
+   THOR Target Detection
+  </h1>
+  <p>
+   The Target Detection workflow is used to locate objects within an image that match the signatures of in-scene regions. THOR uses a variety of target detection algorithms to search for targets. After the targets are detected, the workflow will guide you through combining the rule images from each target detection algorithm into a single detection overlay for each target.
+  </p>
+  <h2>
+   Selecting One Input file
+  </h2>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     THOR &gt; THOR Target Detection &gt; THOR Target Detection Process Single File
+    </b>
+    . The File Selection dialog appears.
+   </li>
+   <li value="2">
+    <a href="THORFileSelection.htm">
+     Select an input file
+    </a>
+    and click
+    <b>
+     Next
+    </b>
+    .
+   </li>
+   <li value="3">
+    <a href="THORAtmosphericCorrection.htm">
+     Perform atmospheric correction
+    </a>
+    .
+   </li>
+   <li value="4">
+    <a href="THORTargetSignatureSelection.htm">
+     Select target signatures
+    </a>
+    .
+   </li>
+   <li value="5">
+    <a href="THORBackgroundSignatureSelection.htm">
+     Select background signatures
+    </a>
+    .
+   </li>
+   <li value="6">
+    <a href="THORDimensionalityReduction.htm">
+     Reduce dataset dimensionality and select bands
+    </a>
+    .
+   </li>
+   <li value="7">
+    <a href="THORSignatureMatching.htm">
+     Perform signature matching
+    </a>
+    .
+   </li>
+   <li value="8">
+    <a href="THORRuleThresholding.htm">
+     Perform rule thresholding
+    </a>
+    . When you proceed to the next step, THOR creates a rule threshold file in your default output directory called
+    <code>
+     <i>
+      rootname
+     </i>
+     _rule_thresh.dat
+    </code>
+    . At this point, you can quit your workflow session. When you return, select
+    <b>
+     THOR &gt; THOR Target Detection &gt; THOR Target Detection Resume Rule Thresholding Previous Results
+    </b>
+    from the
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    menu bar. Click
+    <b>
+     Select Rule Thresh File
+    </b>
+    and restore the file
+    <code>
+     <i>
+      rootname
+     </i>
+     _rule_thresh.dat
+    </code>
+    . Review the Target Detection results, and click
+    <b>
+     Next
+    </b>
+    to continue with rule thresholding.
+   </li>
+   <li value="9">
+    <a href="THORSpatialFiltering.htm">
+     Perform spatial filtering
+    </a>
+    .
+   </li>
+   <li value="10">
+    <a href="THORExportTargets.htm">
+     Export targets
+    </a>
+    .
+   </li>
+  </ol>
+  <h2>
+   <a name="kanchor385">
+   </a>
+   Selecting Multiple Input Files
+  </h2>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     THOR &gt; THOR Target Detection &gt; THOR Target Detection Process Multiple Files
+    </b>
+    . The File Selection dialog appears.
+   </li>
+   <li value="2">
+    Click
+    <b>
+     Add
+    </b>
+    . The Select Input File dialog appears.
+   </li>
+   <li value="3">
+    Click
+    <b>
+     Open &gt; New File
+    </b>
+    . A file selection dialog appears.
+   </li>
+   <li value="4">
+    Use the
+    <b>
+     Ctrl
+    </b>
+    or
+    <b>
+     Shift
+    </b>
+    key to select multiple input files. They must all have the same number of bands. Click
+    <b>
+     Open
+    </b>
+    .
+   </li>
+   <li value="5">
+    In the Select Input File dialog, use the
+    <b>
+     Ctrl
+    </b>
+    or
+    <b>
+     Shift
+    </b>
+    key to select all the files you want to open. Click
+    <b>
+     OK
+    </b>
+    . The THOR File Selection dialog lists all available input files.
+   </li>
+   <li value="6">
+    Click
+    <b>
+     Select Output Path
+    </b>
+    and select a directory for the Target Detection output files.
+   </li>
+   <li value="7">
+    You can choose to process a subset of spectral bands by clicking one of the following buttons in the File Selection panel:
+    <ul>
+     <li value="1">
+      <b>
+       Graphically
+      </b>
+      : The THOR Spectral Subsetting dialog appears.
+     </li>
+     <li value="2">
+      <b>
+       By List
+      </b>
+      : The File Spectral Subset dialog appears.
+     </li>
+    </ul>
+   </li>
+   <li value="8">
+    You can optionally perform
+    <a href="THORBadDataTools.htm#De-strip">
+     destriping
+    </a>
+    ,
+    <a href="THORBadDataTools.htm#Spectral">
+     spectral binning
+    </a>
+    , and/or
+    <a href="THORBadDataTools.htm#Spectral2">
+     spectral smoothing
+    </a>
+    .
+   </li>
+   <li value="9">
+    <a name="kanchor386">
+    </a>
+    Click
+    <b>
+     Next
+    </b>
+    . The Batch Parameters dialog appears.
+   </li>
+   <li value="10">
+    Select the options to apply to all of your input files. These include
+    <a href="THORAtmosphericCorrection.htm">
+     atmospheric correction
+    </a>
+    ,
+    <a href="THORTargetSignatureSelection.htm">
+     target selection
+    </a>
+    ,
+    <a href="THORDimensionalityReduction.htm">
+     dimensionality reduction
+    </a>
+    , the number of M of N rule images,
+    <a href="THORSpatialFiltering.htm">
+     spatial filtering
+    </a>
+    , and
+    <a href="THORExportTargets.htm">
+     target export
+    </a>
+    .
+   </li>
+   <li value="11">
+    Click
+    <b>
+     Next
+    </b>
+    .
+   </li>
+   <li value="12">
+    <a href="THORRuleThresholding.htm">
+     Perform rule thresholding
+    </a>
+    . Click
+    <b>
+     Next
+    </b>
+    , then
+    <b>
+     Finish
+    </b>
+    .
+   </li>
+  </ol>
+  <h3>
+   Reviewing Results
+  </h3>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     THOR &gt; THOR Target Detection &gt; THOR Target Detection Review Batch Target Detection Results
+    </b>
+    . A File Selection panel appears.
+   </li>
+   <li value="2">
+    Click
+    <b>
+     Select Database File
+    </b>
+    and select the
+    <code>
+     .dbase
+    </code>
+    file that was generated in your output folder after you ran the Target Detection workflow. The Database Summary section lists the details of your workflow.
+   </li>
+   <li value="3">
+    Review the Target Detection results, and
+    <a href="THORRuleThresholding.htm">
+     perform rule thresholding
+    </a>
+    again if needed to achieve the desired results.
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

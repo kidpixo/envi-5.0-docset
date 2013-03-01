@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Feature Extraction|Reference" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Principal Components Analysis Background
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#FindFeatures/FeatureExtraction/BackgroundPCA.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="ExtractFeatures.htm">
+    Feature Extraction
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="BackgroundSegmentationAlgorithm.htm">
+    Reference
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Principal Components Analysis Background
+   </span>
+  </div>
+  <h2>
+   Principal Components Analysis Background
+  </h2>
+  <p>
+   PCA-based classification compares each segment in the segmentation image to the training segments in principal component space and assigns them to the class with the highest score.
+  </p>
+  <p>
+   The
+   <a href="AttributeList.htm">
+    attributes
+   </a>
+   are normalized to have zero mean and unit variance.   Eigenvectors and eigenvalues are computed, based on the attributes of training segments.  The principal eigenvectors (those that correspond to non-zero eigenvalues) are used to transform attributes into principal component space for comparison.
+  </p>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   computes the mean attribute values of the training regions for each class, in principal components space. It also computes the mean attributes for all other training regions that do not belong to that class.
+  </p>
+  <p>
+   For example, assume you select a training region for a "Road" class, another training region for a "Water" class, and another training region for a "Vegetation" class. The PCA method starts with the "Road" class and computes the mean value for each attribute for that class. It then combines the training regions from the "Water" and "Vegetation" class into one class that is "Not Road" and computes the mean value of each attribute for that class.
+  </p>
+  <p>
+   ENVI computes a threshold for each class based on:
+  </p>
+  <ul>
+   <li value="1">
+    Training regions for that class, and
+   </li>
+   <li value="2">
+    Training regions for all other classes
+   </li>
+  </ul>
+  <p>
+   It computes a class score for each segment as follows:
+  </p>
+  <p class="indent" style="font-style: italic;">
+   Class Score = [Attributes in PC&#160;space - Threshold for that class] * Weights for each class
+  </p>
+  <p>
+   The weights are based on the eigenvalues. The class score indicates how much each segment exceeds the threshold for the class. The segment is then assigned to the class with the highest score.
+  </p>
+  <p>
+   The PCA method computes class scores based on the training samples you select. If all class scores are negative for a given region, it will be unclassified.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

@@ -1,0 +1,955 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming|Routines|Display Control|ENVI Classic" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   ENVI_DEFINE_MENU_BUTTON
+  </title>
+  <link href="../../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../../ENVIHelp_CSH.htm#ExtendCustomize/ENVIClassicAPI/ENVI_D/ENVI_DEFINE_MENU_BUTTON.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../Routines.htm">
+    Routines
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../enviPortal.htm">
+    Display Control
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    ENVI_DEFINE_MENU_BUTTON
+   </span>
+  </div>
+  <h1>
+   <a name="kanchor630">
+   </a>
+   ENVI_DEFINE_MENU_BUTTON
+  </h1>
+  <p>
+   <a href="#Description">
+    Description
+   </a>
+   |
+   <a href="#Syntax">
+    Syntax
+   </a>
+   |
+   <a href="#Arguments">
+    Arguments
+   </a>
+   |
+   <a href="#Examples">
+    Keywords
+   </a>
+   |
+   <a href="#Examples">
+    Examples
+   </a>
+  </p>
+  <p class="HighlightText">
+   This routine has been replaced with the
+   <a href="../../ENVI__AddExtension.htm">
+    AddExtension
+   </a>
+   method to ENVI, which
+   <a href="../../write_deploy_toolbox_extensions.htm">
+    adds your extension to the Toolbox
+   </a>
+   .
+  </p>
+  <h2 class="API">
+   <a name="Description">
+   </a>
+   Description
+  </h2>
+  <p>
+   Use this procedure to add menu items (buttons) to the
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   menu system from a user-defined procedure in a
+   <code>
+    .pro
+   </code>
+   or
+   <code>
+    .sav
+   </code>
+   file within the
+   <code>
+    save_add
+   </code>
+   directory. The
+   <code>
+    .pro
+   </code>
+   or
+   <code>
+    .sav
+   </code>
+   file must contain a procedure named
+   <code>
+    <i>
+     filename
+    </i>
+    _define_buttons
+   </code>
+   , where
+   <i>
+    filename
+   </i>
+   is the name of that file. For instance, if the file in the
+   <code>
+    save_add
+   </code>
+   directory is named
+   <code>
+    my_process.pro
+   </code>
+   , a procedure named
+   <code>
+    my_process_define_buttons.pro
+   </code>
+   should be in that file to allow you to add buttons to the
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   menu system. The
+   <code>
+    <i>
+     filename
+    </i>
+    _define_buttons
+   </code>
+   procedure has only one argument and no keywords, as shown in the following example code:
+  </p>
+  <p class="Code">
+   PRO my_process_define_buttons, buttonInfo
+   <br />
+   ;
+   <br />
+   ; Define Buttons with ENVI_DEFINE_MENU_BUTTON
+   <br />
+   ;
+   <br />
+   END
+  </p>
+  <p>
+   The
+   <code>
+    <i>
+     filename
+    </i>
+    _define_buttons
+   </code>
+   procedure is used to call the ENVI_DEFINE_MENU_BUTTON procedure, which enables you to define a new button. The ENVI_DEFINE_MENU_BUTTON procedure has one argument and several keywords that include information on where the new button is located in the
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   menu system. The following figure and comments show an example of button location terminology in the
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   menu system.
+  </p>
+  <p>
+   <img src="../../../Resources/Images/ENVIClassicAPI/menu_basic.gif" />
+  </p>
+  <p>
+   The
+   <b>
+    Basic Tools
+   </b>
+   menu is a button containing a submenu. It is also the parent button of
+   <b>
+    Resize Data (Spatial/Spectral)
+   </b>
+   ,
+   <b>
+    Subset Data via ROIs
+   </b>
+   , etc.
+   <b>
+    Resize Data (Spatial/Spectral)
+   </b>
+   is a child button of
+   <b>
+    Basic Tools
+   </b>
+   .
+   <b>
+    Statistics
+   </b>
+   is a sibling button to
+   <b>
+    Resize Data (Spatial/Spectral)
+   </b>
+   ,
+   <b>
+    Subset Data via ROIs
+   </b>
+   , etc.
+   <b>
+    Statistics
+   </b>
+   is also a parent button because it contains a submenu.
+  </p>
+  <h2 class="API">
+   <a name="Syntax">
+   </a>
+   Syntax
+  </h2>
+  <p>
+   ENVI_DEFINE_MENU_BUTTON,
+   <i>
+    ButtonInfo
+   </i>
+   [, /
+   <a href="#DISPLAY">
+    DISPLAY
+   </a>
+   ],
+   <a href="#EVENT">
+    EVENT_PRO
+   </a>
+   =
+   <i>
+    string
+   </i>
+   , /
+   <a href="#MENU">
+    MENU
+   </a>
+   , [,
+   <a href="#POSITION">
+    POSITION
+   </a>
+   =
+   <i>
+    long integer
+   </i>
+   or
+   <i>
+    string
+   </i>
+   ] [,
+   <a href="#REF_INDEX">
+    REF_INDEX
+   </a>
+   =
+   <i>
+    long integer
+   </i>
+   ] [,
+   <a href="#REF_UVALUE">
+    REF_UVALUE
+   </a>
+   =
+   <i>
+    variable
+   </i>
+   ],
+   <a href="#REF_VALUE">
+    REF_VALUE
+   </a>
+   =
+   <i>
+    string
+   </i>
+   [,
+   <a href="#SEPARATOR">
+    SEPARATOR
+   </a>
+   ={0 | 1 | -1}] [, /
+   <a href="#SIBLING">
+    SIBLING
+   </a>
+   ],
+   <a href="#UVALUE">
+    UVALUE
+   </a>
+   =
+   <i>
+    string
+   </i>
+   ,
+   <a href="#VALUE">
+    VALUE
+   </a>
+   =
+   <i>
+    string
+   </i>
+  </p>
+  <h2 class="API">
+   <a name="Arguments">
+   </a>
+   Arguments
+  </h2>
+  <h3>
+   ButtonInfo
+  </h3>
+  <p>
+   This is a structure containing information about the new button. This argument must be the same as the argument used for the
+   <code>
+    <i>
+     filename
+    </i>
+    _define_buttons
+   </code>
+   procedure.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   The value of the argument is defined by
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   and should not be modified.
+  </p>
+  <h2 class="API">
+   <a name="Keywords">
+   </a>
+   Keywords
+  </h2>
+  <h3>
+   <a name="DISPLAY">
+   </a>
+   DISPLAY (optional)
+  </h3>
+  <p>
+   Set this keyword to add the new button to the display group menu bar, instead of to the
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   main menu bar (default). Any child buttons that you add to a display group menu button also require /DISPLAY keywords.
+  </p>
+  <h3>
+   <a name="EVENT">
+   </a>
+   EVENT_PRO (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a string containing the name of the event handling procedure for the new button, which is called when yo (optional)u select the new button. If you set the MENU keyword, the EVENT_PRO keyword is not required.
+  </p>
+  <h3>
+   <a name="MENU">
+   </a>
+   MENU
+  </h3>
+  <p>
+   Set this keyword to indicate the new button has a submenu, making it a parent button. You are not required to specify a value for the UVALUE keyword if you set the MENU keyword. By default, the MENU keyword is not set.
+  </p>
+  <h3>
+   <a name="POSITION">
+   </a>
+   POSITION (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the location of the new button relative to the reference button, which is specified with the REF_VALUE keyword.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   You cannot add a new button after
+   <b>
+    Exit
+   </b>
+   in the
+   <b>
+    File
+   </b>
+   option of the
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   main menu bar.
+  </p>
+  <p>
+   If the new button is a sibling (/SIBLING) to the reference button, then you can set the position to one of the following values:
+  </p>
+  <ul>
+   <li value="1">
+    <code>
+     'before'
+    </code>
+    : String value indicating the new button is placed just before the reference button
+   </li>
+   <li value="2">
+    <code>
+     'after'
+    </code>
+    : String value indicating the new button is placed just after the reference button
+   </li>
+   <li value="3">
+    negative number: Long integer indicating the new button is placed a relative distance before the reference button. A value of 0 is not valid in this case. For example, a value of –1 is equivalent to a value of
+    <code>
+     'before'
+    </code>
+    . A value of –2 places the new button before the reference button, with one sibling between the new and the reference button.
+   </li>
+   <li value="4">
+    positive number: Long integer indicating the new button is placed a relative distance after the reference button. A value of 0 is not valid in this case. A value of 1 is equivalent to a value of
+    <code>
+     'after'
+    </code>
+    . A value of 2 places the new button after the reference button, with one sibling between the new and the reference button.
+   </li>
+  </ul>
+  <p>
+   If the new button is a child of the reference button (SIBLING=0, default), then you can set the POSITION keyword to one of the following values:
+  </p>
+  <ul>
+   <li value="1">
+    <code>
+     'first'
+    </code>
+    : String value indicating the new button is placed as the first child
+   </li>
+   <li value="2">
+    <code>
+     'last'
+    </code>
+    : String value indicating the new button is placed as the last child
+   </li>
+   <li value="3">
+    -1, 0, or a positive number: Long integer indicating the index of the child button relative to it parent. For example, POSITION=0 represents the first child, POSITION=1 represents the second child, and so forth. POSITION= –1 is equivalent to
+    <code>
+     'last'
+    </code>
+    , which places the new button as the last child (no matter how many children already exist).
+   </li>
+  </ul>
+  <p>
+   The default value is POSITION=
+   <code>
+    'after'
+   </code>
+   for a sibling button and POSITION=
+   <code>
+    'last'
+   </code>
+   for a child button.
+  </p>
+  <h3>
+   <a name="REF_INDEX">
+   </a>
+   REF_INDEX (optional)
+  </h3>
+  <p>
+   Use this keyword to indicate the index of the button used as a reference if the name specified for the REF_VALUE keyword is not unique. For example, the
+   <b>
+    Preprocessing
+   </b>
+   button appears in two places in the
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   menu system: in the
+   <b>
+    Basic Tools
+   </b>
+   and the
+   <b>
+    Spectral
+   </b>
+   menus. The index value is based on the sequential order of the button names in the
+   <code>
+    envi.men
+   </code>
+   file. REF_INDEX=0 represents the first instance in the file, REF_INDEX=1 represents the second instance, and so forth. If the value of REF_INDEX is greater than the number of instances in the file, the first instance of the button is used as the reference button. The default is REF_INDEX=0.
+  </p>
+  <h3>
+   <a name="REF_UVALUE">
+   </a>
+   REF_UVALUE (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a reference button by its user-defined value.
+  </p>
+  <p>
+   Specifying an existing
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   button name with the REF_VALUE keyword may not always produce a match because you can edit the
+   <code>
+    envi.men
+   </code>
+   file and it may have been changed for a given installation (for example, when translating the button names into a different language). However, a user-defined value for this button does not change. The REF_UVALUE keyword enables you to specify this user-defined value so it can be used as a backup for the REF_VALUE when it does not match any existing buttons. However, the REF_UVALUE keyword does not work for parent buttons because submenus do not produce events.
+  </p>
+  <h3>
+   <a name="REF_VALUE">
+   </a>
+   REF_VALUE (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a string containing the name of the reference button, which is already located in the
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   menu system.
+  </p>
+  <h3>
+   <a name="SEPARATOR">
+   </a>
+   SEPARATOR (optional)
+  </h3>
+  <p>
+   Set this keyword to place a separator before the new button. By default, SEPARATOR=0. To place the separator after the new button, set SEPARATOR to -1.
+  </p>
+  <h3>
+   <a name="SIBLING">
+   </a>
+   SIBLING (optional)
+  </h3>
+  <p>
+   Set this keyword to indicate that the new button is a sibling of the reference button, which is specified with the REF_VALUE keyword. By default, a new button is a child of the reference button unless the SIBLING keyword is set. However, if the reference button is not a parent button (i.e., it does not contain a submenu), you do not need to set this keyword because the new button is always a sibling to that reference button.
+  </p>
+  <h3>
+   <a name="UVALUE">
+   </a>
+   UVALUE
+  </h3>
+  <p>
+   Use this keyword to specify a string containing information you want to maintain about the new button. This string is passed to the event handling procedure for the new button. If the MENU keyword is set, you are not required to specify a value for the UVALUE keyword.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   In general, the user-defined value of a widget can be of any type, but for this procedure, the value for the UVALUE keyword must be a string.
+  </p>
+  <h3>
+   <a name="VALUE">
+   </a>
+   VALUE
+  </h3>
+  <p>
+   Use this keyword to specify a string containing the name of the new button you want to create. The name specified for the VALUE keyword is also used as the label for the new button.
+  </p>
+  <h2 class="API">
+   <a name="Examples">
+   </a>
+   Examples
+  </h2>
+  <p>
+   The following examples are for a fictitious file named
+   <code>
+    my_process.pro
+   </code>
+   .
+  </p>
+  <h3>
+   Example 1
+  </h3>
+  <p>
+   The first example adds four new buttons. The
+   <b>
+    My Menu
+   </b>
+   parent button is placed in the
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   main menu bar just after
+   <b>
+    Basic Tools
+   </b>
+   and just before
+   <b>
+    Classification
+   </b>
+   . This new button contains three children:
+   <b>
+    Option 1
+   </b>
+   ,
+   <b>
+    Option 2
+   </b>
+   , and
+   <b>
+    Option 3
+   </b>
+   .
+  </p>
+  <p class="Code">
+   PRO MY_PROCESS_DEFINE_BUTTONS, $
+  </p>
+  <p class="Code_Indented">
+   compile_opt IDL2
+  </p>
+  <p class="Code_Indented">
+   envi_define_menu_button, buttonInfo, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;value = 'My Menu',
+   /menu, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;ref_value = 'Basic Tools', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;/sibling, position = 'after'
+  </p>
+  <p class="Code_Indented">
+   &#160;
+  </p>
+  <p class="Code_Indented">
+   envi_define_menu_button, buttonInfo, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;value = 'Option 1', uvalue = 'option 1', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;event_pro = 'my_process_event', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;ref_value = 'My Menu', position = 'last'
+  </p>
+  <p class="Code_Indented">
+   &#160;
+  </p>
+  <p class="Code_Indented">
+   envi_define_menu_button, buttonInfo, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;value = 'Option 2', uvalue = 'option 2', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;event_pro = 'my_process_event', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;ref_value = 'My Menu', position = 'last'
+  </p>
+  <p class="Code_Indented">
+   &#160;
+  </p>
+  <p class="Code_Indented">
+   envi_define_menu_button, buttonInfo, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;value = 'Option 3', 
+   uvalue = 'option 3', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;event_pro = 'my_process_event', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;ref_value = 'My Menu', position = 'last', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;/separator
+  </p>
+  <p class="Code">
+   END
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   PRO MY_PROCESS_EVENT
+  </p>
+  <p class="Code">
+   &#160;&#160;compile_opt IDL2
+  </p>
+  <p class="Code">
+   &#160;&#160;print, 'Running the process'
+  </p>
+  <p class="Code">
+   END
+  </p>
+  <h3>
+   Example 2
+  </h3>
+  <p>
+   The previous example used string values for the POSITION keyword. This example creates the same buttons, but it uses integer values for the POSITION keyword.
+  </p>
+  <p class="Code">
+   PRO MY_PROCESS_DEFINE_BUTTONS, buttonInfo
+  </p>
+  <p class="Code_Indented">
+   compile_opt IDL2
+  </p>
+  <p class="Code_Indented">
+   envi_define_menu_button, buttonInfo, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;value = 'My Menu',
+   /menu, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;ref_value = 'File', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;/sibling, position = 2
+  </p>
+  <p class="Code_Indented">
+   &#160;
+  </p>
+  <p class="Code_Indented">
+   envi_define_menu_button, buttonInfo, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;value = 'Option 2', uvalue = 'option 2', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;event_pro = 'my_process_event', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;ref_value = 'My Menu', position = 0
+  </p>
+  <p class="Code_Indented">
+   &#160;
+  </p>
+  <p class="Code_Indented">
+   envi_define_menu_button, buttonInfo, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;value = 'Option 1', uvalue = 'option 1', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;event_pro = 'my_process_event', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;ref_value = 'Option 2', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;ref_uvalue = 'Option 1', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;position = -1
+  </p>
+  <p class="Code_Indented">
+   &#160;
+  </p>
+  <p class="Code_Indented">
+   envi_define_menu_button, buttonInfo, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;value = 'Option 3', 
+   uvalue = 'option 3', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;event_pro = 'my_process_event', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;ref_value = 'Option 2', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;ref_uvalue = 'Option 1', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;position = 1, /separator
+  </p>
+  <p class="Code">
+   END
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   PRO MY_PROCESS_EVENT
+  </p>
+  <p class="Code">
+   &#160;&#160;compile_opt IDL2
+  </p>
+  <p class="Code">
+   &#160;&#160;print, 'Running the process'
+  </p>
+  <p class="Code">
+   END
+  </p>
+  <h3>
+   Example 3
+  </h3>
+  <p>
+   The following example shows how to add new buttons as children to the
+   <b>
+    Preprocessing
+   </b>
+   buttons under
+   <b>
+    Basic Tools
+   </b>
+   and
+   <b>
+    Spectral
+   </b>
+   .
+  </p>
+  <p class="Code">
+   PRO MY_PROCESS_DEFINE_BUTTONS, buttonInfo
+  </p>
+  <p class="Code_Indented">
+   compile_opt IDL2
+  </p>
+  <p class="Code_Indented">
+   &#160;
+  </p>
+  <p class="Code_Indented">
+   envi_define_menu_button, buttonInfo, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;value = 'New Tools', /menu, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;ref_value = 'Preprocessing', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;ref_index = 0, position = 'last'
+  </p>
+  <p class="Code_Indented">
+   &#160;
+  </p>
+  <p class="Code_Indented">
+   envi_define_menu_button, buttonInfo, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;value = 'Tool 1', uvalue = 'tool 1', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;event_pro = 'my_process_event', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;ref_value = 'New Tools', position = -1
+  </p>
+  <p class="Code_Indented">
+   &#160;
+  </p>
+  <p class="Code_Indented">
+   envi_define_menu_button, buttonInfo, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;value = 'Tool 2', uvalue = 'tool 2', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;event_pro = 'my_process_event', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;ref_value = 'New Tools', position = -1
+  </p>
+  <p class="Code_Indented">
+   &#160;
+  </p>
+  <p class="Code_Indented">
+   envi_define_menu_button, buttonInfo, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;value = 'New Tools', /menu, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;ref_value = 'Preprocessing', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;ref_index = 1, position = 'last'
+  </p>
+  <p class="Code_Indented">
+   &#160;
+  </p>
+  <p class="Code_Indented">
+   envi_define_menu_button, buttonInfo, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;value = 'Tool 1', uvalue = 'tool 1', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;event_pro = 'my_process_event', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;ref_value = 'New Tools', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;ref_index = 1, position = -1
+  </p>
+  <p class="Code_Indented">
+   &#160;
+  </p>
+  <p class="Code_Indented">
+   envi_define_menu_button, buttonInfo, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;value = 'Tool 2', uvalue = 'tool 2', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;event_pro = 'my_process_event', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;ref_value = 'New Tools', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;ref_index = 1, position = -1
+  </p>
+  <p class="Code">
+   END
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   PRO MY_PROCESS_EVENT
+  </p>
+  <p class="Code">
+   &#160;&#160;compile_opt IDL2
+  </p>
+  <p class="Code">
+   &#160;&#160;print, 'Running the process'
+  </p>
+  <p class="Code">
+   END
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

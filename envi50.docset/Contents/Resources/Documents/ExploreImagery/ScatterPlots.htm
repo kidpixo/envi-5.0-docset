@@ -1,0 +1,303 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Explore Imagery" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Scatter Plots
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#ExploreImagery/ScatterPlots.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="ExploreImagery.htm">
+    Explore Imagery
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Scatter Plots
+   </span>
+  </div>
+  <h1>
+   Scatter Plots
+   <a name="kanchor45">
+   </a>
+  </h1>
+  <p>
+   An
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   2D scatter plot displays two bands of image pixel values in a Cartesian plot, with one band providing the x coordinates and the other band providing the y coordinates. If neither band contains dependent data, either band can be plotted on either axis and the scatter plot illustrates only the degree of correlation between the two bands.
+  </p>
+  <p>
+   By default, the scatter plot only operates on pixels from the displayed portion of the raster.
+  </p>
+  <p>
+   You can display multiple scatter plots simultaneously.
+  </p>
+  <h2>
+   Create a Scatter Plot
+  </h2>
+  <p>
+   To create a 2D scatter plot:
+  </p>
+  <ol>
+   <li value="1">
+    Open an image file.
+   </li>
+   <li value="2">
+    Select
+    <b>
+     Display &gt; 2D Scatter Plot
+    </b>
+    on the menu bar. The 2D Scatter Plot dialog appears.
+   </li>
+  </ol>
+  <h2>
+   Select Bands
+  </h2>
+  <p>
+   Choose the scatter plot bands from the
+   <b>
+    X Band
+   </b>
+   and
+   <b>
+    Y Band
+   </b>
+   menus. Band 1 is the default choice for the X Band, and Band 2 is the default choice for the Y Band.
+  </p>
+  <h2>
+   Change the Scatter Plot Magnification
+  </h2>
+  <p>
+   You can change the magnification of the scatter plot in several ways:
+  </p>
+  <ul>
+   <li value="1">
+    Zoom in and out of the plot by clicking on the plot window, then rolling the mouse wheel.
+   </li>
+   <li value="2">
+    Press
+    <b>
+     Shift
+    </b>
+    +click inside the plot, and move the mouse pointer to draw a bounding box. When you release the mouse button, the area inside the bounding box is magnified to fill the entire plot.
+   </li>
+  </ul>
+  <h2>
+   Restrict Scatter Plot to the  Viewable Area of the Bands
+  </h2>
+  <p>
+   Select the
+   <b>
+    Viewable Area Only
+   </b>
+   box to limit the scatter plot computations to the visible part of the bands. This option is useful for large files because of the excessive memory required for the calculations. This option is selected by default. For very large files, this option is selected and locked.
+  </p>
+  <p>
+   The scatter plot uses the displayed pyramid level. For example, if a large data set is displayed and the magnification is reduced to fit the entire data set on the screen, the scatter plot is based on the pyramid level displayed rather than all the pixels of the selected bands.
+  </p>
+  <h2>
+   Display a Density Distribution
+  </h2>
+  <p>
+   A group of image pixels can share the same value in both bands and all will be represented by the same black point on the scatter plot. You can display point density with color by selecting
+   <b>
+    Density Slice
+   </b>
+   . The density color gradient runs from purple (low density) to red (high density).
+  </p>
+  <h2>
+   Display the Pixel Distribution of Scatter Plots
+  </h2>
+  <p>
+   You can turn pixels red in the Image window view that have the same values as points on the scatter plot that lie within a box centered on the mouse pointer. As the pointer moves, the corresponding Image window pixels (called
+   <i>
+    dancing pixels
+   </i>
+   ) change color. You can change the size of the box using the
+   <b>
+    Patch Size
+   </b>
+   slider.
+  </p>
+  <p>
+   To display dancing pixels in the Image window, move the mouse pointer over the scatter plot and hold down the middle mouse button. You can move the pointer (while holding down the middle mouse button) to interactively display the associated Image window pixels.
+  </p>
+  <h2>
+   <a name="Display">
+   </a>
+   Display the Pixel Distribution of Images
+  </h2>
+  <p>
+   You can turn points red on the scatter plot that have the same values as pixels on the Image window that lie within a box centered on the mouse pointer. As the pointer moves, the corresponding scatter plot points (called
+   <i>
+    inverse dancing pixels
+   </i>
+   ) change color. You can change the size of the box using the
+   <b>
+    Patch Size
+   </b>
+   slider.
+  </p>
+  <p>
+   To display dancing pixels in the scatter plot, move the mouse pointer over the Image window and hold down the left mouse button. The selected pixels are indicated by a red box surrounding the pointer. You can move the pointer (while holding down the left mouse button) to interactively display the associated scatter plot points.
+  </p>
+  <h2>
+   Defining and Exporting Classes
+  </h2>
+  <p>
+   You can select one or more groups of pixels in the scatter plot that highlight the associated pixels in the main image. A group of such pixels is called a
+   <i>
+    class
+   </i>
+   . To create a class of scatter plot pixels:
+  </p>
+  <ul>
+   <li value="1">
+    In the
+    <b>
+     Class Functions
+    </b>
+    section of the scatter plot dialog, select a color from the menu. The class' selected pixels and the associated image pixels are set to this color.
+   </li>
+   <li value="2">
+    Define a class region polygon by left-clicking points (or by left-clicking and dragging) on the scatter plot. Right-click to close the polygon, or middle-click to erase the polygon.
+   </li>
+  </ul>
+  <p>
+   Note that the pixels enclosed by the class polygon and the associated pixels in the main image now assume the class color.
+  </p>
+  <p>
+   After completing a class polygon, you can extend the class by defining more polygons. All the polygons of a particular color are joined to form a single class.
+  </p>
+  <p>
+   Click
+   <b>
+    Clear
+   </b>
+   to erase the current class.
+  </p>
+  <p>
+   To define another class, select a different color from the menu and define one or more polygons.
+  </p>
+  <p>
+   If you select pixels that were included in a previous  class, the pixels are assigned to the new class.
+  </p>
+  <p>
+   Click
+   <b>
+    Export
+   </b>
+   to create a new layer containing the current class pixels. This new layer is added to the Layer Manager, displayed by default, and given the name of the associated class color. If you export multiple classes of the same color, the Layer Manager will assign a unique name for each new layer. If you want to clear or export a previous class, you must first select the previous class color from the menu.
+  </p>
+  <p>
+   If you click the
+   <b>
+    All Classes
+   </b>
+   box, the
+   <b>
+    Clear
+   </b>
+   and
+   <b>
+    Export
+   </b>
+   buttons apply to all currently-defined classes.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   Inverse dancing pixels (pixels highlighted in the main image) override (are shown on top of) class pixels. See
+   <a href="#Display">
+    Display the Pixel Distribution of Images
+   </a>
+   for more information about inverse dancing pixels.
+  </p>
+  <h2>
+   Additional Dialog Controls
+  </h2>
+  <p>
+   The button controls at the bottom of the dialog do the following:
+  </p>
+  <ul>
+   <li value="1">
+    Click
+    <b>
+     Print
+    </b>
+    to print the plot.
+   </li>
+   <li value="2">
+    Click
+    <b>
+     Save As
+    </b>
+    to open the Save As dialog and save the plot.
+   </li>
+   <li value="3">
+    Click
+    <b>
+     Properties
+    </b>
+    to open the Properties dialog and edit the attributes of the plot lines. Double-clicking in the plot also opens the Properties dialog.
+   </li>
+   <li value="4">
+    Click
+    <b>
+     Reset Axis Range
+    </b>
+    to change the range for the x/y axis.
+   </li>
+   <li value="5">
+    Click
+    <b>
+     Edit
+    </b>
+    to select from a drop-down list of options.
+   </li>
+   <li value="6">
+    Click
+    <b>
+     Annotations
+    </b>
+    to select from a list of options to annotate the plot.
+   </li>
+  </ul>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

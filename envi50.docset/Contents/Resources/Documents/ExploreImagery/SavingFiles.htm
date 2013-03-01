@@ -1,0 +1,525 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Explore Imagery" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Save and Chip Output
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#ExploreImagery/SavingFiles.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="ExploreImagery.htm">
+    Explore Imagery
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Save and Chip Output
+   </span>
+  </div>
+  <h1>
+   Save and Chip Output
+   <a name="kanchor64">
+   </a>
+  </h1>
+  <p>
+   You can save raster and vector files  to a file, and you can create a screen capture (or chip) of all layers displayed in the current view and save it to a file, print layout view, ArcMap™, or PowerPoint.
+  </p>
+  <p>
+   See the following sections:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#SaveFiles">
+     Save Files
+    </a>
+   </li>
+   <li value="2">
+    <a href="#ChipDisplay">
+     Chip the View
+    </a>
+   </li>
+  </ul>
+  <h2>
+   <a name="SaveFiles">
+   </a>
+   Save Files
+   <a name="kanchor65">
+   </a>
+  </h2>
+  <p>
+   Use
+   <b>
+    File &gt; Save As
+   </b>
+   to output image data to disk, or to output vector layer changes to an
+   <code>
+    .evf
+   </code>
+   file. For vector files, the vector layer you wish to save must be the active layer, and it must have been modified.
+  </p>
+  <p>
+   For images,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   does not retain display enhancements in the output file when you use
+   <b>
+    Save As
+   </b>
+   . These include rotating, zooming, contrast, brightness, sharpening, stretching, Portals, or viewing multiple layers. Use the
+   <b>
+    File &gt; Chip View To
+   </b>
+   options to retain display enhancements, which is described later in this topic.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   You cannot  edit or save an Esri layer file).
+  </p>
+  <ol>
+   <li value="1">
+    From the menu bar, select
+    <b>
+     File &gt; Save As
+    </b>
+    . The Select Input File dialog appears.
+   </li>
+   <li value="2">
+    Select an input file and perform optional spectral and spatial
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The Save File As Parameters dialog appears.
+   </li>
+   <li value="3">
+    Keep the
+    <b>
+     Display Result
+    </b>
+    check box enabled to automatically display the output result in the Image window view. Disable the check box if you do not want to automatically display the output.
+   </li>
+   <li value="4">
+    Select
+    <b>
+     Output File
+    </b>
+    format from the drop-down list. The following options are available:
+   </li>
+   <ul>
+    <li value="1">
+     <b>
+      NITF:
+     </b>
+     NITF 2.0 and 2.1 or NSIF 1.0. If you select this option, the
+     <b>
+      Compression
+     </b>
+     drop-down list appears.
+    </li>
+    <li value="2">
+     <b>
+      ENVI:
+     </b>
+     <![CDATA[ ]]>
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     writes the data to ENVI image format and creates and saves an associated header file (
+     <code>
+      .hdr
+     </code>
+     ) to disk. This option is disabled for input NITF files with multiple image segments.
+    </li>
+    <li value="3">
+     <b>
+      TIFF:
+     </b>
+     TIFF and GeoTIFF. This option is disabled for input NITF files with multiple image segments.
+    </li>
+   </ul>
+   <li value="5">
+    Click the
+    <b>
+     File Select
+    </b>
+    button
+    <img src="../Resources/Images/IconsButtons/Open.gif" title="File Select button" alt="File Select button" class="VertCenter" />
+    to open the Select Output Filename dialog and choose an output destination and filename. Click
+    <b>
+     Open
+    </b>
+    accept the output file settings.
+   </li>
+   <li value="6">
+    Click
+    <b>
+     OK
+    </b>
+    . If you enabled
+    <b>
+     Display Result
+    </b>
+    ,
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    automatically displays the result. The output is also added to the Data Manager.
+   </li>
+  </ol>
+  <h2>
+   <a name="ChipDisplay">
+   </a>
+   Chip the View
+   <a name="kanchor66">
+   </a>
+  </h2>
+  <p>
+   Use the
+   <b>
+    File &gt; Chip View To
+   </b>
+   options to create a screen capture of all layers displayed in the current view. Any display enhancements, zooming, rotating, or Portals that are displayed in the view are burned into the output image.
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   creates an 8-bit, three-band image at screen resolution, even if the input data is a only single vector layer or consists of one band (a grayscale image).
+  </p>
+  <p>
+   You must display the layer(s) in the current view prior to using
+   <b>
+    Chip View To
+   </b>
+   options. The menu options are disabled if you do not have any layers displayed. You can display any combination of image and/or vector layers for a chip.
+  </p>
+  <h3>
+   Chip to a File
+  </h3>
+  <ol>
+   <li value="1">
+    Display the layer(s) you wish to chip in the Image window. You can use the Zoom, Pan, Rotate, or enhancement tools to customize the display.
+   </li>
+   <li value="2">
+    From the menu bar, select
+    <b>
+     File &gt; Chip View To &gt; File
+    </b>
+    or click the
+    <b>
+     Chip to File
+    </b>
+    button on the toolbar. The Chip to File Parameters dialog appears.
+   </li>
+   <li value="3">
+    Select an output format from the
+    <b>
+     Output File
+    </b>
+    drop-down list. The following options are available:
+   </li>
+   <ul>
+    <li value="1">
+     <p>
+      <b>
+       NITF:
+      </b>
+      NITF 2.0 and 2.1 or NSIF 1.0. If you select this option, the
+      <b>
+       Compression
+      </b>
+      drop-down list appears. See
+      <a href="SavingNITFFiles.htm">
+       Save NITF Files
+      </a>
+      for more information about the available options. If you select the
+      <b>
+       Metadata Editor
+      </b>
+      button, you can optionally
+      <a href="SavingNITFFiles.htm#Edit">
+       edit some NITF metadata
+      </a>
+      fields and add PIA tags and text segments before saving the file.
+     </p>
+     <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+      <span class="autonumber">
+       <span>
+        <b>
+         Note:
+        </b>
+       </span>
+      </span>
+      You will lose all NITF metadata if you use
+      <b>
+       Chip View to &gt; File
+      </b>
+      . Default metadata values will be used based on NITF preferences. To save metadata, use
+      <b>
+       File &gt; Save As
+      </b>
+      to create output instead.
+     </p>
+    </li>
+    <li value="2">
+     <b>
+      ENVI:
+     </b>
+     ENVI image format. When you select this option,
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     creates and saves an associated header file (
+     <code>
+      .hdr
+     </code>
+     ) to disk.
+    </li>
+    <li value="3">
+     <b>
+      TIFF:
+     </b>
+     TIFF and GeoTIFF
+    </li>
+    <li value="4">
+     <b>
+      JPEG:
+     </b>
+     JPEG
+    </li>
+    <li value="5">
+     <b>
+      JPEG2000:
+     </b>
+     JPEG2000
+    </li>
+    <li value="6">
+     <b>
+      GDB:
+     </b>
+     Geodatabase
+    </li>
+   </ul>
+   <li value="4">
+    Click the
+    <b>
+     File Select
+    </b>
+    button
+    <img src="../Resources/Images/IconsButtons/Open.gif" title="File Select button" alt="File Select button" class="VertCenter" />
+    to open the Select Output Filename dialog and choose an output destination and filename. Click
+    <b>
+     Open
+    </b>
+    to accept the output file settings.
+   </li>
+   <li value="5">
+    Keep the
+    <b>
+     Display Result
+    </b>
+    check box to enabled to automatically display the output result in the Image window view or disable the check box to not automatically display the output.
+   </li>
+   <li value="6">
+    Click
+    <b>
+     OK
+    </b>
+    . If you enabled
+    <b>
+     Display Result
+    </b>
+    ,
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    automatically displays the result. The output is also added to the Data Manager.
+   </li>
+  </ol>
+  <h3>
+   Chip to Print Layout View
+   <a name="kanchor67">
+   </a>
+  </h3>
+  <p>
+   This option is available on Windows platforms with a licensed ArcGIS® installation.
+  </p>
+  <ol>
+   <li value="1">
+    Display the layer(s) you wish to chip in the current view. You can use the Zoom, Pan, Rotate, or                    enhancement tools to customize the display.
+   </li>
+   <li value="2">
+    From the menu bar, select
+    <b>
+     File &gt; Chip View To &gt; Print
+    </b>
+    to export the chipped image display to the Print Layout view. Any display enhancements, zooming, rotating, or Portals that are displayed in the view are burned into the Print Layout image.
+   </li>
+  </ol>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   creates an 8-bit, three-band image at screen resolution, even if the input data is a only single vector layer or consists of one band (a grayscale image). This results in the creation of a Legend (if the Legend is included in the associated Map Template) displaying
+   <code>
+    Chip
+   </code>
+   as the layer name followed by the RGB information.
+  </p>
+  <p>
+   For more information on the Print Layout view, see
+   <a href="ESRI_Print_Layout.htm">
+    Working with the Print Layout View
+   </a>
+   .
+  </p>
+  <h3>
+   Chip to ArcMap
+   <a name="kanchor68">
+   </a>
+  </h3>
+  <p>
+   This option is available on Windows platforms with a licensed ArcGIS® installation. It is not available when the Image window is divided into multiple views.
+  </p>
+  <p>
+   You can export a chipped image display to ArcMap™. The exported image retains all display enhancements and annotations you added in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   . Use the following steps:
+  </p>
+  <ol>
+   <li value="1">
+    From the menu bar, select
+    <b>
+     File &gt; Chip View To &gt; ArcMap
+    </b>
+    .
+   </li>
+   <li value="2">
+    If ArcMap is not already running,
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    will initiate it. The dataset will automatically display in ArcMap with the ArcMap  default enhancements, and it will be added as a new layer to the ArcMap table of contents.
+   </li>
+   <li value="3">
+    If you have one or more instances of ArcMap already running, an ArcMap Instances dialog appears. Select an instance to display your dataset, or start a new instance of ArcMap. Click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+  </ol>
+  <p>
+   Raster datasets in GeoTIFF or NITF format, those stored in a geodatabase, and those referenced by an Esri® layer file) can pass directly into ArcMap without any conversion. For all other formats,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   temporarily converts the datasets to GeoTIFF format before passing them to ArcMap. These are stored in the location you specify in the
+   <a style="font-weight: bold;" href="../Preferences.htm#TemporaryDirectory">
+    Temporary Directory
+   </a>
+   preference.
+  </p>
+  <p>
+   Datasets exported to ArcMap remain open in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   .
+  </p>
+  <h3>
+   <a name="ChipToPowerPt">
+   </a>
+   Chip to PowerPoint
+   <a name="kanchor69">
+   </a>
+  </h3>
+  <p>
+   This option is available on Windows 32-bit and 64-bit platforms with the PowerPoint presentation graphics program installed.
+  </p>
+  <ol>
+   <li value="1">
+    Display the layer(s) you wish to chip in the current view. You can use the Zoom, Pan, Rotate, or                    enhancement tools to customize the display.
+   </li>
+   <li value="2">
+    From the menu bar, select
+    <b>
+     File &gt; Chip View To &gt; PowerPoint
+    </b>
+    . If you have not yet started the PowerPoint program, it will automatically start and the chipped image is added to a slide in a new presentation. If the PowerPoint program is already open, the PowerPoint Presentations dialog appears.
+   </li>
+   <li value="3">
+    Choose one of the following options for the PowerPoint Presentations dialog:
+   </li>
+  </ol>
+  <ul>
+   <li class="Indent" value="1">
+    If you have more than one presentation open in the PowerPoint program, select the presentation where you want the chip to be added, and click
+    <b>
+     OK
+    </b>
+    (or, double-click the presentation name). The chipped image is added to a new slide at the end of your presentation.
+   </li>
+   <li class="Indent" value="2">
+    If you only have one presentation open, select the presentation name and click
+    <b>
+     OK
+    </b>
+    (or double-click the presentation name). The chipped image is added to a new slide at the end of your presentation.
+   </li>
+   <li class="Indent" value="3">
+    Select
+    <b>
+     Start a new presentation
+    </b>
+    and click
+    <b>
+     OK
+    </b>
+    if you are running the PowerPoint program and want to start a new presentation while working in an existing presentation. The chipped image is added to a slide in a new presentation.
+   </li>
+  </ul>
+  <p>
+   If your source image contains map information, the geographic coordinates of the chipped image are added to the Notes field in the presentation.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

@@ -1,0 +1,505 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Radar" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Synthesize SIR-C Data
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#RadarTools/SynthesizingSIR-CData.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="RadarTools.htm">
+    Radar
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Synthesize SIR-C Data
+   </span>
+  </div>
+  <h2>
+   Synthesize SIR-C Data
+   <a name="kanchor366">
+   </a>
+  </h2>
+  <p>
+   SIR-C Single Look Complex (SLC) and Multi-Look Complex (MLC) images must be synthesized before you can use them in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   processing routines. Use
+   <b>
+    Synthesize SIR-C Images
+   </b>
+   to synthesize standard and specific send and receive polarization and total power (TP) images from SIR-C compressed scattering matrix files.
+  </p>
+  <p>
+   The input SIR-C data must be in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   compressed data product format (SIR-C standard file extension
+   <code>
+    .cdp
+   </code>
+   ). For easier processing, name the files with the following convention:
+   <code>
+    <i>
+     filename
+    </i>
+    _c.cdp
+   </code>
+   and
+   <code>
+    <i>
+     filename
+    </i>
+    _l.cdp
+   </code>
+   .
+  </p>
+  <p>
+   To ensure that the SIR-C data are in the proper compressed data product format (
+   <code>
+    .cdp
+   </code>
+   ), use
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   <![CDATA[ ]]>
+   SIR-C tape routines. If you are using SIR-C files dumped directly from tape to disk, or if you are using SIR-C data on disk that were not read from tape, see
+   <a href="#using_ceos_header_tool">
+    Using the CEOS Header Tool to Find Missing Information
+   </a>
+   for instructions for entering required data parameters.
+  </p>
+  <p>
+   If your data are Multi-Look Detected (MLD), these are just 2-byte integer data and do not need to be synthesized.
+  </p>
+  <p>
+   For other data types,use the
+   <a href="#using_ceos_header_tool">
+    View CEOS Header tool
+   </a>
+   to determine the number of lines, samples, and offset for the image. Then, open the image by selecting
+   <b>
+    File &gt; Open As &gt; Radar
+   </b>
+   from the menu bar, and enter this information into the Header Info dialog that appears. (For complex data, be sure to set the
+   <b>
+    Strip Line Header?
+   </b>
+   toggle button to
+   <b>
+    Yes
+   </b>
+   .)
+  </p>
+  <p>
+   See the following sections:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#workflow">
+     Workflow
+    </a>
+   </li>
+   <li value="2">
+    <a href="#entering_missing_parameters">
+     Enter Missing SIR-C Parameters
+    </a>
+   </li>
+   <li value="3">
+    <a href="#using_ceos_header_tool">
+     Use the CEOS Header Tool to Find Missing Information
+    </a>
+   </li>
+  </ul>
+  <h2>
+   <a name="workflow">
+   </a>
+   Workflow
+  </h2>
+  <p>
+   Follow these steps to synthesize SIR-C data:
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Radar &gt; SIR-C &gt; Synthesize SIR-C Data
+    </b>
+    .
+   </li>
+   <p>
+    The Input Data Products Files dialog appears. Use this dialog to read the SIR-C compressed scattering matrix files.
+   </p>
+   <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+    <span class="autonumber">
+     <span>
+      <b>
+       Note:
+      </b>
+     </span>
+    </span>
+    Do not open the Stokes matrix files using the
+    <b>
+     File
+    </b>
+    menu selection from the Toolbox.
+   </p>
+   <li value="2">
+    Click
+    <b>
+     Open File
+    </b>
+    . The Enter Filename dialog appears.
+   </li>
+   <li value="3">
+    Select a SIR-C scattering matrix (
+    <code>
+     .cdp
+    </code>
+    ) filename. If the file is a valid
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    compressed data file with all of the required parameters,
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds it to one of the
+    <b>
+     Selected Files
+    </b>
+    fields in the Input Data Product Files dialog (depending on whether the file is P-, L-, or C-band data). If you followed the suggested file naming convention described previously,
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    automatically adds the correct filenames for the other two files to the appropriate fields. Otherwise, repeat the file selection process for each of the bands.
+   </li>
+   <p>
+    If the input file is not a valid
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    compressed data file, the SIR-C Header Parameters dialog appears.
+    <a href="#entering_missing_parameters">
+     Enter any missing parameters
+    </a>
+    .
+   </p>
+   <li value="4">
+    Click
+    <b>
+     OK
+    </b>
+    . The Synthesize Parameters dialog appears.
+   </li>
+   <li value="5">
+    <a href="SynthesizingJPLAIRSARData.htm#selecting_synthesizing_parameters">
+     Set the synthesizing parameters
+    </a>
+    .
+   </li>
+   <li value="6">
+    Select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="7">
+    Click
+    <b>
+     OK
+    </b>
+    . All synthesized bands are placed in a single output file.
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds the resulting output to the Layer Manager.
+   </li>
+  </ol>
+  <h2>
+   <a name="entering_missing_parameters">
+   </a>
+   Enter Missing SIR-C Parameters
+  </h2>
+  <p>
+   If the SIR-C Header Parameters dialog appears when you select an input file, it means that information is missing from the header. All of the known parameters are listed in the dialog.
+  </p>
+  <ol>
+   <li value="1">
+    Enter the number of
+    <b>
+     Samples
+    </b>
+    and
+    <b>
+     Lines
+    </b>
+    in the corresponding fields.
+   </li>
+   <li value="2">
+    Enter the image size in the range direction (in kilometers) in the
+    <b>
+     Width (km)
+    </b>
+    field.
+   </li>
+   <li value="3">
+    Enter the scene size in the azimuth direction (in kilometers) in the
+    <b>
+     Length (km)
+    </b>
+    field.
+   </li>
+   <li value="4">
+    To skip any imbedded header and get to the beginning of the SIR-C data, enter the byte offset in the
+    <b>
+     Offset
+    </b>
+    field.
+   </li>
+   <li value="5">
+    Select the
+    <b>
+     C
+    </b>
+    or
+    <b>
+     L
+    </b>
+    band radio button.
+   </li>
+   <li value="6">
+    Select
+    <b>
+     SAR Channel Type
+    </b>
+    by clicking on a SIR-C data type toggle button.
+   </li>
+   <li value="7">
+    To strip line headers from the input data and exclude them from output image, select
+    <b>
+     Yes
+    </b>
+    .
+   </li>
+   <li value="8">
+    If the data are dumped directly from tape in CEOS format, they may have an extra 12 bytes at the beginning of every line.
+   </li>
+   <li value="9">
+    Click
+    <b>
+     OK
+    </b>
+    . The Input File dialog appears.
+   </li>
+  </ol>
+  <h2>
+   <a name="using_ceos_header_tool">
+   </a>
+   Use the CEOS Header Tool to Find Missing Information
+   <a name="kanchor367">
+   </a>
+  </h2>
+  <p>
+   If you are using SIR-C files dumped directly from tape to disk, or if you are using SIR-C data on disk that were not read from tape,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   does not provide a utility to directly convert the data into compressed data product (
+   <code>
+    .cdp
+   </code>
+   ) format so they can be synthesized into images. You need to use
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   ’s View CEOS Header tool to gather the required information for synthesizing a SIR-C image.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   You can also find missing information in the quicklook prints that JPL provided with the data, or by printing or viewing one of the ASCII CEOS header files that comes on the SIR-C distribution tapes.
+  </p>
+  <p>
+   You should have at least four files for your SIR-C data. The largest file is usually the data file, and the second largest is usually the SAR leader file.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Radar &gt; Open/Prepare Radar File &gt; View Generic CEOS Header
+    </b>
+    . The Enter Compressed Data Products Filename dialog appears.
+   </li>
+   <li value="2">
+    Select the SAR leader file and click
+    <b>
+     Open
+    </b>
+    . The CEOS Header Report dialog appears.
+   </li>
+   <li value="3">
+    Note the
+    <code>
+     Processed Scene Range
+    </code>
+    value. Enter this value in the
+    <b>
+     Width (km)
+    </b>
+    field of the SIR-C Header Parameters dialog when you later synthesize the data.
+   </li>
+   <li value="4">
+    Note the
+    <code>
+     Processed Scene Azimuth
+    </code>
+    value. Enter this value in the
+    <b>
+     Length (km)
+    </b>
+    field of the SIR-C Header Parameters dialog when you later synthesize the data.
+   </li>
+   <li value="5">
+    Note the
+    <code>
+     Product
+    </code>
+    <code>
+     type
+    </code>
+    value. Select the appropriate
+    <b>
+     SAR Channel Type
+    </b>
+    radio button in the SIR-C Header Parameters dialog when you later synthesize the data.
+   </li>
+   <li value="6">
+    Close the CEOS Header Report dialog.
+   </li>
+   <li value="7">
+    From the Toolbox, select
+    <b>
+     Radar &gt; Open/Prepare Radar File &gt; View Generic CEOS Header
+    </b>
+    again. The Enter Compressed Data Products Filename dialog appears.
+   </li>
+   <li value="8">
+    Select the data file and click
+    <b>
+     Open
+    </b>
+    . The CEOS Header Report dialog appears.
+   </li>
+   <li value="9">
+    Note the
+    <code>
+     Number
+    </code>
+    <code>
+     of
+    </code>
+    <code>
+     Samples
+    </code>
+    and
+    <code>
+     Number
+    </code>
+    <code>
+     of
+    </code>
+    <code>
+     Lines
+    </code>
+    values. Enter these values in the
+    <b>
+     Samples
+    </b>
+    and
+    <b>
+     Lines
+    </b>
+    fields of the SIR-C Header Parameters dialog when you later synthesize the data.
+   </li>
+   <li value="10">
+    Note the
+    <code>
+     Record
+    </code>
+    <code>
+     Info
+    </code>
+    value. The last number in the array is the size of the image offset or embedded header. Enter this value in the
+    <b>
+     Offset
+    </b>
+    field of the SIR-C Header Parameters dialog when you later synthesize the data. If there are two fields labeled
+    <code>
+     Record
+    </code>
+    <code>
+     Info
+    </code>
+    in the CEOS Header Report, then take the two large numbers at the end of these lines and add them to determine the image offset.
+   </li>
+   <li value="11">
+    Now that you have the information you need,
+    <a href="#workflow">
+     synthesize the SIR-C images
+    </a>
+    . When you enter information in the SIR-C Header Parameters dialog, be sure to click the
+    <b>
+     Yes
+    </b>
+    radio button next to
+    <b>
+     Strip Line Header?
+    </b>
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

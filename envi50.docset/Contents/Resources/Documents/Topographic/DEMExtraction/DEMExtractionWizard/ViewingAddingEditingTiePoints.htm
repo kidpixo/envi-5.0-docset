@@ -1,0 +1,481 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Terrain|DEM Extraction|DEM Extraction Wizard" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   View, Add, and Edit Tie Points
+  </title>
+  <link href="../../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../../ENVIHelp_CSH.htm#Topographic/DEMExtraction/DEMExtractionWizard/ViewingAddingEditingTiePoints.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../TopographicTools.htm">
+    Terrain
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../IntroductionToDEMExtraction.htm">
+    DEM Extraction
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="DEMExtractionWizard.htm">
+    DEM Extraction Wizard
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    View, Add, and Edit Tie Points
+   </span>
+  </div>
+  <h1>
+   View, Add, and Edit Tie Points
+  </h1>
+  <p>
+   If you chose
+   <b>
+    Generate Tie Points Automatically
+   </b>
+   , or
+   <b>
+    Define Tie Points Interactively
+   </b>
+   , or if you loaded a tie point file to edit in Step 4, Step 5 of 9 (View and Edit Tie Points) appears.
+  </p>
+  <p>
+   You can edit and add new tie points interactively in the left and right images and by using the button controls in the
+   <b>
+    View and Edit Tie Points
+   </b>
+   section of the DEM Extraction Wizard. Select a location in one or both of the images and use the controls to add, update, or delete tie points in the tie point list.
+  </p>
+  <h2>
+   Add New Tie Point Locations
+  </h2>
+  <p>
+   To define your tie points interactively, you must position the Zoom box in each image over the same point.
+  </p>
+  <ol>
+   <li value="1">
+    Move the Zoom box in both images to the same location.
+   </li>
+   <p>
+    You can also select a point in one image and use the
+    <b>
+     Auto Predict
+    </b>
+    controls (
+    <b>
+     Predict Left
+    </b>
+    and
+    <b>
+     Predict Right
+    </b>
+    ) to have the Wizard find the conjugate point in the other image.
+   </p>
+   <li value="2">
+    Use the Zoom windows for the two images to fine-tune the tie point location in both images.
+   </li>
+   <li value="3">
+    When the tie point location looks satisfactory, click
+    <b>
+     Add
+    </b>
+    to add the new tie point to the Stereo Tie Points List table.
+   </li>
+  </ol>
+  <h2>
+   <a name="Edit">
+   </a>
+   Edit Tie Point Locations
+  </h2>
+  <p>
+   The control buttons in Step 5 of the DEM Extraction Wizard allow you to maneuver from tie point to tie point, change the location of a point, update the list, and correct positional errors which may result from automated tie point generation.
+  </p>
+  <ol>
+   <li value="1">
+    Use the left arrow and right arrow buttons next to the
+    <b>
+     Current Stereo GCP:
+    </b>
+    field to navigate through existing tie points.
+   </li>
+   <li value="2">
+    Examine the tie point location in both images looking for slight to obvious mismatch conditions. If the tie point in one or both of the images needs adjustment, use the Zoom window to fine-tune the tie point placement.
+   </li>
+   <li value="3">
+    When you are satisfied with the adjustments, click
+    <b>
+     Update
+    </b>
+    to update the
+    <b>
+     Left/Right Stereo Image Coordinate
+    </b>
+    of the tie point.
+   </li>
+  </ol>
+  <h3>
+   Using Auto Predict
+  </h3>
+  <p>
+   The
+   <b>
+    Auto Predict
+   </b>
+   section contains three buttons (
+   <b>
+    Predict Left
+   </b>
+   ,
+   <b>
+    Predict Right
+   </b>
+   , and
+   <b>
+    Params
+   </b>
+   ) as well as the
+   <b>
+    Region Elevation
+   </b>
+   text field.
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     Predict Left:
+    </b>
+    When you select a new tie point in the right image, use
+    <b>
+     Predict Left
+    </b>
+    to predict the matching location in the left image. If the predicted location is not desirable, move the left tie point to the appropriate location and click
+    <b>
+     Add
+    </b>
+    to add the tie point as a new tie point, or click
+    <b>
+     Update
+    </b>
+    to have the
+    <b>
+     Current Tie Point
+    </b>
+    updated to the new location.
+   </li>
+   <li value="2">
+    <b>
+     Predict Right:
+    </b>
+    Similarly, when you select a new tie point in the left image, use
+    <b>
+     Predict Right
+    </b>
+    to predict the matching location in the right image. If the predicted location is not desirable, move the right tie point to the appropriate location and click
+    <b>
+     Add
+    </b>
+    to add the tie point as a new tie point, or click
+    <b>
+     Update
+    </b>
+    to have the
+    <b>
+     Current Tie Point
+    </b>
+    updated to the new location.
+   </li>
+   <li value="3">
+    <b>
+     Params
+    </b>
+    : When you select
+    <b>
+     Params
+    </b>
+    , the Predict Left/Right Parameters dialog opens. Use this dialog to adjust the
+    <b>
+     Search Window Size
+    </b>
+    and the
+    <b>
+     Moving Window Size
+    </b>
+    . If you increase the
+    <b>
+     Search Window Size
+    </b>
+    , this increases the chances that the automatic prediction can find the correct match; however, this increased search window requires more processing time to accomplish the auto predict task. If you increase the
+    <b>
+     Moving Window Size
+    </b>
+    , the auto prediction is more likely to find the correct match, but again, this requires more processing time to accomplish. Click
+    <b>
+     OK
+    </b>
+    to apply the changes and dismiss the dialog.
+   </li>
+  </ul>
+  <ul>
+   <li value="1">
+    <b>
+     Region Elevation:
+    </b>
+    The value shown in this field is an average elevation based on the dominant elevation of the image. Adjust this value for each auto prediction based on your knowledge of the elevation of the point of interest. This value is used to guide the auto prediction process, so you should adjust it for each tie point prediction, especially if the elevation varies widely over the whole image.
+   </li>
+  </ul>
+  <h3>
+   View a Specific Tie Point
+  </h3>
+  <p>
+   Use one of the following options to view a specific tie point:
+  </p>
+  <ul>
+   <li value="1">
+    Click on a tie point number in the
+    <b>
+     Likely Error Rankings
+    </b>
+    list.
+   </li>
+   <li value="2">
+    Click on a tie point number in the Stereo Tie Points List table.
+   </li>
+   <li value="3">
+    Use the left arrow and right arrow buttons next to the
+    <b>
+     Current Tie Point
+    </b>
+    field to navigate through the tie points.
+   </li>
+  </ul>
+  <h2>
+   Examine the Tie Points
+  </h2>
+  <p>
+   It is recommended that you examine tie points that were read from a file or automatically generated to determine their accuracy. Step 5 of the Wizard contains several ways to determine the accuracy of the tie points: the
+   <b>
+    Maximum Y Parallax
+   </b>
+   (which is a calculated from the tie points), the Likely Error Rankings of all the tie points, and the Stereo Tie Points List table.
+  </p>
+  <h3>
+   Maximum Y Parallax Value
+   <a name="kanchor422">
+   </a>
+  </h3>
+  <p>
+   The
+   <b>
+    Maximum Y Parallax
+   </b>
+   value is only shown if there are more than nine tie points selected for the stereo pair. This number is the y-parallax value (in pixels) of all of the currently selected tie points in the output epipolar images, assuming that these points are used to compute the epipolar geometry of the stereo pair. The
+   <b>
+    Maximum Y Parallax
+   </b>
+   value is updated each time you edit and update one of the tie points.
+  </p>
+  <p>
+   The highest
+   <b>
+    Maximum Y Parallax
+   </b>
+   value allowed to continue with the next step of the Wizard is 10 pixels. Ideally, the y parallax value should be as close to zero as possible; however, a higher value such as 1 or 2 pixels may be acceptable.
+  </p>
+  <p>
+   If the value is close to 0 or 1, no further tie point adjustments are necessary. If it is much greater than 1 or 2, you should re-examine the tie points and correct those that are not good matches. When examining tie points for errors, you can use the tie points listed at the top of the
+   <b>
+    Likely Error Rankings
+   </b>
+   list or click the
+   <b>
+    Show Table
+   </b>
+   button to open the
+   <a href="#Using">
+    Stereo Tie Points List table
+   </a>
+   . Use the
+   <b>
+    Sort Table By
+   </b>
+   drop-down list to select
+   <b>
+    Error Rank
+   </b>
+   as the sorting criteria. Tie points that are at the top of the list are those with the highest error likelihood.
+  </p>
+  <p>
+   The
+   <b>
+    Maximum Y Parallax
+   </b>
+   value is the quickest way to check how good the tie point placement is in your images. If, for instance, the
+   <b>
+    Maximum Y Parallax
+   </b>
+   for the automatically generated tie points was 33.7894 pixels, that would be quite a bit larger than the maximum allowable value of 10. In this case, if you declined to edit the tie points in Step 4, an
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   Error message appears telling you that the
+   <b>
+    Maximum Y Parallax
+   </b>
+   value of 33.79 (in this case) exceeds the limit of 10. Click
+   <b>
+    OK
+   </b>
+   in the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   Error message, then use the
+   <b>
+    Prev
+   </b>
+   button in the DEM Extraction Wizard Step 6 to back-track to Step 5, and make sure all the tie points are correct before proceeding. By editing the tie points, you should be able to reduce the y-parallax value close to 0.
+  </p>
+  <h3>
+   Likely Error Rankings
+  </h3>
+  <p>
+   The
+   <b>
+    Likely Error Rankings
+   </b>
+   drop-down list displays tie points in the order of the likelihood of error; the first tie point in the list is the one with the greatest likelihood of error, and the last tie point is the least likely erroneous tie point.
+  </p>
+  <p>
+   The list shows the tie points followed by a number in parentheses. The number in parentheses is a value between 0.000 and 1.000, indicating the relative likelihood of error for that tie point, where 0.000 is the least likely and values close to or equal to 1.000 are the most likely. If you click on a tie point in the list, the Image window goes to that tie point number in both the left and right images. This is an easy method for editing the tie points; however, it is possible that the tie points at the top of the
+   <b>
+    Likely Error Rankings
+   </b>
+   list have no discernible error upon inspection. If this is the case, it is not necessary to make any further adjustments to those points; instead, check other points even if the error likelihood is lower.
+  </p>
+  <h3>
+   <a name="Using">
+   </a>
+   Stereo Tie Points List Table
+  </h3>
+  <p>
+   The Stereo Tie Points List table contains the
+   <b>
+    Left/Right Stereo Image Coordinate
+   </b>
+   data and an error rank for the tie points. The
+   <b>
+    Error Rank
+   </b>
+   is from the most likely error to the least; so, Error Rank 1 is assigned to the tie point pair with the highest likelihood of being a bad match.
+  </p>
+  <p>
+   <img src="../../../Resources/Images/DEMExtract/StereoTiePtlist.gif" />
+  </p>
+  <p>
+   If the
+   <b>
+    Maximum Y Parallax
+   </b>
+   value shown in the
+   <b>
+    View and Edit Tie Points
+   </b>
+   section of step 5 is significantly bigger than 1, you should edit the tie points. You can click the
+   <b>
+    Sort Table By
+   </b>
+   drop-down button and select
+   <b>
+    Error Rank
+   </b>
+   as the sorting criteria. Scroll to the top of the list to see which tie points should be adjusted first.
+  </p>
+  <p>
+   When you click on a tie point number in the list, the Zoom boxes in both Image windows are updated to show that tie point location. You can make adjustments to the tie point location if necessary, and click
+   <b>
+    Update
+   </b>
+   in either the table or the Wizard to save the new location for that tie point. Whenever you update a tie point, the
+   <b>
+    Error Rank
+   </b>
+   in the table changes, along with the
+   <b>
+    Maximum Y Parallax
+   </b>
+   value.
+  </p>
+  <p>
+   It is possible for the
+   <b>
+    Maximum Y Parallax
+   </b>
+   value to not change appreciably when you adjust the one or two tie points with the highest
+   <b>
+    Error Rank
+   </b>
+   ; and sometimes when you look in the images at the tie points listed in the table as the most likely erroneous, they appear instead to be fairly good matches. If this happens, it is best to scroll through the tie points and visually inspect the quality of each match, adjusting those which are less than optimal.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   If the tie points listed at the top of the error rank seem to be very good matches, but the
+   <b>
+    Maximum Y Parallax
+   </b>
+   value is still larger than 1, you should use the options in the
+   <b>
+    View and Edit Tie Points
+   </b>
+   section of step 5 of the Wizard to scroll through all of the tie points to find which points to edit.
+  </p>
+  <p>
+   After you have viewed your tie points and performed any adjustments necessary to reduce the
+   <b>
+    Maximum Y Parallax
+   </b>
+   value as close to 0 as possible, click
+   <b>
+    Next
+   </b>
+   to proceed to Step 6 of the Wizard.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

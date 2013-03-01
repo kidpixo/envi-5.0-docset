@@ -1,0 +1,653 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Tutorials|Using Workflows" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Feature Extraction with Example-Based Classification Tutorial
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#Tutorials/Workflows/FXExampleBasedTutorial.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../Tutorials.htm">
+    Tutorials
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../Tutorials.htm">
+    Using Workflows
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Feature Extraction with Example-Based Classification
+   </span>
+  </div>
+  <h1>
+   Feature Extraction with Example-Based Classification Tutorial
+  </h1>
+  <p>
+   In this tutorial, you will use Feature Extraction to extract rooftops from a multispectral QuickBird scene of a residential area in Boulder, Colorado. Feature Extraction provides a quick, automated method for identifying rooftops, saving an urban planner or GIS technician from digitizing them by hand. If you need more information about a particular step, click the blue Help button to access
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   Help.
+  </p>
+  <h2>
+   <a name="Files">
+   </a>
+   Files Used in This Tutorial
+  </h2>
+  <p>
+   ENVI Resource DVD:
+   <code>
+    feature_extraction\qb_colorado.dat
+   </code>
+  </p>
+  <p>
+   This is a pan-sharpened QuickBird image (0.6-meter spatial resolution) of Boulder, Colorado, acquired on 04 July 2005. QuickBird images are courtesy of DigitalGlobe and may not be reproduced or distributed without prior written permission of DigitalGlobe.
+  </p>
+  <h2>
+   <a name="Backgrou">
+   </a>
+   Background
+  </h2>
+  <p>
+   Feature Extraction uses an object-based approach to classify imagery, where an object (also called
+   <i>
+    segment
+   </i>
+   ) is a group of pixels with similar spectral, spatial, and/or texture attributes. Traditional classification methods are pixel-based, meaning that spectral information in each pixel is used to classify imagery. With high-resolution panchromatic or multispectral imagery, an object-based method offers more flexibility in the types of features to extract.
+  </p>
+  <p>
+   The workflow involves the following steps:&#160;
+  </p>
+  <ul>
+   <li value="1">
+    Dividing an image into segments
+   </li>
+   <li value="2">
+    Computing various attributes for the segments
+   </li>
+   <li value="3">
+    Creating several new classes
+   </li>
+   <li value="4">
+    Interactively assigning segments (called
+    <i>
+     training samples
+    </i>
+    ) to each class
+   </li>
+   <li value="5">
+    Classifying the entire image with a K Nearest Neighbor (KNN), Support Vector Machine (SVM), or Principal Components Analysis (PCA) supervised classification method, based on your training samples.
+   </li>
+   <li value="6">
+    Exporting the classes to a shapefile or classification image.
+   </li>
+  </ul>
+  <h2>
+   <a name="Start">
+   </a>
+   Start the Workflow
+  </h2>
+  <ol>
+   <li value="1">
+    From the menu bar, select
+    <b>
+     File &gt;&#160;Open
+    </b>
+    .
+   </li>
+   <li value="2">
+    Navigate to
+    <code>
+     feature_extraction
+    </code>
+    , and select the file
+    <code>
+     qb_colorado.dat
+    </code>
+    . Click
+    <b>
+     Open
+    </b>
+    . The image is displayed at full resolution.
+   </li>
+   <li value="3">
+    From the
+    <b>
+     Optimized Linear
+    </b>
+    drop-down list in the toolbar, select
+    <b>
+     Linear 2%
+    </b>
+    . This type of stretch brightens the image, making it easier to see individual features.
+   </li>
+   <li value="4">
+    From the Toolbox, select
+    <b>
+     Feature Extraction &gt; Example Based Feature Extraction Workflow
+    </b>
+    . The Data Selection panel appears.
+   </li>
+   <li value="5">
+    The filename is already listed in the
+    <b>
+     Raster File
+    </b>
+    field. Click
+    <b>
+     Next
+    </b>
+    . The Object Creation panel appears.
+   </li>
+  </ol>
+  <h2>
+   <a name="Segment">
+   </a>
+   Segment the Image
+  </h2>
+  <p>
+   Segmentation is the process of dividing an image into segments that have similar spectral, spatial, and/or texture characteristics. The segments in the image ideally correspond to real-world features. Effective segmentation ensures that your classification results are more accurate.
+  </p>
+  <ol>
+   <li value="1">
+    Use the drop-down list in the main toolbar to zoom the image to
+    <b>
+     200% (2:1)
+    </b>
+    .
+   </li>
+   <li value="2">
+    Enable the
+    <b>
+     Preview
+    </b>
+    option. A Preview Portal appears, showing the initial segments from the image, colored in green. The following image shows an example of a Preview Portal centered over a residential area:
+   </li>
+   <p>
+    <img src="../../Resources/Images/FXSupervisedClassification/tutorial_segment_before.gif" />
+   </p>
+   <p>
+    The initial segmentation shown in the Preview Portal delineates the rooftops, but there are too many segments, which could potentially increase processing time. Use a combination of segmentation and merging to reduce the number of segments while providing clear boundaries around rooftops.
+   </p>
+   <li value="3">
+    The rooftops in this image appear much darker and provide better contrast against surrounding features in a near-infrared image. Applying segmentation to only the near-infrared band will produce cleaner boundaries around the rooftops. In the Object Creation panel, click the
+    <img src="../../Resources/Images/IconsButtons/SelectBands.gif" class="VertCenter" />
+    button next to
+    <b>
+     Select Segment Bands
+    </b>
+    . Then select the
+    <b>
+     NIR
+    </b>
+    band and click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+   <p>
+    The
+    <b>
+     Edge
+    </b>
+    segmentation method draws lines along the strongest intensity gradients, making it an effective edge detector. The
+    <b>
+     Full Lambda Schedule
+    </b>
+    merging method then combines adjacent segments, as you increase the merging value.
+   </p>
+   <p>
+    You can achieve reasonable results with the following settings:
+   </p>
+   <ul>
+    <li value="1">
+     Segment Algorithm:&#160;
+     <b>
+      Edge
+     </b>
+    </li>
+    <li value="2">
+     Scale Level:&#160;
+     <b>
+      35
+     </b>
+    </li>
+    <li value="3">
+     Merge Algorithm:
+     <b>
+      Full Lambda Schedule
+     </b>
+    </li>
+    <li value="4">
+     Merge Level:
+     <b>
+      80
+     </b>
+    </li>
+   </ul>
+   <p>
+    The following image shows the resulting segmentation using these settings:
+   </p>
+   <p>
+    <img src="../../Resources/Images/FXSupervisedClassification/tutorial_segment_after.gif" />
+   </p>
+   <p>
+    If you were to leave the
+    <b>
+     Scale Value
+    </b>
+    at the default value of 50, some rooftop segments would be combined with segments representing adjacent backyards or trees because they have a similar intensity. So a value of 35 works well to separate the two features.
+   </p>
+   <li value="4">
+    When you are satisfied with the segmentation, click
+    <b>
+     Next
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    creates and displays a segmentation image (also called the Region Means image in the Layer Manager). Each segment is assigned the mean spectral values of all the pixels that belong to that segment.
+   </li>
+  </ol>
+  <h2>
+   <a name="Select2">
+   </a>
+   Select Training Samples
+  </h2>
+  <p>
+   In this step, you will select representative samples of different features and assign them to various classes before performing a supervised classification.
+  </p>
+  <p>
+   When segmentation is complete, the Example-Based Classification panel appears with one undefined class (New Class 1). As you move the mouse around the segmentation image, the objects underlying the cursor are highlighted in cyan. You may need to click once on the image to activate this function.
+  </p>
+  <ol>
+   <li value="1">
+    In the Class Properties table, change the
+    <b>
+     Class Name
+    </b>
+    to
+    <b>
+     Rooftop
+    </b>
+    and press the
+    <b>
+     Enter
+    </b>
+    key.
+   </li>
+   <li value="2">
+    Click on at least 20 different segments that represent rooftops. Try to pick a variety of sizes, shapes, colors, and intensities. The more training samples you select, the better the results from the classification. The following image shows an example:
+   </li>
+   <p>
+    <img src="../../Resources/Images/FXSupervisedClassification/tutorial_rooftop_training_samples.gif" />
+   </p>
+  </ol>
+  <p>
+   The following are some tips for selecting training samples:
+  </p>
+  <ul>
+   <li value="1">
+    Click again on a segment to remove it from selection.
+   </li>
+   <li value="2">
+    If individual segments are hard to discern from each other in certain areas, enable the
+    <b>
+     Show Boundaries
+    </b>
+    option to draw boundaries around each segment.
+   </li>
+   <li value="3">
+    If the segmentation image does not provide enough detail to determine if segments represent rooftops (versus a driveway or backyard, for example), uncheck the Region Means image in the Layer Manager. The original QuickBird image will display instead.
+   </li>
+   <li value="4">
+    If you pan or zoom around the image, remember to click the
+    <b>
+     Select
+    </b>
+    icon
+    <img src="../../Resources/Images/IconsButtons/Select.gif" class="VertCenter" />
+    in the main toolbar before selecting training regions.
+   </li>
+  </ul>
+  <p>
+   Next, you should define several more classes that are not rooftop.
+  </p>
+  <ol>
+   <li value="1">
+    In the Example-Based Classification panel, click the
+    <b>
+     Add Class
+    </b>
+    button
+    <img src="../../Resources/Images/IconsButtons/WorkflowAddFeature.gif" class="VertCenter" />
+    .
+   </li>
+   <li value="2">
+    In the Class Properties table, change the new class name to
+    <b>
+     Grass
+    </b>
+    and press
+    <b>
+     Enter
+    </b>
+    .
+   </li>
+   <li value="3">
+    Select
+    <b>
+     Grass
+    </b>
+    in the left side of the panel, then select at least 20 training samples from the image that represent grassy areas such as backyards, fields, and parks.
+   </li>
+   <li value="4">
+    Repeat steps 1-3 for the following classes:
+    <b>
+     Concrete
+    </b>
+    (curbs and driveways) and
+    <b>
+     Road
+    </b>
+    (asphalt only). Select at least 20 training samples each, and change the class colors as desired. The following shows an example of the classification panel; your results may be different:
+   </li>
+   <p>
+    <img src="../../Resources/Images/FXSupervisedClassification/tutorial_example_panel.gif" />
+   </p>
+   <li value="5">
+    Click the
+    <b>
+     Save an Example file
+    </b>
+    button
+    <img src="../../Resources/Images/IconsButtons/Save.gif" class="VertCenter" />
+    , and select an output folder and filename for the training regions you have defined. You can restore this file later if you want to continue where you left off.
+   </li>
+  </ol>
+  <h2>
+   <a name="Select">
+   </a>
+   Select Attributes for Classification
+  </h2>
+  <p>
+   For each segment, ENVI computes various spatial, spectral, and texture attributes. In this step, you can choose which attributes to use in the supervised classification. By default, all attributes will be used. See
+   <a href="../../FindFeatures/FeatureExtraction/AttributeList.htm#spatial_attributes">
+    Spatial Attributes
+   </a>
+   ,
+   <a href="../../FindFeatures/FeatureExtraction/AttributeList.htm#spectral_attributes">
+    Spectral Attributes
+   </a>
+   , and
+   <a href="../../FindFeatures/FeatureExtraction/AttributeList.htm#texture_attributes">
+    Texture Attributes
+   </a>
+   for definitions of all available attributes.
+  </p>
+  <ol>
+   <li value="1">
+    Select the Attributes Selection tab in the Example-Based Classification panel.
+   </li>
+   <li value="2">
+    For this tutorial, you can let ENVI&#160;determine the most appropriate attributes to classify with by clicking the
+    <b>
+     Auto Select Attributes
+    </b>
+    button
+    <img src="../../Resources/Images/IconsButtons/FXAutoSelectAttributes.gif" class="VertCenter" />
+    . After a brief moment, the
+    <b>
+     Selected Attributes
+    </b>
+    column updates to show which attributes will be used. The following image shows an example; your results may be different.
+   </li>
+   <p>
+    <img src="../../Resources/Images/FXSupervisedClassification/tutorial_selected_attributes.gif" />
+   </p>
+  </ol>
+  <h2>
+   <a name="Select3">
+   </a>
+   Select a Classification Method
+  </h2>
+  <p>
+   Feature Extraction offers three methods for supervised classification: K Nearest Neighbor (KNN), Support Vector Machine (SVM), or Principal Components Analysis (PCA). For this tutorial, you will use KNN, which classifies segments based on their proximity to neighboring training regions. It is more rigorous than the other methods, and it more accurately distinguishes between similar classes.
+  </p>
+  <ol>
+   <li value="1">
+    Use one of the Zoom tools in the toolbar to zoom to
+    <b>
+     100%
+    </b>
+    .
+   </li>
+   <li value="2">
+    Enable the
+    <b>
+     Preview
+    </b>
+    option in the Example-Based Classification panel. A Preview Portal appears with the current classification results. As you make changes to the training data, attributes, and classification settings, the classification results will automatically update. Move the Preview Portal around the image or resize it to view results for different areas. The following image shows an example.
+   </li>
+   <p>
+    <img src="../../Resources/Images/FXSupervisedClassification/tutorial_preview_initial_classification.gif" />
+   </p>
+   <li value="3">
+    Disable the
+    <b>
+     Region Means
+    </b>
+    option in the Layer Manager, to hide the segmentation image. The original QuickBird image will display underneath the Preview Portal.
+   </li>
+   <li value="4">
+    Right-click inside the Preview Portal and select
+    <b>
+     Blend
+    </b>
+    . The classification image gradually fades in and out to show the QuickBird image. Use the
+    <img src="../../Resources/Images/IconsButtons/PortalSlower.gif" class="VertCenter" />
+    and
+    <img src="../../Resources/Images/IconsButtons/PortalFaster.gif" class="VertCenter" />
+    buttons to slow down or speed up the blend, respectively. Click the Pause button
+    <img src="../../Resources/Images/IconsButtons/PortalPause.gif" class="VertCenter" />
+    to stop the blend.
+   </li>
+  </ol>
+  <p>
+   Black segments are those that the classifier could not determine a suitable class for, so they remain unclassified. The
+   <![CDATA[ ]]>
+   <b>
+    Allow Unclassified
+   </b>
+   option under the Algorithms tab controls whether or not to force all segments into one of the classes you defined.
+  </p>
+  <p>
+   You should focus on the accuracy of the Rooftop classification, since that is the feature you are extracting. The initial classification shown in the Preview Portal shows many segments incorrectly identified as Rooftop. You have a couple of options to reduce these errors.
+  </p>
+  <h3>
+   Adjust KNN&#160;Settings
+  </h3>
+  <ol>
+   <li value="1">
+    Select the Algorithms tab.
+   </li>
+   <li value="2">
+    Try increasing the
+    <b>
+     Threshold
+    </b>
+    value. The default value is 5 percent, which means segments that have less than 5 percent confidence in each class are set to "unclassified." As you increase the
+    <b>
+     Threshold
+    </b>
+    slider, the classifier will allow more unclassified segments. As you decrease the
+    <b>
+     Threshold
+    </b>
+    slider, the classifier forces more segments into classes, thus creating more opportunity for misclassification.
+   </li>
+   <li value="3">
+    Increase the
+    <b>
+     Neighbors
+    </b>
+    value to
+    <b>
+     3
+    </b>
+    . A higher value takes into account more neighbors when choosing a target class and should reduce noisy or irrelevant features.
+   </li>
+  </ol>
+  <h3>
+   Collect More Training Samples
+  </h3>
+  <p>
+   If you have segments that are persisently being misclassified, you can assign them to known classes by following these steps:
+  </p>
+  <ol>
+   <li value="1">
+    Select the Examples Selection tab.
+   </li>
+   <li value="2">
+    On the left side of the Example-Based Classification panel, select the class name that you want to assign the segment to.
+   </li>
+   <li value="3">
+    Ensure that the
+    <b>
+     Select
+    </b>
+    icon
+    <img src="../../Resources/Images/IconsButtons/Select.gif" class="VertCenter" />
+    is active in the toolbar.
+   </li>
+   <li value="4">
+    In the image display, click on the segment to assign it to the selected class.
+   </li>
+  </ol>
+  <h3>
+   Define a New Class
+  </h3>
+  <p>
+   You will probably notice that some trees and grassy areas are incorrectly classified as Rooftop. Try creating a new class called
+   <b>
+    Trees
+   </b>
+   and select training samples for that class:
+  </p>
+  <ol>
+   <li value="1">
+    In the Example-Based Classification panel, click the
+    <b>
+     Add Class
+    </b>
+    button
+    <img src="../../Resources/Images/IconsButtons/WorkflowAddFeature.gif" class="VertCenter" />
+    .
+   </li>
+   <li value="2">
+    In the Class Properties table, change the new class name to
+    <b>
+     Trees
+    </b>
+    and press
+    <b>
+     Enter
+    </b>
+    .
+   </li>
+   <li value="3">
+    Select
+    <b>
+     Trees
+    </b>
+    in the left side of the panel, then select at least 20 training samples of trees, including their shadows.
+   </li>
+  </ol>
+  <p>
+   Continue to experiment with these options until you are satisfied with the classification of rooftops. Then click
+   <b>
+    Next
+   </b>
+   . In the next step, you will export a Rooftop class to a raster file.
+  </p>
+  <h2>
+   <a name="Set">
+   </a>
+   Set Output Options
+  </h2>
+  <p>
+   The Output panel lets you export various components of the supervised classification to raster images and/or shapefiles. For this tutorial, you will export a classification image  to ENVI raster format, then overlay the classes on the original image. By default, the classification image will include all of the classes that you defined.
+  </p>
+  <ol>
+   <li value="1">
+    In the Export Vector tab, disable the
+    <b>
+     Export Classification Vectors
+    </b>
+    option.
+   </li>
+   <li value="2">
+    Click the Export Raster tab.
+   </li>
+   <li value="3">
+    Enable the
+    <b>
+     Export Classification Image
+    </b>
+    option, and select an output directory to save the file. Change the output filename to
+    <code style="font-weight: bold;">
+     qb_colorado_classimage
+    </code>
+    .
+   </li>
+   <li value="4">
+    Click
+    <b>
+     Finish
+    </b>
+    . ENVI adds a new layer called
+    <code>
+     qb_colorado_classimage.dat
+    </code>
+    to the Layer Manager. To view this layer over the original GeoEye-1 image, use the Transparency slider in the main toolbar to increase the transparency of the classification image.
+   </li>
+  </ol>
+  <p>
+   The example-based classification did a fairly good job of extracting rooftops, but like any automated method, it did not extract every segment that represents rooftops. In some areas, the texture and brightness of rooftops was similar to adjacent yards, so the two features may have been combined into one class. Or, other features may have been misclassified as Rooftop. If you are not satisfied with your results, try experimenting with different segmentation and merging values, try a different classification method, or collect more training samples.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

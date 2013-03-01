@@ -1,0 +1,368 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Filters" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Frequency Filters
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#FilterTools/FrequencyFilters.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="Filters.htm">
+    Filters
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Frequency Filters
+   </span>
+  </div>
+  <h1>
+   Frequency Filters
+   <a name="kanchor352">
+   </a>
+  </h1>
+  <p>
+   Use the
+   <b>
+    Filter
+   </b>
+   Toolbox option to transform image data into a complex output image showing its various spatial frequency components, interactively build a frequency filter, apply the filter to the transformed data, and inverse FFT transform the filtered data to the original data space. Fast Fourier Transform (FFT) processing does not use the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   tiling procedures, so the size of image that you can process is limited by the available system memory.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   FFT images that have a Complex data type use eight times the memory of a byte image of similar size.
+  </p>
+  <p>
+   See the following sections:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#Forward">
+     Forward FFT&#160;Filters
+    </a>
+   </li>
+   <li value="2">
+    <a href="#Define">
+     Define FFT Filters
+    </a>
+   </li>
+   <li value="3">
+    <a href="#Inverse">
+     Inverse FFT Transforms
+    </a>
+   </li>
+  </ul>
+  <h2>
+   <a name="Forward">
+   </a>
+   Forward FFT Filters
+   <a name="kanchor353">
+   </a>
+  </h2>
+  <p>
+   Use
+   <b>
+    FFT (Forward)
+   </b>
+   filters to produce an image that shows both the horizontal and vertical spatial frequency components. The average brightness value of the image (zero frequency component) is shown in the center of the transformed image. Pixels away from the center represent increasing spatial frequency components of the image. You can design a filter that will remove particular frequency components and apply the filter to the forward FFT data, then perform an inverse transform back to the original data space to remove those frequency components from the image.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   If your input dataset has an odd number of samples and/or lines, the forward FFT output will not include the Nyquist frequency, which means it cannot be correctly inversed. You may see wide, dark/light striping in the resulting inverse FFT image.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Filter &gt; FFT (Forward)
+    </b>
+    . The Forward FFT Input File dialog appears.
+   </li>
+   <li value="2">
+    Select an input file and perform optional spatial and spectral
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The Forward FFT Parameters dialog appears.
+   </li>
+   <p>
+    To ensure your input dataset has an even number of samples and lines (see Note above), you should select an even-dimensioned spatial subset of the image.
+   </p>
+   <li value="3">
+    Select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    . Selecting file output is recommended.
+   </li>
+   <li value="4">
+    Click
+    <b>
+     OK
+    </b>
+    . A status window displays the progress of the operation.
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    processes the entire FFT without tiling, so processing is limited by the system memory or your machine. The status goes quickly from 0 to 100%.
+   </li>
+  </ol>
+  <p>
+   When you display a forward FFT image,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   displays the natural log of the magnitude of the complex pixel values.
+  </p>
+  <h2>
+   <a name="Define">
+   </a>
+   Define FFT Filters
+   <a name="kanchor354">
+   </a>
+  </h2>
+  <p>
+   Use
+   <b>
+    FFT Filter Definition
+   </b>
+   to interactively define FFT filters directly or to draw the filter on a displayed forward transformed image. Filter types include circular pass and cut, band pass and cut, and user-drawn pass and cut. Use
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   ’s Annotation function to define user-drawn filters.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Filter &gt; FFT Filter Definition
+    </b>
+    . The Filter Definition dialog appears.
+   </li>
+   <li value="2">
+    <p>
+     Specify the filter size by entering values into the
+     <b>
+      Samples
+     </b>
+     and
+     <b>
+      Lines
+     </b>
+     fields.
+    </p>
+   </li>
+   <li value="3">
+    From the Filter Definition dialog menu bar, select
+    <b>
+     Filter_Type &gt;
+    </b>
+    <![CDATA[ ]]>
+    <i>
+     filter_type
+    </i>
+    .
+   </li>
+   <li value="4">
+    Select from the following options to set the filter parameters (depending upon the type of filter selected):
+   </li>
+   <ul>
+    <li value="1">
+     For
+     <b>
+      Circular Pass
+     </b>
+     or
+     <b>
+      Circular Cut
+     </b>
+     filter types (low pass or high pass filters, respectively), enter a filter radius, in pixels, in the
+     <b>
+      Radius
+     </b>
+     field.
+    </li>
+    <li value="2">
+     For
+     <b>
+      Band Pass
+     </b>
+     or
+     <b>
+      Band Cut
+     </b>
+     filter types, enter values, in pixels, in the
+     <b>
+      Inner Radius
+     </b>
+     and
+     <b>
+      Outer Radius
+     </b>
+     fields.
+    </li>
+    <li value="3">
+     For
+     <b>
+      User Defined Pass
+     </b>
+     and
+     <b>
+      User Defined Cut
+     </b>
+     filters, you can load annotations (polygons and shapes only) into the filter.
+    </li>
+   </ul>
+   <li value="5">
+    Enter the
+    <b>
+     Number of Border Pixels
+    </b>
+    to use to taper the filter (smooth the edges of the filter). A value of zero indicates no smoothing.
+   </li>
+   <p>
+    The images above depict, from left to right, Circular Pass (low pass), Circular Cut (high pass), Band Pass, Band Cut, and User Defined filters. The diagonal lines in the first four images and the grid lines in the fifth image represent the area that will be filtered out.
+   </p>
+   <li value="6">
+    Select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="7">
+    Click
+    <b>
+     Apply
+    </b>
+    . The filter is a single band image of the specified dimensions.
+   </li>
+  </ol>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   Because of the limited range of the filter DN values (0 or 1), a contrast stretch without histogram clipping (for example, a quick linear stretch) must be used to properly display the filter image.
+  </p>
+  <h2>
+   <a name="Inverse">
+   </a>
+   Inverse FFT Transforms
+   <a name="kanchor355">
+   </a>
+  </h2>
+  <p>
+   The Inverse FFT procedure is actually a two-step operation that applies both a filter in the FFT domain, and inverts the FFT image back to the original data space.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Filter &gt; FFT (Inverse)
+    </b>
+    . The Inverse FFT Input File dialog appears.
+   </li>
+   <li value="2">
+    Select an input file and perform optional spatial and spectral
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The Inverse FFT Filter File dialog appears.
+   </li>
+   <li value="3">
+    Select the filter image to apply. The filter image must have been previously generated.
+   </li>
+   <li value="4">
+    Click
+    <b>
+     OK
+    </b>
+    . The Inverse FFT Parameters dialog appears.
+   </li>
+   <li value="5">
+    Select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="6">
+    Select the
+    <b>
+     Output Data Type
+    </b>
+    (byte, integer, floating-point, and so forth) from the drop-down list.
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

@@ -1,0 +1,512 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="ROIs, Vectors, Annotations" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Regions of Interest
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#ROIVectorAnnotation/ROIs.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="ROIVectorAnno.htm">
+    ROIs, Vectors, Annotations
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Regions of Interest
+   </span>
+  </div>
+  <h1>
+   Regions of Interest
+   <a name="kanchor444">
+   </a>
+  </h1>
+  <p>
+   Regions of interest (ROIs) are selected areas of a raster you can use for processing with some
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   tools, such as to extract statistics for classification. When ROIs are an input option for a tool, you can input
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   ROI files (
+   <code>
+    .roi
+   </code>
+   ) ,
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   vector files (
+   <code>
+    .evf
+   </code>
+   ), and shapefiles (
+   <code>
+    .shp
+   </code>
+   ).
+  </p>
+  <p>
+   You can create new ROIs in
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   . See the topic "Defining ROIs" in the
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   Help for details.
+  </p>
+  <p>
+   See the following sections for details:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#OpenLoad">
+     Open, Load, and Manage ROIs
+    </a>
+   </li>
+   <li value="2">
+    <a href="#Input">
+     ROIs , EVFs, and Shapefiles as Input
+    </a>
+   </li>
+   <li value="3">
+    <a href="#Convert">
+     Convert Vectors to ROIs
+    </a>
+   </li>
+   <li value="4">
+    <a href="#Save">
+     Save ROIs Converted from Vectors
+    </a>
+   </li>
+   <li value="5">
+    <a href="#Statistics">
+     View ROI Statistics
+    </a>
+   </li>
+  </ul>
+  <h2>
+   <a name="OpenLoad">
+   </a>
+   Open, Load, and Manage ROIs
+  </h2>
+  <ul>
+   <li value="1">
+    Open an
+    <code>
+     .roi
+    </code>
+    ,
+    <code>
+     .evf
+    </code>
+    , or
+    <code>
+     .shp
+    </code>
+    file as described in
+    <a href="../ExploreImagery/OpeningLocalFiles.htm">
+     Open and Display Files
+    </a>
+    .
+   </li>
+   <li value="2">
+    ROIs created in
+    <span class="DocumentTitleProductNameENVIClassic">
+     ENVI Classic
+    </span>
+    have the same spatial size as their parent raster and cannot be displayed on rasters with a different resolution.
+   </li>
+   <li value="3">
+    To edit the name or color properties of an ROI, right-click the ROI in the Layer Manager and select
+    <b>
+     Properties
+    </b>
+    . Property changes take effect on the edited ROI in the Data Manager, and all versions of it in the Layer Manager.
+   </li>
+   <li value="4">
+    To view
+    <a href="#Statistics">
+     statistics
+    </a>
+    for an ROI, right-click the ROI in the Layer Manager and select
+    <b>
+     Stats
+    </b>
+    .
+   </li>
+   <li value="5">
+    To remove all ROIs from the Layer Manager, right-click the Regions of Interest folder and select
+    <b>
+     Remove All
+    </b>
+    .  To remove an individual ROI, right-click it in the Layer Manager and select
+    <b>
+     Remove
+    </b>
+    . When you remove ROIs from the Layer Manager, they still remain open in the Data Manager where you can access them for redisplay.
+   </li>
+   <li value="6">
+    You can change the transparency of ROIs with the
+    <b>
+     Transparency
+    </b>
+    tool. In the Layer Manager, select an individual ROI or select the Regions of Interest folder, then apply transparency.
+   </li>
+   <li value="7">
+    If ROIs overlay in the  Image window view, you can reorder them in the Layer Manager by using drag and drop.
+   </li>
+  </ul>
+  <h2>
+   <a name="Input">
+   </a>
+   ROIs , EVFs, and Shapefiles as Input
+  </h2>
+  <ul>
+   <li value="1">
+    When a tool accepts
+    <code>
+     .roi
+    </code>
+    or
+    <code>
+     .evf
+    </code>
+    files as input, select the file as described in the help steps for that tool. The
+    <code>
+     .roi
+    </code>
+    or
+    <code>
+     .evf
+    </code>
+    file can be open before you start the tool, or you can open the file when you are prompted to input ROIs.
+   </li>
+   <li value="2">
+    When using a
+    <code>
+     .shp
+    </code>
+    file as ROI input, you need to open the shapefile before starting the tool. When you are prompted to input ROIs, the shapefile will be available in the selection list.
+   </li>
+   <li value="3">
+    You can
+    <a href="#Convert">
+     convert
+    </a>
+    the vectors in a shapefile to ROIs.
+   </li>
+  </ul>
+  <h2>
+   <a name="Convert">
+   </a>
+   Convert Vectors to ROIs
+  </h2>
+  <p>
+   You can convert vector records in a shapefile to ROIs. In certain cases, you can display the resulting ROIs on rasters that have different resolutions; to do this, the vectors need to overlay the raster, and the map information must be compatible.
+  </p>
+  <ol>
+   <li value="1">
+    <p>
+     Select the vectors to convert in on of the following ways:
+    </p>
+    <ul>
+     <li value="1">
+      Drag and drop a displayed vector layer from the Layer Manager onto the Toolbox option
+      <b>
+       Vector &gt; Convert Vector to ROI
+      </b>
+      .
+     </li>
+     <li value="2">
+      Drag and drop an open shapefile file from the Data Manager onto the Toolbox option
+      <b>
+       Vector &gt; Convert Vector to ROI
+      </b>
+      .
+     </li>
+     <li value="3">
+      <p>
+       Double-click
+       <b>
+        Vector &gt; Convert Vector to ROI
+       </b>
+       in the Toolbox and select the shapefile from the Select Input File dialog.
+      </p>
+     </li>
+    </ul>
+    <p>
+     The Convert Vector to ROI dialog appears.
+    </p>
+   </li>
+   <li value="2">
+    <p>
+     Select how to convert the vector records:
+    </p>
+    <ul>
+     <li value="1">
+      <b>
+       All records to a single ROI
+      </b>
+      : Converts all vector records in the shapefile to a single ROI layer.
+     </li>
+     <li value="2">
+      <b>
+       Each record to a separate ROI
+      </b>
+      : Converts each vector record to an individual ROI layer.
+     </li>
+     <li value="3">
+      <b>
+       Unique records of an attribute to separate ROIs
+      </b>
+      : If unique records are saved in the shapefile, this option converts vector records of an attribute type to separate layers. For example, vectors with a CLASS_ID of 0 are grouped in one ROI layer, vectors with a CLASS_ID of 1 are grouped in another ROI layer, and so forth. Select the attribute to use from the drop-down list that appears.
+     </li>
+     <li value="4">
+      <p>
+       <b>
+        Specific attribute query
+       </b>
+       : If unique attributes are saved in the shapefile, this option converts vectors of the selected attribute type to a single ROI layer. For example, vectors with the CLASS_NAME
+       <code>
+        water
+       </code>
+       are converted to an ROI layer. Select the attribute to use from the drop-down list that appears.
+      </p>
+     </li>
+    </ul>
+    <p>
+     The
+     <b>
+      Number of Output ROIs
+     </b>
+     shows how many ROIs will be output, based on your conversion choice.
+    </p>
+   </li>
+   <li value="3">
+    Converted vectors display in the Image window view by default. Disable the
+    <b>
+     Display Results
+    </b>
+    check box if you do not want the results to display.
+   </li>
+   <li value="4">
+    Click
+    <b>
+     OK
+    </b>
+    . The ROIs are added to the Data Manger and appear in the Layer Manager as children of the raster. If you have more than one raster open that the ROIs can be associated with, the Select Base Visualization Layer dialog appears. Select the raster to use, then click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+  </ol>
+  <h2>
+   <a name="Save">
+   </a>
+   Save ROIs
+  </h2>
+  <p>
+   You can save changes you make to
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   ROIs and to ROIs that were converted from vectors. When you save an ROI that was converted from a vector, it is saved using the spatial size of the parent raster. Once saved, you will not be able to display it on a raster with a different resolution.
+  </p>
+  <ul>
+   <li value="1">
+    Save ROIs to the
+    <span class="DocumentTitleProductNameENVIClassic">
+     ENVI Classic
+    </span>
+    <![CDATA[ ]]>
+    <code>
+     .roi
+    </code>
+    file format by right-clicking on the Regions of Interest folder in the Layer Manager and selecting
+    <b>
+     Save As .roi
+    </b>
+    .
+   </li>
+   <li value="2">
+    All ROIs listed under the Region of Interest folder in the Layer Manager are saved to one
+    <code>
+     .roi
+    </code>
+    file. If there are ROI layers you do not want to include, remove them from the list before saving.
+   </li>
+   <li value="3">
+    The saved ROIs  will be saved with the spatial size of the parent raster and can only be used with a raster of the same spatial size.
+   </li>
+  </ul>
+  <h2>
+   <a name="Statistics">
+   </a>
+   View ROI Statistics
+  </h2>
+  <p>
+   To view pixel statistics for ROIs, right-click the ROI in the Layer Manager and select
+   <b>
+    Stats
+   </b>
+   . The ROI Statistics Results dialog appears with a plot window at the top of the dialog and a report text section at the bottom.
+  </p>
+  <p>
+   Using the Plot window:
+  </p>
+  <ul>
+   <li value="1">
+    The default plot display is
+    <b>
+     Min/Max/Mean
+    </b>
+    values for the selected ROIs. To change the plot type, click the
+    <b>
+     Select Plot
+    </b>
+    button and choose  from the drop-down list. To clear the plot window, click
+    <b>
+     Clear Plot
+    </b>
+    .
+   </li>
+   <li value="2">
+    Use the mouse buttons as follows in the plot:
+   </li>
+   <li class="Indent" value="3">
+    <b>
+     Left Mouse Button
+    </b>
+    : Displays a crosshair cursor on the nearest data point and reports the (x,y) location in the bottom left corner of the plot window.
+   </li>
+   <li class="Indent" value="4">
+    <b>
+     Middle Mouse Button
+    </b>
+    : Click and drag to zoom in to the plot. Click to zoom out.
+   </li>
+   <li class="Indent" value="5">
+    <b>
+     Right Mouse Button
+    </b>
+    : Provides menu options listed in
+    <a href="../NoTOCTopics/UsingInteractivePlotFunctions.htm">
+     <span class="DocumentTitleProductNameENVIClassic">
+      ENVI Classic
+     </span>
+     Plot Functions
+    </a>
+    .
+   </li>
+  </ul>
+  <p>
+   Viewing the report text:
+  </p>
+  <ul>
+   <li value="1">
+    The report text contains the values of the calculated statistics. It shows the resulting type of statistics (basic, covariance, eigenvalues, and histograms) calculated for each band in the image. The text fields include: File Information, Basic Statistics, and Histograms for each band.
+   </li>
+   <li value="2">
+    The default text display is
+    <b>
+     File Info
+    </b>
+    . To change the text display type, click the
+    <b>
+     Select Stats
+    </b>
+    button and choose a new type from the drop-down list.
+   </li>
+   <li value="3">
+    To copy report text to paste it into another application, select the text to copy, then right-click and select
+    <b>
+     Copy
+    </b>
+    .
+   </li>
+  </ul>
+  <p>
+   The following
+   <b>
+    File
+   </b>
+   menu selections are available from the ROI Statistics Results dialog menu bar:
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     Save current ROI result to ENVI stats file
+    </b>
+    : Saves the statistics report to an ENVI statistics file.
+   </li>
+   <li value="2">
+    <b>
+     Save current ROI result to text file
+    </b>
+    : Saves the statistics report  to a tab-delimited text file.
+   </li>
+   <li value="3">
+    <b>
+     View Statistics File
+    </b>
+    : Enables you to open a saved statistics file for comparison. You can open multiple statistics files only if they are related (such as, files saved from a group of ROIs with the same output root name).
+   </li>
+  </ul>
+  <p>
+   The following
+   <b>
+    Options
+   </b>
+   menu selections are available from the ROI Statistics Results dialog menu bar:
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     Copy results to new window
+    </b>
+    : Creates a copy of the statistics in a new ROI Statistics Results dialog so you can compare statistics for different bands.
+   </li>
+   <li value="2">
+    <b>
+     Set Report Precision
+    </b>
+    : Opens the Set Report Precision dialog where you can change the precision of the information displayed in the ROI Statistics Results dialog. This option does not affect histogram precision.
+   </li>
+  </ul>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

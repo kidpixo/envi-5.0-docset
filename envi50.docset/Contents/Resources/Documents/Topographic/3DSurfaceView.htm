@@ -1,0 +1,1509 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Terrain" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Using 3D SurfaceView
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/TableStyles/Description.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#Topographic/3DSurfaceView.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="TopographicTools.htm">
+    Terrain
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Using 3D SurfaceView
+   </span>
+  </div>
+  <h1>
+   <a name="kanchor437">
+   </a>
+   Using 3D SurfaceView
+   <a name="kanchor438">
+   </a>
+   <a name="kanchor439">
+   </a>
+  </h1>
+  <p>
+   Use
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   ’s 3D SurfaceView window to visualize elevation or other surface data in 3D. You can use 3D SurfaceView to do the following:
+  </p>
+  <ul>
+   <li value="1">
+    Display the surface data as a wire-frame, a ruled grid, or as points.
+   </li>
+   <li value="2">
+    Drape the surface data with a gray scale or color image, and overlay it with ROIs and vectors.
+   </li>
+   <li value="3">
+    Rotate, translate, and zoom in and out of the surface in realtime using the mouse cursor or the 3D SurfaceView Controls dialog. The cursor is also linked to your draped image allowing cursor locations, values, and profiles to display from the 3D view.
+   </li>
+   <li value="4">
+    Define a flight path (interactively or with a drawn annotation). You can animate the flight path to produce 3D fly-throughs of your data. You can control the vertical and horizontal view angles fly through your data at a constant height above the surface or at a constant altitude.
+   </li>
+   <li value="5">
+    Use perspective controls to place the visual perspective in the 3D SurfaceView and rotate the surface around that perspective.
+   </li>
+  </ul>
+  <p>
+   See the following sections:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#Display">
+     Display 3D Files
+    </a>
+   </li>
+   <li value="2">
+    <a href="#3D">
+     Mouse Button Functions
+    </a>
+   </li>
+   <li value="3">
+    <a href="#Control">
+     Control the Surface Display
+    </a>
+   </li>
+   <li value="4">
+    <a href="#Define">
+     Define and Display Flight Paths
+    </a>
+   </li>
+   <li value="5">
+    <a href="#Control2">
+     Control the Perspective
+    </a>
+   </li>
+   <li value="6">
+    <a href="#Change">
+     Change the Background Color
+    </a>
+   </li>
+   <li value="7">
+    <a href="#Import">
+     Import Vectors and ROIs
+    </a>
+   </li>
+   <li value="8">
+    <a href="#Smoothin">
+     Smooth 3D Images
+    </a>
+   </li>
+   <li value="9">
+    <a href="#Manage">
+     Manage SurfaceView Files
+    </a>
+   </li>
+  </ul>
+  <h2>
+   <a name="Display">
+   </a>
+   Display 3D Files
+  </h2>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Terrain &gt; 3D SurfaceView
+    </b>
+    . The Select 3DSurfaceView File dialog appears.
+   </li>
+   <li value="2">
+    Select the bands  you want to display and drape over your DEM (or other 3D dataset).
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    uses the entire image as the overlay image on the DEM unless both the image and DEM files are georeferenced.
+    <ul>
+     <li value="1">
+      If both files are georeferenced, then
+      <span class="DocumentTitleProductName">
+       ENVI
+      </span>
+      uses only the part of the image that overlaps with your DEM.
+     </li>
+     <li value="2">
+      If the DEM is subset, then
+      <span class="DocumentTitleProductName">
+       ENVI
+      </span>
+      subsets the georeferenced image to match. The spatial resolutions of the two files do not need to be the same.
+     </li>
+     <li value="3">
+      If both the image and the DEM are georeferenced, they do not need to be in the same projection.
+      <span class="DocumentTitleProductName">
+       ENVI
+      </span>
+      reprojects the DEM on the fly to match the image projection.
+     </li>
+    </ul>
+   </li>
+   <li value="3">
+    Click
+    <b>
+     OK
+    </b>
+    . The Associated DEM Input File dialog appears.
+   </li>
+   <li value="4">
+    Select a DEM file and perform optional spatial
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The 3D SurfaceView Input Parameters dialog appears.
+   </li>
+   <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+    <span class="autonumber">
+     <span>
+      <b>
+       Note:
+      </b>
+     </span>
+    </span>
+    If a DEM is already associated with the input image file in the image header,
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    uses the associated DEM by default (it does not prompt you to select a DEM).
+   </p>
+   <li value="5">
+    Select the
+    <b>
+     DEM Resolution
+    </b>
+    (number of pixels) check box to use for the 3D plot. You can select more than one resolution. Typically, use the lowest resolution (64) while you are determining the best flight path, then use a higher resolution to display your final fly-through sequence.
+   </li>
+   <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+    <span class="autonumber">
+     <span>
+      <b>
+       Note:
+      </b>
+     </span>
+    </span>
+    Using higher DEM resolutions significantly slow the display; use higher resolution settings only on powerful platforms.
+   </p>
+   <li value="6">
+    Select one of the following as the
+    <b>
+     Resampling
+    </b>
+    method:
+    <ul>
+     <li value="1">
+      <b>
+       Nearest Neighbor
+      </b>
+      : To resample using the nearest DEM value. For example, if your DEM resolution is 30 meters and your image resolution is 60 meters, nearest neighbor resampling uses every other pixel and every other line to create the DEM in the 3D window.
+     </li>
+     <li value="2">
+      <b>
+       Aggregate
+      </b>
+      : To average all the DEM values that contribute to the output pixel. For example, if your DEM resolution is 30 meters and your image resolution is 60 meters, pixel aggregate resampling averages four pixels to create the output DEM.
+     </li>
+    </ul>
+   </li>
+   <li value="7">
+    Enter the
+    <b>
+     DEM min plot value
+    </b>
+    and
+    <b>
+     DEM max plot value
+    </b>
+    if desired.
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    does not plot DEM values lower than the minimum value and higher than the maximum value in the 3D views.
+   </li>
+   <li value="8">
+    Enter the
+    <b>
+     Vertical Exaggeration
+    </b>
+    , if any, to produce a true scale vertical exaggeration applied to the z axis where higher values correspond to greater exaggeration. The default is 5.0.
+   </li>
+   <li value="9">
+    Select one of the following for
+    <b>
+     Image Resolution
+    </b>
+    :
+    <ul>
+     <li value="1">
+      <b>
+       Full
+      </b>
+      : Use the highest possible resolution. If you have a large image, full resolution may cause you to run out of memory.
+     </li>
+     <li value="2">
+      <b>
+       Other
+      </b>
+      : Use
+      <b>
+       Nearest Neighbor
+      </b>
+      or
+      <b>
+       Aggregate
+      </b>
+      as the resampling method.
+     </li>
+    </ul>
+   </li>
+   <li value="10">
+    Set the
+    <b>
+     High Resolution Texture Mapping
+    </b>
+    toggle button to
+    <b>
+     Off
+    </b>
+    or
+    <b>
+     On
+    </b>
+    . The default is
+    <b>
+     On
+    </b>
+    . When set to
+    <b>
+     On
+    </b>
+    , and a higher resolution image is available,
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    uses the high resolution image when you zoom in to your the 3D SurfaceView. The input image must be at least 1024&#160;x&#160;1024 pixels in order for the
+    <b>
+     High Resolution Texture Mapping
+    </b>
+    parameter to have a noticeable effect in the 3D SurfaceView.
+   </li>
+   <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+    <span class="autonumber">
+     <span>
+      <b>
+       Note:
+      </b>
+     </span>
+    </span>
+    Using the
+    <b>
+     High Resolution Texture Mapping
+    </b>
+    option may slow the zoom and fly-through features of the 3D SurfaceView.
+   </p>
+   <li value="11">
+    To perform optional spatial
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , click
+    <b>
+     Spatial Subset
+    </b>
+    and select a spatial subset of the image.
+   </li>
+   <p>
+    The spatial dimensions of the DEM and image do not need to be same.
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    displays the full dimensions (or selected subsets) of both datasets.
+   </p>
+   <li value="12">
+    Click
+    <b>
+     OK
+    </b>
+    . The 3D SurfaceView plot window appears.
+   </li>
+  </ol>
+  <h2>
+   <a name="3D">
+   </a>
+   Mouse Button Functions
+  </h2>
+  <p>
+   Use the following mouse button functions to interactively rotate, translate, and scale the surface. You can also control the rotation, translation, and zoom by selecting
+   <b>
+    Options &gt; Surface Controls
+   </b>
+   from the 3D SurfaceView window menu bar.
+  </p>
+  <p>
+   To reset the surface plot to its original position, select
+   <b>
+    Options &gt; Reset View
+   </b>
+   from the 3D SurfaceView window menu bar.
+  </p>
+  <p>
+   The 3D SurfaceView window mouse button functions are as follows:
+  </p>
+  <table style="caption-side: bottom;mc-table-style: url('../Resources/TableStyles/Description.css');margin-left: 0;margin-right: auto;" cellspacing="0" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <td class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       Mouse Button
+      </p>
+     </td>
+     <td class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p class="TableHead">
+       Function
+      </p>
+     </td>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       Left
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Click and drag horizontally to rotate the surface around the z axis.
+      </p>
+      <p>
+       Click and drag vertically to rotate the surface around the y axis.
+      </p>
+      <p>
+       Double left-click on the surface to go to a pixel in the Image window view.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       Middle
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Click and drag to translate (move) the image.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+      <p>
+       Right
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColEnd">
+      <p>
+       Click and drag to the right to zoom in.
+      </p>
+      <p>
+       Click and drag to the left to zoom out.
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3>
+   Display Cursor Location and Value
+  </h3>
+  <p>
+   If the Cursor Location/Value dialog is open,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   reads the approximate x,y,z (elevation) values from the 3D SurfaceView. If your draped image is georeferenced,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   also reports the map locations.
+  </p>
+  <p>
+   To move the Zoom window to a specific pixel in the Image window containing the draped image, double left-click on the pixel in the 3D plot. Both the DEM and the image must be in the same projection for this to properly function.
+  </p>
+  <h2>
+   <a name="Control">
+   </a>
+   Control the Surface Display
+  </h2>
+  <p>
+   To access the 3D SurfaceView Controls dialog, select
+   <b>
+    Options &gt; Surface Control
+   </b>
+   in the 3D SurfaceView window. When the 3D SurfaceView Controls dialog appears, use the buttons, text fields, and controls described in the following sections to control the surface display.
+  </p>
+  <p>
+   At any time, you can return the surface to its original settings by clicking
+   <b>
+    Reset View
+   </b>
+   in the 3D SurfaceView Controls dialog. The surface returns to its original orientation, but the dialog settings are retained.
+  </p>
+  <h3>
+   <a name="Rotating">
+   </a>
+   Rotate, Translate, and Zoom
+  </h3>
+  <p>
+   In addition to using cursor functions to manipulate the 3D SurfaceView plot, you can also perform these functions using controls in a dialog.
+  </p>
+  <p>
+   The
+   <b>
+    Rotation/Scale/Translation Controls
+   </b>
+   area in the 3D SurfaceView Controls dialog contains buttons you use to control the plot in the following ways:
+  </p>
+  <ul>
+   <li value="1">
+    Click the curved arrow buttons to change the rotation of the surface plot in the direction desired. Use the
+    <b>
+     Inc
+    </b>
+    field to change the rotation increment. The default is 5.
+   </li>
+   <li value="2">
+    Click the
+    <b>
+     +
+    </b>
+    or
+    <b>
+     -
+    </b>
+    buttons to zoom in or out of the surface plot. Use the
+    <b>
+     Inc
+    </b>
+    field to change the zoom increment. The default is 0.10.
+   </li>
+   <li value="3">
+    Click the arrow buttons to move the surface plot in the desired direction. Use the
+    <b>
+     Inc
+    </b>
+    field to change the translation increment. The default is 0.05.
+   </li>
+  </ul>
+  <h3>
+   <a name="Changing">
+   </a>
+   Change the Surface Properties
+  </h3>
+  <p>
+   The
+   <b>
+    Surface Properties
+   </b>
+   area in the 3D SurfaceView Controls dialog contains parameters that control vertical exaggeration, depth offset, surface style, and DEM resolution surface properties. Use the parameters as follows:
+  </p>
+  <ul>
+   <li value="1">
+    Set the
+    <b>
+     Vertical Exaggerati
+    </b>
+    <a name="kanchor440">
+    </a>
+    <b>
+     on
+    </b>
+    for the plot. The value you enter produces a true scale vertical exaggeration applied to the
+    <i>
+     z
+    </i>
+    -axis, where higher values correspond to greater exaggeration. The default value is 5.0.
+   </li>
+   <li value="2">
+    Enter the value of the
+    <b>
+     Depth Offset
+    </b>
+    to obtain the best results for your graphics card. This value is only used for hardware rendering (renderer = 0). The default value is 25.
+   </li>
+  </ul>
+  <p class="indent">
+   Increasing the value reduces the amount of vector stitching through the textured surface. Too large offset values may cause the textured surface to disappear entirely.
+  </p>
+  <p class="indent">
+   For the best results, start with a high resolution DEM and a small initial
+   <b>
+    Depth Offset
+   </b>
+   value, then increase the
+   <b>
+    Depth Offset
+   </b>
+   value until the vector stitching is eliminated.
+  </p>
+  <p class="indent">
+   The
+   <b>
+    Depth Offset
+   </b>
+   setting is only retained in your current
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   session. To change the default value, edit the
+   <code>
+    surfaceview depth offset
+   </code>
+   parameter in the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   configuration file
+   <code>
+    menu\envi.cfg
+   </code>
+   .
+  </p>
+  <ul>
+   <li value="1">
+    Use the
+    <b>
+     Surface Style
+    </b>
+    drop-down list to select to plot the 3D SurfaceView plot with a
+    <b>
+     Texture
+    </b>
+    image draped over it, as a
+    <b>
+     Wire
+    </b>
+    mesh, as a
+    <b>
+     Ruled XZ
+    </b>
+    surface, as a
+    <b>
+     Ruled YZ
+    </b>
+    surface, or as a
+    <b>
+     Point
+    </b>
+    surface.
+   </li>
+   <li value="2">
+    Click
+    <b>
+     DEM Resolution
+    </b>
+    <a name="kanchor441">
+    </a>
+    to choose the resolution (used for the plot) from the available DEM resolutions. If you selected more than one DEM resolution in the 3D SurfaceView Input Parameters dialog, you can select from any of these resolutions.
+   </li>
+  </ul>
+  <h3>
+   <a name="Using">
+   </a>
+   Use the Perspective Rotation Controls
+  </h3>
+  <p>
+   The
+   <b>
+    Perspective Controls
+   </b>
+   area in the 3D SurfaceView Controls dialog allows you to select a point in the 3D SurfaceView plot to specify a perspective origin around which
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   rotates the surface.
+  </p>
+  <ol>
+   <li value="1">
+    Click the figure icon button to toggle the cursor to select mode.
+   </li>
+   <li value="2">
+    Move the arrow cursor onto the 3D SurfaceView plot and select the plot to set the origin of the rotation.
+   </li>
+   <p>
+    The view zooms to the new origin of the perspective which is set at a height that is 0.05 normalized units (default) above the surface and the surface begins to rotate. You can modify the height of the perspective origin above the surface using the
+    <b>
+     Translation
+    </b>
+    controls in the 3D SurfaceView Controls dialog.
+   </p>
+   <p>
+    If a perspective rotation was not initiated, click
+    <b>
+     Start
+    </b>
+    to begin rotating the surface around its center point.
+   </p>
+   <p>
+    Click
+    <b>
+     Stop
+    </b>
+    to pause the current rotation.
+   </p>
+   <p>
+    If the cursor is in select mode, but a perspective origin in the surface was not chosen, clicking
+    <b>
+     Stop
+    </b>
+    toggles the cursor out of select mode.
+   </p>
+   <li value="3">
+    Enter the value for the
+    <b>
+     Rotation Delay
+    </b>
+    . The delay value is the number of seconds to wait between successive renderings of the rotating surface. The default value is 0.05. Setting the value to 0.0 sets the rotation speed to your computer’s limits for calculating the transformation matrix and rendering the surface.
+   </li>
+   <li value="4">
+    To change the direction of the rotation of the surface, click
+    <b>
+     Direction
+    </b>
+    and select either
+    <b>
+     Left
+    </b>
+    or
+    <b>
+     Right
+    </b>
+    .
+    <b>
+     Direction
+    </b>
+    refers to the rotation direction of the surface, not the viewer’s perspective. The default rotation direction is
+    <b>
+     Right
+    </b>
+    .
+   </li>
+  </ol>
+  <h2>
+   <a name="Define">
+   </a>
+   Define and Display Flight Paths
+   <a name="kanchor442">
+   </a>
+  </h2>
+  <p>
+   When defining a flight path in 3D SurfaceViews, you have the choice of using a
+   <b>
+    User Defined
+   </b>
+   path mode or
+   <b>
+    Annotation
+   </b>
+   path mode. In
+   <b>
+    User Defined
+   </b>
+   mode, you fly through your data based on a flight sequence you define. In
+   <b>
+    Annotation
+   </b>
+   mode, you fly through your data based on an annotation flight path. The annotation must be drawn on the image from which the surface plot was created or imported from a saved annotation file.
+  </p>
+  <ol>
+   <li value="1">
+    To work in either mode, select
+    <b>
+     Options &gt; Motion Controls
+    </b>
+    from the 3D SurfaceView window menu bar. The 3D SurfaceView Motion Controls dialog appears.
+   </li>
+   <li value="2">
+    From the 3D SurfaceView Motion Controls dialog menu bar, select
+    <b>
+     Options &gt;
+    </b>
+    <![CDATA[ ]]>
+    <i>
+     fly_through_mode
+    </i>
+    .
+   </li>
+  </ol>
+  <h3>
+   <a name="Defining">
+   </a>
+   Define a Flight Path in User Defined Mode
+  </h3>
+  <p>
+   Use the
+   <b>
+    User Defined
+   </b>
+   mode to define a flight path and to play a sequence of views that fly-through your data.
+  </p>
+  <ol>
+   <li value="1">
+    In the 3D SurfaceView Motion Controls dialog, select
+    <b>
+     Options &gt; Motion: User Defined Views
+    </b>
+    .
+   </li>
+   <li value="2">
+    In the 3D SurfaceView window, click to select the starting projection (view) for the fly-through.
+   </li>
+   <li value="3">
+    In the 3D SurfaceView Motion Controls dialog, click
+    <b>
+     Add
+    </b>
+    to add the selected projection to the flight path.
+   </li>
+   <li value="4">
+    Click with the mouse to select another projection and click
+    <b>
+     Add
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    interpolates the flight path smoothly interpolated between the two projections.
+   </li>
+   <li value="5">
+    Repeat selecting projection steps until you have selected as many as desired (only two are required).
+    <ul>
+     <li value="1">
+      To replace a projection in the flight path list, select the path view number and click
+      <b>
+       Replace
+      </b>
+      .
+     </li>
+     <li value="2">
+      To delete a projection in the flight path list, select the path view number and click
+      <b>
+       Delete
+      </b>
+      .
+     </li>
+     <li value="3">
+      To clear the flight path list, click
+      <b>
+       Clear
+      </b>
+      .
+     </li>
+    </ul>
+   </li>
+   <li value="6">
+    Enter the number of frames to use in the fly-through animation.
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    interpolates the flight path smoothly interpolated between the two projections.
+   </li>
+   <li value="7">
+    Click
+    <b>
+     Play Sequence
+    </b>
+    to animate the fly-through.
+   </li>
+   <p>
+    To
+    <a href="#animating">
+     control the speed and direction of the fly-through
+    </a>
+    , select
+    <b>
+     Options &gt; Animate Sequence
+    </b>
+    in the SurfaceView Motion Controls dialog.
+   </p>
+  </ol>
+  <h3>
+   <a name="Defining2">
+   </a>
+   Define a Flight Path in Annotation Mode
+  </h3>
+  <p>
+   Use
+   <b>
+    Annotation
+   </b>
+   mode to define a flight path based on annotation. Use a polyline, polygon, rectangle, or ellipse annotation object to define the flight path. You can control the vertical and horizontal look angles, fly at a constant elevation above the DEM terrain, or fly at a constant altitude.
+  </p>
+  <p>
+   To use
+   <b>
+    Annotation
+   </b>
+   mode, you must have annotation drawn on the Image window from which the 3D SurfaceView was created, or have the desired annotation object saved in an annotation file (
+   <code>
+    .ann
+   </code>
+   ).
+  </p>
+  <ol>
+   <li value="1">
+    From the 3D SurfaceView Motion Controls dialog menu bar, select
+    <b>
+     Options &gt; Motion: Annotation Flight Path
+    </b>
+    . The Input Annotation Flight Path dialog appears.
+   </li>
+   <li value="2">
+    Select whether to import annotation from the display or from a file.
+    <ul>
+     <li value="1">
+      If you select the option to input the annotation object from an Image window, select the annotation object.
+     </li>
+     <li value="2">
+      If you select the option to import the annotation object from a saved annotation file, select the annotation (
+      <code>
+       .ann
+      </code>
+      ) file and object.
+     </li>
+    </ul>
+   </li>
+   <p>
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    displays the selected annotation object, number of nodes, and the number of points display in the middle of the 3D SurfaceView Motion Controls dialog and plots the flight path in the 3D SurfaceView window.
+   </p>
+   <p>
+    <b>
+     Note:
+    </b>
+    If you are already in
+    <b>
+     Annotation
+    </b>
+    mode and want to input annotation, select
+    <b>
+     File &gt; Input Annotation from Display
+    </b>
+    or
+    <b>
+     Input Annotation from File
+    </b>
+    from the 3D SurfaceView Motion Controls dialog menu bar.
+   </p>
+   <li value="3">
+    To smooth the flight path by using a running average of points along the line, enter the number of points to use in the average in the
+    <b>
+     Flight Smooth Factor
+    </b>
+    field.
+   </li>
+   <li value="4">
+    To fly over the surface at a constant height above the DEM terrain, click the toggle button until
+    <b>
+     Flight Clearance
+    </b>
+    appears and enter the height (in the same units as the DEM).
+   </li>
+   <p>
+    To fly over the surface at a constant elevation, click the toggle button until
+    <b>
+     Flight Elevation
+    </b>
+    appears and enter the elevation above sea level (in the same units as the DEM).
+   </p>
+   <li value="5">
+    To adjust the vertical look angle, enter the angle, in degrees, in the
+    <b>
+     Up/Down
+    </b>
+    field. A vertical look angle of -90 degrees looks straight down at the surface. A look angle of 0 degrees looks straight ahead (horizontal).
+   </li>
+   <p>
+    To adjust the horizontal look angle, enter the angle, in degrees, in the
+    <b>
+     Left/Right
+    </b>
+    field. A horizontal look angle of -90 degrees looks to the left, a look angle of 0 degrees looks straight ahead, and a look angle of 90 degrees looks to the right.
+   </p>
+   <li value="6">
+    To turn the annotation flight line trace off and on, select
+    <b>
+     Options &gt; Annotation Trace
+    </b>
+    from either the 3D SurfaceView Motion Controls dialog or the 3D SurfaceView window menu bar.
+   </li>
+   <li value="7">
+    Enter the number of frames to use when animating the data fly-through in the
+    <b>
+     Frames
+    </b>
+    field.
+   </li>
+   <li value="8">
+    Click
+    <b>
+     Play Sequence
+    </b>
+    to animate the fly-through. To have the sequence repeatedly restart when it reaches the end, select
+    <b>
+     Options &gt; Loop Play Sequence
+    </b>
+    from the 3D SurfaceView Motion Controls dialog menu bar.
+   </li>
+  </ol>
+  <p class="indent">
+   To control the speed and direction of the fly-through, select
+   <b>
+    Options &gt; Animate Sequence
+   </b>
+   .
+  </p>
+  <h3>
+   <a name="animating">
+   </a>
+   Animate Flight Paths
+  </h3>
+  <p>
+   Use
+   <b>
+    Animate Sequence
+   </b>
+   while in either
+   <b>
+    User Defined
+   </b>
+   or
+   <b>
+    Animation
+   </b>
+   modes to display and fly through your 3D SurfaceView plot in an Animation window. In the Animation window, you can control the characteristics of your fly-through with more precision than in the 3D SurfaceView Motion Controls dialog:
+  </p>
+  <ol>
+   <li value="1">
+    From the 3D SurfaceView Motion Controls dialog menu bar, select
+    <b>
+     Options &gt; Animate Sequence
+    </b>
+    . The 3D SurfaceView plot displays in the
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    animation window.
+   </li>
+   <li value="2">
+    See Controlling Animation Characteristics for details about using animation controls. The first few times through, the frame sequence may be slow until the frames are put in memory.
+   </li>
+   <li value="3">
+    To save the animation to a MPEG (Moving Picture Experts Group) file, select
+    <b>
+     File &gt; Save as MPEG
+    </b>
+    .
+   </li>
+  </ol>
+  <h3>
+   <a name="Saving">
+   </a>
+   Save Flight Path Sequences to Files
+  </h3>
+  <p>
+   To save the current flight path to a file:
+  </p>
+  <ol>
+   <li value="1">
+    From the 3D SurfaceView Motion Controls dialog menu bar, select
+    <b>
+     File &gt; Save Sequence to file
+    </b>
+    .
+   </li>
+   <li value="2">
+    Enter an output filename with the extension
+    <code>
+     .pat
+    </code>
+    for consistency.
+   </li>
+  </ol>
+  <p>
+   To restore a previously saved flight path, select
+   <b>
+    File &gt; Restore Sequence from file
+   </b>
+   from the 3D SurfaceView Motion Controls dialog menu bar and select the
+   <code>
+    .pat
+   </code>
+   filename. Restoring is only available in
+   <b>
+    User Defined
+   </b>
+   mode.
+  </p>
+  <h3>
+   <a name="Exportin">
+   </a>
+   Export Flight Path Sequences to MPEG Files
+  </h3>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   When creating MPEG files, you must be aware of the capabilities of the MPEG decoder you will be using to view it. Some decoders only support a limited set of sampling and bit rate parameters to normalize computational complexity, buffer size, and memory bandwidth. For example, the Windows Media Player supports a limited set of sampling and bit rate parameters. In this case, it is best to use 352&#160;x&#160;240&#160;x&#160;30 fps or 352&#160;x&#160;288&#160;x&#160;25 fps when determining the dimensions and frame rate for your MPEG file. When opening a file in Windows Media Player that does not use these dimensions, you will receive a
+   <code>
+    Bad Movie File
+   </code>
+   error message. The file is not bad, this decoder just does not support the dimensions of the MPEG.
+  </p>
+  <p>
+   To export a flight sequence to an MPEG (Movie Picture Experts Group)
+   <a name="kanchor443">
+   </a>
+   file:
+  </p>
+  <ol>
+   <li value="1">
+    From the SurfaceView Motion Controls dialog menu bar, select
+    <b>
+     File &gt; Save Sequence As MPEG
+    </b>
+    . The Output Sequence to MPEG Parameters dialog appears.
+   </li>
+   <li value="2">
+    The default output size of the MPEG image window is the Windows standard. To change the output window size, enter the size (in pixels) in the
+    <b>
+     MPEG Output Size
+    </b>
+    fields.
+   </li>
+   <li value="3">
+    Enter the
+    <b>
+     Number of Frames
+    </b>
+    (individual views) to include in the output flight sequence (movie).
+   </li>
+   <p>
+    More frames make a longer sequence, but also make a larger output file.
+   </p>
+   <li value="4">
+    From the
+    <b>
+     MPEG Frame Rate
+    </b>
+    drop-down button, select a rate in frames/second.
+   </li>
+   <li value="5">
+    Enter the MPEG compression quality.
+   </li>
+   <li value="6">
+    Enter a duplication factor in the
+    <b>
+     Duplicate Frames
+    </b>
+    field, if desired. Duplication helps to make the MPEG output appear smoother. For example, a duplication factor of 2 will duplicate each frame and double the number of output frames.
+   </li>
+   <li value="7">
+    Enter an output filename.
+   </li>
+   <li value="8">
+    Click
+    <b>
+     OK
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    writes the output MPEG file in two steps. The second step cannot be cancelled, and may take up to many seconds per frame.
+   </li>
+   <p>
+    The compression is a lossy compression where 0 is lowest quality and 100 is highest quality (no compression). Entering a compression quality factor less than 100 decreases the amount of disk space used to store the MPEG output.
+   </p>
+  </ol>
+  <h2>
+   <a name="Control2">
+   </a>
+   Control the Perspective
+  </h2>
+  <p>
+   In addition to the
+   <b>
+    Perspective Controls
+   </b>
+   in the 3D SurfaceView Controls dialog, you can also view the surface view panoramically (as if you were standing in the image) with the Position Controls dialog.
+  </p>
+  <ol>
+   <li value="1">
+    From the 3D SurfaceView window menu bar, select
+    <b>
+     Options &gt; Position Controls
+    </b>
+    . The 3D SurfaceView Position Controls dialog appears.
+   </li>
+   <li value="2">
+    Click the toggle button to select
+    <b>
+     Map Coord
+    </b>
+    for georeferenced images, or
+    <b>
+     Pixel Coord
+    </b>
+    for non-georeferenced images. The default is
+    <b>
+     Pixel Coord
+    </b>
+    .
+    <ul>
+     <li value="1">
+      If you select
+      <b>
+       Pixel Coord
+      </b>
+      , enter the
+      <b>
+       Sample
+      </b>
+      and
+      <b>
+       Line
+      </b>
+      coordinates of where you want to stand in the image.
+     </li>
+     <p>
+      If your image is a subset of a larger image, you can use the x and y pixel offsets from the header file by clicking the
+      <b>
+       Use Offset
+      </b>
+      toggle button to
+      <b>
+       Yes
+      </b>
+      .
+     </p>
+     <li value="2">
+      If you select
+      <b>
+       Map Coord
+      </b>
+      , enter the map coordinates of the location where you want to stand and click
+      <b>
+       Change Proj
+      </b>
+      to change the projection (if desired).
+     </li>
+    </ul>
+   </li>
+   <li value="3">
+    In the
+    <b>
+     Auto Apply
+    </b>
+    field, select whether or not to apply changes automatically by selecting
+    <b>
+     Yes
+    </b>
+    or
+    <b>
+     No
+    </b>
+    .
+   </li>
+   <li value="4">
+    Select from the following options to change your position and viewing angle in the surface view image.
+    <ul>
+     <li value="1">
+      To change the location where you are standing, double left-click on a spot in the Image window to automatically move to that location.
+     </li>
+     <p>
+      The location change is reflected in both the Image window and the 3D SurfaceView window.
+     </p>
+     <li value="2">
+      To change the azimuth look direction (north = 0 and angles increase clockwise), use the
+      <b>
+       Azimuth
+      </b>
+      slider bar or fields in the 3D SurfaceView Position Controls dialog.next to the label. To change the angle in increments of five degrees, middle-click on the
+      <b>
+       Azimuth
+      </b>
+      arrows.
+     </li>
+     <li value="3">
+      To change the elevation angle from which you are looking, use the
+      <b>
+       Elevation
+      </b>
+      slider bar next to the label. To change the angle in increments of five degrees, middle-click on the
+      <b>
+       Elevation
+      </b>
+      arrows.
+     </li>
+     <p>
+      An angle of 0 degrees is horizontal and a negative angle is down looking.
+     </p>
+     <li value="4">
+      To change the distance from which you are looking down on the image, enter a number in the
+      <b>
+       Height Above Ground
+      </b>
+      field or use the increase/decrease buttons to change the height.
+     </li>
+    </ul>
+   </li>
+   <p>
+    The units used should be the same as the DEM elevation units.
+   </p>
+   <li value="5">
+    Click
+    <b>
+     Apply
+    </b>
+    .
+   </li>
+  </ol>
+  <h2>
+   <a name="Change">
+   </a>
+   Change the Background Color
+  </h2>
+  <p>
+   You can change the background color of the 3D SurfaceView plot.
+  </p>
+  <ol>
+   <li value="1">
+    From the 3D SurfaceView window menu bar, select
+    <b>
+     Options &gt; Change Background Color
+    </b>
+    . The 3D SurfaceView Background Color dialog appears.
+   </li>
+   <li value="2">
+    From the drop-down list, select
+    <b>
+     RGB
+    </b>
+    ,
+    <b>
+     HLS
+    </b>
+    , or
+    <b>
+     HSV
+    </b>
+    .
+   </li>
+   <li value="3">
+    Click
+    <b>
+     Color
+    </b>
+    and select a color from the resulting menu, or set color values by using the corresponding slider bars and fields.
+   </li>
+   <li value="4">
+    Click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+  </ol>
+  <h2>
+   <a name="Import">
+   </a>
+   Import Vectors and ROIs
+  </h2>
+  <p>
+   Use
+   <b>
+    Import Vectors
+   </b>
+   to overlay ROIs and vector layers on the 3D SurfaceView plot.
+  </p>
+  <p>
+   You must have ROIs or vectors displayed in the original image display from which the 3D SurfaceView was created.
+  </p>
+  <ol>
+   <li value="1">
+    From the 3D SurfaceView window menu bar, select
+    <b>
+     Options &gt; Import Vectors
+    </b>
+    .
+   </li>
+   <p>
+    All of the ROIs and vectors from the image are overlaid on the 3D SurfaceView plot.
+   </p>
+   <li value="2">
+    When ROIs and vectors are overlaid, select from the following options in the 3D SurfaceView window menu bar:
+    <ul>
+     <li value="1">
+      To remove a layer or layers, select
+      <b>
+       Options &gt; Remove Vectors
+      </b>
+      and select the layers to remove.
+     </li>
+     <li value="2">
+      To turn the display or hide layers, select
+      <b>
+       Options &gt; Plot Vector Layers
+      </b>
+      . Hiding layers does not remove them from the 3D SurfaceView plot.
+     </li>
+     <li value="3">
+      To display the vectors and ROIs while interactively positioning and moving the 3D SurfaceView image, select
+      <b>
+       Options &gt; Plot Vectors on Move
+      </b>
+      .
+     </li>
+     <li value="4">
+      To avoid slow interactive repositioning when many vectors and ROIs are overlaid, deselect
+      <b>
+       Options &gt; Plot Vectors on Move
+      </b>
+      .
+     </li>
+     <li value="5">
+      To change the appearance (for example, line thickness, color) of vectors or ROIs in the 3D SurfaceView plot, first make the changes to the vectors in the original image, then re-import the vectors from the image into the 3D SurfaceView.
+     </li>
+    </ul>
+   </li>
+  </ol>
+  <h2>
+   <a name="Smoothin">
+   </a>
+   Smoothing 3D Images
+  </h2>
+  <p>
+   To smooth 3D Surface View Images that appear pixelated, select
+   <b>
+    Options &gt; Bilinear Interpolation
+   </b>
+   . To disable the smoothing effect, select
+   <b>
+    Options &gt; Interpolation: None
+   </b>
+   .
+  </p>
+  <h2>
+   <a name="Manage">
+   </a>
+   Manage SurfaceView Files
+  </h2>
+  <p>
+   Use the
+   <b>
+    File
+   </b>
+   option in the 3D SurfaceView window menu bar to save the plot to an image file or a Virtual Reality Modeling (VRML) file, or to print the plot. Select one of the following from the 3D SurfaceView window menu bar:
+  </p>
+  <ul>
+   <li value="1">
+    To save a surface view as an image file, select
+    <b>
+     File &gt; Save Surface As &gt; Image File
+    </b>
+    .
+   </li>
+   <li value="2">
+    To save a surface view as a VRML 2.0 file, select
+    <b>
+     File &gt; Save Surface As &gt; VRML
+    </b>
+    .
+   </li>
+  </ul>
+  <p class="indent">
+   If you are using a Cosmo Player to view the VRML file, set the Cosmo Player preferences as follows to view the file. In the Cosmo Player menu:
+  </p>
+  <p class="indent">
+   Select
+   <b>
+    Preferences &gt; Performance
+   </b>
+   from the
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   menu bar.
+  </p>
+  <p class="indent">
+   Select
+   <b>
+    Fastest
+   </b>
+   for Image/Texture quality.
+   <br />
+  </p>
+  <p class="indent">
+   Unselect the option
+   <b>
+    Enable specular and emissive color
+   </b>
+   .
+  </p>
+  <ul>
+   <li value="1">
+    To print a 3D SurfaceView plot, select
+    <b>
+     File &gt; Print
+    </b>
+    .
+   </li>
+  </ul>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

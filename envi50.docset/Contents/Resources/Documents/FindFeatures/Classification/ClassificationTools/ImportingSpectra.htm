@@ -1,0 +1,493 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Import Spectra
+  </title>
+  <link href="../../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../../ENVIHelp_CSH.htm#FindFeatures/Classification/ClassificationTools/ImportingSpectra.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <h1>
+   Import Spectra
+   <a name="kanchor819">
+   </a>
+  </h1>
+  <p>
+   You can import endmember spectra into the table in several ways. You can import from the following:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#Importin">
+     Plot windows
+    </a>
+   </li>
+   <li value="2">
+    <a href="#ASCII">
+     ASCII files
+    </a>
+   </li>
+   <li value="3">
+    <a href="#Importin2">
+     ASD binary files
+    </a>
+   </li>
+   <li value="4">
+    <a href="#Importin3">
+     Spectral libraries
+    </a>
+   </li>
+   <li value="5">
+    <a href="#Importin4">
+     ROIs or vectors
+    </a>
+   </li>
+   <li value="6">
+    <a href="#Importin5">
+     Statistics files
+    </a>
+   </li>
+   <li value="7">
+    <a href="#Importin6">
+     Endmember Collection files
+    </a>
+   </li>
+  </ul>
+  <p>
+   When using the Mahalanobis distance or maximum likelihood classifiers, you can only import the endmember spectra from ROIs or statistics files because these classifications use the endmember covariance statistics.
+  </p>
+  <h2>
+   <a name="Importin">
+   </a>
+   Import Spectra from Plot Windows
+  </h2>
+  <p>
+   You can import spectra from plot windows by using the right-click menu, by dragging and dropping the spectra from the plot window to the Endmember Spectra table, or by using a dialog box menu option, as described in the next sections.
+  </p>
+  <h3>
+   <a name="using_right_click_menu">
+   </a>
+   Right-Click Menu
+  </h3>
+  <p>
+   Use the follow
+   <a name="kanchor820">
+   </a>
+   ing steps to derive spectra from the Spectral Profile plot window for your displayed image and import them into the Endmember Spectra table.
+  </p>
+  <ol>
+   <li value="1">
+    If your image is displayed in a display group (only available from certain tools), you can right-click in the display group and select
+    <b>
+     Z Profile (Spectrum)
+    </b>
+    . The Spectral Profile plot window appears.
+   </li>
+   <li value="2">
+    From the Spectral Profile plot window menu bar, select
+    <b>
+     Options &gt; Collect Spectra
+    </b>
+    .
+   </li>
+   <li value="3">
+    Click on the spectra you want to collect for the Endmember Spectra table.
+   </li>
+   <li value="4">
+    <p>
+     In the Endmember Collection dialog, right-click on either an empty space in the table or on the upper-left corner of the table. The resulting menu contains all the available spectra from every displayed plot window.
+    </p>
+    <p>
+     If no spectrum was available in any plot window, the right-click menu states that no spectrum is available.
+    </p>
+   </li>
+   <li value="5">
+    Left-click on the spectra you want to import into the table. The selected spectra appears in the Endmember Spectra table.
+   </li>
+   <li value="6">
+    Use the right-click menu to import all of the spectrum you want to include in the table.
+   </li>
+  </ol>
+  <h3>
+   <a name="dragging_dropping">
+   </a>
+   Drag and Drop Spectra
+  </h3>
+  <p>
+   You can also drag-and-drop a spectrum from the Spectral Profile plot window key to the Endmember Spectra table to collect it in the Endmember Collection dialog.
+  </p>
+  <ol>
+   <li value="1">
+    From the Spectral Profile plot window menu bar, select
+    <b>
+     Options &gt; Plot Key
+    </b>
+    . The key (legend) for the plot window appears to the right of the spectral plot.
+   </li>
+   <li value="2">
+    Click and drag the key of a spectrum into the Endmember Spectra table. The spectrum appears in the Endmember Collection table.
+   </li>
+  </ol>
+  <h3>
+   Endmember Collection Dialog Menu Option
+   <a name="kanchor821">
+   </a>
+  </h3>
+  <p>
+   You can also import multiple spectra by using an Endmember Collection dialog menu option.
+  </p>
+  <ol>
+   <li value="1">
+    From the Endmember Collection dialog menu bar, select
+    <b>
+     Import &gt; from Plot Windows
+    </b>
+    . The Import from Plot Windows dialog appears.
+   </li>
+   <li value="2">
+    Select one or more spectra.
+   </li>
+   <li value="3">
+    Click
+    <b>
+     OK
+    </b>
+    . The selected spectra appear in the Endmember Collection dialog.
+   </li>
+  </ol>
+  <h2>
+   <a name="ASCII">
+   </a>
+   Import Spectra from ASCII Files
+   <a name="kanchor822">
+   </a>
+  </h2>
+  <ol>
+   <li value="1">
+    From the Endmember Collection dialog menu bar, select
+    <b>
+     Import &gt; from ASCII File
+    </b>
+    . The Select ASCII Files to Import dialog appears.
+   </li>
+   <li value="2">
+    Select an ASCII file or a group of ASCII files of the same format and click
+    <b>
+     Open
+    </b>
+    . The Input ASCII File dialog appears, with a list of the number of columns and rows and the first few data values of each column of data.
+   </li>
+   <li value="3">
+    Enter the
+    <b>
+     X Axis Column
+    </b>
+    number that contains the x axis data.
+   </li>
+   <li value="4">
+    Select the endmember spectra to import in the
+    <b>
+     Select Y Axis Columns
+    </b>
+    area.
+   </li>
+   <li value="5">
+    Change the
+    <b>
+     Wavelength Units
+    </b>
+    and
+    <b>
+     Y Scale Factor
+    </b>
+    parameters as needed.
+   </li>
+   <li value="6">
+    Click
+    <b>
+     OK
+    </b>
+    to enter the selected endmember spectra into the list on the Endmember Collection dialog.
+   </li>
+  </ol>
+  <h3>
+   Import Additional ASCII Files
+  </h3>
+  <p>
+   To select another ASCII file and read the data using the settings previously defined the Input ASCII File dialog:
+  </p>
+  <ol>
+   <li value="1">
+    From the Endmember Collection dialog menu bar, select
+    <b>
+     Import &gt; from ASCII file (previous template)
+    </b>
+    . The Select ASCII Files to Import dialog appears.
+   </li>
+   <li value="2">
+    Select an ASCII file and click
+    <b>
+     Open
+    </b>
+    . This option reads the data directly into the Endmember Collection dialog without the intermediate parameter dialog.
+   </li>
+  </ol>
+  <h2>
+   <a name="Importin2">
+   </a>
+   Import Spectra from ASD Binary Files
+   <a name="kanchor823">
+   </a>
+  </h2>
+  <ol>
+   <li value="1">
+    From the Endmember Collection dialog menu bar, select
+    <b>
+     Import &gt; From ASD Binary File
+    </b>
+    . The Enter ASD Files to Import dialog appears.
+   </li>
+   <li value="2">
+    Select the ASD file or files and click
+    <b>
+     Open
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    automatically resamples the file to match the wavelengths from a data file, ASCII file, or first imported spectrum as designated when the Spectral Library Builder function was started. If importing the ASD file from the Endmember Collection dialog,
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    automatically resamples the first input spectrum.
+   </li>
+  </ol>
+  <p>
+   If the range of the ASD file does not match the range of the input wavelengths, all zeroes will result.
+  </p>
+  <h2>
+   <a name="Importin3">
+   </a>
+   Import Spectra from Spectral Libraries
+   <a name="kanchor824">
+   </a>
+  </h2>
+  <ol>
+   <li value="1">
+    Select
+    <b>
+     Import &gt; from Spectral Library
+    </b>
+    . The Input File dialog appears.
+   </li>
+   <li value="2">
+    Choose the spectral library name.
+   </li>
+   <li value="3">
+    Click
+    <b>
+     OK
+    </b>
+    . The Input Spectral Library dialog appears. If the desired spectral library was not previously opened, select
+    <b>
+     File &gt; Open Spectral Library
+    </b>
+    in the Input File dialog.
+   </li>
+   <li value="4">
+    Select endmember spectra by selecting the spectrum names.
+   </li>
+   <li value="5">
+    <p>
+     Change the
+     <b>
+      Wavelength Units
+     </b>
+     and
+     <b>
+      Y Scale Factor
+     </b>
+     parameters as needed.
+    </p>
+    <p>
+     If the
+     <b>
+      Reflectance Scale Factor
+     </b>
+     parameter is set in both the spectral library header and the image data header, then
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     will automatically scale the library data to match the image data. If one of the two data sources has no scale factor in its header, then no scaling will be done.
+    </p>
+   </li>
+   <li value="6">
+    Click
+    <b>
+     OK
+    </b>
+    to enter the selected spectra into the Endmember Spectra list.
+   </li>
+  </ol>
+  <h2>
+   <a name="Importin4">
+   </a>
+   Import Spectra from ROIs and Vectors
+   <a name="kanchor825">
+   </a>
+  </h2>
+  <p>
+   You can import mean spectra from previously defined ROIs or vectors open in the Available Vectors List. You can associate these ROIs and vectors with either the current input file or another file.
+  </p>
+  <h3>
+   Import ROIs and Vectors Associated with Current File
+  </h3>
+  <ol>
+   <li value="1">
+    From the Endmember Collection dialog menu bar, select
+    <b>
+     Import &gt; from ROI/EVF from input file
+    </b>
+    . The Select Regions for Stats Calculation dialog appears. The Select Regions for Stats Calculation dialog is only provided if more than one ROI or vector is available.
+   </li>
+   <li value="2">
+    Select endmember spectra (ROI or vector averages) by selecting the ROI or vector names. To open an ROI or EVF file, click
+    <b>
+     Open ROI/EVF file
+    </b>
+    . The Enter ROI/EVF Filenames dialog appears. Use this dialog to select and open ROI and EVF files. The Select Regions for Stats Calculation dialog is updated with the ROIs and vectors from the open files.
+   </li>
+   <li value="3">
+    Click
+    <b>
+     OK
+    </b>
+    to enter the ROI and vector means into the Endmember Spectra list.
+   </li>
+  </ol>
+  <h3>
+   Import ROIs and Vectors Associated with Another File
+  </h3>
+  <ol>
+   <li value="1">
+    From the Endmember Collection dialog menu bar, select
+    <b>
+     Import &gt; from ROI/EVF from other file
+    </b>
+    . The Input File of associated ROI/EVF dialog appears.
+   </li>
+   <li value="2">
+    Select the input file. The Select Regions for Stats Calculation dialog appears. The Select Regions for Stats Calculation dialog is only provided if more than one ROI or vector is available.
+   </li>
+   <li value="3">
+    Select endmember spectra (ROI or vector averages) by selecting the ROI or vector names. To open an ROI or EVF file, click
+    <b>
+     Open ROI/EVF file
+    </b>
+    . The Enter ROI/EVF Filenames dialog appears. Use this dialog to select and open ROI and EVF files. The Select Regions for Stats Calculation dialog is updated with the ROIs and vectors from the open files.
+   </li>
+   <li value="4">
+    Click
+    <b>
+     OK
+    </b>
+    to enter the ROI and vector means into the Endmember Spectra list.
+   </li>
+  </ol>
+  <h2>
+   <a name="Importin5">
+   </a>
+   Import Spectra from Statistics Files
+   <a name="kanchor826">
+   </a>
+  </h2>
+  <p>
+   Use
+   <b>
+    from Stats file
+   </b>
+   to import the mean spectrum from a previous classification result that was calculated using the
+   <b>
+    Statistics
+   </b>
+   option in the Toolbox.
+  </p>
+  <ol>
+   <li value="1">
+    Select
+    <b>
+     Import &gt; from Stats file
+    </b>
+    . The Enter Statistics Filename dialog appears.
+   </li>
+   <li value="2">
+    Select one or more statistics files.
+   </li>
+   <li value="3">
+    Click
+    <b>
+     OK
+    </b>
+    . The mean spectrum from the statistics file is entered into the list on the Endmember Collection dialog.
+   </li>
+  </ol>
+  <h2>
+   <a name="Importin6">
+   </a>
+   Import Spectra from Endmember Collection Files
+   <a name="kanchor827">
+   </a>
+  </h2>
+  <p>
+   Use
+   <b>
+    from Endmember Collection file
+   </b>
+   to import an Endmember Collection file.
+  </p>
+  <ol>
+   <li value="1">
+    From the Endmember Collection dialog menu bar, select
+    <b>
+     Import &gt; from Endmember Collection file
+    </b>
+    . The Select Endmember Collection File to Import dialog appears.
+   </li>
+   <li value="2">
+    Select and open an Endmember Collection
+    <code>
+     .txt
+    </code>
+    file.
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    updates the Endmember Collection dialog with the spectra from the specified file.
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

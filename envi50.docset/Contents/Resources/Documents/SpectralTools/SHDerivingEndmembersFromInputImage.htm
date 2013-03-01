@@ -1,0 +1,224 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Spectral Tools|Spectral Unmixing|Spectral Hourglass Wizard" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Derive Endmembers from the Input Image
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#SpectralTools/SHDerivingEndmembersFromInputImage.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="SpectralTools.htm">
+    Spectral Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="SpectralUnmixing.htm">
+    Spectral Unmixing
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="SpectralHourglassWizard.htm">
+    Spectral Hourglass Wizard
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Derive Endmembers from the Input Image
+   </span>
+  </div>
+  <h1>
+   Derive Endmembers from the Input Image
+  </h1>
+  <ol>
+   <li value="1">
+    In the Derive or Select Endmember panel, set the
+    <b>
+     Derive Endmembers from Image?
+    </b>
+    toggle button to
+    <b>
+     Yes
+    </b>
+    and click
+    <b>
+     Next
+    </b>
+    .
+    <a name="kanchor412">
+    </a>
+    The Pixel Purity Index panel appears.
+   </li>
+   <p>
+    The PPI is computed by repeatedly projecting
+    <i>
+     n
+    </i>
+    -D scatter plots on a random unit vector. The Wizard records the extreme pixels in each projection and notes the total number of times each pixel is marked as extreme. The
+    <b>
+     PPI Threshold Value
+    </b>
+    is used to define how many pixels are marked as extreme at the ends of the projected vector. The threshold value should be approximately two to three times the noise level in the data (which is 1 when using MNF transformed data). Larger thresholds cause the PPI to find more extreme pixels, but they are less likely to be “pure” endmembers.
+   </p>
+   <p>
+    The PPI is highly CPU-intensive and can take a long time to run, with the size of the data cube and the number of iterations being the main controlling factors. Reducing the
+    <b>
+     Number of PPI Iterations
+    </b>
+    can also save time; however, a minimum of 5,000 iterations is usually required to produce useful results. The
+    <b>
+     PPI Maximum Memory use value
+    </b>
+    must correspond to a value smaller than your available system memory (RAM).
+   </p>
+   <li value="2">
+    Click
+    <b>
+     Next
+    </b>
+    . The Calculating Pixel Purity Index panel appears, and progress windows display the processing status.
+   </li>
+   <p>
+    The PPI is calculated for the number of iterations you specified in the previous panel. A Pixel Purity Index Plot appears, showing which iteration you are on and the cumulative number of pixels that have been found to be extreme. The curve in this plot usually starts steeply, as new pixels are found in each iteration, and it should flatten out as all the extreme pixels are found.
+   </p>
+   <li value="3">
+    When the iterations are complete, you can return to the Pixel Purity Index panel and increase the
+    <b>
+     Number of PPI Iterations
+    </b>
+    if the plot has not flattened. While it is difficult or impossible to precisely say how many iterations are enough, you can never run too many iterations. Having many iterations (for example, 20,000) gives a PPI result with an increased dynamic range and thus the ability to find subtle, poorly expressed endmembers that might be undetected if fewer iterations were completed.
+   </li>
+   <li value="4">
+    When the iterations are complete, a PPI image is created in which the value of each pixel corresponds to the number of times that pixel was recorded as extreme. Bright pixels in the PPI image generally are image endmembers.
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds the resulting output to the Layer Manager. The pixels with the highest values are input into the n-D Visualizer for the clustering process that develops individual endmember spectra.
+   </li>
+   <p>
+    The PPI image is an important intermediate product in the spectral hourglass process. It identifies and locates the purest pixels in the scene (often less than 1% of the total number of pixels). By understanding this small collection of the purest pixels, you can have a full understanding of all the pixels in the image via spectral mixture models. Furthermore, the PPI image maps type localities and sites that should be visited for ground truth collection and spectral measurements in the field.
+   </p>
+   <li value="5">
+    In the Examine PPI Results panel, enter a value for
+    <b>
+     Maximum PPI Pixels to use in the n-D Visualizer.
+    </b>
+    Smaller numbers animate faster and show only the purest pixels; larger numbers give a better overall picture of the scatter plot, but they animate more slowly and may hinder the selection of vertices. The Wizard automatically applies a threshold to the PPI image to obtain the best PPI pixels without exceeding the selected maximum. You can return to this page and change the PPI maximum threshold so you can view both the overall scatter plot and only the purest pixels.
+   </li>
+   <li value="6">
+    Click
+    <b>
+     Next
+    </b>
+    <b style="font-weight: normal;">
+     in the Examine PPI Results
+    </b>
+    panel to proceed to the n-Dimensional Visualizer panel of the Wizard.
+    <a name="kanchor413">
+    </a>
+    The n-D Visualizer and n-D Controls dialogs appear.
+   </li>
+   <li value="7">
+    See
+    <a href="nDimensionalVisualizer.htm">
+     The n-D Visualizer
+    </a>
+    for instructions on retrieving endmembers from the n-D Visualizer. Click the
+    <b>
+     Retrieve Endmembers
+    </b>
+    button to get the selected endmembers to use in the processing flow. The Wizard automatically imports the selected endmember spectra.
+   </li>
+   <li value="8">
+    To plot endmembers once they are loaded into the Wizard, click
+    <b>
+     Plot Endmembers
+    </b>
+    .
+   </li>
+   <li value="9">
+    To use the
+    <a href="SpectralAnalyst.htm">
+     Spectral Analyst
+    </a>
+    to help you identify the endmembers, click
+    <b>
+     Start Spectral Analyst
+    </b>
+    . Double-click the endmember name you want to identify in the Endmember List. Use the Spectral Analyst with caution because it can only recommend likely candidates for identification, and results may change with different spectral libraries and weighting factors.
+   </li>
+   <li value="10">
+    Click
+    <b>
+     Next
+    </b>
+    . The User Supplied Endmembers panels appear.
+   </li>
+   <li value="11">
+    Select from the following options:
+    <ul>
+     <li value="1">
+      To supply
+      <i>
+       additional
+      </i>
+      endmembers from another source, such as a spectral library or an ROI, set the
+      <b>
+       User supplied Endmembers
+      </b>
+      toggle button to
+      <b>
+       Yes
+      </b>
+      and repeat steps 7-9 above as necessary.
+     </li>
+     <li value="2">
+      To use endmembers from the image, set the
+      <b>
+       User supplied Endmembers
+      </b>
+      toggle button to
+      <b>
+       No
+      </b>
+      and click
+      <b>
+       Next
+      </b>
+      . The Mapping Methods panel appears.
+     </li>
+    </ul>
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

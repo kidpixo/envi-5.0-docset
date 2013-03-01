@@ -1,0 +1,334 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Georectify|RPC Orthorectification|Reference" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Accuracy Assessment Background
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#GeorectifyImagery/RPC_Orthorectification/AccuracyAssessmentBackground.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../GeorectifyImagery.htm">
+    Georectify
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="RPCOrthorectification.htm">
+    RPC Orthorectification
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="RPCBackground.htm">
+    Reference
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Accuracy Assessment Background
+   </span>
+  </div>
+  <h2>
+   Accuracy Assessment Background
+  </h2>
+  <p>
+   The RPC Refinement panel reports various error statistics for individual GCPs and the entire RPC model. The table under the GCPs tab lists map coordinates, height above the WGS-84 ellipsoid, and image coordinates for each GCP. Following this are some view-only fields with predicted error statistics for each point:
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     Error X:
+    </b>
+    <![CDATA[ ]]>
+    The difference in eastings (in meters) between the GCP and image location. Values can be positive or negative.
+   </li>
+   <li value="2">
+    <b>
+     Error Y:
+    </b>
+    <![CDATA[ ]]>
+    The difference in northings (in meters) between the GCP and image location. Values can be positive or negative.
+   </li>
+   <li value="3">
+    <b>
+     Error Z:
+    </b>
+    The difference in meters between the
+    <b>
+     Height
+    </b>
+    value of the GCP and the corresponding DEM height above the WGS-84 ellipsoid.
+   </li>
+   <li value="4">
+    <b>
+     Error Magnitude:
+    </b>
+    <img src="../../Resources/Images/RPCOrtho/equation_error_magnitude.gif" alt="Error magnitude equation" />
+    in meters. Values are always positive.
+   </li>
+  </ul>
+  <h3>
+   Horizontal Accuracy
+  </h3>
+  <p>
+   The
+   <b>
+    Horizontal Accuracy
+   </b>
+   value under the GCPs tab is the horizontal root mean square error (RMSE), calculated as:
+  </p>
+  <p class="indent">
+   <img src="../../Resources/Images/RPCOrtho/equation_RMSEr.gif" alt="Horizontal accuracy equation" />
+  </p>
+  <p class="indent">
+   Where:
+  </p>
+  <p class="indent">
+   <img src="../../Resources/Images/RPCOrtho/equation_RMSEx.gif" alt="RMSEx equation" />
+  </p>
+  <p class="indent">
+   <img src="../../Resources/Images/RPCOrtho/equation_RMSEy.gif" alt="RMSEy equation" />
+  </p>
+  <p>
+   The
+   <b>
+    Error X
+   </b>
+   and
+   <b>
+    Error Y
+   </b>
+   values for each GCP are reported in the RPC Refinement panel.
+  </p>
+  <p>
+   The
+   <b>
+    Horizontal Accuracy
+   </b>
+   value will change based on whether or not you choose to compute all GCPs under the Statistics tab.
+  </p>
+  <p>
+   <a name="stats">
+   </a>
+   The GCP Statistics options under the Statistics tab give you a choice of how the
+   <b>
+    Horizontal Accuracy
+   </b>
+   predicts the accuracy of the orthorectified image.
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     All:
+    </b>
+    The estimated accuracy using both adjustment GCPs and independent GCPs.
+   </li>
+   <li value="2">
+    <b>
+     Adjustment GCPs:
+    </b>
+    The estimated accuracy using only adjustment RPCs.
+   </li>
+   <li value="3">
+    <b>
+     Independent GCPs:
+    </b>
+    The estimated accuracy using only independent GCPs.
+   </li>
+  </ul>
+  <p>
+   With one or two adjustment GPCs, the RPCs are adjusted using an image-space translation. With three or more adjustment GCPs, the RPCs are adjusted using an image-space RST.
+  </p>
+  <p>
+   The following statistics are related to horizontal accuracy:
+  </p>
+  <ul>
+   <li value="1">
+    <a name="CE95">
+    </a>
+    <b>
+     CE95:
+    </b>
+    <![CDATA[ ]]>
+    The circular standard error at the 95% confidence level:
+    <p>
+     <img src="../../Resources/Images/RPCOrtho/equation_CE95.gif" alt="CE95 equation" />
+    </p>
+    <p>
+     See FGDC (1998) for details. For the most accurate CE95 value, you should have at least 20 GCPs.
+    </p>
+   </li>
+   <li value="2">
+    <b>
+     RMSE X:
+    </b>
+    The root mean square (RMS) difference in eastings (in meters) between the GCP and image location. See the equation above.
+   </li>
+   <li value="3">
+    <b>
+     RMSE Y:
+    </b>
+    The RMS difference in northings (in meters) between the GCP and image location. See the equation above.
+   </li>
+   <li value="4">
+    <b>
+     RMSE R:
+    </b>
+    The horizontal RMSE; same as the
+    <b>
+     Horizontal Accuracy
+    </b>
+    value.
+   </li>
+   <li value="5">
+    The
+    <b>
+     Number of GCPs
+    </b>
+    shows how many GCPs were used in calculating the statistics.
+   </li>
+  </ul>
+  <h3>
+   Vertical Accuracy
+  </h3>
+  <p>
+   The
+   <b>
+    RMSE Z
+   </b>
+   value is calculated as follows. The
+   <b>
+    Error Z
+   </b>
+   values for each GCP are reported in the RPC Refinement panel.
+  </p>
+  <p>
+   <img src="../../Resources/Images/RPCOrtho/equation_RMSEz.gif" alt="RMSEz equation" />
+  </p>
+  <p>
+   The
+   <b>
+    LE95
+   </b>
+   value is the difference (in meters) between the GCP-measured elevation and the DEM elevation with an optional
+   <![CDATA[ ]]>
+   geoid offset. It is also known as the linear error at the 95% confidence level:
+  </p>
+  <p>
+   <img src="../../Resources/Images/RPCOrtho/equation_vertical_accuracy.gif" alt="Vertical accuracy equation" />
+  </p>
+  <h3>
+   <a name="Outlier">
+   </a>
+   Outlier Thresholds
+  </h3>
+  <p>
+   Use the options in the
+   <b>
+    Error Overlay
+   </b>
+   drop-down list to set the threshold at which outlier GCPs are identified in the error overlay image.
+   <![CDATA[ ]]>
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     3 x RMSE [X or Y]:
+    </b>
+    By default, white areas in the error overlay represent GCPs with three times the
+    <b>
+     RMSE X
+    </b>
+    or
+    <b>
+     RMSE Y
+    </b>
+    value.  These GCPs are marked with a
+    <img src="../../Resources/Images/IconsButtons/RPCOrthoAdjustmentGCPOutlierWarning.gif" class="VertCenter" alt="Warning icon" />
+    or
+    <img src="../../Resources/Images/IconsButtons/RPCOrthoIndependentGCPOutlierWarning.gif" class="VertCenter" />
+    icon.
+   </li>
+   <li value="2">
+    <b>
+     User Defined:
+    </b>
+    <![CDATA[ ]]>
+    You can set your own threshold instead of accepting the default value (which is three times the
+    <b>
+     RMSE X
+    </b>
+    or
+    <b>
+     RMSE Y
+    </b>
+    value). Enter an error magnitude value, in meters, in the
+    <b>
+     Threshold
+    </b>
+    field. GCPs with error magnitude values greater than the threshold will be marked as bright white areas.
+   </li>
+  </ul>
+  <p>
+   Changing the
+   <b>
+    <a href="#stats">
+     GCP&#160;Statistics
+    </a>
+   </b>
+   options will change the outlier results.
+  </p>
+  <h3>
+   <a name="Referenc">
+   </a>
+   References
+  </h3>
+  <p>
+   Federal Geographic Data Committee, 1998:
+   <i>
+    Geospatial Position Accuracy Standards Part 3: National Standard for Spatial Data Accuracy
+   </i>
+   , FGDC-STD-007.3-1998. Washington, D. C.: Federal Geographic Data Committee.
+   <a href="http://www.fgdc.gov/standards/projects/FGDC-standards-projects/accuracy/part3/chapter3">
+    http://www.fgdc.gov/standards/projects/FGDC-standards-projects/accuracy/part3/chapter3
+   </a>
+   . Accessed 08 January 2011.
+  </p>
+  <p>
+   Joint Research Center, ISPRA, 2008.
+   <i>
+    Guidelines for Best Practice and Quality Checking of Ortho Imagery
+   </i>
+   , Issue 3.0, v.20/10/2008.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

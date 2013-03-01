@@ -1,0 +1,262 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Spectral Tools|SPEAR Tools" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   SPEAR Orthorectification
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#SpectralTools/SPEARTools/SPEAROrthorectification.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../SpectralTools.htm">
+    Spectral Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="SpearTools.htm">
+    SPEAR Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    SPEAR Orthorectification
+   </span>
+  </div>
+  <h1>
+   SPEAR Orthorectification
+  </h1>
+  <p>
+   An orthorectified image (or
+   <i>
+    orthophoto
+   </i>
+   ) is one where each pixel represents a true ground location and all geometric, terrain, and sensor distortions have been removed to within a specified accuracy. Orthorectification transforms the central perspective of an aerial photograph or satellite-derived image to an orthogonal view of the ground, which removes the effects of sensor tilt and terrain relief. Scale is constant throughout the orthophoto, regardless of elevation, thus providing accurate measurements of distance and direction. Geospatial professionals can easily combine orthophotos with other spatial data in a geographic information system (GIS) for city planning, resource management, and other related fields.
+  </p>
+  <p>
+   The SPEAR Orthorectification Wizard allows you to orthorectify images using rational polynomial coefficients (RPCs), elevation and geoid information, and optional ground control points (GCPs). RPCs and elevation information do not provide enough details to build a rigorous model representing the path of light rays from a ground object to the sensor. Use the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   Orthorectification Module for rigorous orthorectification. This add-on module requires an additional license in your installation; contact your
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   sales representative to obtain a license.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     SPEAR &gt; SPEAR Orthorectification
+    </b>
+    . The SPEAR Orthorectification Wizard displays the File Selection panel.
+   </li>
+   <li value="2">
+    Click
+    <b>
+     Select Image to Ortho
+    </b>
+    , choose a file, then click
+    <b>
+     OK
+    </b>
+    . The input image must contain RPCs and can be in any format readable by ENVI.
+   </li>
+   <li value="3">
+    To optionally process only a portion of the scene, click
+    <b>
+     Select Subset
+    </b>
+    . A small Select Spatial Subset dialog appears.
+   </li>
+   <li value="4">
+    Click
+    <b>
+     Spatial Subset
+    </b>
+    . The standard Select Spatial Subset dialog appears. When finished, click
+    <b>
+     OK
+    </b>
+    to return to the File Selection panel.
+   </li>
+   <li value="5">
+    Select an elevation source. In flat areas or when only general correction is needed, select
+    <b>
+     Z Value
+    </b>
+    . Use
+    <b>
+     Auto Retrieve
+    </b>
+    to retrieve the mean elevation for the area covered by the input image. Click
+    <b>
+     Select Elevation File
+    </b>
+    to select a file with elevation data. The elevation file must contain map information and can be in any format readable by ENVI.
+   </li>
+   <li value="6">
+    By default, output files are saved to the same directory and use the same rootname as the input file, minus any extension. Output files are appended with a unique suffix. To change the directory and/or root filename, click
+    <b>
+     Select Output Root Name
+    </b>
+    .
+   </li>
+   <li value="7">
+    Click
+    <b>
+     Next
+    </b>
+    . The Select Method dialog appears.
+   </li>
+   <li value="8">
+    Select
+    <b>
+     Normal
+    </b>
+    or
+    <b>
+     Fast
+    </b>
+    mode. Normal mode is more accurate and calculates an orthorectified coordinate for every pixel in the image. Fast mode calculates an orthorectified coordinate for pixels laying on a grid with user-defined spacing, then triangulates the position of all of the points within each grid cell. In relatively flat areas, Fast mode will produce accurate results with faster processing.
+   </li>
+   <li value="9">
+    Optionally, collect GCPs to refine the georeferencing accuracy of the orthorectified image.
+   </li>
+   <li value="10">
+    Click
+    <b>
+     Next
+    </b>
+    . The Orthorectification Parameters dialog appears.
+   </li>
+   <li value="11">
+    Click
+    <b>
+     Show Ortho Params
+    </b>
+    to optionally modify the following default parameters:
+   </li>
+   <ul>
+    <li value="1">
+     <b>
+      X Pixel Size
+     </b>
+     and
+     <b>
+      Y Pixel Size
+     </b>
+     values default to the resolution of the input file.
+    </li>
+    <li value="2">
+     The
+     <b>
+      Image Resampling Method
+     </b>
+     determines the pixel values in the input image when it is converted from its current orientation into the new orientation. The choices are
+     <b>
+      Nearest Neighbor
+     </b>
+     ,
+     <b>
+      Bilinear
+     </b>
+     , and
+     <b>
+      Cubic Convolution
+     </b>
+     . The default is
+     <b>
+      Bilinear
+     </b>
+     .
+    </li>
+    <li value="3">
+     The
+     <b>
+      Image Background
+     </b>
+     allows you to set a value for pixels in the output image that are outside the boundary of the source image.
+    </li>
+    <li value="4">
+     <b>
+      DEM Resampling
+     </b>
+     defines the method to be used to resample the DEM to the resolution of the input or base image.
+    </li>
+    <li value="5">
+     <p>
+      <b>
+       DEM to Geoid Offset
+      </b>
+      is a constant value that is added to every value in the DEM to account for the difference between a spheroid mean sea level (used in most available DEM data) and the constant geopotential surface known as the geoid. The RPC coefficients are created based on geoid height, and this information must be used to provide accurate orthorectification.
+     </p>
+     <p>
+      For example, if the geoid is 10 m below mean sea level at the location of your image, enter a value of -10.
+     </p>
+     <p>
+      Many institutions doing photogrammetric processing have their own software for geoid height determination. You can also obtain software from NGA, USGS, NOAA, and other sources. A geoid height calculator is located at
+      <a href="http://www.ngs.noaa.gov/cgi-bin/GEOID_STUFF/geoid99_prompt1.prl">
+       http://www.ngs.noaa.gov/cgi-bin/GEOID_STUFF/geoid99_prompt1.prl
+      </a>
+      .
+     </p>
+    </li>
+    <li value="6">
+     <b>
+      Grid Spacing
+     </b>
+     is available for Fast mode. Fast mode calculates an orthorectified coordinate for pixels laying on a grid with this spacing value, then triangulates the position of all of the points within each grid cell.
+    </li>
+    <li value="7">
+     <p>
+      Click
+      <b>
+       Next
+      </b>
+      . The Examine Results dialog appears.
+     </p>
+     <p>
+      The orthorectified image is displayed. If GCPs were selected, the base image will be displayed and geographically linked to the orthorectified image so that you can examine the georeferencing accuracy.
+     </p>
+    </li>
+   </ul>
+   <li value="12">
+    When you are finished examining your results, click
+    <b>
+     Finish
+    </b>
+    to exit the Wizard.
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

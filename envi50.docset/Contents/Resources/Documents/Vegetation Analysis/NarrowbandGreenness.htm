@@ -1,0 +1,436 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Vegetation|Vegetation Index Calculator|Vegetation Indices" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Narrowband Greenness
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/TableStyles/Description.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#Vegetation Analysis/NarrowbandGreenness.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="VegetationAnalysis.htm">
+    Vegetation
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="VegetationIndexCalculator.htm">
+    Vegetation Index Calculator
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="VegetationIndices.htm">
+    Vegetation Indices
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Narrowband Greenness
+   </span>
+  </div>
+  <h1>
+   <a name="Narrowba">
+   </a>
+   Narrowband Greenness
+  </h1>
+  <p>
+   Narrowband greenness VIs are a combination of reflectance measurements sensitive to the combined effects of foliage chlorophyll concentration, canopy leaf area, foliage clumping, and canopy architecture. Similar to the broadband greenness VIs, narrowband greenness VIs are designed to provide a measure of the overall amount and quality of photosynthetic material in vegetation, which is essential for understanding the state of vegetation. These VIs use reflectance measurements in the red and near-infrared regions to sample the red edge portion of the reflectance curve. The red edge is a name used to describe the steeply sloped region of the vegetation reflectance curve between 690 nm and 740&#160;nm that is caused by the transition from chlorophyll absorption and near-infrared leaf scattering. Use of near-infrared measurements, with much greater penetration depth through the canopy than red measurements, allows estimation of the total amount of green material in the column.
+  </p>
+  <p>
+   Narrowband greenness VIs are more sophisticated measures of general quantity and vigor of green vegetation than the broadband greenness VIs. Making narrowband measurements in the red edge allows these indices to be more sensitive to smaller changes in vegetation health than the broadband greenness VIs, particularly in conditions of dense vegetation where the broadband measures can saturate. Narrowband greenness VIs are intended for use with high spectral resolution imaging data, such as that acquired by hyperspectral sensors.
+  </p>
+  <table style="caption-side: bottom;mc-table-style: url('../Resources/TableStyles/Description.css');margin-left: 0;margin-right: auto;" cellspacing="0" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <td class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p>
+       Index
+      </p>
+     </td>
+     <td class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p>
+       Description
+      </p>
+     </td>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       <a href="#red_edge_NDVI">
+        Red Edge Normalized Difference Vegetation Index
+       </a>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       A modification of the NDVI using reflectance measurements along the red edge.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       <a href="#modified_red_edge_simple_ratio_index">
+        Modified Red Edge Simple Ratio Index
+       </a>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       A ratio of reflectance along the red edge with blue reflection correction.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       <a href="#modified_red_edge_NDVI">
+        Modified Red Edge Normalized Difference Vegetation Index
+       </a>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       A modification of the Red Edge NDVI using blue to compensate for scattered light.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       <a href="#vogelmann_1">
+        Vogelmann Red Edge Index 1
+       </a>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       A shoulder of the RED-to-NIR transition that is indicative of canopy stress.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       <a href="#vogelmann_2">
+        Vogelmann Red Edge Index 2
+       </a>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       A shape of the near-infrared transition that is indicative of the onset of canopy stress and senescence.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       <a href="#vogelmann_3">
+        Vogelmann Red Edge Index 3
+       </a>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       A shape of near-infrared transition that is indicative of the onset of canopy stress and senescence.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+      <p>
+       <a href="#red_edge_position_index">
+        Red Edge Position Index
+       </a>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColEnd">
+      <p>
+       The location of the maximum derivative in near-infrared transition, which is sensitive to chlorophyll concentration.
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h2>
+   <a name="red_edge_NDVI">
+   </a>
+   Red Edge Normalized Difference Vegetation Index
+  </h2>
+  <p>
+   The Red Edge Normalized Difference Vegetation Index (NDVI
+   <sub>
+    705
+   </sub>
+   ) is a modification of the traditional broadband NDVI. It is intended for use with very high spectral resolution reflectance data, such as from hyperspectral sensors. Applications include precision agriculture (an information- and technology-based agricultural management system to identify, analyze, and manage site-soil spatial and temporal variability), forest monitoring, and vegetation stress detection. This VI differs from the NDVI by using bands along the red edge, instead of the main absorption and reflectance peaks. The NDVI
+   <sub>
+    705
+   </sub>
+   capitalizes on the sensitivity of the vegetation red edge to small changes in canopy foliage content, gap fraction, and senescence. NDVI&#160;
+   <sub>
+    705
+   </sub>
+   is defined by an equation similar to the NDVI:
+  </p>
+  <p>
+   <img src="../Resources/Images/Vegetation/11_5.jpg" />
+  </p>
+  <p>
+   The value of this index ranges from -1 to 1. The common range for green vegetation is 0.2 to 0.9.
+  </p>
+  <p>
+   <b>
+    References
+   </b>
+   <![CDATA[ ]]>
+  </p>
+  <p>
+   Gitelson, A.A. and M.N. Merzlyak, 1994.
+   <i>
+    Spectral Reflectance Changes Associated with Autumn Senescence of
+   </i>
+   Aesculus Hippocastanum
+   <i>
+    L. and
+   </i>
+   Acer Platanoides
+   <i>
+    L. Leaves
+   </i>
+   .
+   <i>
+    Spectral Features and Relation to Chlorophyll Estimation
+   </i>
+   . Journal of Plant Physiology 143:286&#8209;292.
+  </p>
+  <p>
+   Sims, D.A. and J.A. Gamon, 2002.
+   <i>
+    Relationships Between Leaf Pigment Content and Spectral Reflectance Across a Wide Range of Species, Leaf Structures and Developmental Stages
+   </i>
+   . Remote Sensing of Environment 81:337-354.
+  </p>
+  <h2>
+   <a name="modified_red_edge_simple_ratio_index">
+   </a>
+   Modified Red Edge Simple Ratio Index
+  </h2>
+  <p>
+   The Modified Red Edge Simple Ratio (mSR
+   <sub>
+    705
+   </sub>
+   ) index is a modification of the traditional broadband SR index. It differs from the standard SR because it uses bands in the red edge and incorporates a correction for leaf specular reflection. Applications include precision agriculture, forest monitoring, and vegetation stress detection. The mSR&#160;
+   <sub>
+    705
+   </sub>
+   index is defined by the following equation:
+  </p>
+  <p>
+   <img src="../Resources/Images/Vegetation/11_13.jpg" />
+  </p>
+  <p>
+   The value of this index ranges from 0 to 30. The common range for green vegetation is 2 to 8.
+  </p>
+  <p>
+   <b>
+    References
+   </b>
+   <![CDATA[ ]]>
+  </p>
+  <p>
+   Sims, D.A. and J.A. Gamon, 2002.
+   <i>
+    Relationships Between Leaf Pigment Content and Spectral Reflectance Across a Wide Range of Species, Leaf Structures and Developmental Stages
+   </i>
+   . Remote Sensing of Environment 81:337-354.
+  </p>
+  <p>
+   Datt, B., 1999.
+   <i>
+    A New Reflectance Index for Remote Sensing of Chlorophyll Content in Higher Plants: Tests Using Eucalyptus Leaves
+   </i>
+   . Journal of Plant Physiology 154:30-36.
+  </p>
+  <h2>
+   <a name="modified_red_edge_NDVI">
+   </a>
+   Modified Red Edge Normalized Difference Vegetation Index
+  </h2>
+  <p>
+   The Modified Red Edge Normalized Difference Vegetation Index (mNDVI
+   <sub>
+    705
+   </sub>
+   ) is a modification of the Red Edge NDVI. It differs from the Red Edge NDVI by incorporating a correction for leaf specular reflection. The mNDVI
+   <sub>
+    705
+   </sub>
+   capitalizes on the sensitivity of the vegetation red edge to small changes in canopy foliage content, gap fraction, and senescence. Applications include precision agriculture, forest monitoring, and vegetation stress detection. The mNDVI
+   <sub>
+    705
+   </sub>
+   index is defined by the following equation:
+  </p>
+  <p>
+   <img src="../Resources/Images/Vegetation/11_11.jpg" />
+  </p>
+  <p>
+   The value of this index ranges from -1 to 1. The common range for green vegetation is 0.2 to 0.7.
+  </p>
+  <p>
+   <b>
+    References
+   </b>
+   <![CDATA[ ]]>
+  </p>
+  <p>
+   Datt, B., 1999.
+   <i>
+    A New Reflectance Index for Remote Sensing of Chlorophyll Content in Higher Plants: Tests Using Eucalyptus Leaves
+   </i>
+   . Journal of Plant Physiology 154:30-36.
+  </p>
+  <p>
+   Sims, D.A. and J.A. Gamon, 2002.
+   <i>
+    Relationships Between Leaf Pigment Content and Spectral Reflectance Across a Wide Range of Species, Leaf Structures and Developmental Stages
+   </i>
+   . Remote Sensing of Environment 81:337-354.
+  </p>
+  <h2>
+   <a name="vogelmann_1">
+   </a>
+   Vogelmann Red Edge Index 1
+  </h2>
+  <p>
+   The Vogelmann Red Edge Index 1 (VOG1) is a narrowband reflectance measurement that is sensitive to the combined effects of foliage chlorophyll concentration, canopy leaf area, and water content. Applications include vegetation phenology (growth) studies, precision agriculture, and vegetation productivity modeling. VOG1 is defined by the following equation:
+  </p>
+  <p>
+   <img src="../Resources/Images/Vegetation/11_12.jpg" />
+  </p>
+  <p>
+   The value of this index ranges from 0 to 20. The common range for green vegetation is 4 to 8.
+  </p>
+  <h4>
+   Reference
+  </h4>
+  <p>
+   Vogelmann, J.E., B.N. Rock, and D.M. Moss, 1993.
+   <i>
+    Red Edge Spectral Measurements from Sugar Maple Leaves
+   </i>
+   . International Journal of Remote Sensing 14:1563-1575.
+  </p>
+  <h2>
+   <a name="vogelmann_2">
+   </a>
+   Vogelmann Red Edge Index 2
+  </h2>
+  <p>
+   The Vogelmann Red Edge Index 2 (VOG2) is a narrowband reflectance measurement that is sensitive to the combined effects of foliage chlorophyll concentration, canopy leaf area, and water content. Applications include vegetation phenology (growth) studies, precision agriculture, and vegetation productivity modeling. VOG2 is defined by the following equation:
+  </p>
+  <p>
+   <img src="../Resources/Images/Vegetation/11_14.jpg" />
+  </p>
+  <p>
+   The value of this index ranges from 0 to 20. The common range for green vegetation is 4 to 8.
+  </p>
+  <p>
+   <b>
+    Reference
+   </b>
+  </p>
+  <p>
+   Vogelmann, J.E., B.N. Rock, and D.M. Moss, 1993.
+   <i>
+    Red Edge Spectral Measurements from Sugar Maple Leaves
+   </i>
+   . International Journal of Remote Sensing 14:1563-1575.
+  </p>
+  <h2>
+   <a name="vogelmann_3">
+   </a>
+   Vogelmann Red Edge Index 3
+  </h2>
+  <p>
+   The Vogelmann Red Edge Index 3 (VOG3) is a narrowband reflectance measurement that is sensitive to the combined effects of foliage chlorophyll concentration, canopy leaf area, and water content. Applications include vegetation phenology (growth) studies, precision agriculture, and vegetation productivity modeling. VOG3 is defined by the following equation:
+  </p>
+  <p>
+   <img src="../Resources/Images/Vegetation/11_15.jpg" />
+  </p>
+  <p>
+   The value of this index ranges from 0 to 20. The common range for green vegetation is 4 to 8.
+  </p>
+  <p>
+   <b>
+    Reference
+   </b>
+  </p>
+  <p>
+   Vogelmann, J.E., B.N. Rock, and D.M. Moss, 1993.
+   <i>
+    Red Edge Spectral Measurements from Sugar Maple Leaves
+   </i>
+   . International Journal of Remote Sensing 14:1563-1575.
+  </p>
+  <h2>
+   <a name="red_edge_position_index">
+   </a>
+   Red Edge Position Index
+  </h2>
+  <p>
+   The Red Edge Position (REP) index is a narrowband reflectance measurement that is sensitive to changes in chlorophyll concentration. Increased chlorophyll concentration broadens the absorption feature and moves the red edge to longer wavelengths. The red edge position refers to the wavelength of steepest slope within the range 690&#160;nm to 740 nm. The common range for green vegetation is 700 nm to 730 nm.
+  </p>
+  <p>
+   Results are reported as the wavelength of the maximum derivative of reflectance in the vegetation red edge region of the spectrum in microns from .69 microns to .74 microns. Applications include crop monitoring and yield prediction, ecosystem disturbance detection, photosynthesis modeling, and canopy stress caused by climate and other factors.
+  </p>
+  <p>
+   <b>
+    Reference
+   </b>
+  </p>
+  <p>
+   Curran, P.J., Windham, W.R., and H.L. Gholz, 1995.
+   <i>
+    Exploring the Relationship Between Reflectance Red Edge and Chlorophyll Concentration in Slash Pine Leaves
+   </i>
+   . Tree Physiology 15:203-206.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

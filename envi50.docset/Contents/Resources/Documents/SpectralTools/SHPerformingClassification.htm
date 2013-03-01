@@ -1,0 +1,315 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Spectral Tools|Spectral Unmixing|Spectral Hourglass Wizard" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Perform Classification, MTMF, and Spectral Unmixing
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#SpectralTools/SHPerformingClassification.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="SpectralTools.htm">
+    Spectral Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="SpectralUnmixing.htm">
+    Spectral Unmixing
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="SpectralHourglassWizard.htm">
+    Spectral Hourglass Wizard
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Perform Classification, MTMF, and Spectral Unmixing
+   </span>
+  </div>
+  <h1>
+   Perform Classification, MTMF, and Spectral Unmixing
+  </h1>
+  <ol>
+   <li value="1">
+    <a name="kanchor414">
+    </a>
+    <a name="kanchor415">
+    </a>
+    In the Mapping Methods panel, choose
+    <b>
+     <a href="../FindFeatures/Classification/ClassificationTools/SpectralAngleMapper.htm">
+      SAM
+     </a>
+    </b>
+    ,
+    <b>
+     <a href="MTMF.htm">
+      MTMF
+     </a>
+    </b>
+    , or
+    <b>
+     <a href="LinearSpectralUnmixing.htm">
+      Unmixing
+     </a>
+    </b>
+    mapping methods.
+   </li>
+   <p>
+    The
+    <b>
+     SAM
+    </b>
+    method produces a classified image based on the value you specify for
+    <b>
+     SAM Maximum Angle
+    </b>
+    . Decreasing this threshold usually results in fewer matching pixels (better matches to the reference spectrum). Increasing this threshold may result in a more spatially coherent image; however, the overall pixel matches will not be as good as for the lower threshold.
+   </p>
+   <p>
+    If you choose
+    <b>
+     Unmixing
+    </b>
+    ,
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    can optionally constrain the abundances for each pixel to sum-to-one. You can define the weight of this constraint by entering an
+    <b>
+     Unmix Unit Sum Constraint Weight
+    </b>
+    value. Larger weights relative to the variance of the data cause the unmixing to honor the unit-sum constraint more closely. To strictly honor the constraint, make the weight many times the spectral variance of the data.
+   </p>
+   <li value="2">
+    Click
+    <b>
+     Next
+    </b>
+    . Progress windows display the processing status. The Calculate Mapping Methods panel briefly appears.
+   </li>
+   <li value="3">
+    From the
+    <b>
+     Examine Results For
+    </b>
+    drop-down list, choose
+    <b>
+     SAM
+    </b>
+    ,
+    <b>
+     MTMF
+    </b>
+    , or
+    <b>
+     Unmix
+    </b>
+    to switch between the
+    <a href="#Investig">
+     Investigate SAM Results
+    </a>
+    ,
+    <a href="#Investig2">
+     Investigate MTMF Results
+    </a>
+    , and
+    <a href="#Investig3">
+     Investigate Unmix Results
+    </a>
+    panels.
+   </li>
+  </ol>
+  <h2>
+   <a name="Investig">
+   </a>
+   Investigate SAM Results
+  </h2>
+  <p>
+   The output from SAM is a classified image and a set of rule images (one per endmember). The pixel values of the rule images represent the spectral angle in radians from the reference spectrum for each class. Lower spectral angles represent better matches to the endmember spectra. Areas that satisfied the selected radian threshold criteria are carried over as classified areas into the classified image.
+  </p>
+  <ol>
+   <li value="1">
+    Click
+    <b>
+     Load SAM Class Result
+    </b>
+    to examine the SAM classification image.
+    <b style="font-weight: normal;">
+     If the image
+    </b>
+    does not show spatially coherent classes, then the classification does not match the target spectra or what you know about the target. In this case, you should review the SAM rule images.
+   </li>
+   <li value="2">
+    Highlight the name of an image in the
+    <b>
+     SAM Rule Images
+    </b>
+    list and click
+    <b>
+     Load SAM Rule
+    </b>
+    <b style="font-weight: normal;">
+    </b>
+    <b>
+     Image
+    </b>
+    , or double-click the image name in the
+    <b>
+     SAM Rule Images
+    </b>
+    list.
+   </li>
+   <p>
+    The rule image is loaded into a display group using an inverted color table. (The
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    Color Tables dialog also appears.) A smaller SAM angle means a pixel is a better match to the target. Inverting the color table displays the best matches as brighter pixels, which is more intuitive.
+   </p>
+   <p>
+    A histogram of the image also appears in a separate interactive stretching dialog. This histogram explicitly shows the linear stretch applied to the display of the rule image. A flat line in the left portion (lowest value) of the histogram indicates a good separation of targets and backgrounds. Any data values to the left of this flat line are significant matches for the target spectra.
+   </p>
+   <li value="3">
+    The display group is linearly stretched to a maximum value specified by the
+    <b>
+     Default Stretch Max
+    </b>
+    value in the
+    <b>
+     SAM Rule Images
+    </b>
+    section of the Wizard. The initial value is 0.05. To change the default stretch maximum when you display rule images, enter the desired
+    <b>
+     Default Stretch Max
+    </b>
+    value and double-click on the rule image name in the
+    <b>
+     SAM Rule Images
+    </b>
+    list.
+   </li>
+   <p>
+    If the
+    <b>
+     Default Stretch Max
+    </b>
+    value is less than the minimum value in the rule image band, the minimum value will be used instead.
+   </p>
+   <li value="4">
+    Double-click in the display group to open the Cursor Location/Value tool. Evaluate the SAM spectral angles for each pixel.
+   </li>
+   <li value="5">
+    You can increase the maximum angle threshold to make the classification more relaxed, or decrease it to make the classification more selective. Click
+    <b>
+     Prev
+    </b>
+    in the Wizard and enter a new
+    <b>
+     SAM Maximum Angle
+    </b>
+    value if desired.
+   </li>
+  </ol>
+  <h2>
+   <a name="Investig2">
+   </a>
+   Investigate MTMF Results
+  </h2>
+  <p>
+   Select a specific endmember from the
+   <b>
+    MTMF Rule Images
+   </b>
+   list and click
+   <b>
+    Load MTMF Rule Image
+   </b>
+   , or double-click the endmember in the
+   <b>
+    MTMF Rule Images
+   </b>
+   list to load the MF image in an
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   display group and to show a 2D scatter plot of MF score and infeasibility score. The Wizard automatically estimates a linear stretch of the images, applying the 0-255 gray scale display range to the valid detections in the right-hand “tail” of the MF histogram. It also displays a Histogram Stretching dialog, so you can adjust the display range as needed.
+  </p>
+  <p>
+   See
+   <a href="MTMF.htm#results">
+    Mixture Tuned Matched Filtering Results
+   </a>
+   for more information on interpreting results.
+  </p>
+  <h2>
+   <a name="Investig3">
+   </a>
+   Investigate Unmixing Results
+  </h2>
+  <p>
+   In the Investigate Unmix Result panel of the Wizard, select a specific endmember from the
+   <b>
+    Unmix Abundance Images
+   </b>
+   list and click
+   <b>
+    Load Unmix Abundance Image
+   </b>
+   , or double-click the endmember in the
+   <b>
+    Unmix Abundance Images
+   </b>
+   list to load an abundance image into an
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   display group. The Wizard automatically estimates a 2% linear stretch of the abundance images and displays a Histogram Stretching dialog so you can adjust the contrast stretch as needed.
+  </p>
+  <p>
+   In the Investigate Unmix Result panel of the Wizard, click
+   <b>
+    Load Unmix RMS Image
+   </b>
+   to load the RMS error image.
+  </p>
+  <p>
+   See
+   <a href="LinearSpectralUnmixing.htm#results">
+    Linear Spectral Unmixing Results
+   </a>
+   for more information on interpreting results.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

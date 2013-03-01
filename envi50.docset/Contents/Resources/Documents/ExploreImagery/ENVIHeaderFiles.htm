@@ -1,0 +1,1388 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Explore Imagery|Open and Browse Data" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   ENVI Header Files
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/TableStyles/Description.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#ExploreImagery/ENVIHeaderFiles.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="ExploreImagery.htm">
+    Explore Imagery
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="OpenBrowseData.htm">
+    Open and Browse Data
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    ENVI Header Files
+   </span>
+  </div>
+  <h1>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   Header Files
+  </h1>
+  <p>
+   The
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   header file contains
+   <a name="kanchor21">
+   </a>
+   information needed to read an image data file. If the image file is in
+   <a href="ENVIImageFiles.htm">
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    raster format
+   </a>
+   , typically it has an associated header file located in the same directory. The header file uses the same name as the image file, with the file extension
+   <code>
+    .hdr
+   </code>
+   .
+  </p>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   creates a header file the first time you access a data file in a format that it does not automatically recognize. A Header Info dialog appears, where you enter the required information. You can later edit the information using the
+   <b>
+    Raster Management &gt; Edit ENVI Header
+   </b>
+   menu option.
+  </p>
+  <p>
+   See the following sections for more information on header files.
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#Editing">
+     Edit Header Files
+    </a>
+   </li>
+   <li value="2">
+    <a href="#Importin">
+     Import Header Information from Other Files
+    </a>
+   </li>
+   <li value="3">
+    <a href="#Using">
+     Use a Text Editor to Create Header Files
+    </a>
+   </li>
+   <li value="4">
+    <a href="#The">
+     The
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     Header Format
+    </a>
+   </li>
+   <li value="5">
+    <a href="#Example">
+     Example
+    </a>
+   </li>
+  </ul>
+  <h2>
+   <a name="Editing">
+   </a>
+   Edit Header Files
+  </h2>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Raster Management &gt; Edit ENVI Header
+    </b>
+    , select the image filename from the Edit Header Input File dialog, then click
+    <b>
+     OK
+    </b>
+    . The Header Info dialog appears.
+   </li>
+   <li value="2">
+    The Header Info dialog lists the required fields. Modify these as needed. See
+    <a href="#The">
+     The
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     Header Format
+    </a>
+    for descriptions of each field.
+    <p>
+     Use caution when setting the required header parameters for files not in the
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     file format because your changes will not be saved. For example, changing the data type of an image in HDF format does not affect the data type of the displayed or returned data; the HDF format overrides any settings you add or change. To change the data type of an HDF image, first save the data to an
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     file, then change the data type. This is also true for many external format files opened in
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     .
+    </p>
+   </li>
+   <li value="3">
+    Modify optional fields as needed by clicking the
+    <b>
+     Edit Attributes
+    </b>
+    drop-down list. See
+    <a href="EnterOptionalHeaderInformation.htm">
+     Enter Optional Header Information
+    </a>
+    for descriptions of each field.
+   </li>
+   <li value="4">
+    <p>
+     When the edits are complete, click
+     <b>
+      OK
+     </b>
+     in the Header Info dialog. If you edit the header of a file that is currently open,
+     <span class="DocumentTitleProductName">
+      ENVI
+     </span>
+     closes that file and re-opens it.
+    </p>
+   </li>
+  </ol>
+  <h2>
+   <a name="Importin">
+   </a>
+   Import Header Information From Other Files
+  </h2>
+  <p>
+   To import header information from one file into the header of the current file:
+  </p>
+  <ol>
+   <li value="1">
+    In the Header Info dialog menu bar, click
+    <b>
+     Input Header Info From
+    </b>
+    and select
+    <b>
+     Other File
+    </b>
+    . The Select File for Header Input dialog appears.
+   </li>
+   <li value="2">
+    Select the file containing the header information.
+   </li>
+   <li value="3">
+    Click
+    <b>
+     OK
+    </b>
+    . The Header Info dialog re-appears.
+   </li>
+   <li value="4">
+    Click
+    <b>
+     OK
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds the header information to the file. If the image file was open in the display,
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    closes it.
+   </li>
+  </ol>
+  <h2>
+   <a name="Using">
+   </a>
+   Use a Text Editor to Create Header Files
+  </h2>
+  <p>
+   You can create an
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   header using a text editor. The file must start with the text string
+   <code>
+    ENVI
+   </code>
+   for
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   to recognize it as a native file header. Keywords within the file indicate critical file information. You can add comments to the file by inserting a line with a semicolon as the first character.
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   ignores these lines when parsing the header file. Comments can appear anywhere within a header file, but they must be on their own line, and the semicolon must be the first character of that line. Comments cannot follow a keyword/value pair.
+  </p>
+  <h2>
+   <a name="The">
+   </a>
+   The
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   Header Format
+  </h2>
+  <p>
+   The following table lists header fields in alphabetical order. Red text indicates a required field for
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   -format files. See
+   <a href="#Example">
+    Example
+   </a>
+   for an example header file.
+  </p>
+  <table style="caption-side: bottom;margin-left: 0;margin-right: auto;mc-table-style: url('../Resources/TableStyles/Description.css');" cellspacing="0" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <td class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       Field
+      </p>
+     </td>
+     <td class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p class="TableHead">
+       Description
+      </p>
+     </td>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p style="margin-bottom: 3pt;font-family: Courier;font-weight: normal;font-style: normal;letter-spacing: 0em;color: #000000;text-decoration: none;">
+       <code>
+        band names
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Specify names for image bands.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p class="RedText">
+       <a name="bands">
+       </a>
+       <code>
+        bands
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       The number of bands per image file.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p style="margin-bottom: 3pt;font-family: Courier;font-weight: normal;font-style: normal;letter-spacing: 0em;color: #000000;text-decoration: none;">
+       <code>
+        bbl
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Lists the
+       <a href="EnterOptionalHeaderInformation.htm#Select">
+        bad band
+       </a>
+       multiplier values of each band in an image, typically 0 for bad bands and 1 for good bands.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p class="RedText">
+       <a name="byte_order">
+       </a>
+       <code>
+        byte order
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       The order of the bytes in integer, long integer, 64-bit integer, unsigned 64-bit integer, floating point, double precision, and complex data types. Use one of the following:
+      </p>
+      <ul>
+       <li value="1">
+        Byte order=0 (
+        <b>
+         Host (Intel)
+        </b>
+        in the Header Info dialog) is least significant byte first (LSF) data (DEC and MS-DOS systems).
+       </li>
+       <li value="2">
+        Byte order=1 (
+        <b>
+         Network (IEEE)
+        </b>
+        in the Header Info dialog) is most significant byte first (MSF) data (all other platforms).
+       </li>
+      </ul>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p style="margin-bottom: 3pt;font-family: Courier;font-weight: normal;font-style: normal;letter-spacing: 0em;color: #000000;text-decoration: none;">
+       <code>
+        class lookup
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Lists class names along with their RGB color definitions for classification files.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p style="margin-bottom: 3pt;font-family: Courier;font-weight: normal;font-style: normal;letter-spacing: 0em;color: #000000;text-decoration: none;">
+       <code>
+        class names
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Lists class names for classification files
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p style="margin-bottom: 3pt;font-family: Courier;font-weight: normal;font-style: normal;letter-spacing: 0em;color: #000000;text-decoration: none;">
+       <code>
+        classes
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Defines the number of classes, including unclassified regions, for classification files.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p style="margin-bottom: 3pt;font-family: Courier;font-weight: normal;font-style: normal;letter-spacing: 0em;color: #000000;text-decoration: none;">
+       <code>
+        complex function
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Specifies the values to calculate from a complex image and to use when displaying the image, calculating statistics for the image, or writing the image to a new file. Values include
+       <code>
+        Real
+       </code>
+       ,
+       <code>
+        Imaginary
+       </code>
+       ,
+       <code>
+        Power
+       </code>
+       ,
+       <code>
+        Magnitude
+       </code>
+       , and
+       <code>
+        Phase
+       </code>
+       . The default value is
+       <code>
+        Power
+       </code>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr madcap:conditions="">
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p style="margin-bottom: 3pt;font-family: Courier;font-weight: normal;font-style: normal;letter-spacing: 0em;color: #000000;text-decoration: none;">
+       <code>
+        coordinate system string
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       When you save a georeferenced file to
+       <a href="ENVIImageFiles.htm">
+        <span class="DocumentTitleProductName">
+         ENVI
+        </span>
+        raster format
+       </a>
+       ,
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       adds a
+       <code>
+        coordinate system string
+       </code>
+       field to the header file. It lists the parameters used for a
+       <a href="../GeorectifyImagery/BackgroundCoordinateSystems.htm#Geograph">
+        geographic coordinate system
+       </a>
+       or
+       <a href="../GeorectifyImagery/BackgroundCoordinateSystems.htm#Projecte">
+        projected coordinate system
+       </a>
+       . Following are some examples:
+      </p>
+      <p>
+       A
+       <b>
+        geographic coordinate system
+       </b>
+       (for example, Geographic Lat/Lon) string contains the word
+       <code>
+        GEOGCS
+       </code>
+       and lists the coordinate system name, datum, spheroid, prime meridian, and units:
+      </p>
+      <pre xml:space="preserve">
+       coordinate system string =
+      </pre>
+      <pre xml:space="preserve">
+       GEOGCS["GCS_WGS_1984",
+      </pre>
+      <pre xml:space="preserve">
+       DATUM["D_WGS_1984",
+      </pre>
+      <pre xml:space="preserve">
+       SPHEROID["WGS_1984",6378137.0,298.257223563]],
+      </pre>
+      <pre xml:space="preserve">
+       PRIMEM["Greenwich",0.0],
+      </pre>
+      <pre xml:space="preserve">
+       UNIT["Degree",0.0174532925199433]]
+      </pre>
+      <p>
+       A
+       <b>
+        projected coordinate system
+       </b>
+       string contains the word
+       <code>
+        PROJCS
+       </code>
+       and lists all of the geographic coordinate system parameters, plus detailed parameters that describe the projected coordinate system:
+      </p>
+      <pre xml:space="preserve">
+       coordinate system string =
+      </pre>
+      <pre xml:space="preserve">
+       PROJCS["WGS_1984_South_Georgia_Lambert",
+      </pre>
+      <pre xml:space="preserve">
+       GEOGCS["GCS_WGS_1984",
+      </pre>
+      <pre xml:space="preserve">
+       DATUM["D_WGS_1984",
+      </pre>
+      <pre xml:space="preserve">
+       SPHEROID["WGS_1984",6378137.0,298.257223563]],
+      </pre>
+      <pre xml:space="preserve">
+       PRIMEM["Greenwich",0.0],
+      </pre>
+      <pre xml:space="preserve">
+       UNIT["Degree",0.0174532925199433]],
+      </pre>
+      <pre xml:space="preserve">
+       PROJECTION["Lambert_Conformal_Conic"],
+      </pre>
+      <pre xml:space="preserve">
+       PARAMETER["False_Easting",0.0],
+      </pre>
+      <pre xml:space="preserve">
+       PARAMETER["False_Northing",0.0],
+      </pre>
+      <pre xml:space="preserve">
+       PARAMETER["Central_Meridian",-37.0],
+      </pre>
+      <pre xml:space="preserve">
+       PARAMETER["Standard_Parallel_1",-54.0],
+      </pre>
+      <pre xml:space="preserve">
+       PARAMETER["Standard_Parallel_2",-54.75],
+      </pre>
+      <pre xml:space="preserve">
+       PARAMETER["Latitude_Of_Origin",-55.0],
+      </pre>
+      <pre xml:space="preserve">
+       UNIT["Meter",1.0]]
+      </pre>
+      <p>
+       See
+       <a href="../GeorectifyImagery/BackgroundCoordinateSystems.htm#Coordina">
+        Coordinate System Strings
+       </a>
+       for more information.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p style="margin-bottom: 3pt;font-family: Courier;font-weight: normal;font-style: normal;letter-spacing: 0em;color: #000000;text-decoration: none;">
+       <code>
+        data gain values
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Gain values for each band.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p style="margin-bottom: 3pt;font-family: Courier;font-weight: normal;font-style: normal;letter-spacing: 0em;color: #000000;text-decoration: none;">
+       <code>
+        data ignore value
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Pixel values that should be ignored in image processing.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p style="margin-bottom: 3pt;font-family: Courier;font-weight: normal;font-style: normal;letter-spacing: 0em;color: #000000;text-decoration: none;">
+       <code>
+        data offset values
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Offset values for each band.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p class="RedText">
+       <a name="data_type">
+       </a>
+       <code>
+        data type
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       The type of data representation:
+      </p>
+      <ul>
+       <li value="1">
+        1 = 8-bit byte
+       </li>
+       <li value="2">
+        2 = 16-bit signed integer
+       </li>
+       <li value="3">
+        3 = 32-bit signed long integer
+       </li>
+       <li value="4">
+        4 = 32-bit floating point
+       </li>
+       <li value="5">
+        5 = 64-bit double-precision floating point
+       </li>
+       <li value="6">
+        6 = 2x32-bit complex, real-imaginary pair of double precision
+       </li>
+       <li value="7">
+        9 = 2x64-bit double-precision complex, real-imaginary pair of double precision
+       </li>
+       <li value="8">
+        12 = 16-bit unsigned integer
+       </li>
+       <li value="9">
+        13 = 32-bit unsigned long integer
+       </li>
+       <li value="10">
+        14 = 64-bit signed long integer
+       </li>
+       <li value="11">
+        15 = 64-bit unsigned long integer
+       </li>
+      </ul>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p style="margin-bottom: 3pt;font-family: Courier;font-weight: normal;font-style: normal;letter-spacing: 0em;color: #000000;text-decoration: none;">
+       <code>
+        default bands
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Indicates which band numbers to automatically load into the Data Manager
+       <b>
+        Greyscale
+       </b>
+       or
+       <b>
+        R
+       </b>
+       ,
+       <b>
+        G
+       </b>
+       , and
+       <b>
+        B
+       </b>
+       fields every time the file is opened. By default, a new image is automatically loaded when a file that has default bands defined in its header is opened. If only one band number is used, then
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       loads a greyscale image.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p style="margin-bottom: 3pt;font-family: Courier;font-weight: normal;font-style: normal;letter-spacing: 0em;color: #000000;text-decoration: none;">
+       <code>
+        default stretch
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Determines what type of stretch (% linear, linear range, Gaussian, equalization, square root) to use when
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       displays the image.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p style="margin-bottom: 3pt;font-family: Courier;font-weight: normal;font-style: normal;letter-spacing: 0em;color: #000000;text-decoration: none;">
+       <code>
+        dem band
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      Index (starting at 1) of a selected
+      <a href="EnterOptionalHeaderInformation.htm#Associat">
+       DEM band associated with the image
+      </a>
+      . The
+      <code>
+       dem band
+      </code>
+      is not written if the DEM file contains a single band, or if the first band of an image was chosen. In these cases, the
+      <code>
+       dem band
+      </code>
+      value defaults to 0.
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p style="margin-bottom: 3pt;font-family: Courier;font-weight: normal;font-style: normal;letter-spacing: 0em;color: #000000;text-decoration: none;">
+       <code>
+        dem file
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Path and filename of a
+       <a href="EnterOptionalHeaderInformation.htm#Associat">
+        DEM associated with the image
+       </a>
+       .
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p style="margin-bottom: 3pt;font-family: Courier;font-weight: normal;font-style: normal;letter-spacing: 0em;color: #000000;text-decoration: none;">
+       <a name="description">
+       </a>
+       <code>
+        description
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       A string describing the image or the processing performed.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p class="RedText">
+       <a name="file_type">
+       </a>
+       <code>
+        file type
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       The
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       -defined file type, such as a certain data format and processing result. The available file types are listed in the
+       <code>
+        filetype.txt
+       </code>
+       file (see
+       <a>
+        File Type File
+       </a>
+       ). The file type ASCII string must exacly match an entry in the
+       <code>
+        filetype.txt
+       </code>
+       file, including the proper case.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p style="margin-bottom: 3pt;font-family: Courier;font-weight: normal;font-style: normal;letter-spacing: 0em;color: #000000;text-decoration: none;">
+       <code>
+        fwhm
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Lists full-width-half-maximum (FWHM) values of each band in an image. Units should be the same as those used for wavelength and set in the wavelength units parameter.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p style="margin-bottom: 3pt;font-family: Courier;font-weight: normal;font-style: normal;letter-spacing: 0em;color: #000000;text-decoration: none;">
+       <code>
+        geo points
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       <a href="EnterOptionalHeaderInformation.htm#Enter3">
+        Geographic corners for non-georeferenced files
+       </a>
+       . You can enter between one and four pixel locations and their corresponding latitudes and longitudes. Following is an example:
+      </p>
+      <pre xml:space="preserve">
+       geo points = {
+      </pre>
+      <pre xml:space="preserve">
+       1.0000, 1.0000, 32.89380137, -117.07201460,
+      </pre>
+      <pre xml:space="preserve">
+       1002.0000, 1.0000, 32.87364744, -116.95855862,
+      </pre>
+      <pre xml:space="preserve">
+       1.0000, 1002.0000, 32.80628336, -117.09960891,
+      </pre>
+      <pre xml:space="preserve">
+       1002.0000, 1002.0000, 32.78615422, -116.98625969}
+      </pre>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p class="RedText">
+       <a name="header_offset">
+       </a>
+       <code>
+        header offset
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       The number of bytes of embedded header information present in the file (for example, 128 bytes for ERDAS 7.5
+       <code>
+        .lan
+       </code>
+       files).
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       skips these bytes when reading the file. See
+       <a href="EnterOptionalHeaderInformation.htm#Set3">
+        Row Offsets
+       </a>
+       for more information. The default value is 0 bytes.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p class="RedText">
+       <a name="interleave">
+       </a>
+       <code>
+        interleave
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Refers to whether the
+       <a href="ENVIImageFiles.htm">
+        data interleave
+       </a>
+       is BSQ, BIL, or BIP.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p class="RedText">
+       <a name="lines">
+       </a>
+       <code>
+        lines
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       The number of lines per image for each band.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p style="margin-bottom: 3pt;font-family: Courier;font-weight: normal;font-style: normal;letter-spacing: 0em;color: #000000;text-decoration: none;">
+       <code>
+        map info
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Lists geographic information in the following order:
+      </p>
+      <ul>
+       <li value="1">
+        Projection name
+       </li>
+       <li value="2">
+        Reference pixel x location (in file coordinates)
+       </li>
+       <li value="3">
+        Reference pixel y location (in file coordinates)
+       </li>
+       <li value="4">
+        Pixel easting
+       </li>
+       <li value="5">
+        Pixel northing
+       </li>
+       <li value="6">
+        x pixel size
+       </li>
+       <li value="7">
+        y pixel size
+       </li>
+       <li value="8">
+        Projection zone (UTM only)
+       </li>
+       <li value="9">
+        North or South (UTM only)
+       </li>
+      </ul>
+      <p>
+       See
+       <a href="EnterOptionalHeaderInformation.htm#Enter2">
+        Enter Map Information for Georeferenced Files
+       </a>
+       for further details.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p style="margin-bottom: 3pt;font-family: Courier;font-weight: normal;font-style: normal;letter-spacing: 0em;color: #000000;text-decoration: none;">
+       <code>
+        pixel size
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Indicates x and y pixel size in meters for non-georeferenced files.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p style="margin-bottom: 3pt;font-family: Courier;font-weight: normal;font-style: normal;letter-spacing: 0em;color: #000000;text-decoration: none;">
+       <code>
+        major frame offsets
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       The number of extra bytes to skip at the beginning and ending of the major frame.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p style="margin-bottom: 3pt;font-family: Courier;font-weight: normal;font-style: normal;letter-spacing: 0em;color: #000000;text-decoration: none;">
+       <code>
+        minor frame offsets
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       The number of extra bytes to skip at the beginning and ending of the minor frame.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p style="margin-bottom: 3pt;font-family: Courier;font-weight: normal;font-style: normal;letter-spacing: 0em;color: #000000;text-decoration: none;">
+       <code>
+        projection info
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       If you defined a custom projection in
+       <span class="DocumentTitleProductNameENVIClassic">
+        ENVI Classic
+       </span>
+       , this field contains that map information. A
+       <code>
+        projection info line
+       </code>
+       is added to the
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       header file if the image uses a user-defined projection instead of a standard projection defined in the file
+       <code>
+        map_proj.txt
+       </code>
+       file of the
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       distribution. If the header file contains a
+       <code>
+        coordinate system string
+       </code>
+       field, any existing
+       <code>
+        projection info line
+       </code>
+       information is ignored.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p style="margin-bottom: 3pt;font-family: Courier;font-weight: normal;font-style: normal;letter-spacing: 0em;color: #000000;text-decoration: none;">
+       <code>
+        reflectance scale factor
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       The value that, when divided into your data, would scale it from 0-1 reflectance. For example, if the value of 10,000 in your data represents a reflectance value of 1.0, enter a reflectance scale factor of 10,000.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p style="margin-bottom: 3pt;font-family: Courier;font-weight: normal;font-style: normal;letter-spacing: 0em;color: #000000;text-decoration: none;">
+       <code>
+        rpc info
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Lists
+       <a href="../GeorectifyImagery/BackgroundNonStandardProjections.htm#Sensor">
+        rational polynomial coefficient (RPC)
+       </a>
+       geolocation information for files that have RPC reference information instead of a standard map projection.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p class="RedText">
+       <a name="samples">
+       </a>
+       <code>
+        samples
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       The number of samples (pixels) per image line for each band.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p style="margin-bottom: 3pt;font-family: Courier;font-weight: normal;font-style: normal;letter-spacing: 0em;color: #000000;text-decoration: none;">
+       <code>
+        sensor type
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Instrument types, such as Landsat TM, SPOT, RADARSAT, and so on. The available sensor types are listed in the
+       <code>
+        sensor.txt
+       </code>
+       file described in
+       <a href="../NoTOCTopics/ENVISensorFile.htm">
+        <span class="DocumentTitleProductName">
+         ENVI
+        </span>
+        Sensor File
+       </a>
+       . The string must exactly match an entry in the
+       <code>
+        sensor.txt
+       </code>
+       file, including proper case.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p style="margin-bottom: 3pt;font-family: Courier;font-weight: normal;font-style: normal;letter-spacing: 0em;color: #000000;text-decoration: none;">
+       <code>
+        spectra names
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       A comma-separated list of spectra names enclosed in {curly brackets}; for spectral library files only.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p style="margin-bottom: 3pt;font-family: Courier;font-weight: normal;font-style: normal;letter-spacing: 0em;color: #000000;text-decoration: none;">
+       <code>
+        wavelength
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Lists the center wavelength values of each band in an image. Units should be the same as those used for the
+       <code>
+        fwhm
+       </code>
+       field and set in the wavelength units parameter.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p style="margin-bottom: 3pt;font-family: Courier;font-weight: normal;font-style: normal;letter-spacing: 0em;color: #000000;text-decoration: none;">
+       <code>
+        wavelength units
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Text string indicating the wavelength units.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p class="RedText">
+       <a name="xstart_ystart">
+       </a>
+       <code>
+        x start
+       </code>
+       and
+       <code>
+        y start
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Defines the image coordinates for the upper-left pixel in the image. Images that are spatial subsets of larger images often use an image coordinate system that references the parent (or larger) image so that you can link and dynamically overlay the two images. The default values for the upper-left pixel are (1,1).
+      </p>
+      <p>
+       Changing these values does not affect the way
+       <span class="DocumentTitleProductName">
+        ENVI
+       </span>
+       reads the image data from the file.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p style="margin-bottom: 3pt;font-family: Courier;font-weight: normal;font-style: normal;letter-spacing: 0em;color: #000000;text-decoration: none;">
+       <code>
+        z plot average
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       The number of pixels in the x and y directions to average for Z plots.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p style="margin-bottom: 3pt;font-family: Courier;font-weight: normal;font-style: normal;letter-spacing: 0em;color: #000000;text-decoration: none;">
+       <code>
+        z plot range
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       The default minimum and maximum values for Z plots.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <p style="margin-bottom: 3pt;font-family: Courier;font-weight: normal;font-style: normal;letter-spacing: 0em;color: #000000;text-decoration: none;">
+       <code>
+        z plot titles
+       </code>
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColEnd">
+      <p>
+       The x and y axis titles for Z plots.
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h2>
+   <a name="Example">
+   </a>
+   Example
+  </h2>
+  <p>
+   A typical
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   header file looks like this:
+  </p>
+  <pre>
+   ENVI
+  </pre>
+  <pre>
+   description = {
+  </pre>
+  <pre>
+   Registration Result. Method1st degree Polynomial w/ nearest neighbor [Wed Dec 20 23:59:19 1995] }
+  </pre>
+  <pre>
+   samples = 709
+  </pre>
+  <pre>
+   lines   = 946
+  </pre>
+  <pre>
+   bands   = 7
+  </pre>
+  <pre>
+   header offset = 0
+  </pre>
+  <pre>
+   file type = ENVI Standard
+  </pre>
+  <pre>
+   data type = 1
+  </pre>
+  <pre>
+   interleave = bsq
+  </pre>
+  <pre>
+   sensor type = Landsat TM
+  </pre>
+  <pre>
+   byte order = 0
+  </pre>
+  <pre>
+   map info = {UTM, 1, 1, 295380.000, 4763640.000, 30.000000, 30.000000, 13, North}
+  </pre>
+  <pre>
+   z plot range = {0.00, 255.00}
+  </pre>
+  <pre>
+   z plot titles = {Wavelength, Reflectance}
+  </pre>
+  <pre>
+   pixel size = {30.000000, 30.000000}
+  </pre>
+  <pre>
+   default stretch = 5.0% linear
+  </pre>
+  <pre>
+   band names = {
+  </pre>
+  <pre>
+   Warp (Band 1:rs_tm.img), Warp (Band 2:rs_tm.img), Warp (Band 3:rs_tm.img), Warp (Band 4:rs_tm.img), Warp (Band 5:rs_tm.img), Warp (Band 6:rs_tm.img), Warp (Band 7:rs_tm.img)}
+  </pre>
+  <pre>
+   wavelength = {
+  </pre>
+  <pre>
+   0.485000,  0.560000,  0.660000,  0.830000,  1.650000, 11.400000,  2.215000}
+  </pre>
+  <pre>
+   fwhm = {
+  </pre>
+  <pre>
+   0.070000, 0.080000, 0.060000, 0.140000, 0.200000, 2.100000, 0.270000}
+  </pre>
+  <p>
+   Classification results files include the following additional keywords:
+  </p>
+  <pre>
+   classes = 4
+  </pre>
+  <pre>
+   class lookup = {  0,  0,  0,255,  0,  0,  0,255,  0,255,255,  0}
+  </pre>
+  <pre>
+   class names = {
+  </pre>
+  <pre>
+   &#160;&#160;Unclassified,
+  </pre>
+  <pre>
+   &#160;&#160;region 1,
+  </pre>
+  <pre>
+   &#160;&#160;region 2,
+  </pre>
+  <pre>
+   &#160;&#160;region 3}
+  </pre>
+  <p>
+   Spectral library files include the following additional keywords:
+  </p>
+  <pre>
+   spectra names = {
+  </pre>
+  <pre>
+   ACTINOLITE IN-4A, ALBITE TS-6A, ALMANDINE GARNET NS-4A, ALUNITE SO-4A,
+  </pre>
+  <pre>
+   AMBLYGONITE P-3A, ANALCIME TS-18A, ANATASE SYNTHETIC O-12A,
+  </pre>
+  <pre>
+   ANDESINE TS-4A, ANGLESITE SO-10A, ANHYDRITE SO-1A, ANORTHITE TS-5A,
+  </pre>
+  <pre xml:space="preserve">
+   ANTHOPHYLLITE IN-8A, ANTLERITE SO-11A, APATITE P-1A, APHTHITALITE SO-9A}
+  </pre>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

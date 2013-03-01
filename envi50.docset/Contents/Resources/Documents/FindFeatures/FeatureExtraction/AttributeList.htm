@@ -1,0 +1,493 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   List of Attributes
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/TableStyles/Description.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#FindFeatures/FeatureExtraction/AttributeList.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <h1>
+   List of Attributes
+  </h1>
+  <h2>
+   <a name="spectral_attributes">
+   </a>
+   Spectral Attributes
+  </h2>
+  <p>
+   Spectral attributes are computed on each band of the input image.  The attribute value for a particular pixel cluster is computed from input data band where the segmentation label image has the same value (i.e., all pixels in the same pixel cluster contribute to the attribute calculation).
+  </p>
+  <table style="mc-table-style: url('../../Resources/TableStyles/Description.css');margin-left: 0;margin-right: auto;" cellspacing="0" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p>
+       Attribute
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p>
+       Description
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <pre xml:space="preserve">
+       Spectral_Mean
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Mean value of the pixels comprising the region in band x
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <pre xml:space="preserve">
+       Spectral_Max
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Maximum value of the pixels comprising the region in band x
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <pre xml:space="preserve">
+       Spectral_Min
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Minimum value of the pixels comprising the region in band x
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <pre xml:space="preserve">
+       Spectral_STD
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColEnd">
+      <p>
+       Standard deviation value of the pixels comprising the region in band x
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h2>
+   <a name="texture_attributes">
+   </a>
+   Texture Attributes
+  </h2>
+  <p>
+   Texture attributes are computed on each band of the input image.  Texture attribute computation is a two-step process where the first pass applies a
+   <a href="../../Resources/Snippets/FxSegmentImages.flsnp#texture_kernel_size">
+    square kernel of pre-defined size
+   </a>
+   to the input image band.  The attributes are calculated for all pixels in the kernel window and the result is referenced to the center kernel pixel.  Next, the attribute results are averaged across each pixel in the pixel cluster to create the attribute value for that band’s segmentation label.
+  </p>
+  <table style="mc-table-style: url('../../Resources/TableStyles/Description.css');margin-left: 0;margin-right: auto;" cellspacing="0" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p>
+       Attribute
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p>
+       Description
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <pre xml:space="preserve">
+       Texture_Range
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Average data range of the pixels comprising the region inside the kernel (whose size you specify with the Texture Kernel Size parameter in segmentation)
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <pre xml:space="preserve">
+       Texture_Mean
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Average value of the pixels comprising the region inside the kernel
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <pre xml:space="preserve">
+       Texture_Variance
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Average variance of the pixels comprising the region inside the kernel
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <pre xml:space="preserve">
+       Texture_Entropy
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColEnd">
+      <p>
+       Average entropy value of the pixels comprising the region inside the kernel
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h2>
+   <a name="spatial_attributes">
+   </a>
+   Spatial Attributes
+  </h2>
+  <p>
+   Spatial attributes are computed from the polygon defining the boundary of the pixel cluster, so band information is not required.
+  </p>
+  <table style="mc-table-style: url('../../Resources/TableStyles/Description.css');margin-left: 0;margin-right: auto;" cellspacing="0" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p>
+       Attribute
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p>
+       Description
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <pre xml:space="preserve">
+       Area
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Total area of the polygon, minus the area of the holes. Values are in map units
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <pre xml:space="preserve">
+       Length
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       The combined length of all boundaries of the polygon, including the boundaries of the holes. This is different than the Major_Length attribute. Values are in map units
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <pre xml:space="preserve">
+       Compactness
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       A shape measure that indicates the compactness of the polygon. A circle is the most compact shape with a value of 1 / pi. The compactness value of a square is 1 / 2(sqrt(pi)).
+      </p>
+      <p>
+       <tt>
+        Compactness
+       </tt>
+       = Sqrt (4 *
+       <tt>
+        Area
+       </tt>
+       / pi) / outer contour length
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <pre xml:space="preserve">
+       Convexity
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Polygons are either convex or concave. This attribute measures the convexity of the polygon. The convexity value for a convex polygon with no holes is 1.0, while the value for a concave polygon is less than 1.0.
+      </p>
+      <p>
+       <code>
+        Convexity
+       </code>
+       = length of convex hull /
+       <code>
+        Length
+       </code>
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <pre xml:space="preserve">
+       Solidity
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       A shape measure that compares the area of the polygon to the area of a convex hull surrounding the polygon. The solidity value for a convex polygon with no holes is 1.0, and the value for a concave polygon is less than 1.0.
+      </p>
+      <p>
+       <code>
+        Solidity
+       </code>
+       =
+       <code>
+        Area
+       </code>
+       / area of convex hull
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <pre xml:space="preserve">
+       Roundness
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       A shape measure that compares the area of the polygon to the square of the maximum diameter of the polygon. The "maximum diameter" is the length of the major axis of an oriented bounding box enclosing the polygon. The roundness value for a circle is
+1, and the value for a square is 4 / pi.
+      </p>
+      <p>
+       <code>
+        Roundness
+       </code>
+       = 4 * (
+       <code>
+        Area
+       </code>
+       ) / (pi *
+       <code>
+        Major_Length
+       </code>
+       <span style="vertical-align: super;font-size: 9pt;">
+        2
+       </span>
+       )
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <pre xml:space="preserve">
+       Form_Factor
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       A shape measure that compares the area of the polygon to the square of the total perimeter. The form factor value of a circle is 1, and the value of a square is pi / 4.
+      </p>
+      <p>
+       <code>
+        Form_Factor
+       </code>
+       = 4 * pi * (
+       <code>
+        Area
+       </code>
+       ) / (total perimeter)
+       <span style="vertical-align: super;font-size: 9pt;">
+        2
+       </span>
+       <![CDATA[ ]]>
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <pre xml:space="preserve">
+       Elongation
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       A shape measure that indicates the ratio of the major axis of the polygon to the minor axis of the polygon. The major and minor axes are derived from an oriented bounding box containing the polygon. The elongation value for a square is 1.0, and the value for a rectangle is greater than 1.0.
+      </p>
+      <p>
+       <code>
+        Elongation
+       </code>
+       =
+       <code>
+        Major_Length
+       </code>
+       /
+       <code>
+        Minor_Length
+       </code>
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <pre xml:space="preserve">
+       Rectangular_Fit
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       A shape measure that indicates how well the shape is described by a rectangle. This attribute compares the area of the polygon to the area of the oriented bounding box enclosing the polygon. The rectangular fit value for a rectangle is 1.0, and the value for a non-rectangular shape is less than 1.0.
+      </p>
+      <p>
+       <code>
+        Rectangular_Fit
+       </code>
+       =
+       <code>
+        Area
+       </code>
+       / (
+       <code>
+        Major_Length
+       </code>
+       *
+       <code>
+        Minor_Length
+       </code>
+       )
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <pre xml:space="preserve">
+       Main_Direction
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       The angle subtended by the major axis of the polygon and the x-axis in degrees. The main direction value ranges from 0 to 180 degrees. 90 degrees is North/South, and 0 to 180 degrees is East/West.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <pre xml:space="preserve">
+       Major_Length
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       The length of the major axis of an oriented bounding box enclosing the polygon. Values are map units of the pixel size. If the image is not georeferenced, then pixel units are reported.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <pre xml:space="preserve">
+       Minor_Length
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       The length of the minor axis of an oriented bounding box enclosing the polygon. Values are map units of the pixel size. If the image is not georeferenced, then pixel units are reported.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <pre xml:space="preserve">
+       Number_of_Holes
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       The number of holes in the polygon. Integer value.
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <pre xml:space="preserve">
+       Hole_Area/Solid_Area
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColEnd">
+      <p>
+       The ratio of the total area of the polygon to the area of the outer contour of the polygon. The hole solid ratio value for a polygon with no holes is 1.0.
+      </p>
+      <p>
+       <code>
+        Hole_Area/Solid_Area
+       </code>
+       =
+       <code>
+        Area
+       </code>
+       / outer contour area
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

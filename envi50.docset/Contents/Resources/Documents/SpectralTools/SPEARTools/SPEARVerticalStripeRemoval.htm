@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Spectral Tools|SPEAR Tools" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   SPEAR Vertical Stripe Removal
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#SpectralTools/SPEARTools/SPEARVerticalStripeRemoval.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../SpectralTools.htm">
+    Spectral Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="SpearTools.htm">
+    SPEAR Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    SPEAR Vertical Stripe Removal
+   </span>
+  </div>
+  <h1>
+   SPEAR Vertical Stripe Removal
+  </h1>
+  <p>
+   Images in homogeneous areas may display vertical striping artifacts where pixel brightness varies relative to other nearby pixels. The striping artifacts make images difficult to visualize, and they may negatively impact image processing algorithms.
+  </p>
+  <p>
+   The SPEAR Vertical Stripe Removal tool is best used when the image background is relatively homogenous (consistent brightness level throughout image). Because it can cause artifacts, using this tool on heterogeneous images (like coastal images containing bright land and dark water) is not recommended.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     SPEAR &gt; SPEAR Vertical Stripe Removal
+    </b>
+    . The Vertical Stripe Removal Wizard displays the File Selection panel.
+   </li>
+   <li value="2">
+    Click
+    <b>
+     Select Input File
+    </b>
+    , choose a multispectral or thermal-infrared file, then click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+   <li value="3">
+    To optionally process only a portion of the scene, click
+    <b>
+     Select Subset
+    </b>
+    . A small Select Spatial Subset dialog appears.
+   </li>
+   <li value="4">
+    Click
+    <b>
+     Spatial Subset
+    </b>
+    . The standard Select Spatial Subset dialog appears. When finished, click
+    <b>
+     OK
+    </b>
+    to return to the File Selection panel.
+   </li>
+   <li value="5">
+    By default, output files are saved to the same directory and use the same rootname as the input file, minus any extension. Output files are appended with a unique suffix. To change the directory and/or root filename, click
+    <b>
+     Select Output Root Name
+    </b>
+    .
+   </li>
+   <li value="6">
+    Click
+    <b>
+     Next
+    </b>
+    . The Create Mask dialog appears.
+   </li>
+   <li value="7">
+    <p>
+     Apply an optional mask to the data by clicking
+     <b>
+      Input Band
+     </b>
+     and selecting the desired mask image.
+    </p>
+    <p>
+     The darkest and brightest 5% of the image will be masked by default. Dark pixels are displayed as blue, and bright pixels as red. Modify the red and blue percentages to include more or fewer pixels in the mask.
+    </p>
+    <p>
+     Right-click on the red or blue color boxes to change the colors used to represent the dark and bright pixels. To remove the highlighted pixels from the display, disable the
+     <b>
+      Show
+     </b>
+     checkboxes. The highlighted pixels will not be displayed, but will be available for statistical calculations.
+    </p>
+   </li>
+   <li value="8">
+    <p>
+     Click
+     <b>
+      Next
+     </b>
+     . The Examine Results dialog appears.
+    </p>
+    <p>
+     The original image and the image with vertical striping removed are opened in the display and are dynamically linked for comparison. Use
+     <b>
+      <a href="AutoFlicker.htm">
+       Auto-Flicker
+      </a>
+     </b>
+     to examine your results.
+    </p>
+   </li>
+   <li value="9">
+    When you are finished examining your results, click
+    <b>
+     Next
+    </b>
+    in the Examine Results panel, then click
+    <b>
+     Finish
+    </b>
+    to exit the Wizard.
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

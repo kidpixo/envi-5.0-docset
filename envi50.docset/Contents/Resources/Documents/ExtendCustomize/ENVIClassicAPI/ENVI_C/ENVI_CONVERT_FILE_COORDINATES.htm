@@ -1,0 +1,279 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming|Routines|Data Control|ENVI Classic" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   ENVI_CONVERT_FILE_COORDINATES
+  </title>
+  <link href="../../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../../ENVIHelp_CSH.htm#ExtendCustomize/ENVIClassicAPI/ENVI_C/ENVI_CONVERT_FILE_COORDINATES.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../Routines.htm">
+    Routines
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../ENVICoordSys.htm">
+    Data Control
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    ENVI_CONVERT_FILE_COORDINATES
+   </span>
+  </div>
+  <h1>
+   <a name="kanchor524">
+   </a>
+   ENVI_CONVERT_FILE_COORDINATES
+  </h1>
+  <p>
+   <a href="#Syntax">
+    Syntax
+   </a>
+   |
+   <a href="#Arguments">
+    Arguments
+   </a>
+   |
+   <a href="#Keywords">
+    Keywords
+   </a>
+   |
+   <a href="#Example">
+    Example
+   </a>
+  </p>
+  <p>
+   Use this procedure to convert x,y pixel coordinates to their corresponding map coordinates, and vice-versa, for a given file.
+  </p>
+  <h2 class="API">
+   <a name="Syntax">
+   </a>
+   Syntax
+  </h2>
+  <p>
+   ENVI_CONVERT_FILE_COORDINATES,
+   <i>
+    FID
+   </i>
+   ,
+   <i>
+    XF
+   </i>
+   ,
+   <i>
+    YF
+   </i>
+   ,
+   <i>
+    XMap
+   </i>
+   ,
+   <i>
+    YMap
+   </i>
+   [, /
+   <a href="#TO">
+    TO_MAP
+   </a>
+   ]
+  </p>
+  <h2 class="API">
+   <a name="Arguments">
+   </a>
+   Arguments
+  </h2>
+  <h3>
+   FID
+  </h3>
+  <p>
+   Use this argument to specify a named variable that contains the file ID for the open file. The file ID is used to get the appropriate projection information for the conversion. If the file does not have an associated projection, the file coordinates and map coordinates are equal. This value is returned from the keyword R_FID in the
+   <a href="../ENVI_O/ENVI_OPEN_FILE.htm">
+    ENVI_OPEN_FILE
+   </a>
+   procedure. FID is a long integer with a value greater than 0. An invalid file ID has a value of -1.
+  </p>
+  <h3>
+   XF
+  </h3>
+  <p>
+   If you set the TO_MAP keyword,
+   <i>
+    XF
+   </i>
+   is a variable that contains the x file coordinates to convert.
+   <i>
+    XF
+   </i>
+   can be a single value or an array of values. The first file coordinate is 0.
+  </p>
+  <p>
+   If you do not set the TO_MAP keyword,
+   <i>
+    XF
+   </i>
+   is a named variable that contains the returned x file coordinates for the input
+   <i>
+    XMap
+   </i>
+   and
+   <i>
+    YMap
+   </i>
+   arrays.
+  </p>
+  <h3>
+   YF
+  </h3>
+  <p>
+   If you set the TO_MAP keyword,
+   <i>
+    YF
+   </i>
+   is a variable that contains the y file coordinates to convert.
+   <i>
+    YF
+   </i>
+   can be a single value or an array of values. The first file coordinate is 0.
+  </p>
+  <p>
+   If you do not set the TO_MAP keyword,
+   <i>
+    YF
+   </i>
+   is a named variable that contains the returned y file coordinates for the input
+   <i>
+    XMap
+   </i>
+   and
+   <i>
+    YMap
+   </i>
+   arrays.
+  </p>
+  <h3>
+   XMap
+  </h3>
+  <p>
+   If you set the TO_MAP keyword,
+   <i>
+    XMap
+   </i>
+   is a named variable that contains the returned x map coordinates for the input
+   <i>
+    XF
+   </i>
+   and
+   <i>
+    YF
+   </i>
+   arrays
+  </p>
+  <p>
+   If you do not set the TO_MAP keyword,
+   <i>
+    XMap
+   </i>
+   is a variable that contains the x map coordinates to convert.
+   <i>
+    XMap
+   </i>
+   can be a single value or an array of values.
+  </p>
+  <h3>
+   YMap
+  </h3>
+  <p>
+   If you set the TO_MAP keyword,
+   <i>
+    YMap
+   </i>
+   is a named variable that contains the returned y map coordinates for the input
+   <i>
+    XF
+   </i>
+   and
+   <i>
+    YF
+   </i>
+   arrays
+  </p>
+  <p>
+   If you do not set the TO_MAP keyword,
+   <i>
+    YMap
+   </i>
+   is a variable that contains the y map coordinates to convert.
+   <i>
+    YMap
+   </i>
+   can be a single value or an array of values.
+  </p>
+  <h2 class="API">
+   <a name="Keywords">
+   </a>
+   Keywords
+  </h2>
+  <h3>
+   <a name="TO">
+   </a>
+   TO_MAP (optional)
+  </h3>
+  <p>
+   Set this keyword to convert the input file coordinates to map coordinates.
+  </p>
+  <h2 class="API">
+   <a name="Example">
+   </a>
+   Example
+  </h2>
+  <p>
+   The following code converts the first three pixels on the first line to map coordinates.
+  </p>
+  <p class="Code">
+   xf = [0,1,2]
+  </p>
+  <p class="Code">
+   yf = [0,0,0]
+  </p>
+  <p class="Code">
+   envi_convert_file_coordinates, fid, xf, yf, xmap, ymap, /to_map
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

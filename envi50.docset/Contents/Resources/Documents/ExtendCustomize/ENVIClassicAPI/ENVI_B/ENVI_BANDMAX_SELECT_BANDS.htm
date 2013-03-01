@@ -1,0 +1,508 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming|Routines|Data Control|ENVI Classic" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   ENVI_BANDMAX_SELECT_BANDS
+  </title>
+  <link href="../../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../../ENVIHelp_CSH.htm#ExtendCustomize/ENVIClassicAPI/ENVI_B/ENVI_BANDMAX_SELECT_BANDS.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../Routines.htm">
+    Routines
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../ENVICoordSys.htm">
+    Data Control
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    ENVI_BANDMAX_SELECT_BANDS
+   </span>
+  </div>
+  <h1>
+   <a name="kanchor522">
+   </a>
+   ENVI_BANDMAX_SELECT_BANDS
+  </h1>
+  <p>
+   <a href="#Syntax">
+    Syntax
+   </a>
+   |
+   <a href="#Return">
+    Return Value
+   </a>
+   |
+   <a href="#Arguments">
+    Arguments
+   </a>
+   |
+   <a href="#Keywords">
+    Keywords
+   </a>
+   |
+   <a href="#Examples">
+    Examples
+   </a>
+  </p>
+  <p>
+   This function performs the BandMax background suppression algorithm to derive a subset of significant bands using input target and background spectra. The resulting band subset can be used to highlight targets and suppress backgrounds in a classification or other analysis.
+  </p>
+  <h2 class="API">
+   <a name="Syntax">
+   </a>
+   Syntax
+  </h2>
+  <p>
+   <i>
+    Result
+   </i>
+   = ENVI_BANDMAX_SELECT_BANDS(
+   <i>
+    TargetSpectra
+   </i>
+   ,
+   <i>
+    BackgroundSpectra
+   </i>
+   [,
+   <a href="#GOOD_BAND_COUNT">
+    GOOD_BAND_COUNT
+   </a>
+   =
+   <i>
+    variable
+   </i>
+   ] [,
+   <a href="#GOOD_BAND_LIST">
+    GOOD_BAND_LIST
+   </a>
+   =
+   <i>
+    variable
+   </i>
+   ] [,
+   <a href="#SIGNIFICANCE">
+    SIGNIFICANCE
+   </a>
+   =
+   <i>
+    variable
+   </i>
+   ] [,
+   <a href="#THRESHOLD">
+    THRESHOLD
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ])
+  </p>
+  <h2 class="API">
+   <a name="Return">
+   </a>
+   Return Value
+  </h2>
+  <p>
+   The return value is an array of band positions that are the best for differentiating between the target and background spectra. This value can be used as a POS input to other
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   processing functions. If no significant bands are found, a value of –1 is returned.
+  </p>
+  <h2 class="API">
+   <a name="Arguments">
+   </a>
+   Arguments
+  </h2>
+  <h3>
+   TargetSpectra
+  </h3>
+  <p>
+   This is an array of one or more spectra representing the input targets.
+  </p>
+  <h3>
+   BackgroundSpectra
+  </h3>
+  <p>
+   This is an array of one or more spectra representing the input backgrounds. These spectra must have the same number of bands as the
+   <i>
+    TargetSpectra
+   </i>
+   argument.
+  </p>
+  <h2 class="API">
+   <a name="Keywords">
+   </a>
+   Keywords
+  </h2>
+  <h3>
+   <a name="GOOD_BAND_COUNT">
+   </a>
+   GOOD_BAND_COUNT (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a named variable that contains a scalar value with the number of significant bands found by the BandMax algorithm.
+  </p>
+  <h3>
+   <a name="GOOD_BAND_LIST">
+   </a>
+   GOOD_BAND_LIST (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a named variable that contains an array of zeros and ones, indicating which bands the BandMax algorithm determines are significant. Each value is set to 0 (indicating this band should be ignored for processing) or 1 (indicating this band is significant for isolating the targets from the background data). If no significant bands are found, the variable returned by this keyword is undefined.
+  </p>
+  <h3>
+   <a name="SIGNIFICANCE">
+   </a>
+   SIGNIFICANCE (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a named variable that contains an array of band significance values. The array returned by this keyword contains floating-point values ranging from 0 to 1. Each value indicates how well the corresponding band differentiates between target and background spectra. If an error is encountered in the processing, a value of –1 is returned.
+  </p>
+  <h3>
+   <a name="THRESHOLD">
+   </a>
+   THRESHOLD (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a floating-point value ranging from 0.0 to 1.0. This value represents the threshold for the minimum significance value that determines which bands this function returns. The default threshold value is calculated to select 25% of the input bands, but never less than six bands. If you specify an undefined named variable for this keyword, the default threshold value is returned for that variable.
+  </p>
+  <h2 class="API">
+   <a name="Examples">
+   </a>
+   Examples
+  </h2>
+  <p>
+   The following example uses the
+   <code>
+    cup95eff.int
+   </code>
+   file, which is provided in your installation of
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   . The
+   <i>
+    xx
+   </i>
+   is the software version number:
+  </p>
+  <p>
+   <b>
+    Windows:
+   </b>
+   <![CDATA[ ]]>
+   <code>
+    C:\Program Files\Exelis\ENVIxx\classic\data
+   </code>
+  </p>
+  <p>
+   <b>
+    UNIX and Linux:
+   </b>
+   <![CDATA[ ]]>
+   <code>
+    /usr/local/exelis/envixx/classic/data
+   </code>
+  </p>
+  <p>
+   The
+   <code>
+    jpl1.sli
+   </code>
+   file is in the
+   <code>
+    envixx\classic\spec_lib\jpl_lib
+   </code>
+   directory. Input image wavelengths are derived from the
+   <code>
+    cup95eff.int
+   </code>
+   file to resample the spectra from the library in the
+   <code>
+    jpl1.sli
+   </code>
+   file. One resampled spectrum is used as a target, and another is used as the background in the BandMax algorithm.
+  </p>
+  <p class="Code">
+   ;+ This example uses the BandMax algorithm to
+  </p>
+  <p class="Code">
+   ; determine a subset of bands from the cup95eff.int
+  </p>
+  <p class="Code">
+   ; image file that we can use to distinguish an Alunite
+  </p>
+  <p class="Code">
+   ; target spectrum from a well-ordered Kaolinite background
+  </p>
+  <p class="Code">
+   ; spectrum. These spectra are a part of the jpl1.sli spectral
+  </p>
+  <p class="Code">
+   ; library.
+  </p>
+  <p class="Code">
+   ;-
+  </p>
+  <p class="Code">
+   PRO BandMaxExample
+  </p>
+  <p class="Code_Indented">
+   compile_opt IDL2
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ; Find the input image file and query its wavelengths.
+  </p>
+  <p class="Code_Indented">
+   ; These
+
+wavelengths are used to resample the input spectra.
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   cupriteFile = envi_pickfile(filter='*.int', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;title='Find the "cup95eff.int" File')
+  </p>
+  <p class="Code_Indented">
+   if (cupriteFile eq '') then return
+  </p>
+  <p class="Code_Indented">
+   envi_open_file, cupriteFile, r_fid=cupriteFID
+  </p>
+  <p class="Code_Indented">
+   envi_file_query, cupriteFID, wl=cupriteWLs
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ; Find the input spectral library and query its number
+  </p>
+  <p class="Code_Indented">
+   ; of samples
+and wavelengths. The number of samples value
+  </p>
+  <p class="Code_Indented">
+   ; is used to access
+
+specific spectra in the library. The
+  </p>
+  <p class="Code_Indented">
+   ; wavelengths are used to
+
+resample the input spectra.
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   libFile=envi_pickfile(filter='*.sli', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;title='Find the "jpl1.sli" File')
+  </p>
+  <p class="Code_Indented">
+   if (libFile eq '') then return
+  </p>
+  <p class="Code_Indented">
+   envi_open_file, libFile, r_fid=libFID
+  </p>
+  <p class="Code_Indented">
+   envi_file_query, libFID, ns=libNS, wl=libWLs
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ; Get spectrum for Alunite (the target) from the input
+  </p>
+  <p class="Code_Indented">
+   ; spectral
+library.
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   libSpectrum3=envi_get_slice(fid=libFID, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;line=3, pos=0, xs=0, xe=libNS - 1)
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ; Resample Alunite spectrum to the wavelengths of the
+  </p>
+  <p class="Code_Indented">
+   ; input image.
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   envi_resample_spectra, libWLs, libSpectrum3, cupriteWLs, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;targetSpectrum
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ; Get spectrum for well-ordered Kaolinite (the background)
+  </p>
+  <p class="Code_Indented">
+   ; from
+
+the input spectral library.
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   libSpectrum83 = envi_get_slice(fid=libFID, line=83, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;pos=0, xs=0, xe=libNS - 1)
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ; Resample Kaolinite spectrum to the wavelengths of the
+  </p>
+  <p class="Code_Indented">
+   ; input
+
+image.
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   envi_resample_spectra, libWLs, libSpectrum83, cupriteWLs, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;backgroundSpectrum
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ; Perform the BandMax algorithm on the Alunite target
+  </p>
+  <p class="Code_Indented">
+   ; and the
+
+Kaolinite background to obtain a subset for the
+  </p>
+  <p class="Code_Indented">
+   ; input image.
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   subset = envi_bandmax_select_bands(targetSpectrum, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;backgroundSpectrum)
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ; Show the resulting subset. This subset can be used as an
+  </p>
+  <p class="Code_Indented">
+   ; input to
+
+the POS keyword of any ENVI library routine. It
+  </p>
+  <p class="Code_Indented">
+   ; will help to
+
+differentiate the target from the background
+  </p>
+  <p class="Code_Indented">
+   ; in the input image.
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   print, subset
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ; Exit ENVI
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   envi_batch_exit
+  </p>
+  <p class="Code">
+   END
+  </p>
+  <p>
+   This example produces the following subset of band positions:
+  </p>
+  <pre xml:space="preserve">
+   2   3   6   11   14   15   17   18   21   29   30   35   37
+  </pre>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

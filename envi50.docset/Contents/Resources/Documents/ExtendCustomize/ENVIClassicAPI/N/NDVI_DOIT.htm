@@ -1,0 +1,388 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming|Routines|Processing" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   NDVI_DOIT
+  </title>
+  <link href="../../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../../Resources/TableStyles/Description.css" rel="stylesheet" />
+  <link href="../../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../../ENVIHelp_CSH.htm#ExtendCustomize/ENVIClassicAPI/N/NDVI_DOIT.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../Routines.htm">
+    Routines
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../A/ADAPT_FILT_DOIT.htm">
+    Processing
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    NDVI_DOIT
+   </span>
+  </div>
+  <h1>
+   <a name="kanchor754">
+   </a>
+   NDVI_DOIT
+  </h1>
+  <p>
+   Use this procedure to create a normalized difference vegetation index (NDVI).
+  </p>
+  <h2 class="API">
+   <a name="Syntax">
+   </a>
+   Syntax
+  </h2>
+  <p>
+   ENVI_DOIT, 'NDVI_DOIT', /CHECK,
+   <a href="#DIMS">
+    DIMS
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ,
+   <a href="#FID">
+    FID
+   </a>
+   =
+   <i>
+    file ID
+   </i>
+   , /
+   <a href="#IN_MEMORY">
+    IN_MEMORY
+   </a>
+   ,
+   <a href="#O_MAX">
+    O_MAX
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ,
+   <a href="#O_MIN">
+    O_MIN
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ,
+   <a href="#OUT_BNAME">
+    OUT_BNAME
+   </a>
+   =
+   <i>
+    string array
+   </i>
+   ,
+   <a href="#OUT_DT">
+    OUT_DT
+   </a>
+   ={1 | 4},
+   <a href="#OUT_NAME">
+    OUT_NAME
+   </a>
+   =
+   <i>
+    string
+   </i>
+   ,
+   <a href="#POS">
+    POS
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ,
+   <a href="#R_FID">
+    R_FID
+   </a>
+   =
+   <i>
+    variable
+   </i>
+  </p>
+  <h2 class="API">
+   <a name="Keywords">
+   </a>
+   Keywords
+  </h2>
+  <h3>
+   <a name="CHECK">
+   </a>
+   CHECK
+  </h3>
+  <p>
+   Set this keyword to check for divide-by-zero errors. These errors are set to 0.
+  </p>
+  <h3>
+   <a name="DIMS">
+   </a>
+   DIMS
+  </h3>
+  <p>
+   The “dimensions” keyword is a five-element array of long integers that defines the spatial subset (of a file or array) to use for processing. Nearly every time you specify the keyword FID, you must also specify the spatial subset of the corresponding file (even if the entire file, with no spatial subsetting, is to be processed).
+  </p>
+  <ul>
+   <li value="1">
+    DIMS[0]: A pointer to an open ROI; use only in cases where ROIs define the spatial subset. Otherwise, set to -1L.
+   </li>
+   <li value="2">
+    DIMS[1]: The starting sample number. The first x pixel is 0.
+   </li>
+   <li value="3">
+    DIMS[2]: The ending sample number
+   </li>
+   <li value="4">
+    DIMS[3]: The starting line number. The first y pixel is 0.
+   </li>
+   <li value="5">
+    DIMS[4]: The ending line number
+   </li>
+  </ul>
+  <p>
+   To process an entire file (with no spatial subsetting), define DIMS as shown in the following code example. This example assumes you have already opened a file using
+   <a href="../ENVI_S/ENVI_SELECT.htm">
+    ENVI_SELECT
+   </a>
+   or
+   <a href="../ENVI_P/ENVI_PICKFILE.htm">
+    ENVI_PICKFILE
+   </a>
+   :
+  </p>
+  <p class="Code_Indented">
+   envi_file_query, fid, dims=dims
+  </p>
+  <p>
+   You
+   <i>
+    cannot
+   </i>
+   define DIMS as a pointer to a region of interest (ROI) in any of
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   ’s _DOIT library routines. Using the following example code with a _DOIT library routine will result in an error message when you run the program:
+  </p>
+  <p class="Code_Indented">
+   roi_ids = ENVI_GET_ROI_IDS()
+  </p>
+  <p class="Code_Indented">
+   <br />
+   roi_dims = ENVI_GET_ROI_DIMS_PTR(roi_ids[0])
+  </p>
+  <p class="Code_Indented">
+   <br />
+   dims= [roi_dims,0,0,0,0]
+  </p>
+  <h3>
+   <a name="FID">
+   </a>
+   FID
+  </h3>
+  <p>
+   The file ID (FID) is a long-integer scalar with a value greater than 0. An invalid FID has a value of -1. The FID is provided as a named variable by any routine used to open or select a file. Often, the FID is returned from the keyword R_FID in the
+   <a href="../../ENVIRasterToFID.htm">
+    ENVIRasterToFID
+   </a>
+   routine. Files are processed by referring to their FIDs. If you work directly with the file in IDL, the FID is
+   <i>
+    not
+   </i>
+   equivalent to a logical unit number (LUN).
+  </p>
+  <h3>
+   <a name="IN_MEMORY">
+   </a>
+   IN_MEMORY
+  </h3>
+  <p>
+   Set this keyword to specify that output should be stored in memory. If you do not set IN_MEMORY, output will be stored on disk and you must specify OUT_NAME (see below).
+  </p>
+  <h3>
+   <a name="O_MAX">
+   </a>
+   O_MAX
+  </h3>
+  <p>
+   Use this keyword to specify the output data maximum. Only use this keyword when OUT_DT=1 (byte).
+  </p>
+  <h3>
+   <a name="O_MIN">
+   </a>
+   O_MIN
+  </h3>
+  <p>
+   Use this keyword to specify the output data minimum. Only use this keyword when OUT_DT=1 (byte).
+  </p>
+  <h3>
+   <a name="OUT_BNAME">
+   </a>
+   OUT_BNAME
+  </h3>
+  <p>
+   Use this keyword to specify a string array of output band names.
+  </p>
+  <h3>
+   <a name="OUT_DT">
+   </a>
+   OUT_DT
+  </h3>
+  <p>
+   This keyword indicates the IDL data type of the output data. Set the keyword to 1 for byte data and 4 for floating-point data.
+  </p>
+  <h3>
+   <a name="OUT_NAME">
+   </a>
+   OUT_NAME
+  </h3>
+  <p>
+   Use this keyword to specify a string with the output filename for the resulting data. If you set the keyword IN_MEMORY, you do not need to specify OUT_NAME.
+  </p>
+  <h3>
+   <a name="POS">
+   </a>
+   POS
+  </h3>
+  <p>
+   Use this keyword to specify an array of zero-based, two-band positions. NDVI is designed to work with TM, MSS, AVHRR, SPOT, and AVIRIS
+   <![CDATA[ ]]>
+   data. The following band pairs are used for each of the different data types. Be sure to subtract 1 from each of the band combinations.
+  </p>
+  <table class="TableStyle_Description" style="mc-table-style: url('../../../Resources/TableStyles/Description.css');margin-left: 0;margin-right: auto;" cellspacing="0">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p>
+       Data Type
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p>
+       Band Numbers (one-based, [IR, Red])
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       TM
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Bands=[4, 3]
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       MSS
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Bands=[7, 5]
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       AVHRR
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       Bands=[2, 1]
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       SPOT XS
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       Bands=[3, 2]
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColSep">
+      <p>
+       AVIRIS
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowEnd_ColEnd">
+      <p>
+       Bands=[51, 29]
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3>
+   <a name="R_FID">
+   </a>
+   R_FID
+  </h3>
+  <p>
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   library routines that result in new images also have an R_FID, or “returned FID.” This is simply a named variable containing the file ID to access the processed data. Specifying this keyword saves you the step of opening the new file from disk.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

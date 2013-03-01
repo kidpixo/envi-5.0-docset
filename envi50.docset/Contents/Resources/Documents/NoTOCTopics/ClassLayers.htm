@@ -1,0 +1,273 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Class Layers
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#NoTOCTopics/ClassLayers.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <h1>
+   Class Layers
+   <a name="kanchor845">
+   </a>
+  </h1>
+  <p>
+   When you display a classification image, a Classes folder containing the individual classes appears in the Layer Manager under the image name. In the Image Window view you can overlay the classes on an image and you can show and hide the classes. In the Layer Manager you can select one class or all classes and calculate class statistics on a related file.
+  </p>
+  <ul>
+   <li value="1">
+    To hide a class in the view, disable the check box for that class in the Layer Manager. To show the class again, enable the check box.
+   </li>
+   <li value="2">
+    To hide all classes, right-click the Classes folder and select
+    <b>
+     Hide All Classes
+    </b>
+    . To show all classes again, right-click and select
+    <b>
+     Show All Classes
+    </b>
+    .
+   </li>
+   <li value="3">
+    You can also hide all classes by disabling the check box for the classification image in the Layer Manager. This leaves the state of individually hidden classes unchanged (for example, the check box for a hidden class is not enabled again) so when you show the classification image again, the previously hidden class remains hidden.
+   </li>
+  </ul>
+  <h2>
+   <a name="ClassStatistics">
+   </a>
+   Calculate Class Statistics
+  </h2>
+  <p>
+   You can use the classification results of the displayed image to calculate statistics for any related input file. You can plot and report basic statistics including the number of points in a class, and minimum, maximum, mean, and standard deviation for each band for that class. You can also plot and report histograms for each class and display a summary report for all classes. You can plot and report the following statistics:
+  </p>
+  <ul>
+   <li value="1">
+    Basic statistics (the minimum, maximum, mean, and standard deviation for all bands) for your data. Basic statistics are always calculated.
+   </li>
+   <li value="2">
+    Histograms of each band. The frequency distribution calculations also return the number of points, cumulative points, percent for each bin, and cumulative percentage for each DN (digital number) in the image histogram.
+   </li>
+  </ul>
+  <p>
+   To calculate statistics:
+  </p>
+  <ol>
+   <li value="1">
+    In the Layer Manager, right-click a class and select
+    <b>
+     Class Stats
+    </b>
+    , or right-click the Classes folder and select
+    <b>
+     Stats for All Classes
+    </b>
+    . The Select Class Stats Input File dialog appears.
+   </li>
+   <li value="2">
+    Select a file of the same spatial size as the classification file. If the file is not already open, click
+    <b>
+     Open File
+    </b>
+    and browse to open it.
+   </li>
+   <li value="3">
+    Click
+    <b>
+     OK
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    calculates the statistics and displays them in the Class Statistics Results dialog.
+   </li>
+  </ol>
+  <p>
+   Using the Plot window:
+  </p>
+  <ul>
+   <li value="1">
+    By default, the plot displays the minimum, maximum, and mean values. One or all classes appear, depending on if you calculated statistics for a single class or for all classes.
+   </li>
+   <li value="2">
+    To change the display to standard deviation or histogram, select from the
+    <b>
+     Select Plot
+    </b>
+    drop-down list. If you calculated statistics for all classes, the drop-down list provides options to display individual classes or all classes.
+   </li>
+   <li value="3">
+    If you calculated statistics for all classes and are viewing classes individually in the plot, select a different class to plot from the
+    <b>
+     Stats for
+    </b>
+    drop-down list.
+   </li>
+   <li value="4">
+    To clear the plot window, click
+    <b>
+     Clear Plot
+    </b>
+    .
+   </li>
+   <li value="5">
+    Use the mouse buttons as follows in the plot:
+   </li>
+   <li class="Indent" value="6">
+    <b>
+     Left Mouse Button
+    </b>
+    : Displays a crosshair cursor on the nearest data point and reports the (x,y) location in the bottom left corner of the plot window
+   </li>
+   <li class="Indent" value="7">
+    <b>
+     Middle Mouse Button
+    </b>
+    : Click and drag to zoom in to the plot. Click to zoom out.
+   </li>
+   <li class="Indent" value="8">
+    <b>
+     Right Mouse Button
+    </b>
+    : Provides menu options listed in
+    <a href="UsingInteractivePlotFunctions.htm">
+     <span class="DocumentTitleProductNameENVIClassic">
+      ENVI Classic
+     </span>
+     Plot Functions
+    </a>
+    .
+   </li>
+  </ul>
+  <p>
+   Viewing the report text:
+  </p>
+  <ul>
+   <li value="1">
+    The report text contains the values of the calculated statistics. It  includes file information, the class distribution summary, and the basic statistics and histograms for the selected class. If you calculated statistics for all classes, you can view the basic and histogram statistics for another class by selecting from the
+    <b>
+     Stats for
+    </b>
+    drop-down list.
+   </li>
+   <li value="2">
+    The
+    <b>
+     File Info
+    </b>
+    text displays at the top of the report text by default. To go to a different section of the report, use the scroll bar or use the
+    <b>
+     Select Stats
+    </b>
+    drop-down list to jump to a new report section.
+   </li>
+   <li value="3">
+    To copy report text to paste it into another application, select the text to copy, then right-click and select
+    <b>
+     Copy
+    </b>
+    .
+   </li>
+  </ul>
+  <p>
+   The following
+   <b>
+    File
+   </b>
+   menu selections are available from the Class Statistics Results dialog menu bar:
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     Save current Class result to ENVI stats file
+    </b>
+    : Saves the statistics report for the selected class to an ENVI statistics file.
+   </li>
+   <li value="2">
+    <b>
+     Save current Class result to text file
+    </b>
+    : Saves the statistics report for the selected class   to a tab-delimited text file.
+   </li>
+   <li value="3">
+    <b>
+     Save all Class results to ENVI stats file
+    </b>
+    : Saves the statistics report for the all classes to an ENVI statistics file.
+   </li>
+   <li value="4">
+    <b>
+     Save all Class results to text file
+    </b>
+    : Saves the statistics report for the all classes   to a tab-delimited text file.
+   </li>
+   <li value="5">
+    <b>
+     View Statistics File(s)
+    </b>
+    :  Enables you to open one or more ENVI statistics files (
+    <code>
+     .sta
+    </code>
+    ) and display them in other Statistics Results dialogs. You can use this option to compare your current statistics with information in an another ENVI statistics file.
+   </li>
+  </ul>
+  <p>
+   The following
+   <b>
+    Options
+   </b>
+   menu selections are available from the Class Statistics Results dialog menu bar:
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     Copy results to new window
+    </b>
+    : Creates a copy of the statistics in a new Class Statistics Results dialog so you can compare statistics for different bands.
+   </li>
+   <li value="2">
+    <b>
+     Set Report Precision
+    </b>
+    : Opens the Set Report Precision dialog where you can change the precision of the information displayed in the ROI Statistics Results dialog. This option does not affect histogram precision.
+   </li>
+   <li value="3">
+    <b>
+     Class Area Summary Units
+    </b>
+    : Changes how the units are displayed in the summary report text. This option is available only if the input file has an associated pixel size (from georeferencing or explicit setting of the size in the header file). The default area unit is Meters
+    <sup>
+     2
+    </sup>
+    .
+   </li>
+  </ul>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

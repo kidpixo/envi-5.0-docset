@@ -1,0 +1,731 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Transitioning to the ENVI API
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#ExtendCustomize/TransitioningtoAPI.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Transitioning to the ENVI API
+   </span>
+  </div>
+  <h1>
+   Transitioning to the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   API
+   <a name="kanchor466">
+   </a>
+  </h1>
+  <p>
+   The purpose of this topic is to show experienced
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   programmers how the new
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   application programming interface (API) manages the application, data, and display. It demonstrates how to perform the task in
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   and also in the new
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   API.
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   can
+   <a href="../ExploreImagery/Views.htm">
+    display multiple data layers in one display
+   </a>
+   , and the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   API exposes this capability. The
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   API also provides more options to manage raster metadata and spatial reference information. Finally, you can still integrate
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   's powerful image processing routines with the new API.
+  </p>
+  <p>
+   See the following sections for more information:
+  </p>
+  <ul>
+   <li value="1">
+    <a href="#Applicat">
+     Application Control
+    </a>
+   </li>
+   <li value="2">
+    <a href="#Data">
+     Data Control
+    </a>
+   </li>
+   <li value="3">
+    <a href="#Display">
+     Display Control
+    </a>
+   </li>
+   <li value="4">
+    <a href="#Processi">
+     Processing
+    </a>
+   </li>
+  </ul>
+  <h2>
+   <a name="Applicat">
+   </a>
+   Application Control
+  </h2>
+  <p>
+   Start IDL and type the following at the IDL command line to launch the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   application:
+  </p>
+  <p class="Code_Indented">
+   e = ENVI()
+  </p>
+  <p>
+   To run
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   in batch mode without any user interaction or a user interface, add the HEADLESS keyword as follows:
+  </p>
+  <p class="Code_Indented" xml:space="preserve">
+   e = ENVI(/HEADLESS)
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   Besides initializing
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   , this code also initializes
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   in the background and restores the necessary save files so that you can use
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   's processing routines if needed. However, it does not start the
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   interface.
+  </p>
+  <p>
+   To start
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   in batch mode, you have to explicitly set keywords to initialize the application, restore save files, and to enter batch mode:
+  </p>
+  <p class="Code_Indented">
+   ENVI, /RESTORE_BASE_SAVE_FILES
+  </p>
+  <p class="Code_Indented">
+   ENVI_BATCH_INIT
+  </p>
+  <p class="Code_Indented">
+   .
+  </p>
+  <p class="Code_Indented">
+   .
+  </p>
+  <p class="Code_Indented">
+   &lt;
+   <i>
+    processing
+   </i>
+   &gt;
+  </p>
+  <p>
+   By comparison,
+   <code>
+    e = ENVI()
+   </code>
+   does all of this for you.
+  </p>
+  <h2>
+   <a name="Data">
+   </a>
+   Data Control
+  </h2>
+  <p>
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   references files by
+   <i>
+    file IDs
+   </i>
+   (FIDs). The
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   API treats data files as
+   <i>
+    objects
+   </i>
+   with inherent properties and methods, so it manages the data state for you and does not require you to keep track of file IDs.
+  </p>
+  <p>
+   The
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   API also has functions and methods that manage raster metadata and spatial reference information, and to process and iterate through multiple tiles of raster data.
+  </p>
+  <p>
+   The following example opens a QuickBird image in
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   , gets the first band of data, and writes that band to a new output file.
+  </p>
+  <p class="Code">
+   PRO CLASSIC_WRITE_FILE
+  </p>
+  <p class="Code_Indented">
+   COMPILE_OPT IDL2
+  </p>
+  <p class="Code_Indented">
+   &#160;
+  </p>
+  <p class="Code_Indented">
+   ; Start ENVI Classic
+  </p>
+  <p class="Code_Indented">
+   ENVI, /RESTORE_BASE_SAVE_FILES
+  </p>
+  <p class="Code_Indented">
+   ENVI_BATCH_INIT
+  </p>
+  <p class="Code_Indented">
+   &#160;
+  </p>
+  <p class="Code_Indented">
+   ; Open file
+  </p>
+  <p class="Code_Indented">
+   file = FILEPATH('qb_boulder_msi', ROOT_DIR=ENVI_GET_PATH(), $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;SUBDIR=['..','data'])
+  </p>
+  <p class="Code_Indented">
+   ENVI_OPEN_FILE, file, R_FID = fid
+  </p>
+  <p class="Code_Indented">
+   ENVI_FILE_QUERY, fid, DIMS = dims
+  </p>
+  <p class="Code_Indented">
+   &#160;
+  </p>
+  <p class="Code_Indented">
+   ; Retrieve the first band of the data
+  </p>
+  <p class="Code_Indented">
+   data = ENVI_GET_DATA(FID = fid, DIMS = dims, pos = 0)
+  </p>
+  <p class="Code_Indented">
+   &#160;
+  </p>
+  <p class="Code_Indented">
+   ; Write new file
+  </p>
+  <p class="Code_Indented">
+   inherit = ENVI_SET_INHERITANCE(fid, dims)
+  </p>
+  <p class="Code_Indented">
+   resultFile = FILEPATH('qb_boulder_msi_classic_band0.dat', /TMP)
+  </p>
+  <p class="Code_Indented">
+   ENVI_WRITE_ENVI_FILE, data, INHERIT = inherit, R_FID = r_fid, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;OUT_NAME = resultFile
+  </p>
+  <p class="Code_Indented">
+   ENVI_BATCH_EXIT
+  </p>
+  <p class="Code">
+   END
+  </p>
+  <p>
+   The next example performs the same steps in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   .
+  </p>
+  <p class="Code">
+   PRO ENVI_API_WRITE_FILE
+  </p>
+  <p class="Code_Indented">
+   COMPILE_OPT IDL2
+  </p>
+  <p class="Code_Indented">
+   &#160;
+  </p>
+  <p class="Code_Indented">
+   ; Start ENVI
+  </p>
+  <p class="Code_Indented">
+   e = ENVI(/HEADLESS)
+  </p>
+  <p class="Code_Indented">
+   &#160;
+  </p>
+  <p class="Code_Indented">
+   ; Open file
+  </p>
+  <p class="Code_Indented">
+   file = FILEPATH('qb_boulder_msi', ROOT_DIR = e.root_dir, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;SUBDIR=['data'])
+  </p>
+  <p class="Code_Indented">
+   raster = e.OpenRaster(file)
+  </p>
+  <p class="Code_Indented">
+   &#160;
+  </p>
+  <p class="Code_Indented">
+   ; Retrieve the first band of the data
+  </p>
+  <p class="Code_Indented">
+   data = raster.GetData(BANDS = 0)
+  </p>
+  <p class="Code_Indented">
+   &#160;
+  </p>
+  <p class="Code_Indented">
+   ; Write new file
+  </p>
+  <p class="Code_Indented">
+   resultFile = e.GetTemporaryFilename('.dat')
+  </p>
+  <p class="Code_Indented">
+   newRaster = e.CreateRaster(resultFile, data, INHERITS_FROM = raster)
+  </p>
+  <p class="Code_Indented">
+   newRaster.Save
+  </p>
+  <p class="Code">
+   END
+   <br />
+  </p>
+  <h2>
+   <a name="Display">
+   </a>
+   Display Control
+  </h2>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   allows for
+   <a href="../ExploreImagery/Views.htm">
+    multiple views
+   </a>
+   and
+   <a href="../ExploreImagery/RasterLayers.htm">
+    layers
+   </a>
+   of data. You can also invoke
+   <a href="../ExploreImagery/Portals.htm">
+    Portals
+   </a>
+   , which are used to see through two layers at a time. The
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   API consequently provides control over the display of multiple layers, views, and Portals.
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   programming instead relies on the use of display group routines because data files are displayed in a three-window display group.
+  </p>
+  <p>
+   The following code opens panchromatic and multispectral images in
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   of the same geographic area, displays them in two separate display groups, and centers the Zoom window over the same location in both images.
+  </p>
+  <p class="Code">
+   ; Start ENVI Classic
+  </p>
+  <p class="Code">
+   ENVI
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Open two files
+  </p>
+  <p class="Code">
+   file1 = FILEPATH('qb_boulder_pan', ROOT_DIR = ENVI_GET_PATH(), $
+  </p>
+  <p class="Code">
+   &#160;&#160;&#160;SUBDIRECTORY = ['..','data'])
+  </p>
+  <p class="Code">
+   file2 = FILEPATH('qb_boulder_msi', ROOT_DIR = ENVI_GET_PATH(), $
+  </p>
+  <p class="Code">
+   &#160;&#160;&#160;SUBDIRECTORY = ['..','data'])
+  </p>
+  <p class="Code">
+   ENVI_OPEN_FILE, file1, R_FID = fid1
+  </p>
+  <p class="Code">
+   ENVI_OPEN_FILE, file2, R_FID = fid2
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Display the files
+  </p>
+  <p class="Code">
+   ENVI_DISPLAY_BANDS, fid1, 0, /new
+  </p>
+  <p class="Code">
+   ENVI_DISPLAY_BANDS, fid2, [2,1,0], /new
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Get the display numbers
+  </p>
+  <p class="Code">
+   displays = ENVI_GET_DISPLAY_NUMBERS()
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Go to a lake-front house in the image
+  </p>
+  <p class="Code">
+   ENVI_CONVERT_FILE_COORDINATES, fid1, XF, YF,482234.9000d,4427500.7000D
+  </p>
+  <p class="Code">
+   DISP_GOTO, displays[0], XF, YF
+  </p>
+  <p class="Code">
+   ENVI_CONVERT_FILE_COORDINATES, fid2, XF, YF,482234.9000d,4427500.7000D
+  </p>
+  <p class="Code">
+   DISP_GOTO, displays[1], XF, YF
+  </p>
+  <p>
+   The following code opens the same images into separate views in the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   display, creates a third view with a Portal so you can view one image over the other, geographically links the images, then centers over the same location in both views.
+  </p>
+  <p class="Code">
+   ; Start ENVI
+  </p>
+  <p class="Code">
+   e = ENVI()
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Open two files
+  </p>
+  <p class="Code">
+   file1 = FILEPATH('qb_boulder_pan', ROOT_DIR = e.root_dir, $
+  </p>
+  <p class="Code">
+   &#160;&#160;&#160;SUBDIRECTORY = ['data'])
+  </p>
+  <p class="Code">
+   file2 = FILEPATH('qb_boulder_msi', ROOT_DIR = e.root_dir, $
+  </p>
+  <p class="Code">
+   &#160;&#160;&#160;SUBDIRECTORY = ['data'])
+  </p>
+  <p class="Code">
+   raster1 = e.OpenRaster(file1)
+  </p>
+  <p class="Code">
+   raster2 = e.OpenRaster(file2)
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Display the files in 2 seperate views
+  </p>
+  <p class="Code">
+   view1 = e.GetView()
+  </p>
+  <p class="Code">
+   view1_layer = view1.CreateLayer(raster1)
+  </p>
+  <p class="Code">
+   view2 = e.CreateView()
+  </p>
+  <p class="Code">
+   view2_layer = view2.CreateLayer(raster2)
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Display the files together in a view and create portal
+  </p>
+  <p class="Code">
+   view3 = e.CreateView()
+  </p>
+  <p class="Code">
+   view3_layer1 = view3.CreateLayer(raster1)
+  </p>
+  <p class="Code">
+   view3_layer2 = view3.CreateLayer(raster2)
+  </p>
+  <p class="Code">
+   portal = view3.CreatePortal()
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Link all the views together
+  </p>
+  <p class="Code">
+   view1.GeoLink, /LINK_ALL
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Go to a lake-front house in the image
+  </p>
+  <p class="Code">
+   view1.GoToLocation,482234.9000d,4427500.7000D,/map
+  </p>
+  <h2>
+   <a name="Processi">
+   </a>
+   Processing
+  </h2>
+  <p>
+   Use the
+   <span style="font-weight: normal;" class="DocumentTitleProductName">
+    ENVI
+   </span>
+   API to manage the application, open and display data, and view/set data properties, while integrating
+   <span style="font-weight: normal;" class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   processing routines as needed to perform advanced image processing techniques or other specific utilities.
+  </p>
+  <p>
+   To incorporate an
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   processing routine into your code, use the
+   <a href="ENVIFIDToRaster.htm">
+    ENVIFIDToRaster
+   </a>
+   and
+   <a href="ENVIRasterToFID.htm">
+    ENVIRasterToFID
+   </a>
+   routines  to pass file information back and forth between the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   API and
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   routine.
+  </p>
+  <p>
+   The result from the processing routine is referenced by a
+   <i>
+    returned file ID
+   </i>
+   (R_FID), which is then passed back to the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   API for subsequent display, via the
+   <a href="ENVIFIDToRaster.htm">
+    ENVIFIDToRaster
+   </a>
+   routine.
+  </p>
+  <p>
+   The following is an example:
+  </p>
+  <p xml:space="preserve" class="Code">
+   ; Start ENVI
+  </p>
+  <p xml:space="preserve" class="Code">
+   e = ENVI()
+  </p>
+  <p xml:space="preserve" class="Code">
+   &#160;
+  </p>
+  <p xml:space="preserve" class="Code">
+   ; Open a data file
+  </p>
+  <p xml:space="preserve" class="Code">
+   file = FILEPATH('qb_boulder_msi', ROOT_DIR = e.ROOT_DIR, $
+  </p>
+  <p xml:space="preserve" class="Code">
+   &#160;&#160;&#160;SUBDIRECTORY = ['data'])
+  </p>
+  <p xml:space="preserve" class="Code">
+   raster = e.OpenRaster(file)
+  </p>
+  <p xml:space="preserve" class="Code">
+   &#160;
+  </p>
+  <p xml:space="preserve" class="Code">
+   ; Determine an output file
+  </p>
+  <p xml:space="preserve" class="Code">
+   out_file = e.GetTemporaryFilename()
+  </p>
+  <p xml:space="preserve" class="Code">
+   &#160;
+  </p>
+  <p xml:space="preserve" class="Code">
+   ; Return a file ID
+  </p>
+  <p xml:space="preserve" class="Code">
+   fid = ENVIRasterToFID(raster)
+  </p>
+  <p xml:space="preserve" class="Code">
+   &#160;
+  </p>
+  <p xml:space="preserve" class="Code">
+   ; Run an ENVI Classic processing routine. The
+  </p>
+  <p xml:space="preserve" class="Code">
+   ; resulting output file is referenced by a
+  </p>
+  <p xml:space="preserve" class="Code">
+   ; returned file ID (R_FID).
+  </p>
+  <p xml:space="preserve" class="Code">
+   ENVI_FILE_QUERY, fid, DIMS=dims
+  </p>
+  <p xml:space="preserve" class="Code">
+   ENVI_DOIT,'CONV_DOIT', FID=fid, $
+  </p>
+  <p xml:space="preserve" class="Code">
+   &#160;&#160;&#160;DIMS=dims, OUT_NAME=out_file, $
+  </p>
+  <p xml:space="preserve" class="Code">
+   &#160;&#160;&#160;METHOD=0, R_FID=r_fid
+  </p>
+  <p xml:space="preserve" class="Code">
+   &#160;
+  </p>
+  <p xml:space="preserve" class="Code">
+   ; Pass the R_FID to an ENVIRaster object.
+  </p>
+  <p xml:space="preserve" class="Code">
+   out_raster = ENVIFIDToRaster(r_fid)
+  </p>
+  <p xml:space="preserve" class="Code">
+   &#160;
+  </p>
+  <p xml:space="preserve" class="Code">
+   ; Print information about the output
+  </p>
+  <p xml:space="preserve" class="Code">
+   print, out_raster
+  </p>
+  <p xml:space="preserve" class="Code">
+   &#160;
+  </p>
+  <p xml:space="preserve" class="Code">
+   ; Display the original data and the result
+  </p>
+  <p xml:space="preserve" class="Code">
+   view = e.GetView()
+  </p>
+  <p xml:space="preserve" class="Code">
+   layer1 = view.CreateLayer(raster)
+  </p>
+  <p xml:space="preserve" class="Code">
+   layer2 = view.CreateLayer(out_raster)
+  </p>
+  <p xml:space="preserve" class="Code">
+   portal = view.CreatePortal()
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

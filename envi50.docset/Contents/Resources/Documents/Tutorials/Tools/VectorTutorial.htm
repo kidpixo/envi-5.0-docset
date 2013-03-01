@@ -1,0 +1,544 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Tutorials|Using the Tools" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Vectors Tutorial
+  </title>
+  <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../Resources/TableStyles/Description.css" rel="stylesheet" />
+  <link href="../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../ENVIHelp_CSH.htm#Tutorials/Tools/VectorTutorial.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../Tutorials.htm">
+    Tutorials
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../Tutorials.htm">
+    Using the Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Vectors
+   </span>
+  </div>
+  <h1>
+   Vectors Tutorial
+  </h1>
+  <p>
+   In this tutorial, you will use
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   to display a QuickBird multispectral image on which you will create new vector layers and add vector records and annotation items.
+  </p>
+  <h2>
+   Files Used in This Tutorial
+  </h2>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   Resource DVD:
+   <code>
+    feature_extraction
+   </code>
+  </p>
+  <table style="margin-left: 0;margin-right: auto;caption-side: top;mc-table-style: url('../../Resources/TableStyles/Description.css');" cellspacing="0" class="TableStyle_Description">
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       File
+      </p>
+     </th>
+     <th class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p class="TableHead">
+       Description
+      </p>
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <pre xml:space="preserve">
+       qb_colorado.dat
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       QuickBird multispectral image, Boulder, CO, USA, captured July 4, 2005
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <pre>
+       qb_colorado.hdr
+      </pre>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColEnd">
+      <p>
+       Header file for above
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <p>
+   QuickBird files are courtesy of DigitalGlobe and may not be reproduced without explicit permission from DigitalGlobe.
+  </p>
+  <h2>
+   Starting
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+  </h2>
+  <ul>
+   <li madcap:excludeaction="unbind" value="1">
+    Windows Start menu: Select
+    <b>
+     Programs &gt; ENVI
+     <i>
+      x.x
+     </i>
+     &gt; ENVI
+    </b>
+    .
+   </li>
+   <li madcap:excludeaction="unbind" value="2">
+    UNIX: Type
+    <code>
+     envi
+    </code>
+    at the UNIX command line.
+   </li>
+  </ul>
+  <h2>
+   Opening and Displaying an Image
+  </h2>
+  <ol>
+   <li value="1">
+    Click the
+    <b>
+     Open
+    </b>
+    button
+    <img src="../../Resources/Images/IconsButtons/Open.gif" class="VertCenter" alt="Open" />
+    on the toolbar. The Open dialog appears.
+   </li>
+   <li value="2">
+    Navigate to
+    <code>
+     feature_extraction
+    </code>
+    and open
+    <code>
+     qb_colorado.dat
+    </code>
+    .
+   </li>
+  </ol>
+  <h2>
+   Creating Vector Layers
+  </h2>
+  <p>
+   Create one vector layer for polygon records and one vector layer for polyline records. When working with vectors, you create separate layers for each vector record type. For example, if you create a polygon vector layer, it can only contain polygon records; it cannot contain point records.
+  </p>
+  <ol>
+   <li value="1">
+    From the menu bar, select
+    <b>
+     File &gt; New &gt; Vector Layer
+    </b>
+    . The Create New Vector Layer dialog appears.
+   </li>
+   <li value="2">
+    Enter
+    <code style="font-weight: bold;">
+     Boulder_Buildings
+    </code>
+    as the
+    <b>
+     Layer Name
+    </b>
+    .
+   </li>
+   <li value="3">
+    Select the vector layer type
+    <b>
+     Polygon
+    </b>
+    from the
+    <b>
+     Record Type
+    </b>
+    drop-down list.
+   </li>
+   <li value="4">
+    Select
+    <code>
+     qb_colorado.dat
+    </code>
+    as the source file that defines the new layer’s base projection.
+   </li>
+   <li value="5">
+    Click
+    <b>
+     OK
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds the new layer to the Layer Manager as the active vector layer. In cases where you have multiple vector layers loaded, only one layer at a time is the active layer.
+   </li>
+   <p>
+    <img src="../../Resources/Images/Tools/VectorsTutorialLayers.gif" alt="Layer Manager" />
+   </p>
+   <li value="6">
+    To create a second new vector layer, right-click on the Layers folder in the Layer Manager and select
+    <b>
+     New &gt; Vector Layer
+    </b>
+    .
+   </li>
+   <li value="7">
+    Enter
+    <code style="font-weight: bold;">
+     Boulder_Roads
+    </code>
+    as the Layer Name.
+   </li>
+   <li value="8">
+    Select the vector layer type
+    <b>
+     Polyline
+    </b>
+    from the
+    <b>
+     Record Type
+    </b>
+    drop-down list..
+   </li>
+   <li value="9">
+    Select
+    <code>
+     qb_colorado.dat
+    </code>
+    as the source file that defines the new layer’s base projection.
+   </li>
+   <li value="10">
+    Click
+    <b>
+     OK
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds the new layer to the Layer Manager. Now this layer is the active vector layer, and the Boulder_Buildings layer is no longer the active layer.
+   </li>
+  </ol>
+  <h2>
+   Adding and Saving Vector Records
+  </h2>
+  <p>
+   Since
+   <code>
+    Boulder_Roads
+   </code>
+   is the active layer, you’ll add vector records to this layer first. When you added the new vector layer, the
+   <b>
+    Vector Create
+   </b>
+   button
+   <img src="../../Resources/Images/IconsButtons/VectorCreate_22x22.gif" class="VertCenter" style="width: 22;height: 22;" alt="Vector Create" />
+   was automatically selected on the toolbar.
+  </p>
+  <ol>
+   <li value="1">
+    In the Image window view, draw polylines along any four roads in the scene. To draw polylines, click and release to follow the shape of the road.
+   </li>
+   <li value="2">
+    To complete the polyline and accept it in the layer, press
+    <b>
+     Enter
+    </b>
+    .
+   </li>
+   <li value="3">
+    Save the vector layer before you continue. Right-click on
+    <code>
+     Boulder_Roads
+    </code>
+    in the Layer Manager and select
+    <b>
+     Save As
+    </b>
+    . The Save As dialog appears with
+    <code>
+     Boulder_Roads
+    </code>
+    in the
+    <b>
+     File name
+    </b>
+    field.
+   </li>
+   <li value="4">
+    Click
+    <b>
+     Save
+    </b>
+    .
+   </li>
+   <li value="5">
+    Draw two polylines that are close together, but not touching each other.
+   </li>
+   <li value="6">
+    Click the
+    <b>
+     Vector Join
+    </b>
+    button
+    <img src="../../Resources/Images/IconsButtons/VectorJoin.gif" class="VertCenter" alt="Vector Join" />
+    .
+   </li>
+   <li value="7">
+    Select the one of the polylines you just drew.
+   </li>
+   <li value="8">
+    Drag the cursor to the second polyline you drew to connect the two polylines.
+   </li>
+   <li value="9">
+    Press
+    <b>
+     Enter
+    </b>
+    to complete the join.
+   </li>
+   <li value="10">
+    Draw one more polyline.
+   </li>
+   <li value="11">
+    Click the
+    <b>
+     Vector Edit
+    </b>
+    button
+    <img src="../../Resources/Images/IconsButtons/VectorEdit.gif" class="VertCenter" alt="Vector Edit" />
+    .
+   </li>
+   <li value="12">
+    Select the polyline you just created.
+   </li>
+   <li value="13">
+    Right-click and select Properties. The Properties dialog appears. You can change the appearance of the polylines by choosing different settings in this dialog.
+   </li>
+   <li value="14">
+    Close the Properties dialog.
+   </li>
+   <li value="15">
+    With the polyline still selected, right-click and select
+    <b>
+     Delete
+    </b>
+    .
+   </li>
+   <li value="16">
+    Save the layer. Right-click in the Image window and select
+    <b>
+     Save
+    </b>
+    .
+   </li>
+  </ol>
+  <p>
+   Next, you will make
+   <code>
+    Boulder_Buildings
+   </code>
+   the active layer and add records to it.
+  </p>
+  <ol>
+   <li value="1">
+    In the Layer Manager, right-click on the
+    <code>
+     Boulder_Buildings
+    </code>
+    layer and select
+    <b>
+     Set as Active Vector Layer
+    </b>
+    . The icon next to the layer name is outlined in red to indicate it is the active vector layer.
+   </li>
+   <p>
+    <img src="../../Resources/Images/Tools/VectorsTutorialSetAsActiveLayer.gif" alt="Layer Manager" />
+   </p>
+   <li value="2">
+    Click the
+    <b>
+     Vector Create
+    </b>
+    button
+    <img src="../../Resources/Images/IconsButtons/VectorCreate.gif" class="VertCenter" alt="Vector Create" />
+    .
+   </li>
+   <li value="3">
+    In the Image window, draw polygons over one building in the scene. Click and release to follow the outline of a building in the image.
+   </li>
+   <li value="4">
+    To complete the polygon and accept it in the layer, double-click, or press
+    <b>
+     Enter
+    </b>
+    .
+   </li>
+   <li value="5">
+    Repeat this procedure five more times to create polygons over six buildings.
+   </li>
+   <li value="6">
+    Group some of the polygons together.
+   </li>
+   <li value="7">
+    Click the
+    <b>
+     Vector Edit
+    </b>
+    button
+    <img src="../../Resources/Images/IconsButtons/VectorEdit.gif" class="VertCenter" alt="Vector Edit" />
+    .
+   </li>
+   <li value="8">
+    Use
+    <b>
+     Ctrl+
+    </b>
+    click to select three of the polygons.
+   </li>
+   <li value="9">
+    Right-click and select
+    <b>
+     Group
+    </b>
+    . You can ungroup the polygons by right-clicking again and selecting
+    <b>
+     Ungroup
+    </b>
+    .
+   </li>
+   <li value="10">
+    Save the vector layer before you continue. Right-click on
+    <code>
+     Boulder_Roads
+    </code>
+    in the Layer Manager and select
+    <b>
+     Save As
+    </b>
+    . The Save As dialog appears with
+    <code>
+     Boulder_Buildings
+    </code>
+    in the
+    <b>
+     File name
+    </b>
+    field.
+   </li>
+   <li value="11">
+    Click
+    <b>
+     Save
+    </b>
+    .
+   </li>
+  </ol>
+  <p>
+   In the final steps for vectors, you will modify the placement of vertices for some of the polygons you created. The
+   <code>
+    Boulder_Buildings
+   </code>
+   layer is still active, so you will edit that one.
+  </p>
+  <ol>
+   <li value="1">
+    Click the
+    <b>
+     Vertex Edit
+    </b>
+    button
+    <img src="../../Resources/Images/IconsButtons/VertexEdit.gif" class="VertCenter" alt="Vertex Edit" />
+    .
+   </li>
+   <li value="2">
+    Select a polygon.
+   </li>
+   <li value="3">
+    Place the cursor over a vertex to move.
+   </li>
+   <li value="4">
+    Click and drag the cursor to move the vertex to the new location. You can optionally use the up, down, left, and right keyboard keys to move the location one screen pixel in the direction of the arrow.
+   </li>
+   <li value="5">
+    Release the mouse button to reposition the point or vertex.
+   </li>
+   <li value="6">
+    Save the layer. Right-click in the Image window and select
+    <b>
+     Save
+    </b>
+    .
+   </li>
+   <li value="7">
+    Remove the vector layers from the Image window. Right-click on
+    <code>
+     Boulder_Buildings
+    </code>
+    in the Layer Manager and select
+    <b>
+     Remove
+    </b>
+    . Repeat this step for
+    <code>
+     Boulder_Roads
+    </code>
+    .
+   </li>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

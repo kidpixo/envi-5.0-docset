@@ -1,0 +1,640 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming|Routines|Processing" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   ENVI_AUTO_TIE_POINTS_DOIT
+  </title>
+  <link href="../../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../../ENVIHelp_CSH.htm#ExtendCustomize/ENVIClassicAPI/ENVI_A/ENVI_AUTO_TIE_POINTS_DOIT.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../Routines.htm">
+    Routines
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../A/ADAPT_FILT_DOIT.htm">
+    Processing
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    ENVI_AUTO_TIE_POINTS_DOIT
+   </span>
+  </div>
+  <h1>
+   <a name="kanchor697">
+   </a>
+   ENVI_AUTO_TIE_POINTS_DOIT
+  </h1>
+  <p>
+   This procedure automatically calculates tie points for two images, allowing fully automatic image registration. The
+   <a href="../ENVI_R/ENVI_REGISTER_DOIT.htm">
+    ENVI_REGISTER_DOIT
+   </a>
+   procedure uses the tie points to co-register the two images. See
+   <a href="../../../GeorectifyImagery/Registration.htm#using_gcps">
+    Automatic Image-to-Image Registration
+   </a>
+   for descriptions of area-based matching and feature-based matching techniques.
+  </p>
+  <h2 class="API">
+   <a name="Syntax">
+   </a>
+   Syntax
+  </h2>
+  <p>
+   <b>
+    Area-based matching:
+   </b>
+  </p>
+  <p>
+   ENVI_DOIT, 'ENVI_AUTO_TIE_POINTS_DOIT' [,
+   <a href="#AREA_CHIP_SIZE">
+    AREA_CHIP_SIZE
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ],
+   <a href="#BASE_FID">
+    BASE_FID
+   </a>
+   =
+   <i>
+    file ID
+   </i>
+   [,
+   <a href="#BASE_MATCH_POS">
+    BASE_MATCH_POS
+   </a>
+   =
+   <i>
+    scalar
+   </i>
+   ] [,
+   <a href="#IN_TIE_POINTS_ARRAY">
+    IN_TIE_POINTS_ARRAY
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ] [,
+   <a href="#INTEREST_OPERATOR">
+    INTEREST_OPERATOR
+   </a>
+   ={0 | 1}] [,
+   <a href="#MATCH_METHOD">
+    MATCH_METHOD
+   </a>
+   ={0 | 1| 2}] [,
+   <a href="#MIN_CORRELATION">
+    MIN_CORRELATION
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ] [,
+   <a href="#MOVE_WIN">
+    MOVE_WIN
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ] [,
+   <a href="#NUM_OVERSAMPLES">
+    NUM_OVERSAMPLES
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ] [,
+   <a href="#NUM_TIE_POINTS">
+    NUM_TIE_POINTS
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ] [,
+   <a href="#OUT_TIE_POINTS_ARRAY">
+    OUT_TIE_POINTS_ARRAY
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ] [,
+   <a href="#OUT_TIE_POINTS_NAME">
+    OUT_TIE_POINTS_NAME
+   </a>
+   =
+   <i>
+    string
+   </i>
+   ] [,
+   <a href="#SEARCH_WIN">
+    SEARCH_WIN
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ],
+   <a href="#WARP_FID">
+    WARP_FID
+   </a>
+   =
+   <i>
+    file ID
+   </i>
+   [,
+   <a href="#WARP_MATCH_POS">
+    WARP_MATCH_POS
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ]
+  </p>
+  <p>
+   <b>
+    Feature-based matching:
+   </b>
+  </p>
+  <p>
+   ENVI_DOIT, 'ENVI_AUTO_TIE_POINTS_DOIT',
+   <a href="#BASE_FID">
+    BASE_FID
+   </a>
+   =
+   <i>
+    file ID
+   </i>
+   [,
+   <a href="#BASE_MATCH_POS">
+    BASE_MATCH_POS
+   </a>
+   =
+   <i>
+    scalar
+   </i>
+   ] [,
+   <a href="#BASE_OVERLAY_DIMS">
+    BASE_OVERLAY_DIMS
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ] [,
+   <a href="#IN_TIE_POINTS_ARRAY">
+    IN_TIE_POINTS_ARRAY
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ] [,
+   <a href="#MATCH_METHOD">
+    MATCH_METHOD
+   </a>
+   ={0 | 1| 2}] [,
+   <a href="#MAX_MATCH_LEVEL">
+    MAX_MATCH_LEVEL
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ]  [,
+   <a href="#NUM_MATCH_LEVELS">
+    NUM_MATCH_LEVELS
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ] [,
+   <a href="#OUT_TIE_POINTS_ARRAY">
+    OUT_TIE_POINTS_ARRA
+   </a>
+   Y=
+   <i>
+    array
+   </i>
+   ] [,
+   <a href="#OUT_TIE_POINTS_NAME">
+    OUT_TIE_POINTS_NAME
+   </a>
+   =
+   <i>
+    string
+   </i>
+   ] [,
+   <a href="#PIXEL_SIZE_RATIO">
+    PIXEL_SIZE_RATIO
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ] [,
+   <a href="#RELIABILITY_CHECK">
+    RELIABILITY_CHECK
+   </a>
+   =0],
+   <a href="#WARP_FID">
+    WARP_FID
+   </a>
+   =
+   <i>
+    file ID
+   </i>
+   [,
+   <a href="#WARP_MATCH_POS">
+    WARP_MATCH_POS
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ] [,
+   <a href="#WARP_OVERLAY_DIMS">
+    WARP_OVERLAY_DIMS
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ]
+  </p>
+  <h2 class="API">
+   <a name="Keywords">
+   </a>
+   Keywords
+  </h2>
+  <h3>
+   <a name="AREA_CHIP_SIZE">
+   </a>
+   AREA_CHIP_SIZE (optional)
+  </h3>
+  <p>
+   Use this keyword to specify an integer value for one side of a square image chip size for finding the Moravec or Förstner interest points in the base image. Larger values require more computational time; however, the obtained tie points may be more useful. The default is 128, meaning a 128 x 128 image chip size.
+   <b>
+    Area-based matching only
+   </b>
+   .
+  </p>
+  <h3>
+   <a name="BASE_FID">
+   </a>
+   BASE_FID
+  </h3>
+  <p>
+   Use this keyword to specify the file ID of the base image. This is the value returned from the R_FID keyword in the
+   <a href="../ENVI_O/ENVI_OPEN_FILE.htm">
+    ENVI_OPEN_FILE
+   </a>
+   procedure. BASE_FID is a long integer with a value greater than 0. An invalid file ID is specified as –1.
+  </p>
+  <h3>
+   <a name="BASE_MATCH_POS">
+   </a>
+   BASE_MATCH_POS (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a band number from the base image on which to perform image matching. This keyword is a long integer, ranging from 0 to the number of bands minus 1. The default is 0 (the first band).
+  </p>
+  <h3>
+   <a name="BASE_OVERLAY_DIMS">
+   </a>
+   BASE_OVERLAY_DIMS (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the spatial dimensions on the base image that overlap with the warp image. This information enables you to achieve better results for feature-based matching. If both the base image and the warp image have map information, the maximum overlapping region of the base image becomes the default dimension. Otherwise, the image dimension of the base image becomes the default dimension.
+   <b>
+    Feature-based matching only
+   </b>
+   .
+  </p>
+  <p>
+   The BASE_OVERLAY_DIMS keyword is set to a five-element array of long integers with the following definitions:
+  </p>
+  <ul>
+   <li value="1">
+    BASE_OVERLAY_DIMS[0]: A pointer to an open ROI; use only in cases where ROIs define the spatial subset. Otherwise, set to -1L.
+   </li>
+   <li value="2">
+    BASE_OVERLAY_DIMS[1]: The starting sample number. The first x pixel is 0.
+   </li>
+   <li value="3">
+    BASE_OVERLAY_DIMS[2]: The ending sample number
+   </li>
+   <li value="4">
+    BASE_OVERLAY_DIMS[3]: The starting line number. The first y pixel is 0.
+   </li>
+   <li value="5">
+    BASE_OVERLAY_DIMS[4]: The ending line number
+   </li>
+  </ul>
+  <h3>
+   <a name="IN_TIE_POINTS_ARRAY">
+   </a>
+   IN_TIE_POINTS_ARRAY (optional)
+  </h3>
+  <p>
+   Use this keyword to store three or more seed tie points to guide the image matching process. This keyword is a [4,
+   <i>
+    n
+   </i>
+   ] floating-point array, where the four columns are base image coordinates (x1, y1) and warp image coordinates (x2, y2), and n is the number of tie points.
+  </p>
+  <h3>
+   <a name="INTEREST_OPERATOR">
+   </a>
+   INTEREST_OPERATOR (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the operator type to use for identifying point features. It can be either 0 (Moravec operator) or 1 (Förstner). The default is 0.
+   <b>
+    Area-based image matching only
+   </b>
+   .
+  </p>
+  <h3>
+   <a name="MATCH_METHOD">
+   </a>
+   MATCH_METHOD (optional)
+  </h3>
+  <p>
+   Use this keyword to specify an integer indicating the matching method to use. The default value is 0.
+  </p>
+  <ul>
+   <li value="1">
+    0: The match method used is automatically decided by
+    <span class="DocumentTitleProductNameENVIClassic">
+     ENVI Classic
+    </span>
+    . If you set the IN_TIE_POINTS_ARRAY keyword, or both the base image and warp image have map information, or rational polynomial coefficient (RPC), or pseudo map information, then area-based matching is used. Otherwise, feature-based matching is used.
+   </li>
+   <li value="2">
+    1: Force to use area-based matching
+   </li>
+   <li value="3">
+    2: Force to use feature-based matching
+   </li>
+  </ul>
+  <h3>
+   <a name="MAX_MATCH_LEVEL">
+   </a>
+   MAX_MATCH_LEVEL
+  </h3>
+  <p>
+   Use this keyword to specify the maximum image dimension on which to extract feature points and perform matching. A value of
+   <i>
+    n
+   </i>
+   indicates that the maximum image dimension on which to extract feature points is the original image dimension divided by 2
+   <i style="vertical-align: super;font-size: 9pt;">
+    n
+   </i>
+   . A value of 0 (default) means that the extraction and matching of feature points are performed on the full-resolution base image. The default value is an image pyramid level that is close to an image size of 512 x 512.
+   <b>
+    Feature-based matching only
+   </b>
+   .
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   Smaller values for this keyword result in more feature points being extracted, giving more accurate results; however, the process requires significantly more time. For large image sizes, select a larger MAX_MATCH_LEVEL value so that image matching can be completed in a relatively shorter period of time.
+  </p>
+  <h3>
+   <a name="MIN_CORRELATION">
+   </a>
+   MIN_CORRELATION (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a floating-point value for the minimum correlation coefficient. Any matches with a correlation coefficient smaller than this keyword value are discarded. The default is 0.70.
+   <b>
+    Area-based matching only
+   </b>
+   .
+  </p>
+  <h3>
+   <a name="MOVE_WIN">
+   </a>
+   MOVE_WIN (optional)
+  </h3>
+  <p>
+   Use this keyword to specify an integer that is one side of a square area defining the moving window size. The default value is 11, meaning an moving window size of 11 x 11 pixels. Area-based matching only.
+  </p>
+  <h3>
+   <a name="NUM_MATCH_LEVELS">
+   </a>
+   NUM_MATCH_LEVELS (optional)
+  </h3>
+  <p>
+   Use this keyword to specify an integer value for the number of scale space levels for extracting feature points. The default value is 1.
+   <b>
+    Feature-based matching only
+   </b>
+   .
+  </p>
+  <p>
+   Larger values require more time for matching; however more feature points are generated. If this keyword is set greater than 1, the matching is performed starting from the image pyramid level determined by MAX_MATCH_LEVEL, continuing upward until NUM_MATCH_LEVEL is reached.
+  </p>
+  <p>
+   The following figure shows an example of an image pyramid with a base image size of 2048 x 2048 pixels. If you set MAX_MATCH_LEVEL=1 and NUM_MATCH_LEVELS=2, then matching is conducted on two levels: 1024 x 1024 pixels and 512 x 512 pixels. The matching process stops, however, if the image size of a pyramid level is smaller than 64 x 64 pixels. In that case, the actual number of match levels used may be smaller than the value of NUM_MATCH_LEVELS you set.
+  </p>
+  <p>
+   <img src="../../../Resources/Images/ENVIClassicAPI/AutoRegNumMatch.gif" />
+  </p>
+  <h3>
+   <a name="NUM_OVERSAMPLES">
+   </a>
+   NUM_OVERSAMPLES (optional)
+  </h3>
+  <p>
+   Set this keyword to an integer specifying the number of over-samples. Larger values require more processing time, but result in increased reliability. The default value is 1.
+   <b>
+    Area-based matching only
+   </b>
+   .
+  </p>
+  <h3>
+   <a name="NUM_TIE_POINTS">
+   </a>
+   NUM_TIE_POINTS (optional)
+  </h3>
+  <p>
+   Use this keyword to specify an integer value for the number of tie points to generate. The default is 25.
+   <b>
+    Area-based matching only
+   </b>
+   .
+  </p>
+  <h3>
+   <a name="OUT_TIE_POINTS_ARRAY">
+   </a>
+   OUT_TIE_POINTS_ARRAY (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a named variable for storing auto-generated tie points. This keyword is a [4,
+   <i>
+    n
+   </i>
+   ] floating-point array, where the four columns are base image coordinates (x1, y1) and warp image coordinates (x2, y2), and
+   <i>
+    n
+   </i>
+   is the number of tie points. The values use zero-based indexing.
+  </p>
+  <h3>
+   <a name="OUT_TIE_POINTS_NAME">
+   </a>
+   OUT_TIE_POINTS_NAME (optional)
+  </h3>
+  <p>
+   Use this keyword to specify an output filename in which to store the tie points. The values use one-based indexing.
+  </p>
+  <h3>
+   <a name="PIXEL_SIZE_RATIO">
+   </a>
+   PIXEL_SIZE_RATIO (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a floating-point value for the ratio of the warp image pixel size to the base image pixel size. This is used as a guide in the feature matching process. The default is 1.0.
+   <b>
+    Feature-based matching only
+   </b>
+   .
+  </p>
+  <h3>
+   <a name="RELIABILITY_CHECK">
+   </a>
+   RELIABILITY_CHECK (optional)
+  </h3>
+  <p>
+   Set this keyword to 0 (false) or 1 (true) to specify whether some matches are removed based on certain secondary reliability measurements. The default is 1 (true).
+   <b>
+    Feature-based matching only
+   </b>
+   .
+  </p>
+  <p>
+   Setting this keyword to 1 results in fewer, yet more reliable, tie points. Setting this keyword to 0 results in more tie points that are not as reliable. Typically, most remote sensing image applications will use the default setting of 1. However, in certain cases, you may want to set RELIABILITY_CHECK to 0 to extract as many tie points as possible; which will be at the expense of the output tie-point reliability.
+  </p>
+  <h3>
+   <a name="SEARCH_WIN">
+   </a>
+   SEARCH_WIN (optional)
+  </h3>
+  <p>
+   Set this keyword to an integer value representing one side of a square area specifying the search window size. Using larger values makes it more likely that the correct match may be found; however, more computational time is required for these conditions. The default is 81, meaning the search window size is 81 x 81.
+   <b>
+    Area-based matching only
+   </b>
+   .
+  </p>
+  <h3>
+   <a name="WARP_FID">
+   </a>
+   WARP_FID
+  </h3>
+  <p>
+   Use this keyword to specify the file ID for the input warp image file. This input warp file ID is the value returned from the R_FID keyword in the
+   <a href="../ENVI_O/ENVI_OPEN_FILE.htm">
+    ENVI_OPEN_FILE
+   </a>
+   procedure. WARP_FID is a long integer with a value greater than 0. An invalid file ID is specified as –1.
+  </p>
+  <h3>
+   <a name="WARP_MATCH_POS">
+   </a>
+   WARP_MATCH_POS (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a single band position from the input warp image on which to perform image matching. WARP_MATCH_POS is a long integer, ranging from 0 to the number of bands minus 1. The default is 0 (the first band).
+  </p>
+  <h3>
+   <a name="WARP_OVERLAY_DIMS">
+   </a>
+   WARP_OVERLAY_DIMS (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the spatial dimensions of the warp image that overlap with the base image. If both the base image and the warp image have map information, the maximum overlapping region of the warp image becomes the default dimension. Otherwise, the image dimension of the warp image becomes the default dimension.
+   <b>
+    Feature-based matching only
+   </b>
+   .
+  </p>
+  <p>
+   The WARP_OVERLAY_DIMS keyword is a five-element array of long integers with the following definitions:
+  </p>
+  <ul>
+   <li value="1">
+    WARP_OVERLAY_DIMS[0]: A pointer to an open ROI; use only in cases where ROIs define the spatial subset. Otherwise, set to -1L.
+   </li>
+   <li value="2">
+    WARP_OVERLAY_DIMS[1]: The starting sample number. The first x pixel is 0.
+   </li>
+   <li value="3">
+    WARP_OVERLAY_DIMS[2]: The ending sample number
+   </li>
+   <li value="4">
+    WARP_OVERLAY_DIMS[3]: The starting line number. The first y pixel is 0.
+   </li>
+   <li value="5">
+    WARP_OVERLAY_DIMS[4]: The ending line number
+   </li>
+  </ul>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

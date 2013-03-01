@@ -1,0 +1,535 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Filters" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Convolution and Morphology Filters
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#FilterTools/ConvolutionMorphologyFilters.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="Filters.htm">
+    Filters
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Convolution and Morphology Filters
+   </span>
+  </div>
+  <h1>
+   Convolution and Morphology Filters
+   <a name="kanchor326">
+   </a>
+  </h1>
+  <p>
+   Use
+   <b>
+    Convolutions and Morphology
+   </b>
+   to apply
+   <a href="#Convolution">
+    convolution filters
+   </a>
+   or
+   <a href="#Morphology">
+    morphology filters
+   </a>
+   to image data.
+  </p>
+  <h2>
+   <a name="Convolution">
+   </a>
+   Convolution Filters
+  </h2>
+  <p>
+   Convolution filters produce output images in which the brightness value at a given pixel is a function of some weighted average of the brightness of the surrounding pixels. Convolution of a user-selected kernel with the image array returns a new, spatially filtered image. You can select the kernel size and values, producing different types of filters. Standard convolution filters include:
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     High Pass
+    </b>
+    <a name="kanchor327">
+    </a>
+    : Removes the low frequency components of an image while retaining the high frequency (local variations). It can enhance edges between different regions as well as to sharpen an image. It uses a kernel with a high central value, typically surrounded by negative weights.
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    ’s default high pass filter uses a 3x3 kernel with a value of 8 for the center pixel and values of -1 for the exterior pixels. High pass filters can only have odd kernel dimensions.
+   </li>
+   <li value="2">
+    <b>
+     Low Pass
+    </b>
+    <a name="kanchor328">
+    </a>
+    :  Preserves the low frequency components of an image, which smoothes it.
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    ’s low pass filter contains the same weights in each kernel element, replacing the center pixel value with an average of the surrounding values. The default kernel size is 3x3.
+   </li>
+   <li value="3">
+    <b>
+     Laplacian
+    </b>
+    <a name="kanchor329">
+    </a>
+    : A second derivative edge enhancement filter that operates without regard to edge direction. Laplacian filtering emphasizes maximum values within the image by using a kernel with a high central value typically surrounded by negative weights in the north-south and east-west directions and zero values at the kernel corners.
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    ’s default Laplacian filter uses a 3x3 kernel with a value of 4 for the center pixel and values of -1 for the north-south and east-west pixels. All Laplacian filters must have odd kernel sizes.
+   </li>
+   <li value="4">
+    <b>
+     Directional
+    </b>
+    <a name="kanchor330">
+    </a>
+    : A first derivative edge enhancement filter that selectively enhances image features having specific direction components (gradients). The sum of the directional filter kernel elements is zero. The result is that areas with uniform pixel values are zeroed in the output image, while those that are variable are presented as bright edges.
+   </li>
+   <li value="5">
+    <b>
+     Gaussian Low Pass
+    </b>
+    <a name="kanchor331">
+    </a>
+    : Used for image smoothing. It uses a kernel defined by a 2D Gaussian function with standard deviation N/8.
+   </li>
+   <li value="6">
+    <b>
+     Gaussian High Pass
+    </b>
+    <a name="kanchor332">
+    </a>
+    : Uses unsharp masking to enhance local image variations.  It operates by subtracting a low pass (Gaussian Low Pass) version of the image to enhance the high frequency components.
+   </li>
+   <li value="7">
+    <b>
+     Median
+    </b>
+    <a name="kanchor333">
+    </a>
+    : Smooths an image, while preserving edges larger than the kernel dimensions (good for removing salt and pepper noise or speckle).
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    ’s Median filter replaces each center pixel with the median value (not to be confused with the average) within the neighborhood specified by the filter size. The default is a 3x3 kernel.
+   </li>
+   <li value="8">
+    <b>
+     Sobel
+    </b>
+    <a name="kanchor334">
+    </a>
+    : A non-linear edge enhancement, special case filter that uses an approximation of the true Sobel function, and is a preset 3x3, non-linear edge enhancement operator. The size of the filter cannot be changed and no kernel editing is possible.
+   </li>
+   <li value="9">
+    <b>
+     Roberts
+     <a name="kanchor335">
+     </a>
+    </b>
+    : A non-linear edge detector filter similar to the Sobel. It is a special case filter that uses a preset 2x2 approximation of the true Roberts function, a simple, 2D differencing method for edge-sharpening and isolation. The size of the filter cannot be changed and no kernel editing is possible.
+   </li>
+   <li value="10">
+    <b>
+     User-Defined Convolution
+    </b>
+    <a name="kanchor336">
+    </a>
+    : You can define custom convolution kernels (including rectangular rather than square filters) by selecting and editing a user kernel.
+   </li>
+  </ul>
+  <p>
+   Mathematical morphology filtering is a non-linear method of processing digital images on the basis of shape. Its primary goal is the quantification of geometrical structures.
+  </p>
+  <p>
+   <b>
+    Reference
+   </b>
+  </p>
+  <p>
+   Haralick, Sternberg, and Zhuang, Image Analysis Using Mathematical Morphology,
+   <i>
+    IEEE Transactions on Pattern Analysis and Machine Intelligence
+   </i>
+   , Vol. PAMI-9, No. 4, July 1987, pp. 532-550.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Filter &gt; Convolutions and Morphology
+    </b>
+    . The Convolutions and Morphology Tool dialog appears.
+   </li>
+   <li value="2">
+    From the Convolutions and Morphology Tool dialog buttons, select
+    <b>
+     Convolutions &gt;
+    </b>
+    <![CDATA[ ]]>
+    <i>
+     filter_type
+    </i>
+    . The dialog parameters that are available vary with your filter type selection.
+   </li>
+   <p>
+    If you select
+    <b>
+     Directional
+    </b>
+    , enter the filter angle when the Directional Filter Angle dialog appears. North (up) is zero degrees and the other angles are measured in the counterclockwise direction.
+   </p>
+   <li value="3">
+    Specify the
+    <b>
+     Kernel Size
+    </b>
+    . Some specialized filters have default sizes that cannot be changed, such as
+    <b>
+     Sobel
+    </b>
+    and
+    <b>
+     Roberts
+    </b>
+    .
+   </li>
+   <p>
+    The kernel sizes are in odd-number increments. Left-click to increase/decrease the value by 2, middle-click to increase/decrease the value by 10, and right-click to set the kernel size back to 3x3.
+   </p>
+   <p>
+    By default, the kernel size is set to a square kernel. To change to a non-square kernel, deselect
+    <b>
+     Options &gt; Square kernel
+    </b>
+    from the Convolutions and Morphology Tool dialog menu bar. The Low Pass (average) and Median filters are always square. You can also
+    <a href="#editing">
+     edit individual kernels
+    </a>
+    .
+   </p>
+   <li value="4">
+    Enter an add back value in the
+    <b>
+     Image Add Back (0-100%)
+    </b>
+    field. Adding back part of the original image to the convolution filter results helps preserve the spatial context and is typically done to sharpen an image. The
+    <b>
+     Image Add Back
+    </b>
+    value is the percentage of the original image that is included in the final output image. For example, if you enter 40%, then 40% of the original image is added to 60% of the convolution filter image to produce the final result.
+   </li>
+   <li value="5">
+    Select
+    <b>
+     Quick Apply
+    </b>
+    or
+    <b>
+     Apply to File
+    </b>
+    to
+    <![CDATA[ ]]>
+    <a href="#applying_filter_results">
+     apply filter results
+    </a>
+    .
+   </li>
+  </ol>
+  <h3>
+   <a name="editing">
+   </a>
+   Edit, Save, and Restore Kernels
+  </h3>
+  <p>
+   You can edit, save, and restore kernel values in the Convolutions and Morphology Tool dialog.
+  </p>
+  <ul>
+   <li value="1">
+    To edit a kernel value, double-click within the
+    <b>
+     Editable Kernel
+    </b>
+    field to change, enter a new value, then press
+    <b>
+     Enter
+    </b>
+    .
+   </li>
+   <li value="2">
+    To save kernel values, select
+    <b>
+     File &gt; Save Kernel
+    </b>
+    , enter a filename, then click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+   <li value="3">
+    To restore a save kernel file, select
+    <b>
+     File &gt; Restore Kernel
+    </b>
+    and select the desired file.
+   </li>
+  </ul>
+  <h3>
+   <a name="applying_filter_results">
+   </a>
+   Apply Filter Results to Files
+  </h3>
+  <p>
+   You can apply the filter results to a file.
+  </p>
+  <ol>
+   <li value="1">
+    Click
+    <b>
+     Apply to File
+    </b>
+    . The Convolution Input File dialog appears.
+   </li>
+   <li value="2">
+    Select an input band and perform optional spatial
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The Convolution Parameters dialog appears.
+   </li>
+   <li value="3">
+    Select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="4">
+    Click
+    <b>
+     OK
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds the resulting output to the Layer Manager.
+   </li>
+  </ol>
+  <h2>
+   <a name="Morphology">
+   </a>
+   Morphology Filters
+  </h2>
+  <p>
+   <a name="kanchor337">
+   </a>
+   Morphological kernels used in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   are just the structuring element and should not be confused with convolution kernels. Morphology filter types include the following:
+  </p>
+  <ul>
+   <li value="1">
+    <b>
+     Dilate
+    </b>
+    <a name="kanchor338">
+    </a>
+    : Commonly known as fill, expand, or grow, it fills holes smaller than the structural element (kernel) in a binary or gray scale image. Use only with unsigned byte, unsigned long-integer, or unsigned integer data.
+   </li>
+   <li value="2">
+    <b>
+     Erode
+    </b>
+    <a name="kanchor339">
+    </a>
+    : Commonly known as shrink or reduce, it removes islands of pixels smaller than the structural element (kernel) in a binary or gray scale image. Use only with unsigned byte, unsigned long-integer, or unsigned integer data.
+   </li>
+   <li value="3">
+    <b>
+     Opening
+    </b>
+    <a name="kanchor340">
+    </a>
+    : Smooth the contours, break narrow isthmuses, and eliminate small islands and sharp peaks or capes in an image. The opening of an image is defined as the erosion of the image followed by subsequent dilation using the same structural element.
+   </li>
+   <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+    <span class="autonumber">
+     <span>
+      <b>
+       Note:
+      </b>
+     </span>
+    </span>
+    Using the Erode filter followed by using the Dilate filter produces the same result as using an Opening filter.
+   </p>
+   <li value="4">
+    <b>
+     Closing
+     <a name="kanchor341">
+     </a>
+    </b>
+    : Smooth the contours, fuse narrow breaks and long thin gulfs, eliminate small holes, and fill gaps in the contours of an image. The closing of an image is defined as the dilation of the image followed by subsequent erosion using the same structural element.
+   </li>
+   <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+    <span class="autonumber">
+     <span>
+      <b>
+       Note:
+      </b>
+     </span>
+    </span>
+    Using the Dilate filter followed by using the Erode filter produces the same result as using the Closing filter.
+   </p>
+  </ul>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Filter &gt; Convolutions and Morphology
+    </b>
+    . The Convolutions and Morphology Tool dialog appears.
+   </li>
+   <li value="2">
+    From the Convolutions and Morphology Tool dialog menu bar, select
+    <b>
+     Morphology &gt;
+    </b>
+    <![CDATA[ ]]>
+    <i>
+     filter_type
+    </i>
+    .
+   </li>
+   <li value="3">
+    Specify the
+    <b>
+     Kernel Size
+    </b>
+    .
+   </li>
+   <p>
+    The kernel sizes are in odd-number increments. Left-click to increase/decrease the value by 2, middle-click to increase/decrease the value by 10, and right-click to set the kernel size back to 3x3.
+   </p>
+   <p>
+    By default, the kernel size is set to a square kernel. To change to a non-square kernel, deselect
+    <b>
+     Options &gt; Square kernel
+    </b>
+    from the Convolutions and Morphology Tool dialog menu bar. The Low Pass (average) and Median filters are always square. You can also
+    <a href="#editing">
+     edit individual kernels
+    </a>
+    .
+   </p>
+   <li value="4">
+    Enter the number of iterations of the filter in the
+    <b>
+     Cycles
+    </b>
+    field.
+   </li>
+   <li value="5">
+    Select a filter style of
+    <b>
+     Binary
+    </b>
+    ,
+    <b>
+     Gray
+    </b>
+    , or
+    <b>
+     Value
+    </b>
+    .
+    <ul>
+     <li value="1">
+      <b>
+       Binary
+      </b>
+      : Produces output pixels in either black or white.
+     </li>
+     <li value="2">
+      <b>
+       Gray
+      </b>
+      : Preserves gradients.
+     </li>
+     <li value="3">
+      <b>
+       Value
+      </b>
+      : Allows the kernel value to be either added (dilate) or subtracted (erode) from the selected pixels.
+     </li>
+    </ul>
+   </li>
+   <li value="6">
+    Select
+    <b>
+     Quick Apply
+    </b>
+    or
+    <b>
+     Apply to File
+    </b>
+    to
+    <a href="#applying_filter_results">
+     apply filter results
+    </a>
+    .
+   </li>
+   <p>
+    A status message appears. If no image tiling is required, the status message does not advance gradually. It goes abruptly from 0 to 100% after a short wait because the operation is being performed on the entire image array.
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    adds the resulting output to the Layer Manager.
+   </p>
+  </ol>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

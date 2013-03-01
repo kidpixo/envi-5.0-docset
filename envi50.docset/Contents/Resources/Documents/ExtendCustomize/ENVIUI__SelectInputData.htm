@@ -1,0 +1,319 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming|Routines|Display Control|ENVIUI" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   ENVIUI::SelectInputData
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/TableStyles/VersionTable.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#ExtendCustomize/ENVIUI__SelectInputData.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="Routines.htm">
+    Routines
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="enviPortal.htm">
+    Display Control
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    ENVIUI::SelectInputData
+   </span>
+  </div>
+  <h1 class="ObjMethod">
+   ENVIUI::SelectInputData
+  </h1>
+  <p>
+   The
+   <a name="kanchor597">
+   </a>
+   SelectInputData function method displays a dialog in which the user selects files for rasters or vectors.
+  </p>
+  <h2 class="API">
+   Example
+  </h2>
+  <p class="Code">
+   ; Launch the application
+  </p>
+  <p class="Code">
+   e = ENVI()
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Get the UI&#160;object
+  </p>
+  <p class="Code">
+   UI = e.UI
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Choose a raster from the dialog box
+  </p>
+  <p class="Code">
+   raster = UI.SelectInputData(/RASTER)
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Now display the chosen raster.
+  </p>
+  <p class="Code">
+   view = e.GetView()
+  </p>
+  <p class="Code">
+   layer = view.CreateLayer(raster)
+  </p>
+  <h2 class="API">
+   Syntax
+  </h2>
+  <p class="Syntax">
+   <i>
+    Result
+   </i>
+   =
+   <i>
+    ENVIUI
+   </i>
+   .SelectInputData([, BANDS=
+   <i>
+    value
+   </i>
+   ] [, /DISABLE_BANDS] [, /DISABLE_NO_DATA] [, /DISABLE_SUB_RECT] [, ERROR=
+   <i>
+    variable
+   </i>
+   ] [, NO_DATA=
+   <i>
+    value
+   </i>
+   ] [, {/RASTER | /VECTOR}] [, SUB_RECT=
+   <i>
+    value
+   </i>
+   ] )
+  </p>
+  <h2 class="API">
+   Return Value
+  </h2>
+  <p>
+   This method normally returns an ENVIRaster or ENVIVector. If the dialog is closed before a file is selected, or if
+   <b>
+    Cancel
+   </b>
+   is clicked, !NULL is returned.
+  </p>
+  <h2 class="API">
+   Arguments
+  </h2>
+  <p>
+   None
+  </p>
+  <h2 class="API">
+   Keywords
+  </h2>
+  <h3 class="Keyword">
+   BANDS
+  </h3>
+  <p>
+   Set this keyword to a named variable that will contain the spectral subset information chosen in the dialog.
+  </p>
+  <h3 class="Keyword">
+   DISABLE_BANDS
+  </h3>
+  <p>
+   Set this keyword to disable the dialog option of choosing bands (all bands are used). All bands in the selected raster are returned by the BANDS keyword.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   This keyword is not applicable to vectors. If you select a vector file in the dialog, the dialog option of choosing bands will be disabled, and the keyword will be ignored.
+  </p>
+  <h3 class="Keyword">
+   DISABLE_NO_DATA
+  </h3>
+  <p>
+   Set this keyword to disable the dialog option of setting a no data value, and to ignore the NO_DATA keyword.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   This keyword is not applicable to vectors. If you select a vector file in the dialog, the dialog option of setting a no data value will be disabled, and the keyword will be ignored.
+  </p>
+  <h3 class="Keyword">
+   DISABLE_SUB_RECT
+  </h3>
+  <p>
+   Set this keyword to disable the dialog option of setting a spatial subset. The selected raster's full extent is returned by the SUB_RECT keyword.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   This keyword is not applicable to vectors. If you select a vector file in the dialog, the dialog option of setting a spatial subset will be disabled, and the keyword will be ignored.
+  </p>
+  <h3 class="Keyword">
+   ERROR
+  </h3>
+  <p>
+   Set this keyword to a named variable that will contain any error message issued during execution of this routine. If no error occurs, the ERROR variable will be set to a null string (
+   <code>
+    ''
+   </code>
+   ). If an error occurs and the routine is a function, then the function result will be undefined.
+  </p>
+  <p>
+   When this keyword is not set and an error occurs,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   returns to the caller and execution halts. In this case, the error message is contained within !ERROR_STATE and can be caught using IDL's CATCH routine. See IDL Help for more information on !ERROR_STATE and CATCH.
+  </p>
+  <p>
+   See
+   <a href="ErrorHandling.htm">
+    Manage Errors
+   </a>
+   for more information on error handling in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   programming.
+  </p>
+  <h3 class="Keyword">
+   NO_DATA
+  </h3>
+  <p>
+   Set this keyword to a named variable that will contain the no data value chosen in the dialog.
+  </p>
+  <h3 class="Keyword">
+   RASTER
+  </h3>
+  <p>
+   Set this keyword to specify that the dialog should only display raster files that are supported by
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   .
+  </p>
+  <h3 class="Keyword">
+   SUB_RECT
+  </h3>
+  <p>
+   Set this keyword to a named variable that will contain the spatial subset information chosen in the dialog.
+  </p>
+  <h3 class="Keyword">
+   VECTOR
+  </h3>
+  <p>
+   Set this keyword to specify that the dialog should only display vector files that are supported by
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   .
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   The RASTER and VECTOR keywords may not both be set. If neither is set, the dialog displays all files with
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   -supported formats.
+  </p>
+  <h2 class="API">
+   Version History
+  </h2>
+  <table style="mc-table-style: url('../Resources/TableStyles/VersionTable.css');" class="TableStyle_VersionTable" cellspacing="0">
+   <col />
+   <col />
+   <tbody>
+    <tr>
+     <td class="TableStyle_VersionTable_Body_0_0_RowEnd_ColSep">
+      <p>
+       5.0
+      </p>
+     </td>
+     <td class="TableStyle_VersionTable_Body_0_0_RowEnd_ColEnd">
+      <p>
+       Introduced
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h2 class="API">
+   See Also
+  </h2>
+  <p>
+   <a href="ENVIUI.htm">
+    ENVIUI
+   </a>
+   ,
+   <a href="ENVIUI__SelectCoordinateSystem.htm">
+    ENVIUI::SelectCoordinateSystem
+   </a>
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

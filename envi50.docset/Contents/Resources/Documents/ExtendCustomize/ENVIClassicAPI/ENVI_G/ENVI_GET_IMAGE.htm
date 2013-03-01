@@ -1,0 +1,274 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming|Routines|Display Control|ENVI Classic" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   ENVI_GET_IMAGE
+  </title>
+  <link href="../../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../../ENVIHelp_CSH.htm#ExtendCustomize/ENVIClassicAPI/ENVI_G/ENVI_GET_IMAGE.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../Routines.htm">
+    Routines
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../enviPortal.htm">
+    Display Control
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    ENVI_GET_IMAGE
+   </span>
+  </div>
+  <h1>
+   <a name="kanchor635">
+   </a>
+   ENVI_GET_IMAGE
+  </h1>
+  <p>
+   <a href="#Syntax">
+    Syntax
+   </a>
+   |
+   <a href="#Keywords">
+    Keywords
+   </a>
+   |
+   <a href="#Example">
+    Example
+   </a>
+  </p>
+  <p class="HighlightText">
+   This routine only works with
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   display groups and cannot be used with the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   display or in code that starts the application with the
+   <a href="../../ENVI.htm">
+    ENVI&#160;function
+   </a>
+   .
+  </p>
+  <p>
+   This function returns the display data for the associated display group. ENVI_GET_IMAGE returns either one band (
+   <i>
+    num_samples
+   </i>
+   ,
+   <i>
+    num_lines
+   </i>
+   ) or three bands (
+   <i>
+    num_samples
+   </i>
+   ,
+   <i>
+    num_lines
+   </i>
+   , 3).
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   An interactive
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   session is required to run this function.
+  </p>
+  <h2 class="API">
+   <a name="Syntax">
+   </a>
+   Syntax
+  </h2>
+  <p>
+   <i>
+    Result
+   </i>
+   = ENVI_GET_IMAGE(
+   <a href="#BAND_POS">
+    BAND_POS
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ,
+   <a href="#DIMS">
+    DIMS
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ,
+   <a href="#DN">
+    DN
+   </a>
+   =
+   <i>
+    integer
+   </i>
+   )
+  </p>
+  <h2 class="API">
+   <a name="Keywords">
+   </a>
+   Keywords
+  </h2>
+  <h3>
+   <a name="BAND_POS">
+   </a>
+   BAND_POS
+  </h3>
+  <p>
+   Use this keyword to specify the band position of an RGB image to return. If left undefined, then all three RGB bands are returned. For gray scale images, set BAND_POS=0.
+  </p>
+  <h3>
+   <a name="DIMS">
+   </a>
+   DIMS
+  </h3>
+  <p>
+   The “dimensions” keyword is a five-element array of long integers that defines the spatial subset (of a file or array) to use for processing.
+  </p>
+  <ul>
+   <li value="1">
+    DIMS[0]: Unused for this routine; set to -1L.
+   </li>
+   <li value="2">
+    DIMS[1]: The starting sample number. The first x pixel is 0.
+   </li>
+   <li value="3">
+    DIMS[2]: The ending sample number
+   </li>
+   <li value="4">
+    DIMS[3]: The starting line number. The first y pixel is 0.
+   </li>
+   <li value="5">
+    DIMS[4]: The ending line number
+   </li>
+  </ul>
+  <p>
+   To process an entire file (with no spatial subsetting), define DIMS as shown in the following code example. This example assumes you have already opened a file using
+   <a href="../ENVI_S/ENVI_SELECT.htm">
+    ENVI_SELECT
+   </a>
+   or
+   <a href="../ENVI_P/ENVI_PICKFILE.htm">
+    ENVI_PICKFILE
+   </a>
+   :
+  </p>
+  <pre xml:space="preserve">
+   envi_file_query, fid, dims=dims
+  </pre>
+  <h3>
+   <a name="DN">
+   </a>
+   DN
+  </h3>
+  <p class="HighlightText">
+   This keyword cannot be used to reference the
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   display. It is only for use with
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   display groups.
+  </p>
+  <p>
+   Use this keyword to specify the display number for the data request. Display numbers can be retrieved in the event handler of user-managed display events. Retrieve the
+   <i>
+    uvalue
+   </i>
+   for
+   <code>
+    ev.top
+   </code>
+   :
+  </p>
+  <pre xml:space="preserve">
+   widget_control, ev.top, get_uvalue=dn
+  </pre>
+  <p>
+   For user-managed display routines, just add a menu item to the
+   <code>
+    display.men
+   </code>
+   file.
+  </p>
+  <h2 class="API">
+   <a name="Example">
+   </a>
+   Example
+  </h2>
+  <p>
+   Retrieve all data in the display group. Check to see what type of image is displayed, and set BAND_POS accordingly.
+  </p>
+  <p class="Code">
+   widget_control, ev.top, get_uvalue=dn
+  </p>
+  <p class="Code">
+   envi_disp_query, dn, xds=xds, yds=yds, color=color
+  </p>
+  <p class="Code">
+   if (color eq 0) then band_pos = 0
+  </p>
+  <p class="Code">
+   data=envi_get_image(dn=dn, band_pos=band_pos, $
+  </p>
+  <p class="Code">
+   &#160;&#160;&#160;dims=[-1, 0, xds[0]-1, 0, yds[0]-1])
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

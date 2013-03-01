@@ -1,0 +1,322 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming|Routines|Data Control|ENVI Classic" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   ENVI_INIT_TILE
+  </title>
+  <link href="../../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../../ENVIHelp_CSH.htm#ExtendCustomize/ENVIClassicAPI/ENVI_I/ENVI_INIT_TILE.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../Routines.htm">
+    Routines
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../ENVICoordSys.htm">
+    Data Control
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    ENVI_INIT_TILE
+   </span>
+  </div>
+  <h1>
+   <a name="kanchor557">
+   </a>
+   ENVI_INIT_TILE
+  </h1>
+  <p>
+   <a href="#Syntax">
+    Syntax
+   </a>
+   |
+   <a href="#Arguments">
+    Arguments
+   </a>
+   |
+   <a href="#Keywords">
+    Keywords
+   </a>
+   |
+   <a href="#Example">
+    Example
+   </a>
+  </p>
+  <p class="HighlightText">
+   This routine has been replaced with the
+   <a href="../../ENVIRaster__CreateTileIterator.htm">
+    CreateTileIterator
+   </a>
+   method to ENVIRaster.
+  </p>
+  <p>
+   This function is used to initialize processing of tile data. The returned value is the tile ID used to access the data.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   You must run ENVI_INIT_TILE before requesting tiled data.
+  </p>
+  <h2 class="API">
+   <a name="Syntax">
+   </a>
+   Syntax
+  </h2>
+  <p>
+   <i>
+    Result
+   </i>
+   = ENVI_INIT_TILE(
+   <i>
+    FID
+   </i>
+   ,
+   <i>
+    POS
+   </i>
+   [, /
+   <a href="#COMPLEX">
+    COMPLEX
+   </a>
+   ] [,
+   <a href="#INTERLEAVE">
+    INTERLEAVE
+   </a>
+   ={0 | 1 | 2}] [,
+   <a href="#MATCH_ID">
+    MATCH_ID
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ] [,
+   <a href="#NUM_TILES">
+    NUM_TILES
+   </a>
+   =
+   <i>
+    variable
+   </i>
+   ] [,
+   <a href="#OVERLAP">
+    OVERLAP
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ] [,
+   <a href="#TILE_SCALE">
+    TILE_SCALE
+   </a>
+   =
+   <i>
+    integer
+   </i>
+   ] [,
+   <a href="#XE">
+    XE
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ] [,
+   <a href="#XS">
+    XS
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ] [,
+   <a href="#YE">
+    YE
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ] [,
+   <a href="#YS">
+    YS
+   </a>
+   =
+   <i>
+    value
+   </i>
+   ])
+  </p>
+  <h2 class="API">
+   <a name="Arguments">
+   </a>
+   Arguments
+  </h2>
+  <h3>
+   FID
+  </h3>
+  <p>
+   This is the file ID of the file to process.
+  </p>
+  <h3>
+   POS
+  </h3>
+  <p>
+   This is the array of band positions to process.
+  </p>
+  <h2 class="API">
+   <a name="Keywords">
+   </a>
+   Keywords
+  </h2>
+  <h3>
+   <a name="COMPLEX">
+   </a>
+   COMPLEX (optional)
+  </h3>
+  <p>
+   Set this keyword to return the output data type as complex.
+  </p>
+  <h3>
+   <a name="INTERLEAVE">
+   </a>
+   INTERLEAVE (optional)
+  </h3>
+  <p>
+   Set this keyword to one of the following integer values to specify the interleave output. The default is to perform the same type of interleave as the file.
+  </p>
+  <ul>
+   <li value="1">
+    0: BSQ
+   </li>
+   <li value="2">
+    1: BIL
+   </li>
+   <li value="3">
+    2: BIP
+   </li>
+  </ul>
+  <h3>
+   <a name="MATCH_ID">
+   </a>
+   MATCH_ID (optional)
+  </h3>
+  <p>
+   Set this keyword equal to the tile ID of a previously initialized piece of tile data to match the tile size of the current data to the size of the previously initialized data. MATCH_ID acquires the same spatial tile from multiple bands or images so that processing is done on the same area in each case. Do not use this keyword in combination with the XE, XS, YE, and YS keywords.
+  </p>
+  <h3>
+   <a name="NUM_TILES">
+   </a>
+   NUM_TILES (optional)
+  </h3>
+  <p>
+   Use this keyword to specify a named variable that contains the number of tiles in the request.
+  </p>
+  <h3>
+   <a name="OVERLAP">
+   </a>
+   OVERLAP (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the pixel overlap wanted for each spatial tile. Use OVERLAP only when INTERLEAVE=0.
+  </p>
+  <h3>
+   <a name="TILE_SCALE">
+   </a>
+   TILE_SCALE (optional)
+  </h3>
+  <p>
+   Use this keyword to adjust the size (in bytes) of the default spatial tile size in
+   <span class="DocumentTitleProductNameENVIClassic">
+    ENVI Classic
+   </span>
+   . A value of 2 causes the tile to be half as large. A value of 4 causes the tile to be a quarter as large. This keyword overrides the Image Tile Size preference in ENVI.
+  </p>
+  <h3>
+   <a name="XE">
+   </a>
+   XE (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the x ending index. The default is the last sample.
+  </p>
+  <h3>
+   <a name="XS">
+   </a>
+   XS (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the x starting index. The default is the first sample.
+  </p>
+  <h3>
+   <a name="YE">
+   </a>
+   YE (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the y ending index. The default is the last line.
+  </p>
+  <h3>
+   <a name="YS">
+   </a>
+   YS (optional)
+  </h3>
+  <p>
+   Use this keyword to specify the y starting index. The default is the first line.
+  </p>
+  <h2 class="API">
+   <a name="Example">
+   </a>
+   Example
+  </h2>
+  <p>
+   This example initializes the file processing for FID and the bands in the POS array. The value of NUM_TILES is now the total loop count for processes all the tiles.
+  </p>
+  <p class="Code">
+   tile_id=envi_init_tile(fid, pos, num_tiles=num_tiles)
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

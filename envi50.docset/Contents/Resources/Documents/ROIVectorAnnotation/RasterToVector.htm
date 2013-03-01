@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="ROIs, Vectors, Annotations|Vectors|Vector Tools" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Raster to Vector
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#ROIVectorAnnotation/RasterToVector.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="ROIVectorAnno.htm">
+    ROIs, Vectors, Annotations
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="WorkwithVectors.htm">
+    Vectors
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="VectorTools.htm">
+    Vector Tools
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Raster to Vector
+   </span>
+  </div>
+  <h1>
+   Raster to Vector
+  </h1>
+  <p>
+   Use
+   <b>
+    Raster to Vector
+   </b>
+   to create a vector layer for a specified DN contour value in a raster image.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Vector &gt; Raster to Vector
+    </b>
+    . The Raster to Vector Input Band dialog appears.
+   </li>
+   <li value="2">
+    Select an input file and perform optional
+    <a href="../NoTOCTopics/Subsetting.htm">
+     spatial subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The Raster to Vector Parameters dialog appears.
+   </li>
+   <li value="3">
+    Enter the
+    <b>
+     DN Value
+    </b>
+    to use as a contour value.
+   </li>
+   <li value="4">
+    Enter an
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    vector file layer name in the
+    <b>
+     EVF Layer Name
+    </b>
+    field.
+   </li>
+   <li value="5">
+    Select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="6">
+    Click
+    <b>
+     OK
+    </b>
+    .
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    makes a polygon vector layer using the entered DN contour value, and a vector attribute file (
+    <code>
+     .dbf
+    </code>
+    ) containing the class ID, polygon length, and area information for the resulting ENVI vector file. The resulting output is added to the Available Vectors List.
+   </li>
+  </ol>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   The vectors appear to be shifted one half pixel to the Southeast because
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   interprets the map coordinate of the vector node to be the upper left hand corner of the raster pixel (versus treating the address as the center of the pixel).
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

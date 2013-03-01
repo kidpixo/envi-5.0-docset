@@ -1,0 +1,2955 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Explore Imagery|Reference" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Supported File Formats Background
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/TableStyles/Description.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#ExploreImagery/BackgroundSupportedFileFormats.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="ExploreImagery.htm">
+    Explore Imagery
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="#">
+    Reference
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    Supported File Formats Background
+   </span>
+  </div>
+  <h2>
+   Supported File Formats Background
+  </h2>
+  <p>
+   This topic provides further instructions on opening various file formats.
+  </p>
+  <h3>
+   <a name="ADS40">
+   </a>
+   ADS40
+   <a name="kanchor79">
+   </a>
+   Files
+  </h3>
+  <p>
+   ADS40 is an Airborne Digital Sensor developed by Leica Geosystems. It can acquire  panchromatic or multispectral imagery.
+  </p>
+  <p>
+   The following ancillary files are required for
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   to automatically compute rational polynomial coefficient (RPC) map information so that the data are georeferenced and ready for orthorectification or DEM extraction. Be sure to put these ancillary files in the same directory as the image file (
+   <code>
+    .tif
+   </code>
+   ):
+  </p>
+  <ul>
+   <li value="1">
+    ADS header file (
+    <code>
+     *.ads
+    </code>
+    )
+   </li>
+   <li value="2">
+    Camera calibration file (
+    <code>
+     *.cam
+    </code>
+    )
+   </li>
+   <li value="3">
+    Meta information support file in Socet Support File Format (
+    <code>
+     *.sup
+    </code>
+    )
+   </li>
+   <li value="4">
+    Orientation data file (
+    <code>
+     *.odf
+    </code>
+    )
+   </li>
+   <li value="5">
+    Orientation data file after bundle adjustment (
+    <code>
+     *.adj
+    </code>
+    )
+   </li>
+  </ul>
+  <p>
+   The
+   <code>
+    *.ads
+   </code>
+   ,
+   <code>
+    *.cam
+   </code>
+   , and
+   <code>
+    *.sup
+   </code>
+   files must exist, and either
+   <code>
+    *.odf
+   </code>
+   or
+   <code>
+    *.adj
+   </code>
+   must exist. If both of the latter exist, then the
+   <code>
+    *.adj
+   </code>
+   file is used over the
+   <code>
+    *.odf
+   </code>
+   file because the
+   <code>
+    *.adj
+   </code>
+   file is assumed to be more accurate.
+  </p>
+  <p>
+   If any of the required ancillary files are missing,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   opens the ADS40 file as a regular TIFF file and does not calculate RPC map information.
+  </p>
+  <h3>
+   <a name="ALOS">
+   </a>
+   ALOS AVNIR-2 Files
+  </h3>
+  <p>
+   The following products are supported:
+  </p>
+  <ul>
+   <li value="1">
+    Level 1A (raw, uncorrected)
+   </li>
+   <li value="2">
+    Level 1B1 (radiometrically corrected)
+   </li>
+   <li value="3">
+    Level 1B2 data (R=georeferenced, G=geocoded, D=rough DEM&#160;correction)
+   </li>
+  </ul>
+  <h3>
+   <a name="ALOS2">
+   </a>
+   <a name="kanchor80">
+   </a>
+   ALOS PRISM Files
+  </h3>
+  <p>
+   The following products are supported:
+  </p>
+  <ul>
+   <li value="1">
+    Level 1A files (one file per CCD unit)
+   </li>
+   <li value="2">
+    Level 1B1 files (one file per CCD unit)
+   </li>
+   <li value="3">
+    Level 1B2 files (georeferenced, geocoded)
+   </li>
+  </ul>
+  <h3>
+   <a name="Annotation">
+   </a>
+   <a name="kanchor81">
+   </a>
+   Annotation Files
+  </h3>
+  <p>
+   From
+   <code>
+    .ann
+   </code>
+   files, text, square/rectangle, circle/ellipse, polygon, polyline, arrow, symbol, and picture annotation items are supported. Map scale bars, image color ramp, map key, declination arrow and plot annotation items are not supported and therefore will not display if present in the annotation file.
+  </p>
+  <h3>
+   <a name="ArcView">
+   </a>
+   <a name="kanchor82">
+   </a>
+   ArcView® Raster FIles
+  </h3>
+  <p>
+   Select a
+   <code>
+    .bil
+   </code>
+   file to open. The
+   <code>
+    .bil
+   </code>
+   and
+   <code>
+    .hdr
+   </code>
+   files must be in the same directory.
+  </p>
+  <h3>
+   <a name="ASCII">
+   </a>
+   <a name="kanchor83">
+   </a>
+   ASCII Files
+  </h3>
+  <p>
+   You can open an ASCII file as an image.
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   reads each ASCII value as a pixel DN value and skips lines at the top of the file that have non-numeric characters or that start with a semicolon. The ASCII values must be separated by white spaces or commas, and the image data must be in the format of an image array. You will be prompted to enter the interleave type (BSQ, BIL, or BIP), data type, and number of bands.
+  </p>
+  <h3>
+   <a name="ASTER Fi">
+   </a>
+   <a name="kanchor84">
+   </a>
+   ASTER&#160;Files
+  </h3>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   reads ASTER&#160;Level 1A, 1B, and 2 files; and DEM Level 3 files. All are in HDF&#160;format.
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   automatically extracts and applies calibration information from the HDF attributes. For Level 1B data, it converts the byte-scaled radiance data into floating-point radiance units. For Level&#160;1A data, it performs a complete calibration to radiance. The units of the output ASTER radiance are W/m
+   <sup>
+    2
+   </sup>
+   /μm/sr.
+  </p>
+  <h3>
+   <a name="ATSR">
+   </a>
+   ATSR Files
+  </h3>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   reads gridded brightness temperature/reflectance (GBT) data, the gridded browse (GBROWSE) data, and the gridded sea surface temperature (GSST) data.
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   automatically opens all the image product contents within the file. For forward view and nadir view images, the band names contain
+   <b>
+    FV
+   </b>
+   or
+   <b>
+    NV
+   </b>
+   respectively. The band names also supply the image units.
+  </p>
+  <h3>
+   <a name="AVHRR Fi">
+   </a>
+   <a name="kanchor85">
+   </a>
+   AVHRR&#160;Files
+  </h3>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   reads AVHRR KLMN Level 1B formatted files that are produced and distributed by NOAA only. It will read files that do not have TBM or ARS&#160;headers. It will read 10-bit packed format as integer data, uncompressed formats as integer data, and 8-bit format as byte data. You can use the embedded information to georeference the data.
+  </p>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   also reads European Space Agency format AVHRR data, including the five spectral bands plus latitudes/longitudes, coastlines, and state boundaries. These last three items are provided as separate mask bands.
+  </p>
+  <p>
+   Finally,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   reads AVHRR from the Quorum receiving station, although data from this station lacks the required header information that enables you to calibrate or georeference the data. Quorum data files are typically 16-bit High Resolution Picture Transmission (HRPT) files with two header frames.
+  </p>
+  <ul>
+   <li value="1">
+    To view an AVHRR
+    <a name="kanchor86">
+    </a>
+    header, select
+    <b>
+     Raster Management &gt; Data-Specific Utilities &gt; AVHRR&#160;Display Header
+    </b>
+    from the Toolbox. The AVHRR&#160;File Information dialog appears.
+   </li>
+   <li value="2">
+    To save the header information to a text file, select
+    <b>
+     File &gt; Save Text to ASCII
+    </b>
+    from the AVHRR&#160;File Information dialog.
+   </li>
+  </ul>
+  <h4>
+   Compute AVHRR&#160;Sea Surface Temperature
+   <a name="kanchor87">
+   </a>
+  </h4>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Raster Management &gt; Data-Specific Utilities &gt; AVHRR Sea Surface Temperature (SST)
+    </b>
+    .
+   </li>
+   <li value="2">
+    Select an input file and perform optional spatial and spectral
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The AVHRR Sea Surface Temperature Parameters dialog appears.
+   </li>
+   <p>
+    The input file must contain AVHRR bands 3, 4, and 5.
+   </p>
+   <li value="3">
+    From the
+    <b>
+     Satellite
+    </b>
+    drop-down button, select the satellite name.
+   </li>
+   <li value="4">
+    From the
+    <b>
+     SST Algorithm
+    </b>
+    drop-down button, select the algorithm.
+   </li>
+   <li value="5">
+    Select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="6">
+    Click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+  </ol>
+  <p>
+   The output sea surface temperature image is in degrees Celsius.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   AVHRR data that have been scaled to 8-bit depth cannot be used to compute SSTs because NOAA does not modify the calibration coefficients stored in the file’s Level 1B header.
+  </p>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   computes SST images in degrees Celsius, using AVHRR bands 3, 4, and 5. Currently, it does not use a cloud or land mask in the sea surface temperature calculation. It uses the Multi-Channel Sea Surface Temperature (MCSST) algorithms: one for daytime data and three for nighttime data:
+  </p>
+  <ul>
+   <li value="1">
+    Day MCSST Split
+   </li>
+   <li value="2">
+    Night MCSST Split
+   </li>
+   <li value="3">
+    Night MCSST Dual
+   </li>
+   <li value="4">
+    Night MCSST Triple
+   </li>
+  </ul>
+  <p>
+   These algorithms differ by which bands are used to correct for the atmosphere. Split-window uses bands 4 and 5, dual-window uses bands 3 and 4, and triple-window uses bands 3, 4, and 5.
+  </p>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   uses the following SST equations for NOAA-12, -14, and -15:
+  </p>
+  <p class="indent">
+   <b>
+    Day MCSST Split
+   </b>
+   <br />
+   T
+   <sub>
+    s
+   </sub>
+   = a
+   <sub>
+    0
+   </sub>
+   + a
+   <sub>
+    1
+   </sub>
+   *band4 + a
+   <sub>
+    2
+   </sub>
+   (band4 - band5) + a
+   <sub>
+    3
+   </sub>
+   (band4 - band5)(sec(
+   <span class="'SymbolProp BT'">
+    f
+   </span>
+   ) -1)
+  </p>
+  <p class="indent">
+   <b>
+    Night MCSST Split
+   </b>
+   <br />
+   T
+   <sub>
+    s
+   </sub>
+   = a
+   <sub>
+    0
+   </sub>
+   + a
+   <sub>
+    1
+   </sub>
+   *band4 + a
+   <sub>
+    2
+   </sub>
+   (band4 - band5) + a
+   <sub>
+    3
+   </sub>
+   (band4 - band5)(sec(
+   <span class="'SymbolProp BT'">
+    f
+   </span>
+   )-1)
+  </p>
+  <p class="indent">
+   <b>
+    Night MCSST Dual
+   </b>
+   <br />
+   T
+   <sub>
+    s
+   </sub>
+   = a
+   <sub>
+    0
+   </sub>
+   + a
+   <sub>
+    1
+   </sub>
+   *band4 + a
+   <sub>
+    2
+   </sub>
+   (band3 - band4) + a
+   <sub>
+    3
+   </sub>
+   (sec(
+   <span class="'SymbolProp BT'">
+    f
+   </span>
+   ) -1)
+  </p>
+  <p class="indent">
+   <b>
+    Night MCSST Triple
+   </b>
+   <br />
+   T
+   <sub>
+    s
+   </sub>
+   = a
+   <sub>
+    0
+   </sub>
+   + a
+   <sub>
+    1
+   </sub>
+   *band4 + a
+   <sub>
+    2
+   </sub>
+   (band3 - band5) + a
+   <sub>
+    3
+   </sub>
+   (sec(
+   <span class="'SymbolProp BT'">
+    f
+   </span>
+   )-1)
+  </p>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   uses the following SST equations for NOAA-16 through NOAA-18:
+  </p>
+  <p class="indent">
+   <b>
+    Day MCSST Split
+   </b>
+   <br />
+   T
+   <sub>
+    s
+   </sub>
+   = a
+   <sub>
+    0
+   </sub>
+   + a
+   <sub>
+    1
+   </sub>
+   *band4 + a
+   <sub>
+    2
+   </sub>
+   *band5 + a
+   <sub>
+    3
+   </sub>
+   (band4 - band5)(sec(
+   <span class="'SymbolProp BT'">
+    f
+   </span>
+   ) -1)
+  </p>
+  <p class="indent">
+   <b>
+    Night MCSST Split
+   </b>
+   <br />
+   T
+   <sub>
+    s
+   </sub>
+   = a
+   <sub>
+    0
+   </sub>
+   + a
+   <sub>
+    1
+   </sub>
+   *band4 + a
+   <sub>
+    2
+   </sub>
+   *band5 + a
+   <sub>
+    3
+   </sub>
+   (band4 - band5)(sec(
+   <span class="'SymbolProp BT'">
+    f
+   </span>
+   ) -1)
+  </p>
+  <p class="indent">
+   <b>
+    Night MCSST Dual
+   </b>
+   <br />
+   T
+   <sub>
+    s
+   </sub>
+   = a
+   <sub>
+    0
+   </sub>
+   + a
+   <sub>
+    1
+   </sub>
+   *band4 + a
+   <sub>
+    2
+   </sub>
+   (band3 - band4) + a
+   <sub>
+    3
+   </sub>
+   (sec(
+   <span class="'SymbolProp BT'">
+    f
+   </span>
+   ) -1)
+  </p>
+  <p class="indent">
+   <b>
+    Night MCSST Triple
+   </b>
+   <br />
+   T
+   <sub>
+    s
+   </sub>
+   = a
+   <sub>
+    0
+   </sub>
+   + a
+   <sub>
+    1
+   </sub>
+   *band3 + a
+   <sub>
+    2
+   </sub>
+   *band4 + a
+   <sub>
+    3
+   </sub>
+   *band5 + a
+   <sub>
+    4
+   </sub>
+   (band3 - band5)(sec(
+   <span class="'SymbolProp BT'">
+    f
+   </span>
+   ) -1)
+  </p>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   uses the following SST equations for NOAA-19:
+  </p>
+  <p class="indent">
+   <b>
+    Day MCSST Split
+   </b>
+   <br />
+   T
+   <sub>
+    s
+   </sub>
+   = a
+   <sub>
+    0
+   </sub>
+   + a
+   <sub>
+    1
+   </sub>
+   *band4 + a
+   <sub>
+    2
+   </sub>
+   (band4 - band5) + a
+   <sub>
+    3
+   </sub>
+   (band4 - band5)(sec(
+   <span class="'SymbolProp BT'">
+    f
+   </span>
+   ) -1)
+  </p>
+  <p class="indent">
+   <b>
+    Night MCSST Split
+   </b>
+   <br />
+   T
+   <sub>
+    s
+   </sub>
+   = a
+   <sub>
+    0
+   </sub>
+   + a
+   <sub>
+    1
+   </sub>
+   *band4 + a
+   <sub>
+    2
+   </sub>
+   (band4 - band5) + a
+   <sub>
+    3
+   </sub>
+   (band4 - band5)(sec(
+   <span class="'SymbolProp BT'">
+    f
+   </span>
+   ) -1)
+  </p>
+  <p class="indent">
+   <b>
+    Night MCSST Dual
+   </b>
+   <br />
+   T
+   <sub>
+    s
+   </sub>
+   = a
+   <sub>
+    0
+   </sub>
+   + a
+   <sub>
+    1
+   </sub>
+   *band4 + a
+   <sub>
+    2
+   </sub>
+   (band3 - band4) + a
+   <sub>
+    3
+   </sub>
+   (sec(
+   <span class="'SymbolProp BT'">
+    f
+   </span>
+   ) -1)
+  </p>
+  <p class="indent">
+   <b>
+    Night MCSST Triple
+   </b>
+   <br />
+   T
+   <sub>
+    s
+   </sub>
+   = a
+   <sub>
+    0
+   </sub>
+   + a
+   <sub>
+    1
+   </sub>
+   *band4 + a
+   <sub>
+    2
+   </sub>
+   (band3 - band5) + a
+   <sub>
+    3
+   </sub>
+   (band3 - band5)(sec(
+   <span class="'SymbolProp BT'">
+    f
+   </span>
+   ) -1)
+  </p>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   uses the following SST equations for NOAA
+   <a name="kanchor88">
+   </a>
+   MetOp-A FRAC data:
+  </p>
+  <p class="indent">
+   <b>
+    Day MCSST Split
+   </b>
+   <br />
+   T
+   <sub>
+    s
+   </sub>
+   = a
+   <sub>
+    0
+   </sub>
+   + a
+   <sub>
+    1
+   </sub>
+   *band4 + a
+   <sub>
+    2
+   </sub>
+   (band4 - band5) + a
+   <sub>
+    3
+   </sub>
+   (band4 - band5)(sec(
+   <span class="'SymbolProp BT'">
+    f
+   </span>
+   ) -1)
+  </p>
+  <p class="indent">
+   <b>
+    Night MCSST Split
+   </b>
+   <br />
+   T
+   <sub>
+    s
+   </sub>
+   = a
+   <sub>
+    0
+   </sub>
+   + a
+   <sub>
+    1
+   </sub>
+   *band4 + a
+   <sub>
+    2
+   </sub>
+   (band4 - band5) + a
+   <sub>
+    3
+   </sub>
+   (band4 - band5)(sec(
+   <span class="'SymbolProp BT'">
+    f
+   </span>
+   ) -1)
+  </p>
+  <p class="indent">
+   <b>
+    Night MCSST Dual
+   </b>
+   <br />
+   T
+   <sub>
+    s
+   </sub>
+   = a
+   <sub>
+    0
+   </sub>
+   + a
+   <sub>
+    1
+   </sub>
+   *band4 + a
+   <sub>
+    2
+   </sub>
+   (band3 - band4) + a
+   <sub>
+    3
+   </sub>
+   (sec(
+   <span class="'SymbolProp BT'">
+    f
+   </span>
+   ) -1)
+  </p>
+  <p class="indent">
+   <b>
+    Night MCSST Triple
+   </b>
+   <br />
+   T
+   <sub>
+    s
+   </sub>
+   = a
+   <sub>
+    0
+   </sub>
+   + a
+   <sub>
+    1
+   </sub>
+   *band4 + a
+   <sub>
+    2
+   </sub>
+   (band3 - band5) + a
+   <sub>
+    3
+   </sub>
+   *(band3 - band5)(sec(
+   <span class="'SymbolProp BT'">
+    f
+   </span>
+   ) -1)
+  </p>
+  <p>
+   Sec(
+   <span class="'SymbolProp BT'">
+    f
+   </span>
+   ) is the secant of the satellite zenith angle (
+   <span class="'SymbolProp BT'">
+    f
+   </span>
+   ), and bands 3 through 5 are the calibrated brightness temperatures of NOAA AVHRR bands (in Kelvins). The “a” coefficients are derived from a regression model based on drifting buoy and tropical Pacific fixed-buoy data. The coefficient values depend on which NOAA satellite was used to collect the AVHRR image.
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   uses published MCSST coefficients for NOAA-12 through NOAA-17. The following tables show the “a” coefficients for the various NOAA sensors, for each algorithm that is computed.
+  </p>
+  <h4>
+   Day MCSST Split
+  </h4>
+  <table style="caption-side: bottom;mc-table-style: url('../Resources/TableStyles/Description.css');margin-left: 0;margin-right: auto;" class="TableStyle_Description" cellspacing="0">
+   <col />
+   <col />
+   <col />
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <td class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       Satellite
+      </p>
+     </td>
+     <td class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       a0
+      </p>
+     </td>
+     <td class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       a1
+      </p>
+     </td>
+     <td class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       a2
+      </p>
+     </td>
+     <td class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p class="TableHead">
+       a3
+      </p>
+     </td>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       NOAA-12
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       -263.006
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       0.963563
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       2.579211
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       0.242598
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       NOAA-14
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       -278.43
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       1.017342
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       2.139588
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       0.779706
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       NOAA-15
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       -261.029735
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       0.959456
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       2.663579879
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       0.570613
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       NOAA-16
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       -273.77
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       3.301267
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       -2.30195
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       0.628966
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       NOAA-17
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       -271.206
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       0.992818
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       -2.49916
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       0.915103
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       NOAA-18
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       -280.43
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       1.02453
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       2.10044
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       0.0784059
+      </p>
+     </td>
+    </tr>
+    <tr madcap:conditions="">
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       NOAA-19
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       -278.74596
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       1.01922
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       1.72270
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       0.80263
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <p>
+       MetOp-A FRAC
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <p>
+       -273.816
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <p>
+       1.00255
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <p>
+       2.39451
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColEnd">
+      <p>
+       0.903773
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h4>
+   Night MCSST Split
+  </h4>
+  <table style="caption-side: bottom;mc-table-style: url('../Resources/TableStyles/Description.css');margin-left: 0;margin-right: auto;" class="TableStyle_Description" cellspacing="0">
+   <col />
+   <col />
+   <col />
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <td class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       Satellite
+      </p>
+     </td>
+     <td class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       a0
+      </p>
+     </td>
+     <td class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       a1
+      </p>
+     </td>
+     <td class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       a2
+      </p>
+     </td>
+     <td class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p class="TableHead">
+       a3
+      </p>
+     </td>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       NOAA-12
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       -263.94
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       0.967077
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       2.384376
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       0.480788
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       NOAA-14
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       -282.24
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       1.029088
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       2.275385
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       0.752567
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       NOAA-15
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       -271.3969724
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       0.993892
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       2.7523466369
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       0.662999
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       NOAA-16
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       -273.15
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       -2.53655
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       3.5316
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       0.753291
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       NOAA-17
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       -276.59
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       1.01015
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       -2.5815
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       1.000541
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       NOAA-18
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       -276.075
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       1.00841
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       2.23459
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       0.736946
+      </p>
+     </td>
+    </tr>
+    <tr madcap:conditions="">
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       NOAA-19
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       -277.71304
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       1.01432
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       1.91798
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       0.72064
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <p>
+       MetOp-A FRAC
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <p>
+       -277.447
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <p>
+       1.01377
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <p>
+       2.52362
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColEnd">
+      <p>
+       1.03056
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h4>
+   Night MCSST Dual
+  </h4>
+  <table style="caption-side: bottom;mc-table-style: url('../Resources/TableStyles/Description.css');margin-left: 0;margin-right: auto;" class="TableStyle_Description" cellspacing="0">
+   <col />
+   <col />
+   <col />
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <td class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+      </p>
+      <p class="TableHead">
+       Satellite
+      </p>
+     </td>
+     <td class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+      </p>
+      <p class="TableHead">
+       a0
+      </p>
+     </td>
+     <td class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+      </p>
+      <p class="TableHead">
+       a1
+      </p>
+     </td>
+     <td class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+      </p>
+      <p class="TableHead">
+       a2
+      </p>
+     </td>
+     <td class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p class="TableHead">
+      </p>
+      <p class="TableHead">
+       a3
+      </p>
+     </td>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       NOAA-12
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       -279.846
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       1.031355
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       1.288548
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       2.265075
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       NOAA-14
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       -273.914
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       1.008751
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       1.409936
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       1.975581
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       NOAA-15
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       -283.5117285
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       1.041037
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       1.5875819344
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       1.67743
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       NOAA-16
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       -273.082
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       1.50825
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       1.00413
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       1.52452
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       NOAA-17
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       -276.603
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       1.01805
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       1.49789
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       1.96181
+      </p>
+     </td>
+    </tr>
+    <tr madcap:conditions="">
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       NOAA-18
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       -275.493
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       1.01463
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       1.42759
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       1.68783
+      </p>
+     </td>
+    </tr>
+    <tr madcap:conditions="">
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       NOAA-19
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       -276.61174
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       1.01873
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       1.47374
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       1.88560
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <p>
+       MetOp-A FRAC
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <p>
+       -273.235
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <p>
+       1.00711
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <p>
+       1.49927
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColEnd">
+      <p>
+       1.88373
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h4>
+   Night MCSST Triple
+  </h4>
+  <table style="caption-side: bottom;mc-table-style: url('../Resources/TableStyles/Description.css');margin-left: 0;margin-right: auto;" class="TableStyle_Description" cellspacing="0">
+   <col />
+   <col />
+   <col />
+   <col />
+   <col />
+   <col />
+   <thead>
+    <tr>
+     <td class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       Satellite
+      </p>
+     </td>
+     <td class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       a0
+      </p>
+     </td>
+     <td class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       a1
+      </p>
+     </td>
+     <td class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       a2
+      </p>
+     </td>
+     <td class="TableStyle_Description_Head_0_0_RowSep_ColSep">
+      <p class="TableHead">
+       a3
+      </p>
+     </td>
+     <td class="TableStyle_Description_Head_0_0_RowSep_ColEnd">
+      <p class="TableHead">
+       a4
+      </p>
+     </td>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       NOAA-12
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       -271.971
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       1.000281
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       0.911173
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       1.710028
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       &#160;
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       NOAA-14
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       -275.364
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       1.010037
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       0.920822
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       1.760411
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       &#160;
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       NOAA-15
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       -276.7558563
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       1.015354
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       1.0635723508
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       1.294955
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       &#160;
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       NOAA-16
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       -271.763
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       0.733532
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       1.01684
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       0.344182
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       -0.753123
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       NOAA-17
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       -274.622
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       1.00903
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       0.913248
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       0.440015
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       &#160;
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       NOAA-18
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       -274.398
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       1.00820
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       0.841674
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColSep">
+      <p>
+       0.377061
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowSep_ColEnd">
+      <p>
+       &#160;
+      </p>
+     </td>
+    </tr>
+    <tr madcap:conditions="">
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       NOAA-19
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       -275.24563
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       1.01084
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       0.81643
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColSep">
+      <p>
+       0.43235
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_0_0_RowSep_ColEnd">
+      <p>
+       &#160;
+      </p>
+     </td>
+    </tr>
+    <tr>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <p>
+       MetOp-A FRAC
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <p>
+       -273.044
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <p>
+       1.00424
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <p>
+       0.894349
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColSep">
+      <p>
+       0.508159
+      </p>
+     </td>
+     <td class="TableStyle_Description_Body_1_0_RowEnd_ColEnd">
+      <p>
+       &#160;
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h3>
+   <a name="CADRG">
+   </a>
+   <a name="kanchor89">
+   </a>
+   CADRG Files
+  </h3>
+  <p>
+   Select the
+   <code>
+    A.toc
+   </code>
+   file to open. A list of the frame files displays. To open individual frame files, use the NITF file reader. You must have a
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   NITF/NSIF Module license to read CADRG files. To
+   <a href="../PreprocessImagery/ManageRasterData.htm#Save2">
+    save raster data to CADRG file format
+   </a>
+   , use the Toolbox option
+   <b>
+    Raster Management &gt; Save File as CADRG
+   </b>
+   .
+  </p>
+  <h3>
+   <a name="CIB">
+   </a>
+   <a name="kanchor90">
+   </a>
+   CIB Files
+  </h3>
+  <p>
+   Select the
+   <code>
+    A.toc
+   </code>
+   file to open. A list of the frame files displays. To open individual frame files, use the NITF file reader. You must have a
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   NITF/NSIF Module license to read CIB files. To
+   <a href="../PreprocessImagery/ManageRasterData.htm#Save">
+    save raster data to CIB file format
+   </a>
+   , use the Toolbox option
+   <b>
+    Raster Management &gt; Save File as CIB
+   </b>
+   .
+  </p>
+  <h3>
+   <a name="COSMO-Sk">
+   </a>
+   COSMO-SkyMed
+   <a name="kanchor91">
+   </a>
+   Files
+  </h3>
+  <p>
+   Files are in HDF5 format. The following products are supported:
+  </p>
+  <ul>
+   <li value="1">
+    Level-1A Single look, complex, slant range (SCS)
+   </li>
+   <li value="2">
+    Level-1B Detected Ground Multilook (DGM)
+   </li>
+   <li value="3">
+    Level-1C Geocoded Ellipsoid Corrected (GEC)
+   </li>
+   <li value="4">
+    Level-1D Geocoded Terrain Corrected (GTC)
+   </li>
+  </ul>
+  <p>
+   Select
+   <b>
+    Radar &gt; Save COSMO-SkyMed Metadata to XML
+   </b>
+   from the Toolbox to save metadata to XML format.
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   adds a
+   <code>
+    .sml
+   </code>
+   extension to the output metadata file.
+  </p>
+  <h3>
+   <a name="DMC">
+   </a>
+   <a name="kanchor92">
+   </a>
+   DMC Files
+  </h3>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   reads and displays data from the UK-DMC, UK-DMC2, ALSAT-1, Beijing-1, Deimos-1, and NigeriaSat-1 satellites that are part of the DMC constellation. For Level-1R and Level-1T products, select a DIMAP file (
+   <code>
+    .dim
+   </code>
+   ) to open.
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   uses the DIMAP file to read the product metadata and to determine the bands to display.
+  </p>
+  <h3>
+   <a name="DTED Fil">
+   </a>
+   <a name="kanchor93">
+   </a>
+   DTED&#160;Files
+  </h3>
+  <p>
+   The following products are supported:
+  </p>
+  <ul>
+   <li value="1">
+    <code>
+     .dt0
+    </code>
+    : Level-0 data with a spatial resolution of 30 arc seconds&#160;
+   </li>
+   <li value="2">
+    <code>
+     .dt1
+    </code>
+    : Level-1 data with a spatial resolution of 3 arc seconds
+   </li>
+   <li value="3">
+    <code>
+     .dt2
+    </code>
+    : Level-2 data with a spatial resolution of 1 arc second
+   </li>
+  </ul>
+  <h3>
+   <a name="ENVISAT">
+   </a>
+   ENVISAT AATSR Files
+  </h3>
+  <p>
+   Level 1B and 2 files are supported.
+  </p>
+  <h3>
+   <a name="ENVISAT2">
+   </a>
+   ENVISAT ASAR Files
+  </h3>
+  <p>
+   Level 1B files are supported.
+  </p>
+  <h3>
+   <a name="ENVISAT3">
+   </a>
+   <a name="kanchor94">
+   </a>
+   ENVISAT MERIS Files
+  </h3>
+  <p>
+   Level 1B and 2 files are supported.
+  </p>
+  <h3>
+   <a name="ER">
+   </a>
+   <a name="kanchor95">
+   </a>
+   ER Mapper Files
+  </h3>
+  <p>
+   Unsigned integer data are supported, but not signed 8-bit or algorithm files. Select the data header file (
+   <code>
+    .ers
+   </code>
+   ) to open.
+  </p>
+  <h3>
+   <a name="EROS">
+   </a>
+   <a name="kanchor96">
+   </a>
+   EROS A Files
+  </h3>
+  <p>
+   Level 1A files (
+   <code>
+    .1a
+   </code>
+   ) and Level 1B files (GeoTIFF&#160;format) are supported.
+  </p>
+  <h3>
+   <a name="ESRI">
+   </a>
+   <a name="kanchor97">
+   </a>
+   Esri GRID Files
+  </h3>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   reads Esri® GRID files on Windows 32-bit platforms only. It will open an Esri GRID file and display projection information when the file contains a supported Esri geographic coordinate system code, projected coordinate system code, or datum code. You must have ArcGIS® Desktop version 8 or later installed and licensed on your system.
+  </p>
+  <p>
+   Select a GRID (single-band) or GRID Stack 7.x (multiband) dataset to open. A GRID or GRID Stack is stored in a directory, not a file.
+  </p>
+  <h3>
+   <a name="GeoEye-1">
+   </a>
+   <a name="kanchor98">
+   </a>
+   GeoEye-1 Files
+  </h3>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   reads and displays GeoEye-1 data in NITF and GeoTIFF&#160;formats. An individual GeoTIFF&#160;file may only contain one band of data, while another may contain a combination of multispectral bands. In either case, you can open the individual GeoTIFF&#160;file directly, or select the
+   <code>
+    *_metadata.txt
+   </code>
+   file if it is available. The metadata file provides the information needed to open the appropriate GeoTIFF files.
+  </p>
+  <h3>
+   <a name="GeoSPOT">
+   </a>
+   <a name="kanchor99">
+   </a>
+   GeoSPOT Files
+  </h3>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   reads this primary format for SPOT data. ArcView® raster image files have a similar format specification. The GeoSPOT format is described in detail in documentation available from SPOT Image. While the GeoSPOT format provides for a wide variety of both raster and vector data,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   currently supports only GeoSPOT raster images, which have the
+   <code>
+    .bil
+   </code>
+   file extension and an associated header file with the extension
+   <code>
+    .hdr
+   </code>
+   .
+  </p>
+  <h3>
+   <a name="HDF">
+   </a>
+   HDF Files
+   <a name="kanchor100">
+   </a>
+  </h3>
+  <p>
+   Follow these steps to create a text report of any global attribute values that are present in an HDF scientific data (SD) file:
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select Raster Management &gt; Data-Specific Utilities &gt; View HDF&#160;Global Attributes. The Input File dialog appears.
+   </li>
+   <li value="2">
+    Select the HDF SD&#160;file.
+   </li>
+   <li value="3">
+    Any global attributes contained in the HDF file appear on-screen in a text report.
+   </li>
+   <li value="4">
+    To save the report to an ASCII&#160;file, select File &gt; Save Text to ASCII from the Report dialog menu bar.
+   </li>
+  </ol>
+  <h3>
+   <a name="IKONOS">
+   </a>
+   <a name="kanchor101">
+   </a>
+   IKONOS Files
+  </h3>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   reads and displays IKONOS data in NITF and GeoTIFF formats. An individual GeoTIFF or NITF file may only contain one band of data, while another may contain a combination of multispectral bands.
+  </p>
+  <ul>
+   <li value="1">
+    If you select the
+    <code>
+     metadata.txt
+    </code>
+    file,  reads it as an IKONOS product and opens all associated bands of data.
+   </li>
+   <li value="2">
+    If there is only one GeoTIFF or NITF file available (containing all bands of data) and you select it,
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    reads it as an IKONOS product and opens all associated bands.
+   </li>
+   <li value="3">
+    If there are multiple GeoTIFF or NITF files available (representing individual bands) and you select any file,
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    reads it as a generic GeoTIFF or NITF file.
+   </li>
+  </ul>
+  <h3>
+   <a name="IRS-1">
+   </a>
+   <a name="kanchor102">
+   </a>
+   IRS-1 FAST Files
+  </h3>
+  <p>
+   Select the
+   <code>
+    header.dat
+   </code>
+   file to open.
+  </p>
+  <h3>
+   <a name="IRS-12">
+   </a>
+   IRS-1 Super Structured Files
+  </h3>
+  <p>
+   Select a
+   <code>
+    leader*
+   </code>
+   or
+   <code>
+    b00.led
+   </code>
+   file to open.
+  </p>
+  <h3>
+   <a name="Landsat2">
+   </a>
+   <a name="kanchor103">
+   </a>
+   Landsat ACRES CCRS Files
+  </h3>
+  <p>
+   Select a
+   <code>
+    Imag_
+    <i>
+     xx
+    </i>
+    .dat
+   </code>
+   file to open.
+  </p>
+  <h3>
+   <a name="Landsat3">
+   </a>
+   Landsat ESA&#160;CEOS Files
+  </h3>
+  <p>
+   Select a
+   <code>
+    dat_
+    <i>
+     xx
+    </i>
+    .
+    <i>
+     xxx
+    </i>
+   </code>
+   and
+   <code>
+    lea_
+    <i>
+     xx
+    </i>
+    .
+    <i>
+     xxx
+    </i>
+   </code>
+   file to open.
+  </p>
+  <h3>
+   <a name="Landsat4">
+   </a>
+   Landsat FAST&#160;Files
+  </h3>
+  <p>
+   Select one of the following files to open:
+  </p>
+  <ul>
+   <li value="1">
+    <code>
+     header.dat
+    </code>
+    : Landsat TM FAST data
+   </li>
+   <li value="2">
+    <code>
+     *_hpn.fst
+    </code>
+    : Landsat-7 FAST panchromatic data, band 8
+   </li>
+   <li value="3">
+    <code>
+     *_hrf.fst
+    </code>
+    : Landsat-7 FAST VNIR/SWIR reflectance data, bands 1-5 and 7
+   </li>
+   <li value="4">
+    <code>
+     *_.htm.fst
+    </code>
+    : Landsat-7 FAST thermal data, bands 61-62
+   </li>
+  </ul>
+  <h3>
+   <a name="Landsat">
+   </a>
+   Landsat GeoTIFF Files with Metadata
+  </h3>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   reads Landsat (MSS, TM and ETM+) metadata  files from the Global Land Cover Facility (GLCF) or from the U.S. Geological  Survey (USGS). The metadata files provide information needed to open the  associated imagery. Select
+   <b>
+    File &gt; Open
+   </b>
+   from the menu bar. In the Open dialog, select a
+   <code>
+    .met
+   </code>
+   file for GLCF Landsat data or a
+   <code>
+    .txt
+   </code>
+   file for USGS Landsat data. The Data Manager displays the band and wavelength information for the Landsat multispectral bands first, followed by the thermal band and the panchromatic band.
+
+For Landsat data processed through the Level-1 Product Generation System (LPGS), select a
+   <code>
+    .mtl
+   </code>
+   file.
+  </p>
+  <h4>
+   MSS Utilities
+   <a name="kanchor104">
+   </a>
+  </h4>
+  <p>
+   Landsat MSS image data processed prior to 1978 typically contains systematic distortions caused by earth rotation and scan skew. Use
+   <b>
+    Landsat MSS Deskew
+   </b>
+   to remove the skew by offsetting groups of scan lines based on the relationship between the orbital characteristics and latitude-dependent earth rotation characteristics.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Raster Management &gt; Data-Specific Utilities &gt; Landsat MSS Deskew
+    </b>
+    . The Input File dialog appears.
+   </li>
+   <li value="2">
+    Select an input file and perform optional spatial and spectral
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The Deskewing Parameters dialog appears.
+   </li>
+   <li value="3">
+    Enter the latitude of the MSS scene center into the
+    <b>
+     Latitude Degrees
+    </b>
+    ,
+    <b>
+     Latitude Minutes
+    </b>
+    , and
+    <b>
+     Latitude Seconds
+    </b>
+    field.
+   </li>
+   <li value="4">
+    Select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="5">
+    Click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+  </ol>
+  <p>
+   Use
+   <b>
+    Landsat MSS Aspect
+   </b>
+   <![CDATA[ ]]>
+   <a name="kanchor105">
+   </a>
+   to adjust the aspect ratio by applying nearest neighbor resampling to a regular grid. Landsat MSS image data typically contains geometric distortions caused by oversampling in the scan direction. The actual pixel sizes are approximately 79&#160;x&#160;79 meters, but the instrument samples at 57 meter intervals in the scan direction. Because of this oversampling, an adjustment of the aspect ratio by the factor 57/79=0.72 is required.
+  </p>
+  <ol>
+   <li value="1">
+    From the Toolbox, select
+    <b>
+     Raster Management &gt; Data-Specific Utilities &gt; Landsat MSS Aspect
+    </b>
+    . The Input File dialog appears.
+   </li>
+   <li value="2">
+    Select an input file and perform optional spatial and spectral
+    <a href="../NoTOCTopics/Subsetting.htm">
+     subsetting
+    </a>
+    , then click
+    <b>
+     OK
+    </b>
+    . The Aspect Correction Parameters dialog appears.
+   </li>
+   <li value="3">
+    Select output to
+    <b>
+     File
+    </b>
+    or
+    <b>
+     Memory
+    </b>
+    .
+   </li>
+   <li value="4">
+    Click
+    <b>
+     OK
+    </b>
+    .
+   </li>
+  </ol>
+  <h3>
+   <a name="Landsat5">
+   </a>
+   Landsat MRLC Files
+  </h3>
+  <p>
+   Select a
+   <code>
+    .dda
+   </code>
+   file to open.
+  </p>
+  <h3>
+   <a name="Landsat6">
+   </a>
+   Landsat NLAPS Files
+  </h3>
+  <p>
+   Selecting a
+   <code>
+    .h*
+   </code>
+   file opens all the files in the current directory.
+  </p>
+  <h3>
+   <a name="MASTER">
+   </a>
+   <a name="kanchor106">
+   </a>
+   MASTER Files
+  </h3>
+  <p>
+   MODIS/ASTER airborne simulator (MASTER) files.
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   extracts wavelengths and applies scale factors to convert the data to radiance units.
+  </p>
+  <h3>
+   <a name="MODIS">
+   </a>
+   <a name="kanchor107">
+   </a>
+   MODIS Files
+  </h3>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   reads MODIS Level 1B, 2, 3, or 4 files, including products MOD02 through MOD44 and MYD02 through MYD44. It extracts gain and offset values from the HDF metadata and applies them when converting 16-bit data to calibrated floating-point data. The resulting emissive and reflectance data do not have units. The units of the radiance data are W/m
+   <sup>
+    2
+   </sup>
+   /μm/sr.
+  </p>
+  <p>
+   For Level 1B files, values greater than 32767 (which indicate invalid data) are replaced by -1 when applying the gains and offsets.
+  </p>
+  <h3>
+   <a name="MrSID">
+   </a>
+   <a name="kanchor108">
+   </a>
+   MrSID Files
+  </h3>
+  <p>
+   MrSID files are not supported on Macintosh operating systems.
+  </p>
+  <h3>
+   <a name="NITF">
+   </a>
+   NITF and NSIF Files
+  </h3>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   reads NITF 2.0, NITF 2.1, NSIF 1.0, and legacy NITF 1.1 files. See
+   <a href="BackgroundNITFNSIFFormat.htm">
+    Background on the NITF/NSIF Format
+   </a>
+   .
+  </p>
+  <h3>
+   <a name="PCI File">
+   </a>
+   <a name="kanchor109">
+   </a>
+   PCI&#160;Files
+  </h3>
+  <p>
+   Select a
+   <code>
+    .pix
+   </code>
+   file to open. PCI files that contain multiple data types or that are in file-interleave format are not supported.
+  </p>
+  <h3>
+   <a name="QuickBir">
+   </a>
+   <a name="kanchor110">
+   </a>
+   QuickBird Mosaic Tile Files
+  </h3>
+  <p>
+   Both the
+   <code>
+    .imd
+   </code>
+   and
+   <code>
+    .til
+   </code>
+   files must be in the same directory.
+  </p>
+  <h3>
+   <a name="RADARSAT">
+   </a>
+   <a name="kanchor111">
+   </a>
+   RADARSAT Files
+  </h3>
+  <p>
+   RADARSAT-1 (CEOS format) and RADARSAT-2 (GeoTIFF) files are supported.
+  </p>
+  <h3>
+   <a name="RapidEye">
+   </a>
+   <a name="kanchor112">
+   </a>
+   RapidEye Files
+  </h3>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   reads and displays RapidEye Level-1B (Basic) and Level-3A (Ortho) data. A Level-1B scene consists of five registered NITF 2.0 files (one for each band) with associated rational polynomial coefficients (RPCs). A
+   <a href="BackgroundNITFNSIFFormat.htm">
+    NITF/NSIF license
+   </a>
+   is required to open, orthorectify, or
+   <a href="../Topographic/DEMExtraction/IntroductionToDEMExtraction.htm">
+    extract DEMs
+   </a>
+   from RapidEye Level-1B files.
+  </p>
+  <p>
+   When you open the
+   <code>
+    *_metadata.xml
+   </code>
+   file associated with a Level-1B image,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   opens all five bands at once. To view a single band of data, open the corresponding NITF file.
+  </p>
+  <p>
+   Level-3A images are distributed as GeoTIFF files with associated metadata. Each GeoTIFF file contains five bands of data. Opening the GeoTIFF or XML file distributed with the data will load all five bands into
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   at once, along with all associated metadata.
+  </p>
+  <h3>
+   <a name="SeaWiFS">
+   </a>
+   <a name="kanchor113">
+   </a>
+   SeaWiFS Files
+  </h3>
+  <p>
+   The following products are supported:
+  </p>
+  <ul>
+   <li value="1">
+    OrbImage-distributed LAC 1B, LAC 2A, and LAC 2B files in CEOS format
+   </li>
+   <li value="2">
+    NASA/Goddard-distributed Level 1A and Level 1B files in HDF&#160;format
+   </li>
+  </ul>
+  <h3>
+   <a name="kanchor114">
+   </a>
+   SPOT Files
+  </h3>
+  <p>
+   Level 1A, 2A, and 1B products (
+   <code>
+    .dat
+   </code>
+   ) are supported.
+  </p>
+  <h3>
+   <a name="SPOT">
+   </a>
+   SPOT ACRES Files
+  </h3>
+  <p>
+   Select an
+   <code>
+    Imag_xx.dat
+   </code>
+   file to open.
+  </p>
+  <h3>
+   <a name="SPOT3">
+   </a>
+   SPOT GeoSPOT Files
+  </h3>
+  <p>
+   Select a
+   <code>
+    .bil
+   </code>
+   file to open.
+  </p>
+  <h3>
+   <a name="SPOT4">
+   </a>
+   SPOT Vegetation Files
+  </h3>
+  <p>
+   Select an
+   <code>
+    .hdf
+   </code>
+   file to open.
+  </p>
+  <h3>
+   <a name="SRTM">
+   </a>
+   <a name="kanchor115">
+   </a>
+   SRTM Files
+  </h3>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   opens single SRTM DEM files (
+   <code>
+    .hgt
+   </code>
+   ) as
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   image files. When multiple DEMs are available,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   automatically mosaics them into one
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   image file. If the file contains missing data points, you are prompted to correct the missing values. If you click
+   <b>
+    Yes
+   </b>
+   to replace missing values, the -32768 values (which indicate missing data) are replaced by values interpolated from valid neighboring pixels. Select a new output filename, or output to memory.
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   retains the original input file and creates a new file containing the interpolated data points.
+  </p>
+  <h3>
+   TFRD
+  </h3>
+  <p>
+   TFRD is an imaging data format used by the National Geospatial-Intelligence Agency (NGA) for storing geospatial data. This format can contain both image and text data and is used for rendering geolocational data within GIS applications. The
+   <a href="BackgroundNITFNSIFFormat.htm">
+    ENVI NITF Module
+   </a>
+   with TFRD is available at additional cost.
+  </p>
+  <h3>
+   <a name="TIMS">
+   </a>
+   <a name="kanchor116">
+   </a>
+   TIMS Thermal Files
+  </h3>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   assumes the data has 6 bands, 638 pixels, plus a 60 byte offset at the beginning of each line, and is in band-interleaved-by-line (BIL) storage order. Default wavelengths are entered into the header, and you can edit them as needed.
+  </p>
+  <h3>
+   <a name="TOPSAR">
+   </a>
+   <a name="kanchor117">
+   </a>
+   TOPSAR Files
+  </h3>
+  <p>
+   Cvv, Incidence Angle, Correlation Image, and DEM files are supported. See
+   <a href="../RadarTools/ConvertingTOPSARData.htm">
+    Convert TOPSAR Data
+   </a>
+   .
+  </p>
+  <h3>
+   <a name="WorldVie">
+   </a>
+   <a name="kanchor118">
+   </a>
+   WorldView Mosaic Tile Files
+  </h3>
+  <p>
+   Both the
+   <code>
+    .imd
+   </code>
+   and
+   <code>
+    .til
+   </code>
+   files must be in the same directory.
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

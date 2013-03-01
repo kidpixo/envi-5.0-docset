@@ -1,0 +1,839 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming|Routines|Processing" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   ENVI_FX_SEGMENTONLY_DOIT
+  </title>
+  <link href="../../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../../ENVIHelp_CSH.htm#ExtendCustomize/ENVIClassicAPI/ENVI_F/ENVI_FX_SEGMENTONLY_DOIT.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../Routines.htm">
+    Routines
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../A/ADAPT_FILT_DOIT.htm">
+    Processing
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    ENVI_FX_SEGMENTONLY_DOIT
+   </span>
+  </div>
+  <h1>
+   ENVI_FX_SEGMENTONLY_DOIT
+   <a name="kanchor320">
+   </a>
+  </h1>
+  <p>
+   This procedure automates the
+   <a href="../../../FindFeatures/FeatureExtraction/SegmentOnly.htm">
+    Segment Only Feature Extraction workflow
+   </a>
+   , which extract segments without performing rule-based or example-based classification. Based on the segmentation options that you specify,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   will compute spatial, spectral, and texture attributes and will generate a segmentation image, attribute image, and shapefile containing the regions from the segmentation image.
+  </p>
+  <p class="Note" madcap:autonum="&lt;b&gt;Note: &lt;/b&gt;">
+   <span class="autonumber">
+    <span>
+     <b>
+      Note:
+     </b>
+    </span>
+   </span>
+   This procedure is available for use only if you have an
+   <a href="../../../FeatureSupportByLicense.htm">
+    EX license
+   </a>
+   . Feature Extraction can also be added to an ENVI license at an extra cost. Please contact your
+   <span class="DocumentTitleCompanyName">
+    Exelis
+   </span>
+   sales representative for more information.
+  </p>
+  <h2 class="API">
+   Syntax
+  </h2>
+  <p>
+   ENVI_DOIT, 'ENVI_FX_SEGMENTONLY_DOIT' [,
+   <a href="#A_FID">
+    A_FID
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ] [,
+   <a href="#A_POS">
+    A_POS
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ] [,
+   <a href="#ATTRIBUT">
+    ATTRIBUTE_RASTER_FILENAME
+   </a>
+   =
+   <i>
+    string
+   </i>
+   ] [,
+   <a href="#BR_BANDS">
+    BR_BANDS
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ] [,
+   <a href="#CS_BANDS">
+    CS_BANDS
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ] [,
+   <a href="#DIMS">
+    DIMS
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ],
+   <a href="#FID">
+    FID
+   </a>
+   =
+   <i>
+    file ID
+   </i>
+   [, /
+   <a href="#INVERSE_">
+    INVERSE_MASK
+   </a>
+   ] [,
+   <a href="#KERNEL_S">
+    KERNEL_SIZE
+   </a>
+   =
+   <i>
+    long integer
+   </i>
+   ] [,
+   <a href="#M_FID">
+    M_FID
+   </a>
+   =
+   <i>
+    file ID
+   </i>
+   ][,
+   <a href="#MERGE_AL">
+    MERGE_ALGORITHM
+   </a>
+   =
+   <i>
+    string
+   </i>
+   ] [ ,
+   <a href="#MERGE_BA">
+    MERGE_BANDS
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ] [,
+   <a href="#MERGE_LE">
+    MERGE_LEVEL
+   </a>
+   =
+   <i>
+    floating point
+   </i>
+   ] [,
+   <a href="#POS%C2%A0(opt">
+    POS
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ] [,
+   <a href="#R_FID">
+    R_FID
+   </a>
+   =
+   <i>
+    variable
+   </i>
+   ] [,
+   <a href="#REPORT_F">
+    REPORT_FILENAME
+   </a>
+   =
+   <i>
+    string
+   </i>
+   ] [,
+   <a href="#SCALE_LE">
+    SCALE_LEVEL
+   </a>
+   =
+   <i>
+    floating point
+   </i>
+   ] [,
+   <a href="#SEGMENTA">
+    SEGMENTATION_ALGORITHM
+   </a>
+   =
+   <i>
+    string
+   </i>
+   ],
+   <a href="#SEGMENTA2">
+    SEGMENTATION_RASTER_FILENAME
+   </a>
+   =
+   <i>
+    string
+   </i>
+   [,
+   <a href="#SEGMENT_">
+    SEGMENT_BANDS
+   </a>
+   =
+   <i>
+    array
+   </i>
+   ] [,
+   <a href="#VECTOR_F">
+    VECTOR_FILENAME
+   </a>
+   =
+   <i>
+    string
+   </i>
+   ]
+  </p>
+  <h2 class="API">
+   Keywords
+  </h2>
+  <h3>
+   <a name="A_FID">
+   </a>
+   A_FID (optional)
+  </h3>
+  <p>
+   Set this keyword to an array of file IDs for ancillary data files. Use this keyword in conjunction with the A_POS keyword. The number of elements of A_FID must equal the number of elements of A_POS.
+  </p>
+  <h3>
+   <a name="A_POS">
+   </a>
+   A_POS (optional)
+  </h3>
+  <p>
+   Set this keyword to an array of long integers representing band numbers to process in the ancillary data files. Use this keyword in conjunction with the A_FID keyword. Specify bands starting with zero (Band 1 = 0, Band 2 = 1, etc.)
+  </p>
+  <p>
+   Each element in the A_POS array corresponds to an element in the A_FID array. For example, suppose you have two ancillary files whose file IDs are 100 and 200. To process Band 1 from file ID 200, and to process Bands 2-5 from file 100, write the code as follows:
+  </p>
+  <p class="Code_Indented">
+   A_FID = [200, 100, 100, 100, 100]
+  </p>
+  <p class="Code_Indented">
+   A_POS = [0, 1, 2, 3, 4]
+  </p>
+  <p>
+   To process all bands from the same file (100), write the code as follows:
+  </p>
+  <p class="Code_Indented">
+   A_FID = [100, 100, 100, 100, 100]
+  </p>
+  <p class="Code_Indented">
+   A_POS = [0, 1, 2, 3, 4]
+  </p>
+  <h3>
+   <a name="ATTRIBUT">
+   </a>
+   ATTRIBUTE_RASTER_FILENAME (optional)
+  </h3>
+  <p>
+   Set this keyword to a string with the name of the output attribute image, which is a multi-layer image in
+   <a href="../../../ExploreImagery/ENVIImageFiles.htm">
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    raster format
+   </a>
+   where each layer represents the values of a specific attribute. All attributes are included.
+  </p>
+  <h3>
+   <a name="BR_BANDS">
+   </a>
+   BR_BANDS (optional)
+  </h3>
+  <p>
+   Set this keyword to a two-element array of long integers that represent band numbers used to compute an optional Normalized Difference index to use in segmentation.
+  </p>
+  <h3>
+   <a name="CS_BANDS">
+   </a>
+   CS_BANDS (optional)
+  </h3>
+  <p>
+   Set this keyword to a three-element array of long integers that represent the red, green, and blue bands from the input image. These will be used to perform an optional RGB to HSI&#160;color space transformation that will create Hue, Saturation, and Intensity bands to use in segmentation.
+  </p>
+  <h3>
+   <a name="DIMS">
+   </a>
+   DIMS (optional)
+  </h3>
+  <p>
+   The “dimensions” keyword is a five-element array of long integers that defines the spatial subset (of a file or array) to use for processing. Nearly every time you specify the keyword FID, you must also specify the spatial subset of the corresponding file (even if the entire file, with no spatial subsetting, is to be processed).
+  </p>
+  <ul>
+   <li value="1">
+    DIMS[0]: A pointer to an open ROI; use only in cases where ROIs define the spatial subset. Otherwise, set to -1L.
+   </li>
+   <li value="2">
+    DIMS[1]: The starting sample number. The first x pixel is 0.
+   </li>
+   <li value="3">
+    DIMS[2]: The ending sample number
+   </li>
+   <li value="4">
+    DIMS[3]: The starting line number. The first y pixel is 0.
+   </li>
+   <li value="5">
+    DIMS[4]: The ending line number
+   </li>
+  </ul>
+  <p>
+   To process an entire file (with no spatial subsetting), define DIMS as shown in the following code example. This example assumes you have already opened a file using
+   <a href="../ENVI_S/ENVI_SELECT.htm">
+    ENVI_SELECT
+   </a>
+   or
+   <a href="../ENVI_P/ENVI_PICKFILE.htm">
+    ENVI_PICKFILE
+   </a>
+   :
+  </p>
+  <p class="Code_Indented">
+   envi_file_query, fid, dims=dims
+  </p>
+  <p>
+   You
+   <i>
+    cannot
+   </i>
+   define DIMS as a pointer to a region of interest (ROI) in any of
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   ’s _DOIT library routines. Using the following example code with a _DOIT library routine will result in an error message when you run the program:
+  </p>
+  <p class="Code_Indented">
+   roi_ids = ENVI_GET_ROI_IDS()
+  </p>
+  <p class="Code_Indented">
+   <br />
+   roi_dims = ENVI_GET_ROI_DIMS_PTR(roi_ids[0])
+  </p>
+  <p class="Code_Indented">
+   <br />
+   dims= [roi_dims,0,0,0,0]
+  </p>
+  <h3>
+   <a name="FID">
+   </a>
+   FID
+  </h3>
+  <p>
+   The file ID (FID) is a long-integer scalar with a value greater than 0. An invalid FID has a value of -1. The FID is provided as a named variable by any routine used to open or select a file. Often, the FID is returned from the keyword R_FID in the
+   <a href="../../ENVIRasterToFID.htm">
+    ENVIRasterToFID
+   </a>
+   routine. Files are processed by referring to their FIDs. If you work directly with the file in IDL, the FID is
+   <i>
+    not
+   </i>
+   equivalent to a logical unit number (LUN).
+  </p>
+  <h3>
+   <a name="INVERSE_">
+   </a>
+   INVERSE_MASK (optional)
+  </h3>
+  <p>
+   Set this keyword to invert the mask specified by the M_FID keyword. Inverting the mask means that Feature Extraction will process regions with pixel values of 0 in the mask.
+  </p>
+  <h3>
+   <a name="KERNEL_S">
+   </a>
+   KERNEL_SIZE (optional)
+  </h3>
+  <p>
+   Set this keyword to a long-integer odd number representing the size of the kernel used in texture attribute calculations. The default value is 3.
+  </p>
+  <h3>
+   <a name="M_FID">
+   </a>
+   M_FID (optional)
+  </h3>
+  <p>
+   Set this keyword to the file ID of a raster mask image. If you specify this keyword, Feature Extraction will ignore regions with pixel values of 0 in the mask.
+  </p>
+  <h3>
+   <a name="MERGE_AL">
+   </a>
+   MERGE_ALGORITHM (optional)
+  </h3>
+  <p>
+   Set this keyword to one of the following strings, specifying the method used to perform merging:
+   <br />
+  </p>
+  <ul>
+   <li value="1">
+    <code>
+     Full Lambda Schedule
+    </code>
+    : (default). Merges small segments within larger, textured areas such as trees or clouds, where over-segmentation may be a problem.
+   </li>
+   <li value="2">
+    <code>
+     Fast Lambda
+    </code>
+    : Merges adjacent segments with similar colors and border sizes.
+   </li>
+  </ul>
+  <p>
+   See
+   <a href="../../../FindFeatures/FeatureExtraction/BackgroundMergeAlgorithms.htm">
+    Merge Algorithms Background
+   </a>
+   for more detailed descriptions of each option.
+  </p>
+  <h3>
+   <a name="MERGE_BA">
+   </a>
+   MERGE_BANDS (optional)
+  </h3>
+  <p>
+   Set this keyword to an array of long integers that represent band numbers to use with the merge algorithm and merge level that you specify. Merging will be based on the differences between region colors on all selected bands. By default, all bands of the input image will be used.
+  </p>
+  <p>
+   If you selected a spectral subset of bands using the
+   <a href="#POS%C2%A0(opt">
+    POS
+   </a>
+   keyword, then specify band numbers according to the
+   <a href="#POS%C2%A0(opt">
+    POS
+   </a>
+   &#160;array, not the original dataset. For example, suppose that you created a spectral subset of bands 1, 2, 5, and 7 from a 7-band dataset. The POS array for these four bands is [0, 1, 2, 3]. To perform merging on bands 1, 2, and 5 from the original dataset, then use the corresponding POS band numbers as follows:
+  </p>
+  <p class="Code">
+   MERGE_BANDS=[0, 1, 2]
+  </p>
+  <p>
+   If you do not select a spectral subset, then you do not have to keep track of the POS band numbering, as in this example. By default, the MERGE_BANDS keyword will use all bands from the input image.
+  </p>
+  <h3>
+   <a name="MERGE_LE">
+   </a>
+   MERGE_LEVEL (optional)
+  </h3>
+  <p>
+   Set this keyword to a floating-point value between 0 and 100.0, specifying the merge level used to combine segments with similar colors (Fast Lambda method) or to merge over-segmented areas (Full Lambda Schedule method). The default value is 0.
+  </p>
+  <h3>
+   <a name="POS (opt">
+   </a>
+   POS&#160;(optional)
+  </h3>
+  <p>
+   Use this keyword to specify an array of band numbers used to perform segmentation. POS indicates the spectral subset of bands to use in processing. Specify bands starting with zero (Band 1 = 0, Band 2 = 1, etc.)
+  </p>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   creates a single dataset  from the combined bands of the input image, ancillary data, normalized difference, hue, saturation, and intensity (if selected). For best results, you should not perform segmentation with a combination of custom bands (normalized difference or HSI color space) and visible/NIR bands. You can perform segmentation on the normalized difference or color space bands by themselves, but not in combination with visible and NIR bands. So in most cases, you will need to select a spectral subset for segmentation instead of using all bands.
+  </p>
+  <p>
+   Specify band numbers in the following order:
+  </p>
+  <ol>
+   <li value="1">
+    Input image: one or more bands
+   </li>
+   <li value="2">
+    Ancillary image(s): one or more bands
+   </li>
+   <li value="3">
+    Normalized difference: one band
+   </li>
+   <li value="4">
+    Hue: one band
+   </li>
+   <li value="5">
+    Saturation: one band
+   </li>
+   <li value="6">
+    Intensity: one band
+   </li>
+  </ol>
+  <p>
+   For example, if the input image has four bands and you want to perform segmentation on these bands only, set POS = [0, 1, 2, 3].
+  </p>
+  <p>
+   Or, suppose you have a 4-band image and you set the BR_BANDS and CS_BANDS keywords. The band numbers are as follows:
+  </p>
+  <ul>
+   <li value="1">
+    Input image: [0, 1, 2, 3]
+   </li>
+   <li value="2">
+    Normalized difference: [4]
+   </li>
+   <li value="3">
+    Hue: [5]
+   </li>
+   <li value="4">
+    Saturation: [6]
+   </li>
+   <li value="5">
+    Intensity: [7]
+   </li>
+  </ul>
+  <p>
+   To perform segmentation on the saturation band only, set POS = [6] in this example.
+  </p>
+  <p>
+   For hyperspectral imagery, we strongly recommend that you run a
+   <a href="../../../PreprocessImagery/Transforms/PrincipalComponentAnalysis.htm">
+    principal components analysis
+   </a>
+   or
+   <a href="../../../PreprocessImagery/Transforms/IndependentComponentsAnalysis.htm">
+    independent components analysis
+   </a>
+   on the dataset before using it in Feature Extraction. Segmentation and merging work best on datasets with only a few bands, plus it helps you keep track of the band numbers when setting the POS&#160;keyword.
+  </p>
+  <h3>
+   <a name="R_FID">
+   </a>
+   R_FID (optional)
+  </h3>
+  <p>
+   This keyword is a returned variable containing the file ID&#160;of the segmentation image. If processing fails for any reason, then R_FID = -1.
+  </p>
+  <h3>
+   <a name="REPORT_F">
+   </a>
+   REPORT_FILENAME (optional)
+  </h3>
+  <p>
+   Set this keyword to a string indicating the filename of a text report that lists the segmentation and merge settings used, the input and ancillary files used, a list of attributes that were computed for the segmentation image, and any output files that were created.
+  </p>
+  <h3>
+   <a name="SCALE_LE">
+   </a>
+   SCALE_LEVEL (optional)
+  </h3>
+  <p>
+   Set this keyword to a floating-point value between 0 and 100.0, indicating the scale level used to delineate features of interest in segmentation. Increasing the value reduces the number of segments. The default value is 50.0.
+  </p>
+  <h3>
+   <a name="SEGMENTA">
+   </a>
+   SEGMENTATION_ALGORITHM (optional)
+  </h3>
+  <p>
+   Set this keyword to one of the following strings, indicating the segmentation method to use:
+  </p>
+  <ul>
+   <li value="1">
+    <code>
+     Edge
+    </code>
+    (default): Best for detecting edges of features where objects of interest have sharp edges. Set the SCALE_LEVEL and MERGE_LEVEL as needed to best delineate features of interest.
+   </li>
+   <li value="2">
+    <code>
+     Intensity
+    </code>
+    : Best for segmenting images with subtle gradients such as digital elevation models (DEMs) or images of electromagnetic fields. When selecting this method, don't perform any merging; set MERGE_LEVEL=0. Merging is used primarily to combine segments with similar spectral information. Elevation and other related attributes are not appropriate for merging.
+   </li>
+  </ul>
+  <p>
+   See
+   <a href="../../../FindFeatures/FeatureExtraction/BackgroundSegmentationAlgorithm.htm">
+    Watershed Algorithm Background
+   </a>
+   for more detailed descriptions of each option.
+  </p>
+  <h3>
+   <a name="SEGMENTA2">
+   </a>
+   SEGMENTATION_RASTER_FILENAME
+  </h3>
+  <p>
+   Set this keyword to a string indicating the filename of the output segmentation image. This is an image in
+   <a href="../../../ExploreImagery/ENVIImageFiles.htm">
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    raster format
+   </a>
+   that shows the regions defined by segmentation; each region is assigned the mean spectral values of all the pixels that belong to that region.
+  </p>
+  <h3>
+   <a name="SEGMENT_">
+   </a>
+   SEGMENT_BANDS (optional)
+  </h3>
+  <p>
+   Set this keyword to an array of long integers representing the band numbers to use in the segmentation method and scale level that you specify. All bands from the input image are selected by default. The settings will apply to a grayscale image derived from the average of all selected bands.  For best segmentation results, select a combination of bands that have similar spectral ranges such as red, green, blue, and near-infrared bands.
+  </p>
+  <p>
+   If you selected a spectral subset of bands using the
+   <a href="#POS%C2%A0(opt">
+    POS
+   </a>
+   keyword, then specify band numbers according to the
+   <a href="#POS%C2%A0(opt">
+    POS
+   </a>
+   &#160;array, not the original dataset. For example, suppose that you created a spectral subset of bands 1, 2, 5, and 7 from a 7-band dataset. The POS array for these four bands is [0, 1, 2, 3]. To perform segmentation on bands 1, 2, and 5 from the original dataset, then use the corresponding POS band numbers as follows:
+  </p>
+  <p class="Code">
+   SEGMENT_BANDS=[0, 1, 2]
+  </p>
+  <p>
+   If you do not select a spectral subset, then you do not have to keep track of the POS band numbering, as in this example. By default, the SEGMENT_BANDS keyword will use all bands from the input image.
+  </p>
+  <h3>
+   <a name="VECTOR_F">
+   </a>
+   VECTOR_FILENAME (optional)
+  </h3>
+  <p>
+   Set this keyword to a string indicating the filename of a shapefile that contains the polygon regions from the segmentation image. Shapefiles have a maximum filesize of 2 GB. If you do not specify this keyword, then no shapefile will be created.
+  </p>
+  <h2 class="API">
+   <a name="Example">
+   </a>
+   Example
+  </h2>
+  <p class="Code">
+   PRO EXAMPLE_FX_SEGMENTONLY_DOIT
+  </p>
+  <p class="Code_Indented">
+   compile_opt IDL2
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ; Initialize ENVI and send all errors
+  </p>
+  <p class="Code_Indented">
+   ; and warnings to the file batch.txt
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   e = ENVI(/HEADLESS)
+  </p>
+  <p class="Code_Indented">
+   e.LOG_FILE = 'batch.txt'
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ; Open the input file
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   raster = e.OpenRaster('bhtmref.img')
+  </p>
+  <p class="Code_Indented">
+   fid = ENVIRasterToFID(raster)
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ; Verify FID is valid
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   IF (FID eq -1) THEN BEGIN
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;e.Close
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;RETURN
+  </p>
+  <p class="Code_Indented">
+   ENDIF
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ; Set output filenames
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   SegImage = 'segmentation_image.dat'
+  </p>
+  <p class="Code_Indented">
+   Report = 'report.txt'
+  </p>
+  <p class="Code_Indented">
+   VectorImage = 'regions.shp'
+  </p>
+  <p class="Code_Indented">
+   AttImage = 'attributes.dat'
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ; Set the keywords.
+  </p>
+  <p class="Code_Indented">
+   dims = [-1L, 0, raster.ncolumns-1, 0, raster.nrows-1]
+  </p>
+  <p class="Code_Indented">
+   pos = lindgen(raster.nbands); process all bands
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ; Perform the segmentation
+   <![CDATA[
+]]>
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   envi_doit, 'envi_fx_segmentonly_doit', $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;fid=fid, pos=pos, dims=dims, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;r_fid=r_fid, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;attribute_raster_filename=AttImage, $
+  </p>
+  <p class="Code_Indented">
+   <![CDATA[   ]]>
+   merge_level=20.0, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;report_filename=Report, scale_level=30.0, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;segmentation_raster_filename=SegImage, $
+  </p>
+  <p class="Code_Indented">
+   &#160;&#160;&#160;vector_filename=VectorImage
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ; Exit ENVI
+  </p>
+  <p class="Code_Indented">
+   e.Close
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   ; Re-open ENVI in interactive mode and display the image
+  </p>
+  <p class="Code_Indented">
+   ;
+  </p>
+  <p class="Code_Indented">
+   e = ENVI()
+  </p>
+  <p class="Code_Indented">
+   oSegImage = e.OpenRaster(SegImage)
+  </p>
+  <p class="Code_Indented">
+   view1 = e.GetView()
+  </p>
+  <p class="Code_Indented">
+   layer1 = view1.CreateLayer(oSegImage)
+  </p>
+  <p class="Code">
+   END
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

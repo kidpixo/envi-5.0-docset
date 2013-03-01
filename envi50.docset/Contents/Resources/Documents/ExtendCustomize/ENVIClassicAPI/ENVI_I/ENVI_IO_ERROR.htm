@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming|Routines|Display Control|ENVI Classic" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   ENVI_IO_ERROR
+  </title>
+  <link href="../../../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../../../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../../../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../../../ENVIHelp_CSH.htm#ExtendCustomize/ENVIClassicAPI/ENVI_I/ENVI_IO_ERROR.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../Routines.htm">
+    Routines
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="../../enviPortal.htm">
+    Display Control
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    ENVI_IO_ERROR
+   </span>
+  </div>
+  <h1>
+   <a name="kanchor638">
+   </a>
+   ENVI_IO_ERROR
+  </h1>
+  <p class="HighlightText">
+   This routine has been replaced with the
+   <a href="../../ENVI__ReportError.htm">
+    ReportError
+   </a>
+   method to ENVI. See
+   <a href="../../ErrorHandling.htm">
+    Manage Errors
+   </a>
+   for more information.
+  </p>
+  <p>
+   Use this procedure to report I/O processing errors.
+  </p>
+  <h2 class="API">
+   Syntax
+  </h2>
+  <p>
+   ENVI_IO_ERROR,
+   <i>
+    Proc
+   </i>
+   [,
+   <a href="#UNIT">
+    UNIT
+   </a>
+   =
+   <i>
+    integer
+   </i>
+   ]
+  </p>
+  <h2 class="API">
+   Arguments
+  </h2>
+  <h3>
+   Proc
+  </h3>
+  <p>
+   This is a text string to be echoed to the terminal when an I/O error occurs. Generally,
+   <i>
+    Proc
+   </i>
+   should be the name of the procedure in which ENVI_IO_ERROR is called.
+  </p>
+  <h2 class="API">
+   Keywords
+  </h2>
+  <h3>
+   <a name="UNIT">
+   </a>
+   UNIT
+  </h3>
+  <p>
+   Use this keyword to specify the unit number of the output file being generated. If you specify UNIT and an error occurs, ENVI_IO_ERROR will delete this file.
+  </p>
+  <h2 class="API">
+   Example
+  </h2>
+  <p>
+   The following example shows how to display an I/O error when MY_ERROR does not equal 0.
+  </p>
+  <p xml:space="preserve" class="Code">
+   if (my_error ne 0) then $
+   <br />
+   &#160;&#160;&#160;envi_io_error, 'An error occurred in my processing.'
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../../../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

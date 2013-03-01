@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   Active Layers
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#ROIVectorAnnotation/ActiveLayers.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <h2>
+   Active Layers
+   <a name="kanchor863">
+   </a>
+  </h2>
+  <p>
+   Vector and annotation layers in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   can be  the selected layer, but for editing purposes they also need to be designated as the
+   <i>
+    active layer
+   </i>
+   . Specifying the active layer is necessary when you have multiple layers of the same type open, as it indicates the layer you want to edit. Vector and annotation layers are independent; if you have one or more of each layer type loaded, there will be one active vector layer
+   <i>
+    and
+   </i>
+   one active annotation layer.
+  </p>
+  <p>
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   tools are applied differently to vector and annotation layers, depending on the tool.
+   <a href="VectorTools.htm">
+    Vector
+   </a>
+   ,
+   <a href="WorkWithAnnotations.htm">
+    Annotation
+   </a>
+   , and
+   <a href="../ExploreImagery/DisplayTools.htm#CrosshairsTool">
+    Crosshairs
+   </a>
+   tools work on the
+   <i>
+    active
+   </i>
+   layer, but the
+   <a href="../ExploreImagery/DisplayTools.htm#Transparency">
+    Transparency
+   </a>
+   and
+   <a href="../ExploreImagery/DisplayTools.htm#GoToTool">
+    Go To
+   </a>
+   tools work on the
+   <i>
+    selected
+   </i>
+   layer, just as they do with imagery. The selected layer may or may not be the same layer as the active layer at any given time. For example, you may add new vector records to the active layer, then click to select a vector layer in the Layer Manager and apply transparency to that layer.
+  </p>
+  <p>
+   When working with active layers:
+  </p>
+  <ul>
+   <li value="1">
+    When you create or load a new vector or annotation layer, it becomes the active layer for that layer type.
+   </li>
+   <li value="2">
+    To change the active layer for a layer type, right-click on a layer name in the Layer Manager and select
+    <b>
+     Set as Active Layer
+    </b>
+    or
+    <b>
+     Set As Active Annotation Layer
+    </b>
+    . The icon next to the active layer’s name is highlighted by a red box
+    <img src="../Resources/Images/IconsButtons/LayerManagerActiveVectorLayer_16x16.gif" title="Active vector layer" alt="Active vector layer" class="VertCenter" style="width: 16;height: 16;" />
+    for vectors or a cyan box
+    <img src="../Resources/Images/IconsButtons/LayerManagerActiveAnnotationLayer.gif" class="VertCenter" alt="Active annotation layer" />
+    for annotations, and  the right-click menu option
+    <b>
+     Set as Active Layer
+    </b>
+    or
+    <b>
+     Set As Active Annotation Layer
+    </b>
+    is disabled.
+   </li>
+   <li value="3">
+    When you have an active vector layer and an active annotation layer loaded and you are alternating between the two, select the appropriate tool button from the toolbar. For example, select a Vector tool if you want to edit the active vector layer.
+   </li>
+   <li value="4">
+    For vector layers, if you modified the active layer,
+    <span class="DocumentTitleProductName">
+     ENVI
+    </span>
+    prompts you to save the changes before you can set a new active layer. Save the changes if you want to keep them; otherwise, they are discarded.
+   </li>
+   <li value="5">
+    Reordering layers in the Layer Manager does not change which layer is the active layer. When you remove the active layer from the Layer Manager, another displayed layer automatically becomes the active layer.
+   </li>
+  </ul>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>

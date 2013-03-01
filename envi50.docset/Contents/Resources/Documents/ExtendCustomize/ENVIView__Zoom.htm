@@ -1,0 +1,309 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:madcap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" madcap:lastblockdepth="2" madcap:lastheight="135.6667" madcap:lastwidth="592" madcap:disablemasterstylesheet="true" madcap:tocpath="Programming|Routines|Display Control|ENVIView" madcap:medium="non-print" madcap:inpreviewmode="false" madcap:preloadimages="false" madcap:runtimefiletype="Topic" madcap:targettype="WebHelp" lang="en-us" xml:lang="en-us" madcap:pathtohelpsystem="../../" madcap:helpsystemfilename="ENVIHelp.xml" madcap:searchtype="Stem">
+ <!-- saved from url=(0014)about:internet -->
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+   ENVIView::Zoom
+  </title>
+  <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+  <link href="../Resources/TableStyles/VersionTable.css" rel="stylesheet" />
+  <link href="../Resources/Stylesheets/Doc_Style.css" rel="stylesheet" />
+  <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+  </script>
+ </head>
+ <body>
+  <p class="MCWebHelpFramesetLink" style="display: none;">
+   <a href="../../ENVIHelp_CSH.htm#ExtendCustomize/ENVIView__Zoom.htm" style="">
+    Open topic with navigation
+   </a>
+  </p>
+  <div class="MCBreadcrumbsBox_0">
+   <span class="MCBreadcrumbsPrefix">
+    <![CDATA[ ]]>
+   </span>
+   <a class="MCBreadcrumbsLink" href="ProgrammingWithENVI.htm">
+    Programming
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="Routines.htm">
+    Routines
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <a class="MCBreadcrumbsLink" href="enviPortal.htm">
+    Display Control
+   </a>
+   <span class="MCBreadcrumbsDivider">
+    &gt;
+   </span>
+   <span class="MCBreadcrumbs">
+    ENVIView::Zoom
+   </span>
+  </div>
+  <h1 class="ObjMethod">
+   ENVIView::Zoom
+  </h1>
+  <p>
+   By default, the
+   <a name="kanchor621">
+   </a>
+   Zoom method zooms in to the view using the fixed zoom factor specified in the
+   <b>
+    <a href="../Preferences.htm#ZoomFactor">
+     Zoom Factor
+    </a>
+   </b>
+   preference. You can also:
+  </p>
+  <ul>
+   <li value="1">
+    Specify a custom zoom factor with an argument
+   </li>
+   <li value="2">
+    Zoom based on the pixel scale of a specific layer
+   </li>
+   <li value="3">
+    Zoom based on the map scale of the view
+   </li>
+  </ul>
+  <h2 class="API">
+   Example
+  </h2>
+  <p>
+   The following code zooms in and out of a raster layer.
+  </p>
+  <p class="Code">
+   ; Launch the application
+  </p>
+  <p class="Code">
+   e = ENVI()
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Create an ENVIRaster and display it
+  </p>
+  <p class="Code">
+   file = FILEPATH('qb_boulder_pan', ROOT_DIR=e.ROOT_DIR, $
+  </p>
+  <p class="Code_Indented">
+   SUBDIRECTORY = ['data'])
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   raster = e.OpenRaster(file)
+  </p>
+  <p class="Code">
+   view = e.GetView()
+  </p>
+  <p class="Code">
+   layer = view.CreateLayer(raster)
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Zoom to 200% (2:1)
+  </p>
+  <p class="Code">
+   view.Zoom, 2.0
+  </p>
+  <p class="Code">
+   &#160;
+  </p>
+  <p class="Code">
+   ; Zoom IN/OUT to the fixed zoom factor specified
+  </p>
+  <p class="Code">
+   ; in the Zoom Factor preference
+  </p>
+  <p class="Code">
+   view.Zoom
+  </p>
+  <p class="Code">
+   view.Zoom, /OUT
+  </p>
+  <h2 class="API">
+   Syntax
+  </h2>
+  <p class="Syntax" style="font-style: normal;">
+   <i>
+    view
+   </i>
+   .Zoom,
+   <i>
+    ZoomFactor
+   </i>
+   [, ERROR=
+   <i>
+    variable
+   </i>
+   ] [, { /FULL_EXTENT | /FULL_RESOLUTION}] [, LAYER=
+   <i>
+    layer
+   </i>
+   ] [, /OUT]
+  </p>
+  <h2 class="API">
+   Arguments
+  </h2>
+  <h3 class="Argument">
+   ZoomFactor
+  </h3>
+  <p>
+   To zoom the image in or out, specify a floating-point zoom factor.
+  </p>
+  <p>
+   To zoom based on map scale, specify a string of the form '1:
+   <i>
+    n
+   </i>
+   ', which defines the map ratio.
+  </p>
+  <p>
+   To zoom based on the pixel scale of a specific layer, specify a string of the form 'n%' (it must end with the % symbol). To do this, the LAYER keyword must be set to an ENVIRasterLayer.
+  </p>
+  <p>
+   If you do not specify this argument, the Zoom method uses the fixed zoom factor specified in the
+   <b>
+    Zoom Factor
+   </b>
+   preference.
+  </p>
+  <h2 class="API">
+   Keywords
+  </h2>
+  <h3 class="Keyword">
+   ERROR
+  </h3>
+  <p>
+   Set this keyword to a named variable that will contain any error message issued during execution of this routine. If no error occurs, the ERROR variable will be set to a null string (
+   <code>
+    ''
+   </code>
+   ). If an error occurs and the routine is a function, then the function result will be undefined.
+  </p>
+  <p>
+   When this keyword is not set and an error occurs,
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   returns to the caller and execution halts. In this case, the error message is contained within !ERROR_STATE and can be caught using IDL's CATCH routine. See IDL Help for more information on !ERROR_STATE and CATCH.
+  </p>
+  <p>
+   See
+   <a href="ErrorHandling.htm">
+    Manage Errors
+   </a>
+   for more information on error handling in
+   <span class="DocumentTitleProductName">
+    ENVI
+   </span>
+   programming.
+  </p>
+  <h3 class="Keyword">
+   FULL_EXTENT
+  </h3>
+  <p>
+   Set this keyword to zoom to the full extent of either a single layer or all layers in the view. If the LAYER keyword is set, the Zoom method zooms to the full extent of the layer specified. If the LAYER keyword is not set, the Zoom method zooms to the full extent of all layers.
+  </p>
+  <p>
+   If the FULL_EXTENT keyword is specified,
+   <i>
+    ZoomFactor
+   </i>
+   is ignored.
+  </p>
+  <h3 class="Keyword">
+   FULL_RESOLUTION
+  </h3>
+  <p>
+   Set this keyword to zoom to the full resolution (1:1) of the specified layer's pixels. If this keyword is set, LAYER must be set to an ENVIRasterLayer. This process differs from setting
+   <i>
+    ZoomFactor
+   </i>
+   to '100%' in that if the zoom causes the layer to be completely outside of the view, it will pan the layer so that the top left corner of the layer matches up with the top left corner of the view.
+  </p>
+  <p>
+   If the FULL_RESOLUTION keyword is specified,
+   <i>
+    ZoomFactor
+   </i>
+   is ignored. FULL_EXTENT and FULL_RESOLUTION may not both be set at the same time.
+  </p>
+  <h3 class="Keyword">
+   LAYER
+  </h3>
+  <p>
+   Set this keyword to an ENVIRasterLayer or ENVIVectorLayer to do layer-dependent zooming.
+  </p>
+  <h3 class="Keyword">
+   OUT
+  </h3>
+  <p>
+   Set this keyword to zoom out instead of in. If the argument
+   <i>
+    ZoomFactor
+   </i>
+   is specified, the zoom factor uses this value. If the
+   <i>
+    ZoomFactor
+   </i>
+   argument is not specified, the zoom factor uses the fixed value specified in the
+   <b>
+    Zoom Factor
+   </b>
+   preference.
+  </p>
+  <h2 class="API">
+   Version History
+  </h2>
+  <table style="mc-table-style: url('../Resources/TableStyles/VersionTable.css');" class="TableStyle_VersionTable" cellspacing="0">
+   <col />
+   <col />
+   <tbody>
+    <tr>
+     <td class="TableStyle_VersionTable_Body_0_0_RowEnd_ColSep">
+      <p>
+       5.0
+      </p>
+     </td>
+     <td class="TableStyle_VersionTable_Body_0_0_RowEnd_ColEnd">
+      <p>
+       Introduced
+      </p>
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h2 class="API">
+   See Also
+  </h2>
+  <p>
+   <a href="enviView.htm">
+    ENVIView
+   </a>
+  </p>
+  <div class="mp_footer">
+   Copyright ©
+   <span class="DocumentTitleCopyrightYear">
+    2012
+   </span>
+   <![CDATA[ ]]>
+   <span class="DocumentTitleCopyrightCompanyName">
+    Exelis Visual Information Solutions, Inc.
+   </span>
+   All Rights Reserved.
+  </div>
+  <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+  </script>
+ </body>
+</html>
